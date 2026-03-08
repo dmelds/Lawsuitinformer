@@ -10,6 +10,15 @@ nav {
     margin-bottom: 30px;
     font-weight: bold;
 }
+nav a {
+    text-decoration: none;
+    color: #1a3d6d;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
 
 h1 {
     margin-bottom: 10px;
