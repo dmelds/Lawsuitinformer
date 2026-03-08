@@ -1,4 +1,30 @@
 body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+nav {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 60px;
+    font-size: 14px;
+    color: #666;
+}
+body {
   font-family: Arial, sans-serif;
   max-width: 900px;
   margin: auto;
