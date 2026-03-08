@@ -19,7 +19,12 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
-
+nav {
+    margin-bottom: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
 h1 {
     margin-bottom: 10px;
 }
