@@ -28,3 +28,7 @@ a:hover {
 ul {
   margin-top: 20px;
 }
+nav {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
