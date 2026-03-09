@@ -172,7 +172,8 @@ footer {
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ grid-template-columns: repeat(3, 1fr);
+align-items: start;
   gap: 30px;
 }
 
