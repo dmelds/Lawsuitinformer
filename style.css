@@ -226,4 +226,19 @@ footer {
 .hero {
   border-top: none;
 }
+  .topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+}
+
+.topics-list a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.topics-list a:hover {
+  color: #fff;
+}
 }
