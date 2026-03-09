@@ -218,4 +218,12 @@ footer {
   .hero {
     padding: 70px 0 55px;
   }
+  .section {
+  padding: 70px 0;
+  border-top: 1px solid #1c1c1c;
+}
+
+.hero {
+  border-top: none;
+}
 }
