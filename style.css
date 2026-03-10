@@ -16,8 +16,10 @@ a {
 }
 
 .container {
-  width: min(1100px, 92%);
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
 }
 
 header {
