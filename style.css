@@ -280,6 +280,14 @@ footer {
   h2 {
     font-size: 1.5rem;
   }
+    .simple-links a{
+color:#7cc4ff;
+text-decoration:none;
+}
+
+.simple-links a:hover{
+text-decoration:underline;
+}
 
 }
 }
