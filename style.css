@@ -399,6 +399,33 @@ margin-top:40px;
 .social-links a:hover {
   text-decoration: underline;
 }
+.learn-more{
+  max-width:900px;
+  margin:50px auto;
+  padding:20px;
+  background:#f7f9fc;
+  border-radius:6px;
+}
 
+.learn-more h2{
+  margin-bottom:15px;
+}
+
+.learn-more ul{
+  padding-left:20px;
+}
+
+.learn-more li{
+  margin-bottom:10px;
+}
+
+.learn-more a{
+  color:#1f4f8f;
+  text-decoration:none;
+}
+
+.learn-more a:hover{
+  text-decoration:underline;
+}
 }
 }
