@@ -303,6 +303,20 @@ text-decoration:underline;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
 }
+    .legal-page{
+max-width:800px;
+margin:80px auto;
+padding:0 20px;
+line-height:1.7;
+}
+
+.legal-page h1{
+margin-bottom:10px;
+}
+
+.legal-page h2{
+margin-top:40px;
+}
 
 .social-links a {
   margin: 0 10px;
