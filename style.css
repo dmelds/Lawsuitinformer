@@ -105,6 +105,77 @@ nav a:hover {
   color: #fff;
   border: 1px solid #444;
 }
+.content-page{
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  line-height: 1.7;
+}
+
+.content-page h1{
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.content-page h2{
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.content-page p,
+.content-page li{
+  font-size: 1.05rem;
+}
+
+.content-page ul{
+  padding-left: 22px;
+}
+
+.article-intro{
+  font-size: 1.08rem;
+  color: #444;
+}
+
+.info-box{
+  background: #f5f7fb;
+  border-left: 4px solid #1f4f8f;
+  padding: 18px;
+  margin: 28px 0;
+  border-radius: 6px;
+}
+
+.cta-box{
+  background: #f8fafc;
+  border: 1px solid #d9e2ec;
+  padding: 22px;
+  margin-top: 36px;
+  border-radius: 8px;
+}
+
+.cta-buttons{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn{
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary{
+  background: #1f4f8f;
+  color: #fff;
+}
+
+.btn-secondary{
+  background: #eef2f7;
+  color: #1f4f8f;
+}
 
 .section {
   padding: 70px 0;
