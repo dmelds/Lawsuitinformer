@@ -428,5 +428,9 @@ margin-top:40px;
 .learn-more a:hover{
   text-decoration:underline;
 }
+    .inline-links a {
+  color: #8ad4ff;
+  text-decoration: underline;
+}
 
 }
