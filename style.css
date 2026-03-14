@@ -11,8 +11,8 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: #4da3ff;
+  text-decoration: underline;
 }
 
 .container {
