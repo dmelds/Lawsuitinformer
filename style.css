@@ -205,6 +205,10 @@ nav a:hover {
 .single-center {
   grid-template-columns: minmax(240px, 420px);
 }
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
 
 .card {
   display: block;
