@@ -428,9 +428,10 @@ margin-top:40px;
 .learn-more a:hover{
   text-decoration:underline;
 }
-a {
+main a {
   color: #4da3ff;
   text-decoration: underline;
+}
 }
     
 }
