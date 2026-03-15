@@ -532,3 +532,11 @@ footer {
 *::after {
   box-sizing: border-box;
 }
+  img,
+iframe,
+video,
+.card,
+.cta,
+.container {
+  max-width: 100%;
+}
