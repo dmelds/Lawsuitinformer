@@ -326,27 +326,27 @@ footer {
 
 /* NETWORK */
 
+/* Lawsuit Network Footer */
+
 .lawsuit-network {
   text-align: center;
   padding: 30px 20px;
   margin-top: 60px;
   border-top: 1px solid #1f2937;
-  font-family: Arial, sans-serif;
 }
 
 .network-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .network-main a {
   color: #9ca3af;
   text-decoration: none;
   font-size: 14px;
-  line-height: 1.5;
 }
 
 .network-main a:hover {
@@ -355,8 +355,6 @@ footer {
 
 .divider {
   color: #4b5563;
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 .network-sub {
@@ -364,24 +362,4 @@ footer {
   margin-top: 6px;
   color: #6b7280;
   letter-spacing: 1px;
-}
-
-@media (max-width: 480px) {
-  .network-main {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .divider {
-    display: none;
-  }
-
-  .network-main a {
-    font-size: 13px;
-  }
-
-  .network-sub {
-    font-size: 10px;
-    margin-top: 8px;
-  }
 }
