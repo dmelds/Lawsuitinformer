@@ -446,7 +446,8 @@ footer {
     gap: 40px;
   }
   .lawsuit-network {
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   text-align: center;
   padding: 35px 20px;
   margin-top: 60px;
