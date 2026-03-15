@@ -25,16 +25,20 @@
   --sans: 'DM Sans', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #0A1628 !important; }
 
 body {
-  background: var(--navy);
-  color: var(--white);
+  background: #0A1628 !important;
+  color: #F7F4EF !important;
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
 }
+
+/* Reset any inherited/global styles that could bleed in */
+body a { text-decoration: none; }
+body img { max-width: 100%; }
 
 /* ── ALERT BAR ── */
 .alert-bar {
@@ -251,7 +255,7 @@ nav {
 }
 
 /* ── SECTION COMMON ── */
-section { padding: 80px 40px; }
+section { padding: 80px 40px; background: unset; }
 .section-label {
   font-size: 11px;
   font-weight: 600;
@@ -560,17 +564,17 @@ section { padding: 80px 40px; }
 }
 .email-form input {
   flex: 1;
-  background: var(--white-ghost);
-  border: 1px solid rgba(247,244,239,0.2);
+  background: #122040;
+  border: 1px solid rgba(247,244,239,0.3);
   border-radius: 4px;
   padding: 13px 18px;
-  color: var(--white);
+  color: #F7F4EF;
   font-size: 14px;
   font-family: var(--sans);
   outline: none;
   transition: border-color 0.2s;
 }
-.email-form input::placeholder { color: rgba(247,244,239,0.35); }
+.email-form input::placeholder { color: rgba(247,244,239,0.45); }
 .email-form input:focus { border-color: var(--amber); }
 .email-form button {
   background: var(--amber);
@@ -699,8 +703,9 @@ footer {
 </head>
 <body>
 
-  <!-- Alert Bar -->
+  <!-- Page Wrapper -->
 
+  <div id="li-page" style="background:#0A1628;color:#F7F4EF;min-height:100vh;font-family:'DM Sans',sans-serif;">
   <div class="alert-bar">
     🔴 Active litigation: PFAS water contamination, Roundup cancer, baby food heavy metals.
     <a href="/browse-lawsuits">See all active cases →</a>
@@ -976,7 +981,7 @@ footer {
           <li><a href="https://lawsuits.center">Lawsuits.center</a></li>
           <li><a href="https://meldofskylaw.com">Free Case Review</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="mailto:David@lawsuitinformer.com">Contact</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#f4b095829d90b498958387819d809d9a929b86999186da979b99">Contact</a></li>
           <li><a href="/privacy-policy">Privacy Policy</a></li>
         </ul>
       </div>
@@ -1015,10 +1020,10 @@ footer {
       const r = results[type];
       document.getElementById('result-title').textContent = r.title;
       document.getElementById('result-text').textContent = r.text;
-      const resultEl = document.getElementById('checker-result');
-      resultEl.classList.add('show');
+      document.getElementById('checker-result').classList.add('show');
     }
   </script>
 
+  </div><!-- /li-page -->
 </body>
 </html>
