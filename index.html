@@ -1,427 +1,1024 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lawsuit Informer</title>
-  <meta name="description" content="Lawsuit Informer provides legal guides, lawsuit education, and information about how lawsuits work.">
-  <link rel="stylesheet" href="style.css">
-  <script async data-id="101502685" src="//static.getclicky.com/js"></script>
+  <title>Lawsuit Informer — Know Your Rights. Understand Your Risks.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --navy: #0A1628;
+  --navy-mid: #122040;
+  --navy-light: #1E3260;
+  --amber: #E8A020;
+  --amber-light: #F5C155;
+  --white: #F7F4EF;
+  --white-dim: rgba(247,244,239,0.65);
+  --white-ghost: rgba(247,244,239,0.12);
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── ALERT BAR ── */
+.alert-bar {
+  background: var(--amber);
+  color: var(--navy);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-family: var(--sans);
+}
+.alert-bar a {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,22,40,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--white-ghost);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--amber); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--white-dim);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--amber);
+  color: var(--navy) !important;
+  padding: 9px 20px;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--amber-light) !important; color: var(--navy) !important; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 40px 60px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,160,32,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(30,50,96,0.6) 0%, transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, #0D1F3C 100%);
+  z-index: 0;
+}
+
+/* Grid lines texture */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247,244,239,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,244,239,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.1s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--amber);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5.5vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--white-dim);
+  max-width: 560px;
+  margin-bottom: 52px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.35s forwards;
+}
+
+/* 3-path entry tiles */
+.hero-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 780px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.path-tile {
+  background: var(--white-ghost);
+  border: 1px solid rgba(247,244,239,0.14);
+  border-radius: 8px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: var(--white);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+}
+.path-tile:hover {
+  background: rgba(232,160,32,0.12);
+  border-color: rgba(232,160,32,0.4);
+  transform: translateY(-3px);
+}
+
+.path-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(232,160,32,0.15);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.path-label {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.path-desc {
+  font-size: 13px;
+  color: var(--white-dim);
+  line-height: 1.5;
+}
+
+.path-arrow {
+  margin-top: auto;
+  color: var(--amber);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 80px 40px; }
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--amber);
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+}
+.section-sub {
+  color: var(--white-dim);
+  font-size: 16px;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ── ACTIVE LAWSUITS ── */
+.lawsuits-section {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--white-ghost);
+  border-bottom: 1px solid var(--white-ghost);
+}
+
+.lawsuits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.lawsuit-card {
+  background: var(--navy);
+  border: 1px solid var(--white-ghost);
+  border-radius: 8px;
+  padding: 28px;
+  text-decoration: none;
+  color: var(--white);
+  display: block;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.lawsuit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--amber);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.lawsuit-card:hover {
+  border-color: rgba(232,160,32,0.35);
+  transform: translateY(-2px);
+}
+.lawsuit-card:hover::before { opacity: 1; }
+
+.card-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: rgba(232,160,32,0.12);
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.card-desc {
+  font-size: 13.5px;
+  color: var(--white-dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.card-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── SYMPTOM CHECKER PROMO ── */
+.checker-section {
+  background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%);
+  border-top: 1px solid var(--white-ghost);
+  border-bottom: 1px solid var(--white-ghost);
+}
+.checker-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+}
+.checker-visual {
+  background: var(--navy);
+  border: 1px solid var(--white-ghost);
+  border-radius: 12px;
+  padding: 32px;
+  font-size: 14px;
+}
+.checker-q {
+  font-family: var(--serif);
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.checker-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checker-opt {
+  background: var(--white-ghost);
+  border: 1px solid rgba(247,244,239,0.12);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--white-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checker-opt:hover, .checker-opt.active {
+  border-color: var(--amber);
+  color: var(--white);
+  background: rgba(232,160,32,0.1);
+}
+.checker-result {
+  margin-top: 20px;
+  background: rgba(232,160,32,0.12);
+  border: 1px solid rgba(232,160,32,0.3);
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 13.5px;
+  color: var(--white);
+  display: none;
+}
+.checker-result.show { display: block; }
+.checker-result strong { color: var(--amber); display: block; margin-bottom: 6px; font-size: 14px; }
+
+/* ── LEGAL GUIDES ── */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.guide-card {
+  background: var(--white-ghost);
+  border: 1px solid var(--white-ghost);
+  border-radius: 8px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--white);
+  transition: background 0.2s, border-color 0.2s;
+}
+.guide-card:hover {
+  background: rgba(232,160,32,0.08);
+  border-color: rgba(232,160,32,0.25);
+}
+.guide-num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(232,160,32,0.25);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.guide-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.guide-desc {
+  font-size: 13px;
+  color: var(--white-dim);
+  line-height: 1.5;
+}
+
+/* ── ILLNESSES ── */
+.illnesses-section {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--white-ghost);
+}
+.illness-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.illness-item {
+  border: 1px solid var(--white-ghost);
+  border-radius: 6px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+.illness-item:hover {
+  border-color: rgba(232,160,32,0.3);
+  background: var(--white-ghost);
+}
+.illness-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--amber);
+  padding: 60px 40px;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 42px);
+  color: var(--navy);
+  margin-bottom: 16px;
+  letter-spacing: -0.025em;
+}
+.cta-band p {
+  color: rgba(10,22,40,0.7);
+  font-size: 17px;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+.cta-btn:hover { background: var(--navy-light); }
+.cta-note {
+  display: block;
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(10,22,40,0.55);
+}
+
+/* ── EMAIL CAPTURE ── */
+.email-section { padding: 64px 40px; }
+.email-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-inner h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+.email-inner p {
+  color: var(--white-dim);
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+.email-form {
+  display: flex;
+  gap: 10px;
+}
+.email-form input {
+  flex: 1;
+  background: var(--white-ghost);
+  border: 1px solid rgba(247,244,239,0.2);
+  border-radius: 4px;
+  padding: 13px 18px;
+  color: var(--white);
+  font-size: 14px;
+  font-family: var(--sans);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-form input::placeholder { color: rgba(247,244,239,0.35); }
+.email-form input:focus { border-color: var(--amber); }
+.email-form button {
+  background: var(--amber);
+  color: var(--navy);
+  border: none;
+  padding: 13px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.email-form button:hover { background: var(--amber-light); }
+.email-fine {
+  font-size: 11px;
+  color: rgba(247,244,239,0.3);
+  margin-top: 12px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #060E1A;
+  border-top: 1px solid var(--white-ghost);
+  padding: 60px 40px 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.footer-brand-name span { color: var(--amber); }
+.footer-desc {
+  font-size: 13px;
+  color: var(--white-dim);
+  line-height: 1.7;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--white-ghost);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-dim);
+  font-size: 13px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer-social a:hover { border-color: var(--amber); color: var(--amber); }
+.footer-col h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  color: rgba(247,244,239,0.5);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid var(--white-ghost);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.footer-disclaimer {
+  font-size: 11.5px;
+  color: rgba(247,244,239,0.3);
+  line-height: 1.7;
+  max-width: 640px;
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(247,244,239,0.25);
+  white-space: nowrap;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 20px 48px; }
+  .hero-paths { grid-template-columns: 1fr; }
+  section { padding: 56px 20px; }
+  .checker-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; }
+  .email-form { flex-direction: column; }
+  .cta-band { padding: 48px 20px; }
+}
+```
+
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <a href="index.html">Lawsuit Informer</a>
-      </div>
 
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="#guides">Guides</a>
-        <a href="#mistakes">Mistakes</a>
-        <a href="illnesses-linked-to-lawsuits.html">Exposure</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="https://lawsuit.center">Directory</a>
-      </nav>
+  <!-- Alert Bar -->
+
+  <div class="alert-bar">
+    🔴 Active litigation: PFAS water contamination, Roundup cancer, baby food heavy metals.
+    <a href="/browse-lawsuits">See all active cases →</a>
+  </div>
+
+  <!-- Nav -->
+
+  <nav>
+    <a href="/" class="nav-logo">Lawsuit<span>Informer</span></a>
+    <ul class="nav-links">
+      <li><a href="/symptoms-linked-to-lawsuits">Was I Harmed?</a></li>
+      <li><a href="/browse-lawsuits">Active Lawsuits</a></li>
+      <li><a href="/legal-guides.html">How It Works</a></li>
+      <li><a href="https://lawsuits.center">Lawsuit Directory</a></li>
+      <li><a href="https://meldofskylaw.com" class="nav-cta">Free Case Review →</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Know Your Rights</div>
+      <h1>Something may have<br><em>harmed you.</em><br>Here's what to know.</h1>
+      <p class="hero-sub">
+        Lawsuit Informer explains the chemicals, products, and environmental hazards
+        behind major lawsuits — so you can understand your situation and your options.
+      </p>
+      <div class="hero-paths">
+        <a href="/illnesses-linked-to-lawsuits" class="path-tile">
+          <div class="path-icon">☣️</div>
+          <div class="path-label">I was exposed to a chemical or toxin</div>
+          <div class="path-desc">PFAS, pesticides, industrial chemicals, contaminated water</div>
+          <div class="path-arrow">→</div>
+        </a>
+        <a href="/browse-lawsuits" class="path-tile">
+          <div class="path-icon">⚠️</div>
+          <div class="path-label">A product may have harmed me</div>
+          <div class="path-desc">Medications, baby food, personal care, consumer goods</div>
+          <div class="path-arrow">→</div>
+        </a>
+        <a href="/how-lawsuits-work" class="path-tile">
+          <div class="path-icon">⚖️</div>
+          <div class="path-label">I want to understand how lawsuits work</div>
+          <div class="path-desc">Mass torts, class actions, timelines, what to expect</div>
+          <div class="path-arrow">→</div>
+        </a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Understanding Lawsuits, Product Injuries, and Legal Rights</h1>
-        <p>
-          Lawsuit Informer helps people understand how lawsuits work, product risks, and common legal topics so they can better research potential claims and legal options.
+  <!-- Active Lawsuits -->
+
+  <section class="lawsuits-section">
+    <div class="section-label">Active Litigation</div>
+    <h2 class="section-title">Major lawsuits happening now</h2>
+    <p class="section-sub">Cases involving chemical exposure, dangerous products, and environmental contamination that affect thousands of people.</p>
+
+```
+<div class="lawsuits-grid">
+  <a href="/pfas-water-contamination-lawsuits" class="lawsuit-card">
+    <span class="card-tag">Environmental</span>
+    <div class="card-title">PFAS Water Contamination</div>
+    <p class="card-desc">Lawsuits alleging "forever chemicals" in drinking water are linked to cancer, thyroid disease, and immune disorders.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+  <a href="/roundup-cancer-lawsuits" class="lawsuit-card">
+    <span class="card-tag">Pesticide</span>
+    <div class="card-title">Roundup / Glyphosate Cancer</div>
+    <p class="card-desc">Claims that Bayer's herbicide glyphosate may be linked to non-Hodgkin's lymphoma and other cancers.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+  <a href="/paraquat-parkinsons-lawsuits" class="lawsuit-card">
+    <span class="card-tag">Pesticide</span>
+    <div class="card-title">Paraquat & Parkinson's Disease</div>
+    <p class="card-desc">Litigation alleging that exposure to the herbicide paraquat may increase the risk of developing Parkinson's disease.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+  <a href="/hair-relaxer-cancer-lawsuits.html" class="lawsuit-card">
+    <span class="card-tag">Personal Care</span>
+    <div class="card-title">Hair Relaxer Cancer Lawsuits</div>
+    <p class="card-desc">Research has examined links between chemical hair relaxer use and increased cancer risk, including uterine cancer.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+  <a href="/heavy-metals-baby-food-lawsuit" class="lawsuit-card">
+    <span class="card-tag">Consumer Products</span>
+    <div class="card-title">Heavy Metals in Baby Food</div>
+    <p class="card-desc">Claims that certain baby food brands may contain harmful levels of lead, arsenic, cadmium, or mercury.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+  <a href="/talcum-powder-ovarian-cancer-lawsuit" class="lawsuit-card">
+    <span class="card-tag">Personal Care</span>
+    <div class="card-title">Talcum Powder & Ovarian Cancer</div>
+    <p class="card-desc">Ongoing litigation examines whether long-term talcum powder use is linked to ovarian cancer risk.</p>
+    <span class="card-link">Read more →</span>
+  </a>
+</div>
+```
+
+  </section>
+
+  <!-- Symptom Checker Promo -->
+
+  <section class="checker-section">
+    <div class="checker-inner">
+      <div>
+        <div class="section-label">Quick Tool</div>
+        <h2 class="section-title">Could you have a claim?</h2>
+        <p class="section-sub">
+          Answer a few simple questions to see which active lawsuits may be relevant to your situation — and what to do next.
         </p>
-
-        <div class="hero-buttons">
-          <a class="btn" href="#guides">Explore Legal Guides</a>
-          <a class="btn btn-secondary" href="https://lawsuits.center">Browse Lawsuit Directory</a>
+        <a href="https://meldofskylaw.com" class="cta-btn" style="background:var(--amber);color:var(--navy);display:inline-block;padding:14px 28px;border-radius:4px;font-weight:600;font-size:15px;text-decoration:none;">
+          Get a Free Case Review →
+        </a>
+        <span style="display:block;margin-top:12px;font-size:12px;color:var(--white-dim);">No obligation. Speak with an attorney.</span>
+      </div>
+      <div class="checker-visual">
+        <div class="checker-q">What type of exposure concerns you?</div>
+        <div class="checker-options">
+          <div class="checker-opt" onclick="showResult(this, 'chemical')">
+            ☣️ &nbsp;Chemical or environmental exposure
+            <span>→</span>
+          </div>
+          <div class="checker-opt" onclick="showResult(this, 'product')">
+            📦 &nbsp;A consumer product or medication
+            <span>→</span>
+          </div>
+          <div class="checker-opt" onclick="showResult(this, 'water')">
+            💧 &nbsp;Contaminated water or soil
+            <span>→</span>
+          </div>
+          <div class="checker-opt" onclick="showResult(this, 'food')">
+            🍼 &nbsp;Food product (including baby food)
+            <span>→</span>
+          </div>
+        </div>
+        <div class="checker-result" id="checker-result">
+          <strong id="result-title"></strong>
+          <span id="result-text"></span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <h2>Explore Lawsuit Informer</h2>
+  <!-- Legal Guides -->
 
-        <p>
-          Lawsuit Informer provides educational information about lawsuits related to
-          chemical exposure, environmental contamination, defective products, and
-          consumer health risks. Explore the site through the sections below.
-        </p>
+  <section>
+    <div class="section-label">Understand the Process</div>
+    <h2 class="section-title">Legal guides for non-lawyers</h2>
+    <p class="section-sub">Plain-English explanations of how lawsuits work, written for people who've never dealt with a legal claim before.</p>
+    <div class="guides-grid">
+      <a href="/how-lawsuits-work" class="guide-card">
+        <div class="guide-num">01</div>
+        <div class="guide-title">How Lawsuits Work</div>
+        <p class="guide-desc">The basic steps from filing a claim to resolution — demystified.</p>
+      </a>
+      <a href="/mass-torts" class="guide-card">
+        <div class="guide-num">02</div>
+        <div class="guide-title">Mass Tort Lawsuits</div>
+        <p class="guide-desc">How thousands of individual claims involving the same harm are coordinated.</p>
+      </a>
+      <a href="/class-action" class="guide-card">
+        <div class="guide-num">03</div>
+        <div class="guide-title">Class Action Lawsuits</div>
+        <p class="guide-desc">When a group of people sue together — and when that matters.</p>
+      </a>
+      <a href="/how-long-do-lawsuits-take" class="guide-card">
+        <div class="guide-num">04</div>
+        <div class="guide-title">How Long Lawsuits Take</div>
+        <p class="guide-desc">Why some cases resolve in months while others take years.</p>
+      </a>
+      <a href="/mistakes" class="guide-card">
+        <div class="guide-num">05</div>
+        <div class="guide-title">Mistakes That Can Hurt Your Case</div>
+        <p class="guide-desc">Common errors people make early on, and how to avoid them.</p>
+      </a>
+      <a href="/chemical-exposure-symptoms" class="guide-card">
+        <div class="guide-num">06</div>
+        <div class="guide-title">Chemical Exposure Symptoms</div>
+        <p class="guide-desc">Warning signs that exposure may have affected your health.</p>
+      </a>
+    </div>
+  </section>
 
-        <ul class="lawsuit-list">
-          <li><a href="browse-lawsuits.html">Browse Lawsuit Topics</a></li>
-          <li><a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a></li>
-          <li><a href="symptoms-linked-to-lawsuits.html">Symptoms Linked to Lawsuits</a></li>
-          <li><a href="illnesses-linked-to-lawsuits.html">Illnesses Linked to Lawsuits</a></li>
-          <li><a href="legal-guides.html">Legal Guides</a></li>
-        </ul>
+  <!-- Illnesses Section -->
 
-        <h2>Popular Legal Topics</h2>
+  <section class="illnesses-section">
+    <div class="section-label">Health Conditions</div>
+    <h2 class="section-title">Illnesses linked to lawsuits</h2>
+    <p class="section-sub">Some conditions have been linked to chemical exposure, contaminated environments, or dangerous products. Explore what the research and litigation says.</p>
+    <div class="illness-categories">
+      <a href="/kidney-cancer-lawsuits" class="illness-item"><span class="illness-dot"></span>Kidney Cancer</a>
+      <a href="/hair-relaxer-cancer-lawsuits.html" class="illness-item"><span class="illness-dot"></span>Uterine Cancer</a>
+      <a href="/roundup-cancer-lawsuits" class="illness-item"><span class="illness-dot"></span>Non-Hodgkin's Lymphoma</a>
+      <a href="/talcum-powder-ovarian-cancer-lawsuit" class="illness-item"><span class="illness-dot"></span>Ovarian Cancer</a>
+      <a href="/paraquat-parkinsons-lawsuits" class="illness-item"><span class="illness-dot"></span>Parkinson's Disease</a>
+      <a href="/illnesses-linked-to-lawsuits" class="illness-item"><span class="illness-dot"></span>Thyroid Disease</a>
+      <a href="/chemical-exposure-symptoms" class="illness-item"><span class="illness-dot"></span>Neurological Damage</a>
+      <a href="/pfas-water-contamination-lawsuits" class="illness-item"><span class="illness-dot"></span>Immune Disorders</a>
+    </div>
+    <div style="margin-top: 32px;">
+      <a href="/illnesses-linked-to-lawsuits" style="color:var(--amber);font-size:14px;font-weight:600;text-decoration:none;">
+        View all illnesses linked to toxic exposure →
+      </a>
+    </div>
+  </section>
 
-        <p class="section-intro">
-          Explore common legal topics people research when learning about lawsuits and legal claims.
-        </p>
+  <!-- CTA Band -->
 
-        <div class="grid">
-          <a class="card" href="how-lawsuits-work.html">
-            <h3>How Lawsuits Work</h3>
-            <p>Learn the basic steps of how legal claims and lawsuits typically begin.</p>
-          </a>
+  <div class="cta-band">
+    <h2>Think you may have a case?</h2>
+    <p>Speak with an attorney to find out if your situation qualifies for a legal claim. It's free, and there's no obligation.</p>
+    <a href="https://meldofskylaw.com" class="cta-btn">Get a Free Case Review</a>
+    <span class="cta-note">No cost. No commitment. Confidential.</span>
+  </div>
 
-          <a class="card" href="how-long-do-lawsuits-take.html">
-            <h3>How Long Lawsuits Take</h3>
-            <p>Understand why some cases resolve quickly while others take years.</p>
-          </a>
+  <!-- Email Capture -->
 
-          <a class="card" href="mass-torts.html">
-            <h3>Mass Tort Lawsuits</h3>
-            <p>See how large groups of people can pursue claims involving similar harm.</p>
-          </a>
-
-          <a class="card" href="current-mass-tort-cases.html">
-            <h3>Current Mass Tort Cases</h3>
-            <p>
-              Explore major mass tort lawsuits involving toxic exposure, defective products, and environmental contamination.
-            </p>
-          </a>
-
-          <a class="card" href="class-action.html">
-            <h3>Class Action Lawsuits</h3>
-            <p>Learn how class action lawsuits differ from individual legal claims.</p>
-          </a>
-
-          <a class="card" href="chemical-exposure-symptoms.html">
-            <h3>Chemical Exposure Symptoms</h3>
-            <p>Learn about the warning signs of toxic chemical exposure and related health risks.</p>
-          </a>
-
-          <a class="card" href="chemical-exposure-lawsuits.html">
-            <h3>Chemical Exposure Lawsuits</h3>
-            <p>Explore cases involving toxic exposure and environmental contamination.</p>
-          </a>
-
-          <a class="card" href="chemical-exposure-kidney-cancer.html">
-            <h3>Kidney Cancer and Chemical Exposure</h3>
-            <p>Learn how toxic exposure and environmental contamination may be investigated in connection with kidney cancer.</p>
-          </a>
-
-          <a class="card" href="pfas-water-contamination-lawsuits.html">
-            <h3>PFAS Water Contamination Lawsuits</h3>
-            <p>Learn about PFAS contamination claims and the health risks linked to these chemicals.</p>
-          </a>
-
-          <a class="card" href="product-liability-lawsuits.html">
-            <h3>Product Liability</h3>
-            <p>Understand legal claims involving defective or dangerous products.</p>
-          </a>
-        </div>
+  <section class="email-section">
+    <div class="email-inner">
+      <h3>Stay informed on new lawsuits</h3>
+      <p>Get notified when new litigation is filed involving products, chemicals, or exposures that could affect you.</p>
+      <div class="email-form">
+        <input type="email" placeholder="Enter your email address">
+        <button type="button">Get Alerts</button>
       </div>
-    </section>
+      <p class="email-fine">No spam. Unsubscribe any time. Educational updates only.</p>
+    </div>
+  </section>
 
-    <section class="section alt">
-      <div class="container">
-        <h2>Illnesses and Injuries Linked to Lawsuits</h2>
-
-        <p class="section-intro">
-          Some lawsuits involve claims that chemical exposure, dangerous products,
-          or environmental contamination may contribute to certain illnesses.
-          Explore common conditions discussed in these cases.
-        </p>
-
-        <h3>Cancer</h3>
-
-        <div class="grid">
-          <a class="card" href="kidney-cancer-lawsuits.html">
-            <h3>Kidney Cancer</h3>
-            <p>Some PFAS contamination lawsuits discuss potential links between exposure and kidney cancer.</p>
-          </a>
-
-          <a class="card" href="hair-relaxer-cancer-lawsuits.html">
-            <h3>Hair Relaxer Cancer</h3>
-            <p>Research has examined links between chemical hair relaxer products and cancer risk.</p>
-          </a>
-
-          <a class="card" href="roundup-cancer-lawsuits.html">
-            <h3>Roundup Cancer</h3>
-            <p>Some lawsuits examine whether glyphosate exposure may increase the risk of non-Hodgkin's lymphoma.</p>
-          </a>
-
-          <a class="card" href="talcum-powder-ovarian-cancer-lawsuit.html">
-            <h3>Ovarian Cancer</h3>
-            <p>Some consumer product lawsuits examine potential links between talcum powder use and ovarian cancer risk.</p>
-          </a>
-        </div>
-
-        <h3>Neurological Conditions</h3>
-
-        <div class="grid">
-          <a class="card" href="paraquat-parkinsons-lawsuits.html">
-            <h3>Parkinson's Disease</h3>
-            <p>Some pesticide lawsuits involve allegations that herbicide exposure may increase the risk of Parkinson's disease.</p>
-          </a>
-        </div>
-
-        <h3>Hormone / Endocrine Conditions</h3>
-
-        <div class="grid">
-          <a class="card" href="#">
-            <h3>Thyroid Disease</h3>
-            <p>Environmental exposure lawsuits sometimes involve allegations related to thyroid disorders.</p>
-          </a>
-        </div>
-
-        <h3>Environmental Exposure</h3>
-
-        <div class="grid">
-          <a class="card" href="pfas-water-contamination-lawsuits.html">
-            <h3>PFAS Exposure</h3>
-            <p>PFAS contamination lawsuits involve claims that “forever chemicals” in drinking water may increase risk of cancer and other health problems.</p>
-          </a>
-
-          <a class="card" href="afff-firefighting-foam-lawsuits.html">
-            <h3>AFFF Firefighting Foam</h3>
-            <p>Some lawsuits claim PFAS chemicals in firefighting foam contaminated groundwater near military bases and airports.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="guides" class="section">
-      <div class="container">
-        <h2>Legal Guides</h2>
-        <p class="section-intro">
-          Start here if you want to understand the legal process and the basics of lawsuits.
-        </p>
-
-        <div class="grid">
-          <a class="card" href="how-lawsuits-work.html">
-            <h3>How Lawsuits Work</h3>
-            <p>Learn the basic process of how a lawsuit typically begins and moves forward.</p>
-          </a>
-
-          <a class="card" href="how-long-do-lawsuits-take.html">
-            <h3>How Long Lawsuits Take</h3>
-            <p>Understand why some cases move quickly while others take much longer.</p>
-          </a>
-
-          <a class="card" href="mass-torts.html">
-            <h3>Mass Torts</h3>
-            <p>See how mass tort cases differ from other types of legal claims.</p>
-          </a>
-
-          <a class="card" href="class-action.html">
-            <h3>Class Actions</h3>
-            <p>Learn what class action lawsuits are and how they compare to other case types.</p>
-          </a>
-
-          <a class="card" href="illnesses-linked-to-lawsuits.html">
-            <h3>Illnesses Linked to Lawsuits</h3>
-            <p>
-              Explore illnesses connected to chemical exposure,
-              environmental contamination, and related lawsuits.
-            </p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container">
-        <h2>Featured Lawsuits</h2>
-
-        <p class="section-intro">
-          Explore major lawsuits involving chemical exposure, dangerous products,
-          and environmental contamination.
-        </p>
-
-        <div class="grid">
-          <a class="card" href="https://lawsuits.center/pfas-water-contamination.html">
-            <h3>PFAS Water Contamination</h3>
-            <p>
-              Lawsuits involving contamination of drinking water by PFAS chemicals,
-              sometimes called “forever chemicals.”
-            </p>
-          </a>
-
-          <a class="card" href="https://lawsuits.center/roundup-cancer-lawsuit.html">
-            <h3>Roundup Cancer Lawsuits</h3>
-            <p>
-              Litigation involving allegations that glyphosate-based herbicides may
-              be linked to certain cancers.
-            </p>
-          </a>
-
-          <a class="card" href="https://lawsuits.center/paraquat-parkinsons-lawsuit.html">
-            <h3>Paraquat Parkinson's Lawsuits</h3>
-            <p>
-              Cases involving allegations that exposure to the herbicide paraquat
-              may contribute to Parkinson's disease.
-            </p>
-          </a>
-
-          <a class="card" href="talcum-powder-ovarian-cancer-lawsuit.html">
-            <h3>Talcum Powder Ovarian Cancer Lawsuits</h3>
-            <p>
-              Claims involving allegations that long-term talcum powder use may be linked to ovarian cancer.
-            </p>
-          </a>
-
-          <a class="card" href="heavy-metals-baby-food-lawsuit.html">
-            <h3>Heavy Metals in Baby Food Lawsuits</h3>
-            <p>
-              Claims involving allegations that certain baby food products may contain harmful levels of lead, arsenic, cadmium, or mercury.
-            </p>
-          </a>
-
-          <a class="card" href="processed-food-addiction-lawsuit.html">
-            <h3>Processed Food Addiction Lawsuits</h3>
-            <p>
-              Claims involving allegations that certain ultra-processed foods may contribute to addictive consumption patterns and related health risks.
-            </p>
-          </a>
-
-          <a class="card" href="video-game-addiction-lawsuit.html">
-            <h3>Video Game Addiction Lawsuits</h3>
-            <p>
-              Claims involving allegations that certain games may use design features that encourage compulsive play and related harm.
-            </p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="mistakes" class="section alt">
-      <div class="container">
-        <h2>Common Mistakes</h2>
-        <p class="section-intro">
-          These guides cover mistakes that can create problems when someone is dealing with a possible legal claim.
-        </p>
-
-        <div class="grid single-center">
-          <a class="card" href="mistakes.html">
-            <h3>Mistakes That Can Ruin a Lawsuit</h3>
-            <p>Read about common errors people make and why they can matter.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container">
-        <h2>Related Legal Topics</h2>
-
-        <div class="grid">
-          <a class="card" href="can-i-sue-for-chemical-exposure.html">
-            <h3>Can You Sue for Chemical Exposure?</h3>
-            <p>Learn when lawsuits may arise from toxic exposure.</p>
-          </a>
-
-          <a class="card" href="what-illnesses-are-linked-to-chemical-exposure.html">
-            <h3>Illnesses Linked to Chemical Exposure</h3>
-            <p>Explore conditions discussed in environmental exposure cases.</p>
-          </a>
-
-          <a class="card" href="https://lawsuits.center/pfas-water-contamination.html">
-            <h3>PFAS Water Contamination Lawsuits</h3>
-            <p>Cases involving alleged contamination of drinking water.</p>
-          </a>
-        </div>
-
-        <h2>Key Legal and Exposure Topics</h2>
-
-        <ul class="simple-links">
-          <li><a href="diseases-linked-to-chemical-exposure.html">Diseases Linked to Chemical Exposure</a></li>
-          <li><a href="kidney-cancer-chemical-exposure.html">Kidney Cancer and Chemical Exposure</a></li>
-          <li><a href="chemical-exposure-symptoms.html">Chemical Exposure Symptoms</a></li>
-          <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
-          <li><a href="https://lawsuits.center/pfas-water-contamination-lawsuits">PFAS Water Contamination Lawsuits</a></li>
-          <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-          <li><a href="how-long-do-lawsuits-take.html">How Long Lawsuits Take</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <h2>Illnesses Linked to Toxic Exposure</h2>
-
-        <p>
-          Certain cancers and diseases have been linked to environmental contamination,
-          industrial chemicals, pesticides, and defective products.
-          Learn which illnesses may be connected to toxic exposure and related lawsuits.
-        </p>
-
-        <p>
-          <a href="toxic-exposure-illnesses-lawsuits.html">
-            Explore illnesses linked to toxic exposure →
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section class="section cta">
-      <div class="container">
-        <h2>Explore the Lawsuit Directory</h2>
-        <p>
-          Looking for major lawsuits involving toxic exposure, dangerous products,
-          or environmental contamination?
-        </p>
-        <a class="btn" href="https://lawsuit.center">Visit Lawsuits.center</a>
-      </div>
-    </section>
-  </main>
+  <!-- Footer -->
 
   <footer>
-    <div class="container footer-content">
+    <div class="footer-grid">
       <div>
-        <h3>Lawsuit Informer</h3>
-        <p>Information about product risks, injuries, and developing lawsuits.</p>
-      </div>
-
-      <div>
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-          <li><a href="mass-torts.html">Mass Torts</a></li>
-          <li><a href="class-action.html">Class Actions</a></li>
-          <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:David@lawsuitinformer.com">David@lawsuitinformer.com</a></p>
-      </div>
-
-      <div>
-        <h3>Network</h3>
-        <ul>
-          <li><a href="https://lawsuit.center">Lawsuits.center</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <div class="footer-social">
-        <h3>Follow Lawsuit Informer</h3>
-        <div class="social-links">
-          <a href="https://instagram.com/lawsuitinformer" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://x.com/lawsuitinformer" target="_blank" rel="noopener">X</a>
-          <a href="https://facebook.com/lawsuitinformer" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://threads.net/@lawsuitinformer" target="_blank" rel="noopener">Threads</a>
-          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="footer-brand-name">Lawsuit<span>Informer</span></div>
+        <p class="footer-desc">
+          Educational information about product risks, chemical exposure, and developing lawsuits.
+          Not a law firm. Not legal advice.
+        </p>
+        <div class="footer-social">
+          <a href="https://instagram.com/lawsuitinformer" title="Instagram">ig</a>
+          <a href="https://x.com/lawsuitinformer" title="X / Twitter">𝕏</a>
+          <a href="https://facebook.com/lawsuitinformer" title="Facebook">fb</a>
+          <a href="https://threads.net/@lawsuitinformer" title="Threads">th</a>
+          <a href="https://linkedin.com/company/lawsuitinformer" title="LinkedIn">in</a>
         </div>
       </div>
-
-      <p>&copy; 2026 Lawsuit Informer. Information provided for educational purposes only and not legal advice.</p>
+      <div class="footer-col">
+        <h4>Lawsuits</h4>
+        <ul>
+          <li><a href="/pfas-water-contamination-lawsuits">PFAS / Water Contamination</a></li>
+          <li><a href="/roundup-cancer-lawsuits">Roundup Cancer</a></li>
+          <li><a href="/paraquat-parkinsons-lawsuits">Paraquat / Parkinson's</a></li>
+          <li><a href="/heavy-metals-baby-food-lawsuit">Baby Food Heavy Metals</a></li>
+          <li><a href="/browse-lawsuits">Browse All</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="/mass-torts">Mass Torts</a></li>
+          <li><a href="/class-action">Class Actions</a></li>
+          <li><a href="/mistakes">Common Mistakes</a></li>
+          <li><a href="/legal-guides.html">All Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="https://lawsuits.center">Lawsuits.center</a></li>
+          <li><a href="https://meldofskylaw.com">Free Case Review</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="mailto:David@lawsuitinformer.com">Contact</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        Lawsuit Informer provides educational information only and is not a law firm. Nothing on this site constitutes legal advice or creates an attorney-client relationship. If you believe you have a legal claim, consult a licensed attorney in your jurisdiction.
+      </p>
+      <span class="footer-copy">© 2026 Lawsuit Informer</span>
     </div>
   </footer>
-  </div>
+
+  <script>
+    const results = {
+      chemical: {
+        title: "Chemical & Environmental Exposure",
+        text: "You may want to explore PFAS contamination, pesticide exposure (Roundup, Paraquat), or industrial chemical lawsuits. Several active cases involve exactly these claims."
+      },
+      product: {
+        title: "Consumer Product Claims",
+        text: "Hair relaxers, talcum powder, and certain medications have been subjects of major litigation. Browse our product lawsuits section to find cases that may be relevant."
+      },
+      water: {
+        title: "Contaminated Water & Soil",
+        text: "PFAS 'forever chemicals' and AFFF firefighting foam have contaminated water supplies near military bases and industrial sites. You may have a claim if you lived nearby."
+      },
+      food: {
+        title: "Food Product Lawsuits",
+        text: "Multiple baby food brands have faced lawsuits over heavy metals (lead, arsenic, mercury). If your child consumed these products, review the current baby food litigation."
+      }
+    };
+
+    function showResult(el, type) {
+      document.querySelectorAll('.checker-opt').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+      const r = results[type];
+      document.getElementById('result-title').textContent = r.title;
+      document.getElementById('result-text').textContent = r.text;
+      const resultEl = document.getElementById('checker-result');
+      resultEl.classList.add('show');
+    }
+  </script>
+
 </body>
 </html>
