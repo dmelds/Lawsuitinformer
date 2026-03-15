@@ -327,84 +327,61 @@ footer {
 /* NETWORK */
 
 .lawsuit-network {
-  margin-top: 30px;
-  padding-top: 18px;
-  border-top: 1px solid #2a2a2a;
   text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+  border-top: 1px solid #1f2937;
+  font-family: Arial, sans-serif;
 }
 
-.lawsuit-network p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
+.network-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.lawsuit-network a {
-  color: #2563eb;
+.network-main a {
+  color: #9ca3af;
   text-decoration: none;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.lawsuit-network a:hover {
+.network-main a:hover {
   color: #3b82f6;
 }
 
-.lawsuit-network span {
-  margin: 0 8px;
-  color: #666;
+.divider {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.lawsuit-network small {
-  display: block;
-  margin-top: 6px;
+.network-sub {
   font-size: 11px;
-  color: #888;
+  margin-top: 6px;
+  color: #6b7280;
   letter-spacing: 1px;
 }
 
-/* MOBILE */
+@media (max-width: 480px) {
+  .network-main {
+    flex-direction: column;
+    gap: 4px;
+  }
 
-@media (max-width:700px){
+  .divider {
+    display: none;
+  }
 
-.container{
-padding:0 16px;
-}
+  .network-main a {
+    font-size: 13px;
+  }
 
-.nav{
-flex-direction:column;
-align-items:flex-start;
-}
-
-nav{
-gap:12px;
-}
-
-.hero{
-padding:70px 0 55px;
-}
-
-.section{
-padding:50px 0;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.card{
-padding:20px;
-}
-
-.footer-content{
-grid-template-columns:1fr;
-gap:32px;
-}
-
-.footer-social{
-margin-top:32px;
-}
-
-.lawsuit-network{
-margin-top:28px;
-}
-
+  .network-sub {
+    font-size: 10px;
+    margin-top: 8px;
+  }
 }
