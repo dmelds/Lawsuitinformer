@@ -1,4 +1,5 @@
-/* Global safety */
+//* GLOBAL RESET */
+
 *,
 *::before,
 *::after {
@@ -12,7 +13,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Media safety */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #0b0b0b;
+  color: #f5f5f5;
+}
+
+/* MEDIA SAFETY */
+
 img,
 video,
 iframe {
@@ -21,67 +30,313 @@ iframe {
   display: block;
 }
 
-/* Footer */
-footer {
-  width: 100%;
-  background: #000;
-  color: #d1d5db;
+/* LINKS */
+
+a {
+  color: #4da3ff;
+  text-decoration: underline;
 }
 
-footer .container,
-.footer-container,
-.footer-bottom,
-.container.footer-bottom {
+/* CONTAINER */
+
+.container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding-left: 16px;
-  padding-right: 16px;
-  box-sizing: border-box;
+  padding: 0 20px;
 }
 
-/* Footer social section */
+/* HEADER */
+
+header {
+  background: #111;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  gap: 20px;
+}
+
+.logo a {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* HERO */
+
+.hero {
+  padding: 90px 0 70px;
+  text-align: center;
+  background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  color: #d0d0d0;
+  font-size: 1.05rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #1f4f8f;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* CONTENT PAGES */
+
+.content-page {
+  max-width: 760px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.content-page h1 {
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+}
+
+.content-page h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #1f4f8f;
+  margin-top: 10px;
+}
+
+.content-page h2 {
+  margin-top: 40px;
+}
+
+.content-page p,
+.content-page li {
+  font-size: 1.05rem;
+}
+
+.content-page ul {
+  padding-left: 22px;
+}
+
+/* INFO BOX */
+
+.info-box {
+  background: #151515;
+  border-left: 4px solid #1f4f8f;
+  padding: 18px;
+  margin: 28px 0;
+  border-radius: 6px;
+}
+
+/* CTA BOX */
+
+.cta-box {
+  background: #151515;
+  border: 1px solid #262626;
+  padding: 22px;
+  margin-top: 36px;
+  border-radius: 8px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* SECTIONS */
+
+.section {
+  padding: 70px 0;
+  border-top: 1px solid #1c1c1c;
+}
+
+.section.alt {
+  background: #101010;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section-intro {
+  color: #cfcfcf;
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  display: block;
+  background: #151515;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 24px;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #f5f5f5;
+}
+
+.card p {
+  color: #d0d0d0;
+}
+
+/* FOOTER */
+
+footer {
+  background: #080808;
+  border-top: 1px solid #222;
+  padding-top: 50px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+}
+
+.footer-content h3 {
+  margin-top: 0;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-content li {
+  margin-bottom: 10px;
+}
+
+.footer-content a {
+  color: #d9d9d9;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: #fff;
+}
+
+/* SOCIAL */
+
 .footer-social {
   text-align: center;
-  margin-top: 32px;
-}
-
-.footer-social h3 {
-  margin: 0 0 12px;
-  font-size: 1.1rem;
-  color: #ffffff;
+  margin-top: 40px;
 }
 
 .social-links {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .social-links a {
-  color: #60a5fa;
+  color: #8ad4ff;
   text-decoration: none;
 }
 
 .social-links a:hover {
-  color: #93c5fd;
+  text-decoration: underline;
 }
 
-/* Network footer line */
-.lawsuit-network {
-  width: 100%;
+/* FOOTER BOTTOM */
+
+.footer-bottom {
   text-align: center;
-  margin-top: 40px;
-  padding: 24px 12px 0;
+  padding: 30px 0;
+  color: #aaa;
+  font-size: .95rem;
+}
+
+/* NETWORK */
+
+.lawsuit-network {
+  margin-top: 30px;
+  padding-top: 18px;
   border-top: 1px solid #2a2a2a;
+  text-align: center;
 }
 
 .lawsuit-network p {
   margin: 0;
   font-size: 15px;
   font-weight: 600;
-  line-height: 1.5;
 }
 
 .lawsuit-network a {
@@ -104,49 +359,52 @@ footer .container,
   font-size: 11px;
   color: #888;
   letter-spacing: 1px;
-  line-height: 1.4;
 }
 
-/* Prevent common overflow issues */
-.container,
-.section,
-.card,
-.cta,
-.hero,
-footer,
-header,
-nav {
-  max-width: 100%;
+/* MOBILE */
+
+@media (max-width:700px){
+
+.container{
+padding:0 16px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  footer .container,
-  .footer-container,
-  .footer-bottom,
-  .container.footer-bottom {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+.nav{
+flex-direction:column;
+align-items:flex-start;
+}
 
-  .social-links {
-    gap: 10px;
-  }
+nav{
+gap:12px;
+}
 
-  .lawsuit-network {
-    margin-top: 32px;
-    padding: 20px 10px 0;
-  }
+.hero{
+padding:70px 0 55px;
+}
 
-  .lawsuit-network p {
-    font-size: 14px;
-  }
+.section{
+padding:50px 0;
+}
 
-  .lawsuit-network span {
-    margin: 0 6px;
-  }
+.grid{
+grid-template-columns:1fr;
+}
 
-  .lawsuit-network small {
-    font-size: 10px;
-    letter-spacing: 0.8px;
-  }
+.card{
+padding:20px;
+}
+
+.footer-content{
+grid-template-columns:1fr;
+gap:32px;
+}
+
+.footer-social{
+margin-top:32px;
+}
+
+.lawsuit-network{
+margin-top:28px;
+}
+
+}
