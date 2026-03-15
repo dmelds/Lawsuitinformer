@@ -445,35 +445,33 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
   }
-  .lawsuit-network {
+  .network-wrap {
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 32px 16px 28px;
   margin-top: 60px;
-  border-top: 1px solid #2a2a2a;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 16px;
+  box-sizing: border-box;
+  clear: both;
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.lawsuit-network {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid #2a2a2a;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .network-main {
-  width: 100%;
-  text-align: center;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.6;
 }
 
 .network-main a {
-  text-decoration: none;
   color: #2563eb;
-  display: inline;
-  word-break: break-word;
+  text-decoration: none;
 }
 
 .network-main a:hover {
@@ -486,11 +484,33 @@ footer {
 }
 
 .network-sub {
-  width: 100%;
-  text-align: center;
-  font-size: 11px;
   margin-top: 6px;
+  font-size: 11px;
   color: #888;
   letter-spacing: 1px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
+
+@media (max-width: 768px) {
+  .network-wrap {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .lawsuit-network {
+    max-width: 100%;
+    padding-top: 24px;
+  }
+
+  .network-main {
+    font-size: 14px;
+  }
+
+  .divider {
+    margin: 0 6px;
+  }
+
+  .network-sub {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
