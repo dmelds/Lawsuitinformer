@@ -455,18 +455,28 @@ footer {
 
 .lawsuit-network {
   width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  padding-top: 28px;
+  max-width: 100%;
+  margin: 48px auto 0;
+  padding: 24px 16px 0;
   border-top: 1px solid #2a2a2a;
   text-align: center;
   box-sizing: border-box;
+  clear: both;
 }
 
 .network-main {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.6;
+}
+
+.network-main a,
+.network-main .divider {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .network-main a {
@@ -484,7 +494,9 @@ footer {
 }
 
 .network-sub {
-  margin-top: 6px;
+  width: 100%;
+  margin: 6px auto 0;
+  text-align: center;
   font-size: 11px;
   color: #888;
   letter-spacing: 1px;
@@ -492,14 +504,9 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .network-wrap {
-    margin-top: 40px;
-    padding: 0 12px;
-  }
-
   .lawsuit-network {
-    max-width: 100%;
-    padding-top: 24px;
+    margin-top: 36px;
+    padding: 20px 12px 0;
   }
 
   .network-main {
