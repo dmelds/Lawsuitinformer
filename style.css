@@ -490,3 +490,45 @@ footer {
   color: #888;
   letter-spacing: 1px;
 }
+  .lawsuit-network {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 12px 0;
+  border-top: 1px solid #2a2a2a;
+  box-sizing: border-box;
+}
+
+.lawsuit-network p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.lawsuit-network a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.lawsuit-network a:hover {
+  color: #3b82f6;
+}
+
+.lawsuit-network span {
+  margin: 0 8px;
+  color: #666;
+}
+
+.lawsuit-network small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+}
+  *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
