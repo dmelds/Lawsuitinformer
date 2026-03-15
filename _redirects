@@ -1,3 +1,9 @@
+# Force HTTPS
+http://*  https://:splat  301!
+
+# Remove trailing slashes
+/*/  /:splat  301
+
 # Redirect old domain to new domain
 https://lawsuits.center/* https://lawsuit.center/:splat 301!
 https://www.lawsuits.center/* https://lawsuit.center/:splat 301!
