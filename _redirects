@@ -1,0 +1,9 @@
+# Redirect old domain to new domain
+https://lawsuits.center/* https://lawsuit.center/:splat 301!
+https://www.lawsuits.center/* https://lawsuit.center/:splat 301!
+
+# Remove .html from URLs
+/*.html  /:splat  301
+
+# Handle 404 pages
+/*  /404.html  404
