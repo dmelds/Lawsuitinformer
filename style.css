@@ -445,4 +445,19 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
   }
+  .author-box {
+  background: #f6f8fa;
+  border-left: 4px solid #0b3d91;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 6px;
+}
+
+.author-box h3 {
+  margin-top: 0;
+}
+
+.author-box a {
+  font-weight: 600;
+}
   
