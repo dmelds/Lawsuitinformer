@@ -463,4 +463,12 @@ footer {
   color: #4da3ff;
   font-weight: 600;
 }
+  .mission-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e5e5e5;
+}
   
