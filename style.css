@@ -464,4 +464,32 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
   }
+  .article-meta {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.article-meta h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.article-meta p {
+  color: #d0d0d0;
+  margin-bottom: 14px;
+}
+
+.article-meta strong {
+  color: #ffffff;
+}
+
+.article-meta a {
+  color: #4da3ff;
+  text-decoration: none;
+}
+
+.article-meta a:hover {
+  text-decoration: underline;
+}
 }
