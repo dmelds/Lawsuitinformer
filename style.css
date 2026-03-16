@@ -412,7 +412,9 @@ footer {
   }
 
   nav {
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
   }
 
   .hero {
@@ -445,4 +447,34 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
   }
-  
+}
+
+.author-box {
+  background: #1c1c1c;
+  border-left: 4px solid #0b3d91;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.author-box h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.author-box a {
+  color: #4da3ff;
+  font-weight: 600;
+}
+
+.mission-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 10px 20px 30px 20px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  border-bottom: 1px solid #2a2a2a;
+}
