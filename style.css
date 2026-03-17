@@ -143,7 +143,9 @@ nav a:hover {
   color: #f5f5f5;
 }
 
-.content-page h1::after {
+.content-page h1::after,
+.legal-page h1::after,
+.editorial-policy h1::after {
   content: "";
   display: block;
   width: 60px;
@@ -226,6 +228,23 @@ nav a:hover {
 .author-box a {
   color: #4da3ff;
   font-weight: 600;
+}
+
+.trust-block {
+  background: #111;
+  border-left: 3px solid #4da3ff;
+  padding: 15px 18px;
+  margin: 20px 0 24px;
+  border-radius: 6px;
+}
+
+.trust-block p {
+  margin: 0 0 12px;
+  color: #d0d0d0;
+}
+
+.trust-block p:last-child {
+  margin-bottom: 0;
 }
 
 /* Article meta */
@@ -400,19 +419,6 @@ nav a:hover {
   color: #fff;
 }
 
-/* Social */
-
-.social-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #8ad4ff;
-}
-
-.social-links a:hover {
-  text-decoration: underline;
-}
-
 /* Mission */
 
 .mission-section {
@@ -428,12 +434,10 @@ nav a:hover {
 
 /* Footer */
 
-/* Footer */
-
 footer {
   background: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 56px 0 24px;
+  padding: 40px 0 18px;
   margin-top: 80px;
 }
 
@@ -452,7 +456,7 @@ footer {
 }
 
 .footer-content p {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.7;
 }
@@ -480,18 +484,18 @@ footer {
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 28px;
-  padding-top: 22px;
+  margin-top: 20px;
+  padding-top: 16px;
 }
 
 .footer-social {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 18px;
+  gap: 10px 16px;
 }
 
 .social-links a {
@@ -507,8 +511,65 @@ footer {
 }
 
 .footer-bottom p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .hero {
+    padding: 70px 0 55px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .content-page h1,
+  .legal-page h1,
+  .editorial-policy h1 {
+    font-size: 1.8rem;
+  }
+
+  .content-page h2,
+  .legal-page h2,
+  .editorial-policy h2,
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    padding-top: 18px;
+    margin-top: 22px;
+  }
 }
