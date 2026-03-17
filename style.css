@@ -146,15 +146,16 @@ nav a:hover {
   background: #2f6feb;
   color: white;
 }
-@media (max-width: 500px) {
-  .cta-buttons {
-    flex-direction: column;
-  }
-
 
 .cta-secondary {
   border: 1px solid #444;
   color: #ddd;
+}
+
+@media (max-width: 500px) {
+  .cta-buttons {
+    flex-direction: column;
+  }
 }
 /* Content Pages */
 
