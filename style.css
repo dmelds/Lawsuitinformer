@@ -500,4 +500,20 @@ footer {
 .editorial-policy h2 {
   color: #222;
 }
+  footer {
+  background: #0a2540;
+  color: #ffffff;
+}
+
+.footer-inner {
+  color: #ffffff;
+}
+
+.footer-inner a {
+  color: #ffffff;
+}
+
+.footer-inner a:hover {
+  color: #1a73e8;
+}
 }
