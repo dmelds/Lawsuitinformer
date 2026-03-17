@@ -492,4 +492,12 @@ footer {
 .article-meta a:hover {
   text-decoration: underline;
 }
+  .editorial-policy {
+  background: #ffffff;
+}
+  .editorial-policy p,
+.editorial-policy h1,
+.editorial-policy h2 {
+  color: #222;
+}
 }
