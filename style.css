@@ -193,6 +193,70 @@ h2 {
 p, li {
   color: #d0d0d0;
 }
+/* =========================
+   Content Blocks (Premium Feel)
+========================= */
+
+/* Trust block (top intro box) */
+.trust-block {
+  background: #101317;
+  border: 1px solid #1f2933;
+  border-radius: 10px;
+  padding: 22px;
+  margin: 20px 0 24px;
+}
+
+/* CTA boxes */
+.cta-box {
+  background: #0f1722;
+  border: 1px solid #1f3a5f;
+  border-radius: 10px;
+  padding: 24px;
+  margin: 30px 0;
+}
+
+/* Important info box */
+.info-box {
+  background: #111;
+  border-left: 4px solid #2f6feb;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 28px 0;
+}
+
+/* Lists */
+.lawsuit-list {
+  padding-left: 22px;
+  margin-bottom: 24px;
+}
+
+.lawsuit-list li {
+  margin-bottom: 10px;
+}
+
+/* Article intro (slightly larger) */
+.article-intro {
+  font-size: 1.2rem;
+  line-height: 1.75;
+  margin-bottom: 26px;
+  color: #e0e0e0;
+}
+
+/* Section spacing refinement */
+.content-page p {
+  margin-bottom: 16px;
+}
+
+/* Author section */
+.article-meta {
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid #222;
+}
+
+.article-meta h3 {
+  margin-bottom: 14px;
+}
 
 /* Footer */
 
