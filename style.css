@@ -220,10 +220,21 @@ p, li {
 .lawsuit-list {
   padding-left: 22px;
   margin-bottom: 24px;
+
+}
+.lawsuit-list li {
+  background: #0f1216;
+  border: 1px solid #1c2530;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
 }
 
-.lawsuit-list li {
-  margin-bottom: 10px;
+.lawsuit-list li:last-child {
+  margin-bottom: 0;
+}
+.lawsuit-list li:hover {
+  border-color: #2f6feb;
 }
 
 /* Article intro (slightly larger) */
