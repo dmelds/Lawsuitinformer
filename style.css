@@ -125,7 +125,32 @@ nav a:hover {
   color: #fff;
   border: 1px solid #444;
 }
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
 
+.cta-buttons a {
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-primary {
+  background: #2f6feb;
+  color: white;
+}
+
+.cta-secondary {
+  border: 1px solid #444;
+  color: #ddd;
+}
 /* Content Pages */
 
 .content-page,
