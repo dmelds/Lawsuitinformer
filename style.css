@@ -222,20 +222,20 @@ p, li {
   margin-bottom: 24px;
 
 }
+
 .lawsuit-list li {
-  background: #0f1216;
-  border: 1px solid #1c2530;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .lawsuit-list li:last-child {
+  border-bottom: none;
   margin-bottom: 0;
+  padding-bottom: 0;
 }
-.lawsuit-list li:hover {
-  border-color: #2f6feb;
-}
+
+
 
 /* Article intro (slightly larger) */
 .article-intro {
