@@ -160,7 +160,6 @@ nav a:hover {
 }
 
 /* Content Pages */
-/* Content Pages */
 
 .content-page,
 .legal-page,
@@ -170,10 +169,6 @@ nav a:hover {
   padding: 0 20px;
 }
 
-h1 {
-  font-size: 2.4rem;
-  margin-bottom: 18px;
-}
 .content-page h1,
 .legal-page h1,
 .editorial-policy h1 {
@@ -182,6 +177,11 @@ h1 {
   padding-bottom: 14px;
   border-bottom: 2px solid #2f6feb;
   display: inline-block;
+}
+.content-page h1,
+.legal-page h1,
+.editorial-policy h1 {
+  max-width: 100%;
 }
 
 h2 {
@@ -396,5 +396,22 @@ footer,
   .footer-content {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .content-page,
+  .legal-page,
+  .editorial-policy {
+    margin: 50px auto;
+    padding: 0 18px;
+  }
+
+  .content-page h1,
+  .legal-page h1,
+  .editorial-policy h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
   }
 }
