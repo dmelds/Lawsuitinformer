@@ -422,4 +422,15 @@ footer,
   h2 {
     font-size: 1.3rem;
   }
+  /* --- Asbestos section list fix --- */
+
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 20px;
+}
+
+.link-list li {
+  margin-bottom: 8px;
+}
 }
