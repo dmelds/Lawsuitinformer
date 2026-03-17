@@ -135,72 +135,129 @@ p, li {
 
 /* Footer */
 
-footer {
+/* =========================
+   Footer
+========================= */
+
+footer,
+.site-footer {
   background: #050505;
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 40px 0 18px;
   margin-top: 80px;
+  padding: 50px 0 20px;
 }
 
-.footer-content {
+/* Footer grid */
+
+.footer-content,
+.footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.footer-content h3,
-.footer-bottom h3 {
+/* Footer columns */
+
+.footer-col h3,
+.footer-content h3 {
   font-size: 1.05rem;
-  margin: 0 0 12px;
-  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+  color: #ffffff;
 }
 
+.footer-col p,
 .footer-content p {
-  margin: 0 0 10px;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
 }
 
+/* Lists */
+
+.footer-col ul,
 .footer-content ul {
   padding-left: 18px;
-  margin: 0;
 }
 
+.footer-col li,
 .footer-content li {
   margin-bottom: 6px;
 }
 
+/* Links */
+
+.footer-col a,
 .footer-content a,
 .footer-bottom a {
   color: #7cc4ff;
   text-decoration: none;
 }
 
+.footer-col a:hover,
 .footer-content a:hover,
 .footer-bottom a:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: underline;
 }
 
+/* Bottom footer */
+
 .footer-bottom {
+  margin-top: 35px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 20px;
-  padding-top: 16px;
+  text-align: center;
+}
+
+/* Social section */
+
+.footer-social {
+  text-align: center;
+  margin-bottom: 14px;
 }
 
 .footer-social h3 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
+
+/* Centered social links */
 
 .social-links {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: 10px 16px;
 }
 
+.social-links a {
+  font-weight: 500;
+}
+
+/* Copyright text */
+
 .footer-bottom p {
-  margin: 0 0 6px;
+  margin: 6px 0;
   color: rgba(255,255,255,0.6);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 768px) {
+
+  .footer-content,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    margin-top: 30px;
+  }
+
 }
 
 /* Mobile */
