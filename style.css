@@ -17,8 +17,8 @@ a {
 
 .container {
   max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Header */
@@ -68,7 +68,6 @@ nav a:hover {
   padding: 70px 0 55px;
   text-align: center;
   background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
-
 }
 
 .hero h1 {
@@ -79,11 +78,12 @@ nav a:hover {
 
 .hero p {
   max-width: 760px;
-  margin: 0 auto 12px; /* changed from 20px */
+  margin: 0 auto 12px;
   color: #d0d0d0;
   font-size: 1.05rem;
   line-height: 1.6;
 }
+
 .hero-subtext {
   margin-top: 0;
   margin-bottom: 24px;
@@ -91,6 +91,7 @@ nav a:hover {
   font-size: 1rem;
   text-align: center;
 }
+
 .hero-credibility {
   margin-top: -8px;
   margin-bottom: 20px;
@@ -109,6 +110,7 @@ nav a:hover {
 /* Buttons */
 
 .btn {
+  display: inline-block;
   padding: 12px 18px;
   border-radius: 8px;
   font-weight: 700;
@@ -125,6 +127,7 @@ nav a:hover {
   color: #fff;
   border: 1px solid #444;
 }
+
 .cta-buttons {
   display: flex;
   gap: 12px;
@@ -133,8 +136,7 @@ nav a:hover {
 }
 
 .cta-buttons a {
-  flex: 1;
-  min-width: 160px;
+  flex: 1 1 220px;
   text-align: center;
   padding: 12px 16px;
   border-radius: 6px;
@@ -144,13 +146,14 @@ nav a:hover {
 
 .cta-primary {
   background: #2f6feb;
-  color: white;
+  color: #fff;
 }
 
 .cta-secondary {
   border: 1px solid #444;
   color: #ddd;
 }
+
 /* Content Pages */
 
 .content-page,
@@ -169,10 +172,6 @@ nav a:hover {
   padding-bottom: 14px;
   border-bottom: 2px solid #2f6feb;
   display: inline-block;
-}
-.content-page h1,
-.legal-page h1,
-.editorial-policy h1 {
   max-width: 100%;
 }
 
@@ -182,14 +181,13 @@ h2 {
   font-size: 1.45rem;
 }
 
-p, li {
+p,
+li {
   color: #d0d0d0;
 }
-/* =========================
-   Content Blocks (Premium Feel)
-========================= */
 
-/* Trust block (top intro box) */
+/* Content Blocks */
+
 .trust-block {
   background: #101317;
   border: 1px solid #1f2933;
@@ -198,7 +196,6 @@ p, li {
   margin: 20px 0 24px;
 }
 
-/* CTA boxes */
 .cta-box {
   background: #0f1722;
   border: 1px solid #1f3a5f;
@@ -207,7 +204,6 @@ p, li {
   margin: 30px 0;
 }
 
-/* Important info box */
 .info-box {
   background: #111;
   border-left: 4px solid #2f6feb;
@@ -216,11 +212,9 @@ p, li {
   margin: 28px 0;
 }
 
-/* Lists */
 .lawsuit-list {
   padding-left: 22px;
   margin-bottom: 24px;
-
 }
 
 .lawsuit-list li {
@@ -234,15 +228,13 @@ p, li {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 .lawsuit-list li a {
   display: inline-block;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
-
-
-/* Article intro (slightly larger) */
 .article-intro {
   font-size: 1.2rem;
   line-height: 1.75;
@@ -250,12 +242,10 @@ p, li {
   color: #e0e0e0;
 }
 
-/* Section spacing refinement */
 .content-page p {
   margin-bottom: 16px;
 }
 
-/* Author section */
 .article-meta {
   margin-top: 50px;
   padding-top: 24px;
@@ -266,21 +256,25 @@ p, li {
   margin-bottom: 14px;
 }
 
-/* Footer */
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 20px;
+}
 
-/* =========================
-   Footer
-========================= */
+.link-list li {
+  margin-bottom: 8px;
+}
+
+/* Footer */
 
 footer,
 .site-footer {
   background: #050505;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: 80px;
   padding: 50px 0 20px;
 }
-
-/* Footer grid */
 
 .footer-content,
 .footer-grid {
@@ -290,22 +284,18 @@ footer,
   align-items: start;
 }
 
-/* Footer columns */
-
 .footer-col h3,
 .footer-content h3 {
   font-size: 1.05rem;
   margin-bottom: 14px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .footer-col p,
 .footer-content p {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
 }
-
-/* Lists */
 
 .footer-col ul,
 .footer-content ul {
@@ -317,8 +307,6 @@ footer,
   margin-bottom: 6px;
 }
 
-/* Links */
-
 .footer-col a,
 .footer-content a,
 .footer-bottom a {
@@ -329,20 +317,16 @@ footer,
 .footer-col a:hover,
 .footer-content a:hover,
 .footer-bottom a:hover {
-  color: #ffffff;
+  color: #fff;
   text-decoration: underline;
 }
-
-/* Bottom footer */
 
 .footer-bottom {
   margin-top: 35px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
-
-/* Social section */
 
 .footer-social {
   text-align: center;
@@ -352,8 +336,6 @@ footer,
 .footer-social h3 {
   margin-bottom: 10px;
 }
-
-/* Centered social links */
 
 .social-links {
   display: flex;
@@ -367,19 +349,18 @@ footer,
   font-weight: 500;
 }
 
-/* Copyright text */
-
 .footer-bottom p {
   margin: 6px 0;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.95rem;
 }
 
-/* =========================
-   Mobile
-========================= */
+/* Mobile */
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
 
   .footer-content,
   .footer-grid {
@@ -390,10 +371,7 @@ footer,
   .footer-bottom {
     margin-top: 30px;
   }
-
 }
-
-/* Mobile */
 
 @media (max-width: 700px) {
   .nav {
@@ -401,9 +379,12 @@ footer,
     align-items: flex-start;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  nav {
+    width: 100%;
+  }
+
+  .hero {
+    padding: 56px 0 44px;
   }
 
   .content-page,
@@ -422,15 +403,12 @@ footer,
   h2 {
     font-size: 1.3rem;
   }
-  /* --- Asbestos section list fix --- */
 
-.link-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 10px 0 20px;
-}
+  .cta-buttons {
+    flex-direction: column;
+  }
 
-.link-list li {
-  margin-bottom: 8px;
-}
+  .cta-buttons a {
+    width: 100%;
+  }
 }
