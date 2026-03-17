@@ -125,6 +125,7 @@ nav a:hover {
   color: #fff;
   border: 1px solid #444;
 }
+
 .cta-buttons {
   display: flex;
   gap: 12px;
@@ -157,6 +158,8 @@ nav a:hover {
     flex-direction: column;
   }
 }
+
+/* Content Pages */
 /* Content Pages */
 
 .content-page,
