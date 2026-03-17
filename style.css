@@ -65,21 +65,26 @@ nav a:hover {
 /* Hero */
 
 .hero {
-  padding: 90px 0 70px;
+  padding: 70px 0 55px;
   text-align: center;
   background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
+
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  margin-bottom: 20px;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
 }
 
 .hero p {
   max-width: 760px;
-  margin: 0 auto 28px;
+  margin: 0 auto 20px;
   color: #d0d0d0;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
+
 
 .hero-buttons {
   display: flex;
