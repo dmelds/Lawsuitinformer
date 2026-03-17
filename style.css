@@ -21,6 +21,8 @@ a {
   padding: 20px;
 }
 
+/* Header */
+
 header {
   background: #111;
   border-bottom: 1px solid #222;
@@ -65,6 +67,8 @@ nav a:hover {
   color: #fff;
 }
 
+/* Hero */
+
 .hero {
   padding: 90px 0 70px;
   text-align: center;
@@ -92,6 +96,8 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
+/* Buttons */
+
 .btn {
   display: inline-block;
   padding: 12px 18px;
@@ -115,19 +121,26 @@ nav a:hover {
   opacity: 0.9;
 }
 
-.content-page {
-  max-width: 760px;
+/* Standard content pages */
+
+.content-page,
+.legal-page,
+.editorial-policy {
+  max-width: 800px;
   margin: 80px auto;
   padding: 0 20px;
   line-height: 1.7;
 }
 
-.content-page h1 {
+.content-page h1,
+.legal-page h1,
+.editorial-policy h1 {
   font-size: 2.4rem;
   line-height: 1.25;
   margin-bottom: 18px;
   font-weight: 700;
   letter-spacing: -0.3px;
+  color: #f5f5f5;
 }
 
 .content-page h1::after {
@@ -139,19 +152,29 @@ nav a:hover {
   margin-top: 10px;
 }
 
-.content-page h2 {
+.content-page h2,
+.legal-page h2,
+.editorial-policy h2 {
   margin-top: 42px;
   margin-bottom: 14px;
   font-size: 1.45rem;
   font-weight: 700;
+  color: #f5f5f5;
 }
 
 .content-page p,
-.content-page li {
+.content-page li,
+.legal-page p,
+.legal-page li,
+.editorial-policy p,
+.editorial-policy li {
   font-size: 1.05rem;
+  color: #d0d0d0;
 }
 
-.content-page ul {
+.content-page ul,
+.legal-page ul,
+.editorial-policy ul {
   padding-left: 22px;
 }
 
@@ -159,6 +182,8 @@ nav a:hover {
   font-size: 1.08rem;
   color: #d0d0d0;
 }
+
+/* Boxes */
 
 .info-box {
   background: #151515;
@@ -184,6 +209,59 @@ nav a:hover {
   margin-top: 16px;
 }
 
+.author-box {
+  background: #1c1c1c;
+  border-left: 4px solid #0b3d91;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.author-box h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.author-box a {
+  color: #4da3ff;
+  font-weight: 600;
+}
+
+/* Article meta */
+
+.article-meta {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.article-meta h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.article-meta p {
+  color: #d0d0d0;
+  margin-bottom: 14px;
+}
+
+.article-meta strong {
+  color: #ffffff;
+}
+
+.article-meta a {
+  color: #4da3ff;
+  text-decoration: none;
+}
+
+.article-meta a:hover {
+  text-decoration: underline;
+}
+
+/* Homepage sections */
+
 .section {
   padding: 70px 0;
   border-top: 1px solid #1c1c1c;
@@ -196,6 +274,7 @@ nav a:hover {
 .section h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: #f5f5f5;
 }
 
 .section-intro {
@@ -203,6 +282,8 @@ nav a:hover {
   max-width: 760px;
   margin-bottom: 30px;
 }
+
+/* Cards and grids */
 
 .grid {
   display: grid;
@@ -242,6 +323,8 @@ nav a:hover {
   color: #d0d0d0;
 }
 
+/* CTA section */
+
 .cta {
   text-align: center;
   background: #111;
@@ -251,6 +334,8 @@ nav a:hover {
   color: #d0d0d0;
   margin-bottom: 24px;
 }
+
+/* Learn more */
 
 .learn-more {
   max-width: 900px;
@@ -263,6 +348,7 @@ nav a:hover {
 
 .learn-more h2 {
   margin-bottom: 15px;
+  color: #f5f5f5;
 }
 
 .learn-more ul {
@@ -281,6 +367,8 @@ nav a:hover {
 .learn-more a:hover {
   text-decoration: underline;
 }
+
+/* Link groups */
 
 .simple-links a {
   color: #7cc4ff;
@@ -312,20 +400,7 @@ nav a:hover {
   color: #fff;
 }
 
-.legal-page {
-  max-width: 800px;
-  margin: 80px auto;
-  padding: 0 20px;
-  line-height: 1.7;
-}
-
-.legal-page h1 {
-  margin-bottom: 10px;
-}
-
-.legal-page h2 {
-  margin-top: 40px;
-}
+/* Social */
 
 .social-links a {
   margin: 0 10px;
@@ -337,6 +412,21 @@ nav a:hover {
 .social-links a:hover {
   text-decoration: underline;
 }
+
+/* Mission */
+
+.mission-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 10px 20px 30px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* Footer */
 
 footer {
   background: #080808;
@@ -354,6 +444,7 @@ footer {
 
 .footer-content h3 {
   margin-top: 0;
+  color: #f5f5f5;
 }
 
 .footer-content ul {
@@ -389,37 +480,10 @@ footer {
 .footer-social h3 {
   margin-bottom: 10px;
   font-size: 18px;
+  color: #f5f5f5;
 }
 
-.author-box {
-  background: #1c1c1c;
-  border-left: 4px solid #0b3d91;
-  padding: 20px;
-  margin: 30px 0;
-  border-radius: 6px;
-  color: #ffffff;
-}
-
-.author-box h3 {
-  margin-top: 0;
-  color: #ffffff;
-}
-
-.author-box a {
-  color: #4da3ff;
-  font-weight: 600;
-}
-
-.mission-section {
-  text-align: center;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 10px 20px 30px 20px;
-  font-size: 18px;
-  line-height: 1.7;
-  color: #e5e5e5;
-  border-bottom: 1px solid #2a2a2a;
-}
+/* Mobile */
 
 @media (max-width: 700px) {
   .nav {
@@ -452,44 +516,21 @@ footer {
     border-radius: 10px;
   }
 
-  h1 {
+  .content-page h1,
+  .legal-page h1,
+  .editorial-policy h1 {
     font-size: 1.8rem;
   }
 
-  h2 {
+  .content-page h2,
+  .legal-page h2,
+  .editorial-policy h2,
+  .section h2 {
     font-size: 1.5rem;
   }
 
   .footer-content {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 40px;
   }
-  .article-meta {
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid #2a2a2a;
-}
-
-.article-meta h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-.article-meta p {
-  color: #d0d0d0;
-  margin-bottom: 14px;
-}
-
-.article-meta strong {
-  color: #ffffff;
-}
-
-.article-meta a {
-  color: #4da3ff;
-  text-decoration: none;
-}
-
-.article-meta a:hover {
-  text-decoration: underline;
-}
 }
