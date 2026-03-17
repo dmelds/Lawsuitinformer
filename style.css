@@ -234,6 +234,11 @@ p, li {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+.lawsuit-list li a {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
 
 
