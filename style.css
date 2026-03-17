@@ -79,7 +79,7 @@ nav a:hover {
 
 .hero p {
   max-width: 760px;
-  margin: 0 auto 20px;
+  margin: 0 auto 12px; /* changed from 20px */
   color: #d0d0d0;
   font-size: 1.05rem;
   line-height: 1.6;
