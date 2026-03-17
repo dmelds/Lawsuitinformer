@@ -91,6 +91,13 @@ nav a:hover {
   font-size: 1rem;
   text-align: center;
 }
+.hero-credibility {
+  margin-top: -8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #9aa0a6;
+  text-align: center;
+}
 
 .hero-buttons {
   display: flex;
