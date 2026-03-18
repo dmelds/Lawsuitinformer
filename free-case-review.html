@@ -41,7 +41,14 @@
       <div class="container">
         <div class="review-form-wrap">
 
-          <form class="case-review-form" action="#" method="post">
+          <form
+  class="case-review-form"
+  name="free-case-review"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action="/thank-you/"
+>
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required />
 
