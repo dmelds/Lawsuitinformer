@@ -853,4 +853,49 @@ footer,
   .editorial-policy {
     margin: 50px auto;
   }
+  /* Browse Lawsuits Page */
+
+.browse-hero {
+  padding: 100px 0 50px;
+  text-align: center;
+}
+
+.browse-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin-bottom: 16px;
+}
+
+.browse-hero p {
+  color: #cfcfcf;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.browse-intro {
+  padding: 30px 0 10px;
+  text-align: center;
+}
+
+.browse-intro p {
+  color: #9c9c9c;
+}
+
+.browse-grid {
+  padding: 60px 0 80px;
+}
+
+.browse-category {
+  margin-bottom: 60px;
+}
+
+.browse-category h2 {
+  margin: 0 0 22px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.browse-next {
+  padding: 100px 0;
+  text-align: center;
+  border-top: 1px solid #1a1a1a;
+}
 }
