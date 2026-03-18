@@ -197,6 +197,18 @@
       <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
     </div>
   </footer>
+<script>
+const scenes = document.querySelectorAll('.experience-scene');
 
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+scenes.forEach(scene => observer.observe(scene));
+</script>
 </body>
 </html>
