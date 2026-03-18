@@ -49,6 +49,14 @@
   netlify-honeypot="bot-field"
   action="/thank-you/"
 >
+            <input type="hidden" name="form-name" value="free-case-review" />
+
+<p style="display:none;">
+  <label>
+    Don’t fill this out if you're human:
+    <input name="bot-field" />
+  </label>
+</p>
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required />
 
