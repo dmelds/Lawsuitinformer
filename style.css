@@ -532,16 +532,17 @@ footer,
 
 .authority-item strong {
   display: block;
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   color: #fff;
   margin-bottom: 6px;
+  letter-spacing: 0.3px;
 }
 
 .authority-item span {
   display: block;
-  font-size: 0.92rem;
-  color: #bbb;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #aaa;
+  line-height: 1.6;
 }
 
 .trust-signals {
