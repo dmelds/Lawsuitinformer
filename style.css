@@ -346,4 +346,98 @@ footer {
   .content-page {
     margin: 50px auto;
   }
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Case Review | Lawsuit Informer</title>
+  <meta name="description" content="Request a free case review through Lawsuit Informer." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <a href="index.html">Lawsuit Informer</a>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="how-lawsuits-work.html">Guides</a>
+        <a href="illnesses-linked-to-lawsuits.html">Exposure</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="https://lawsuit.center">Directory</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="review-hero">
+      <div class="container">
+        <h1>Free Case Review</h1>
+        <p>
+          Share a few details about your situation. Lawsuit Informer is an educational platform,
+          and this form is a starting point for requesting more information about possible next steps.
+        </p>
+      </div>
+    </section>
+
+    <section class="review-form-section">
+      <div class="container">
+        <div class="review-form-wrap">
+
+          <form class="case-review-form" action="#" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="phone">Phone Number <span>(optional)</span></label>
+            <input type="tel" id="phone" name="phone" />
+
+            <label for="details">What happened?</label>
+            <textarea
+              id="details"
+              name="details"
+              rows="7"
+              placeholder="Briefly describe the exposure, product, injury, diagnosis, or situation."
+              required
+            ></textarea>
+
+            <button type="submit" class="btn-primary">Submit for Review</button>
+          </form>
+
+          <div class="review-side-note">
+            <h2>Before You Submit</h2>
+            <p>
+              Please do not send Social Security numbers, highly sensitive medical records,
+              or other confidential documents through this first form.
+            </p>
+            <p>
+              Submitting this form does not create an attorney-client relationship and does not
+              guarantee legal representation.
+            </p>
+            <p>
+              Lawsuit Informer provides educational information and may help connect people with
+              additional resources depending on the situation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Lawsuit Informer</p>
+    </div>
+  </footer>
+
+</body>
+</html>
 }
