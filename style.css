@@ -933,5 +933,17 @@ footer {
   .cta-buttons {
     flex-direction: column;
   }
+  /* Scroll fade effect */
+
+.experience-scene {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.experience-scene.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 }
 }
