@@ -512,6 +512,81 @@ footer,
     height: 160px;
     max-width: 160px;
   }
+  .authority-strip {
+  background: #111;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 18px 0;
+}
+
+.authority-strip-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.authority-item {
+  text-align: center;
+}
+
+.authority-item strong {
+  display: block;
+  font-size: 0.98rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.authority-item span {
+  display: block;
+  font-size: 0.92rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.trust-signals {
+  padding: 50px 0;
+}
+
+.trust-signals h2 {
+  margin-bottom: 24px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.trust-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.trust-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.trust-card p {
+  margin: 0;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  .authority-strip-inner,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .authority-item {
+    text-align: left;
+  }
+}
 }
 }
 }
