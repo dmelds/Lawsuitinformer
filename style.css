@@ -946,7 +946,14 @@ footer {
   transform: translateY(0);
 }
   .start-here {
+  padding: 90px 0 110px; /* 👈 more space at bottom */
   border-bottom: 1px solid rgba(255,255,255,0.08);
+
+}
+  /* Space above authority section */
+
+.authority-strip {
+  padding-top: 50px;
 }
 }
 }
