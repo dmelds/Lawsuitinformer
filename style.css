@@ -275,7 +275,15 @@ li {
   font-size: 0.9rem;
   color: #9a9a9a;
 }
-
+.case-review-box .btn-primary {
+  display: inline-block;
+  background: #2f6feb;
+  color: #fff !important;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
 /* Forms */
 
 .case-review-form input,
