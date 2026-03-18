@@ -588,6 +588,26 @@ footer,
   .authority-item {
     text-align: left;
   }
+  .article-byline {
+  margin: 12px 0 24px;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.article-byline a {
+  color: #f5f5f5;
+  text-decoration: underline;
+}
+
+.article-byline a:hover {
+  opacity: 0.8;
+}
+  .article-meta {
+  margin-top: -12px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  color: #777;
+}
 }
 }
 }
