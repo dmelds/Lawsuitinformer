@@ -516,7 +516,8 @@ footer,
   background: #111;
   border-top: 1px solid #222;
   border-bottom: 1px solid #222;
-  padding: 18px 0;
+  padding: 22px 0;
+  margin: 20px 0;
 }
 
 .authority-strip-inner {
