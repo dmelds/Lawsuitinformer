@@ -246,7 +246,7 @@ li {
   color: #bbb;
 }
 
-/* CTA Section (your new section) */
+/* CTA Section */
 
 .case-review-cta {
   padding: 40px 0 80px;
@@ -275,6 +275,7 @@ li {
   font-size: 0.9rem;
   color: #9a9a9a;
 }
+
 .case-review-box .btn-primary {
   display: inline-block;
   background: #2f6feb;
@@ -284,6 +285,7 @@ li {
   font-weight: 700;
   text-decoration: none !important;
 }
+
 /* Forms */
 
 .case-review-form input,
@@ -297,20 +299,94 @@ li {
   color: #fff;
   margin-bottom: 18px;
 }
-.case-review-form select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #2a2a2a;
-  background: #0b0b0b;
-  color: #fff;
-  margin-bottom: 18px;
-}
 
 .case-review-form input:focus,
-.case-review-form textarea:focus {
+.case-review-form textarea:focus,
+.case-review-form select:focus {
   outline: none;
   border-color: #555;
+}
+
+/* Author */
+
+.author-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 0;
+}
+
+.author-photo img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Free Case Review Page */
+
+.review-hero {
+  padding: 90px 0 30px;
+}
+
+.review-hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: #f5f5f5;
+}
+
+.review-hero p {
+  max-width: 760px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+.review-form-section {
+  padding: 20px 0 80px;
+}
+
+.review-form-wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.case-review-form,
+.review-side-note {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 24px;
+  padding: 28px;
+}
+
+.case-review-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.case-review-form label span {
+  font-weight: 400;
+  color: #a0a0a0;
+}
+
+.review-side-note h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+  color: #f5f5f5;
+}
+
+.review-side-note p {
+  margin-bottom: 16px;
+  color: #cfcfcf;
+  line-height: 1.7;
 }
 
 /* Footer */
@@ -322,7 +398,8 @@ footer {
   padding: 50px 0 20px;
 }
 
-.footer-grid {
+.footer-grid,
+.footer-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 40px;
@@ -338,8 +415,19 @@ footer {
 
 @media (max-width: 900px) {
   .grid,
-  .trust-grid {
+  .trust-grid,
+  .review-form-wrap {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .author-photo img {
+    max-width: 180px;
+  }
+
+  .author-box {
+    flex-direction: column;
   }
 }
 
@@ -356,98 +444,4 @@ footer {
   .content-page {
     margin: 50px auto;
   }
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Case Review | Lawsuit Informer</title>
-  <meta name="description" content="Request a free case review through Lawsuit Informer." />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <a href="index.html">Lawsuit Informer</a>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="how-lawsuits-work.html">Guides</a>
-        <a href="illnesses-linked-to-lawsuits.html">Exposure</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="https://lawsuit.center">Directory</a>
-        <a href="about.html">About</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="review-hero">
-      <div class="container">
-        <h1>Free Case Review</h1>
-        <p>
-          Share a few details about your situation. Lawsuit Informer is an educational platform,
-          and this form is a starting point for requesting more information about possible next steps.
-        </p>
-      </div>
-    </section>
-
-    <section class="review-form-section">
-      <div class="container">
-        <div class="review-form-wrap">
-
-          <form class="case-review-form" action="#" method="post">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required />
-
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required />
-
-            <label for="phone">Phone Number <span>(optional)</span></label>
-            <input type="tel" id="phone" name="phone" />
-
-            <label for="details">What happened?</label>
-            <textarea
-              id="details"
-              name="details"
-              rows="7"
-              placeholder="Briefly describe the exposure, product, injury, diagnosis, or situation."
-              required
-            ></textarea>
-
-            <button type="submit" class="btn-primary">Submit for Review</button>
-          </form>
-
-          <div class="review-side-note">
-            <h2>Before You Submit</h2>
-            <p>
-              Please do not send Social Security numbers, highly sensitive medical records,
-              or other confidential documents through this first form.
-            </p>
-            <p>
-              Submitting this form does not create an attorney-client relationship and does not
-              guarantee legal representation.
-            </p>
-            <p>
-              Lawsuit Informer provides educational information and may help connect people with
-              additional resources depending on the situation.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Lawsuit Informer</p>
-    </div>
-  </footer>
-
-</body>
-</html>
 }
