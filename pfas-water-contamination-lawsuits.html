@@ -209,20 +209,43 @@ you can share a few details below to get started.
 
     <form class="case-review-form">
 
-      <label>Your Name</label>
-      <input type="text" name="name" placeholder="Your name">
+<label>Your Name</label>
+<input type="text" name="name" placeholder="Your name">
 
-      <label>Email</label>
-      <input type="email" name="email" placeholder="Your email">
+<label>Email</label>
+<input type="email" name="email" placeholder="Your email">
 
-      <label>What happened?</label>
-      <textarea name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
+<label>Location (City / State)</label>
+<input type="text" name="location" placeholder="e.g. Los Angeles, CA">
 
-      <button type="submit" class="btn-primary">
-        Submit for Review
-      </button>
+<label>Type of Exposure or Issue</label>
+<select name="case_type">
+  <option value="">Select one</option>
+  <option>PFAS / Water Contamination</option>
+  <option>Paraquat / Parkinson’s</option>
+  <option>AFFF Firefighting Foam</option>
+  <option>Talcum Powder</option>
+  <option>Roundup</option>
+  <option>Hair Relaxer</option>
+  <option>Other</option>
+</select>
 
-    </form>
+<label>Have you spoken to a lawyer?</label>
+<select name="lawyer_status">
+  <option value="">Select one</option>
+  <option>No</option>
+  <option>Yes</option>
+  <option>Not sure</option>
+</select>
+
+<label>What happened?</label>
+<textarea name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
+
+<button type="submit" class="btn-primary">
+Submit for Review
+</button>
+
+</form>
 
     <p class="form-note">
       Educational purposes only. Submitting this form does not create an attorney-client relationship.
