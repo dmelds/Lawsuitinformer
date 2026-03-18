@@ -287,7 +287,17 @@ li {
 /* Forms */
 
 .case-review-form input,
-.case-review-form textarea {
+.case-review-form textarea,
+.case-review-form select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #0b0b0b;
+  color: #fff;
+  margin-bottom: 18px;
+}
+.case-review-form select {
   width: 100%;
   padding: 14px;
   border-radius: 12px;
