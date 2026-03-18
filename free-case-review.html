@@ -65,6 +65,14 @@
 
             <label for="phone">Phone Number <span>(optional)</span></label>
             <input type="tel" id="phone" name="phone" />
+            <label for="case-type">Type of Issue</label>
+<select id="case-type" name="case-type" required>
+  <option value="">Select one</option>
+  <option value="chemical">Chemical Exposure</option>
+  <option value="water">Water Contamination</option>
+  <option value="product">Defective Product</option>
+  <option value="other">Other</option>
+</select>
 
             <label for="details">What happened?</label>
             <textarea
