@@ -144,7 +144,8 @@ How Lawsuits Work
 If you're trying to understand whether this situation may apply to you,
 you can share a few details below to get started.
 </p>
-<form class="case-review-form">
+<form name="case-review" method="POST" data-netlify="true" class="case-review-form">
+      <input type="hidden" name="form-name" value="case-review">
 
 <label>Your Name</label>
 <input type="text" name="name" placeholder="Your name">
