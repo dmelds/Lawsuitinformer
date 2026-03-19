@@ -898,4 +898,39 @@ footer,
   text-align: center;
   border-top: 1px solid #1a1a1a;
 }
+  .guides-bridge {
+  padding: 60px 0;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+.guides-bridge h2 {
+  margin-bottom: 12px;
+}
+
+.guides-bridge p {
+  margin-bottom: 20px;
+  color: #d0d0d0;
+}
+
+.guides-bridge-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.guides-bridge-links li a {
+  display: block;
+  padding: 14px 16px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.guides-bridge-links li a:hover {
+  border-color: #444;
+}
 }
