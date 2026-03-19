@@ -88,7 +88,7 @@
     <strong>Important:</strong> This page provides general educational information about lawsuit timelines and does not constitute legal advice.
   </div>
 
-  <h2>Why lawsuit timelines vary</h2>
+  <h2>Why some lawsuits take longer than others</h2>
 
   <p>
     There is no single timeline that applies to every lawsuit. Some cases are straightforward and settle quickly. Others involve multiple defendants, expert witnesses, large document productions, or disputed legal issues that can significantly extend the process. Court scheduling and local procedures can also affect how long a case takes.
@@ -149,6 +149,12 @@
     Yes. An appeal can extend the life of a case after a trial court decision. Appellate courts generally review legal issues rather than completely retrying the evidence, but the appeal process still takes time. If the appellate court reverses part of the decision or sends the case back, additional proceedings may follow.
   </p>
 
+  <h2>Can some lawsuits resolve faster than others?</h2>
+
+<p>
+  Yes. Some lawsuits resolve more quickly when liability is clearer, damages are easier to document, and fewer parties are involved. Cases may also move faster when both sides are motivated to negotiate early and the court schedule is less congested.
+</p>
+
   <h2>Why some mass tort and class action cases take longer</h2>
 
   <p>
@@ -188,9 +194,11 @@
       If you are trying to understand whether a legal issue may apply to your situation, you can share a few details below to get started.
     </p>
 
-    <form name="case-review" method="POST" data-netlify="true" action="/thank-you.html" class="case-review-form">
-      <input type="hidden" name="form-name" value="case-review">
-
+   <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
+  <input type="hidden" name="form-name" value="case-review">
+  <p hidden>
+    <label>Don’t fill this out: <input name="bot-field"></label>
+  </p>
       <label for="name">Your Name</label>
       <input id="name" type="text" name="name" placeholder="Your name">
 
