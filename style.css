@@ -443,6 +443,55 @@ li {
   display: block;
   margin: 0 auto 20px;
 }
+.author-hero {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: start;
+  margin: 28px 0 24px;
+}
+.author-hero-photo {
+  padding-top: 6px;
+}
+.author-hero-photo img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid #222;
+}
+
+.author-hero-text h2 {
+  margin-top: 0;
+}
+
+.author-subtitle {
+  margin-top: -4px;
+  margin-bottom: 18px;
+  color: #9aa0a6;
+  font-size: 0.98rem;
+}
+
+.author-credentials {
+  padding-left: 20px;
+}
+
+.author-credentials li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .author-hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .author-hero-photo img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
 
 /* Home Guides */
 
