@@ -1,85 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://lawsuitinformer.com/</loc>
-</url>
-<url>
-  <loc>https://lawsuitinformer.com/contact.html</loc>
- 
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/</loc>
+  </url>
 
+  <url>
+    <loc>https://lawsuitinformer.com/about.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/toxic-exposure-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/contact.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/mistakes.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/editorial-policy.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/how-lawsuits-work.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/privacy-policy.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/how-long-do-lawsuits-take.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/disclaimer.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/what-happens-if-you-ignore-a-lawsuit.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/browse-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/personal-injury.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/how-lawsuits-work.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/class-action.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/how-long-do-lawsuits-take.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/mass-torts.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/class-action.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/chemical-exposure-symptoms.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/mass-torts.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/diseases-linked-to-chemical-exposure.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/product-liability-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/chemical-exposure-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/toxic-exposure-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/pfas-water-contamination-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/chemical-exposure-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/kidney-cancer-chemical-exposure.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/pesticide-exposure-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/browse-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/environmental-contamination-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/symptoms-linked-to-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/environmental-contamination-illnesses.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/illnesses-linked-to-lawsuits.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/air-pollution-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/about.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/toxic-water-contamination-lawsuits.html</loc>
+  </url>
 
-<url>
-<loc>https://lawsuitinformer.com/editorial-policy.html</loc>
-</url>
+  <url>
+    <loc>https://lawsuitinformer.com/pfas-water-contamination-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/water-contamination-illnesses.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/afff-firefighting-foam-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/roundup-cancer-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/paraquat-parkinsons-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/talcum-powder-ovarian-cancer-lawsuit.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/tylenol-autism-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/heavy-metals-baby-food-lawsuit.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/processed-food-addiction-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/cancers-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/neurological-conditions-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/reproductive-injuries-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/developmental-injuries-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/illnesses-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/symptoms-linked-to-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/consumer-product-lawsuits.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/chemical-exposure-kidney-cancer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/current-mass-tort-cases.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/statute-of-limitations.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-happens-if-you-ignore-a-lawsuit.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-happens-at-trial.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-is-a-deposition.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-is-a-settlement.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-is-an-appeal.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-is-discovery.html</loc>
+  </url>
+
+  <url>
+    <loc>https://lawsuitinformer.com/what-is-mediation.html</loc>
+  </url>
 
 </urlset>
