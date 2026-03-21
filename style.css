@@ -289,22 +289,23 @@ li {
   padding: 24px;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
+
 .grid a.card {
   display: block;
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 .grid a.card h3,
-.grid a.card p {
-  color: inherit;
+.grid a.card p,
+.grid a.card span {
+  text-decoration: none;
 }
 
 .card:hover,
 .topic-card:hover {
   border-color: #2f6feb;
   transform: translateY(-2px);
-  text-decoration: none;
 }
 
 .card h3,
@@ -317,6 +318,17 @@ li {
 .topic-card p {
   color: #c8c8c8;
   line-height: 1.7;
+}
+
+.grid a.card span {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #7cc4ff;
+}
+
+.grid a.card:hover h3 {
+  text-decoration: underline;
 }
 
 /* Trust Section */
@@ -453,6 +465,7 @@ li {
   display: block;
   margin: 0 auto 20px;
 }
+
 .author-hero {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -460,9 +473,11 @@ li {
   align-items: start;
   margin: 28px 0 24px;
 }
+
 .author-hero-photo {
   padding-top: 6px;
 }
+
 .author-hero-photo img {
   width: 100%;
   max-width: 320px;
@@ -490,18 +505,6 @@ li {
 .author-credentials li {
   margin-bottom: 10px;
 }
-
-@media (max-width: 768px) {
-  .author-hero {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .author-hero-photo img {
-    max-width: 220px;
-    margin: 0 auto;
-  }
-
 
 /* Home Guides */
 
@@ -929,6 +932,16 @@ footer,
 }
 
 @media (max-width: 768px) {
+  .author-hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .author-hero-photo img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
   .nav {
     align-items: flex-start;
   }
