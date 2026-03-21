@@ -289,6 +289,16 @@ li {
   padding: 24px;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
+.grid a.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.grid a.card h3,
+.grid a.card p {
+  color: inherit;
+}
 
 .card:hover,
 .topic-card:hover {
