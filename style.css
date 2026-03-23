@@ -1074,4 +1074,22 @@ footer,
   text-decoration: underline;
   font-weight: 600;
 }
+  .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.sms-note {
+  font-size: 0.9rem;
+}
 }
