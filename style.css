@@ -1092,4 +1092,12 @@ footer,
 .sms-note {
   font-size: 0.9rem;
 }
+  .checkbox-label input[type="checkbox"] {
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
 }
