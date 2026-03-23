@@ -1074,4 +1074,31 @@ footer,
   text-decoration: underline;
   font-weight: 600;
 }
+ .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.case-review-form .checkbox-label input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  max-width: 16px !important;
+  padding: 0 !important;
+  margin: 3px 0 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  flex: 0 0 16px !important;
+}
+
+.sms-note {
+  font-size: 0.9rem;
+}
 }
