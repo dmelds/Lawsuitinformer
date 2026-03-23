@@ -1069,4 +1069,9 @@ footer,
   .editorial-policy {
     margin: 50px auto;
   }
+  .form-bridge a {
+  color: #7cc4ff;
+  text-decoration: underline;
+  font-weight: 600;
+}
 }
