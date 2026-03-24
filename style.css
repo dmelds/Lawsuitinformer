@@ -1101,4 +1101,9 @@ footer,
 .sms-note {
   font-size: 0.9rem;
 }
+  .logo img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
 }
