@@ -59,27 +59,38 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   padding: 18px 0;
   flex-wrap: wrap;
 }
 
+.logo {
+  flex-shrink: 0;
+}
+
 .logo a {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #f5f5f5;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
+}
+
+.logo img {
+  height: 92px;
+  width: auto;
+  display: block;
 }
 
 nav {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a {
   color: #d7d7d7;
   font-size: 0.98rem;
+  text-decoration: none;
 }
 
 nav a:hover {
@@ -446,6 +457,40 @@ li {
 .case-review-form label span {
   font-weight: 400;
   color: #a0a0a0;
+}
+
+.form-bridge a {
+  color: #7cc4ff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.case-review-form .checkbox-label input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  max-width: 16px !important;
+  padding: 0 !important;
+  margin: 3px 0 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  flex: 0 0 16px !important;
+}
+
+.sms-note {
+  font-size: 0.9rem;
 }
 
 /* Author */
@@ -953,6 +998,11 @@ footer,
     text-align: center;
   }
 
+  .logo img {
+    height: 60px;
+    margin: 0 auto;
+  }
+
   nav {
     width: 100%;
     justify-content: center;
@@ -1069,36 +1119,4 @@ footer,
   .editorial-policy {
     margin: 50px auto;
   }
-  .form-bridge a {
-  color: #7cc4ff;
-  text-decoration: underline;
-  font-weight: 600;
-}
- .checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 18px 0 10px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.case-review-form .checkbox-label input[type="checkbox"] {
-  -webkit-appearance: checkbox;
-  appearance: checkbox;
-  width: 16px !important;
-  height: 16px !important;
-  min-width: 16px !important;
-  max-width: 16px !important;
-  padding: 0 !important;
-  margin: 3px 0 0 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  flex: 0 0 16px !important;
-}
-
-.sms-note {
-  font-size: 0.9rem;
-}
 }
