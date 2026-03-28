@@ -1119,4 +1119,34 @@ footer,
   .editorial-policy {
     margin: 50px auto;
   }
+  .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0 28px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+}
+
+.product-table th,
+.product-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.product-table th {
+  background: #161616;
+  font-weight: 700;
+}
+
+.product-table tr:last-child td {
+  border-bottom: none;
+}
 }
