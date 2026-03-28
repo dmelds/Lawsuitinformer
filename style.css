@@ -1149,4 +1149,53 @@ footer,
 .product-table tr:last-child td {
   border-bottom: none;
 }
+  .resource-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 24px 0 32px;
+}
+
+.resource-card {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.resource-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.resource-card h3 a {
+  text-decoration: none;
+}
+
+.resource-card p {
+  margin-bottom: 16px;
+}
+
+.resource-card-link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.resource-card-link:hover,
+.resource-card h3 a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .resource-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .resource-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+}
 }
