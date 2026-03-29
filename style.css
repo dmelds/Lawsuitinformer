@@ -1231,6 +1231,27 @@ footer,
   opacity: 0.75;
   margin-bottom: 10px;
 }
+.info-box {
+  margin: 20px 0;
+  padding: 16px 18px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+}
+
+.info-box strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.key-takeaways-box {
+  margin-top: 32px;
+}
+
+.key-takeaways-box ul {
+  margin: 0;
+  padding-left: 22px;
+}
 
 @media (max-width: 768px) {
   .resource-card-grid {
