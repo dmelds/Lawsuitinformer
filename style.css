@@ -240,18 +240,18 @@ nav a:hover {
 .legal-page,
 .editorial-policy {
   max-width: 780px;
-  margin: 80px auto;
-  padding: 0 20px;
+  margin: 0 auto 80px;
+  padding: 40px 20px 0;
 }
 
 .content-page h1,
 .legal-page h1,
 .editorial-policy h1 {
   font-size: 2.4rem;
-  margin-bottom: 18px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #2f6feb;
-  display: inline-block;
+  margin: 0 0 18px;
+  padding-bottom: 0;
+  border-bottom: none;
+  display: block;
 }
 
 h2 {
@@ -1119,7 +1119,44 @@ footer,
   .editorial-policy {
     margin: 50px auto;
   }
+
   .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0 28px;
+  }
+
+  .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+  }
+
+  .product-table th,
+  .product-table td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .product-table th {
+    background: #161616;
+    font-weight: 700;
+  }
+
+  .product-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .resource-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.table-wrap {
   width: 100%;
   overflow-x: auto;
   margin: 20px 0 28px;
@@ -1149,7 +1186,8 @@ footer,
 .product-table tr:last-child td {
   border-bottom: none;
 }
-  .resource-card-grid {
+
+.resource-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
@@ -1186,16 +1224,37 @@ footer,
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .resource-card-grid {
-    grid-template-columns: 1fr;
-  }
-  .resource-label {
+.resource-label {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   opacity: 0.75;
   margin-bottom: 10px;
 }
+.info-box {
+  margin: 20px 0;
+  padding: 16px 18px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
 }
+
+.info-box strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.key-takeaways-box {
+  margin-top: 32px;
+}
+
+.key-takeaways-box ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+@media (max-width: 768px) {
+  .resource-card-grid {
+    grid-template-columns: 1fr;
+  }
 }
