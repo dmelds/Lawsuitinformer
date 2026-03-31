@@ -407,7 +407,8 @@ nav a:hover {
    BREADCRUMB
    ========================= */
 
-.breadcrumb {
+.breadcrumb,
+.breadcrumbs {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -417,23 +418,31 @@ nav a:hover {
   color: #b8b8b8;
 }
 
-.breadcrumb a {
+.breadcrumb a,
+.breadcrumbs a {
   color: #7cc4ff;
   text-decoration: none;
 }
 
-.breadcrumb a:hover {
+.breadcrumb a:hover,
+.breadcrumbs a:hover {
   text-decoration: underline;
 }
 
-.breadcrumb .breadcrumb-separator {
+.breadcrumb .breadcrumb-separator,
+.breadcrumbs .breadcrumb-separator {
   color: #7a7a7a;
 }
 
-.breadcrumb [aria-current="page"] {
+.breadcrumb [aria-current="page"],
+.breadcrumbs [aria-current="page"] {
   color: #d8d8d8;
 }
 
+.breadcrumb span:not(.breadcrumb-separator),
+.breadcrumbs span:not(.breadcrumb-separator) {
+  color: #d8d8d8;
+}
 /* =========================
    ARTICLE BOXES / CALLOUTS
    ========================= */
