@@ -174,8 +174,6 @@ nav a:hover {
 
 /* Info box in homepage hero */
 
-/* Info box in homepage hero */
-
 .info-box {
   margin: 20px 0;
   padding: 14px 18px;
@@ -205,6 +203,7 @@ nav a:hover {
   color: #7f868d;
   opacity: 0.78;
 }
+
 /* Start Here */
 
 .start-here {
@@ -1136,9 +1135,9 @@ footer,
   }
 
   .info-box .hero-credibility {
-  font-size: 0.66rem;
-  line-height: 1.24;
-}
+    font-size: 0.66rem;
+    line-height: 1.24;
+  }
 }
 
 @media (max-width: 700px) {
