@@ -175,11 +175,12 @@ nav a:hover {
 /* Info box in homepage hero */
 
 .info-box {
-  margin: 20px 0;
+  margin: 20px auto 14px;
   padding: 14px 18px;
   background: #111;
   border: 1px solid #222;
   border-radius: 12px;
+  max-width: 860px;
 }
 
 .info-box strong {
