@@ -174,6 +174,8 @@ nav a:hover {
 
 /* Info box in homepage hero */
 
+/* Info box in homepage hero */
+
 .info-box {
   margin: 20px 0;
   padding: 14px 18px;
@@ -187,31 +189,22 @@ nav a:hover {
   margin-bottom: 8px;
 }
 
-.info-box {
-  margin: 20px 0;
-  padding: 12px 18px;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-}
-
 .info-box .hero-subtext {
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
   color: #cfcfcf;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.55;
 }
 
 .info-box .hero-credibility {
   display: block;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0.6rem !important;
-  line-height: 1.2 !important;
-  color: #737a81 !important;
-  opacity: 0.72 !important;
+  margin: 0;
+  padding: 0;
+  font-size: 0.7rem;
+  line-height: 1.28;
+  color: #7f868d;
+  opacity: 0.78;
 }
-
 /* Start Here */
 
 .start-here {
@@ -1143,8 +1136,8 @@ footer,
   }
 
   .info-box .hero-credibility {
-  font-size: 0.56rem !important;
-  line-height: 1.18 !important;
+  font-size: 0.66rem;
+  line-height: 1.24;
 }
 }
 
