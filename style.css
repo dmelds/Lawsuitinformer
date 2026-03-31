@@ -1439,6 +1439,32 @@ footer,
     font-size: 0.66rem;
     line-height: 1.24;
   }
+   .breadcrumb {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  color: #b8b8b8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  color: #7cc4ff;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-separator {
+  color: #7a7a7a;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: #d8d8d8;
+
 }
 
 @media (max-width: 700px) {
