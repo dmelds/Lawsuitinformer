@@ -188,17 +188,18 @@ nav a:hover {
 }
 
 .info-box .hero-subtext {
-  margin-bottom: 6px;
+  margin: 0 0 6px 0;
   color: #cfcfcf;
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
 .info-box .hero-credibility {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 0.66rem;
-  line-height: 1.3;
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0.7rem;
+  line-height: 1.28;
   color: #7f868d;
   opacity: 0.78;
 }
@@ -1134,8 +1135,8 @@ footer,
   }
 
   .info-box .hero-credibility {
-    font-size: 0.62rem;
-    line-height: 1.28;
+    font-size: 0.66rem;
+    line-height: 1.24;
   }
 }
 
