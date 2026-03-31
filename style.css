@@ -1,3 +1,5 @@
+Use this CSS. I only changed the parts needed to make the “Founded by…” line smaller and less prominent, and tightened the spacing inside the info box.
+
 /* Reset */
 
 *,
@@ -164,16 +166,17 @@ nav a:hover {
 }
 
 .hero-subtext {
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   color: #cfcfcf;
 }
 
 .hero-credibility {
-  margin-bottom: 20px;
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: #8f959c;
-  opacity: 0.9;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #848b92;
+  opacity: 0.82;
 }
 
 .hero-buttons {
@@ -1111,8 +1114,9 @@ footer,
   }
 
   .hero-credibility {
-    font-size: 0.76rem;
-    line-height: 1.4;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    margin-top: 6px;
   }
 }
 
