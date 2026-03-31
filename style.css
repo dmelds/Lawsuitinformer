@@ -170,8 +170,10 @@ nav a:hover {
 
 .hero-credibility {
   margin-bottom: 20px;
-  font-size: 0.95rem;
-  color: #9aa0a6;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #8f959c;
+  opacity: 0.9;
 }
 
 .hero-buttons {
@@ -1107,6 +1109,11 @@ footer,
   .author-box {
     flex-direction: column;
   }
+
+  .hero-credibility {
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1231,6 +1238,7 @@ footer,
   opacity: 0.75;
   margin-bottom: 10px;
 }
+
 .info-box {
   margin: 20px 0;
   padding: 16px 18px;
