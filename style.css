@@ -1136,10 +1136,12 @@ nav a:hover {
 
 .product-table th,
 .product-table td {
-  padding: 14px 16px;
+  padding: 16px 18px;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid #2a2a2a;
+  line-height: 1.55;
+
 }
 
 .product-table th {
