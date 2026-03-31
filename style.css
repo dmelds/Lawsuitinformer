@@ -1,5 +1,3 @@
-Use this CSS. I only changed the parts needed to make the “Founded by…” line smaller and less prominent, and tightened the spacing inside the info box.
-
 /* Reset */
 
 *,
@@ -166,21 +164,43 @@ nav a:hover {
 }
 
 .hero-subtext {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   color: #cfcfcf;
-}
-
-.hero-credibility {
-  margin-top: 6px;
-  margin-bottom: 0;
-  font-size: 0.72rem;
-  line-height: 1.35;
-  color: #848b92;
-  opacity: 0.82;
 }
 
 .hero-buttons {
   justify-content: center;
+}
+
+/* Info box in homepage hero */
+
+.info-box {
+  margin: 20px 0;
+  padding: 14px 18px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+}
+
+.info-box strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.info-box .hero-subtext {
+  margin-bottom: 6px;
+  color: #cfcfcf;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.info-box .hero-credibility {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  color: #7f868d;
+  opacity: 0.78;
 }
 
 /* Start Here */
@@ -1113,10 +1133,9 @@ footer,
     flex-direction: column;
   }
 
-  .hero-credibility {
-    font-size: 0.72rem;
-    line-height: 1.35;
-    margin-top: 6px;
+  .info-box .hero-credibility {
+    font-size: 0.62rem;
+    line-height: 1.28;
   }
 }
 
@@ -1241,19 +1260,6 @@ footer,
   letter-spacing: 0.08em;
   opacity: 0.75;
   margin-bottom: 10px;
-}
-
-.info-box {
-  margin: 20px 0;
-  padding: 16px 18px;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-}
-
-.info-box strong {
-  display: block;
-  margin-bottom: 8px;
 }
 
 .key-takeaways-box {
