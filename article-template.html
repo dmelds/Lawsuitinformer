@@ -19,8 +19,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "PAGE HEADLINE HERE",
-  "description": "PAGE DESCRIPTION HERE",
+  "headline": "Article Title",
+  "description": "Short description explaining the topic and why people search for it.",
   "author": {
     "@type": "Person",
     "name": "David Meldofsky",
@@ -34,12 +34,39 @@
       "url": "https://lawsuitinformer.com/logo-informer.png"
     }
   },
-  "datePublished": "YYYY-MM-DD",
-  "dateModified": "YYYY-MM-DD",
+  "datePublished": "2026-04-03",
+  "dateModified": "2026-04-03",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://lawsuitinformer.com/page-url-here.html"
+    "@id": "https://lawsuitinformer.com/PAGE-FILENAME.html"
   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lawsuitinformer.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Browse Lawsuits",
+      "item": "https://lawsuitinformer.com/browse-lawsuits.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Article Title",
+      "item": "https://lawsuitinformer.com/PAGE-FILENAME.html"
+    }
+  ]
 }
 </script>
 </head>
@@ -83,21 +110,17 @@
   </p>
 
   <p class="article-date">
-    Last updated: Month Year
+    Last updated: April 3, 2026
   </p>
 
   <p class="article-intro">
-    Short introduction explaining the topic, the possible exposure or injury,
-    and why people research lawsuits related to it.
+    Short introduction explaining the topic, the possible exposure or injury, and why people research lawsuits related to it.
   </p>
 
-  <p>
-    Optional intro link sentence. For example: looking for the main overview or a recent update page? Link the most relevant related page here.
-  </p>
+  <!-- Optional: add one short sentence here linking to the most relevant overview or update page. -->
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational
-    information and does not constitute legal advice.
+    <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
   </div>
 
   <div class="info-box key-takeaways-box">
@@ -190,8 +213,7 @@
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
-      Ready to explore related cases and legal topics? Browse the lawsuit
-      directory or learn how the legal process works.
+      Ready to explore related cases and legal topics? Browse the lawsuit directory or learn how the legal process works.
     </p>
 
     <div class="cta-buttons">
@@ -205,12 +227,19 @@
     </div>
 
     <p class="form-bridge">
-      If you're trying to understand whether this situation may apply to you,
-      you can share a few details below to get started.
+      If you're trying to understand whether this situation may apply to you, you can share a few details below to get started.
     </p>
 
-    <form name="case-review" method="POST" data-netlify="true" action="/thank-you.html" class="case-review-form">
+    <p class="form-note">
+      Do not send highly sensitive, confidential, or time-sensitive information through this form. Submitting information does not create an attorney-client relationship.
+    </p>
+
+    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
       <input type="hidden" name="form-name" value="case-review">
+
+      <p hidden>
+        <label>Don’t fill this out: <input name="bot-field"></label>
+      </p>
 
       <label for="name">Your Name</label>
       <input id="name" type="text" name="name" placeholder="Your name">
@@ -224,12 +253,12 @@
       <label for="case_type">Type of Exposure or Issue</label>
       <select id="case_type" name="case_type">
         <option value="">Select one</option>
-        <option>PFAS / Water Contamination</option>
-        <option>Paraquat / Parkinson’s</option>
-        <option>AFFF Firefighting Foam</option>
-        <option>Talcum Powder</option>
-        <option>Roundup</option>
-        <option>Hair Relaxer</option>
+        <option>Medication</option>
+        <option>Chemical Exposure</option>
+        <option>Toxic Exposure</option>
+        <option>Consumer Product</option>
+        <option>Environmental Contamination</option>
+        <option>Workplace Exposure</option>
         <option>Other</option>
       </select>
 
@@ -315,7 +344,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> Month Year
+          <strong>Last Updated:</strong> April 3, 2026
         </p>
 
         <p>
