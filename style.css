@@ -1575,3 +1575,90 @@ footer,
 .simple-list li {
   margin-bottom: 10px;
 }
+.narrow {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 80px 0 56px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.1;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #bdbdbd;
+}
+
+.subtitle {
+  max-width: 760px;
+  margin: 0 auto 22px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #d7d7d7;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.section h2 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.section p {
+  margin: 0 0 18px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #e3e3e3;
+}
+
+.alt-section {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.update-entry {
+  margin-bottom: 34px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-entry:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.update-entry h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.update-entry p {
+  margin: 0;
+}
+
+.simple-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.simple-list li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #e3e3e3;
+}
