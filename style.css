@@ -65,55 +65,126 @@ select {
    HEADER
    ========================= */
 
-header {
-  background: rgba(17, 17, 17, 0.92);
-  border-bottom: 1px solid #222;
+/* =========================
+   HEADER
+   ========================= */
+
+.site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  backdrop-filter: blur(8px);
+  z-index: 1000;
+  background: rgba(11, 11, 11, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
 }
 
-.nav {
+.container.nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 16px 0;
-  flex-wrap: wrap;
-}
-
-.logo {
-  flex-shrink: 0;
-}
-
-.logo a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
+  gap: 20px;
+  min-height: 78px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .logo img {
-  height: 84px;
+  display: block;
   width: auto;
+  max-height: 52px;
 }
 
-nav {
+.site-nav {
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
   align-items: center;
+  gap: 22px;
 }
 
-nav a {
-  color: #d7d7d7;
-  font-size: 0.98rem;
+.site-nav a {
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-nav a:hover {
-  color: #fff;
-  text-decoration: none;
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #7cc4ff;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #f5f5f5;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .container.nav {
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .logo img {
+    max-height: 46px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 0 4px;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
 }
 
 /* =========================
@@ -1406,36 +1477,8 @@ footer,
   .author-hero-photo img {
     max-width: 220px;
     margin: 0 auto;
-  }
 
-  .nav {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    padding: 8px 0 10px;
-  }
-
-  .logo {
-    width: 100%;
-    text-align: center;
-  }
-
-  .logo img {
-    height: 46px;
-    margin: 0 auto;
-  }
-
-  nav {
-    width: 100%;
-    justify-content: center;
-    gap: 8px 12px;
-    line-height: 1.2;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-  }
+    }
 
   .section-heading {
     flex-direction: column;
@@ -1581,7 +1624,54 @@ footer,
     line-height: 1.24;
   }
 }
+.hero-paths {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+}
 
+.hero-paths a {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 6px 12px;
+  border: 1px solid rgba(124, 196, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(124, 196, 255, 0.08);
+  color: #7cc4ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-paths a:hover {
+  background: rgba(124, 196, 255, 0.16);
+  border-color: rgba(124, 196, 255, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.start-here-bridge {
+  margin: 18px auto 0;
+  max-width: 760px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(124, 196, 255, 0.18);
+  border-radius: 12px;
+  color: #d6d6d6;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.start-here-bridge a {
+  color: #7cc4ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.start-here-bridge a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 700px) {
   .hero {
     padding: 55px 0;

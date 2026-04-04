@@ -19,25 +19,37 @@
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="logo-informer.png" alt="Lawsuit Informer" />
-        </a>
-      </div>
-
-      <nav>
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="legal-guides.html">Guides</a>
-        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+  <header class="site-header">
+  <div class="container nav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo-informer.png" alt="Lawsuit Informer" />
+      </a>
     </div>
-  </header>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="legal-guides.html">Guides</a>
+      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main>
 
@@ -50,20 +62,17 @@
           and what people should know when exploring their rights.
         </p>
 
-        <p>
-          Readers often begin with
-          <a href="legal-guides.html">legal guides</a>,
-          <a href="browse-lawsuits.html">specific lawsuit topics</a>,
-          <a href="illnesses-linked-to-lawsuits.html">illness-based research</a>,
-          or
-          <a href="symptoms-linked-to-lawsuits.html">symptom-based entry points</a>.
-        </p>
+       <p class="hero-paths">
+  
+  <a href="legal-guides.html">Legal Guides</a>
+  <a href="browse-lawsuits.html">Browse Lawsuits</a>
+  <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+  <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+</p>
 
-        <p class="form-bridge">
-          New to lawsuits?
-          <a href="start-here.html"><strong>Start here</strong></a>
-          to understand the process step by step.
-        </p>
+       <p class="start-here-bridge">
+  New to lawsuits? <a href="start-here.html">Start here</a> to understand the process step by step.
+</p>
 
         <div class="info-box">
           <p class="hero-subtext">
@@ -433,6 +442,21 @@
       <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
     </div>
   </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
