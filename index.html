@@ -19,25 +19,37 @@
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="logo-informer.png" alt="Lawsuit Informer" />
-        </a>
-      </div>
-
-      <nav>
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="legal-guides.html">Guides</a>
-        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+  <header class="site-header">
+  <div class="container nav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo-informer.png" alt="Lawsuit Informer" />
+      </a>
     </div>
-  </header>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="legal-guides.html">Guides</a>
+      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main>
 
