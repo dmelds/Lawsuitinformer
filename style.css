@@ -79,7 +79,7 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 18px 0;
+  padding: 16px 0;
   flex-wrap: wrap;
 }
 
@@ -94,7 +94,7 @@ header {
 }
 
 .logo img {
-  height: 92px;
+  height: 84px;
   width: auto;
 }
 
@@ -335,7 +335,7 @@ nav a:hover {
 .editorial-policy {
   max-width: 860px;
   margin: 0 auto 80px;
-  padding: 34px 20px 0;
+  padding: 28px 20px 0;
 }
 
 .content-page h1,
@@ -414,7 +414,7 @@ nav a:hover {
   align-items: center;
   gap: 8px;
   font-size: 0.95rem;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   color: #b8b8b8;
 }
 
@@ -1412,6 +1412,8 @@ footer,
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 8px;
+    padding: 8px 0 10px;
   }
 
   .logo {
@@ -1420,14 +1422,19 @@ footer,
   }
 
   .logo img {
-    height: 60px;
+    height: 46px;
     margin: 0 auto;
   }
 
   nav {
     width: 100%;
     justify-content: center;
-    gap: 12px 16px;
+    gap: 8px 12px;
+    line-height: 1.2;
+  }
+
+  nav a {
+    font-size: 0.9rem;
   }
 
   .section-heading {
@@ -1478,8 +1485,8 @@ footer,
   .content-page,
   .legal-page,
   .editorial-policy {
-    padding: 26px 16px 0;
-    margin: 50px auto;
+    padding: 16px 16px 0;
+    margin: 36px auto;
   }
 
   .content-page h1,
@@ -1502,6 +1509,12 @@ footer,
   .legal-page li,
   .editorial-policy li {
     font-size: 1rem;
+  }
+
+  .breadcrumb,
+  .breadcrumbs {
+    margin-bottom: 10px;
+    font-size: 0.88rem;
   }
 
   .btn,
