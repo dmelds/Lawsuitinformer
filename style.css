@@ -1624,7 +1624,33 @@ footer,
     line-height: 1.24;
   }
 }
+.hero-paths {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+}
 
+.hero-paths a {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 6px 12px;
+  border: 1px solid rgba(124, 196, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(124, 196, 255, 0.08);
+  color: #7cc4ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-paths a:hover {
+  background: rgba(124, 196, 255, 0.16);
+  border-color: rgba(124, 196, 255, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
 @media (max-width: 700px) {
   .hero {
     padding: 55px 0;
