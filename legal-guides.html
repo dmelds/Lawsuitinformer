@@ -62,7 +62,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -70,7 +70,19 @@
       </a>
     </div>
 
-    <nav aria-label="Main navigation">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -85,8 +97,9 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>Legal Guides</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Legal Guides</span>
   </nav>
 
   <section class="page-hero">
@@ -98,17 +111,20 @@
         Explore educational guides about how lawsuits work, settlements, discovery, timelines, deadlines, mass torts, MDLs, and other core legal topics.
       </p>
 
-      <p>
-        Looking for topic-based pages instead? You may also want to explore
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>,
-        <a href="illnesses-linked-to-lawsuits.html">Illnesses Linked to Lawsuits</a>,
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms Linked to Lawsuits</a>,
-        and
-        <a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a>.
+      <p class="hero-paths">
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="start-here.html">Start Here</a>
+      </p>
+
+      <p class="start-here-bridge">
+        New to lawsuits? <a href="start-here.html">Start here</a> for a simple overview of how the process works step by step.
       </p>
 
       <div class="info-box">
-        <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
+        <strong>Important:</strong>
+        <p>This page provides general educational information and does not constitute legal advice.</p>
       </div>
     </div>
   </section>
@@ -397,9 +413,24 @@
 
   <div class="container footer-bottom">
     <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
