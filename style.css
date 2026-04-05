@@ -1709,6 +1709,21 @@ footer,
   transform: translateY(-1px);
   text-decoration: none;
 }
+   .related-inline {
+  margin: 18px 0 24px;
+  color: #d6d6d6;
+  line-height: 1.8;
+}
+
+.related-inline a {
+  color: #7cc4ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.related-inline a:hover {
+  text-decoration: underline;
+}
 }
 
 @media (max-width: 700px) {
