@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>[ARTICLE TITLE] | Lawsuit Informer</title>
+  <title>[HUB PAGE TITLE] | Lawsuit Informer</title>
   <meta
     name="description"
-    content="[Write a clear 150-160 character description for this article.]"
+    content="[Write a clear 150-160 character description for this hub page.]"
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -15,33 +15,15 @@
 
   <link rel="author" href="david-meldofsky.html" />
   <link rel="publisher" href="about.html" />
-  <link rel="canonical" href="https://lawsuitinformer.com/[article-slug].html" />
+  <link rel="canonical" href="https://lawsuitinformer.com/[hub-slug].html" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "[ARTICLE TITLE]",
-    "description": "[Write a clear meta description for this article.]",
-    "author": {
-      "@type": "Person",
-      "name": "David Meldofsky",
-      "url": "https://lawsuitinformer.com/david-meldofsky.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Lawsuit Informer",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://lawsuitinformer.com/logo-informer.png"
-      }
-    },
-    "datePublished": "[YYYY-MM-DD]",
-    "dateModified": "[YYYY-MM-DD]",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://lawsuitinformer.com/[article-slug].html"
-    }
+    "@type": "CollectionPage",
+    "name": "[HUB PAGE TITLE]",
+    "description": "[Write a clear description for this hub page.]",
+    "url": "https://lawsuitinformer.com/[hub-slug].html"
   }
   </script>
 
@@ -59,14 +41,8 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "[SECTION NAME]",
-        "item": "https://lawsuitinformer.com/[section-page].html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "[ARTICLE TITLE]",
-        "item": "https://lawsuitinformer.com/[article-slug].html"
+        "name": "[HUB PAGE TITLE]",
+        "item": "https://lawsuitinformer.com/[hub-slug].html"
       }
     ]
   }
@@ -111,23 +87,25 @@
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
       <span class="breadcrumb-separator">›</span>
-      <a href="[section-page].html">[SECTION NAME]</a>
-      <span class="breadcrumb-separator">›</span>
-      <span aria-current="page">[ARTICLE TITLE]</span>
+      <span aria-current="page">[HUB PAGE TITLE]</span>
     </nav>
 
-    <h1>[ARTICLE TITLE]</h1>
-
-    <p class="article-byline">
-      By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
-    </p>
-
-    <p class="article-date">
-      Last updated: [Month Day, Year]
-    </p>
+    <h1>[HUB PAGE TITLE]</h1>
 
     <p class="article-intro">
-      [Write a clear opening paragraph that explains what this article covers, who it is for, and why the topic matters.]
+      [Write a strong opening paragraph explaining what this hub covers, who it helps, and how readers can use this page.]
+    </p>
+
+    <p>
+      [Use a second paragraph to explain the broader topic and how people often begin researching it.]
+    </p>
+
+    <p class="link-cluster">
+      Readers may also want to explore
+      <a href="[related-page-1].html">[Related Page 1]</a>,
+      <a href="[related-page-2].html">[Related Page 2]</a>,
+      and
+      <a href="[related-page-3].html">[Related Page 3]</a>.
     </p>
 
     <div class="info-box">
@@ -135,95 +113,97 @@
       <p>This page provides general educational information and does not constitute legal advice.</p>
     </div>
 
+    <section class="related-links-section">
+      <h2>[Primary Topic Group]</h2>
+      <p>
+        [Add one short sentence introducing this first group of links.]
+      </p>
+
+      <div class="topic-grid">
+        <a class="topic-card" href="[topic-1].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description of the page and why a reader would click.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-2].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description of the page and why a reader would click.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-3].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description of the page and why a reader would click.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-4].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description of the page and why a reader would click.]</p>
+        </a>
+      </div>
+    </section>
+
+    <h2>[Supporting Section Heading]</h2>
+
     <p>
-      [Add a second paragraph that gives broader context and helps readers understand why they may be researching this issue.]
+      [Explain how readers often move from the broad topic into more specific issues.]
     </p>
 
-    <p class="link-cluster">
-      Readers may also want to review
-      <a href="[related-page-1].html">[Related Page 1]</a>,
-      <a href="[related-page-2].html">[Related Page 2]</a>,
-      and
-      <a href="[related-page-3].html">[Related Page 3]</a>.
-    </p>
-
-    <h2>[First Main Section Heading]</h2>
-
-    <p>
-      [Main section paragraph.]
-    </p>
-
-    <p>
-      [Second supporting paragraph.]
-    </p>
-
-    <ul>
-      <li>[Key point or factor]</li>
-      <li>[Key point or factor]</li>
-      <li>[Key point or factor]</li>
-      <li>[Key point or factor]</li>
+    <ul class="lawsuit-list">
+      <li><a href="[supporting-link-1].html">[Supporting Link 1]</a></li>
+      <li><a href="[supporting-link-2].html">[Supporting Link 2]</a></li>
+      <li><a href="[supporting-link-3].html">[Supporting Link 3]</a></li>
+      <li><a href="[supporting-link-4].html">[Supporting Link 4]</a></li>
     </ul>
 
-    <h2>[Second Main Section Heading]</h2>
-
-    <p>
-      [Explain another major part of the topic.]
-    </p>
-
     <p class="link-cluster">
-      For more background, readers often continue to
+      Depending on what they are trying to understand, readers often continue to
       <a href="[related-page-4].html">[Related Page 4]</a>,
       <a href="[related-page-5].html">[Related Page 5]</a>,
       and
       <a href="[related-page-6].html">[Related Page 6]</a>.
     </p>
 
-    <h2>[Third Main Section Heading]</h2>
+    <section class="related-links-section">
+      <h2>[Second Topic Group]</h2>
+      <p>
+        [Add one short sentence introducing this second group.]
+      </p>
+
+      <div class="topic-grid">
+        <a class="topic-card" href="[topic-5].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-6].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-7].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description.]</p>
+        </a>
+
+        <a class="topic-card" href="[topic-8].html">
+          <h3>[Topic Card Title]</h3>
+          <p>[Short description.]</p>
+        </a>
+      </div>
+    </section>
+
+    <h2>[Common Questions or Reader Paths]</h2>
 
     <p>
-      [Continue the article body.]
-    </p>
-
-    <div class="table-wrap">
-      <table class="product-table">
-        <thead>
-          <tr>
-            <th>[Column 1]</th>
-            <th>[Column 2]</th>
-            <th>[Column 3]</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[Row 1]</td>
-            <td>[Row 1]</td>
-            <td>[Row 1]</td>
-          </tr>
-          <tr>
-            <td>[Row 2]</td>
-            <td>[Row 2]</td>
-            <td>[Row 2]</td>
-          </tr>
-          <tr>
-            <td>[Row 3]</td>
-            <td>[Row 3]</td>
-            <td>[Row 3]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2>[Fourth Main Section Heading]</h2>
-
-    <p>
-      [Add more detail here.]
+      [Use this section for broader navigation, reader questions, or research paths.]
     </p>
 
     <ul class="lawsuit-list">
-      <li><a href="[faq-or-related-1].html">[Related question or related guide]</a></li>
-      <li><a href="[faq-or-related-2].html">[Related question or related guide]</a></li>
-      <li><a href="[faq-or-related-3].html">[Related question or related guide]</a></li>
-      <li><a href="[faq-or-related-4].html">[Related question or related guide]</a></li>
+      <li><a href="[question-1].html">[Question or path 1]</a></li>
+      <li><a href="[question-2].html">[Question or path 2]</a></li>
+      <li><a href="[question-3].html">[Question or path 3]</a></li>
+      <li><a href="[question-4].html">[Question or path 4]</a></li>
+      <li><a href="[question-5].html">[Question or path 5]</a></li>
     </ul>
 
     <p class="start-here-inline">
@@ -233,9 +213,9 @@
     </p>
 
     <div class="cta-box">
-      <h2>Explore Your Next Step</h2>
+      <h2>Keep Exploring</h2>
       <p>
-        [Add one sentence telling the reader where to go next.]
+        [Add one sentence directing readers to the best next steps from this hub.]
       </p>
       <div class="cta-buttons">
         <a class="btn btn-primary" href="[primary-next-page].html">[Primary Next Step]</a>
@@ -285,7 +265,7 @@
         </p>
         <p><strong>Questions about a potential case? Contact us directly.</strong></p>
         <p>
-          <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
+          <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'hub_footer')">
             hello@lawsuitinformer.com
           </a>
         </p>
