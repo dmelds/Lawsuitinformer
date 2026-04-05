@@ -65,10 +65,6 @@ select {
    HEADER
    ========================= */
 
-/* =========================
-   HEADER
-   ========================= */
-
 .site-header {
   position: sticky;
   top: 0;
@@ -148,45 +144,6 @@ select {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile */
-@media (max-width: 900px) {
-  .container.nav {
-    flex-wrap: wrap;
-    min-height: 70px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .logo img {
-    max-height: 46px;
-  }
-
-  .menu-toggle {
-    display: flex;
-    margin-left: auto;
-  }
-
-  .site-nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 8px 0 4px;
-  }
-
-  .site-nav.open {
-    display: flex;
-  }
-
-  .site-nav a {
-    display: block;
-    width: 100%;
-    padding: 12px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-}
-
 /* =========================
    BUTTONS
    ========================= */
@@ -263,6 +220,56 @@ select {
 
 .hero-buttons {
   justify-content: center;
+}
+
+.hero-paths {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+}
+
+.hero-paths a {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 6px 12px;
+  border: 1px solid rgba(124, 196, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(124, 196, 255, 0.08);
+  color: #7cc4ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-paths a:hover {
+  background: rgba(124, 196, 255, 0.16);
+  border-color: rgba(124, 196, 255, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.start-here-bridge {
+  margin: 18px auto 0;
+  max-width: 760px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(124, 196, 255, 0.18);
+  border-radius: 12px;
+  color: #d6d6d6;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.start-here-bridge a {
+  color: #7cc4ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.start-here-bridge a:hover {
+  text-decoration: underline;
 }
 
 /* =========================
@@ -1458,6 +1465,42 @@ footer,
    ========================= */
 
 @media (max-width: 900px) {
+  .container.nav {
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .logo img {
+    max-height: 46px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 0 4px;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
   .grid,
   .topic-grid,
   .trust-grid,
@@ -1477,8 +1520,7 @@ footer,
   .author-hero-photo img {
     max-width: 220px;
     margin: 0 auto;
-
-    }
+  }
 
   .section-heading {
     flex-direction: column;
@@ -1624,57 +1666,26 @@ footer,
     line-height: 1.24;
   }
 }
-.hero-paths {
-  margin: 18px auto 0;
-  max-width: 760px;
-  font-size: 1.02rem;
-  line-height: 1.8;
-  color: #d0d0d0;
-}
 
-.hero-paths a {
-  display: inline-block;
-  margin: 4px 6px 4px 0;
-  padding: 6px 12px;
-  border: 1px solid rgba(124, 196, 255, 0.28);
-  border-radius: 999px;
-  background: rgba(124, 196, 255, 0.08);
-  color: #7cc4ff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.hero-paths a:hover {
-  background: rgba(124, 196, 255, 0.16);
-  border-color: rgba(124, 196, 255, 0.5);
-  transform: translateY(-1px);
-  text-decoration: none;
-}
-.start-here-bridge {
-  margin: 18px auto 0;
-  max-width: 760px;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(124, 196, 255, 0.18);
-  border-radius: 12px;
-  color: #d6d6d6;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.start-here-bridge a {
-  color: #7cc4ff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.start-here-bridge a:hover {
-  text-decoration: underline;
-}
 @media (max-width: 700px) {
   .hero {
     padding: 55px 0;
+  }
+
+  .hero-paths {
+    margin-top: 16px;
+  }
+
+  .hero-paths a {
+    margin: 4px 4px 8px 0;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  .start-here-bridge {
+    padding: 12px 14px;
+    font-size: 0.96rem;
+    line-height: 1.65;
   }
 
   .resource-card-grid {
