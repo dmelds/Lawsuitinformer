@@ -577,6 +577,63 @@ select {
 }
 
 /* =========================
+   RELATED CONTENT HELPERS
+   ========================= */
+
+.section-bridge {
+  margin: 22px 0 10px;
+  color: #cfcfcf;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.related-paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 26px;
+  justify-content: flex-start;
+}
+
+.related-paths a {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border: 1px solid rgba(124, 196, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(124, 196, 255, 0.05);
+  color: #7cc4ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.related-paths a:hover {
+  background: rgba(124, 196, 255, 0.12);
+  border-color: rgba(124, 196, 255, 0.38);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.related-inline {
+  margin: 18px 0 24px;
+  color: #d6d6d6;
+  line-height: 1.8;
+}
+
+.related-inline a {
+  color: #7cc4ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.related-inline a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
    LISTS
    ========================= */
 
@@ -1673,6 +1730,79 @@ footer,
     font-size: 0.66rem;
     line-height: 1.24;
   }
+   .on-this-page {
+  margin: 28px 0 34px;
+}
+
+.on-this-page strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li + li {
+  margin-top: 8px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #232323;
+  border-radius: 10px;
+  background: #101010;
+  color: #d8e9ff;
+  font-weight: 500;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.toc-list a:hover {
+  border-color: rgba(124, 196, 255, 0.35);
+  background: rgba(124, 196, 255, 0.06);
+  color: #7cc4ff;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+   .footer-col {
+  min-width: 0;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 0 0 10px;
+}
+
+.footer-links a {
+  display: inline-block;
+  color: #cfd8e3;
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #7cc4ff;
+  text-decoration: none;
+  transform: translateX(2px);
+}
 }
 
 @media (max-width: 700px) {
