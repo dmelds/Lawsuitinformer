@@ -65,7 +65,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -73,7 +73,19 @@
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
@@ -88,8 +100,9 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>Illnesses</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Illnesses</span>
   </nav>
 
   <section class="hero">
@@ -100,19 +113,15 @@
         Some lawsuits involve allegations that chemical exposure, environmental contamination, consumer products, pesticides, medications, or other harmful substances contributed to illness. This page serves as a hub for diagnosis-related and exposure-related topics often discussed in litigation.
       </p>
 
-      <p>
-        Some readers prefer to start with a diagnosis, while others begin with a broader exposure category. You can also browse
-        <a href="browse-lawsuits.html">lawsuit topics by category</a>,
-        explore
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms Linked to Lawsuits</a>,
-        or review
-        <a href="legal-guides.html">legal guides</a>
-        for more background.
+      <p class="hero-paths">
+        <a href="legal-guides.html">Legal Guides</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="start-here.html">Start Here</a>
       </p>
 
-      <p>
-        Looking for symptom-based entry points instead? Explore
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms Linked to Lawsuits</a>.
+      <p class="start-here-bridge">
+        New to lawsuits? <a href="start-here.html">Start here</a> for a simple overview of how the process works step by step.
       </p>
     </div>
   </section>
@@ -483,6 +492,21 @@
     <p>Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
