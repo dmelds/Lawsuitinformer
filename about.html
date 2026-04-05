@@ -72,7 +72,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -80,7 +80,19 @@
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -95,8 +107,9 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>About</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">About</span>
   </nav>
 
   <h1>About Lawsuit Informer</h1>
@@ -110,7 +123,8 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> Lawsuit Informer provides general educational information only and does not offer legal advice through this website.
+    <strong>Important:</strong>
+    <p>Lawsuit Informer provides general educational information only and does not offer legal advice through this website.</p>
   </div>
 
   <section class="author-hero">
@@ -260,9 +274,24 @@
 
   <div class="container footer-bottom">
     <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
