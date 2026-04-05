@@ -1730,6 +1730,52 @@ footer,
     font-size: 0.66rem;
     line-height: 1.24;
   }
+   .on-this-page {
+  margin: 28px 0 34px;
+}
+
+.on-this-page strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li + li {
+  margin-top: 8px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #232323;
+  border-radius: 10px;
+  background: #101010;
+  color: #d8e9ff;
+  font-weight: 500;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.toc-list a:hover {
+  border-color: rgba(124, 196, 255, 0.35);
+  background: rgba(124, 196, 255, 0.06);
+  color: #7cc4ff;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
 }
 
 @media (max-width: 700px) {
