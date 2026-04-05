@@ -15,6 +15,7 @@
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
 <link rel="canonical" href="https://lawsuitinformer.com/symptoms-linked-to-lawsuits.html" />
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,7 +63,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -70,7 +71,19 @@
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -85,41 +98,44 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>Symptoms</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Symptoms</span>
   </nav>
 
-  <h1>Symptoms Linked to Lawsuits</h1>
+  <section class="hero">
+    <div class="container narrow">
+      <h1>Symptoms Linked to Lawsuits</h1>
 
-  <p class="article-byline">
-    By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
-  </p>
+      <p class="article-byline">
+        By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
+      </p>
 
-  <p class="article-date">
-    Last updated: March 30, 2026
-  </p>
+      <p class="article-date">
+        Last updated: March 30, 2026
+      </p>
 
-  <p class="article-intro">
-    People often begin researching symptoms before they know exactly what may have caused them. In some situations, symptoms are later discussed alongside chemical exposure, defective products, environmental contamination, medications, or other issues that become the subject of legal claims. This page provides general educational information about symptom patterns people often research in that context.
-  </p>
+      <p class="article-intro">
+        People often begin researching symptoms before they know exactly what may have caused them. In some situations, symptoms are later discussed alongside chemical exposure, defective products, environmental contamination, medications, or other issues that become the subject of legal claims. This page provides general educational information about symptom patterns people often research in that context.
+      </p>
 
-  <p>
-    Some readers start with symptoms, while others begin with a diagnosis or a broader exposure category. You can also explore
-    <a href="illnesses-linked-to-lawsuits.html">Illnesses and Exposures Linked to Lawsuits</a>,
-    browse
-    <a href="browse-lawsuits.html">lawsuit topics by category</a>,
-    or review
-    <a href="legal-guides.html">legal guides</a>.
-  </p>
+      <p class="hero-paths">
+        <a href="legal-guides.html">Legal Guides</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="start-here.html">Start Here</a>
+      </p>
 
-  <p>
-    Looking for diagnosis-based entry points instead? Explore
-    <a href="illnesses-linked-to-lawsuits.html">Illnesses and Exposures Linked to Lawsuits</a>.
-  </p>
+      <p class="start-here-bridge">
+        New to lawsuits? <a href="start-here.html">Start here</a> for a simple overview of how the process works step by step.
+      </p>
 
-  <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information only and does not constitute medical or legal advice.
-  </div>
+      <div class="info-box">
+        <strong>Important:</strong>
+        <p>This page provides general educational information only and does not constitute medical or legal advice.</p>
+      </div>
+    </div>
+  </section>
 
   <h2>On This Page</h2>
   <ul>
@@ -361,9 +377,24 @@
 
   <div class="container footer-bottom">
     <p>Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
