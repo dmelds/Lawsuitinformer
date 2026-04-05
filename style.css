@@ -1803,6 +1803,13 @@ footer,
   text-decoration: none;
   transform: translateX(2px);
 }
+   .step-link {
+  margin: 10px 0 26px;
+}
+
+.step-link a {
+  display: inline-flex;
+}
 }
 
 @media (max-width: 700px) {
