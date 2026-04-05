@@ -35,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-23",
- "dateModified": "2026-04-02",
+  "dateModified": "2026-04-02",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/start-here.html"
@@ -73,7 +73,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -81,9 +81,21 @@
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -96,28 +108,43 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>Start Here</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Start Here</span>
   </nav>
 
-  <h1>New to Lawsuits? Start Here</h1>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">START HERE</p>
+      <h1>New to Lawsuits? Start Here</h1>
 
-  <p class="article-byline">
-    By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
-  </p>
+      <p class="article-byline">
+        By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
+      </p>
 
-  <p class="article-date">
-    Last updated: April 2, 2026
-  </p>
+      <p class="article-date">
+        Last updated: April 2, 2026
+      </p>
 
-  <p class="article-intro">
-    If you are new to lawsuits and trying to understand where to begin, this page is a simple starting point. It is designed to help readers understand the basic process, what usually happens next, what information may matter, and where to continue learning.
-  </p>
+      <p class="article-intro">
+        If you are new to lawsuits and trying to understand where to begin, this page is a simple starting point. It is designed to help readers understand the basic process, what usually happens next, what information may matter, and where to continue learning.
+      </p>
 
-  <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
-  </div>
+      <p class="hero-paths">
+        <a href="legal-guides.html">Legal Guides</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+      </p>
+
+      <div class="info-box">
+        <strong>Important:</strong>
+        <p>This page provides general educational information and does not constitute legal advice.</p>
+      </div>
+    </div>
+  </section>
 
   <h2>What Is This Page For?</h2>
   <p>
@@ -160,12 +187,12 @@
   </p>
 
   <h2>Step 5: Know What to Ask Before Signing</h2>
-<p>
-  Before agreeing to representation, many people want to understand fees, communication, expectations, and what the lawyer may need next. That is often one of the most practical next steps after the basic process becomes clearer.
-</p>
-<p>
-  <a href="questions-to-ask-before-signing-with-a-lawyer.html">Read: What Questions Should You Ask Before Signing With a Lawyer?</a>
-</p>
+  <p>
+    Before agreeing to representation, many people want to understand fees, communication, expectations, and what the lawyer may need next. That is often one of the most practical next steps after the basic process becomes clearer.
+  </p>
+  <p>
+    <a href="questions-to-ask-before-signing-with-a-lawyer.html">Read: What Questions Should You Ask Before Signing With a Lawyer?</a>
+  </p>
 
   <h2>Step 6: Learn a Few Key Legal Terms</h2>
   <p>
@@ -265,7 +292,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> March 2026
+          <strong>Last Updated:</strong> April 2, 2026
         </p>
 
         <p>
@@ -325,9 +352,24 @@
 
   <div class="container footer-bottom">
     <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
