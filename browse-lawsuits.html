@@ -14,6 +14,7 @@
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
 <link rel="canonical" href="https://lawsuitinformer.com/browse-lawsuits.html" />
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,7 +62,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -69,7 +70,19 @@
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -84,8 +97,9 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>Browse Lawsuits</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Browse Lawsuits</span>
   </nav>
 
   <section class="page-hero">
@@ -97,25 +111,22 @@
         Browse educational guides covering chemical exposure, defective products, environmental contamination, addiction-related litigation, and broader consumer safety issues.
       </p>
 
-      <p>
-        Some readers begin with a broad category, while others start with a diagnosis or symptom. You can also explore
-        <a href="illnesses-linked-to-lawsuits.html">illnesses linked to lawsuits</a>,
-        review
-        <a href="symptoms-linked-to-lawsuits.html">symptoms linked to lawsuits</a>,
-        or visit
-        <a href="legal-guides.html">legal guides</a>
-        for more background.
+      <p class="hero-paths">
+        You can also explore
+        <a href="legal-guides.html">Legal Guides</a>,
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>,
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>,
+        or
+        <a href="start-here.html">Start Here</a>.
       </p>
 
-      <p>
-        Not sure where to begin? Start with the category that feels closest to your situation, or visit
-        <a href="start-here.html">Start Here</a>
-        for a simple introduction to
-        <a href="how-lawsuits-work.html">how lawsuits work</a>.
+      <p class="start-here-bridge">
+        Not sure where to begin? <a href="start-here.html">Start here</a> for a simple introduction to how lawsuits work step by step.
       </p>
 
       <div class="info-box">
-        <strong>Important:</strong> This page provides general educational information only and does not constitute legal advice.
+        <strong>Important:</strong>
+        <p>This page provides general educational information only and does not constitute legal advice.</p>
       </div>
     </div>
   </section>
@@ -476,9 +487,24 @@
 
   <div class="container footer-bottom">
     <p>Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
