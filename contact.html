@@ -81,7 +81,7 @@
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
@@ -117,140 +117,131 @@
     <span aria-current="page">Contact</span>
   </nav>
 
-  <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">CONTACT</p>
-      <h1>Contact Lawsuit Informer</h1>
+  <h1>Contact Lawsuit Informer</h1>
 
-      <p class="article-intro">
-        Get in touch with Lawsuit Informer for general questions, editorial inquiries, media inquiries, or site-related feedback.
+  <p class="article-intro">
+    Get in touch with Lawsuit Informer for general questions, editorial inquiries, media inquiries, or site-related feedback.
+  </p>
+
+  <p>
+    This contact page is intended for general, editorial, media, and business inquiries related to the site and its educational content.
+  </p>
+
+  <div class="info-box">
+    <strong>Important:</strong>
+    <p>Lawsuit Informer is an educational platform. This contact page is intended for general, editorial, media, and business inquiries only. Contacting the site does not create an attorney-client relationship.</p>
+  </div>
+
+  <section class="browse-category">
+    <h2>General Contact</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>General Questions</h3>
+        <p>
+          For general questions about the site, editorial content, or other inquiries, contact Lawsuit Informer by email.
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'contact_page')">
+            hello@lawsuitinformer.com
+          </a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Editorial and Media Inquiries</h3>
+        <p>
+          Lawsuit Informer welcomes editorial questions, feedback about site content, and media-related inquiries.
+        </p>
+        <p>
+          Please include enough detail in your message so the inquiry can be reviewed efficiently.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="browse-category">
+    <h2>Send a Message</h2>
+
+    <div class="card">
+      <p>
+        Use the form below for general questions, editorial inquiries, media inquiries, or site-related feedback.
       </p>
 
-      <div class="info-box">
-        <strong>Important:</strong>
-        <p>Lawsuit Informer is an educational platform. This contact page is intended for general, editorial, media, and business inquiries only. Contacting the site does not create an attorney-client relationship.</p>
-      </div>
-    </div>
-  </section>
+      <p class="form-note">
+        Do not send highly sensitive, confidential, or time-sensitive information through this form. Submitting a message does not create an attorney-client relationship.
+      </p>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid">
+      <form
+        name="site-contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thank-you.html"
+        class="case-review-form"
+      >
+        <input type="hidden" name="form-name" value="site-contact">
 
-        <div class="card">
-          <h2>General Contact</h2>
-          <p>
-            For general questions about the site, editorial content, or other inquiries, contact Lawsuit Informer by email.
-          </p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'contact_page')">
-              hello@lawsuitinformer.com
-            </a>
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Editorial and Media Inquiries</h2>
-          <p>
-            Lawsuit Informer welcomes editorial questions, feedback about site content, and media-related inquiries.
-          </p>
-          <p>
-            Please include enough detail in your message so the inquiry can be reviewed efficiently.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="card">
-        <h2>Send a Message</h2>
-        <p>
-          Use the form below for general questions, editorial inquiries, media inquiries, or site-related feedback.
+        <p hidden>
+          <label>Don’t fill this out: <input name="bot-field"></label>
         </p>
+
+        <label for="name">Your Name</label>
+        <input id="name" type="text" name="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="Your email" required>
+
+        <label for="subject">Subject</label>
+        <input id="subject" type="text" name="subject" placeholder="What is this about?">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write your message here" required></textarea>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
 
         <p class="form-note">
-          Do not send highly sensitive, confidential, or time-sensitive information through this form. Submitting a message does not create an attorney-client relationship.
+          Educational, editorial, media, and general business contact only. Submitting this form does not create an attorney-client relationship.
         </p>
-
-        <form
-          name="site-contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/thank-you.html"
-          class="case-review-form"
-        >
-          <input type="hidden" name="form-name" value="site-contact">
-
-          <p hidden>
-            <label>Don’t fill this out: <input name="bot-field"></label>
-          </p>
-
-          <label for="name">Your Name</label>
-          <input id="name" type="text" name="name" placeholder="Your name" required>
-
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="Your email" required>
-
-          <label for="subject">Subject</label>
-          <input id="subject" type="text" name="subject" placeholder="What is this about?">
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Write your message here" required></textarea>
-
-          <button type="submit" class="btn btn-primary">
-            Send Message
-          </button>
-
-          <p class="form-note">
-            Educational, editorial, media, and general business contact only. Submitting this form does not create an attorney-client relationship.
-          </p>
-        </form>
-      </div>
+      </form>
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="container">
-      <h2>About This Site</h2>
-      <p>
-        Lawsuit Informer is an attorney-led educational platform focused on helping readers better understand lawsuits, legal process topics, consumer safety issues, toxic exposure concerns, and related legal questions.
-      </p>
+  <section class="browse-category">
+    <h2>About This Site</h2>
 
-      <p>
-        Content on this site is provided for educational and informational purposes only and does not constitute legal advice.
-      </p>
-    </div>
+    <p>
+      Lawsuit Informer is an attorney-led educational platform focused on helping readers better understand lawsuits, legal process topics, consumer safety issues, toxic exposure concerns, and related legal questions.
+    </p>
+
+    <p>
+      Content on this site is provided for educational and informational purposes only and does not constitute legal advice.
+    </p>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Response Scope</h2>
-      <p>
-        Messages may be reviewed for general site, editorial, media, or business inquiries. Contacting Lawsuit Informer does not by itself create an attorney-client relationship, and this page is not presented as a channel for legal representation.
-      </p>
+  <section class="browse-category">
+    <h2>Response Scope</h2>
 
-      <p>
-        Individuals seeking legal advice should consult a qualified attorney regarding their own situation.
-      </p>
-    </div>
+    <p>
+      Messages may be reviewed for general site, editorial, media, or business inquiries. Contacting Lawsuit Informer does not by itself create an attorney-client relationship, and this page is not presented as a channel for legal representation.
+    </p>
+
+    <p>
+      Individuals seeking legal advice should consult a qualified attorney regarding their own situation.
+    </p>
   </section>
 
-  <section class="section alt">
-    <div class="container">
-      <h2>Helpful Links</h2>
-      <ul class="lawsuit-list">
-        <li><a href="about.html">About Lawsuit Informer</a></li>
-        <li><a href="editorial-policy.html">Editorial Policy</a></li>
-        <li><a href="legal-guides.html">Legal Guides</a></li>
-        <li><a href="statute-of-limitations-basics.html">Statute of Limitations Basics</a></li>
-        <li><a href="browse-lawsuits.html">Browse Lawsuit Topics</a></li>
-      </ul>
-    </div>
+  <section class="browse-category">
+    <h2>Helpful Links</h2>
+
+    <ul class="lawsuit-list">
+      <li><a href="about.html">About Lawsuit Informer</a></li>
+      <li><a href="editorial-policy.html">Editorial Policy</a></li>
+      <li><a href="legal-guides.html">Legal Guides</a></li>
+      <li><a href="statute-of-limitations-basics.html">Statute of Limitations Basics</a></li>
+      <li><a href="browse-lawsuits.html">Browse Lawsuit Topics</a></li>
+    </ul>
   </section>
 
 </main>
@@ -269,9 +260,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -283,9 +274,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
