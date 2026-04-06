@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,39 +69,50 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
-
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
   </div>
 </header>
 
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>MDL Basics</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">MDL Basics</span>
   </nav>
 
   <h1>MDL Basics</h1>
@@ -126,16 +136,35 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information about multidistrict litigation and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information about multidistrict litigation and does not constitute legal advice.</p>
   </div>
 
-  <h2>What Does MDL Mean?</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#what-does-mdl-mean">What does MDL mean?</a></li>
+      <li><a href="#why-mdl-matters">Why MDL matters</a></li>
+      <li><a href="#what-kinds-of-cases">What kinds of cases often end up in an MDL?</a></li>
+      <li><a href="#how-mdl-usually-works">How MDL usually works</a></li>
+      <li><a href="#mdl-vs-class-action">Is MDL the same as a class action?</a></li>
+      <li><a href="#mdl-vs-mass-tort">Is MDL the same as a mass tort?</a></li>
+      <li><a href="#coordinated-pretrial">What happens during coordinated pretrial proceedings?</a></li>
+      <li><a href="#bellwether-trials">What are bellwether trials?</a></li>
+      <li><a href="#do-mdl-cases-settle">Do MDL cases always settle?</a></li>
+      <li><a href="#return-to-original-courts">Can cases return to their original courts?</a></li>
+      <li><a href="#why-mdl-takes-time">Why MDL can take a long time</a></li>
+      <li><a href="#common-questions">Common questions people ask</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-does-mdl-mean">What Does MDL Mean?</h2>
 
   <p>
     MDL stands for multidistrict litigation. In federal court, cases filed in different districts that involve common factual questions may be transferred to one court for coordinated pretrial proceedings. The goal is usually to improve efficiency, reduce duplication, and avoid inconsistent rulings on shared issues.
   </p>
 
-  <h2>Why MDL Matters</h2>
+  <h2 id="why-mdl-matters">Why MDL Matters</h2>
 
   <p>
     MDL matters because large groups of cases can involve many of the same issues, such as common evidence, expert disputes, corporate documents, product design questions, scientific issues, or alleged exposure history. Without coordination, many different federal courts could end up handling the same pretrial problems separately.
@@ -143,11 +172,13 @@
 
   <p>
     Readers learning about MDL often also review
-    <a href="mass-torts.html">Mass Torts</a>
+    <a href="mass-torts.html">Mass Torts</a>,
+    <a href="class-action.html">Class Actions</a>, and
+    <a href="bellwether-trials.html">Bellwether Trials</a>
     to understand the broader litigation structure around these cases.
   </p>
 
-  <h2>What Kinds of Cases Often End Up in an MDL?</h2>
+  <h2 id="what-kinds-of-cases">What Kinds of Cases Often End Up in an MDL?</h2>
 
   <ul class="lawsuit-list">
     <li>Defective drug litigation</li>
@@ -158,55 +189,55 @@
     <li>Other large-scale federal mass tort matters</li>
   </ul>
 
-  <h2>How MDL Usually Works</h2>
+  <h2 id="how-mdl-usually-works">How MDL Usually Works</h2>
 
   <p>
     When similar federal cases are pending in different districts, they may be centralized for coordinated pretrial proceedings in one federal court. That court may oversee discovery, motion practice, expert issues, scheduling, and other matters affecting many cases at once. Even though the cases are coordinated, each plaintiff may still have an individual claim with individual facts and damages.
   </p>
 
-  <h2>Is MDL the Same as a Class Action?</h2>
+  <h2 id="mdl-vs-class-action">Is MDL the Same as a Class Action?</h2>
 
   <p>
     No. MDL is not the same as a class action. A class action is a procedural device in which one or more representative plaintiffs pursue claims on behalf of a class. MDL, by contrast, is a way of coordinating many separate federal cases that share factual issues. In an MDL, plaintiffs usually remain individual claimants rather than becoming part of one class-wide case.
   </p>
 
-  <h2>Is MDL the Same as a Mass Tort?</h2>
+  <h2 id="mdl-vs-mass-tort">Is MDL the Same as a Mass Tort?</h2>
 
   <p>
     Not exactly. MDL is a federal procedural framework, while mass tort is a broader way of describing many individual claims involving similar alleged harm. Many mass tort cases are handled through MDL, but not every mass tort is an MDL, and some related proceedings may also happen in state courts outside the federal MDL system.
   </p>
 
-  <h2>What Happens During Coordinated Pretrial Proceedings?</h2>
+  <h2 id="coordinated-pretrial">What Happens During Coordinated Pretrial Proceedings?</h2>
 
   <p>
     Coordinated pretrial proceedings may include document discovery, depositions, expert disclosures, briefing on common legal issues, disputes about evidence, and rulings that affect many cases. Courts may also address scheduling orders, leadership structure, plaintiff fact sheets, defendant disclosures, and settlement discussions.
   </p>
 
-  <h2>What Are Bellwether Trials?</h2>
+  <h2 id="bellwether-trials">What Are Bellwether Trials?</h2>
 
   <p>
     In some MDLs, a small number of representative cases are selected for bellwether trials. These trials do not automatically decide every other case, but they can help the parties understand how evidence may play with juries and how particular legal arguments may perform. Bellwether results often influence settlement discussions and overall case strategy.
   </p>
 
-  <h2>Do MDL Cases Always Settle?</h2>
+  <h2 id="do-mdl-cases-settle">Do MDL Cases Always Settle?</h2>
 
   <p>
     No. Some MDLs lead to large-scale settlements or settlement programs, while others continue through extensive litigation. Outcomes can vary depending on the evidence, scientific issues, court rulings, trial results, and the willingness of the parties to resolve the cases.
   </p>
 
-  <h2>Can Cases Return to Their Original Courts?</h2>
+  <h2 id="return-to-original-courts">Can Cases Return to Their Original Courts?</h2>
 
   <p>
     In general, MDL is designed for coordinated pretrial proceedings rather than automatically keeping every case in one place forever. If cases are not resolved during the MDL process, some may be returned to their original courts for trial or further proceedings. That is one reason MDL is often described as coordination rather than permanent merger of all cases.
   </p>
 
-  <h2>Why MDL Can Take a Long Time</h2>
+  <h2 id="why-mdl-takes-time">Why MDL Can Take a Long Time</h2>
 
   <p>
     MDL proceedings can take a long time because they often involve huge numbers of records, expert disputes, complex science, multiple law firms, corporate evidence, and large groups of claimants. Coordinating all of that can add efficiency in one sense, but it can still take years for major proceedings to unfold.
   </p>
 
-  <h2>Common Questions People Ask</h2>
+  <h2 id="common-questions">Common Questions People Ask</h2>
 
   <ul class="lawsuit-list">
     <li>What is multidistrict litigation?</li>
@@ -226,7 +257,6 @@
   </div>
 
   <div class="cta-box">
-
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
@@ -234,13 +264,8 @@
     </p>
 
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="mass-torts.html">
-        Mass Torts
-      </a>
-
-      <a class="btn btn-secondary" href="bellwether-trials.html">
-        Bellwether Trials
-      </a>
+      <a class="btn btn-primary" href="mass-torts.html">Mass Torts</a>
+      <a class="btn btn-secondary" href="bellwether-trials.html">Bellwether Trials</a>
     </div>
 
     <p class="form-bridge">
@@ -291,7 +316,6 @@
     <p class="form-note">
       Educational purposes only. Submitting this form does not create an attorney-client relationship.
     </p>
-
   </div>
 
   <h2>Related Legal Guides</h2>
@@ -307,11 +331,10 @@
     <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
   </ul>
 
-  <section class="author-box-section">
-    <div class="container author-box">
-
+  <section class="article-meta">
+    <div class="author-box">
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.png" alt="David Meldofsky" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -336,7 +359,6 @@
           Educational information only. Not legal advice. No attorney-client relationship is formed.
         </p>
       </div>
-
     </div>
   </section>
 
@@ -348,9 +370,7 @@
     <div>
       <h3>Lawsuit Informer</h3>
       <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-
       <p><strong>Questions about a potential case? Contact us directly.</strong></p>
-
       <p>
         <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
           hello@lawsuitinformer.com
@@ -358,9 +378,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -376,9 +396,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -392,6 +412,21 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
