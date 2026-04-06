@@ -72,7 +72,8 @@ select {
    HEADER
    ========================= */
 
-.site-header {
+.site-header,
+header {
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -82,7 +83,8 @@ select {
   -webkit-backdrop-filter: none;
 }
 
-.site-header .container.nav {
+.site-header .container.nav,
+header .container.nav {
   position: relative;
   z-index: 2;
   display: flex;
@@ -100,13 +102,25 @@ select {
   max-height: 52px;
 }
 
-.site-nav {
+/* Supports:
+   .site-nav
+   header nav
+   #site-nav
+   #site-menu
+*/
+.site-nav,
+header nav,
+#site-nav,
+#site-menu {
   display: flex;
   align-items: center;
   gap: 22px;
 }
 
-.site-nav a {
+.site-nav a,
+header nav a,
+#site-nav a,
+#site-menu a {
   color: #f5f5f5;
   font-size: 0.95rem;
   font-weight: 600;
@@ -115,10 +129,18 @@ select {
 }
 
 .site-nav a:hover,
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current="page"],
+header nav a:hover,
+header nav a[aria-current="page"],
+#site-nav a:hover,
+#site-nav a[aria-current="page"],
+#site-menu a:hover,
+#site-menu a[aria-current="page"] {
   color: #7cc4ff;
 }
 
+/* Supports both old and new toggle buttons */
+.nav-toggle,
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -131,8 +153,10 @@ select {
   background: transparent;
   border: 0;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
+.nav-toggle span,
 .menu-toggle span {
   display: block;
   width: 24px;
@@ -142,14 +166,17 @@ select {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+.nav-toggle.active span:nth-child(1),
 .menu-toggle.active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
+.nav-toggle.active span:nth-child(2),
 .menu-toggle.active span:nth-child(2) {
   opacity: 0;
 }
 
+.nav-toggle.active span:nth-child(3),
 .menu-toggle.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -1734,7 +1761,8 @@ footer,
    ========================= */
 
 @media (max-width: 900px) {
-  .site-header .container.nav {
+  .site-header .container.nav,
+  header .container.nav {
     flex-wrap: wrap;
     min-height: 60px;
     padding-top: 6px;
@@ -1745,12 +1773,16 @@ footer,
     max-height: 38px;
   }
 
+  .nav-toggle,
   .menu-toggle {
     display: flex;
     margin-left: auto;
   }
 
-  .site-nav {
+  .site-nav,
+  header nav,
+  #site-nav,
+  #site-menu {
     display: none;
     width: 100%;
     flex-direction: column;
@@ -1759,11 +1791,24 @@ footer,
     padding: 8px 0 4px;
   }
 
-  .site-nav.open {
+  /* supports both JS patterns:
+     .open and .nav-open
+  */
+  .site-nav.open,
+  .site-nav.nav-open,
+  header nav.open,
+  header nav.nav-open,
+  #site-nav.open,
+  #site-nav.nav-open,
+  #site-menu.open,
+  #site-menu.nav-open {
     display: flex;
   }
 
-  .site-nav a {
+  .site-nav a,
+  header nav a,
+  #site-nav a,
+  #site-menu a {
     display: block;
     width: 100%;
     padding: 12px 0;

@@ -73,7 +73,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -88,10 +88,10 @@
       <span></span>
     </button>
 
-    <nav id="site-nav">
+    <nav id="site-nav" class="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
-      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+      <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
@@ -105,10 +105,10 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-    <span>›</span>
-    <span>Neurological Conditions Linked to Lawsuits</span>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Neurological Conditions Linked to Lawsuits</span>
   </nav>
 
   <h1>Neurological Conditions Linked to Lawsuits</h1>
@@ -142,7 +142,7 @@
     <p>This page provides general educational information about neurological conditions discussed in litigation and does not constitute medical or legal advice.</p>
   </div>
 
-  <div class="info-box">
+  <div class="info-box key-takeaways-box">
     <strong>Key Takeaways:</strong>
     <ul>
       <li>Neurological claims may involve pesticides, chemicals, medications, contaminated products, or broader toxic exposure concerns.</li>
@@ -522,7 +522,8 @@
 
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.classList.toggle('active', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
