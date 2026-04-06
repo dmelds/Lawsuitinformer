@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-19",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/statute-of-limitations-basics.html"
@@ -70,12 +69,11 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -84,7 +82,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -114,7 +118,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -133,6 +137,16 @@
 
   <div class="info-box">
     <strong>Important:</strong> This page provides general educational information and does not constitute legal advice. Legal deadlines vary depending on the type of claim, the facts, and the law that applies.
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>A statute of limitations is a filing deadline that can affect whether a lawsuit can still be brought.</li>
+      <li>Different claims often have different deadlines, and those rules can vary by state and case type.</li>
+      <li>Timing issues can become more complicated in toxic exposure, latent injury, and delayed-diagnosis cases.</li>
+      <li>Early timeline review and record gathering can matter even before a case is formally filed.</li>
+    </ul>
   </div>
 
   <h2>What Is a Statute of Limitations?</h2>
@@ -329,7 +343,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -388,6 +402,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

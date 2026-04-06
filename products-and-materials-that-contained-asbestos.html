@@ -82,7 +82,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -90,7 +90,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -138,6 +144,16 @@
   </div>
 
   <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Asbestos was historically used in many heat-resistant, friction, and insulation products.</li>
+      <li>Common categories include insulation, boilers, gaskets, pumps, valves, brakes, clutches, and construction materials.</li>
+      <li>Product history often helps people reconstruct where exposure may have happened.</li>
+      <li>Asbestos product research often overlaps with job history, worksite history, and diagnosis-related pages.</li>
+    </ul>
+  </div>
+
+  <div class="info-box">
     <strong>Start here:</strong>
     <ul>
       <li><a href="asbestos-exposure-lawsuits.html">Asbestos Exposure Lawsuits</a></li>
@@ -147,7 +163,22 @@
     </ul>
   </div>
 
-  <h2>Why Asbestos Was Used in So Many Products</h2>
+  <h2>On This Page</h2>
+  <ul>
+    <li><a href="#why-used">Why asbestos was used in so many products</a></li>
+    <li><a href="#common-categories">Common product categories</a></li>
+    <li><a href="#insulation-products">Insulation products</a></li>
+    <li><a href="#boilers-piping">Boilers, piping, and high-heat systems</a></li>
+    <li><a href="#gaskets-pumps-valves">Gaskets, packing, pumps, and valves</a></li>
+    <li><a href="#brakes-clutches">Brakes, clutches, and friction materials</a></li>
+    <li><a href="#construction-materials">Construction materials</a></li>
+    <li><a href="#marine-materials">Marine and shipyard materials</a></li>
+    <li><a href="#refractory-materials">Industrial heat-resistant and refractory materials</a></li>
+    <li><a href="#product-identification">Why product identification matters</a></li>
+    <li><a href="#common-questions">Common questions</a></li>
+  </ul>
+
+  <h2 id="why-used">Why Asbestos Was Used in So Many Products</h2>
 
   <p>
     Asbestos was widely used because it resisted heat, fire, and chemical damage. Manufacturers added it to materials intended for insulation, sealing, friction control, and high-temperature industrial work. That is one reason asbestos exposure may have occurred across many different jobs, buildings, and product categories rather than in only one type of workplace.
@@ -157,7 +188,7 @@
     Many people only begin identifying old asbestos-containing products after reviewing work history, job sites, equipment handled, or building materials present at a location decades earlier.
   </p>
 
-  <h2>Common Product Categories Historically Associated With Asbestos</h2>
+  <h2 id="common-categories">Common Product Categories Historically Associated With Asbestos</h2>
 
   <ul>
     <li>Insulation materials</li>
@@ -172,7 +203,7 @@
     <li>Older commercial and industrial building materials</li>
   </ul>
 
-  <h2>Insulation Products</h2>
+  <h2 id="insulation-products">Insulation Products</h2>
 
   <p>
     Some of the most commonly discussed asbestos-containing materials were insulation products used around pipes, boilers, turbines, tanks, vessels, furnaces, and other heat-producing systems. Workers who installed, removed, cut, repaired, or disturbed these materials may have encountered asbestos dust or fibers.
@@ -185,7 +216,7 @@
     <a href="asbestos-exposure-from-insulation-removal-and-tear-out-work.html">Asbestos Exposure From Insulation Removal and Tear-Out Work</a>.
   </p>
 
-  <h2>Boilers, Piping, and High-Heat Systems</h2>
+  <h2 id="boilers-piping">Boilers, Piping, and High-Heat Systems</h2>
 
   <p>
     Boilers, steam lines, high-pressure piping, engine rooms, and boiler rooms are often discussed in asbestos histories because these systems commonly used insulation, gaskets, packing, and related heat-resistant materials. Exposure may have occurred during routine maintenance, overhaul work, outages, and shutdowns.
@@ -198,7 +229,7 @@
     <a href="asbestos-exposure-in-engine-rooms-and-boiler-rooms.html">Engine Rooms and Boiler Rooms</a>.
   </p>
 
-  <h2>Gaskets, Packing, Pumps, and Valves</h2>
+  <h2 id="gaskets-pumps-valves">Gaskets, Packing, Pumps, and Valves</h2>
 
   <p>
     Industrial valves, pumps, flanges, seals, and gaskets are frequently mentioned in asbestos-related job histories. Workers performing repair, replacement, tear-out, maintenance, or rebuild work may have disturbed old asbestos-containing sealing materials in confined or repetitive work environments.
@@ -211,7 +242,7 @@
     <a href="asbestos-exposure-in-plant-maintenance-and-mechanical-repair.html">Plant Maintenance and Mechanical Repair</a>.
   </p>
 
-  <h2>Brakes, Clutches, and Friction Materials</h2>
+  <h2 id="brakes-clutches">Brakes, Clutches, and Friction Materials</h2>
 
   <p>
     Some brake and clutch components historically used asbestos because of its friction and heat-resistant properties. Automotive workers, mechanics, heavy equipment repair workers, and others involved in brake or clutch servicing may later investigate whether that work contributed to exposure.
@@ -222,7 +253,7 @@
     <a href="asbestos-exposure-from-brakes-and-clutches.html">Asbestos Exposure From Brakes and Clutches</a>.
   </p>
 
-  <h2>Construction Materials</h2>
+  <h2 id="construction-materials">Construction Materials</h2>
 
   <p>
     Asbestos was also used in some building materials, including insulation products, wall materials, pipe coverings, floor products, roofing materials, cement-based materials, and other construction components. Exposure questions often arise during renovation, demolition, maintenance, and restoration work involving older buildings.
@@ -235,7 +266,7 @@
     <a href="where-asbestos-exposure-happened.html">Where Asbestos Exposure Happened</a>.
   </p>
 
-  <h2>Marine and Shipyard Materials</h2>
+  <h2 id="marine-materials">Marine and Shipyard Materials</h2>
 
   <p>
     Ships and shipyards often contained asbestos insulation, engine room materials, pipe coverings, boiler components, gaskets, and other high-heat or fire-resistant products. That is one reason shipbuilding, ship repair, naval service, and marine mechanical work are frequently discussed in asbestos litigation.
@@ -248,7 +279,7 @@
     <a href="asbestos-exposure-in-marine-engine-and-mechanical-work.html">Marine Engine and Mechanical Work</a>.
   </p>
 
-  <h2>Industrial Heat-Resistant and Refractory Materials</h2>
+  <h2 id="refractory-materials">Industrial Heat-Resistant and Refractory Materials</h2>
 
   <p>
     In some settings, asbestos may have been present in refractory materials, heat shields, industrial panels, protective barriers, insulation boards, and other products designed for high-temperature or high-friction use. These materials may have been discussed in factories, refineries, chemical plants, power plants, mills, and other industrial settings.
@@ -261,7 +292,7 @@
     <a href="asbestos-exposure-in-factories-and-industrial-sites.html">Factories and Industrial Sites</a>.
   </p>
 
-  <h2>Why Product Identification Matters in Asbestos Claims</h2>
+  <h2 id="product-identification">Why Product Identification Matters in Asbestos Claims</h2>
 
   <p>
     In many asbestos cases, people do not just ask whether exposure happened. They also try to identify what products, materials, systems, or equipment may have contained asbestos. Product identification can matter because claims often depend on connecting the exposure history to specific manufacturers, suppliers, contractors, premises, or work settings.
@@ -271,7 +302,7 @@
     Even when a person cannot remember a brand name, details such as job duties, equipment handled, plant layout, insulation work, maintenance routines, and coworker testimony may help reconstruct what materials were present.
   </p>
 
-  <h2>Common Questions About Asbestos-Containing Products</h2>
+  <h2 id="common-questions">Common Questions About Asbestos-Containing Products</h2>
 
   <h3>What products commonly contained asbestos?</h3>
   <p>
@@ -354,7 +385,7 @@
     <div class="author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.png" alt="David Meldofsky">
+        <img src="david-meldofsky.PNG" alt="David Meldofsky">
       </div>
 
       <div class="author-details">
@@ -429,6 +460,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

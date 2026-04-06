@@ -76,7 +76,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -85,7 +85,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -133,6 +139,16 @@
 
   <div class="info-box">
     <strong>Important:</strong> This page provides general educational information about product liability lawsuits and does not constitute legal advice.
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Product liability lawsuits focus on allegations that a product was defective or unreasonably dangerous.</li>
+      <li>These claims often involve design defects, manufacturing defects, or inadequate warnings.</li>
+      <li>Product liability cases can involve consumer goods, medical devices, chemicals, drugs, and industrial products.</li>
+      <li>Some product cases grow into larger coordinated proceedings when many people allege similar harm.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -511,6 +527,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

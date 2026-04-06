@@ -38,7 +38,7 @@
       }
     },
     "datePublished": "2026-03-22",
-    "dateModified": "2026-03-22",
+    "dateModified": "2026-04-06",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://lawsuitinformer.com/questions-to-ask-before-signing-with-a-lawyer.html"
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -83,7 +83,13 @@
       </a>
     </div>
 
-    <nav aria-label="Main navigation">
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -98,8 +104,10 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span>›</span>
     <span>Questions to Ask Before Signing With a Lawyer</span>
   </nav>
 
@@ -113,7 +121,7 @@
       </p>
 
       <p class="article-date">
-        Last updated: March 2026
+        Last updated: April 6, 2026
       </p>
 
       <p class="article-intro">
@@ -128,6 +136,16 @@
 
       <div class="info-box">
         <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
+      </div>
+
+      <div class="info-box">
+        <strong>Key Takeaways:</strong>
+        <ul>
+          <li>It helps to understand who will actually handle the matter and who your main contact will be.</li>
+          <li>Fee structure, costs, referral relationships, and communication expectations are worth clarifying before signing.</li>
+          <li>Many people also want to understand what the agreement covers and what the next steps may be.</li>
+          <li>Asking practical questions early can reduce confusion later.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -281,7 +299,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> March 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -349,6 +367,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

@@ -8,12 +8,12 @@
 <meta name="description" content="Review public transvaginal mesh manufacturers, product families, and selected FDA product references that may help identify an implanted device or product line.">
 
 <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://lawsuitinformer.com/transvaginal-mesh-manufacturers-and-public-product-identifiers.html" />
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
-<link rel="canonical" href="https://lawsuitinformer.com/transvaginal-mesh-manufacturers-and-public-product-identifiers.html" />
 
 <script type="application/ld+json">
 {
@@ -35,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-28",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/transvaginal-mesh-manufacturers-and-public-product-identifiers.html"
@@ -73,7 +73,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -81,7 +81,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -110,7 +116,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -120,6 +126,16 @@
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information and does not constitute legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Public FDA records can often help confirm a manufacturer and product family.</li>
+      <li>They usually do not replace operative reports, implant stickers, or revision records for exact identification.</li>
+      <li>Some public records show 510(k) references clearly, while catalog and lot details are much less consistent.</li>
+      <li>The FDA’s 2019 transvaginal POP mesh action still matters when readers compare older products and later regulatory history.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -197,13 +213,13 @@
           <td>Boston Scientific</td>
           <td>Uphold LITE / Xenform</td>
           <td>Later FDA POP mesh materials</td>
-          <td>These products appear in the later FDA record surrounding the 2019 transvaginal POP mesh stop-sale action.</td>
+          <td>These products appear in later FDA materials surrounding transvaginal POP mesh review and the 2019 stop-sale action.</td>
         </tr>
         <tr>
           <td>Coloplast</td>
           <td>Restorelle DirectFix Anterior</td>
           <td>Later FDA POP mesh materials</td>
-          <td>This product appears in the later FDA record surrounding the 2019 transvaginal POP mesh stop-sale action.</td>
+          <td>This product appears in later FDA materials surrounding transvaginal POP mesh review and the 2019 stop-sale action.</td>
         </tr>
       </tbody>
     </table>
@@ -237,7 +253,7 @@
 
   <h2>Why Later FDA History Still Matters</h2>
   <p>
-    The FDA states that in 2019 it ordered manufacturers to stop selling and distributing surgical mesh intended for transvaginal repair of pelvic organ prolapse in the United States. That later regulatory history helps readers distinguish older product families from the narrower group of devices that remained part of the final FDA stop-sale action.  [oai_citation:1‡U.S. Food and Drug Administration](https://www.fda.gov/medical-devices/implants-and-prosthetics/urogynecologic-surgical-mesh-implants?utm_source=chatgpt.com)
+    The FDA states that in 2019 it ordered manufacturers to stop selling and distributing surgical mesh intended for transvaginal repair of pelvic organ prolapse in the United States. That later regulatory history helps readers distinguish older product families from the narrower group of devices that remained part of the final FDA stop-sale action.
   </p>
 
   <h2>Common Questions People Ask</h2>
@@ -269,8 +285,12 @@
       If you're trying to understand whether this situation may apply to you, you can share a few details below to get started.
     </p>
 
-    <form name="case-review" method="POST" data-netlify="true" action="/thank-you.html" class="case-review-form">
+    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
       <input type="hidden" name="form-name" value="case-review">
+
+      <p hidden>
+        <label>Don’t fill this out: <input name="bot-field"></label>
+      </p>
 
       <label for="name">Your Name</label>
       <input id="name" type="text" name="name" placeholder="Your name">
@@ -360,7 +380,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -423,6 +443,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

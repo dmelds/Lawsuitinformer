@@ -31,11 +31,11 @@
     "name": "Lawsuit Informer",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://lawsuitinformer.com/logo-informer.png"
+      "url": "https://lawsuitinformer.com/logo-informer.PNG"
     }
   },
   "datePublished": "2026-03-22",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/what-evidence-helps-a-lawsuit.html"
@@ -73,15 +73,21 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -96,8 +102,10 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span>›</span>
     <span>What Evidence Helps a Lawsuit?</span>
   </nav>
 
@@ -108,7 +116,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -125,6 +133,16 @@
     <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
   </div>
 
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Useful evidence often helps show what happened, when it happened, who was involved, and what harm followed.</li>
+      <li>Common evidence categories include records, photos, communications, receipts, timelines, and witness information.</li>
+      <li>Not every kind of lawsuit uses the same proof, but organized, first-hand documentation is often more useful than guesses or general internet research.</li>
+      <li>Even if someone does not have everything yet, a simple timeline and a few well-organized records can still be a strong starting point.</li>
+    </ul>
+  </div>
+
   <h2>Why Evidence Matters</h2>
   <p>
     In general, evidence helps organize and support the facts behind a legal claim. A lawyer, insurer, court, or opposing party may look at documents, communications, records, and other materials to better understand the timeline, the people involved, the alleged harm, and the possible source of that harm.
@@ -135,9 +153,9 @@
   </p>
 
   <p>
-  In asbestos cases, records questions often go deeper because exposure may have happened many years earlier. For a more specific look at the kinds of medical, employment, military, worksite, product, and witness records that may help support that kind of claim, read
-  <a href="asbestos-records-that-help-support-a-claim.html">What Records Help Support an Asbestos Claim?</a>.
-</p>
+    In asbestos cases, records questions often go deeper because exposure may have happened many years earlier. For a more specific look at the kinds of medical, employment, military, worksite, product, and witness records that may help support that kind of claim, read
+    <a href="asbestos-records-that-help-support-a-claim.html">What Records Help Support an Asbestos Claim?</a>.
+  </p>
 
   <p>
     Readers often move from this page to
@@ -336,7 +354,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -399,6 +417,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>

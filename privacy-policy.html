@@ -8,10 +8,10 @@
 <meta name="description" content="Read the Privacy Policy for Lawsuit Informer, including information about what data may be collected, how it may be used, analytics, contact forms, and your privacy choices.">
 
 <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://lawsuitinformer.com/privacy-policy.html">
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
-<link rel="canonical" href="https://lawsuitinformer.com/privacy-policy.html">
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
 
@@ -22,6 +22,7 @@
   "name": "Privacy Policy",
   "description": "Read the Privacy Policy for Lawsuit Informer, including information about what data may be collected, how it may be used, analytics, contact forms, and your privacy choices.",
   "url": "https://lawsuitinformer.com/privacy-policy.html",
+  "dateModified": "2026-04-06",
   "author": {
     "@type": "Person",
     "name": "David Meldofsky",
@@ -71,7 +72,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -86,14 +93,15 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
+    <a href="index.html">Home</a>
+    <span>›</span>
     <span>Privacy Policy</span>
   </nav>
 
   <h1>Privacy Policy</h1>
 
   <p class="article-date">
-    Last updated: March 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -101,7 +109,8 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> Lawsuit Informer is an educational platform. Use of this site does not create an attorney-client relationship.
+    <strong>Important:</strong>
+    <p>Lawsuit Informer is an educational platform. Use of this site does not create an attorney-client relationship.</p>
   </div>
 
   <h2>Information We May Collect</h2>
@@ -224,6 +233,39 @@
     </a>
   </p>
 
+  <section class="author-box-section">
+    <div class="container author-box">
+
+      <div class="author-photo">
+        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+      </div>
+
+      <div class="author-details">
+        <h3>About the Author</h3>
+
+        <p>
+          <strong><a href="david-meldofsky.html">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
+        </p>
+
+        <p>
+          Learn more about our
+          <a href="editorial-policy.html">Editorial Policy</a>
+          or
+          <a href="contact.html">Contact us</a>.
+        </p>
+
+        <p>
+          <strong>Last Updated:</strong> April 6, 2026
+        </p>
+
+        <p>
+          Educational information only. Not legal advice. No attorney-client relationship is formed.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -234,6 +276,9 @@
       <p>
         Lawsuit Informer is an independent legal education platform providing clear, accessible information about lawsuits, consumer safety issues, and legal rights.
       </p>
+
+      <p><strong>Questions about a potential case? Contact us directly.</strong></p>
+
       <p>
         <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'privacy_footer')">
           hello@lawsuitinformer.com
@@ -271,6 +316,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.getElementById('site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      const isOpen = siteNav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
