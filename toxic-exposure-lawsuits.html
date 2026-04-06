@@ -82,7 +82,7 @@
         </a>
       </div>
 
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -127,8 +127,10 @@
     <p>
       Some readers begin with symptoms or a diagnosis before they know what exposure category to research. You may also want to review
       <a href="symptoms-linked-to-lawsuits.html">Symptoms Linked to Lawsuits</a>,
-      <a href="diseases-linked-to-chemical-exposure.html">Diseases Linked to Chemical Exposure</a>, and
-      <a href="neurological-conditions-linked-to-lawsuits.html">Neurological Conditions Linked to Lawsuits</a>.
+      <a href="diseases-linked-to-chemical-exposure.html">Diseases Linked to Chemical Exposure</a>,
+      <a href="neurological-conditions-linked-to-lawsuits.html">Neurological Conditions Linked to Lawsuits</a>,
+      <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>, and
+      <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>.
     </p>
 
     <div class="info-box">
@@ -152,6 +154,8 @@
       <strong>Start here:</strong>
       <ul>
         <li><a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a></li>
+        <li><a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a></li>
+        <li><a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a></li>
         <li><a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a></li>
         <li><a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a></li>
         <li><a href="pesticide-exposure-lawsuits.html">Pesticide Exposure Lawsuits</a></li>
@@ -266,6 +270,16 @@
     <h2>Consumer Product Toxic Exposure</h2>
 
     <div class="topic-grid">
+      <a class="topic-card" href="pfas-consumer-product-lawsuits.html">
+        <h3>PFAS Consumer Product Lawsuits</h3>
+        <p>Explore PFAS-related claims involving cosmetics, food packaging, treated materials, and other everyday consumer products.</p>
+      </a>
+
+      <a class="topic-card" href="pfas-cosmetics-lawsuits.html">
+        <h3>PFAS Cosmetics Lawsuits</h3>
+        <p>Learn how PFAS allegations involving makeup, beauty products, and personal care items fit into broader consumer product and toxic exposure litigation.</p>
+      </a>
+
       <a class="topic-card" href="heavy-metals-baby-food-lawsuit.html">
         <h3>Heavy Metals in Baby Food Lawsuits</h3>
         <p>Review claims involving allegedly harmful metals in consumer food products and developmental exposure concerns.</p>
@@ -353,6 +367,8 @@
 
       <p class="form-bridge">
         If you're trying to understand whether a situation like this may apply to you, you can share a few details below to get started. You may also want to compare
+        <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>,
+        <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>,
         <a href="symptoms-linked-to-lawsuits.html">symptoms</a>,
         <a href="diseases-linked-to-chemical-exposure.html">disease topics</a>, or
         <a href="cancers-linked-to-lawsuits.html">cancer-related pages</a>.
@@ -522,13 +538,14 @@
   </footer>
 
   <script>
-    const toggle = document.querySelector(".menu-toggle");
-    const siteNav = document.querySelector('#site-nav');
+    const navToggle = document.querySelector(".menu-toggle");
+    const siteNav = document.getElementById("site-menu");
 
     if (navToggle && siteNav) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = siteNav.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navToggle.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("open");
+        navToggle.classList.toggle("active", isOpen);
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
     }
   </script>
