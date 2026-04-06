@@ -36,7 +36,7 @@
     }
   },
   "datePublished": "2026-03-19",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/toxic-tort-basics.html"
@@ -75,7 +75,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -84,7 +84,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -114,7 +120,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -134,6 +140,16 @@
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information about toxic tort litigation and does not constitute legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Toxic tort cases generally involve alleged harm from chemicals, pollution, contaminated water, pesticides, asbestos, or other dangerous substances.</li>
+      <li>These cases often turn on exposure history, medical evidence, scientific causation, and timing.</li>
+      <li>Many toxic tort claims overlap with product liability, environmental contamination, and mass tort litigation.</li>
+      <li>Records, diagnosis timing, and proof of exposure often matter early in case review.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -384,7 +400,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -447,6 +463,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
