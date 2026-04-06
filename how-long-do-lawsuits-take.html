@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,39 +69,50 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
-
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
   </div>
 </header>
 
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>How Long Do Lawsuits Take?</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">How Long Do Lawsuits Take?</span>
   </nav>
 
   <h1>How Long Do Lawsuits Take?</h1>
@@ -126,16 +136,34 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information about lawsuit timelines and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information about lawsuit timelines and does not constitute legal advice.</p>
   </div>
 
-  <h2>Why Some Lawsuits Take Longer Than Others</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#why-some-take-longer">Why some lawsuits take longer than others</a></li>
+      <li><a href="#common-factors">Common factors that affect how long a lawsuit takes</a></li>
+      <li><a href="#investigation-stage">How long does the investigation stage take?</a></li>
+      <li><a href="#after-filing">What happens after a lawsuit is filed?</a></li>
+      <li><a href="#discovery-stage">How long does discovery usually take?</a></li>
+      <li><a href="#motions-delays">Do motions and court delays affect timing?</a></li>
+      <li><a href="#settlement-timing">Do most lawsuits settle before trial?</a></li>
+      <li><a href="#trial-timing">How long does a trial add to the case?</a></li>
+      <li><a href="#appeals">Can appeals make a lawsuit take even longer?</a></li>
+      <li><a href="#faster-cases">Can some lawsuits resolve faster than others?</a></li>
+      <li><a href="#mass-tort-timing">Why some mass tort and class action cases take longer</a></li>
+    </ul>
+  </div>
+
+  <h2 id="why-some-take-longer">Why Some Lawsuits Take Longer Than Others</h2>
 
   <p>
     There is no single timeline that applies to every lawsuit. Some cases are straightforward and settle quickly. Others involve multiple defendants, expert witnesses, large document productions, or disputed legal issues that can significantly extend the process. Court scheduling and local procedures can also affect how long a case takes.
   </p>
 
-  <h2>Common Factors That Affect How Long a Lawsuit Takes</h2>
+  <h2 id="common-factors">Common Factors That Affect How Long a Lawsuit Takes</h2>
 
   <ul class="lawsuit-list">
     <li>The type of legal claim</li>
@@ -148,19 +176,19 @@
     <li>Whether an appeal is filed after judgment</li>
   </ul>
 
-  <h2>How Long Does the Investigation Stage Take?</h2>
+  <h2 id="investigation-stage">How Long Does the Investigation Stage Take?</h2>
 
   <p>
     Before a lawsuit is filed, there is often an investigation period. During that stage, records may be gathered, witnesses may be interviewed, and lawyers may evaluate whether the facts support a legal claim. In some situations this can happen quickly, but in more complex cases it may take much longer to review medical histories, exposure records, employment records, or technical evidence.
   </p>
 
-  <h2>What Happens After a Lawsuit Is Filed?</h2>
+  <h2 id="after-filing">What Happens After a Lawsuit Is Filed?</h2>
 
   <p>
     Once the complaint is filed, the defendant must be served and given time to respond. That response may be an answer or a motion challenging the complaint. Even at this early stage, scheduling rules and motion practice can affect the speed of the case. Some lawsuits move forward promptly, while others slow down because of disputes about jurisdiction, pleading standards, or other procedural issues.
   </p>
 
-  <h2>How Long Does Discovery Usually Take?</h2>
+  <h2 id="discovery-stage">How Long Does Discovery Usually Take?</h2>
 
   <p>
     Discovery is often one of the longest stages of a lawsuit. During discovery, both sides exchange documents, answer written questions, conduct depositions, and retain experts when needed. In a smaller case, discovery may be limited. In a larger product liability, toxic exposure, or mass tort case, discovery can become much more extensive and can take a substantial amount of time.
@@ -173,37 +201,37 @@
     <a href="mdl-basics.html">MDL Basics</a>.
   </p>
 
-  <h2>Do Motions and Court Delays Affect Timing?</h2>
+  <h2 id="motions-delays">Do Motions and Court Delays Affect Timing?</h2>
 
   <p>
     Yes. Motions can delay or reshape a case. Courts may need time to rule on motions to dismiss, summary judgment motions, evidentiary motions, or disputes about discovery. Trial calendars also vary. Even when the parties are ready, the court may not have an immediate trial date available.
   </p>
 
-  <h2>Do Most Lawsuits Settle Before Trial?</h2>
+  <h2 id="settlement-timing">Do Most Lawsuits Settle Before Trial?</h2>
 
   <p>
     Many civil lawsuits resolve before trial through settlement, but the timing of settlement varies. Some cases settle early after initial investigation. Others settle after discovery reveals stronger evidence. Some settle shortly before trial, while others do not settle at all. The possibility of settlement is one reason timelines are hard to predict with precision.
   </p>
 
-  <h2>How Long Does a Trial Add to the Case?</h2>
+  <h2 id="trial-timing">How Long Does a Trial Add to the Case?</h2>
 
   <p>
     If a case goes to trial, the overall timeline usually becomes longer. Preparing witnesses, filing pretrial motions, exchanging exhibits, and waiting for a trial date can all add significant time. After trial, additional post-trial motions may also follow before the case is fully concluded.
   </p>
 
-  <h2>Can Appeals Make a Lawsuit Take Even Longer?</h2>
+  <h2 id="appeals">Can Appeals Make a Lawsuit Take Even Longer?</h2>
 
   <p>
     Yes. An appeal can extend the life of a case after a trial court decision. Appellate courts generally review legal issues rather than completely retrying the evidence, but the appeal process still takes time. If the appellate court reverses part of the decision or sends the case back, additional proceedings may follow.
   </p>
 
-  <h2>Can Some Lawsuits Resolve Faster Than Others?</h2>
+  <h2 id="faster-cases">Can Some Lawsuits Resolve Faster Than Others?</h2>
 
   <p>
     Yes. Some lawsuits resolve more quickly when liability is clearer, damages are easier to document, and fewer parties are involved. Cases may also move faster when both sides are motivated to negotiate early and the court schedule is less congested.
   </p>
 
-  <h2>Why Some Mass Tort and Class Action Cases Take Longer</h2>
+  <h2 id="mass-tort-timing">Why Some Mass Tort and Class Action Cases Take Longer</h2>
 
   <p>
     Mass tort and class action cases often involve many claimants, large volumes of records, expert evidence, and complicated procedural questions. Bellwether trials, multidistrict litigation proceedings, settlement programs, and disputes across multiple jurisdictions can all make these cases take longer than an ordinary single-plaintiff lawsuit.
@@ -229,7 +257,6 @@
   </div>
 
   <div class="cta-box">
-
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
@@ -237,26 +264,8 @@
     </p>
 
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="how-lawsuits-work.html">
-        How Lawsuits Work
-      </a>
-
-      <a class="btn btn-secondary" href="browse-lawsuits.html">
-        Browse Lawsuits
-      </a>
-    </div>
-
-    <div class="related-guides">
-      <h3>Related Legal Guides</h3>
-      <ul class="lawsuit-list">
-        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-        <li><a href="do-you-qualify-for-a-lawsuit.html">Do You Qualify for a Lawsuit?</a></li>
-        <li><a href="what-happens-after-you-contact-a-lawyer.html">What Happens After You Contact a Lawyer?</a></li>
-        <li><a href="what-evidence-helps-a-lawsuit.html">What Evidence Helps a Lawsuit?</a></li>
-        <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
-        <li><a href="mass-torts.html">Mass Torts</a></li>
-        <li><a href="class-action.html">Class Actions</a></li>
-      </ul>
+      <a class="btn btn-primary" href="how-lawsuits-work.html">How Lawsuits Work</a>
+      <a class="btn btn-secondary" href="browse-lawsuits.html">Browse Lawsuits</a>
     </div>
 
     <p class="form-bridge">
@@ -308,14 +317,24 @@
     <p class="form-note">
       Educational purposes only. Submitting this form does not create an attorney-client relationship.
     </p>
-
   </div>
 
-  <section class="author-box-section">
-    <div class="container author-box">
+  <h2>Related Legal Guides</h2>
+  <ul class="lawsuit-list">
+    <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+    <li><a href="do-you-qualify-for-a-lawsuit.html">Do You Qualify for a Lawsuit?</a></li>
+    <li><a href="what-happens-after-you-contact-a-lawyer.html">What Happens After You Contact a Lawyer?</a></li>
+    <li><a href="what-evidence-helps-a-lawsuit.html">What Evidence Helps a Lawsuit?</a></li>
+    <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
+    <li><a href="mass-torts.html">Mass Torts</a></li>
+    <li><a href="class-action.html">Class Actions</a></li>
+  </ul>
+
+  <section class="article-meta">
+    <div class="author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.png" alt="David Meldofsky" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -362,9 +381,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -376,9 +395,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -392,6 +411,21 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>

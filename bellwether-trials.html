@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,18 +74,30 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -100,9 +111,11 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>Bellwether Trials</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Bellwether Trials</span>
   </nav>
 
   <h1>Bellwether Trials</h1>
@@ -126,16 +139,35 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information about bellwether trials and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information about bellwether trials and does not constitute legal advice.</p>
   </div>
 
-  <h2>What Is a Bellwether Trial?</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#what-is-a-bellwether-trial">What is a bellwether trial?</a></li>
+      <li><a href="#why-bellwether-trials-matter">Why bellwether trials matter</a></li>
+      <li><a href="#when-they-are-used">When bellwether trials are used</a></li>
+      <li><a href="#how-cases-are-selected">How bellwether cases are selected</a></li>
+      <li><a href="#do-results-decide-every-case">Do bellwether results decide every case?</a></li>
+      <li><a href="#why-they-influence-settlement">Why bellwether trials can influence settlement</a></li>
+      <li><a href="#how-they-fit-into-mdl">How bellwether trials fit into MDL</a></li>
+      <li><a href="#what-happens-after">What happens after bellwether trials?</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-is-a-bellwether-trial">What Is a Bellwether Trial?</h2>
 
   <p>
     A bellwether trial is an early trial chosen from a larger group of similar cases, often in mass tort or MDL litigation. The idea is to try a smaller number of cases first so the parties and the court can learn how juries may react to the evidence and issues involved.
   </p>
 
-  <h2>Why Bellwether Trials Matter</h2>
+  <p>
+    These are often called test cases because they may provide a preview of how the broader litigation could develop.
+  </p>
+
+  <h2 id="why-bellwether-trials-matter">Why Bellwether Trials Matter</h2>
 
   <p>
     Bellwether trials matter because they can provide information about how strong certain claims or defenses may appear in front of a jury. They can affect how both sides evaluate risk, damages, causation arguments, scientific evidence, witness credibility, and settlement value.
@@ -149,46 +181,79 @@
     to understand the broader structure around these proceedings.
   </p>
 
-  <h2>When Bellwether Trials Are Used</h2>
+  <h2 id="when-they-are-used">When Bellwether Trials Are Used</h2>
 
   <p>
     Bellwether trials are most often discussed in mass tort and multidistrict litigation involving many plaintiffs who bring similar claims against the same defendant or group of defendants. These cases often involve common allegations about a product, drug, chemical, device, or exposure, but each plaintiff may still have different facts and damages.
   </p>
 
-  <h2>How Bellwether Cases Are Selected</h2>
-
   <p>
-    Selection methods can vary. Sometimes the court and the parties work through a process to identify cases that are considered representative of the broader litigation. In other situations, each side may help choose from a pool of cases prepared for trial. The goal is often to select cases that provide useful information about the larger group of claims.
+    They are especially useful when courts and litigants need a practical way to evaluate a large docket without trying every case immediately.
   </p>
 
-  <h2>Do Bellwether Results Decide Every Other Case?</h2>
+  <h2 id="how-cases-are-selected">How Bellwether Cases Are Selected</h2>
 
   <p>
-    No. A bellwether verdict does not automatically decide all of the other cases in the litigation. Each plaintiff’s case may still depend on individual facts, medical history, exposure history, timing, damages, and other issues. Bellwether trials are influential, but they are not usually binding across the entire docket in the same way a single final judgment would be for every claimant.
+    Selection methods can vary. Sometimes the court and the parties work through a process to identify cases that are considered representative of the broader litigation. In other situations, each side may help choose from a pool of cases prepared for trial.
   </p>
 
-  <h2>Why Bellwether Trials Can Influence Settlement</h2>
-
   <p>
-    Bellwether outcomes may change how both sides view the likely value and risks of continued litigation. A strong plaintiff verdict, a strong defense verdict, or mixed results can all affect settlement discussions. Even before a final verdict, what happens during trial can influence the parties’ expectations about future cases.
+    The goal is often to select cases that provide useful information about the larger group of claims, even though no single bellwether case can perfectly represent every plaintiff.
   </p>
 
-  <h2>How Bellwether Trials Fit Into MDL</h2>
+  <h2 id="do-results-decide-every-case">Do Bellwether Results Decide Every Other Case?</h2>
 
   <p>
-    In some MDL proceedings, coordinated pretrial work leads toward a small number of bellwether trials. These test trials can help parties assess how broader issues in the litigation may play out before large numbers of individual cases are resolved or remanded. That is one reason bellwether trials are often discussed alongside <a href="mdl-basics.html">MDL Basics</a>.
+    No. A bellwether verdict does not automatically decide all of the other cases in the litigation. Each plaintiff’s case may still depend on individual facts, medical history, exposure history, timing, damages, and other issues.
+  </p>
+
+  <p>
+    Bellwether trials are influential, but they are not usually binding across the entire docket in the same way a final judgment would be in one individual case.
+  </p>
+
+  <h2 id="why-they-influence-settlement">Why Bellwether Trials Can Influence Settlement</h2>
+
+  <p>
+    Bellwether outcomes may change how both sides view the likely value and risks of continued litigation. A strong plaintiff verdict, a strong defense verdict, or mixed results can all affect settlement discussions.
+  </p>
+
+  <p>
+    Even before a final verdict, what happens during trial may influence the parties’ expectations about future cases.
+  </p>
+
+  <h2 id="how-they-fit-into-mdl">How Bellwether Trials Fit Into MDL</h2>
+
+  <p>
+    In some MDL proceedings, coordinated pretrial work leads toward a small number of bellwether trials. These test trials can help parties assess how broader issues in the litigation may play out before large numbers of individual cases are resolved or remanded.
+  </p>
+
+  <p>
+    That is one reason bellwether trials are often discussed alongside
+    <a href="mdl-basics.html">MDL Basics</a>.
   </p>
 
   <h2>Why Bellwether Trials Are Not the Whole Story</h2>
 
   <p>
-    Bellwether trials can be important, but they do not capture every issue in every case. One plaintiff’s evidence, injury profile, treatment history, or exposure timeline may differ significantly from another’s. As a result, bellwether trials are often seen as informative examples rather than complete answers for all claims.
+    Bellwether trials can be important, but they do not capture every issue in every case. One plaintiff’s evidence, injury profile, treatment history, or exposure timeline may differ significantly from another’s.
   </p>
 
-  <h2>What Happens After Bellwether Trials?</h2>
+  <p>
+    As a result, bellwether trials are often treated as informative examples rather than complete answers for all claims.
+  </p>
+
+  <h2 id="what-happens-after">What Happens After Bellwether Trials?</h2>
 
   <p>
     After bellwether trials, the litigation may move toward settlement discussions, more trials, additional court rulings, or remand of individual cases. The next steps depend on the results, the remaining legal disputes, the parties’ strategy, and the structure of the underlying litigation.
+  </p>
+
+  <p>
+    Readers continuing from here often also want to understand
+    <a href="what-happens-at-trial.html">What Happens at Trial?</a>,
+    <a href="what-is-an-appeal.html">What Is an Appeal?</a>,
+    and
+    <a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a>.
   </p>
 
   <h2>Common Questions People Ask</h2>
@@ -202,16 +267,7 @@
     <li>What happens after the first bellwether trials end?</li>
   </ul>
 
-  <div class="next-steps">
-    <p>
-      Still learning how lawsuits work?
-      <a href="start-here.html"><strong>Start here</strong></a>
-      for a simple step-by-step overview.
-    </p>
-  </div>
-
   <div class="cta-box">
-
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
@@ -219,69 +275,14 @@
     </p>
 
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="mdl-basics.html">
-        MDL Basics
-      </a>
-
-      <a class="btn btn-secondary" href="mass-torts.html">
-        Mass Torts
-      </a>
+      <a class="btn btn-primary" href="mdl-basics.html">MDL Basics</a>
+      <a class="btn btn-secondary" href="mass-torts.html">Mass Torts</a>
     </div>
-
-    <p class="form-bridge">
-      If you are trying to understand whether a legal issue may apply to your situation, you can share a few details below to get started.
-    </p>
-
-    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
-      <input type="hidden" name="form-name" value="case-review">
-      <p hidden>
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
-
-      <label for="name">Your Name</label>
-      <input id="name" type="text" name="name" placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" placeholder="Your email">
-
-      <label for="location">Location (City / State)</label>
-      <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA">
-
-      <label for="case_type">Type of Exposure or Issue</label>
-      <select id="case_type" name="case_type">
-        <option value="">Select one</option>
-        <option>Bellwether Trial</option>
-        <option>MDL</option>
-        <option>Mass Tort</option>
-        <option>Product Liability</option>
-        <option>Other</option>
-      </select>
-
-      <label for="lawyer_status">Have you spoken to a lawyer?</label>
-      <select id="lawyer_status" name="lawyer_status">
-        <option value="">Select one</option>
-        <option>No</option>
-        <option>Yes</option>
-        <option>Not sure</option>
-      </select>
-
-      <label for="message">What happened?</label>
-      <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
-
-      <button type="submit" class="btn btn-primary">
-        Submit for Review
-      </button>
-    </form>
-
-    <p class="form-note">
-      Educational purposes only. Submitting this form does not create an attorney-client relationship.
-    </p>
-
   </div>
 
   <h2>Related Legal Guides</h2>
 
-  <ul class="lawsuit-list">
+  <ul class="toc-list">
     <li><a href="start-here.html">New to Lawsuits? Start Here</a></li>
     <li><a href="mdl-basics.html">MDL Basics</a></li>
     <li><a href="mass-torts.html">Mass Torts</a></li>
@@ -291,11 +292,11 @@
     <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
   </ul>
 
-  <section class="author-box-section">
-    <div class="container author-box">
+  <section class="article-meta">
+    <div class="author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.PNG" alt="David Meldofsky" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -312,9 +313,7 @@
           <a href="contact.html">Contact us</a>.
         </p>
 
-        <p>
-          <strong>Last Updated:</strong> April 2, 2026
-        </p>
+        <p><strong>Last Updated:</strong> April 2, 2026</p>
 
         <p>
           Educational information only. Not legal advice. No attorney-client relationship is formed.
@@ -332,9 +331,7 @@
     <div>
       <h3>Lawsuit Informer</h3>
       <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-
       <p><strong>Questions about a potential case? Contact us directly.</strong></p>
-
       <p>
         <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
           hello@lawsuitinformer.com
@@ -342,14 +339,14 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+        <li><a href="how-lawsuits-work.html">How Lawsuits Work?</a></li>
         <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
         <li><a href="what-is-a-settlement.html">What Is a Settlement?</a></li>
         <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
@@ -360,9 +357,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -373,9 +370,24 @@
 
   <div class="container footer-bottom">
     <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>

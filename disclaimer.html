@@ -8,10 +8,10 @@
 <meta name="description" content="Read the legal disclaimer for Lawsuit Informer, including important information about educational content, no legal advice, no attorney-client relationship, and external links.">
 
 <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://lawsuitinformer.com/disclaimer.html">
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
-<link rel="canonical" href="https://lawsuitinformer.com/disclaimer.html">
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
 
@@ -59,20 +59,31 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -87,8 +98,9 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <span>Legal Disclaimer</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Legal Disclaimer</span>
   </nav>
 
   <h1>Legal Disclaimer</h1>
@@ -102,7 +114,8 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> Content on Lawsuit Informer does not constitute legal advice and should not be relied on as a substitute for consulting a qualified attorney about your specific situation.
+    <strong>Important:</strong>
+    <p>Content on Lawsuit Informer does not constitute legal advice and should not be relied on as a substitute for consulting a qualified attorney about your specific situation.</p>
   </div>
 
   <h2>No Legal Advice</h2>
@@ -190,9 +203,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -204,9 +217,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -220,6 +233,21 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
