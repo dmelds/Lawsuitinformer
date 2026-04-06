@@ -8,12 +8,12 @@
 <meta name="description" content="Learn about recent developments in transvaginal mesh litigation, including FDA action, the closure of the major federal pelvic mesh MDLs, and why people still research these products today.">
 
 <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://lawsuitinformer.com/transvaginal-mesh-litigation-update.html">
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
-<link rel="canonical" href="https://lawsuitinformer.com/transvaginal-mesh-litigation-update.html">
 
 <script type="application/ld+json">
 {
@@ -35,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-28",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/transvaginal-mesh-litigation-update.html"
@@ -73,7 +73,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -81,7 +81,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -110,7 +116,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -120,6 +126,16 @@
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information and does not constitute legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>The main federal pelvic mesh MDLs are no longer active in the way they once were.</li>
+      <li>FDA action in 2019 remains one of the biggest turning points in the transvaginal mesh story.</li>
+      <li>People still research these products because complications and product-identification questions continue long after implantation.</li>
+      <li>Operative reports, implant stickers, and revision records can still matter a great deal.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -139,7 +155,7 @@
 
   <h2>What Changed in Recent Years?</h2>
   <p>
-    One of the clearest turning points came in 2019, when the FDA ordered manufacturers to stop selling and distributing surgical mesh intended for transvaginal repair of pelvic organ prolapse in the United States. That action remains one of the most important public developments in the history of transvaginal mesh litigation.
+    One of the clearest turning points came in 2019, when the FDA ordered manufacturers to stop selling and distributing surgical mesh intended for transvaginal repair of pelvic organ prolapse in the United States.
   </p>
 
   <p>
@@ -204,8 +220,12 @@
       If you're trying to understand whether this situation may apply to you, you can share a few details below to get started.
     </p>
 
-    <form name="case-review" method="POST" data-netlify="true" action="/thank-you.html" class="case-review-form">
+    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
       <input type="hidden" name="form-name" value="case-review">
+
+      <p hidden>
+        <label>Don’t fill this out: <input name="bot-field"></label>
+      </p>
 
       <label for="name">Your Name</label>
       <input id="name" type="text" name="name" placeholder="Your name">
@@ -277,7 +297,7 @@
     <div class="container author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.png" alt="David Meldofsky">
       </div>
 
       <div class="author-details">
@@ -295,7 +315,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -358,6 +378,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
