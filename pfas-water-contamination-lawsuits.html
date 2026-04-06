@@ -84,7 +84,13 @@
         </a>
       </div>
 
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        aria-label="Toggle navigation"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -106,10 +112,10 @@
 
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
-      <span>›</span>
+      <span class="breadcrumb-separator">›</span>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
-      <span>›</span>
-      <span>PFAS Water Contamination Lawsuits</span>
+      <span class="breadcrumb-separator">›</span>
+      <span aria-current="page">PFAS Water Contamination Lawsuits</span>
     </nav>
 
     <section class="page-hero">
@@ -156,17 +162,19 @@
     <section class="article-section">
       <div class="container narrow">
 
-        <h2>On This Page</h2>
-        <ul class="lawsuit-list">
-          <li><a href="#simple-terms">In simple terms</a></li>
-          <li><a href="#what-are-pfas">What PFAS chemicals are</a></li>
-          <li><a href="#who-may-be-affected">Who may be affected</a></li>
-          <li><a href="#why-lawsuits">Why this issue is connected to lawsuits</a></li>
-          <li><a href="#health-concerns">Health concerns people commonly research</a></li>
-          <li><a href="#sources-of-exposure">Common sources of PFAS exposure</a></li>
-          <li><a href="#why-these-cases-matter">Why these cases matter</a></li>
-          <li><a href="#common-questions">Common questions</a></li>
-        </ul>
+        <div class="related-guides">
+          <h2>On This Page</h2>
+          <ul class="link-list">
+            <li><a href="#simple-terms">In simple terms</a></li>
+            <li><a href="#what-are-pfas">What PFAS chemicals are</a></li>
+            <li><a href="#who-may-be-affected">Who may be affected</a></li>
+            <li><a href="#why-lawsuits">Why this issue is connected to lawsuits</a></li>
+            <li><a href="#health-concerns">Health concerns people commonly research</a></li>
+            <li><a href="#sources-of-exposure">Common sources of PFAS exposure</a></li>
+            <li><a href="#why-these-cases-matter">Why these cases matter</a></li>
+            <li><a href="#common-questions">Common questions</a></li>
+          </ul>
+        </div>
 
         <h2 id="simple-terms">In Simple Terms</h2>
 
@@ -413,7 +421,7 @@
 
         <div class="related-guides" style="margin-top: 40px;">
           <h3>Related Lawsuit and Illness Topics</h3>
-          <ul class="lawsuit-list">
+          <ul class="link-list">
             <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
             <li><a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a></li>
             <li><a href="water-contamination-illnesses.html">Water Contamination Illnesses</a></li>
@@ -513,16 +521,18 @@
   </footer>
 
   <script>
-    const toggle = document.querySelector(".menu-toggle");
-    const siteNav = document.getElementById('site-nav');
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("site-menu");
 
-    if (navToggle && siteNav) {
-      navToggle.addEventListener('click', function () {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        siteNav.classList.toggle('open');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("open");
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-    }
+    });
   </script>
 
 </body>
