@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-30",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/chemical-exposure-lawsuits.html"
@@ -75,7 +74,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -84,7 +83,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -114,7 +119,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -128,6 +133,16 @@
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information only and does not constitute medical or legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Chemical exposure claims can arise from workplaces, contaminated water, pesticides, industrial sites, and consumer products.</li>
+      <li>These cases often involve cancer, neurological disease, reproductive injury, or other long-term health concerns.</li>
+      <li>Exposure timing, diagnosis timing, work history, residential history, and records often matter in evaluating a claim.</li>
+      <li>This page connects broader toxic exposure categories with more specific illness and substance-focused topics across the site.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -389,7 +404,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -450,6 +465,18 @@
   </div>
 
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
