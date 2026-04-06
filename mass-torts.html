@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -69,39 +69,50 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
-
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
   </div>
 </header>
 
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>Mass Torts</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Mass Torts</span>
   </nav>
 
   <h1>Mass Torts</h1>
@@ -125,28 +136,53 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information about mass tort litigation and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information about mass tort litigation and does not constitute legal advice.</p>
   </div>
 
-  <h2>What Is a Mass Tort?</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#what-is-a-mass-tort">What is a mass tort?</a></li>
+      <li><a href="#how-mass-tort-cases-work">How mass tort cases usually work</a></li>
+      <li><a href="#mass-torts-vs-class-actions">Why mass torts are different from class actions</a></li>
+      <li><a href="#common-types-of-cases">Common types of cases that become mass torts</a></li>
+      <li><a href="#coordinated-proceedings">What happens in coordinated proceedings?</a></li>
+      <li><a href="#what-is-an-mdl">What is an MDL?</a></li>
+      <li><a href="#what-are-bellwether-trials">What are bellwether trials?</a></li>
+      <li><a href="#why-individual-facts-matter">Why individual facts still matter</a></li>
+      <li><a href="#do-mass-torts-settle">Do mass tort cases usually settle?</a></li>
+      <li><a href="#why-mass-torts-take-time">Why mass torts can take a long time</a></li>
+      <li><a href="#common-questions">Common questions people ask</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-is-a-mass-tort">What Is a Mass Tort?</h2>
 
   <p>
     A mass tort is a type of civil litigation involving many people who allege that they were harmed in a similar way by the same defendant or group of defendants. These cases often arise from defective drugs, dangerous medical devices, toxic exposures, contaminated water, defective consumer products, or widespread product liability issues.
   </p>
 
-  <h2>How Mass Tort Cases Usually Work</h2>
+  <h2 id="how-mass-tort-cases-work">How Mass Tort Cases Usually Work</h2>
 
   <p>
     In many mass tort matters, courts coordinate pretrial proceedings so that common factual and legal issues can be handled more efficiently. This can include coordinated discovery, motions, expert challenges, and other shared proceedings. Even though the cases may be grouped in some way, each person’s claim is often still evaluated individually.
   </p>
 
-  <h2>Why Mass Torts Are Different From Class Actions</h2>
+  <h2 id="mass-torts-vs-class-actions">Why Mass Torts Are Different From Class Actions</h2>
 
   <p>
     Mass torts and class actions are not the same. In a class action, one or more representative plaintiffs seek to pursue claims on behalf of a larger group. In a mass tort, individual plaintiffs typically maintain separate claims, and their injuries, exposure histories, and damages may differ from one person to another.
   </p>
 
-  <h2>Common Types of Cases That Become Mass Torts</h2>
+  <p>
+    Readers comparing these structures often also review
+    <a href="class-action.html">Class Actions</a>,
+    <a href="mdl-basics.html">MDL Basics</a>, and
+    <a href="bellwether-trials.html">Bellwether Trials</a>.
+  </p>
+
+  <h2 id="common-types-of-cases">Common Types of Cases That Become Mass Torts</h2>
 
   <ul class="lawsuit-list">
     <li>Defective drugs and pharmaceuticals</li>
@@ -157,13 +193,13 @@
     <li>Environmental contamination cases</li>
   </ul>
 
-  <h2>What Happens in Coordinated Proceedings?</h2>
+  <h2 id="coordinated-proceedings">What Happens in Coordinated Proceedings?</h2>
 
   <p>
     In coordinated proceedings, courts may manage large numbers of similar cases together for efficiency. Shared issues may include document discovery, expert testimony, corporate evidence, and legal rulings that affect many cases. This can reduce duplication, but it does not necessarily mean that every plaintiff’s outcome will be the same.
   </p>
 
-  <h2>What Is an MDL?</h2>
+  <h2 id="what-is-an-mdl">What Is an MDL?</h2>
 
   <p>
     Many mass torts are handled through multidistrict litigation, often called an MDL. In an MDL, cases filed in different federal courts may be transferred to one judge for coordinated pretrial proceedings. That does not merge every case into one lawsuit, but it can make the process more efficient when many claims raise similar issues.
@@ -174,31 +210,31 @@
     <a href="mdl-basics.html">MDL Basics</a>.
   </p>
 
-  <h2>What Are Bellwether Trials?</h2>
+  <h2 id="what-are-bellwether-trials">What Are Bellwether Trials?</h2>
 
   <p>
     In some mass tort proceedings, a small number of representative cases may be selected for bellwether trials. These trials can help the parties understand how juries may respond to certain evidence and legal arguments. Bellwether results do not automatically decide every other case, but they can influence settlement discussions and litigation strategy.
   </p>
 
-  <h2>Why Individual Facts Still Matter</h2>
+  <h2 id="why-individual-facts-matter">Why Individual Facts Still Matter</h2>
 
   <p>
     Even in a large mass tort, individual facts can remain very important. A person’s medical history, exposure history, timing, diagnosis, records, and damages may all affect how a claim is evaluated. That is one reason mass tort cases are often handled differently from class actions.
   </p>
 
-  <h2>Do Mass Tort Cases Usually Settle?</h2>
+  <h2 id="do-mass-torts-settle">Do Mass Tort Cases Usually Settle?</h2>
 
   <p>
     Some mass tort cases resolve through global or large-scale settlement programs, while others continue through litigation for extended periods. Settlement timing can depend on scientific evidence, court rulings, bellwether trial results, the number of filed claims, and disputes over causation or damages.
   </p>
 
-  <h2>Why Mass Torts Can Take a Long Time</h2>
+  <h2 id="why-mass-torts-take-time">Why Mass Torts Can Take a Long Time</h2>
 
   <p>
     Mass tort litigation can take years because it often involves complex scientific questions, large volumes of records, expert testimony, extensive motion practice, and many claimants. Courts may also need to resolve procedural issues across multiple jurisdictions before cases move toward resolution.
   </p>
 
-  <h2>Common Questions People Ask</h2>
+  <h2 id="common-questions">Common Questions People Ask</h2>
 
   <ul class="lawsuit-list">
     <li>Is a mass tort the same as a class action?</li>
@@ -218,7 +254,6 @@
   </div>
 
   <div class="cta-box">
-
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
@@ -226,26 +261,8 @@
     </p>
 
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="class-action.html">
-        Class Actions
-      </a>
-
-      <a class="btn btn-secondary" href="how-long-do-lawsuits-take.html">
-        How Long Lawsuits Take
-      </a>
-    </div>
-
-    <div class="related-guides">
-      <h3>Related Legal Guides</h3>
-      <ul class="lawsuit-list">
-        <li><a href="start-here.html">New to Lawsuits? Start Here</a></li>
-        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-        <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
-        <li><a href="class-action.html">Class Actions</a></li>
-        <li><a href="mdl-basics.html">MDL Basics</a></li>
-        <li><a href="bellwether-trials.html">Bellwether Trials</a></li>
-        <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
-      </ul>
+      <a class="btn btn-primary" href="class-action.html">Class Actions</a>
+      <a class="btn btn-secondary" href="how-long-do-lawsuits-take.html">How Long Lawsuits Take</a>
     </div>
 
     <p class="form-bridge">
@@ -296,14 +313,24 @@
     <p class="form-note">
       Educational purposes only. Submitting this form does not create an attorney-client relationship.
     </p>
-
   </div>
 
-  <section class="author-box-section">
-    <div class="container author-box">
+  <h2>Related Legal Guides</h2>
+  <ul class="lawsuit-list">
+    <li><a href="start-here.html">New to Lawsuits? Start Here</a></li>
+    <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+    <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
+    <li><a href="class-action.html">Class Actions</a></li>
+    <li><a href="mdl-basics.html">MDL Basics</a></li>
+    <li><a href="bellwether-trials.html">Bellwether Trials</a></li>
+    <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
+  </ul>
+
+  <section class="article-meta">
+    <div class="author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.png" alt="David Meldofsky" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -340,9 +367,7 @@
     <div>
       <h3>Lawsuit Informer</h3>
       <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-
       <p><strong>Questions about a potential case? Contact us directly.</strong></p>
-
       <p>
         <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
           hello@lawsuitinformer.com
@@ -350,9 +375,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -364,9 +389,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -380,6 +405,21 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
