@@ -87,7 +87,7 @@
       <span></span>
     </button>
 
-    <nav id="site-menu">
+<nav id="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -456,13 +456,13 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  const navToggle = document.querySelector(".menu-toggle");
+  const siteNav = document.getElementById("site-nav");
 
   if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.addEventListener("click", function () {
+      const isOpen = siteNav.classList.toggle("nav-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
 </script>
