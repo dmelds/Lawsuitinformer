@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +8,12 @@
 <meta name="description" content="Learn about video game addiction lawsuits, including claims involving compulsive gaming, prolonged engagement, in-game purchases, and digital product design features.">
 
 <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://lawsuitinformer.com/video-game-addiction-lawsuit.html">
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
-<link rel="canonical" href="https://lawsuitinformer.com/video-game-addiction-lawsuit.html" />
 
 <script type="application/ld+json">
 {
@@ -36,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-19",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/video-game-addiction-lawsuit.html"
@@ -75,7 +74,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -83,7 +82,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -112,7 +117,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2, 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -122,6 +127,16 @@
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information only and does not constitute medical or legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>These lawsuits generally focus on game design features alleged to encourage compulsive play or prolonged engagement.</li>
+      <li>Common topics include reward loops, microtransactions, loot boxes, daily-use incentives, and retention systems.</li>
+      <li>Some claims also involve behavioral, emotional, academic, social, or financial harm.</li>
+      <li>This topic is often discussed alongside broader consumer product, product liability, and digital-platform-related claims.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -150,7 +165,7 @@
 
   <h2>Features Often Discussed in These Claims</h2>
 
-  <ul>
+  <ul class="lawsuit-list">
     <li>Reward loops and progression systems</li>
     <li>In-game purchases and microtransactions</li>
     <li>Loot boxes or chance-based rewards</li>
@@ -175,7 +190,7 @@
 
   <h2>Common Concerns People Research</h2>
 
-  <ul>
+  <ul class="lawsuit-list">
     <li>Compulsive gaming behavior</li>
     <li>Sleep disruption</li>
     <li>Declining school performance</li>
@@ -366,7 +381,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2, 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -384,11 +399,12 @@
 
     <div>
       <h3>Lawsuit Informer</h3>
+      <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
+
+      <p><strong>Questions about a potential case? Contact us directly.</strong></p>
+
       <p>
-        Lawsuit Informer is an independent legal education platform providing clear, accessible information about lawsuits, consumer safety issues, and legal rights.
-      </p>
-      <p>
-        <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'footer')">
+        <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
           hello@lawsuitinformer.com
         </a>
       </p>
@@ -424,10 +440,22 @@
   </div>
 
   <div class="container footer-bottom">
-    <p>Educational information only. Not legal advice.</p>
+    <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
