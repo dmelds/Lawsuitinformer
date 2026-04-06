@@ -73,35 +73,49 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
+
     <div class="logo">
       <a href="index.html">
         <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+
   </div>
 </header>
 
 <main class="content-page">
 
- <nav class="breadcrumbs" aria-label="Breadcrumb">
-  <a href="index.html">Home</a>
-  <span>›</span>
-  <a href="asbestos-exposure-lawsuits.html">Asbestos Exposure Lawsuits</a>
-  <span>›</span>
-  <span>How Do Lawyers Prove Asbestos Exposure From Decades Ago?</span>
-</nav>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="asbestos-exposure-lawsuits.html">Asbestos Exposure Lawsuits</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">How Do Lawyers Prove Asbestos Exposure From Decades Ago?</span>
+  </nav>
 
   <h1>How Do Lawyers Prove Asbestos Exposure From Decades Ago?</h1>
 
@@ -150,7 +164,20 @@
     </ul>
   </div>
 
-  <h2>Why proving old asbestos exposure can be difficult</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#why-difficult">Why proving old asbestos exposure can be difficult</a></li>
+      <li><a href="#evidence">What kinds of evidence may help reconstruct asbestos exposure?</a></li>
+      <li><a href="#work-history-rebuilt">How work history is often rebuilt years later</a></li>
+      <li><a href="#no-product-name">What if you do not remember the exact asbestos product?</a></li>
+      <li><a href="#timing-matters">Why diagnosis timing matters</a></li>
+      <li><a href="#claim-paths">What claim paths may exist after exposure is traced?</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ul>
+  </div>
+
+  <h2 id="why-difficult">Why proving old asbestos exposure can be difficult</h2>
 
   <p>
     Asbestos exposure often happened in industrial, marine, construction, maintenance, and mechanical settings long before a diagnosis ever appeared. Companies may have closed, records may be incomplete, product names may not be remembered, and a person may have worked for many employers over the years.
@@ -168,7 +195,7 @@
     <a href="asbestos-exposure-in-construction-and-demolition.html">construction and demolition</a>.
   </p>
 
-  <h2>What kinds of evidence may help reconstruct asbestos exposure?</h2>
+  <h2 id="evidence">What kinds of evidence may help reconstruct asbestos exposure?</h2>
 
   <p>
     In many asbestos claims, lawyers and investigators look at several different categories of information together. The goal is usually to build a timeline showing where the person worked, what materials were present, and how asbestos exposure may have occurred.
@@ -232,7 +259,7 @@
     Former coworkers, family members, or others familiar with the work may sometimes help fill in missing details. They may remember the conditions, the dust involved, the type of equipment repaired, or the materials handled during certain jobs or shutdown projects.
   </p>
 
-  <h2>How work history is often rebuilt years later</h2>
+  <h2 id="work-history-rebuilt">How work history is often rebuilt years later</h2>
 
   <p>
     Even when someone cannot name every product from memory, a work history may still be rebuilt step by step. In many situations, the pattern of work matters just as much as one exact recollection.
@@ -256,7 +283,7 @@
     <a href="asbestos-exposure-from-insulation-removal-and-tear-out-work.html">insulation removal and tear-out work</a>.
   </p>
 
-  <h2>What if you do not remember the exact asbestos product?</h2>
+  <h2 id="no-product-name">What if you do not remember the exact asbestos product?</h2>
 
   <p>
     Many people do not remember exact product names decades later. That does not necessarily mean the exposure history cannot be investigated. Older asbestos cases often rely on a broader combination of worksite history, trade-specific exposure patterns, commonly used materials, witness recollections, and records showing what kind of work was performed.
@@ -272,16 +299,16 @@
     <a href="asbestos-exposure-from-refractory-and-heat-resistant-materials.html">refractory and heat-resistant materials</a>.
   </p>
 
-  <h2>Why diagnosis timing matters</h2>
+  <h2 id="timing-matters">Why diagnosis timing matters</h2>
 
   <p>
     One reason this question comes up so often is that asbestos-related illnesses may not appear until many years after the exposure itself. Someone may only begin connecting the dots after a diagnosis raises new questions about earlier jobs, products, and work conditions.
   </p>
 
   <p>
-  If you are wondering how timing issues fit into older exposure histories, also read
-  <a href="asbestos-claim-deadline-after-symptoms-appear.html">Is It Too Late to File an Asbestos Claim After Symptoms Appear Years Later?</a>.
-</p>
+    If you are wondering how timing issues fit into older exposure histories, also read
+    <a href="asbestos-claim-deadline-after-symptoms-appear.html">Is It Too Late to File an Asbestos Claim After Symptoms Appear Years Later?</a>.
+  </p>
 
   <p>
     That is especially true for pages involving
@@ -294,7 +321,7 @@
     helpful.
   </p>
 
-  <h2>What claim paths may exist after exposure is traced?</h2>
+  <h2 id="claim-paths">What claim paths may exist after exposure is traced?</h2>
 
   <p>
     Once exposure history is better understood, people often start asking what kind of legal claim may be possible. Depending on the situation, that may involve a personal injury claim, a wrongful death claim, a trust-based claim, or more than one possible compensation path.
@@ -307,7 +334,7 @@
     <a href="asbestos-trust-funds-and-claims.html">Asbestos Trust Funds and Claims</a>.
   </p>
 
-  <h2>Frequently Asked Questions</h2>
+  <h2 id="faq">Frequently Asked Questions</h2>
 
   <h3>Do lawyers need one document that proves everything?</h3>
   <p>
@@ -377,7 +404,7 @@
   </div>
 
   <h2>Related Legal Guides</h2>
-  <ul class="lawsuit-list">
+  <ul class="toc-list">
     <li><a href="asbestos-exposure-lawsuits.html">Asbestos Exposure Lawsuits</a></li>
     <li><a href="who-qualifies-for-an-asbestos-lawsuit.html">Who Qualifies for an Asbestos Lawsuit</a></li>
     <li><a href="asbestos-trust-funds-and-claims.html">Asbestos Trust Funds and Claims</a></li>
@@ -438,9 +465,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -452,9 +479,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -465,9 +492,24 @@
 
   <div class="container footer-bottom">
     <p>Educational information only. Not legal advice.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
