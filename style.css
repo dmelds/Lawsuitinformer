@@ -72,7 +72,8 @@ select {
    HEADER
    ========================= */
 
-.site-header {
+.site-header,
+header {
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -82,7 +83,8 @@ select {
   -webkit-backdrop-filter: none;
 }
 
-.site-header .container.nav {
+.site-header .container.nav,
+header .container.nav {
   position: relative;
   z-index: 2;
   display: flex;
@@ -100,13 +102,17 @@ select {
   max-height: 52px;
 }
 
-.site-nav {
+.site-nav,
+header nav,
+#site-nav {
   display: flex;
   align-items: center;
   gap: 22px;
 }
 
-.site-nav a {
+.site-nav a,
+header nav a,
+#site-nav a {
   color: #f5f5f5;
   font-size: 0.95rem;
   font-weight: 600;
@@ -115,11 +121,15 @@ select {
 }
 
 .site-nav a:hover,
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current="page"],
+header nav a:hover,
+header nav a[aria-current="page"],
+#site-nav a:hover,
+#site-nav a[aria-current="page"] {
   color: #7cc4ff;
 }
 
-.menu-toggle {
+.nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -133,7 +143,7 @@ select {
   cursor: pointer;
 }
 
-.menu-toggle span {
+.nav-toggle span {
   display: block;
   width: 24px;
   height: 2px;
@@ -142,15 +152,15 @@ select {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.menu-toggle.active span:nth-child(1) {
+.nav-toggle.active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
-.menu-toggle.active span:nth-child(2) {
+.nav-toggle.active span:nth-child(2) {
   opacity: 0;
 }
 
-.menu-toggle.active span:nth-child(3) {
+.nav-toggle.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -1734,7 +1744,8 @@ footer,
    ========================= */
 
 @media (max-width: 900px) {
-  .site-header .container.nav {
+  .site-header .container.nav,
+  header .container.nav {
     flex-wrap: wrap;
     min-height: 60px;
     padding-top: 6px;
@@ -1745,12 +1756,14 @@ footer,
     max-height: 38px;
   }
 
-  .menu-toggle {
+  .nav-toggle {
     display: flex;
     margin-left: auto;
   }
 
-  .site-nav {
+  .site-nav,
+  header nav,
+  #site-nav {
     display: none;
     width: 100%;
     flex-direction: column;
@@ -1759,11 +1772,15 @@ footer,
     padding: 8px 0 4px;
   }
 
-  .site-nav.open {
+  .site-nav.open,
+  header nav.open,
+  #site-nav.open {
     display: flex;
   }
 
-  .site-nav a {
+  .site-nav a,
+  header nav a,
+  #site-nav a {
     display: block;
     width: 100%;
     padding: 12px 0;
