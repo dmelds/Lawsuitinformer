@@ -35,7 +35,7 @@
     }
   },
   "datePublished": "2026-03-28",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-04-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://lawsuitinformer.com/recent-developments-hernia-mesh-litigation.html"
@@ -79,7 +79,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -87,7 +87,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -118,7 +124,7 @@
   </p>
 
   <p class="article-date">
-    Last updated: April 2026
+    Last updated: April 6, 2026
   </p>
 
   <p class="article-intro">
@@ -126,7 +132,18 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information and does not constitute legal advice.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Hernia mesh litigation remains relevant because product identification and complication history still matter even in more mature proceedings.</li>
+      <li>Bard / Davol litigation remains one of the most important parts of the broader hernia mesh story.</li>
+      <li>Some MDLs and related proceedings remain active, while other product lines are in later settlement phases.</li>
+      <li>Revision surgery records often become some of the most important documents in later investigation.</li>
+    </ul>
   </div>
 
   <div class="info-box">
@@ -179,7 +196,7 @@
 
   <h2>Why Revision Surgery Plays Such a Large Role</h2>
   <p>
-    In many hernia mesh cases, revision or removal surgery becomes a major part of the story. These procedures may reveal mesh shrinkage, folding, tearing, migration, infection, or adhesion to surrounding tissue. In some situations, removal is difficult and may itself create additional long-term problems.
+    In many hernia mesh cases, revision or removal surgery becomes a major part of the story. These procedures may reveal mesh shrinkage, folding, tearing, migration, infection, adhesion to surrounding tissue. In some situations, removal is difficult and may itself create additional long-term problems.
   </p>
 
   <p>
@@ -324,7 +341,7 @@
         </p>
 
         <p>
-          <strong>Last Updated:</strong> April 2026
+          <strong>Last Updated:</strong> April 6, 2026
         </p>
 
         <p>
@@ -387,6 +404,18 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
