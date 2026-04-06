@@ -85,7 +85,7 @@
       </a>
     </div>
 
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
       <span></span>
       <span></span>
       <span></span>
@@ -131,7 +131,9 @@
   <p>
     Looking for the broader case category? Explore
     <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>,
-    <a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a>, and
+    <a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a>,
+    <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>,
+    <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>, and
     <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>.
   </p>
 
@@ -248,6 +250,8 @@
   <p>
     Related claim pages include
     <a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a>,
+    <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>,
+    <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>,
     <a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a>,
     <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>, and
     <a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a>.
@@ -278,6 +282,8 @@
 
   <ul class="lawsuit-list">
     <li><a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a></li>
+    <li><a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a></li>
+    <li><a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a></li>
     <li><a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a></li>
     <li><a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a></li>
     <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
@@ -335,7 +341,9 @@
     <p class="form-bridge">
       If you are trying to understand whether a contamination-related legal issue may apply to your situation, you can share a few details below to get started. You may also want to review
       <a href="chemical-exposure-kidney-cancer.html">chemical exposure and kidney cancer</a>,
-      <a href="pfas-water-contamination-lawsuits.html">PFAS water contamination lawsuits</a>, or
+      <a href="pfas-water-contamination-lawsuits.html">PFAS water contamination lawsuits</a>,
+      <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>,
+      <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>, or
       <a href="afff-firefighting-foam-lawsuits.html">AFFF firefighting foam lawsuits</a>
       first.
     </p>
@@ -483,13 +491,14 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.querySelector('#site-nav');
+  const navToggle = document.querySelector(".menu-toggle");
+  const siteNav = document.getElementById("site-menu");
 
   if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.addEventListener("click", function () {
+      const isOpen = siteNav.classList.toggle("open");
+      navToggle.classList.toggle("active", isOpen);
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
 </script>
