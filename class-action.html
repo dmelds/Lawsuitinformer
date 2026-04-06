@@ -75,18 +75,30 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
+      <a href="legal-guides.html" aria-current="page">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -100,9 +112,11 @@
 <main class="content-page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &gt;
-    <a href="legal-guides.html">Legal Guides</a> &gt;
-    <span>Class Actions</span>
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="legal-guides.html">Legal Guides</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Class Actions</span>
   </nav>
 
   <h1>Class Actions</h1>
@@ -126,28 +140,45 @@
   </p>
 
   <div class="info-box">
-    <strong>Important:</strong> This page provides general educational information about class action lawsuits and does not constitute legal advice.
+    <strong>Important:</strong>
+    <p>This page provides general educational information about class action lawsuits and does not constitute legal advice.</p>
   </div>
 
-  <h2>What Is a Class Action?</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#what-is-a-class-action">What a class action is</a></li>
+      <li><a href="#how-class-actions-work">How class actions usually work</a></li>
+      <li><a href="#why-class-actions-are-used">Why class actions are used</a></li>
+      <li><a href="#common-types-of-class-action-cases">Common types of class action cases</a></li>
+      <li><a href="#how-class-actions-differ-from-mass-torts">How class actions differ from mass torts</a></li>
+      <li><a href="#what-happens-if-a-class-is-certified">What happens if a class is certified</a></li>
+      <li><a href="#do-class-actions-usually-settle">Whether class actions usually settle</a></li>
+      <li><a href="#what-can-class-members-receive">What class members may receive</a></li>
+      <li><a href="#why-class-actions-can-be-complicated">Why class actions can be complicated</a></li>
+      <li><a href="#common-questions-people-ask">Common questions people ask</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-is-a-class-action">What Is a Class Action?</h2>
 
   <p>
     A class action is a legal procedure that allows a smaller number of named plaintiffs to represent a larger group, often called the class. Instead of every affected person filing a separate lawsuit, the case may proceed on behalf of the group if certain legal requirements are met.
   </p>
 
-  <h2>How Class Actions Usually Work</h2>
+  <h2 id="how-class-actions-work">How Class Actions Usually Work</h2>
 
   <p>
     In a class action, the court must usually decide whether the case can be certified as a class. That means the court evaluates whether the proposed group shares sufficiently similar legal or factual issues and whether the representative plaintiffs can fairly and adequately represent the interests of the class. If certification is denied, the case may continue in a different form or not proceed as a class action.
   </p>
 
-  <h2>Why Class Actions Are Used</h2>
+  <h2 id="why-class-actions-are-used">Why Class Actions Are Used</h2>
 
   <p>
     Class actions are often used when many people experienced similar alleged harm, but each individual claim may be too small to justify separate litigation. This structure can make it more practical to litigate issues that affect a large number of people at once.
   </p>
 
-  <h2>Common Types of Class Action Cases</h2>
+  <h2 id="common-types-of-class-action-cases">Common Types of Class Action Cases</h2>
 
   <ul class="lawsuit-list">
     <li>Consumer protection claims</li>
@@ -158,7 +189,7 @@
     <li>Certain defective product or service claims</li>
   </ul>
 
-  <h2>How Class Actions Differ From Mass Torts</h2>
+  <h2 id="how-class-actions-differ-from-mass-torts">How Class Actions Differ From Mass Torts</h2>
 
   <p>
     Class actions and mass torts are different. In a class action, the claims are pursued on behalf of a group through representative plaintiffs, and the outcome may affect many class members together. In a mass tort, individuals usually maintain separate claims even if cases are coordinated for efficiency. Mass torts are often more common when injuries, exposure histories, or damages vary significantly from person to person.
@@ -171,31 +202,31 @@
     <a href="bellwether-trials.html">Bellwether Trials</a>.
   </p>
 
-  <h2>What Happens if a Class Is Certified?</h2>
+  <h2 id="what-happens-if-a-class-is-certified">What Happens if a Class Is Certified?</h2>
 
   <p>
     If a court certifies a class, notice may be sent to class members explaining the case and their rights. Depending on the type of class action, people may be included automatically unless they opt out, or they may need to take specific action to participate. The case may then move through litigation, settlement discussions, or trial on a class-wide basis.
   </p>
 
-  <h2>Do Class Actions Usually Settle?</h2>
+  <h2 id="do-class-actions-usually-settle">Do Class Actions Usually Settle?</h2>
 
   <p>
     Many class actions resolve through settlement, but settlement still usually requires court review and approval. Courts often examine whether a proposed settlement is fair, reasonable, and adequate for the class. Settlement notices and claim procedures may also become part of the process.
   </p>
 
-  <h2>What Can Class Members Receive?</h2>
+  <h2 id="what-can-class-members-receive">What Can Class Members Receive?</h2>
 
   <p>
     The outcome of a class action depends on the nature of the claims and the relief sought. Some cases seek refunds, statutory damages, reimbursement, injunctive relief, changes in business practices, or other remedies. The form and amount of recovery can vary widely from one case to another.
   </p>
 
-  <h2>Why Class Actions Can Be Complicated</h2>
+  <h2 id="why-class-actions-can-be-complicated">Why Class Actions Can Be Complicated</h2>
 
   <p>
     Class actions can involve significant procedural disputes, especially around certification, notice, settlement approval, and the scope of the proposed class. Even when many people were affected by the same general conduct, courts still analyze whether the claims are sufficiently similar to proceed together.
   </p>
 
-  <h2>Common Questions People Ask</h2>
+  <h2 id="common-questions-people-ask">Common Questions People Ask</h2>
 
   <ul class="lawsuit-list">
     <li>What is the difference between a class action and a mass tort?</li>
@@ -206,14 +237,6 @@
     <li>What kinds of compensation can class members receive?</li>
   </ul>
 
-  <div class="next-steps">
-    <p>
-      Still learning how lawsuits work?
-      <a href="start-here.html"><strong>Start here</strong></a>
-      for a simple step-by-step overview.
-    </p>
-  </div>
-
   <div class="cta-box">
 
     <h2>Explore Related Lawsuit Topics</h2>
@@ -223,70 +246,21 @@
     </p>
 
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="mass-torts.html">
-        Mass Torts
-      </a>
-
-      <a class="btn btn-secondary" href="how-long-do-lawsuits-take.html">
-        How Long Lawsuits Take
-      </a>
+      <a class="btn btn-primary" href="mass-torts.html">Mass Torts</a>
+      <a class="btn btn-secondary" href="how-long-do-lawsuits-take.html">How Long Lawsuits Take</a>
     </div>
 
     <p class="form-bridge">
-      If you are trying to understand whether a legal issue may apply to your situation, you can share a few details below to get started.
-    </p>
-
-    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
-      <input type="hidden" name="form-name" value="case-review">
-      <p hidden>
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
-
-      <label for="name">Your Name</label>
-      <input id="name" type="text" name="name" placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" placeholder="Your email">
-
-      <label for="location">Location (City / State)</label>
-      <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA">
-
-      <label for="case_type">Type of Exposure or Issue</label>
-      <select id="case_type" name="case_type">
-        <option value="">Select one</option>
-        <option>Class Action</option>
-        <option>Mass Tort</option>
-        <option>Consumer Product</option>
-        <option>Product Liability</option>
-        <option>Toxic Exposure</option>
-        <option>Other</option>
-      </select>
-
-      <label for="lawyer_status">Have you spoken to a lawyer?</label>
-      <select id="lawyer_status" name="lawyer_status">
-        <option value="">Select one</option>
-        <option>No</option>
-        <option>Yes</option>
-        <option>Not sure</option>
-      </select>
-
-      <label for="message">What happened?</label>
-      <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
-
-      <button type="submit" class="btn btn-primary">
-        Submit for Review
-      </button>
-    </form>
-
-    <p class="form-note">
-      Educational purposes only. Submitting this form does not create an attorney-client relationship.
+      Still learning how lawsuits work?
+      <a href="start-here.html"><strong>Start here</strong></a>
+      for a simple step-by-step overview.
     </p>
 
   </div>
 
   <h2>Related Legal Guides</h2>
 
-  <ul class="lawsuit-list">
+  <ul class="toc-list">
     <li><a href="start-here.html">New to Lawsuits? Start Here</a></li>
     <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
     <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
@@ -296,11 +270,11 @@
     <li><a href="what-is-a-settlement.html">What Is a Settlement?</a></li>
   </ul>
 
-  <section class="author-box-section">
-    <div class="container author-box">
+  <section class="article-meta">
+    <div class="author-box">
 
       <div class="author-photo">
-        <img src="david-meldofsky.PNG" alt="David Meldofsky">
+        <img src="david-meldofsky.png" alt="David Meldofsky" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -337,9 +311,7 @@
     <div>
       <h3>Lawsuit Informer</h3>
       <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-
       <p><strong>Questions about a potential case? Contact us directly.</strong></p>
-
       <p>
         <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
           hello@lawsuitinformer.com
@@ -347,9 +319,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -361,9 +333,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -377,6 +349,21 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
 
 </body>
 </html>
