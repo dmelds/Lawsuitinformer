@@ -87,7 +87,7 @@
       <span></span>
     </button>
 
-    <nav id="site-menu">
+<nav id="site-nav">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -164,6 +164,8 @@
     Delays can also create problems when legal deadlines matter. Learn more in
     <a href="statute-of-limitations-basics.html">Statute of Limitations Basics</a>.
   </p>
+
+  <p>Another common problem is not responding at all. Learn more about <a href="what-happens-if-you-ignore-a-lawsuit.html">what happens if you ignore a lawsuit</a>.</p>
 
   <h2>2. Failing to Keep Records</h2>
 
@@ -456,13 +458,13 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  const navToggle = document.querySelector(".menu-toggle");
+  const siteNav = document.getElementById("site-nav");
 
   if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.addEventListener("click", function () {
+      const isOpen = siteNav.classList.toggle("nav-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
 </script>
