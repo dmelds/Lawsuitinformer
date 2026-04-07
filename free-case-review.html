@@ -3,22 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Case Review | Lawsuit Informer</title>
-  <meta name="description" content="Request a free case review through Lawsuit Informer." />
+
+  <title>Free Case Review Request | Lawsuit Informer</title>
+  <meta
+    name="description"
+    content="Request a free case review through Lawsuit Informer. Share basic information about your situation and learn what types of details may help when seeking more information about possible next steps."
+  />
   <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://lawsuitinformer.com/free-case-review.html" />
+  <meta name="robots" content="noindex,follow" />
+
+  <script async data-id="101502685" src="//static.getclicky.com/js"></script>
+
+  <link rel="author" href="david-meldofsky.html" />
+  <link rel="publisher" href="about.html" />
 </head>
 <body>
 
   <header>
     <div class="container nav">
       <div class="logo">
-        <a href="index.html">
-  <img src="logo-informer.png" alt="Lawsuit Informer" />
-</a>
+        <a href="/">
+          <img src="logo-informer.png" alt="Lawsuit Informer" />
+        </a>
       </div>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="legal-guides.html">Guides</a>
+        <a href="/">Home</a>
+        <a href="legal-guides.html">Legal Guides</a>
         <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
         <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
         <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -29,84 +40,168 @@
   </header>
 
   <main>
-    <section class="review-hero">
-      <div class="container">
-        <h1>Free Case Review</h1>
+
+    <section class="hero">
+      <div class="container narrow">
+        <p class="eyebrow">Request Information</p>
+        <h1>Free Case Review Request</h1>
+        <p class="hero-text">
+          If you would like to share information about a possible lawsuit, exposure, diagnosis,
+          product-related injury, or contamination concern, you can use this form as a starting point.
+          Lawsuit Informer is an attorney-led educational platform, and this page is designed to help
+          people request more information about possible next steps.
+        </p>
+        <div class="info-box">
+          <strong>Important:</strong> Submitting this form does not create an attorney-client relationship,
+          does not guarantee representation, and is not legal advice.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <h2>Who This Form May Help</h2>
         <p>
-          Share a few details about your situation. Lawsuit Informer is an educational platform,
-          and this form is a starting point for requesting more information about possible next steps.
+          This page may be useful for people who are trying to understand whether their situation could
+          relate to a lawsuit, including concerns involving toxic exposure, water contamination,
+          dangerous products, or serious injuries that may justify a closer review.
+        </p>
+        <p>
+          You do not need to know exactly what kind of claim you may have before reaching out.
+          A short, clear summary of what happened is usually enough for an initial review.
         </p>
       </div>
     </section>
 
-    <section class="review-form-section">
+    <section class="section alt-section">
       <div class="container">
         <div class="review-form-wrap">
 
-          <form
-  class="case-review-form"
-  name="free-case-review"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  action="/thank-you/"
->
-            <input type="hidden" name="form-name" value="free-case-review" />
+          <div class="content-card">
+            <h2>Share Basic Information</h2>
+            <p>
+              Please provide only basic background information through this first form.
+              You can describe the product, exposure, diagnosis, location, time period, or event involved.
+            </p>
 
-<p style="display:none;">
-  <label>
-    Don’t fill this out if you're human:
-    <input name="bot-field" />
-  </label>
-</p>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required />
+            <form
+              class="case-review-form"
+              name="free-case-review"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thank-you/"
+            >
+              <input type="hidden" name="form-name" value="free-case-review" />
 
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required />
+              <p style="display:none;">
+                <label>
+                  Don’t fill this out if you're human:
+                  <input name="bot-field" />
+                </label>
+              </p>
 
-            <label for="phone">Phone Number <span>(optional)</span></label>
-            <input type="tel" id="phone" name="phone" />
-            <label for="case-type">Type of Issue</label>
-<select id="case-type" name="case-type" required>
-  <option value="">Select one</option>
-  <option value="chemical">Chemical Exposure</option>
-  <option value="water">Water Contamination</option>
-  <option value="product">Defective Product</option>
-  <option value="other">Other</option>
-</select>
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required />
 
-            <label for="details">What happened?</label>
-            <textarea
-              id="details"
-              name="details"
-              rows="7"
-              placeholder="Briefly describe the exposure, product, injury, diagnosis, or situation."
-              required
-            ></textarea>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
 
-            <button type="submit" class="btn-primary">Submit for Review</button>
-          </form>
+              <label for="phone">Phone Number <span>(optional)</span></label>
+              <input type="tel" id="phone" name="phone" />
 
-          <div class="review-side-note">
+              <label for="case-type">Type of Issue</label>
+              <select id="case-type" name="case-type" required>
+                <option value="">Select one</option>
+                <option value="chemical">Chemical Exposure</option>
+                <option value="water">Water Contamination</option>
+                <option value="product">Defective Product</option>
+                <option value="diagnosis">Illness or Diagnosis Concern</option>
+                <option value="other">Other</option>
+              </select>
+
+              <label for="details">What happened?</label>
+              <textarea
+                id="details"
+                name="details"
+                rows="8"
+                placeholder="Briefly describe the exposure, product, injury, diagnosis, or situation."
+                required
+              ></textarea>
+
+              <button type="submit" class="btn-primary">Submit Request</button>
+            </form>
+          </div>
+
+          <aside class="review-side-note content-card">
             <h2>Before You Submit</h2>
             <p>
-              Please do not send Social Security numbers, highly sensitive medical records,
-              or other confidential documents through this first form.
+              Please do not send Social Security numbers, complete medical records, banking details,
+              or other highly sensitive documents through this first form.
             </p>
             <p>
-              Submitting this form does not create an attorney-client relationship and does not
-              guarantee legal representation.
+              For an initial review, a short summary is usually enough. You can simply explain:
             </p>
-            <p>
-              Lawsuit Informer provides educational information and may help connect people with
-              additional resources depending on the situation.
-            </p>
-          </div>
+            <ul>
+              <li>what product, exposure, or event is involved,</li>
+              <li>what injury, diagnosis, or concern exists,</li>
+              <li>when it happened, and</li>
+              <li>why you believe it may relate to a lawsuit.</li>
+            </ul>
+          </aside>
 
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <h2>What Happens After You Submit</h2>
+        <p>
+          After submission, your information may be reviewed to better understand the topic involved
+          and whether additional educational resources or next-step information may be relevant.
+          In some situations, people may be directed toward additional resources depending on the subject matter.
+        </p>
+        <p>
+          Not every submission will lead to follow-up, and not every situation supports a legal claim.
+          This page is intended to provide a starting point for people who are looking for more information.
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt-section">
+      <div class="container narrow">
+        <h2>Important Disclaimers</h2>
+        <div class="info-box">
+          <p>
+            Lawsuit Informer publishes attorney-led educational information about lawsuits, exposures,
+            products, injuries, and related legal topics.
+          </p>
+          <p>
+            This site does not provide legal advice through this form, and submitting information here
+            does not create an attorney-client relationship.
+          </p>
+          <p>
+            Any review is preliminary and informational only.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <h2>Related Resources</h2>
+        <ul class="link-list">
+          <li><a href="start-here.html">New to Lawsuits? Start Here</a></li>
+          <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+          <li><a href="what-evidence-helps-a-lawsuit.html">What Evidence May Help a Lawsuit?</a></li>
+          <li><a href="what-happens-after-you-contact-a-lawyer.html">What Happens After You Contact a Lawyer?</a></li>
+          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+          <li><a href="contact.html">General Contact Page</a></li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer>
