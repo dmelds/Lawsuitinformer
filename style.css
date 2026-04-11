@@ -1,4 +1,4 @@
-/* =========================
+w/* =========================
    RESET
    ========================= */
 
@@ -2009,5 +2009,73 @@ footer,
 
   .resource-card-grid {
     grid-template-columns: 1fr;
+  }
+   /* =========================
+   REPORTER DATA PAGE
+   ========================= */
+
+.updated-date {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  color: #bfc6cd;
+}
+
+.quote-box {
+  margin: 24px 0 28px;
+  padding: 22px 24px;
+  background: linear-gradient(180deg, #121212, #0d0d0d);
+  border: 1px solid #242424;
+  border-left: 4px solid #7cc4ff;
+  border-radius: 14px;
+}
+
+.quote-box p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #e8f4ff;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #2a2a2a;
+  line-height: 1.6;
+  color: #d8d8d8;
+}
+
+.table-wrap th {
+  background: #161616;
+  color: #fff;
+  font-weight: 700;
+}
+
+.table-wrap tr:last-child td {
+  border-bottom: none;
+}
+
+.form-note {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  color: #9aa0a6;
+}
+
+@media (max-width: 768px) {
+  .quote-box {
+    padding: 18px;
+  }
+
+  .quote-box p {
+    font-size: 1rem;
   }
 }
