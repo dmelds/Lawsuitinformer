@@ -2064,6 +2064,12 @@ footer,
   border-bottom: none;
 }
 
+.form-note {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  color: #9aa0a6;
+}
+
 @media (max-width: 768px) {
   .quote-box {
     padding: 18px;
@@ -2072,5 +2078,4 @@ footer,
   .quote-box p {
     font-size: 1rem;
   }
-}
 }
