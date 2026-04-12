@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Professor Jane Smith | Contributor | Lawsuit Informer</title>
+  <meta name="description" content="Read academic commentary from Professor Jane Smith on legal issues, litigation, and public legal education." />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://lawsuitinformer.com/professor-jane-smith.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="author" href="david-meldofsky.html" />
+  <link rel="publisher" href="about.html" />
+
+  <script async data-id="101502685" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">
+        <img src="logo-informer.png" alt="Lawsuit Informer logo" />
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="legal-guides.html">Legal Guides</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-section">
+    <div class="container narrow">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">&rsaquo;</span>
+        <a href="professor-perspective.html">Professor Perspective</a>
+        <span class="breadcrumb-separator">&rsaquo;</span>
+        <span aria-current="page">Professor Jane Smith</span>
+      </nav>
+
+      <p class="eyebrow">Contributor Profile</p>
+      <h1>Professor Jane Smith</h1>
+      <p class="byline">Professor of Law, Example University School of Law</p>
+
+      <div class="info-box">
+        <p>
+          Professor Jane Smith writes and teaches in the areas of mass torts, civil procedure,
+          consumer protection, and access to justice.
+        </p>
+      </div>
+
+      <h2>About Professor Jane Smith</h2>
+      <p>
+        Professor Jane Smith is a law professor whose work focuses on how legal systems address
+        complex civil disputes, public harms, and procedural fairness. Her scholarship and teaching
+        examine the way courts, litigants, and legal institutions respond to large-scale injury and
+        consumer claims.
+      </p>
+
+      <h2>Areas of focus</h2>
+      <ul>
+        <li>Mass torts</li>
+        <li>Civil procedure</li>
+        <li>Consumer protection</li>
+        <li>Access to justice</li>
+      </ul>
+
+      <h2>Contributions on Lawsuit Informer</h2>
+      <ul class="article-list">
+        <li><a href="what-public-misunderstands-about-mass-torts.html">What the Public Often Misunderstands About Mass Torts</a></li>
+        <li><a href="three-questions-about-causation.html">3 Questions About Causation in Toxic Exposure Cases</a></li>
+      </ul>
+
+      <h2>Disclosure</h2>
+      <p>
+        This contributor page is provided for educational purposes only. Views expressed in contributed
+        commentary are the contributor’s own unless otherwise stated. Commentary does not constitute legal
+        advice and does not create an attorney-client relationship.
+      </p>
+
+      <div class="info-box start-here-box">
+        <p>
+          New to lawsuits? <a href="start-here.html">Start here</a> for a plain-language introduction to how lawsuits work.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© Lawsuit Informer. For educational purposes only. Not legal advice. No attorney-client relationship.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteMenu = document.querySelector('#site-menu');
+
+    if (navToggle && siteMenu) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        siteMenu.classList.toggle('open');
+        const expanded = navToggle.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
