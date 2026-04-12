@@ -85,22 +85,24 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  min-height: 72px;
+  gap: 16px;
+  min-height: 64px;
   padding: 10px 0;
 }
 
 .logo-link {
   display: inline-flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .site-logo {
   display: block;
+  height: 44px;
   width: auto;
-  height: 38px;
-  max-width: 100%;
+  max-width: 180px;
   object-fit: contain;
 }
 
@@ -115,7 +117,6 @@ select {
   color: #f5f5f5;
   font-size: 0.95rem;
   font-weight: 600;
-  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -124,8 +125,7 @@ select {
   color: #7cc4ff;
 }
 
-.nav-toggle,
-.menu-toggle {
+.nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -137,11 +137,10 @@ select {
   background: transparent;
   border: 0;
   cursor: pointer;
-  flex-shrink: 0;
+  flex: 0 0 44px;
 }
 
-.nav-toggle span,
-.menu-toggle span {
+.nav-toggle span {
   display: block;
   width: 24px;
   height: 2px;
@@ -150,18 +149,15 @@ select {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.nav-toggle.active span:nth-child(1),
-.menu-toggle.active span:nth-child(1) {
+.nav-toggle.active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
-.nav-toggle.active span:nth-child(2),
-.menu-toggle.active span:nth-child(2) {
+.nav-toggle.active span:nth-child(2) {
   opacity: 0;
 }
 
-.nav-toggle.active span:nth-child(3),
-.menu-toggle.active span:nth-child(3) {
+.nav-toggle.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -185,7 +181,6 @@ select {
   color: #fff;
   opacity: 0.92;
   transform: translateY(-1px);
-  text-decoration: none;
 }
 
 .btn-secondary {
@@ -203,7 +198,6 @@ select {
   color: #fff;
   background: #121212;
   transform: translateY(-1px);
-  text-decoration: none;
 }
 
 .cta-buttons,
@@ -271,7 +265,6 @@ select {
   background: rgba(124, 196, 255, 0.16);
   border-color: rgba(124, 196, 255, 0.5);
   transform: translateY(-1px);
-  text-decoration: none;
 }
 
 .start-here-bridge {
@@ -1310,173 +1303,6 @@ select {
 }
 
 /* =========================
-   EXPERIENCE PAGE
-   ========================= */
-
-.experience-hero {
-  min-height: 84vh;
-  display: flex;
-  align-items: center;
-  background:
-    linear-gradient(rgba(8, 8, 8, 0.55), rgba(8, 8, 8, 0.85)),
-    radial-gradient(circle at top, rgba(124, 196, 255, 0.14), transparent 38%);
-  border-bottom: 1px solid #1b1b1b;
-}
-
-.experience-hero-inner {
-  max-width: 820px;
-  padding-top: 90px;
-  padding-bottom: 90px;
-}
-
-.experience-hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(2.5rem, 6vw, 4.8rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-
-.hero-text {
-  max-width: 650px;
-  margin: 0 0 30px;
-  color: #d3d3d3;
-  font-size: 1.16rem;
-}
-
-.experience-intro {
-  padding: 50px 0 30px;
-  background: #0d0d0d;
-}
-
-.experience-intro p {
-  margin: 0;
-  color: #bdbdbd;
-  font-size: 1rem;
-}
-
-.experience-scene {
-  padding: 120px 0;
-  background: #0b0b0b;
-  border-top: 1px solid #171717;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.experience-scene.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.experience-scene.alt {
-  background: #101010;
-}
-
-.scene-label {
-  margin: 0 0 14px;
-  color: #7cc4ff;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.experience-scene h2 {
-  margin: 0 0 22px;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-}
-
-.scene-text {
-  margin: 0 0 18px;
-  color: #d2d2d2;
-  font-size: 1.08rem;
-  max-width: 680px;
-}
-
-.scene-text:last-child {
-  margin-bottom: 0;
-}
-
-.experience-transition {
-  padding: 120px 0;
-  background: linear-gradient(180deg, #0d0d0d 0%, #11161b 100%);
-  border-top: 1px solid #1b232a;
-  border-bottom: 1px solid #1b232a;
-}
-
-.experience-transition h2 {
-  margin: 0 0 18px;
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.experience-transition p {
-  margin: 0;
-  color: #d2d2d2;
-  font-size: 1.08rem;
-}
-
-.experience-cta {
-  padding: 110px 0;
-  background: #0b0b0b;
-}
-
-.experience-cta h2 {
-  margin: 0 0 18px;
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.experience-cta p {
-  color: #d2d2d2;
-  font-size: 1.08rem;
-}
-
-.cta-buttons {
-  margin-top: 28px;
-  margin-bottom: 28px;
-}
-
-.disclaimer {
-  margin-top: 26px;
-  color: #9c9c9c;
-  font-size: 0.92rem;
-  border-top: 1px solid #1b1b1b;
-  padding-top: 18px;
-}
-
-.experience-next {
-  padding: 140px 0 110px;
-  background: linear-gradient(180deg, #0b0b0b 0%, #0f1318 100%);
-  border-top: 1px solid #1a1a1a;
-  text-align: center;
-}
-
-.experience-next h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0 0 18px;
-}
-
-.next-text {
-  max-width: 620px;
-  margin: 0 auto 30px;
-  color: #d0d0d0;
-  font-size: 1.08rem;
-}
-
-.next-buttons {
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.next-soft {
-  color: #9c9c9c;
-  font-size: 0.95rem;
-  max-width: 580px;
-  margin: 0 auto;
-}
-
-/* =========================
    TABLES
    ========================= */
 
@@ -1808,21 +1634,8 @@ footer,
    ========================= */
 
 @media (max-width: 900px) {
-  .header-inner {
-    flex-wrap: wrap;
-    min-height: 60px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .site-logo {
-    height: 34px;
-  }
-
-  .nav-toggle,
-  .menu-toggle {
+  .nav-toggle {
     display: flex;
-    margin-left: auto;
   }
 
   .main-nav {
@@ -1844,6 +1657,11 @@ footer,
     width: 100%;
     padding: 12px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .site-logo {
+    height: 42px;
+    max-width: 200px;
   }
 
   .grid,
@@ -1870,37 +1688,6 @@ footer,
   .section-heading {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .experience-hero {
-    min-height: auto;
-  }
-
-  .experience-hero-inner {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-
-  .hero-text,
-  .scene-text,
-  .experience-transition p,
-  .experience-cta p,
-  .next-text {
-    font-size: 1rem;
-  }
-
-  .experience-scene,
-  .experience-transition,
-  .experience-cta {
-    padding: 85px 0;
-  }
-
-  .experience-next {
-    padding: 100px 0 85px;
-  }
-
-  .experience-intro {
-    padding: 38px 0 18px;
   }
 
   .section,
@@ -2048,5 +1835,10 @@ footer,
 
   .resource-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-logo {
+    height: 40px;
+    max-width: 190px;
   }
 }
