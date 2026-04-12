@@ -18,9 +18,9 @@
 <body>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo-link">
-        <img src="logo-informer.png" alt="Lawsuit Informer logo" class="site-logo" />
+    <div class="container nav">
+      <a href="index.html" class="logo">
+        <img src="logo-informer.png" alt="Lawsuit Informer logo" />
       </a>
 
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
@@ -29,7 +29,7 @@
         <span></span>
       </button>
 
-      <nav class="main-nav" id="site-menu" aria-label="Primary navigation">
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="legal-guides.html">Legal Guides</a>
         <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -46,8 +46,8 @@
       <div class="container narrow">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
-          <span>&rsaquo;</span>
-          <span>Professor Perspective</span>
+          <span class="breadcrumb-separator">&rsaquo;</span>
+          <span aria-current="page">Professor Perspective</span>
         </nav>
 
         <p class="eyebrow">Academic Commentary</p>
@@ -129,12 +129,12 @@
 
   <script>
     const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.querySelector('.main-nav');
+    const siteMenu = document.querySelector('#site-menu');
 
-    if (navToggle && mainNav) {
+    if (navToggle && siteMenu) {
       navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
-        mainNav.classList.toggle('open');
+        siteMenu.classList.toggle('open');
 
         const expanded = navToggle.classList.contains('active');
         navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
