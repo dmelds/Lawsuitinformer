@@ -10,18 +10,46 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="canonical" href="https://lawsuitinformer.com/professor-jane-smith.html" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="author" href="david-meldofsky.html" />
+  <link rel="publisher" href="about.html" />
 
   <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 </head>
 <body>
 
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">
+        <img src="logo-informer.png" alt="Lawsuit Informer logo" />
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="legal-guides.html">Legal Guides</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="content-section">
     <div class="container narrow">
 
-      <nav class="breadcrumbs">
-        <a href="index.html">Home</a> &rsaquo;
-        <a href="professor-perspective.html">Professor Perspective</a> &rsaquo;
-        <span>Professor Jane Smith</span>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">&rsaquo;</span>
+        <a href="professor-perspective.html">Professor Perspective</a>
+        <span class="breadcrumb-separator">&rsaquo;</span>
+        <span aria-current="page">Professor Jane Smith</span>
       </nav>
 
       <p class="eyebrow">Contributor Profile</p>
@@ -64,8 +92,36 @@
         advice and does not create an attorney-client relationship.
       </p>
 
+      <div class="info-box start-here-box">
+        <p>
+          New to lawsuits? <a href="start-here.html">Start here</a> for a plain-language introduction to how lawsuits work.
+        </p>
+      </div>
+
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© Lawsuit Informer. For educational purposes only. Not legal advice. No attorney-client relationship.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteMenu = document.querySelector('#site-menu');
+
+    if (navToggle && siteMenu) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        siteMenu.classList.toggle('open');
+        const expanded = navToggle.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
+    }
+  </script>
 
 </body>
 </html>
