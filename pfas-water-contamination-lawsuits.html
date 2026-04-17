@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,13 +22,27 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "MedicalWebPage",
     "headline": "PFAS Water Contamination Lawsuits",
     "description": "Learn about PFAS water contamination lawsuits involving alleged exposure to forever chemicals linked to cancer, thyroid disease, immune system effects, and other health concerns.",
+    "specialty": "https://schema.org/MedicalSpecialty",
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "PFAS-related illness",
+      "associatedAnatomy": {
+        "@type": "AnatomicalStructure",
+        "name": "Kidneys"
+      }
+    },
     "author": {
       "@type": "Person",
       "name": "David Meldofsky",
-      "url": "https://lawsuitinformer.com/david-meldofsky.html"
+      "url": "https://lawsuitinformer.com/david-meldofsky.html",
+      "jobTitle": "California-licensed attorney",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Lawsuit Informer"
+      }
     },
     "publisher": {
       "@type": "Organization",
@@ -72,6 +87,103 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Could PFAS exposure from drinking water be linked to health problems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That is one of the central questions raised in PFAS litigation. People often research whether long-term exposure may be associated with certain cancers, thyroid issues, immune system concerns, and other health problems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of lawsuits have been filed over PFAS contamination?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PFAS litigation may involve drinking water contamination, environmental contamination, firefighting foam exposure, cleanup costs, and community-wide contamination allegations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who may be responsible for contaminated water sources?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depending on the facts, lawsuits may focus on chemical manufacturers, industrial operators, firefighting foam-related entities, site operators, or others alleged to be connected to the contamination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do people investigate whether their area was affected?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "People often start with local water reports, public notices, contamination maps, community news, environmental testing, and local legal or investigative resources."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .stat-block-wrap {
+      margin: 24px 0;
+    }
+
+    .stat-block-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #7cc4ff;
+      margin: 0 0 12px !important;
+    }
+
+    .stat-block {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 140px;
+      background: linear-gradient(180deg, #121212, #0d0d0d);
+      border: 1px solid #242424;
+      border-top: 3px solid #2f6feb;
+      border-radius: 12px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-number {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #7cc4ff;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: #c8c8c8;
+      line-height: 1.45;
+    }
+
+    .article-disclaimer {
+      font-size: 0.85rem;
+      color: #6a6a6a;
+      border-left: 3px solid #222;
+      padding-left: 12px;
+      margin: 4px 0 20px;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -84,457 +196,481 @@
         </a>
       </div>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-menu"
-        aria-label="Toggle navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+```
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="site-menu"
+    aria-label="Toggle navigation"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-      <nav id="site-menu" class="site-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="legal-guides.html">Guides</a>
-        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+  <nav id="site-menu" class="site-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="legal-guides.html">Guides</a>
+    <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+    <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+    <a href="browse-lawsuits.html">Browse Lawsuits</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+```
+
   </header>
 
   <main class="content-page">
 
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
-      <span class="breadcrumb-separator">›</span>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
-      <span class="breadcrumb-separator">›</span>
-      <span aria-current="page">PFAS Water Contamination Lawsuits</span>
-    </nav>
+```
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="browse-lawsuits.html">Browse Lawsuits</a>
+  <span class="breadcrumb-separator">›</span>
+  <span aria-current="page">PFAS Water Contamination Lawsuits</span>
+</nav>
 
-    <section class="page-hero">
-      <div class="container narrow">
-        <p class="eyebrow">LAWSUIT TOPIC</p>
-        <h1>PFAS Water Contamination Lawsuits</h1>
+<section class="page-hero">
+  <div class="container narrow">
+    <p class="eyebrow">LAWSUIT TOPIC</p>
+    <h1>PFAS Water Contamination Lawsuits</h1>
 
-        <p class="article-byline">
-          By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
-        </p>
+    <p class="article-byline">
+      By <a href="david-meldofsky.html">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer
+    </p>
 
-        <p class="article-date">
-          Last updated: April 12, 2026
-        </p>
+    <p class="article-date">
+      Last updated: April 12, 2026
+    </p>
 
-        <p class="article-intro">
-          PFAS water contamination lawsuits involve allegations that exposure to per- and polyfluoroalkyl substances, often called “forever chemicals,” may contribute to serious health risks. These cases often focus on contamination of drinking water near industrial facilities, military bases, airports, landfills, and other sites where PFAS-containing materials were used, released, or allowed to spread into the environment.
-        </p>
+    <p class="article-intro">
+      If you or your family may have been exposed to PFAS-contaminated drinking water, legal options may still be available — even if the exposure happened years ago. These cases often involve communities near military bases, airports, industrial facilities, and landfills where "forever chemicals" were used or released into the water supply. This page explains how PFAS water contamination lawsuits work, who may be affected, and what steps people typically take first.
+    </p>
 
-        <p>
-          For broader background, you can also explore
-          <a href="chemical-exposure-lawsuits.html">chemical exposure lawsuits</a>,
-          <a href="toxic-water-contamination-lawsuits.html">toxic water contamination lawsuits</a>,
-          <a href="environmental-contamination-lawsuits.html">environmental contamination lawsuits</a>,
-          <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>, and
-          <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>.
-        </p>
+    <p>
+      For broader background, you can also explore
+      <a href="chemical-exposure-lawsuits.html">chemical exposure lawsuits</a>,
+      <a href="toxic-water-contamination-lawsuits.html">toxic water contamination lawsuits</a>,
+      <a href="environmental-contamination-lawsuits.html">environmental contamination lawsuits</a>,
+      <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>, and
+      <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>.
+    </p>
 
-        <div class="info-box">
-          <strong>Important:</strong>
-          <p>This page provides general educational information only and does not constitute medical or legal advice.</p>
+    <p class="article-disclaimer">This page provides general educational information only and does not constitute medical or legal advice.</p>
+
+    <div class="info-box key-takeaways-box">
+      <strong>Key Takeaways:</strong>
+      <ul>
+        <li>→ PFAS lawsuits often involve alleged contamination of drinking water by persistent "forever chemicals."</li>
+        <li>→ People commonly research these claims after learning about contaminated local water supplies or possible long-term exposure.</li>
+        <li>→ Frequently discussed health concerns include certain cancers, thyroid issues, immune system effects, and reproductive or developmental concerns.</li>
+        <li>→ These cases often overlap with broader toxic water, environmental contamination, and AFFF firefighting foam litigation.</li>
+      </ul>
+    </div>
+
+    <div class="stat-block-wrap">
+      <p class="stat-block-title">Key facts about PFAS contamination claims</p>
+      <div class="stat-block">
+        <div class="stat-item">
+          <span class="stat-number">12,000+</span>
+          <span class="stat-label">PFAS compounds identified — most do not break down in the environment</span>
         </div>
-
-        <div class="info-box key-takeaways-box">
-          <strong>Key Takeaways:</strong>
-          <ul>
-            <li>PFAS lawsuits often involve alleged contamination of drinking water by persistent “forever chemicals.”</li>
-            <li>People commonly research these claims after learning about contaminated local water supplies or possible long-term exposure.</li>
-            <li>Frequently discussed health concerns include certain cancers, thyroid issues, immune system effects, and reproductive or developmental concerns.</li>
-            <li>These cases often overlap with broader toxic water, environmental contamination, and AFFF firefighting foam litigation.</li>
-          </ul>
+        <div class="stat-item">
+          <span class="stat-number">2,800+</span>
+          <span class="stat-label">U.S. locations with known or suspected PFAS contamination</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Diagnosis date</span>
+          <span class="stat-label">When filing deadlines typically begin — not the original exposure date</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="article-section">
-      <div class="container narrow">
+  </div>
+</section>
 
-        <div class="related-guides">
-          <h2>On This Page</h2>
-          <ul class="link-list">
-            <li><a href="#simple-terms">In simple terms</a></li>
-            <li><a href="#what-are-pfas">What PFAS chemicals are</a></li>
-            <li><a href="#who-may-be-affected">Who may be affected</a></li>
-            <li><a href="#why-lawsuits">Why this issue is connected to lawsuits</a></li>
-            <li><a href="#health-concerns">Health concerns people commonly research</a></li>
-            <li><a href="#sources-of-exposure">Common sources of PFAS exposure</a></li>
-            <li><a href="#how-people-start">How people start looking into PFAS claims</a></li>
-            <li><a href="#why-these-cases-matter">Why these cases matter</a></li>
-            <li><a href="#common-questions">Common questions</a></li>
-          </ul>
-        </div>
+<section class="article-section">
+  <div class="container narrow">
 
-        <h2 id="simple-terms">In Simple Terms</h2>
+    <div class="related-guides">
+      <h2>On This Page</h2>
+      <ul class="link-list">
+        <li>→ <a href="#simple-terms">In simple terms</a></li>
+        <li>→ <a href="#what-are-pfas">What PFAS chemicals are</a></li>
+        <li>→ <a href="#who-may-be-affected">Who may be affected</a></li>
+        <li>→ <a href="#why-lawsuits">Why this issue is connected to lawsuits</a></li>
+        <li>→ <a href="#health-concerns">Health concerns people commonly research</a></li>
+        <li>→ <a href="#sources-of-exposure">Common sources of PFAS exposure</a></li>
+        <li>→ <a href="#how-people-start">How people start looking into PFAS claims</a></li>
+        <li>→ <a href="#why-these-cases-matter">Why these cases matter</a></li>
+        <li>→ <a href="#common-questions">Common questions</a></li>
+      </ul>
+    </div>
 
-        <p>
-          PFAS are synthetic chemicals that do not easily break down in the environment. Because they can remain in water, soil, and the human body for long periods of time, people often begin researching PFAS lawsuits after learning that their local water supply may have been contaminated or after developing health concerns associated with long-term exposure.
-        </p>
+    <h2 id="simple-terms">In Simple Terms</h2>
 
-        <p>
-          PFAS-related claims often fit into broader categories such as
-          <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>,
-          <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
-          <a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a>,
-          <a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a>,
-          <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>, and
-          <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>.
-        </p>
+    <p>
+      PFAS are synthetic chemicals that do not easily break down in the environment. Because they can remain in water, soil, and the human body for long periods of time, people often begin researching PFAS lawsuits after learning that their local water supply may have been contaminated or after developing health concerns associated with long-term exposure.
+    </p>
 
-        <h2 id="what-are-pfas">What Are PFAS Chemicals?</h2>
+    <p>
+      PFAS-related claims often fit into broader categories such as
+      <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>,
+      <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
+      <a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a>,
+      <a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a>,
+      <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>, and
+      <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>.
+    </p>
 
-        <p>
-          PFAS stands for per- and polyfluoroalkyl substances, a large group of man-made chemicals used for decades in industrial processes and consumer products. They have been used in products designed to resist heat, grease, oil, stains, and water.
-        </p>
+    <h2 id="what-are-pfas">What Are PFAS Chemicals?</h2>
 
-        <p>
-          PFAS have drawn widespread attention because they may accumulate over time in groundwater, drinking water systems, wildlife, and the human body. This persistence is one reason they are often called “forever chemicals.”
-        </p>
+    <p>
+      PFAS stands for per- and polyfluoroalkyl substances, a large group of man-made chemicals used for decades in industrial processes and consumer products. They have been used in products designed to resist heat, grease, oil, stains, and water.
+    </p>
 
-        <p>
-          Readers tracing broader exposure paths may also want to review
-          <a href="chemical-exposure-symptoms.html">Chemical Exposure Symptoms</a>
-          and
-          <a href="diseases-linked-to-chemical-exposure.html">Diseases Linked to Chemical Exposure</a>.
-        </p>
+    <p>
+      PFAS have drawn widespread attention because they may accumulate over time in groundwater, drinking water systems, wildlife, and the human body. This persistence is one reason they are often called "forever chemicals."
+    </p>
 
-        <h2 id="who-may-be-affected">Who May Be Affected</h2>
+    <p>
+      Readers tracing broader exposure paths may also want to review
+      <a href="chemical-exposure-symptoms.html">Chemical Exposure Symptoms</a>
+      and
+      <a href="diseases-linked-to-chemical-exposure.html">Diseases Linked to Chemical Exposure</a>.
+    </p>
 
-        <ul class="lawsuit-list">
-          <li>People living near contaminated drinking water sources</li>
-          <li>Communities near military bases, airports, industrial sites, or landfills</li>
-          <li>Firefighters and others exposed to firefighting foam</li>
-          <li>Workers in chemical manufacturing or related industries</li>
-          <li>Individuals with long-term exposure to polluted groundwater or municipal water systems</li>
-        </ul>
+    <h2 id="who-may-be-affected">Who May Be Affected</h2>
 
-        <p>
-          For related illness-focused topics, see
-          <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>,
-          <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>, and
-          <a href="illnesses-linked-to-lawsuits.html">Illnesses and Exposures Linked to Lawsuits</a>.
-        </p>
+    <ul class="lawsuit-list">
+      <li>People living near contaminated drinking water sources</li>
+      <li>Communities near military bases, airports, industrial sites, or landfills</li>
+      <li>Firefighters and others exposed to firefighting foam</li>
+      <li>Workers in chemical manufacturing or related industries</li>
+      <li>Individuals with long-term exposure to polluted groundwater or municipal water systems</li>
+    </ul>
 
-        <h2 id="why-lawsuits">Why This Issue Is Connected to Lawsuits</h2>
+    <p>
+      For related illness-focused topics, see
+      <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>,
+      <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>, and
+      <a href="illnesses-linked-to-lawsuits.html">Illnesses and Exposures Linked to Lawsuits</a>.
+    </p>
 
-        <p>
-          PFAS lawsuits often involve allegations that chemical manufacturers, industrial operators, firefighting foam-related entities, or other parties contaminated water supplies and failed to adequately warn the public about potential risks. Some claims focus on whether companies knew about environmental or health concerns but did not take sufficient steps to prevent contamination or notify affected communities.
-        </p>
+    <h2 id="why-lawsuits">Why This Issue Is Connected to Lawsuits</h2>
 
-        <p>
-          These lawsuits may also involve allegations of negligence, environmental contamination, failure to warn, product liability, and cleanup-related disputes. In some cases, entire communities have been affected by the same water source or contamination event.
-        </p>
+    <p>
+      PFAS lawsuits often involve allegations that chemical manufacturers, industrial operators, firefighting foam-related entities, or other parties contaminated water supplies and failed to adequately warn the public about potential risks. Some claims focus on whether companies knew about environmental or health concerns but did not take sufficient steps to prevent contamination or notify affected communities.
+    </p>
 
-        <p>
-          PFAS claims are also frequently discussed alongside
-          <a href="afff-firefighting-foam-lawsuits.html">AFFF firefighting foam lawsuits</a>,
-          because firefighting foam is one of the major PFAS-related exposure topics people research.
-        </p>
+    <p>
+      These lawsuits may also involve allegations of negligence, environmental contamination, failure to warn, product liability, and cleanup-related disputes. In some cases, entire communities have been affected by the same water source or contamination event.
+    </p>
 
-        <h2 id="health-concerns">Health Concerns People Commonly Research</h2>
+    <p>
+      PFAS claims are also frequently discussed alongside
+      <a href="afff-firefighting-foam-lawsuits.html">AFFF firefighting foam lawsuits</a>,
+      because firefighting foam is one of the major PFAS-related exposure topics people research.
+    </p>
 
-        <ul class="lawsuit-list">
-          <li>Kidney cancer</li>
-          <li>Testicular cancer</li>
-          <li>Thyroid disease</li>
-          <li>Immune system effects</li>
-          <li>Liver-related concerns</li>
-          <li>Developmental and reproductive health concerns</li>
-          <li>Other PFAS-related or long-term exposure concerns</li>
-        </ul>
+    <h2 id="health-concerns">Health Concerns People Commonly Research</h2>
 
-        <p>
-          Looking for broader diagnosis-related topics? Explore
-          <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>.
-        </p>
+    <ul class="lawsuit-list">
+      <li>Kidney cancer</li>
+      <li>Testicular cancer</li>
+      <li>Thyroid disease</li>
+      <li>Immune system effects</li>
+      <li>Liver-related concerns</li>
+      <li>Developmental and reproductive health concerns</li>
+      <li>Other PFAS-related or long-term exposure concerns</li>
+    </ul>
 
-        <p>
-          You may also want to review
-          <a href="chemical-exposure-kidney-cancer.html">Chemical Exposure and Kidney Cancer</a>,
-          <a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a>,
-          <a href="reproductive-injuries-linked-to-lawsuits.html">Reproductive Injuries Linked to Lawsuits</a>, and
-          <a href="developmental-injuries-linked-to-lawsuits.html">Developmental Injuries Linked to Lawsuits</a>.
-        </p>
+    <p>
+      Looking for broader diagnosis-related topics? Explore
+      <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>.
+    </p>
 
-        <h2 id="sources-of-exposure">Common Sources of PFAS Exposure</h2>
+    <p>
+      You may also want to review
+      <a href="chemical-exposure-kidney-cancer.html">Chemical Exposure and Kidney Cancer</a>,
+      <a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a>,
+      <a href="reproductive-injuries-linked-to-lawsuits.html">Reproductive Injuries Linked to Lawsuits</a>, and
+      <a href="developmental-injuries-linked-to-lawsuits.html">Developmental Injuries Linked to Lawsuits</a>.
+    </p>
 
-        <ul class="lawsuit-list">
-          <li>Contaminated drinking water</li>
-          <li>Industrial manufacturing or chemical waste</li>
-          <li>Firefighting foam used at airports and military installations</li>
-          <li>Polluted groundwater or soil near industrial sites</li>
-          <li>Long-term environmental exposure in nearby communities</li>
-        </ul>
+    <h2 id="sources-of-exposure">Common Sources of PFAS Exposure</h2>
 
-        <p>
-          AFFF-related exposure is often discussed alongside PFAS claims. Explore
-          <a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a>.
-        </p>
+    <ul class="lawsuit-list">
+      <li>Contaminated drinking water</li>
+      <li>Industrial manufacturing or chemical waste</li>
+      <li>Firefighting foam used at airports and military installations</li>
+      <li>Polluted groundwater or soil near industrial sites</li>
+      <li>Long-term environmental exposure in nearby communities</li>
+    </ul>
 
-        <p>
-          Readers also often move between this page and
-          <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>,
-          <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
-          <a href="air-pollution-lawsuits.html">Air Pollution Lawsuits</a>,
-          <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>, and
-          <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>.
-        </p>
+    <p>
+      AFFF-related exposure is often discussed alongside PFAS claims. Explore
+      <a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a>.
+    </p>
 
-        <h2 id="how-people-start">How People Start Looking Into PFAS Claims</h2>
+    <p>
+      Readers also often move between this page and
+      <a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a>,
+      <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
+      <a href="air-pollution-lawsuits.html">Air Pollution Lawsuits</a>,
+      <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>, and
+      <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>.
+    </p>
 
-        <p>
-          Many people first learn about possible PFAS exposure after public notices, news reports, local testing results, community investigations, or conversations with neighbors. Others begin with a diagnosis and only later discover that their water source may have been affected.
-        </p>
+    <h2 id="how-people-start">How People Start Looking Into PFAS Claims</h2>
 
-        <p>
-          Case review often starts with a few basic questions: where the person lived or worked, what water source was involved, how long exposure may have lasted, what diagnosis or symptoms are being investigated, and whether public information exists about contamination in the area.
-        </p>
+    <p>
+      Many people first learn about possible PFAS exposure after public notices, news reports, local testing results, community investigations, or conversations with neighbors. Others begin with a diagnosis and only later discover that their water source may have been affected.
+    </p>
 
-        <p>
-          Many readers also start with a more anxious, practical question:
-          <a href="has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html">Has anyone been part of a PFAS water contamination lawsuit?</a>
-          That page walks through what people usually mean when they ask that, what records they may want to keep, and how to think through next steps.
-        </p>
+    <p>
+      Case review often starts with a few basic questions: where the person lived or worked, what water source was involved, how long exposure may have lasted, what diagnosis or symptoms are being investigated, and whether public information exists about contamination in the area.
+    </p>
 
-        <p>
-          For next-step guidance, many readers also review
-          <a href="what-evidence-helps-a-lawsuit.html">What Evidence Helps a Lawsuit?</a>,
-          <a href="what-happens-after-you-contact-a-lawyer.html">What Happens After You Contact a Lawyer?</a>,
-          and
-          <a href="how-lawsuits-work.html">How Lawsuits Work</a>.
-        </p>
+    <p>
+      Many readers also start with a more anxious, practical question:
+      <a href="has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html">Has anyone been part of a PFAS water contamination lawsuit?</a>
+      That page walks through what people usually mean when they ask that, what records they may want to keep, and how to think through next steps.
+    </p>
 
-        <h2 id="why-these-cases-matter">Why These Cases Matter</h2>
+    <p>
+      For next-step guidance, many readers also review
+      <a href="what-evidence-helps-a-lawsuit.html">What Evidence Helps a Lawsuit?</a>,
+      <a href="what-happens-after-you-contact-a-lawyer.html">What Happens After You Contact a Lawyer?</a>,
+      and
+      <a href="how-lawsuits-work.html">How Lawsuits Work</a>.
+    </p>
 
-        <p>
-          PFAS lawsuits are often about more than one product or one person. They can involve long-term environmental exposure affecting families, workers, schools, and entire communities. These cases often raise broader questions about public health, environmental safety, cleanup responsibility, corporate accountability, and whether affected people were given enough information to protect themselves.
-        </p>
+    <h2 id="why-these-cases-matter">Why These Cases Matter</h2>
 
-        <p>
-          For many people, understanding how contamination happened and whether warnings were delayed is a major reason they begin researching these lawsuits.
-        </p>
+    <p>
+      PFAS lawsuits are often about more than one product or one person. They can involve long-term environmental exposure affecting families, workers, schools, and entire communities. These cases often raise broader questions about public health, environmental safety, cleanup responsibility, corporate accountability, and whether affected people were given enough information to protect themselves.
+    </p>
 
-        <p>
-          That is why readers often continue to
-          <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
-          <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>, and
-          <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>.
-        </p>
+    <p>
+      For many people, understanding how contamination happened and whether warnings were delayed is a major reason they begin researching these lawsuits.
+    </p>
 
-        <h2 id="common-questions">Common Questions People Ask</h2>
+    <p>
+      That is why readers often continue to
+      <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>,
+      <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>, and
+      <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>.
+    </p>
 
-        <h3>Could PFAS exposure from drinking water be linked to health problems?</h3>
-        <p>
-          That is one of the central questions raised in PFAS litigation. People often research whether long-term exposure may be associated with certain cancers, thyroid issues, immune system concerns, and other health problems.
-        </p>
+    <h2 id="common-questions">Common Questions People Ask</h2>
 
-        <h3>What types of lawsuits have been filed over PFAS contamination?</h3>
-        <p>
-          PFAS litigation may involve drinking water contamination, environmental contamination, firefighting foam exposure, cleanup costs, and community-wide contamination allegations.
-        </p>
+    <h3>Could PFAS exposure from drinking water be linked to health problems?</h3>
+    <p>
+      That is one of the central questions raised in PFAS litigation. People often research whether long-term exposure may be associated with certain cancers, thyroid issues, immune system concerns, and other health problems. <a href="water-contamination-illnesses.html">Learn more →</a>
+    </p>
 
-        <h3>Who may be responsible for contaminated water sources?</h3>
-        <p>
-          Depending on the facts, lawsuits may focus on chemical manufacturers, industrial operators, firefighting foam-related entities, site operators, or others alleged to be connected to the contamination.
-        </p>
+    <h3>What types of lawsuits have been filed over PFAS contamination?</h3>
+    <p>
+      PFAS litigation may involve drinking water contamination, environmental contamination, firefighting foam exposure, cleanup costs, and community-wide contamination allegations. <a href="afff-firefighting-foam-lawsuits.html">Learn more →</a>
+    </p>
 
-        <h3>How do people investigate whether their area was affected?</h3>
-        <p>
-          People often start with local water reports, public notices, contamination maps, community news, environmental testing, and local legal or investigative resources.
-        </p>
+    <h3>Who may be responsible for contaminated water sources?</h3>
+    <p>
+      Depending on the facts, lawsuits may focus on chemical manufacturers, industrial operators, firefighting foam-related entities, site operators, or others alleged to be connected to the contamination. <a href="environmental-contamination-lawsuits.html">Learn more →</a>
+    </p>
 
+    <h3>How do people investigate whether their area was affected?</h3>
+    <p>
+      People often start with local water reports, public notices, contamination maps, community news, environmental testing, and local legal or investigative resources. <a href="has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html">Learn more →</a>
+    </p>
+
+  </div>
+</section>
+
+<section class="article-section alt">
+  <div class="container narrow">
+
+    <div class="cta-box">
+
+      <h2>Explore Related Lawsuit Topics</h2>
+
+      <p>
+        Continue exploring PFAS claims, water contamination issues, related illnesses, and general legal education pages.
+      </p>
+
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="browse-lawsuits.html">Explore Lawsuit Topics</a>
+        <a class="btn btn-secondary" href="how-lawsuits-work.html">Learn How Lawsuits Work</a>
       </div>
-    </section>
 
-    <section class="article-section alt">
-      <div class="container narrow">
+      <p class="form-bridge">
+        If you're trying to understand whether this situation may apply to you, you can share a few details below to get started. You may also want to review
+        <a href="water-contamination-illnesses.html">water contamination illnesses</a>,
+        <a href="afff-firefighting-foam-lawsuits.html">AFFF firefighting foam lawsuits</a>,
+        <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>, or
+        <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>
+        first.
+      </p>
 
-        <div class="cta-box">
+      <form name="pfas-case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
+        <input type="hidden" name="form-name" value="pfas-case-review" />
 
-          <h2>Explore Related Lawsuit Topics</h2>
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
 
-          <p>
-            Continue exploring PFAS claims, water contamination issues, related illnesses, and general legal education pages.
-          </p>
+        <label for="name">Your Name</label>
+        <input id="name" type="text" name="name" placeholder="Your name" />
 
-          <div class="cta-buttons">
-            <a class="btn btn-primary" href="browse-lawsuits.html">Explore Lawsuit Topics</a>
-            <a class="btn btn-secondary" href="how-lawsuits-work.html">Learn How Lawsuits Work</a>
-          </div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="Your email" />
 
-          <p class="form-bridge">
-            If you're trying to understand whether this situation may apply to you, you can share a few details below to get started. You may also want to review
-            <a href="water-contamination-illnesses.html">water contamination illnesses</a>,
-            <a href="afff-firefighting-foam-lawsuits.html">AFFF firefighting foam lawsuits</a>,
-            <a href="pfas-consumer-product-lawsuits.html">PFAS consumer product lawsuits</a>, or
-            <a href="pfas-cosmetics-lawsuits.html">PFAS cosmetics lawsuits</a>
-            first.
-          </p>
+        <label for="location">Location (City / State)</label>
+        <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA" />
 
-          <form name="pfas-case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
-            <input type="hidden" name="form-name" value="pfas-case-review" />
+        <label for="case_type">Type of Exposure or Issue</label>
+        <select id="case_type" name="case_type">
+          <option value="">Select one</option>
+          <option>PFAS / Water Contamination</option>
+          <option>AFFF Firefighting Foam</option>
+          <option>Toxic Water Contamination</option>
+          <option>Environmental Contamination</option>
+          <option>Other</option>
+        </select>
 
-            <p hidden>
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </p>
+        <label for="lawyer_status">Have you spoken to a lawyer?</label>
+        <select id="lawyer_status" name="lawyer_status">
+          <option value="">Select one</option>
+          <option>No</option>
+          <option>Yes</option>
+          <option>Not sure</option>
+        </select>
 
-            <label for="name">Your Name</label>
-            <input id="name" type="text" name="name" placeholder="Your name" />
+        <label for="message">What happened?</label>
+        <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
 
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="Your email" />
+        <button type="submit" class="btn btn-primary">
+          Submit for Review
+        </button>
+      </form>
 
-            <label for="location">Location (City / State)</label>
-            <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA" />
+      <p class="form-note">
+        Educational purposes only. Submitting this form does not create an attorney-client relationship.
+      </p>
 
-            <label for="case_type">Type of Exposure or Issue</label>
-            <select id="case_type" name="case_type">
-              <option value="">Select one</option>
-              <option>PFAS / Water Contamination</option>
-              <option>AFFF Firefighting Foam</option>
-              <option>Toxic Water Contamination</option>
-              <option>Environmental Contamination</option>
-              <option>Other</option>
-            </select>
+    </div>
 
-            <label for="lawyer_status">Have you spoken to a lawyer?</label>
-            <select id="lawyer_status" name="lawyer_status">
-              <option value="">Select one</option>
-              <option>No</option>
-              <option>Yes</option>
-              <option>Not sure</option>
-            </select>
+    <div class="related-guides" style="margin-top: 40px;">
+      <h3>Related Lawsuit and Illness Topics</h3>
+      <ul class="link-list">
+        <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
+        <li><a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a></li>
+        <li><a href="water-contamination-illnesses.html">Water Contamination Illnesses</a></li>
+        <li><a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a></li>
+        <li><a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a></li>
+        <li><a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a></li>
+        <li><a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a></li>
+        <li><a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a></li>
+        <li><a href="chemical-exposure-kidney-cancer.html">Chemical Exposure and Kidney Cancer</a></li>
+        <li><a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a></li>
+        <li><a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a></li>
+        <li><a href="illnesses-linked-to-lawsuits.html">Illnesses Linked to Lawsuits</a></li>
+        <li><a href="has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html">Has Anyone Been Part of a PFAS Water Contamination Lawsuit?</a></li>
+      </ul>
+    </div>
 
-            <label for="message">What happened?</label>
-            <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
+  </div>
+</section>
 
-            <button type="submit" class="btn btn-primary">
-              Submit for Review
-            </button>
-          </form>
+<section class="author-box-section">
+  <div class="container author-box">
 
-          <p class="form-note">
-            Educational purposes only. Submitting this form does not create an attorney-client relationship.
-          </p>
+    <div class="author-photo">
+      <img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600">
+    </div>
 
-        </div>
+    <div class="author-details">
+      <h3>About the Author</h3>
 
-        <div class="related-guides" style="margin-top: 40px;">
-          <h3>Related Lawsuit and Illness Topics</h3>
-          <ul class="link-list">
-            <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
-            <li><a href="toxic-water-contamination-lawsuits.html">Toxic Water Contamination Lawsuits</a></li>
-            <li><a href="water-contamination-illnesses.html">Water Contamination Illnesses</a></li>
-            <li><a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a></li>
-            <li><a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a></li>
-            <li><a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a></li>
-            <li><a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a></li>
-            <li><a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a></li>
-            <li><a href="chemical-exposure-kidney-cancer.html">Chemical Exposure and Kidney Cancer</a></li>
-            <li><a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a></li>
-            <li><a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a></li>
-            <li><a href="illnesses-linked-to-lawsuits.html">Illnesses Linked to Lawsuits</a></li>
-            <li><a href="has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html">Has Anyone Been Part of a PFAS Water Contamination Lawsuit?</a></li>
-          </ul>
-        </div>
+      <p>
+        <strong><a href="david-meldofsky.html">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
+      </p>
 
-      </div>
-    </section>
+      <p>
+        Learn more about our
+        <a href="editorial-policy.html">Editorial Policy</a>,
+        <a href="about.html">About page</a>, or
+        <a href="contact.html">Contact us</a>.
+      </p>
 
-    <section class="author-box-section">
-      <div class="container author-box">
+      <p>
+        <strong>Last Updated:</strong> April 12, 2026
+      </p>
 
-        <div class="author-photo">
-          <img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600">
-        </div>
+      <p>
+        Educational information only. Not legal advice. No attorney-client relationship is formed.
+      </p>
+    </div>
 
-        <div class="author-details">
-          <h3>About the Author</h3>
-
-          <p>
-            <strong><a href="david-meldofsky.html">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
-          </p>
-
-          <p>
-            Learn more about our
-            <a href="editorial-policy.html">Editorial Policy</a>,
-            <a href="about.html">About page</a>, or
-            <a href="contact.html">Contact us</a>.
-          </p>
-
-          <p>
-            <strong>Last Updated:</strong> April 12, 2026
-          </p>
-
-          <p>
-            Educational information only. Not legal advice. No attorney-client relationship is formed.
-          </p>
-        </div>
-
-      </div>
-    </section>
+  </div>
+</section>
+```
 
   </main>
 
   <footer>
     <div class="container footer-content">
 
-      <div>
-        <h3>Lawsuit Informer</h3>
-        <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
+```
+  <div>
+    <h3>Lawsuit Informer</h3>
+    <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
 
-        <p><strong>Questions about a potential case? Contact us directly.</strong></p>
+    <p><strong>Questions about a potential case? Contact us directly.</strong></p>
 
-        <p>
-          <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
-            hello@lawsuitinformer.com
-          </a>
-        </p>
-      </div>
+    <p>
+      <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
+        hello@lawsuitinformer.com
+      </a>
+    </p>
+  </div>
 
-      <div>
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="editorial-policy.html">Editorial Policy</a></li>
-          <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-          <li><a href="mass-torts.html">Mass Torts</a></li>
-          <li><a href="class-action.html">Class Actions</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-        </ul>
-      </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="editorial-policy.html">Editorial Policy</a></li>
+      <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+      <li><a href="mass-torts.html">Mass Torts</a></li>
+      <li><a href="class-action.html">Class Actions</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Legal Disclaimer</a></li>
+    </ul>
+  </div>
 
-      <div>
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-          <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
-          <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
-        </ul>
-      </div>
+  <div>
+    <h3>Explore</h3>
+    <ul>
+      <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+      <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
+      <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
+    </ul>
+  </div>
 
-    </div>
+</div>
 
-    <div class="container footer-bottom">
-      <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-      <p>© 2026 Lawsuit Informer. All rights reserved.</p>
-    </div>
+<div class="container footer-bottom">
+  <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
+  <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+</div>
+```
+
   </footer>
 
   <script>
