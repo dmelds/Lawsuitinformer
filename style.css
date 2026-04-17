@@ -770,6 +770,15 @@ header nav a[aria-current="page"],
   color: #c8c8c8;
   line-height: 1.45;
 }
+.stat-block-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #7cc4ff;
+  margin: 0 0 12px !important;
+}
+
 
 
 /* =========================
