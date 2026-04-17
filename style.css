@@ -738,10 +738,22 @@ header nav a[aria-current="page"],
    STAT BLOCK
    ========================= */
 
+.stat-block-wrap {
+  margin: 24px 0;
+}
+
+.stat-block-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #7cc4ff;
+  margin: 0 0 12px !important;
+}
+
 .stat-block {
   display: flex;
   gap: 14px;
-  margin: 24px 0;
   flex-wrap: wrap;
 }
 
@@ -770,14 +782,16 @@ header nav a[aria-current="page"],
   color: #c8c8c8;
   line-height: 1.45;
 }
-.stat-block-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #7cc4ff;
-  margin: 0 0 12px !important;
+
+/* Quiet disclaimer */
+.article-disclaimer {
+  font-size: 0.85rem;
+  color: #6a6a6a;
+  border-left: 3px solid #222;
+  padding-left: 12px;
+  margin: 4px 0 20px;
 }
+
 
 
 
