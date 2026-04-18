@@ -1,21 +1,171 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Lawsuit Informer</title>
+  <title>Lawsuit Informer — Attorney-Led Guides to Lawsuits & Consumer Safety</title>
   <meta
     name="description"
-    content="Lawsuit Informer is an attorney-led educational platform covering lawsuits, toxic exposure, product liability, consumer safety issues, and legal rights."
+    content="Attorney-led guides to lawsuits, toxic exposure, defective products, and consumer safety — explained in plain language. Research your situation and learn your options."
   />
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Targeted polish styles layered over existing style.css -->
+
+  <style>
+    /* Hero refinements */
+    .hero { position: relative; }
+    .hero h1 { max-width: 20ch; }
+    .hero .hero-lead { font-size: 1.15rem; max-width: 58ch; margin: 1rem auto 1.75rem; line-height: 1.55; }
+    .hero-buttons { margin-top: 1.5rem; display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+    .hero-meta {
+      margin-top: 1.25rem;
+      font-size: .92rem;
+      opacity: .85;
+    }
+    .hero-meta a { text-decoration: underline; }
+
+    /* Lead capture strip */
+    .lead-strip {
+      background: #0b2545;
+      color: #fff;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .lead-strip h2 { color: #fff; margin: 0 0 .75rem; }
+    .lead-strip p { color: #e2e8f0; max-width: 62ch; margin: 0 auto 1.5rem; }
+    .lead-strip .btn-primary {
+      background: #f6b93b;
+      color: #0b2545;
+      font-weight: 600;
+      border: none;
+    }
+    .lead-strip .btn-primary:hover { background: #f0a500; }
+    .lead-strip .btn-secondary {
+      color: #fff;
+      border-color: #fff;
+    }
+    .lead-strip .btn-secondary:hover { background: rgba(255,255,255,.1); }
+    .lead-strip-actions { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+    .lead-strip-note { font-size: .85rem; opacity: .75; margin-top: 1.25rem; }
+
+    /* Trust refinements */
+    .trust-card { padding: 1.5rem; }
+    .trust-card h3 { margin-top: 0; }
+    .trust-metric {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b2545;
+      display: block;
+      margin-bottom: .25rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Section heading link alignment */
+    .section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .section-heading > div:first-child { flex: 1 1 300px; }
+    .section-heading-link a { white-space: nowrap; font-weight: 600; }
+
+    /* Eyebrow label */
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #0b2545;
+      margin-bottom: .5rem;
+    }
+
+    /* Card hover polish */
+    .card { transition: transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+    /* FAQ section */
+    .faq details {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1rem 0;
+    }
+    .faq details:last-child { border-bottom: none; }
+    .faq summary {
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1.05rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #0b2545;
+      transition: transform .2s;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: .75rem; color: #4b5563; line-height: 1.6; }
+
+    /* Responsive hero */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero .hero-lead { font-size: 1rem; }
+      .trust-metric { font-size: 1.6rem; }
+    }
+  </style>
+
   <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
   <link rel="author" href="david-meldofsky.html" />
   <link rel="publisher" href="about.html" />
   <link rel="canonical" href="https://lawsuitinformer.com/" />
+
+  <!-- FAQ schema for SEO -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I know if I have a lawsuit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Whether a situation can support a legal claim depends on the facts, the applicable law, and evidence available. Our guides explain how lawsuits typically work and what kinds of evidence may matter. Speaking with a licensed attorney is the only way to evaluate a specific situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it cost money to research a potential lawsuit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reading legal guides and researching lawsuit topics is free. Many lawyers who handle injury, toxic exposure, and product liability cases work on a contingency basis, meaning no fee unless the case succeeds. Policies vary by firm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a mass tort?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A mass tort involves many individual claims, usually against the same defendant, that are coordinated together because they share common issues. Unlike a class action, each plaintiff keeps a separate case and receives an individual outcome."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long do I have to file a lawsuit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every state sets deadlines, called statutes of limitations, for filing different types of claims. These deadlines vary widely by claim type and jurisdiction. Missing a deadline can bar a case entirely, so timing is often important."
+        }
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
 
@@ -27,379 +177,332 @@
         </a>
       </div>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="site-menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+```
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Toggle navigation"
+    aria-expanded="false"
+    aria-controls="site-menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="legal-guides.html">Guides</a>
-        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        <a href="browse-lawsuits.html">Browse Lawsuits</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+  <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="legal-guides.html">Guides</a>
+    <a href="browse-lawsuits.html">Lawsuits</a>
+    <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+```
+
   </header>
 
   <main>
 
-    <section class="hero">
-      <div class="container">
-        <h1>Attorney-Led Guides to Lawsuits, Consumer Safety, and Legal Rights</h1>
+```
+<!-- HERO: single focused message, one primary CTA -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">ATTORNEY-LED LEGAL EDUCATION</p>
+    <h1>Understand your lawsuit. In plain English.</h1>
 
-        <p>
-          Lawsuit Informer explains how lawsuits work, why certain products and exposures lead to legal claims,
-          and what people should know when exploring their rights.
-        </p>
-
-        <p class="hero-paths">
-          <a href="legal-guides.html">Legal Guides</a>
-          <a href="browse-lawsuits.html">Browse Lawsuits</a>
-          <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-          <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-        </p>
-
-        <p class="start-here-bridge">
-          New to lawsuits? <a href="start-here.html">Start here</a> to understand the process step by step.
-        </p>
-
-        <div class="info-box">
-          <p class="hero-subtext">
-            Clear legal guides, lawsuit topics, and consumer safety issues — explained in plain language.
-          </p>
-        </div>
-
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="#research-paths">Start Your Research</a>
-          <a class="btn btn-secondary" href="browse-lawsuits.html">Browse Lawsuit Topics</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="start-here">
-      <div class="container narrow">
-        <p class="eyebrow">START HERE</p>
-        <h2>New to Lawsuits?</h2>
-
-        <p class="start-text">
-          Start with a simple guide that explains how lawsuits work, what happens after you contact a lawyer,
-          what evidence may matter, and where to continue your research.
-        </p>
-
-        <a href="start-here.html" class="btn btn-primary">Go to Start Here</a>
-      </div>
-    </section>
-
-    <section id="research-paths" class="section quick-start">
-      <div class="container">
-        <h2>Choose How You Want to Explore</h2>
-
-        <p class="section-intro">
-          Start with legal basics, browse lawsuit topics, or explore by illness, symptom, or exposure history.
-        </p>
-
-        <div class="grid">
-          <a class="card" href="legal-guides.html">
-            <h3>Legal Guides</h3>
-            <p>Learn the basics of how lawsuits work, what evidence can matter, and what people often research first.</p>
-          </a>
-
-          <a class="card" href="browse-lawsuits.html">
-            <h3>Browse Lawsuits</h3>
-            <p>Explore lawsuit topics involving toxic exposure, dangerous products, environmental contamination, and consumer safety.</p>
-          </a>
-
-          <a class="card" href="community-education.html">
-  <h3>Community Education</h3>
-  <p>Learn about plain-language presentations for schools, libraries, and community groups on legal literacy, consumer safety, and how lawsuits work.</p>
-</a>
-
-          <a class="card" href="illnesses-linked-to-lawsuits.html">
-            <h3>Explore by Illness</h3>
-            <p>Start with diagnosis-related topics often linked to toxic exposure, product liability, and environmental claims.</p>
-          </a>
-
-          <a class="card" href="symptoms-linked-to-lawsuits.html">
-            <h3>Explore by Symptoms</h3>
-            <p>Research symptom patterns people sometimes investigate alongside chemical exposure and product concerns.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Featured Lawsuit Topics</h2>
-            <p class="section-intro">
-              Explore major lawsuit topics involving chemical exposure, dangerous products, and environmental contamination.
-            </p>
-          </div>
-
-          <div class="section-heading-link">
-            <a href="browse-lawsuits.html">Browse All Topics &rarr;</a>
-          </div>
-        </div>
-
-        <div class="grid">
-
-        <a class="card" href="asbestos-exposure-lawsuits.html">
-         <h3>Asbestos Exposure Lawsuits</h3>
-         <p>Learn how asbestos exposure lawsuits may arise from work, product, or secondary exposure linked to illnesses such as mesothelioma, lung cancer, and asbestosis.</p>
-         </a>
-          
-          <a class="card" href="chemical-exposure-lawsuits.html">
-            <h3>Chemical Exposure Lawsuits</h3>
-            <p>Explore claims involving contaminated water, pesticides, industrial chemicals, and other toxic exposures.</p>
-          </a>
-
-          <a class="card" href="pfas-water-contamination-lawsuits.html">
-            <h3>PFAS Water Contamination</h3>
-            <p>Lawsuits involving contamination of drinking water by PFAS chemicals, sometimes called “forever chemicals.”</p>
-          </a>
-
-          <a class="card" href="environmental-contamination-lawsuits.html">
-            <h3>Environmental Contamination Lawsuits</h3>
-            <p>Explore claims involving polluted water, toxic releases, runoff, landfill contamination, and community exposure.</p>
-          </a>
-
-          <a class="card" href="afff-firefighting-foam-lawsuits.html">
-            <h3>AFFF Firefighting Foam Lawsuits</h3>
-            <p>Explore claims involving PFAS-containing firefighting foam, contaminated water, and related health concerns.</p>
-          </a>
-
-          <a class="card" href="roundup-cancer-lawsuits.html">
-            <h3>Roundup Cancer Lawsuits</h3>
-            <p>Litigation involving allegations that glyphosate-based herbicides may be linked to certain cancers.</p>
-          </a>
-
-          <a class="card" href="paraquat-parkinsons-lawsuits.html">
-            <h3>Paraquat Parkinson’s Lawsuits</h3>
-            <p>Cases involving allegations that exposure to the herbicide paraquat may contribute to Parkinson’s disease.</p>
-          </a>
-
-          <a class="card" href="talcum-powder-ovarian-cancer-lawsuit.html">
-            <h3>Talcum Powder Ovarian Cancer</h3>
-            <p>Claims involving allegations that long-term talcum powder use may be linked to ovarian cancer.</p>
-          </a>
-
-          <a class="card" href="hair-relaxer-cancer-lawsuit.html">
-            <h3>Hair Relaxer Cancer Lawsuits</h3>
-            <p>Claims involving allegations that chemical hair relaxer products increased cancer risk.</p>
-          </a>
-
-          <a class="card" href="heavy-metals-baby-food-lawsuit.html">
-            <h3>Heavy Metals in Baby Food</h3>
-            <p>Claims involving allegations that certain baby food products may contain harmful levels of toxic metals.</p>
-          </a>
-
-          <a class="card" href="processed-food-addiction-lawsuit.html">
-            <h3>Processed Food Addiction Lawsuits</h3>
-            <p>Claims involving allegations that certain ultra-processed foods may contribute to harmful consumption patterns and health risks.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="guides" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Legal Guides</h2>
-            <p class="section-intro">
-              Start with the basics of how lawsuits work, how legal claims are evaluated, and what steps people often research first.
-            </p>
-          </div>
-
-          <div class="section-heading-link">
-            <a href="legal-guides.html">View All Legal Guides &rarr;</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="card" href="how-lawsuits-work.html">
-            <h3>How Lawsuits Work</h3>
-            <p>Learn the basic process of how a lawsuit typically begins and moves forward.</p>
-          </a>
-
-          <a class="card" href="what-happens-after-you-contact-a-lawyer.html">
-            <h3>What Happens After You Contact a Lawyer?</h3>
-            <p>Learn what usually happens after you first reach out to a lawyer, including intake, case review, and possible next steps.</p>
-          </a>
-
-          <a class="card" href="what-evidence-helps-a-lawsuit.html">
-            <h3>What Evidence Helps a Lawsuit?</h3>
-            <p>Learn what kinds of records, photos, messages, and documents may help support a lawsuit and clarify what happened.</p>
-          </a>
-
-          <a class="card" href="how-long-do-lawsuits-take.html">
-            <h3>How Long Do Lawsuits Take?</h3>
-            <p>Understand why some cases move quickly while others take much longer.</p>
-          </a>
-
-          <a class="card" href="statute-of-limitations-basics.html">
-            <h3>Statute of Limitations Basics</h3>
-            <p>Learn why legal deadlines can matter and why timing often affects a claim.</p>
-          </a>
-
-          <a class="card" href="mass-torts.html">
-            <h3>Mass Torts</h3>
-            <p>Learn how many similar claims are often handled in coordinated litigation.</p>
-          </a>
-
-          <a class="card" href="class-action.html">
-            <h3>Class Actions</h3>
-            <p>Understand how class actions work and how they differ from mass torts.</p>
-          </a>
-
-          <a class="card" href="product-liability-lawsuits.html">
-            <h3>Product Liability Lawsuits</h3>
-            <p>Learn how dangerous or defective products can become the subject of legal claims.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Explore by Illness, Injury, or Exposure</h2>
-            <p class="section-intro">
-              Some readers begin with a diagnosis, symptom pattern, or exposure history rather than a lawsuit name.
-            </p>
-          </div>
-
-          <div class="section-heading-link">
-            <a href="illnesses-linked-to-lawsuits.html">Explore More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="card" href="illnesses-linked-to-lawsuits.html">
-            <h3>Illnesses Linked to Lawsuits</h3>
-            <p>Explore diagnosis-related topics often linked to toxic exposure, product liability, and environmental claims.</p>
-          </a>
-
-          <a class="card" href="symptoms-linked-to-lawsuits.html">
-            <h3>Symptoms Linked to Lawsuits</h3>
-            <p>Explore symptom patterns people sometimes research alongside chemical exposure, defective products, and contamination concerns.</p>
-          </a>
-
-          <a class="card" href="cancers-linked-to-lawsuits.html">
-            <h3>Cancers Linked to Lawsuits</h3>
-            <p>Explore cancer-related lawsuit topics involving toxic exposure, contaminated products, and environmental claims.</p>
-          </a>
-
-          <a class="card" href="neurological-conditions-linked-to-lawsuits.html">
-            <h3>Neurological Conditions Linked to Lawsuits</h3>
-            <p>Explore lawsuit topics involving Parkinson’s disease, developmental conditions, toxic exposure, and other neurological claims.</p>
-          </a>
-
-          <a class="card" href="reproductive-injuries-linked-to-lawsuits.html">
-            <h3>Reproductive Injuries Linked to Lawsuits</h3>
-            <p>Explore lawsuit topics involving uterine cancer, ovarian cancer, prenatal exposure, fertility concerns, and related claims.</p>
-          </a>
-
-          <a class="card" href="developmental-injuries-linked-to-lawsuits.html">
-            <h3>Developmental Injuries Linked to Lawsuits</h3>
-            <p>Explore lawsuit topics involving prenatal exposure, childhood developmental concerns, heavy metals, medications, and related claims.</p>
-          </a>
-
-          <a class="card" href="water-contamination-illnesses.html">
-            <h3>Water Contamination Illnesses</h3>
-            <p>Review illness topics often discussed in claims involving PFAS, contaminated drinking water, and related pollutants.</p>
-          </a>
-
-          <a class="card" href="diseases-linked-to-chemical-exposure.html">
-            <h3>Diseases Linked to Chemical Exposure</h3>
-            <p>Explore broader disease patterns people investigate in connection with chemical exposure, contamination, and toxic substances.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-signals alt">
-      <div class="container">
-        <h2>Why Readers Trust Lawsuit Informer</h2>
-
-        <div class="trust-grid">
-          <div class="trust-card">
-            <h3>Attorney-Led Platform</h3>
-            <p>Lawsuit Informer was founded by a California-licensed attorney focused on clear public legal education.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Clear, Accessible Explanations</h3>
-            <p>Content is designed to explain legal topics without unnecessary jargon or confusion.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Focused Research Topics</h3>
-            <p>The site covers lawsuits, toxic exposure, product liability, consumer safety, and related legal questions.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-  <div class="container narrow">
-    <p class="eyebrow">COMMUNITY OUTREACH</p>
-    <h2>Community Legal Education</h2>
-    <p>
-      Lawsuit Informer offers plain-language educational presentations for schools, libraries, and community groups on legal literacy, consumer safety, and how civil lawsuits work.
+    <p class="hero-lead">
+      Clear guides to toxic exposure, defective products, environmental contamination,
+      and consumer safety — written by a California-licensed attorney for people researching their options.
     </p>
-    <a class="btn btn-primary" href="community-education.html">Learn About the Program</a>
+
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="browse-lawsuits.html">Browse Lawsuit Topics</a>
+      <a class="btn btn-secondary" href="start-here.html">New Here? Start Here</a>
+    </div>
+
+    <p class="hero-meta">
+      Have questions about a specific situation?
+      <a href="contact.html">Contact us directly</a>.
+    </p>
   </div>
 </section>
 
-    <section class="section cta">
-      <div class="container narrow">
-        <h2>Browse the Full Lawsuit Directory</h2>
-        <p>
-          Looking for lawsuit topics involving toxic exposure, dangerous products,
-          or environmental contamination?
-        </p>
-        <a class="btn btn-primary" href="browse-lawsuits.html">Browse Lawsuits</a>
-      </div>
-    </section>
-
-    <section class="site-info">
-      <div class="container narrow">
-        <h2>About Lawsuit Informer</h2>
-
-        <p>
-          Lawsuit Informer is an attorney-led educational platform focused on helping readers
-          better understand lawsuits, consumer safety issues, toxic exposure concerns, and legal rights.
-        </p>
-
-        <p>
-          The site publishes clear, accessible information about how lawsuits work, why certain
-          injuries or exposures become the subject of legal claims, and what issues people often research
-          when trying to better understand their options.
-        </p>
-
-        <p>
-          Founded by <strong>David Meldofsky</strong>, a California-licensed attorney, Lawsuit Informer
-          is built around public legal education rather than legal advice.
-        </p>
-
-        <p>
-          <a href="about.html">Learn more about Lawsuit Informer &rarr;</a>
+<!-- FEATURED LAWSUITS: primary content, moved up for SEO and engagement -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">FEATURED TOPICS</p>
+        <h2>Lawsuits people are researching now</h2>
+        <p class="section-intro">
+          Major lawsuit topics involving chemical exposure, dangerous products, and environmental contamination.
         </p>
       </div>
-    </section>
+      <div class="section-heading-link">
+        <a href="browse-lawsuits.html">View all topics &rarr;</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="asbestos-exposure-lawsuits.html">
+        <h3>Asbestos Exposure</h3>
+        <p>Workplace, product, and secondary exposure linked to mesothelioma, lung cancer, and asbestosis.</p>
+      </a>
+
+      <a class="card" href="pfas-water-contamination-lawsuits.html">
+        <h3>PFAS Water Contamination</h3>
+        <p>Drinking water contamination involving PFAS — the so-called "forever chemicals."</p>
+      </a>
+
+      <a class="card" href="afff-firefighting-foam-lawsuits.html">
+        <h3>AFFF Firefighting Foam</h3>
+        <p>PFAS-containing foam, contaminated water sources, and related health concerns.</p>
+      </a>
+
+      <a class="card" href="roundup-cancer-lawsuits.html">
+        <h3>Roundup &amp; Cancer</h3>
+        <p>Allegations that glyphosate-based herbicides may be linked to certain cancers.</p>
+      </a>
+
+      <a class="card" href="paraquat-parkinsons-lawsuits.html">
+        <h3>Paraquat &amp; Parkinson's</h3>
+        <p>Claims that exposure to the herbicide paraquat may contribute to Parkinson's disease.</p>
+      </a>
+
+      <a class="card" href="talcum-powder-ovarian-cancer-lawsuit.html">
+        <h3>Talcum Powder</h3>
+        <p>Allegations that long-term talcum powder use may be linked to ovarian cancer.</p>
+      </a>
+
+      <a class="card" href="hair-relaxer-cancer-lawsuit.html">
+        <h3>Hair Relaxer</h3>
+        <p>Claims that chemical hair relaxer products may increase the risk of certain cancers.</p>
+      </a>
+
+      <a class="card" href="heavy-metals-baby-food-lawsuit.html">
+        <h3>Heavy Metals in Baby Food</h3>
+        <p>Allegations that certain baby food products may contain harmful levels of toxic metals.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE STRIP: primary conversion opportunity -->
+<section class="lead-strip">
+  <div class="container narrow">
+    <h2>Think you may have a claim?</h2>
+    <p>
+      If you've been exposed to a harmful product, toxic chemical, or contaminated environment
+      and want to understand your options, reach out for a plain-language conversation.
+      No pressure, no legal jargon.
+    </p>
+    <div class="lead-strip-actions">
+      <a class="btn btn-primary" href="contact.html">Describe your situation</a>
+      <a class="btn btn-secondary" href="what-happens-after-you-contact-a-lawyer.html">What happens next?</a>
+    </div>
+    <p class="lead-strip-note">
+      Educational information only. No attorney-client relationship is formed by contacting this site.
+    </p>
+  </div>
+</section>
+
+<!-- LEGAL GUIDES -->
+<section id="guides" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">THE BASICS</p>
+        <h2>How lawsuits actually work</h2>
+        <p class="section-intro">
+          Start with the fundamentals: what counts as evidence, how long cases take, and what to expect after you first call a lawyer.
+        </p>
+      </div>
+      <div class="section-heading-link">
+        <a href="legal-guides.html">All legal guides &rarr;</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="how-lawsuits-work.html">
+        <h3>How Lawsuits Work</h3>
+        <p>The basic process of how a civil lawsuit begins, progresses, and resolves.</p>
+      </a>
+
+      <a class="card" href="what-happens-after-you-contact-a-lawyer.html">
+        <h3>After You Contact a Lawyer</h3>
+        <p>What intake looks like, how case review works, and what typically happens next.</p>
+      </a>
+
+      <a class="card" href="what-evidence-helps-a-lawsuit.html">
+        <h3>What Evidence Helps</h3>
+        <p>The records, photos, messages, and documents that often matter in a case.</p>
+      </a>
+
+      <a class="card" href="how-long-do-lawsuits-take.html">
+        <h3>How Long Lawsuits Take</h3>
+        <p>Why some cases settle quickly and others take years to resolve.</p>
+      </a>
+
+      <a class="card" href="statute-of-limitations-basics.html">
+        <h3>Statute of Limitations</h3>
+        <p>Why timing matters and how legal deadlines can affect a claim.</p>
+      </a>
+
+      <a class="card" href="mass-torts.html">
+        <h3>Mass Torts</h3>
+        <p>How many similar claims are coordinated together in one proceeding.</p>
+      </a>
+
+      <a class="card" href="class-action.html">
+        <h3>Class Actions</h3>
+        <p>How class actions work — and how they differ from mass torts.</p>
+      </a>
+
+      <a class="card" href="product-liability-lawsuits.html">
+        <h3>Product Liability</h3>
+        <p>How dangerous or defective products can become the basis of legal claims.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE BY CONDITION: consolidated from two prior sections -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">ANOTHER WAY IN</p>
+        <h2>Explore by illness, injury, or exposure</h2>
+        <p class="section-intro">
+          Many readers start with a diagnosis or symptom pattern rather than a lawsuit name. Find topics that match your situation.
+        </p>
+      </div>
+      <div class="section-heading-link">
+        <a href="illnesses-linked-to-lawsuits.html">All conditions &rarr;</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="cancers-linked-to-lawsuits.html">
+        <h3>Cancers</h3>
+        <p>Cancer-related lawsuits involving toxic exposure, contaminated products, and environmental claims.</p>
+      </a>
+
+      <a class="card" href="neurological-conditions-linked-to-lawsuits.html">
+        <h3>Neurological Conditions</h3>
+        <p>Parkinson's disease, developmental conditions, and other neurological claims.</p>
+      </a>
+
+      <a class="card" href="reproductive-injuries-linked-to-lawsuits.html">
+        <h3>Reproductive Injuries</h3>
+        <p>Uterine and ovarian cancer, fertility concerns, and prenatal exposure claims.</p>
+      </a>
+
+      <a class="card" href="developmental-injuries-linked-to-lawsuits.html">
+        <h3>Developmental Injuries</h3>
+        <p>Prenatal exposure, childhood developmental concerns, and heavy metal claims.</p>
+      </a>
+
+      <a class="card" href="water-contamination-illnesses.html">
+        <h3>Water Contamination</h3>
+        <p>Illness topics common in claims involving PFAS and contaminated drinking water.</p>
+      </a>
+
+      <a class="card" href="symptoms-linked-to-lawsuits.html">
+        <h3>Symptoms to Research</h3>
+        <p>Symptom patterns that sometimes accompany chemical exposure and product concerns.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SIGNALS: more specific, more credible -->
+<section class="trust-signals section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 2rem;">
+      <p class="eyebrow">WHY READERS TRUST US</p>
+      <h2>Legal education, not a lead mill</h2>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-metric">Attorney-Led</span>
+        <h3>Founded by a licensed lawyer</h3>
+        <p>Founded by David Meldofsky, a California-licensed attorney focused on public legal education.</p>
+      </div>
+
+      <div class="trust-card">
+        <span class="trust-metric">Plain English</span>
+        <h3>No legalese</h3>
+        <p>Every guide is written to be understandable — no jargon walls, no hidden fees, no hard sell.</p>
+      </div>
+
+      <div class="trust-card">
+        <span class="trust-metric">Focused</span>
+        <h3>Narrow topic focus</h3>
+        <p>Toxic exposure, product liability, and consumer safety — covered in depth rather than breadth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ: SEO + answers real questions before people bounce -->
+<section class="section alt faq">
+  <div class="container narrow">
+    <p class="eyebrow">COMMON QUESTIONS</p>
+    <h2>Frequently asked</h2>
+
+    <details>
+      <summary>How do I know if I have a lawsuit?</summary>
+      <p>Whether a situation supports a legal claim depends on the facts, the applicable law, and the evidence available. Our guides explain how lawsuits typically work and what kinds of evidence matter. Speaking with a licensed attorney is the only way to evaluate a specific situation.</p>
+    </details>
+
+    <details>
+      <summary>Does it cost money to research a potential lawsuit?</summary>
+      <p>Reading legal guides and researching lawsuit topics is free. Many lawyers who handle injury, toxic exposure, and product liability cases work on contingency — meaning no fee unless the case succeeds. Policies vary by firm.</p>
+    </details>
+
+    <details>
+      <summary>What is a mass tort, and how is it different from a class action?</summary>
+      <p>A mass tort involves many individual claims, usually against the same defendant, coordinated together because they share common issues. Unlike a class action, each plaintiff keeps a separate case and receives an individual outcome.</p>
+    </details>
+
+    <details>
+      <summary>How long do I have to file a lawsuit?</summary>
+      <p>Every state sets deadlines — called statutes of limitations — for filing different types of claims. These vary widely by claim type and jurisdiction. Missing a deadline can bar a case entirely, so timing often matters.</p>
+    </details>
+  </div>
+</section>
+
+<!-- COMMUNITY OUTREACH -->
+<section class="section">
+  <div class="container narrow" style="text-align:center;">
+    <p class="eyebrow">COMMUNITY OUTREACH</p>
+    <h2>Legal education for schools, libraries &amp; community groups</h2>
+    <p>
+      Plain-language presentations on legal literacy, consumer safety, and how civil lawsuits work —
+      available to schools, libraries, and community organizations.
+    </p>
+    <a class="btn btn-primary" href="community-education.html">Learn about the program</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section cta alt">
+  <div class="container narrow" style="text-align:center;">
+    <h2>Ready to explore further?</h2>
+    <p>
+      Browse the full lawsuit directory, read the foundational guides, or reach out directly.
+    </p>
+    <div class="hero-buttons" style="justify-content:center;">
+      <a class="btn btn-primary" href="browse-lawsuits.html">Browse All Lawsuits</a>
+      <a class="btn btn-secondary" href="contact.html">Contact Us</a>
+    </div>
+  </div>
+</section>
+```
 
   </main>
 
@@ -408,75 +511,76 @@
       <div>
         <h3>Lawsuit Informer</h3>
         <p>
-          Lawsuit Informer is an independent legal education platform providing clear, accessible
-          information about lawsuits, consumer safety issues, and legal rights.
+          Independent, attorney-led legal education covering lawsuits, consumer safety,
+          and legal rights — in plain language.
         </p>
 
-        <p><strong>Questions about a potential case? Contact us directly.</strong></p>
+```
+    <p><strong>Questions about a potential case?</strong></p>
+    <p>
+      <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'footer')">
+        hello@lawsuitinformer.com
+      </a>
+    </p>
+  </div>
 
-        <p>
-          <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'footer')">
-            hello@lawsuitinformer.com
-          </a>
-        </p>
-      </div>
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="editorial-policy.html">Editorial Policy</a></li>
+      <li><a href="legal-guides.html">Legal Guides</a></li>
+      <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+      <li><a href="community-education.html">Community Education</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Legal Disclaimer</a></li>
+    </ul>
+  </div>
 
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="editorial-policy.html">Editorial Policy</a></li>
-          <li><a href="legal-guides.html">Legal Guides</a></li>
-          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-          <li><a href="community-education.html">Community Education</a></li>
-          <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-        </ul>
-      </div>
+  <div class="footer-col">
+    <h3>Explore</h3>
+    <ul class="footer-links">
+      <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+      <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
+      <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
+      <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+      <li><a href="start-here.html">Start Here</a></li>
+    </ul>
+  </div>
+</div>
 
-      <div class="footer-col">
-        <h3>Explore</h3>
-        <ul class="footer-links">
-          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-          <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
-          <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
-        </ul>
-      </div>
+<div class="container footer-bottom">
+  <div class="footer-social">
+    <h3>Follow Lawsuit Informer</h3>
+    <div class="social-links">
+      <a href="https://instagram.com/lawsuitinformer" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/lawsuitinformer" target="_blank" rel="noopener">X</a>
+      <a href="https://facebook.com/lawsuitinformer" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://threads.net/@lawsuitinformer" target="_blank" rel="noopener">Threads</a>
+      <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+  </div>
 
-    <div class="container footer-bottom">
-      <div class="footer-social">
-        <h3>Follow Lawsuit Informer</h3>
-        <div class="social-links">
-          <a href="https://instagram.com/lawsuitinformer" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://x.com/lawsuitinformer" target="_blank" rel="noopener">X</a>
-          <a href="https://facebook.com/lawsuitinformer" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://threads.net/@lawsuitinformer" target="_blank" rel="noopener">Threads</a>
-          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
+  <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+  <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+</div>
+```
 
-      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
-      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
-    </div>
   </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
-
-    if (!toggle || !menu) return;
-
-    toggle.addEventListener("click", function () {
-      const isOpen = menu.classList.toggle("open");
-      toggle.classList.toggle("active", isOpen);
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".site-nav");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("open");
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
