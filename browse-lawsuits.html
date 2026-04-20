@@ -544,89 +544,6 @@
       <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
     </div>
   </footer>
-
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
-
-    if (toggle && menu) {
-      toggle.addEventListener("click", function () {
-        const isOpen = menu.classList.toggle("open");
-        toggle.classList.toggle("active", isOpen);
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const rawQuery = params.get("q");
-    const query = rawQuery ? rawQuery.trim().toLowerCase() : "";
-
-    const searchInput = document.getElementById("browse-search");
-    if (searchInput && rawQuery) {
-      searchInput.value = rawQuery;
-    }
-
-    if (!query) return;
-
-    const statusBox = document.getElementById("browse-search-status");
-    const resultsContainer = document.getElementById("search-results");
-    const browseSections = document.querySelectorAll(".browse-category:not(#search-results), .guides-bridge, .browse-next");
-
-    const results = (window.SEARCH_INDEX || []).filter(function (item) {
-      const haystack = `${item.title} ${item.category} ${item.text}`.toLowerCase();
-      return haystack.includes(query);
-    });
-
-    browseSections.forEach(function (section) {
-      section.style.display = "none";
-    });
-
-    if (statusBox) {
-      statusBox.hidden = false;
-    }
-
-    if (!resultsContainer) return;
-
-    resultsContainer.hidden = false;
-
-    if (results.length === 0) {
-      if (statusBox) {
-        statusBox.innerHTML = `
-          <strong>No results found for “${rawQuery}”</strong>
-          <p>Try a broader term like asbestos, mesothelioma, PFAS, Parkinson’s, ovarian cancer, autism, talc, or product liability.</p>
-          <p><a href="browse-lawsuits.html">View all lawsuit topics</a></p>
-        `;
-      }
-
-      resultsContainer.innerHTML = "";
-      return;
-    }
-
-    if (statusBox) {
-      statusBox.innerHTML = `
-        <strong>Search results for “${rawQuery}”</strong>
-        <p>Showing ${results.length} matching result${results.length === 1 ? "" : "s"}.</p>
-        <p><a href="browse-lawsuits.html">Clear search</a></p>
-      `;
-    }
-
-    resultsContainer.innerHTML = `
-      <h2>Search Results</h2>
-      <p class="section-intro">Results from lawsuit topics, illness hubs, symptom hubs, and related educational pages.</p>
-      <div class="grid">
-        ${results.map(function (item) {
-          return `
-            <a class="card" href="${item.url}">
-              <h3>${item.title}</h3>
-              <p><strong>${item.category}</strong></p>
-              <p>${item.text}</p>
-            </a>
-          `;
-        }).join("")}
-      </div>
-    `;
-  });
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
@@ -656,7 +573,7 @@
     const browseSections = document.querySelectorAll(".browse-category:not(#search-results), .guides-bridge, .browse-next");
 
     const results = (window.SEARCH_INDEX || []).filter(function (item) {
-      const haystack = `${item.title} ${item.category} ${item.text}`.toLowerCase();
+      const haystack = (item.title + " " + item.category + " " + item.text).toLowerCase();
       return haystack.includes(query);
     });
 
@@ -728,6 +645,7 @@
     `;
   });
 </script>
+ 
 
 </body>
 </html>
