@@ -123,7 +123,19 @@ window.SEARCH_INDEX = [
     title: "Symptoms Linked to Lawsuits",
     url: "symptoms-linked-to-lawsuits.html",
     category: "Symptom Hub",
-    text: "symptoms breathing problems pain fatigue rash neurological symptoms chemical exposure contamination"
+    text: "symptoms shortness of breath breathing problems chest pain persistent cough wheezing fatigue rash skin irritation headaches dizziness nausea numbness tingling tremors memory problems neurological symptoms chemical exposure contamination asbestos pfas pesticides"
+  },
+  {
+    title: "Chemical Exposure Symptoms",
+    url: "chemical-exposure-symptoms.html",
+    category: "Symptom Topic",
+    text: "chemical exposure symptoms headaches dizziness nausea rash breathing problems fatigue chest pain neurological symptoms skin irritation toxic exposure"
+  },
+  {
+    title: "Symptoms of Asbestos Exposure",
+    url: "symptoms-of-asbestos-exposure.html",
+    category: "Symptom Topic",
+    text: "asbestos exposure symptoms shortness of breath chest pain persistent cough wheezing fatigue mesothelioma lung cancer asbestosis breathing problems"
   },
   {
     title: "Diseases Linked to Chemical Exposure",
