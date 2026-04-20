@@ -570,26 +570,28 @@
 
     const statusBox = document.getElementById("browse-search-status");
     const resultsContainer = document.getElementById("search-results");
-    const browseSections = document.querySelectorAll(".browse-category:not(#search-results), .guides-bridge, .browse-next");
+
+    const introParagraphs = document.querySelectorAll(
+      ".content-page > p, .content-page > .link-cluster, .content-page > .info-box"
+    );
+
+    const browseSections = document.querySelectorAll(
+      ".browse-category:not(#search-results), .guides-bridge, .browse-next"
+    );
 
     const results = (window.SEARCH_INDEX || []).filter(function (item) {
       const haystack = (item.title + " " + item.category + " " + item.text).toLowerCase();
       return haystack.includes(query);
     });
 
-    if (typeof clicky !== "undefined") {
-      clicky.log(
-        "/search-browse?q=" + encodeURIComponent(rawQuery),
-        "browse_search_query",
-        "search"
-      );
-
-      clicky.log(
-        "/search-browse?q=" + encodeURIComponent(rawQuery) + "&results=" + results.length,
-        results.length > 0 ? "search_results_found" : "search_no_results",
-        "search"
-      );
-    }
+    introParagraphs.forEach(function (item) {
+      if (
+        item.id !== "browse-search-status" &&
+        !item.closest("#search-results")
+      ) {
+        item.style.display = "none";
+      }
+    });
 
     browseSections.forEach(function (section) {
       section.style.display = "none";
@@ -600,7 +602,6 @@
     }
 
     if (!resultsContainer) return;
-
     resultsContainer.hidden = false;
 
     if (results.length === 0) {
@@ -608,7 +609,7 @@
         statusBox.innerHTML = `
           <strong>No results found for “${rawQuery}”</strong>
           <p>Try a broader term like asbestos, mesothelioma, PFAS, Parkinson’s, ovarian cancer, autism, talc, or product liability.</p>
-          <p><a href="browse-lawsuits.html">View all lawsuit topics</a></p>
+          <p><a href="browse-lawsuits.html">Clear search</a></p>
         `;
       }
 
@@ -630,11 +631,7 @@
       <div class="grid">
         ${results.map(function (item) {
           return `
-            <a
-              class="card"
-              href="${item.url}"
-              onclick="if (typeof clicky !== 'undefined') clicky.log('${item.url}', 'search_result_click: ${item.title.replace(/'/g, "\\'")}', 'search')"
-            >
+            <a class="card" href="${item.url}">
               <h3>${item.title}</h3>
               <p><strong>${item.category}</strong></p>
               <p>${item.text}</p>
@@ -645,7 +642,6 @@
     `;
   });
 </script>
- 
 
 </body>
 </html>
