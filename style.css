@@ -379,32 +379,45 @@ header nav a[aria-current="page"],
    ========================= */
 
 .popular-topics-bar {
-  padding: 14px 0;
+  padding: 16px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.02);
 }
 
 .popular-topics-bar .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 18px;
-  justify-content: unset;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .popular-label {
-  grid-column: 1 / -1;
-  margin-bottom: 0;
+  width: 100%;
+  margin: 0 0 4px;
+  color: #f5f5f5;
+  font-weight: 700;
 }
 
 .popular-topics-bar a {
-  display: inline-block;
-}
-.popular-topics-bar a:hover {
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid rgba(124, 196, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(124, 196, 255, 0.06);
+  color: #7cc4ff;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
+.popular-topics-bar a:hover {
+  color: #cfeaff;
+  background: rgba(124, 196, 255, 0.12);
+  border-color: rgba(124, 196, 255, 0.38);
+  transform: translateY(-1px);
+}
 /* =========================
    PAGE HERO
    ========================= */
