@@ -2030,6 +2030,27 @@ footer,
     align-items: flex-start;
   }
 
+  .popular-topics-bar {
+    padding: 18px 0;
+  }
+
+  .popular-label {
+    margin: 0 0 8px;
+  }
+
+  .popular-topics-bar .container {
+    gap: 12px;
+  }
+
+  .popular-topics-bar a {
+    padding: 10px 16px;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  /* rest of your mobile rules... */
+}
+
   .section,
   .content-section,
   .mission-section,
