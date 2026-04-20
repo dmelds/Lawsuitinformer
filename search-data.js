@@ -113,4 +113,10 @@ window.SEARCH_INDEX = [
     category: "Illness Hub",
     text: "diseases linked to chemical exposure illness contamination toxic exposure industrial releases"
   }
+  {
+  title: "Addiction, Media, and Emerging Topics",
+  url: "browse-lawsuits.html",
+  category: "Browse Section",
+  text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
+}
 ];
