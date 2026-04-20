@@ -386,23 +386,21 @@ header nav a[aria-current="page"],
 }
 
 .popular-topics-bar .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px 18px;
+  justify-content: unset;
   align-items: center;
-  justify-content: center;
 }
 
 .popular-label {
-  font-weight: 700;
-  color: #f5f5f5;
+  grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
 .popular-topics-bar a {
-  color: #7cc4ff;
-  font-weight: 600;
+  display: inline-block;
 }
-
 .popular-topics-bar a:hover {
   color: #fff;
 }
