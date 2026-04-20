@@ -414,17 +414,6 @@
     </div>
   </footer>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.querySelector(".menu-toggle");
-      const menu = document.querySelector(".site-nav");
-      if (!toggle || !menu) return;
-      toggle.addEventListener("click", function () {
-        const isOpen = menu.classList.toggle("open");
-        toggle.classList.toggle("active", isOpen);
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-    });
-  <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".site-nav");
