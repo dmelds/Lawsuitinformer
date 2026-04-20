@@ -544,8 +544,7 @@
       <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
     </div>
   </footer>
-
- <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".site-nav");
@@ -574,9 +573,23 @@
     const browseSections = document.querySelectorAll(".browse-category:not(#search-results), .guides-bridge, .browse-next");
 
     const results = (window.SEARCH_INDEX || []).filter(function (item) {
-      const haystack = `${item.title} ${item.category} ${item.text}`.toLowerCase();
+      const haystack = (item.title + " " + item.category + " " + item.text).toLowerCase();
       return haystack.includes(query);
     });
+
+    if (typeof clicky !== "undefined") {
+      clicky.log(
+        "/search-browse?q=" + encodeURIComponent(rawQuery),
+        "browse_search_query",
+        "search"
+      );
+
+      clicky.log(
+        "/search-browse?q=" + encodeURIComponent(rawQuery) + "&results=" + results.length,
+        results.length > 0 ? "search_results_found" : "search_no_results",
+        "search"
+      );
+    }
 
     browseSections.forEach(function (section) {
       section.style.display = "none";
@@ -617,7 +630,11 @@
       <div class="grid">
         ${results.map(function (item) {
           return `
-            <a class="card" href="${item.url}">
+            <a
+              class="card"
+              href="${item.url}"
+              onclick="if (typeof clicky !== 'undefined') clicky.log('${item.url}', 'search_result_click: ${item.title.replace(/'/g, "\\'")}', 'search')"
+            >
               <h3>${item.title}</h3>
               <p><strong>${item.category}</strong></p>
               <p>${item.text}</p>
@@ -628,6 +645,7 @@
     `;
   });
 </script>
+ 
 
 </body>
 </html>

@@ -87,16 +87,16 @@
       Plain-English legal education about how lawsuits work, why certain products and exposures lead to claims, and what readers often research first.
     </p>
 
-    <form class="hero-search" action="browse-lawsuits.html" method="get" role="search">
-      <label class="sr-only" for="homepage-search">Search topics</label>
-      <input
-        type="search"
-        id="homepage-search"
-        name="q"
-        placeholder="Search addiction, fatigue, PFAS, ADHD..."
-      />
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+   <form class="hero-search" action="browse-lawsuits.html" method="get" role="search" id="homepage-search-form">
+  <label class="sr-only" for="homepage-search">Search topics</label>
+  <input
+    type="search"
+    id="homepage-search"
+    name="q"
+    placeholder="Search addiction, fatigue, PFAS, ADHD..."
+  />
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
     <p class="search-helper">
       Search by lawsuit topic, illness, symptom, or exposure.
@@ -414,16 +414,36 @@
     </div>
   </footer>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.querySelector(".menu-toggle");
-      const menu = document.querySelector(".site-nav");
-      if (!toggle || !menu) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (toggle && menu) {
       toggle.addEventListener("click", function () {
         const isOpen = menu.classList.toggle("open");
         toggle.classList.toggle("active", isOpen);
         toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-    });
-  </script>
+    }
+
+    const homepageSearchForm = document.getElementById("homepage-search-form");
+    const homepageSearchInput = document.getElementById("homepage-search");
+
+    if (homepageSearchForm && homepageSearchInput) {
+      homepageSearchForm.addEventListener("submit", function () {
+        const query = homepageSearchInput.value.trim();
+        if (!query) return;
+
+        if (typeof clicky !== "undefined") {
+          clicky.log(
+            "/search-home?q=" + encodeURIComponent(query),
+            "homepage_search_submit",
+            "search"
+          );
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
