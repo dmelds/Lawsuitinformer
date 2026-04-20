@@ -611,17 +611,19 @@
         `;
       }
 
-      resultsContainer.innerHTML = `
-        <h2>Search Results</h2>
-        <p class="section-intro">Results from lawsuit topics, illness hubs, symptom hubs, and related educational pages.</p>
-        <div class="grid">
-          ${results.map(item => `
-            <a class="card" href="${item.url}">
-              <h3>${item.title}</h3>
-              <p>${item.category}</p>
-            </a>
-          `).join("")}
-        </div>
+     resultsContainer.innerHTML = `
+  <h2>Search Results</h2>
+  <p class="section-intro">Results from lawsuit topics, illness hubs, symptom hubs, and related educational pages.</p>
+  <div class="grid">
+    ${results.map(item => `
+      <a class="card" href="${item.url}">
+        <h3>${item.title}</h3>
+        <p><strong>${item.category}</strong></p>
+        <p>${item.text}</p>
+      </a>
+    `).join("")}
+  </div>
+`;
       `;
     });
   </script>
