@@ -1919,6 +1919,17 @@ footer,
 .step-link a {
   display: inline-flex;
 }
+#search-results {
+  margin-top: 28px;
+}
+
+#search-results h2 {
+  margin-top: 0;
+}
+
+#search-results .grid {
+  margin-top: 20px;
+}
 
 /* =========================
    RESPONSIVE
