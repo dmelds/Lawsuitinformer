@@ -1474,18 +1474,24 @@ header nav a[aria-current="page"],
   color: #cfcfcf;
 }
 
+#browse-search-status {
+  margin-top: 18px;
+}
+
 #search-results {
-  margin-top: 28px;
+  margin-top: 22px;
+  padding-top: 0;
 }
 
 #search-results h2 {
   margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
 }
 
 #search-results .grid {
   margin-top: 20px;
 }
-
 /* =========================
    GUIDES BRIDGE
    ========================= */
