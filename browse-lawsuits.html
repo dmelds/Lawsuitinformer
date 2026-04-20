@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="style.css" />
   <script async data-id="101502685" src="//static.getclicky.com/js"></script>
+  <script src="search-data.js"></script>
 
   <link rel="author" href="david-meldofsky.html" />
   <link rel="publisher" href="about.html" />
@@ -121,7 +122,7 @@
         type="search"
         id="browse-search"
         name="q"
-        placeholder="Search topics like asbestos, PFAS, Roundup, talc..."
+        placeholder="Search topics like asbestos, mesothelioma, PFAS, Parkinson’s, talc..."
       />
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
@@ -147,6 +148,7 @@
     </div>
 
     <div id="browse-search-status" class="info-box" hidden></div>
+    <section id="search-results" class="browse-category" hidden></section>
 
     <section class="browse-category">
       <h2>Environmental Contamination Lawsuits</h2>
@@ -375,29 +377,34 @@
       </p>
 
       <div class="grid">
+        <a class="card" href="illnesses-linked-to-lawsuits.html">
+          <h3>Illnesses Linked to Lawsuits</h3>
+          <p>Explore illnesses and exposures often discussed in lawsuits involving mesothelioma, kidney cancer, ovarian cancer, Parkinson’s disease, PFAS, asbestos, pesticides, and contaminated water.</p>
+        </a>
+
         <a class="card" href="cancers-linked-to-lawsuits.html">
           <h3>Cancers Linked to Lawsuits</h3>
-          <p>Explore cancer-related lawsuit topics involving toxic exposure, contaminated products, and environmental claims.</p>
+          <p>Explore cancer-related lawsuit topics involving mesothelioma, ovarian cancer, kidney cancer, lung cancer, leukemia, lymphoma, toxic exposure, and contaminated products.</p>
         </a>
 
         <a class="card" href="neurological-conditions-linked-to-lawsuits.html">
           <h3>Neurological Conditions Linked to Lawsuits</h3>
-          <p>Explore lawsuit topics involving Parkinson’s disease, developmental conditions, toxic exposure, and other neurological claims.</p>
+          <p>Explore lawsuit topics involving Parkinson’s disease, tremors, neurological symptoms, developmental conditions, toxic exposure, and related claims.</p>
         </a>
 
         <a class="card" href="reproductive-injuries-linked-to-lawsuits.html">
           <h3>Reproductive Injuries Linked to Lawsuits</h3>
-          <p>Explore lawsuit topics involving uterine cancer, ovarian cancer, prenatal exposure, fertility concerns, and related claims.</p>
+          <p>Explore lawsuit topics involving ovarian cancer, uterine cancer, fertility concerns, prenatal exposure, and related reproductive injuries.</p>
         </a>
 
         <a class="card" href="developmental-injuries-linked-to-lawsuits.html">
           <h3>Developmental Injuries Linked to Lawsuits</h3>
-          <p>Explore lawsuit topics involving prenatal exposure, childhood developmental concerns, heavy metals, medications, and related claims.</p>
+          <p>Explore lawsuit topics involving autism, ADHD, prenatal exposure, childhood developmental concerns, heavy metals, medications, and related claims.</p>
         </a>
 
         <a class="card" href="water-contamination-illnesses.html">
           <h3>Water Contamination Illnesses</h3>
-          <p>Explore illness topics often discussed in lawsuits involving PFAS, contaminated drinking water, firefighting foam, and other pollution claims.</p>
+          <p>Explore illness topics often discussed in lawsuits involving PFAS, contaminated drinking water, kidney cancer, testicular cancer, ulcerative colitis, thyroid disease, firefighting foam, and other pollution claims.</p>
         </a>
 
         <a class="card" href="environmental-contamination-illnesses.html">
@@ -563,43 +570,59 @@
       if (!query) return;
 
       const statusBox = document.getElementById("browse-search-status");
-      const sections = document.querySelectorAll(".browse-category");
-      let totalMatches = 0;
+      const resultsContainer = document.getElementById("search-results");
+      const browseSections = document.querySelectorAll(".browse-category, .guides-bridge, .browse-next");
 
-      sections.forEach(section => {
-        const cards = section.querySelectorAll(".card");
-        let sectionMatches = 0;
+      const results = (window.SEARCH_INDEX || []).filter(item => {
+        const haystack = `${item.title} ${item.category} ${item.text}`.toLowerCase();
+        return haystack.includes(query);
+      });
 
-        cards.forEach(card => {
-          const text = card.textContent.toLowerCase();
-          const isMatch = text.includes(query);
-
-          card.style.display = isMatch ? "" : "none";
-
-          if (isMatch) {
-            sectionMatches++;
-            totalMatches++;
-          }
-        });
-
-        section.style.display = sectionMatches > 0 ? "" : "none";
+      browseSections.forEach(section => {
+        section.style.display = "none";
       });
 
       if (statusBox) {
         statusBox.hidden = false;
+      }
 
-        statusBox.innerHTML = totalMatches > 0
-          ? `
-            <strong>Search results for “${rawQuery}”</strong>
-            <p>Showing ${totalMatches} matching topic${totalMatches === 1 ? "" : "s"}.</p>
-            <p><a href="browse-lawsuits.html">Clear search</a></p>
-          `
-          : `
+      if (!resultsContainer) return;
+
+      resultsContainer.hidden = false;
+
+      if (results.length === 0) {
+        if (statusBox) {
+          statusBox.innerHTML = `
             <strong>No results found for “${rawQuery}”</strong>
-            <p>Try a broader term like asbestos, PFAS, talc, paraquat, cancer, or product liability.</p>
+            <p>Try a broader term like asbestos, mesothelioma, PFAS, Parkinson’s, ovarian cancer, autism, talc, or product liability.</p>
             <p><a href="browse-lawsuits.html">View all lawsuit topics</a></p>
           `;
+        }
+
+        resultsContainer.innerHTML = "";
+        return;
       }
+
+      if (statusBox) {
+        statusBox.innerHTML = `
+          <strong>Search results for “${rawQuery}”</strong>
+          <p>Showing ${results.length} matching result${results.length === 1 ? "" : "s"}.</p>
+          <p><a href="browse-lawsuits.html">Clear search</a></p>
+        `;
+      }
+
+      resultsContainer.innerHTML = `
+        <h2>Search Results</h2>
+        <p class="section-intro">Results from lawsuit topics, illness hubs, symptom hubs, and related educational pages.</p>
+        <div class="grid">
+          ${results.map(item => `
+            <a class="card" href="${item.url}">
+              <h3>${item.title}</h3>
+              <p>${item.category}</p>
+            </a>
+          `).join("")}
+        </div>
+      `;
     });
   </script>
 
