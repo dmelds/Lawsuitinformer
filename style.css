@@ -743,6 +743,21 @@ header nav a[aria-current="page"],
   color: #a6dcff;
   border-bottom-color: rgba(166, 220, 255, 0.42);
 }
+.article-reviewer {
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+  color: #d7d7d7;
+}
+
+.article-reviewer a {
+  font-weight: 600;
+}
+
+.article-date {
+  margin: 0 0 18px;
+  color: #bfc6cd;
+  font-size: 0.95rem;
+}
 
 /* =========================
    LINK CLUSTERS
@@ -1408,6 +1423,11 @@ header nav a[aria-current="page"],
 
 .author-credentials li {
   margin-bottom: 10px;
+}
+.reviewer-box {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* =========================
@@ -2260,6 +2280,10 @@ footer,
     margin: 40px 0;
     padding: 18px;
   }
+   .article-reviewer,
+   .article-date {
+      font-size: 0.95rem;
+}
 }
 
 @media (max-width: 700px) {
