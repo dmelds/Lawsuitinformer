@@ -1356,6 +1356,82 @@ header nav a[aria-current="page"],
 .sms-note {
   font-size: 0.9rem;
 }
+/* =========================
+   SUBSCRIBE BOX
+   ========================= */
+
+.subscribe-box {
+  padding: 72px 0;
+  background: #0d0d0d;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.subscribe-box .container {
+  max-width: 760px;
+  text-align: center;
+}
+
+.subscribe-box h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  color: #fff;
+}
+
+.subscribe-box p {
+  margin: 0 auto 22px;
+  max-width: 640px;
+  color: #cfcfcf;
+  line-height: 1.7;
+}
+
+.subscribe-box form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.subscribe-box input[type="email"] {
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+.subscribe-box input[type="email"]::placeholder {
+  color: #9a9a9a;
+}
+
+.subscribe-box input[type="email"]:focus {
+  outline: none;
+  border-color: rgba(124, 196, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(124, 196, 255, 0.15);
+}
+
+.subscribe-box button {
+  display: inline-block;
+  background: #2f6feb;
+  color: #fff;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.subscribe-box button:hover {
+  color: #fff;
+  opacity: 0.92;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
 
 /* =========================
    AUTHOR
@@ -2283,6 +2359,20 @@ footer,
    .article-reviewer,
    .article-date {
       font-size: 0.95rem;
+}
+   .subscribe-box form {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.subscribe-box input[type="email"] {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.subscribe-box button {
+  width: 100%;
 }
 }
 
