@@ -2456,6 +2456,11 @@ footer,
 .subscribe-box button {
   width: 100%;
 }
+     .note-box,
+  .link-box,
+  .content-card {
+    padding: 18px;
+  }
 }
 
 @media (max-width: 700px) {
