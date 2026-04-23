@@ -658,6 +658,10 @@ header nav a[aria-current="page"],
   background: #0e0e0e;
 }
 
+.alt-section {
+  background: #0e0e0e;
+}
+
 .section-intro {
   max-width: 760px;
   color: #cfcfcf;
@@ -2232,12 +2236,13 @@ footer,
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .grid,
+   .grid,
   .topic-grid,
   .trust-grid,
   .authority-strip-inner,
   .review-form-wrap,
-  .resource-card-grid {
+  .resource-card-grid,
+  .card-grid {
     grid-template-columns: 1fr;
   }
 }
