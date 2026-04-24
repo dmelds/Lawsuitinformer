@@ -376,7 +376,14 @@
           <div class="trust-card">
             <h3>Medical Review on Selected Health Content</h3>
             <p>Some health-related content is reviewed for medical accuracy, sourcing integrity, and clarity by <a href="dr-thomas-hatzilabrou.html">Dr. Thomas A. Hatzilabrou, M.D.</a>.</p>
-          </div>
+          </div> 
+
+         <div class="trust-card">
+          <h3>Professor Perspective</h3>
+          <p> Lawsuit Informer also features academic commentary on lawsuits, legal issues, and the civil justice system through our
+          <a href="professor-perspective.html">Professor Perspective</a>
+            section.
+         </p>
         </div>
       </div>
     </section>
@@ -454,6 +461,7 @@
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
           <li><a href="dr-thomas-hatzilabrou.html">Medical Reviewer</a></li>
+          <li><a href="professor-perspective.html">Professor Perspective</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="editorial-policy.html">Editorial Policy</a></li>
           <li><a href="legal-guides.html">Legal Guides</a></li>
@@ -496,8 +504,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggle = document.querySelector(".menu-toggle");
-      const menu = document.querySelector(".site-nav");
-
+      const menu = document.getElementById("site-menu");
       if (toggle && menu) {
         toggle.addEventListener("click", function () {
           const isOpen = menu.classList.toggle("open");
