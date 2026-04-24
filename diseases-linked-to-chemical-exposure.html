@@ -82,26 +82,27 @@
     </div>
 
     <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="site-menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation"
+  aria-expanded="false"
+  aria-controls="site-menu"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
-      <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
-      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+  <a href="index.html">Home</a>
+  <a href="start-here.html">Start Here</a>
+  <a href="legal-guides.html">Guides</a>
+  <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
+  <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+  <a href="browse-lawsuits.html">Browse Lawsuits</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
   </div>
 </header>
 
@@ -241,6 +242,14 @@
     and
     <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>.
   </p>
+  <p>
+  Some readers also compare chemical exposure topics with
+  <a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a>,
+  <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>,
+  and
+  <a href="consumer-product-lawsuits.html">Consumer Product Lawsuits</a>
+  when the alleged exposure involves everyday products rather than only water, air, or workplace contamination.
+</p>
 
   <h2>What kinds of diseases or health concerns are often researched?</h2>
 
@@ -470,7 +479,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
