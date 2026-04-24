@@ -75,6 +75,7 @@
 
 <header class="site-header">
   <div class="container nav">
+
     <div class="logo">
       <a href="index.html">
         <img src="logo-informer.png" alt="Lawsuit Informer">
@@ -95,6 +96,7 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
@@ -102,6 +104,7 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+
   </div>
 </header>
 
@@ -304,6 +307,7 @@
   </ul>
 
   <div class="cta-box">
+
     <h2>Explore Related Lawsuit Topics</h2>
 
     <p>
@@ -365,6 +369,7 @@
     <p class="form-note">
       Educational purposes only. Submitting this form does not create an attorney-client relationship.
     </p>
+
   </div>
 
   <h2>Related Legal Guides</h2>
@@ -453,6 +458,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="start-here.html">Start Here</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -481,7 +487,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
