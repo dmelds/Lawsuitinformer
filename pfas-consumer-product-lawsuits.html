@@ -82,21 +82,28 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <button
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation"
+  aria-expanded="false"
+  aria-controls="site-menu"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-    <nav id="site-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
-      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+  <a href="index.html">Home</a>
+  <a href="start-here.html">Start Here</a>
+  <a href="legal-guides.html">Guides</a>
+  <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+  <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+  <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
   </div>
 </header>
@@ -138,6 +145,14 @@
     and
     <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>.
   </p>
+  <p>
+  For broader product and exposure research, compare this page with
+  <a href="product-liability-lawsuits.html">Product Liability Lawsuits</a>,
+  <a href="pfas-cosmetics-lawsuits.html">PFAS Cosmetics Lawsuits</a>,
+  <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>,
+  <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>, and
+  <a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a>.
+</p>
 
   <div class="info-box">
     <strong>Important:</strong>
@@ -159,6 +174,7 @@
     <ul>
       <li><a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a></li>
       <li><a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a></li>
+      <li><a href="product-liability-lawsuits.html">Product Liability Lawsuits</a></li>
       <li><a href="consumer-product-lawsuits.html">Consumer Product Lawsuits</a></li>
       <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
       <li><a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a></li>
@@ -197,14 +213,11 @@
     Product categories discussed in PFAS-related litigation and public reporting often involve goods marketed for grease resistance, stain resistance, water resistance, durability, or long wear. Product categories people commonly research include:
   </p>
 
-  <ul class="lawsuit-list">
-    <li>cosmetics and beauty products</li>
-    <li>food packaging and grease-resistant packaging materials</li>
-    <li>carpets and rugs</li>
-    <li>stain-resistant or water-resistant textiles</li>
-    <li>other treated consumer products where PFAS may have been used for performance-related properties</li>
-  </ul>
-
+  <li>Cosmetics and beauty products</li>
+<li>Food packaging and grease-resistant packaging materials</li>
+<li>Carpets and rugs</li>
+<li>Stain-resistant or water-resistant textiles</li>
+<li>Other treated consumer products where PFAS may have been used for performance-related properties</li>
   <p>
     Not every product in these categories necessarily contains PFAS, and not every category has the same litigation history. But these are common starting points for readers researching PFAS in consumer goods.
   </p>
@@ -220,14 +233,12 @@
     PFAS consumer product lawsuits can involve different legal theories depending on the facts. In broad terms, people may research claims involving:
   </p>
 
-  <ul class="lawsuit-list">
-    <li>failure to disclose the presence of PFAS</li>
-    <li>consumer fraud or unfair business practice allegations</li>
-    <li>false or misleading marketing allegations</li>
-    <li>economic loss claims based on buying a product allegedly worth less than represented</li>
-    <li>product liability theories in some situations</li>
-    <li>exposure-related concerns tied to the product category</li>
-  </ul>
+  <li>Failure to disclose the presence of PFAS</li>
+<li>Consumer fraud or unfair business practice allegations</li>
+<li>False or misleading marketing allegations</li>
+<li>Economic loss claims based on buying a product allegedly worth less than represented</li>
+<li>Product liability theories in some situations</li>
+<li>Exposure-related concerns tied to the product category</li>
 
   <p>
     Some cases focus mainly on what the consumer bought and what was allegedly not disclosed. Others involve broader questions about contamination, exposure pathways, or the safety concerns associated with the product category.
@@ -510,16 +521,18 @@
 </footer>
 
 <script>
-  const navToggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById("site-nav");
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener("click", function () {
-      const isOpen = siteNav.classList.toggle("open");
-      navToggle.classList.toggle("active", isOpen);
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
