@@ -73,7 +73,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -82,18 +82,25 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-menu">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -105,10 +112,10 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span>›</span>
-    <span>Pesticide Exposure Lawsuits</span>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Pesticide Exposure Lawsuits</span>
   </nav>
 
   <h1>Pesticide Exposure Lawsuits</h1>
@@ -127,6 +134,12 @@
 
   <p>
     Some readers begin with a specific product, while others start with a diagnosis, symptom pattern, or work history involving farms, landscaping, grounds maintenance, or agricultural spraying. This page works as a broader hub for pesticide-related legal questions and connects to narrower pages involving Parkinson’s disease, cancer allegations, and other toxic exposure topics.
+  </p>
+
+  <p>
+    Pesticide exposure claims may also overlap with
+    <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>
+    when pesticide drift, runoff, or community exposure is part of the concern.
   </p>
 
   <div class="info-box">
@@ -489,9 +502,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -503,9 +516,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -521,15 +534,18 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
