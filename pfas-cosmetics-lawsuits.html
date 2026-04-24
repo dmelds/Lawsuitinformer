@@ -82,35 +82,28 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation"
+  aria-expanded="false"
+  aria-controls="site-menu"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-    <nav id="site-nav" class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="legal-guides.html">Guides</a>
-      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-  </div>
-</header>
-
-<main class="content-page">
-
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="index.html">Home</a>
-    <span class="breadcrumb-separator">›</span>
-    <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span class="breadcrumb-separator">›</span>
-    <span aria-current="page">PFAS Cosmetics Lawsuits</span>
-  </nav>
-
+<nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+  <a href="index.html">Home</a>
+  <a href="start-here.html">Start Here</a>
+  <a href="legal-guides.html">Guides</a>
+  <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+  <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+  <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
   <h1>PFAS Cosmetics Lawsuits</h1>
 
   <p class="article-byline">
@@ -520,16 +513,18 @@
 </footer>
 
 <script>
-  const navToggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById("site-nav");
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener("click", function () {
-      const isOpen = siteNav.classList.toggle("open");
-      navToggle.classList.toggle("active", isOpen);
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
