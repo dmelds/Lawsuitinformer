@@ -82,14 +82,21 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-nav" class="site-nav">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
@@ -145,6 +152,14 @@
     <a href="environmental-contamination-lawsuits.html">Environmental Contamination Lawsuits</a>.
   </p>
 
+  <p>
+    For broader product and exposure research, compare this page with
+    <a href="product-liability-lawsuits.html">Product Liability Lawsuits</a>,
+    <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>,
+    <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>, and
+    <a href="cancers-linked-to-lawsuits.html">Cancers Linked to Lawsuits</a>.
+  </p>
+
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information about PFAS cosmetics litigation and does not constitute legal advice.</p>
@@ -165,6 +180,7 @@
     <ul>
       <li><a href="pfas-consumer-product-lawsuits.html">PFAS Consumer Product Lawsuits</a></li>
       <li><a href="consumer-product-lawsuits.html">Consumer Product Lawsuits</a></li>
+      <li><a href="product-liability-lawsuits.html">Product Liability Lawsuits</a></li>
       <li><a href="pfas-water-contamination-lawsuits.html">PFAS Water Contamination Lawsuits</a></li>
       <li><a href="afff-firefighting-foam-lawsuits.html">AFFF Firefighting Foam Lawsuits</a></li>
       <li><a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a></li>
@@ -198,12 +214,12 @@
   </p>
 
   <ul class="lawsuit-list">
-    <li>lip products</li>
-    <li>eye products</li>
-    <li>face products</li>
-    <li>moisturizers</li>
-    <li>nail products</li>
-    <li>cleansers and similar personal care products</li>
+    <li>Lip products</li>
+    <li>Eye products</li>
+    <li>Face products</li>
+    <li>Moisturizers</li>
+    <li>Nail products</li>
+    <li>Cleansers and similar personal care products</li>
   </ul>
 
   <p>
@@ -238,11 +254,11 @@
   </p>
 
   <ul class="lawsuit-list">
-    <li>failure to disclose the presence of PFAS</li>
-    <li>false or misleading marketing allegations</li>
-    <li>consumer fraud or unfair business practice allegations</li>
-    <li>economic loss claims based on buying a product allegedly worth less than represented</li>
-    <li>product liability theories in some situations</li>
+    <li>Failure to disclose the presence of PFAS</li>
+    <li>False or misleading marketing allegations</li>
+    <li>Consumer fraud or unfair business practice allegations</li>
+    <li>Economic loss claims based on buying a product allegedly worth less than represented</li>
+    <li>Product liability theories in some situations</li>
   </ul>
 
   <p>
@@ -494,6 +510,8 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="legal-guides.html">Legal Guides</a></li>
+        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -520,16 +538,18 @@
 </footer>
 
 <script>
-  const navToggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById("site-nav");
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener("click", function () {
-      const isOpen = siteNav.classList.toggle("open");
-      navToggle.classList.toggle("active", isOpen);
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>

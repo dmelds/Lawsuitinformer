@@ -82,16 +82,23 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-menu" class="site-nav">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
-      <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
+      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
@@ -135,6 +142,15 @@
   <p>
     Some neurological claims also involve broader community contamination and environmental exposure issues. Explore
     <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>.
+  </p>
+
+  <p>
+    For broader exposure and diagnosis research, compare this page with
+    <a href="toxic-exposure-lawsuits.html">Toxic Exposure Lawsuits</a>,
+    <a href="chemical-exposure-lawsuits.html">Chemical Exposure Lawsuits</a>,
+    <a href="pesticide-exposure-lawsuits.html">Pesticide Exposure Lawsuits</a>,
+    <a href="developmental-injuries-linked-to-lawsuits.html">Developmental Injuries Linked to Lawsuits</a>, and
+    <a href="illnesses-linked-to-lawsuits.html">Illnesses Linked to Lawsuits</a>.
   </p>
 
   <div class="info-box">
@@ -485,12 +501,14 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="legal-guides.html">Legal Guides</a></li>
+        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -499,9 +517,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -517,16 +535,18 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.classList.toggle('active', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
