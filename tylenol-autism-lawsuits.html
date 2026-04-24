@@ -8,7 +8,7 @@
 <meta name="description" content="Learn about Tylenol autism lawsuits involving prenatal acetaminophen exposure, developmental injury allegations, product liability claims, and related legal issues.">
 
 <link rel="stylesheet" href="style.css">
-<link rel="canonical" href="https://lawsuitinformer.com/tylenol-autism-lawsuits.html" />
+<link rel="canonical" href="https://lawsuitinformer.com/tylenol-autism-lawsuits.html">
 
 <script async data-id="101502685" src="//static.getclicky.com/js"></script>
 
@@ -82,18 +82,25 @@
       </a>
     </div>
 
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-menu" class="site-nav" aria-label="Main navigation">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -105,10 +112,10 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span>›</span>
-    <span>Tylenol Autism Lawsuits</span>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Tylenol Autism Lawsuits</span>
   </nav>
 
   <h1>Tylenol Autism Lawsuits</h1>
@@ -448,12 +455,13 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="start-here.html">Start Here</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -462,9 +470,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -480,15 +488,18 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.querySelector('#site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
