@@ -69,12 +69,11 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -83,18 +82,25 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-menu">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -106,10 +112,10 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span>›</span>
-    <span>Processed Food Addiction Lawsuits</span>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Processed Food Addiction Lawsuits</span>
   </nav>
 
   <h1>Processed Food Addiction Lawsuits</h1>
@@ -126,12 +132,16 @@
     Processed food addiction lawsuits involve allegations that certain ultra-processed food products may be formulated or marketed in ways that encourage overconsumption and contribute to obesity, metabolic disorders, and related health concerns. These cases may involve consumer protection claims, product safety arguments, and broader questions about how certain foods are designed and promoted.
   </p>
 
+  <p>
+    Readers often reach this page while comparing consumer product lawsuits, food-related safety claims, marketing allegations, and broader product liability issues. This topic is newer and more legally complex than many traditional product cases because it may involve long-term consumption, advertising, product formulation, and public-health-style allegations.
+  </p>
+
   <div class="info-box">
     <strong>Important:</strong>
     <p>This page provides general educational information about processed food litigation, consumer claims, and health-related allegations. It does not constitute medical or legal advice.</p>
   </div>
 
-    <div class="info-box">
+  <div class="info-box">
     <strong>Key Takeaways:</strong>
     <ul>
       <li>These lawsuits focus on allegations involving ultra-processed foods, overconsumption, and related health concerns.</li>
@@ -140,7 +150,6 @@
       <li>These cases can be more complex than single-product defect claims because they often involve long-term use, marketing, and causation questions.</li>
     </ul>
   </div>
-  
 
   <div class="info-box">
     <strong>Start here:</strong>
@@ -156,6 +165,10 @@
 
   <p>
     Ultra-processed foods are products that often contain refined ingredients, additives, preservatives, flavor enhancers, and other manufactured components. These foods are typically produced through industrial processes and may include packaged snacks, sugary cereals, frozen convenience products, fast food items, and sweetened beverages.
+  </p>
+
+  <p>
+    In lawsuit discussions, the focus is usually not simply that a product is processed. The concern is often whether certain foods were allegedly designed, marketed, or sold in ways that encouraged repeated consumption while minimizing or obscuring potential health concerns.
   </p>
 
   <h2>Why People Research Food Addiction Allegations</h2>
@@ -174,14 +187,23 @@
     Some lawsuits allege that companies knowingly marketed highly processed foods while minimizing or failing to adequately warn about potential health risks. Depending on the case, legal claims may involve consumer protection law, deceptive marketing allegations, product liability theories, or arguments about the way products were formulated and promoted.
   </p>
 
+  <p>
+    These cases may also raise questions about advertising to young people, product placement, packaging, labeling, and whether consumers were given enough information to understand the alleged risks of repeated consumption.
+  </p>
+
   <h2>Common Health Concerns People Research</h2>
 
-  <ul>
+  <ul class="lawsuit-list">
     <li>Obesity and weight gain</li>
     <li>Metabolic disorders</li>
     <li>Diabetes-related concerns</li>
     <li>Compulsive or difficult-to-control eating patterns</li>
+    <li>Long-term diet-related health concerns</li>
   </ul>
+
+  <p>
+    These health topics can involve many causes and personal factors. Lawsuit discussions usually focus on whether a company’s product design, marketing, labeling, or disclosures allegedly contributed to consumer harm.
+  </p>
 
   <h2>Why These Lawsuits Are Different From Many Other Product Cases</h2>
 
@@ -200,6 +222,20 @@
 
   <p>
     Processed food lawsuits can involve difficult questions about nutrition science, consumer behavior, advertising, product formulation, labeling, and causation. Courts may also need to consider how widely used products are marketed, what warnings or disclosures were provided, and how individual health outcomes are evaluated.
+  </p>
+
+  <p>
+    The legal theories may also differ from case to case. Some claims may focus on consumer protection and marketing. Others may focus more heavily on product design, failure to warn, or alleged industry knowledge.
+  </p>
+
+  <h2>Why Product History and Marketing Matter</h2>
+
+  <p>
+    In many consumer product cases, records and product history can matter. People may try to identify which products were consumed, how they were marketed, what packaging or advertising claims were used, and whether any health-related representations were made.
+  </p>
+
+  <p>
+    Product labels, purchase history, advertising materials, medical history, and timing may all become relevant when people begin evaluating whether a legal issue may exist.
   </p>
 
   <h2>Related Lawsuit Topics</h2>
@@ -386,12 +422,13 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="start-here.html">Start Here</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -400,9 +437,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -418,15 +455,18 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
