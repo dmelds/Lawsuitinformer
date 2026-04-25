@@ -69,6 +69,79 @@
   ]
 }
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does MDL mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MDL stands for multidistrict litigation. It is a federal procedure used to coordinate related civil cases filed in different federal courts when those cases involve common factual questions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MDL the same as a class action?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. MDL is not the same as a class action. A class action involves representative plaintiffs pursuing claims for a larger group, while an MDL coordinates many separate cases for pretrial proceedings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MDL the same as a mass tort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not exactly. MDL is a federal procedural framework, while mass tort is a broader description for many individual claims involving similar alleged harm. Many mass tort cases are handled through MDL, but not every mass tort is an MDL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do plaintiffs in an MDL keep separate cases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often, yes. Even though cases are coordinated in one federal court for pretrial proceedings, plaintiffs may still have individual claims, facts, injuries, and damages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens during coordinated pretrial proceedings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coordinated pretrial proceedings may involve document discovery, depositions, expert disclosures, common motions, evidentiary disputes, scheduling orders, plaintiff fact sheets, defendant disclosures, and settlement discussions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are bellwether trials in an MDL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bellwether trials are early trials involving selected representative cases. They do not automatically decide every other case, but they can help the parties evaluate evidence, legal arguments, jury reactions, and settlement possibilities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do MDL cases always settle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Some MDLs lead to large-scale settlements or settlement programs, while others continue through litigation. Outcomes depend on evidence, science, court rulings, trial results, and whether the parties are willing to resolve the cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can MDL cases return to their original courts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. MDL is generally designed for coordinated pretrial proceedings. If cases are not resolved during the MDL process, some may be returned to their original courts for trial or further proceedings."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -155,6 +228,7 @@
       <li><a href="#return-to-original-courts">Can cases return to their original courts?</a></li>
       <li><a href="#why-mdl-takes-time">Why MDL can take a long time</a></li>
       <li><a href="#common-questions">Common questions people ask</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
     </ul>
   </div>
 
@@ -247,6 +321,68 @@
     <li>What are bellwether trials in an MDL?</li>
     <li>Can MDL cases go back to their original courts?</li>
   </ul>
+
+  <h2 id="faq">Frequently Asked Questions About MDL</h2>
+
+  <div class="faq-section">
+
+    <div class="faq-item">
+      <h3>What does MDL mean?</h3>
+      <p>
+        MDL stands for multidistrict litigation. It is a federal procedure used to coordinate related civil cases filed in different federal courts when those cases involve common factual questions.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is MDL the same as a class action?</h3>
+      <p>
+        No. MDL is not the same as a class action. A class action involves representative plaintiffs pursuing claims for a larger group, while an MDL coordinates many separate cases for pretrial proceedings.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is MDL the same as a mass tort?</h3>
+      <p>
+        Not exactly. MDL is a federal procedural framework, while mass tort is a broader description for many individual claims involving similar alleged harm. Many mass tort cases are handled through MDL, but not every mass tort is an MDL.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do plaintiffs in an MDL keep separate cases?</h3>
+      <p>
+        Often, yes. Even though cases are coordinated in one federal court for pretrial proceedings, plaintiffs may still have individual claims, facts, injuries, and damages.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What happens during coordinated pretrial proceedings?</h3>
+      <p>
+        Coordinated pretrial proceedings may involve document discovery, depositions, expert disclosures, common motions, evidentiary disputes, scheduling orders, plaintiff fact sheets, defendant disclosures, and settlement discussions.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are bellwether trials in an MDL?</h3>
+      <p>
+        Bellwether trials are early trials involving selected representative cases. They do not automatically decide every other case, but they can help the parties evaluate evidence, legal arguments, jury reactions, and settlement possibilities.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do MDL cases always settle?</h3>
+      <p>
+        No. Some MDLs lead to large-scale settlements or settlement programs, while others continue through litigation. Outcomes depend on evidence, science, court rulings, trial results, and whether the parties are willing to resolve the cases.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can MDL cases return to their original courts?</h3>
+      <p>
+        Yes. MDL is generally designed for coordinated pretrial proceedings. If cases are not resolved during the MDL process, some may be returned to their original courts for trial or further proceedings.
+      </p>
+    </div>
+
+  </div>
 
   <div class="next-steps">
     <p>
@@ -416,7 +552,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
