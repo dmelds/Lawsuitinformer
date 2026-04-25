@@ -94,41 +94,17 @@
       <span></span>
     </button>
 
-    <header class="site-header">
-  <div class="container nav">
-
-    <div class="logo">
-      <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
-      </a>
-    </div>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="site-menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
       <a href="news-and-analysis.html">News &amp; Analysis</a>
-      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+      <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
-  </div>
-</header>
 
   </div>
 </header>
@@ -313,15 +289,16 @@
     <a href="mistakes.html">Common Lawsuit Mistakes</a>.
   </p>
 
- <h2>Why This Topic Connects to Other Illness Hubs</h2>
+  <h2>Why This Topic Connects to Other Illness Hubs</h2>
 
-<p>
-  Neurological-condition pages often overlap with broader illness and exposure topics because the same concern may begin in different ways. One person may start with a diagnosis, while another may start by researching pesticide exposure, contaminated water, developmental concerns, or long-term chemical contact.
-</p>
+  <p>
+    Neurological-condition pages often overlap with broader illness and exposure topics because the same concern may begin in different ways. One person may start with a diagnosis, while another may start by researching pesticide exposure, contaminated water, developmental concerns, or long-term chemical contact.
+  </p>
 
-<p>
-  That is why this page connects neurological issues with related topics involving pesticide litigation, toxic exposure, developmental injury, environmental contamination, and other illness-focused legal research.
-</p>
+  <p>
+    That is why this page connects neurological issues with related topics involving pesticide litigation, toxic exposure, developmental injury, environmental contamination, and other illness-focused legal research.
+  </p>
+
   <h2>Related Lawsuit and Condition Topics</h2>
 
   <div class="topic-grid">
@@ -561,7 +538,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
