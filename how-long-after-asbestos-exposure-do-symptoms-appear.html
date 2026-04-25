@@ -57,14 +57,69 @@
     {
       "@type": "ListItem",
       "position": 2,
+      "name": "Browse Lawsuits",
+      "item": "https://lawsuitinformer.com/browse-lawsuits.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
       "name": "Asbestos Exposure Lawsuits",
       "item": "https://lawsuitinformer.com/asbestos-exposure-lawsuits.html"
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "name": "How Long After Asbestos Exposure Do Symptoms Appear?",
       "item": "https://lawsuitinformer.com/how-long-after-asbestos-exposure-do-symptoms-appear.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can asbestos-related symptoms take decades to appear?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Asbestos-related illnesses are known for long latency periods. Symptoms may not appear until many years or even decades after the original exposure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would someone only learn about asbestos risk years later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many people were exposed during ordinary work, military service, building maintenance, renovation, or household contact without being warned that asbestos was present. Because illness can develop much later, the connection may only become clear after symptoms or a diagnosis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What illnesses are commonly linked to delayed asbestos symptoms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delayed asbestos-related symptoms are often discussed in connection with mesothelioma, asbestos-related lung cancer, and asbestosis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does old work history still matter if the exposure happened long ago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Because asbestos-related illnesses may appear decades after exposure, old jobs, work sites, military service, products, and building history may still matter when reviewing possible exposure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can secondhand asbestos exposure also involve a delayed diagnosis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Some people research delayed asbestos-related illness after possible secondhand exposure, such as fibers brought home on work clothing, tools, or equipment."
+      }
     }
   ]
 }
@@ -97,10 +152,12 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -112,6 +169,8 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="browse-lawsuits.html">Browse Lawsuits</a>
     <span class="breadcrumb-separator">›</span>
     <a href="asbestos-exposure-lawsuits.html">Asbestos Exposure Lawsuits</a>
     <span class="breadcrumb-separator">›</span>
@@ -232,13 +291,44 @@
 
   <h2>Common Questions About Asbestos Timing</h2>
 
-  <ul class="lawsuit-list">
-    <li>Can asbestos-related symptoms take decades to appear?</li>
-    <li>Why would someone only learn about the risk years later?</li>
-    <li>What illnesses are commonly linked to delayed asbestos symptoms?</li>
-    <li>Does old work history still matter if the exposure happened long ago?</li>
-    <li>Can secondhand exposure also involve a delayed diagnosis?</li>
-  </ul>
+  <div class="faq-section">
+
+    <div class="faq-item">
+      <h3>Can asbestos-related symptoms take decades to appear?</h3>
+      <p>
+        Yes. Asbestos-related illnesses are known for long latency periods. Symptoms may not appear until many years or even decades after the original exposure.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why would someone only learn about asbestos risk years later?</h3>
+      <p>
+        Many people were exposed during ordinary work, military service, building maintenance, renovation, or household contact without being warned that asbestos was present. Because illness can develop much later, the connection may only become clear after symptoms or a diagnosis.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What illnesses are commonly linked to delayed asbestos symptoms?</h3>
+      <p>
+        Delayed asbestos-related symptoms are often discussed in connection with <a href="mesothelioma-lawsuit.html">mesothelioma</a>, <a href="asbestos-lung-cancer-lawsuit.html">asbestos-related lung cancer</a>, and <a href="what-is-asbestosis.html">asbestosis</a>.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does old work history still matter if the exposure happened long ago?</h3>
+      <p>
+        Yes. Because asbestos-related illnesses may appear decades after exposure, old jobs, work sites, military service, products, and building history may still matter when reviewing possible exposure.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can secondhand asbestos exposure also involve a delayed diagnosis?</h3>
+      <p>
+        Yes. Some people research delayed asbestos-related illness after possible <a href="secondhand-asbestos-exposure.html">secondhand asbestos exposure</a>, such as fibers brought home on work clothing, tools, or equipment.
+      </p>
+    </div>
+
+  </div>
 
   <h2>Related Asbestos Guides</h2>
 
@@ -343,7 +433,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
