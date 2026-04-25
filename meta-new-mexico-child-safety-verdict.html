@@ -85,7 +85,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
@@ -93,23 +93,29 @@
       </a>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-   <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
-  <a href="index.html">Home</a>
-  <a href="start-here.html">Start Here</a>
-  <a href="legal-guides.html">Guides</a>
-  <a href="news-and-analysis.html">News &amp; Analysis</a>
-  <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-  <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-  <a href="browse-lawsuits.html">Browse Lawsuits</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
+      <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html" aria-current="page">News &amp; Analysis</a>
+      <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+      <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
 
@@ -117,14 +123,14 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="social-media-addiction-lawsuit.html">Social Media Addiction Lawsuit</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="social-media-addiction-lawsuit-update.html">Social Media Addiction Lawsuit Developments</a>
-    <span>›</span>
-    <span>Meta New Mexico Child Safety Verdict</span>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Meta New Mexico Child Safety Verdict</span>
   </nav>
 
   <h1>Meta New Mexico Child Safety Verdict</h1>
@@ -166,11 +172,13 @@
   </div>
 
   <h2>What Is the Meta New Mexico Child Safety Verdict?</h2>
+
   <p>
     The Meta New Mexico child safety verdict refers to a New Mexico state-court result in which a jury found Meta liable under state consumer protection law in a case brought by the New Mexico attorney general. Reported coverage described the case as involving allegations that Meta misled users about safety on Facebook, Instagram, and WhatsApp and failed to adequately protect minors from serious harm on its platforms.
   </p>
 
   <h2>Why This Verdict Matters</h2>
+
   <p>
     The verdict drew attention because of the reported $375 million penalty and because it showed that a major state case against a social media company could move all the way to a jury decision. Reuters reported that the jury found 75,000 violations and assessed $5,000 per violation, producing the $375 million total.
   </p>
@@ -180,8 +188,9 @@
   </p>
 
   <h2>What the New Mexico Case Was About</h2>
+
   <p>
-    Reported coverage described the case as centering on allegations that Meta misled users about safety on its platforms and concealed information about child sexual exploitation and harm involving minors. That framing matters because many readers may hear about the verdict and assume it was simply another addictive-design case. It overlaps with broader youth-harm concerns, but it was also reported as a state child-safety and deceptive-practices case.
+    Reported coverage described the case as centering on allegations that Meta misled users about safety on its platforms and concealed information about serious harm involving minors. That framing matters because many readers may hear about the verdict and assume it was simply another addictive-design case. It overlaps with broader youth-harm concerns, but it was also reported as a state child-safety and deceptive-practices case.
   </p>
 
   <p>
@@ -189,6 +198,7 @@
   </p>
 
   <h2>How This Differs From the California Social Media Addiction Verdict</h2>
+
   <p>
     This case is separate from the Los Angeles social media addiction verdict involving Meta and YouTube. The California case focused more directly on claims involving compulsive use, youth mental health harm, and platform design. By contrast, the New Mexico case was reported as a state enforcement action focused on child safety and consumer protection law.
   </p>
@@ -200,6 +210,7 @@
   </p>
 
   <h2>Why the Distinction Matters</h2>
+
   <p>
     Keeping these cases separate helps readers understand what a verdict does and does not mean. A child-safety enforcement verdict is not automatically the same thing as a private injury verdict, and a state consumer protection case does not necessarily answer every question being raised in broader social media addiction litigation.
   </p>
@@ -209,6 +220,7 @@
   </p>
 
   <h2>What May Happen Next</h2>
+
   <p>
     Major verdicts against large technology companies are often followed by appeals and further proceedings. Reported coverage said Meta would appeal. Reporting also indicated that a later phase of the New Mexico case could address whether Meta created a public nuisance and whether changes to the platform or additional harm-reduction measures could be ordered.
   </p>
@@ -218,6 +230,7 @@
   </p>
 
   <h2>Why People Following Social Media Litigation Are Watching This Case</h2>
+
   <p>
     This verdict matters beyond New Mexico because it may influence how courts, regulators, families, and companies think about future claims involving youth harm, platform accountability, and social media safety. It also adds pressure to companies already facing broader litigation involving minors, addictive platform design, and mental health allegations.
   </p>
@@ -363,7 +376,7 @@
   <section class="article-meta">
     <div class="author-box">
       <div class="author-photo">
-        <img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600">
+        <img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600" loading="lazy">
       </div>
 
       <div class="author-details">
@@ -409,9 +422,9 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
@@ -427,9 +440,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -440,20 +453,23 @@
 
   <div class="container footer-bottom">
     <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>© 2026 Lawsuit Informer. All rights reserved.</p>
+    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.getElementById('site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = siteNav.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>
