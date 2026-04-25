@@ -63,6 +63,12 @@
     {
       "@type": "ListItem",
       "position": 3,
+      "name": "Transvaginal Mesh Lawsuits",
+      "item": "https://lawsuitinformer.com/transvaginal-mesh-lawsuits.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
       "name": "Recent Developments in Transvaginal Mesh Litigation",
       "item": "https://lawsuitinformer.com/transvaginal-mesh-litigation-update.html"
     }
@@ -77,22 +83,30 @@
   <div class="container nav">
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav id="site-menu" class="site-nav" aria-label="Main navigation">
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -103,10 +117,12 @@
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a>
-    <span>›</span>
+    <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits.html">Browse Lawsuits</a>
-    <span>›</span>
-    <span>Recent Developments in Transvaginal Mesh Litigation</span>
+    <span class="breadcrumb-separator">›</span>
+    <a href="transvaginal-mesh-lawsuits.html">Transvaginal Mesh Lawsuits</a>
+    <span class="breadcrumb-separator">›</span>
+    <span aria-current="page">Recent Developments in Transvaginal Mesh Litigation</span>
   </nav>
 
   <h1>Recent Developments in Transvaginal Mesh Litigation</h1>
@@ -293,9 +309,8 @@
     </a>
   </div>
 
-  <section class="author-box-section">
-    <div class="container author-box">
-
+  <section class="article-meta">
+    <div class="author-box">
       <div class="author-photo">
         <img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600">
       </div>
@@ -322,7 +337,6 @@
           Educational information only. Not legal advice. No attorney-client relationship is formed.
         </p>
       </div>
-
     </div>
   </section>
 
@@ -344,13 +358,16 @@
       </p>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Quick Links</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="start-here.html">Start Here</a></li>
+        <li><a href="legal-guides.html">Legal Guides</a></li>
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+        <li><a href="news-and-analysis.html">News &amp; Analysis</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
         <li><a href="what-is-a-settlement.html">What Is a Settlement?</a></li>
@@ -362,9 +379,9 @@
       </ul>
     </div>
 
-    <div>
+    <div class="footer-col">
       <h3>Explore</h3>
-      <ul>
+      <ul class="footer-links">
         <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
         <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
@@ -380,15 +397,18 @@
 </footer>
 
 <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const siteNav = document.querySelector('#site-nav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-  }
+  });
 </script>
 
 </body>

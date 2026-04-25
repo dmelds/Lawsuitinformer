@@ -69,6 +69,48 @@
   ]
 }
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a trust claim and a lawsuit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A trust claim generally follows the procedures of a specific asbestos trust, while a lawsuit typically proceeds through court against companies that may still face legal claims."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a person have more than one asbestos-related claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In some situations, yes. A case may involve more than one possible compensation path depending on the exposure history and the entities connected to it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What records may help show exposure history?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Medical records, work history, military records, witness statements, and product-identification evidence may all be relevant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do old jobs and products connect to a trust claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Older jobsites, employers, and products may help identify whether a person's exposure history aligns with companies or materials tied to an asbestos trust."
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
@@ -96,7 +138,9 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html" aria-current="page">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -284,30 +328,42 @@
 
   <h2 id="common-questions">Common Questions About Asbestos Trust Funds</h2>
 
-  <h3>What is the difference between a trust claim and a lawsuit?</h3>
-  <p>
-    A trust claim generally follows the procedures of a specific asbestos trust, while a lawsuit typically proceeds through court against companies that may still face legal claims.
-  </p>
+  <div class="faq-section">
 
-  <h3>Can a person have more than one asbestos-related claim?</h3>
-  <p>
-    In some situations, yes. A case may involve more than one possible compensation path depending on the exposure history and the entities connected to it.
-  </p>
+    <div class="faq-item">
+      <h3>What is the difference between a trust claim and a lawsuit?</h3>
+      <p>
+        A trust claim generally follows the procedures of a specific asbestos trust, while a lawsuit typically proceeds through court against companies that may still face legal claims.
+      </p>
+    </div>
 
-  <h3>What records may help show exposure history?</h3>
-  <p>
-    Medical records, work history, military records, witness statements, and product-identification evidence may all be relevant.
-  </p>
+    <div class="faq-item">
+      <h3>Can a person have more than one asbestos-related claim?</h3>
+      <p>
+        In some situations, yes. A case may involve more than one possible compensation path depending on the exposure history and the entities connected to it.
+      </p>
+    </div>
 
-  <p>
-    For a closer look at the kinds of medical, employment, military, worksite, product, and witness records that may help support this type of exposure history, read
-    <a href="asbestos-records-that-help-support-a-claim.html">What Records Help Support an Asbestos Claim?</a>.
-  </p>
+    <div class="faq-item">
+      <h3>What records may help show exposure history?</h3>
+      <p>
+        Medical records, work history, military records, witness statements, and product-identification evidence may all be relevant.
+      </p>
 
-  <h3>How do old jobs and products connect to a trust claim?</h3>
-  <p>
-    Older jobsites, employers, and products may help identify whether a person’s exposure history aligns with companies or materials tied to a trust.
-  </p>
+      <p>
+        For a closer look at the kinds of medical, employment, military, worksite, product, and witness records that may help support this type of exposure history, read
+        <a href="asbestos-records-that-help-support-a-claim.html">What Records Help Support an Asbestos Claim?</a>.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do old jobs and products connect to a trust claim?</h3>
+      <p>
+        Older jobsites, employers, and products may help identify whether a person’s exposure history aligns with companies or materials tied to an asbestos trust.
+      </p>
+    </div>
+
+  </div>
 
   <div class="cta-box">
     <h2>Explore related asbestos guides</h2>
@@ -417,7 +473,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 

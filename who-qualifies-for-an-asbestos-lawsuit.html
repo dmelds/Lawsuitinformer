@@ -13,7 +13,7 @@
 
 <link rel="author" href="david-meldofsky.html">
 <link rel="publisher" href="about.html">
-<link rel="canonical" href="https://lawsuitinformer.com/who-qualifies-for-an-asbestos-lawsuit.html" />
+<link rel="canonical" href="https://lawsuitinformer.com/who-qualifies-for-an-asbestos-lawsuit.html">
 
 <script type="application/ld+json">
 {
@@ -75,7 +75,6 @@
   ]
 }
 </script>
-
 </head>
 
 <body>
@@ -85,14 +84,14 @@
 
     <div class="logo">
       <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer" />
+        <img src="logo-informer.png" alt="Lawsuit Informer">
       </a>
     </div>
 
     <button
       class="menu-toggle"
       type="button"
-      aria-label="Toggle navigation"
+      aria-label="Open menu"
       aria-expanded="false"
       aria-controls="site-menu"
     >
@@ -103,10 +102,12 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-      <a href="browse-lawsuits.html">Browse Lawsuits</a>
+      <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -433,6 +434,10 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="start-here.html">Start Here</a></li>
+        <li><a href="legal-guides.html">Legal Guides</a></li>
+        <li><a href="news-and-analysis.html">News &amp; Analysis</a></li>
+        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
         <li><a href="class-action.html">Class Actions</a></li>
@@ -453,7 +458,7 @@
   </div>
 
   <div class="container footer-bottom">
-    <p>Educational information only. Not legal advice.</p>
+    <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 
@@ -461,16 +466,16 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const navToggle = document.querySelector(".menu-toggle");
+    const siteNav = document.getElementById("site-menu");
 
-    if (!toggle || !menu) return;
-
-    toggle.addEventListener("click", function () {
-      const isOpen = menu.classList.toggle("open");
-      toggle.classList.toggle("active", isOpen);
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
+    if (navToggle && siteNav) {
+      navToggle.addEventListener("click", function () {
+        const isOpen = siteNav.classList.toggle("open");
+        navToggle.classList.toggle("active", isOpen);
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
   });
 </script>
 

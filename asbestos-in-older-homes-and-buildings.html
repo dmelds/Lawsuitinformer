@@ -76,6 +76,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can old homes still contain asbestos materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Some older homes may still contain asbestos-containing materials in pipe insulation, floor tiles, adhesives, roofing, siding, ceiling materials, wall compounds, boiler insulation, and other building products."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does renovation or demolition increase asbestos exposure risk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Renovation or demolition can increase exposure risk when older asbestos-containing materials are cut, sanded, drilled, torn out, broken, or otherwise disturbed. Disturbing those materials may release microscopic asbestos fibers into the air."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What parts of a building may have contained asbestos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Asbestos may have been used in pipe insulation, boiler insulation, ceiling tiles, floor tiles, adhesives, roofing, siding, wallboard compounds, joint materials, cement sheets, insulation boards, ducts, mechanical rooms, and utility areas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can workers in older buildings face exposure even if they did not install the original materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Workers may face exposure years later during repair, renovation, demolition, maintenance, plumbing, electrical, HVAC, flooring, roofing, or restoration work if older asbestos-containing materials are disturbed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why might someone only connect a diagnosis to building exposure years later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Asbestos-related illnesses can take many years to appear. Because of that long delay, people may only begin connecting old renovation, maintenance, or building exposure history to a diagnosis decades after the original work occurred."
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
@@ -103,7 +152,9 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
@@ -238,15 +289,46 @@
     Old building history can become just as important as work history when trying to understand where exposure may have happened.
   </p>
 
-  <h2>Common Questions About Asbestos in Older Buildings</h2>
+  <h2>Frequently Asked Questions About Asbestos in Older Homes and Buildings</h2>
 
-  <ul class="lawsuit-list">
-    <li>Can old homes still contain asbestos materials?</li>
-    <li>Does renovation or demolition increase exposure risk?</li>
-    <li>What parts of a building may have contained asbestos?</li>
-    <li>Can workers in older buildings face exposure even if they were not installing the original materials?</li>
-    <li>Why might someone only connect a diagnosis to building exposure years later?</li>
-  </ul>
+  <div class="faq-section">
+
+    <div class="faq-item">
+      <h3>Can old homes still contain asbestos materials?</h3>
+      <p>
+        Yes. Some older homes may still contain asbestos-containing materials in pipe insulation, floor tiles, adhesives, roofing, siding, ceiling materials, wall compounds, boiler insulation, and other building products.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does renovation or demolition increase asbestos exposure risk?</h3>
+      <p>
+        Renovation or demolition can increase exposure risk when older asbestos-containing materials are cut, sanded, drilled, torn out, broken, or otherwise disturbed. Disturbing those materials may release microscopic asbestos fibers into the air.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What parts of a building may have contained asbestos?</h3>
+      <p>
+        Asbestos may have been used in pipe insulation, boiler insulation, ceiling tiles, floor tiles, adhesives, roofing, siding, wallboard compounds, joint materials, cement sheets, insulation boards, ducts, mechanical rooms, and utility areas.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can workers in older buildings face exposure even if they did not install the original materials?</h3>
+      <p>
+        Yes. Workers may face exposure years later during repair, renovation, demolition, maintenance, plumbing, electrical, HVAC, flooring, roofing, or restoration work if older asbestos-containing materials are disturbed.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why might someone only connect a diagnosis to building exposure years later?</h3>
+      <p>
+        Asbestos-related illnesses can take many years to appear. Because of that long delay, people may only begin connecting old renovation, maintenance, or building exposure history to a diagnosis decades after the original work occurred.
+      </p>
+    </div>
+
+  </div>
 
   <h2>Related Asbestos Guides</h2>
 
@@ -351,7 +433,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
