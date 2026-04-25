@@ -70,6 +70,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can asbestos exposure cause lung cancer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Asbestos exposure has been associated with an increased risk of lung cancer, especially where exposure was repeated or significant. Whether that exposure supports a legal claim depends on the full facts and evidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long after exposure can lung cancer develop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In many cases, symptoms or diagnosis may not arise until years later. That delay is one reason asbestos cases often require a detailed historical investigation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What jobs are commonly associated with asbestos exposure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Construction, shipyard, industrial, mechanical, insulation, refinery, and demolition work are among the settings often investigated in asbestos cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What evidence is used to investigate a claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common evidence may include medical records, employment history, witness statements, product identification, and records showing asbestos use at a site."
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
@@ -97,7 +138,9 @@
 
     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="start-here.html">Start Here</a>
       <a href="legal-guides.html">Guides</a>
+      <a href="news-and-analysis.html">News &amp; Analysis</a>
       <a href="illnesses-linked-to-lawsuits.html" aria-current="page">Illnesses</a>
       <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
       <a href="browse-lawsuits.html">Browse Lawsuits</a>
@@ -504,7 +547,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".site-nav");
+    const menu = document.getElementById("site-menu");
 
     if (!toggle || !menu) return;
 
