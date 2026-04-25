@@ -71,11 +71,84 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens during a civil trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During a civil trial, the parties present evidence, question witnesses, make legal arguments, and ask a judge or jury to decide the dispute. A trial may address liability, damages, and other issues in the case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do all lawsuits go to trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Many lawsuits settle, are dismissed, or are resolved through motions before trial. Trial usually happens when the parties cannot resolve the dispute another way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a jury trial and a bench trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a jury trial, a jury decides key factual issues and may decide liability and damages. In a bench trial, the judge decides the case without a jury."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are opening statements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Opening statements are each side’s first opportunity to explain what they expect the evidence to show. Opening statements are not evidence, but they help frame the issues for the judge or jury."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are witnesses questioned at trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Witnesses are usually questioned first by the side that called them and then cross-examined by the opposing side. The judge may rule on objections during questioning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What role do experts play at trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Expert witnesses may explain technical, medical, financial, scientific, or industry-specific issues. They may testify about causation, damages, standards, diagnosis, testing, or other specialized topics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a verdict?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A verdict is the formal decision reached at the end of trial. In a jury trial, the jury reaches the verdict. In a bench trial, the judge decides the case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after a trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After trial, the court may enter judgment. The parties may file post-trial motions, challenge parts of the result, seek to enforce the judgment, or continue into later proceedings."
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="container nav">
 
     <div class="logo">
@@ -84,7 +157,13 @@
       </a>
     </div>
 
-    <nav>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="legal-guides.html">Guides</a>
       <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
@@ -104,7 +183,7 @@
     <span>›</span>
     <a href="legal-guides.html">Legal Guides</a>
     <span>›</span>
-    <span>What Happens at Trial?</span>
+    <span aria-current="page">What Happens at Trial?</span>
   </nav>
 
   <h1>What Happens at Trial?</h1>
@@ -131,7 +210,27 @@
     <strong>Important:</strong> This page provides general educational information about civil trials and does not constitute legal advice.
   </div>
 
-  <h2>What Is a Trial in a Lawsuit?</h2>
+  <div class="content-box on-this-page">
+    <strong>On This Page</strong>
+    <ul class="toc-list">
+      <li><a href="#what-is-a-trial">What a trial is in a lawsuit</a></li>
+      <li><a href="#do-all-lawsuits-go-to-trial">Whether all lawsuits go to trial</a></li>
+      <li><a href="#before-trial">What usually happens before trial</a></li>
+      <li><a href="#trial-beginning">How a trial usually begins</a></li>
+      <li><a href="#opening-statements">What opening statements are</a></li>
+      <li><a href="#evidence">How evidence is presented at trial</a></li>
+      <li><a href="#witness-testimony">What happens during witness testimony</a></li>
+      <li><a href="#experts">What role experts play at trial</a></li>
+      <li><a href="#closing-arguments">What closing arguments are</a></li>
+      <li><a href="#verdict">What a verdict is</a></li>
+      <li><a href="#after-trial">What happens after trial</a></li>
+      <li><a href="#why-trial-matters">Why trial can matter so much</a></li>
+      <li><a href="#common-questions">Common questions people ask</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-is-a-trial">What Is a Trial in a Lawsuit?</h2>
 
   <p>
     A trial is a formal court proceeding in which each side presents its case for decision. In a civil lawsuit, trial may focus on whether the defendant is legally responsible, whether damages were caused, and what relief may be appropriate.
@@ -141,15 +240,17 @@
     Some trials are decided by a jury. Others are decided by a judge alone, which is often called a bench trial.
   </p>
 
-  <p>Before a case ever reaches trial, it is important to understand <a href="what-happens-if-you-ignore-a-lawsuit.html">what happens if you ignore a lawsuit</a> and fail to respond early in the process.</p>
+  <p>
+    Before a case ever reaches trial, it is important to understand <a href="what-happens-if-you-ignore-a-lawsuit.html">what happens if you ignore a lawsuit</a> and fail to respond early in the process.
+  </p>
 
-  <h2>Do All Lawsuits Go to Trial?</h2>
+  <h2 id="do-all-lawsuits-go-to-trial">Do All Lawsuits Go to Trial?</h2>
 
   <p>
     No. Many cases settle, are dismissed, or are resolved through motion practice before trial. Still, trial remains an important part of the legal system because it is the process used when the parties cannot otherwise resolve the dispute.
   </p>
 
-  <h2>What Usually Happens Before Trial?</h2>
+  <h2 id="before-trial">What Usually Happens Before Trial?</h2>
 
   <p>
     Before trial, a case often goes through investigation, pleadings, discovery, depositions, motions, expert review, and sometimes settlement discussions. Courts may also hold pretrial conferences to address scheduling, witnesses, exhibits, and evidentiary issues.
@@ -163,61 +264,61 @@
     <a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a>.
   </p>
 
-  <h2>How Does a Trial Usually Begin?</h2>
+  <h2 id="trial-beginning">How Does a Trial Usually Begin?</h2>
 
   <p>
     In a jury trial, the process may begin with jury selection, sometimes called voir dire. During that stage, the court and attorneys question potential jurors to determine whether they can fairly hear the case. If the trial is before a judge alone, jury selection does not occur.
   </p>
 
-  <h2>What Are Opening Statements?</h2>
+  <h2 id="opening-statements">What Are Opening Statements?</h2>
 
   <p>
     Opening statements are each side’s first chance to explain what they believe the evidence will show. Openings are not evidence. They are meant to give the judge or jury an overview of the dispute and highlight the issues that may matter most.
   </p>
 
-  <h2>How Is Evidence Presented at Trial?</h2>
+  <h2 id="evidence">How Is Evidence Presented at Trial?</h2>
 
   <p>
     Evidence is usually presented through witness testimony and exhibits. Witnesses may include the parties, fact witnesses, treating providers, experts, corporate representatives, and other people with relevant knowledge. Exhibits may include documents, emails, photographs, records, product materials, charts, and other admitted items.
   </p>
 
-  <h2>What Happens During Witness Testimony?</h2>
+  <h2 id="witness-testimony">What Happens During Witness Testimony?</h2>
 
   <p>
     Witnesses are generally questioned first by the side that called them and then cross-examined by the opposing side. The judge may rule on objections during questioning. Testimony can be a major part of trial because it helps the factfinder evaluate detail, consistency, and credibility.
   </p>
 
-  <h2>What Role Do Experts Play at Trial?</h2>
+  <h2 id="experts">What Role Do Experts Play at Trial?</h2>
 
   <p>
     In many civil cases, expert witnesses help explain technical, medical, financial, scientific, or industry-specific issues. Experts may testify about causation, damages, standards, diagnosis, testing, or other specialized topics that require additional explanation.
   </p>
 
-  <h2>What Are Closing Arguments?</h2>
+  <h2 id="closing-arguments">What Are Closing Arguments?</h2>
 
   <p>
     Closing arguments happen after the evidence has been presented. Each side summarizes the evidence and argues why the judge or jury should rule in its favor. Like opening statements, closing arguments are not evidence, but they are an important part of how each side frames the case.
   </p>
 
-  <h2>What Is a Verdict?</h2>
+  <h2 id="verdict">What Is a Verdict?</h2>
 
   <p>
     A verdict is the formal decision reached at the end of trial. In a jury trial, the jury may decide liability and damages based on the court’s instructions and the evidence presented. In a bench trial, the judge makes those decisions.
   </p>
 
-  <h2>What Happens After Trial?</h2>
+  <h2 id="after-trial">What Happens After Trial?</h2>
 
   <p>
     After trial, the court may enter judgment. The parties may then file post-trial motions, challenge parts of the result, seek to enforce the judgment, or continue into later proceedings. That means a case may continue even after the trial itself ends.
   </p>
 
-  <h2>Why Trial Can Matter So Much</h2>
+  <h2 id="why-trial-matters">Why Trial Can Matter So Much</h2>
 
   <p>
     Trial is often the point where the facts, witnesses, documents, and legal arguments come together in one place. It can shape settlement pressure, determine liability, affect damages, and influence what happens next in the case.
   </p>
 
-  <h2>Common Questions People Ask</h2>
+  <h2 id="common-questions">Common Questions People Ask</h2>
 
   <ul class="lawsuit-list">
     <li>What happens during a civil trial?</li>
@@ -227,6 +328,68 @@
     <li>How are witnesses questioned at trial?</li>
     <li>What happens after a verdict?</li>
   </ul>
+
+  <h2 id="faq">Frequently Asked Questions About Trial</h2>
+
+  <div class="faq-section">
+
+    <div class="faq-item">
+      <h3>What happens during a civil trial?</h3>
+      <p>
+        During a civil trial, the parties present evidence, question witnesses, make legal arguments, and ask a judge or jury to decide the dispute. A trial may address liability, damages, and other issues in the case.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do all lawsuits go to trial?</h3>
+      <p>
+        No. Many lawsuits settle, are dismissed, or are resolved through motions before trial. Trial usually happens when the parties cannot resolve the dispute another way.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the difference between a jury trial and a bench trial?</h3>
+      <p>
+        In a jury trial, a jury decides key factual issues and may decide liability and damages. In a bench trial, the judge decides the case without a jury.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are opening statements?</h3>
+      <p>
+        Opening statements are each side’s first opportunity to explain what they expect the evidence to show. Opening statements are not evidence, but they help frame the issues for the judge or jury.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How are witnesses questioned at trial?</h3>
+      <p>
+        Witnesses are usually questioned first by the side that called them and then cross-examined by the opposing side. The judge may rule on objections during questioning.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What role do experts play at trial?</h3>
+      <p>
+        Expert witnesses may explain technical, medical, financial, scientific, or industry-specific issues. They may testify about causation, damages, standards, diagnosis, testing, or other specialized topics.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is a verdict?</h3>
+      <p>
+        A verdict is the formal decision reached at the end of trial. In a jury trial, the jury reaches the verdict. In a bench trial, the judge decides the case.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What happens after a trial?</h3>
+      <p>
+        After trial, the court may enter judgment. The parties may file post-trial motions, challenge parts of the result, seek to enforce the judgment, or continue into later proceedings.
+      </p>
+    </div>
+
+  </div>
 
   <div class="next-steps">
     <p>
@@ -259,6 +422,8 @@
       <ul class="lawsuit-list">
         <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
         <li><a href="what-is-discovery.html">What Is Discovery?</a></li>
+        <li><a href="what-is-a-deposition.html">What Is a Deposition?</a></li>
+        <li><a href="what-is-mediation.html">What Is Mediation?</a></li>
         <li><a href="what-is-a-settlement.html">What Is a Settlement?</a></li>
         <li><a href="how-long-do-lawsuits-take.html">How Long Do Lawsuits Take?</a></li>
         <li><a href="mass-torts.html">Mass Torts</a></li>
@@ -403,6 +568,31 @@
     <p>© 2026 Lawsuit Informer. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const siteMenu = document.getElementById("site-menu");
+
+    if (!toggle || !siteMenu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = siteMenu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    siteMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        siteMenu.classList.remove("open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
