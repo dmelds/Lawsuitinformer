@@ -889,6 +889,35 @@ footer, .site-footer {
   html { scroll-behavior: auto; }
 }
 :focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+/* ===== BUTTON COLOR OVERRIDE — rust accent ===== */
+.btn, .btn-primary {
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--bg);
+}
+.btn:hover, .btn-primary:hover {
+  background: var(--link-hover);
+  border-color: var(--link-hover);
+  color: var(--bg);
+}
+
+.subscribe-box button {
+  background: var(--link);
+}
+.subscribe-box button:hover {
+  background: var(--link-hover);
+}
+
+.case-review-form .checkbox-label input[type="checkbox"] {
+  accent-color: var(--link) !important;
+}
+
+.hero-search input[type="search"]:focus,
+.case-review-form input:focus, .case-review-form textarea:focus, .case-review-form select:focus,
+.subscribe-box input[type="email"]:focus {
+  border-color: var(--link);
+}
+
 
 ​​​​​​​​​
 
