@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -100,23 +101,25 @@
 <header class="site-header">
   <div class="container nav">
 
-    <div class="logo">
-      <a href="index.html">
-        <img src="logo-informer.png" alt="Lawsuit Informer">
-      </a>
-    </div>
 
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="site-menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<div class="logo">
+  <a href="index.html">
+    <img src="logo-informer.png" alt="Lawsuit Informer">
+  </a>
+</div>
+
+<button
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation"
+  aria-expanded="false"
+  aria-controls="site-menu"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
 
    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
   <a href="index.html">Home</a>
@@ -391,70 +394,25 @@
     </ul>
   </div>
 
-  <div class="cta-box">
-    <h2>Explore Related Lawsuit Topics</h2>
-
+  <div class="case-review-box">
+    <h2>Request an AFFF Case Review</h2>
     <p>
-      Learn more about PFAS claims, toxic exposure litigation, water contamination issues, and related legal topics.
+      If you believe you may have been exposed to AFFF firefighting foam — through firefighting work,
+      military service, airport or industrial operations, or contaminated water near a known AFFF site —
+      you can request a case review on Lawsuit Center.
     </p>
-
-    <div class="cta-buttons">
-      <a class="btn btn-primary" href="browse-lawsuits.html">Browse Lawsuits</a>
-      <a class="btn btn-secondary" href="pfas-water-contamination-lawsuits.html">PFAS Lawsuits</a>
-    </div>
-
-    <p class="form-bridge">
-      If you are trying to understand whether a legal issue may apply to your situation, you can share a few details below to get started. You may also want to review
-      <a href="water-contamination-illnesses.html">water contamination illnesses</a>,
+    <p>
+      You can also continue reading
       <a href="pfas-water-contamination-lawsuits.html">PFAS water contamination lawsuits</a>,
-      or
-      <a href="chemical-exposure-kidney-cancer.html">chemical exposure and kidney cancer</a>.
+      <a href="water-contamination-illnesses.html">water contamination illnesses</a>, or
+      <a href="chemical-exposure-kidney-cancer.html">chemical exposure and kidney cancer</a>
+      first.
     </p>
-
-    <form name="afff-case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
-      <input type="hidden" name="form-name" value="afff-case-review">
-
-      <p hidden>
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
-
-      <label for="name">Your Name</label>
-      <input id="name" type="text" name="name" placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" placeholder="Your email">
-
-      <label for="location">Location (City / State)</label>
-      <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA">
-
-      <label for="case_type">Type of Exposure or Issue</label>
-      <select id="case_type" name="case_type">
-        <option value="">Select one</option>
-        <option>AFFF Firefighting Foam</option>
-        <option>PFAS / Water Contamination</option>
-        <option>Toxic Water Contamination</option>
-        <option>Environmental Contamination</option>
-        <option>Other</option>
-      </select>
-
-      <label for="lawyer_status">Have you spoken to a lawyer?</label>
-      <select id="lawyer_status" name="lawyer_status">
-        <option value="">Select one</option>
-        <option>No</option>
-        <option>Yes</option>
-        <option>Not sure</option>
-      </select>
-
-      <label for="message">What happened?</label>
-      <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
-
-      <button type="submit" class="btn btn-primary">
-        Submit for Review
-      </button>
-    </form>
-
-    <p class="form-note">
-      Educational purposes only. Submitting this form does not create an attorney-client relationship.
+    <a class="btn btn-primary" href="https://lawsuit.center/afff-case-review.html">
+      Request an AFFF Case Review →
+    </a>
+    <p class="cta-note">
+      Educational purposes only. Submitting the form on Lawsuit Center does not create an attorney-client relationship.
     </p>
   </div>
 
@@ -475,35 +433,38 @@
   <section class="article-meta">
     <div class="author-box">
 
-      <div class="author-photo">
-        <img src="david-meldofsky.webp" alt="David Meldofsky" loading="lazy">
-      </div>
 
-      <div class="author-details">
-        <h3>About the Author</h3>
+  <div class="author-photo">
+    <img src="david-meldofsky.webp" alt="David Meldofsky" loading="lazy">
+  </div>
 
-        <p>
-          <strong><a href="david-meldofsky.html">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
-        </p>
+  <div class="author-details">
+    <h3>About the Author</h3>
 
-        <p>
-          Learn more about our
-          <a href="editorial-policy.html">Editorial Policy</a>,
-          <a href="about.html">About page</a>,
-          or
-          <a href="contact.html">Contact us</a>.
-        </p>
+    <p>
+      <strong><a href="david-meldofsky.html">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
+    </p>
 
-        <p>
-          <strong>Last Updated:</strong> April 12, 2026
-        </p>
+    <p>
+      Learn more about our
+      <a href="editorial-policy.html">Editorial Policy</a>,
+      <a href="about.html">About page</a>,
+      or
+      <a href="contact.html">Contact us</a>.
+    </p>
 
-        <p>
-          Educational information only. Not legal advice. No attorney-client relationship is formed.
-        </p>
-      </div>
+    <p>
+      <strong>Last Updated:</strong> April 12, 2026
+    </p>
 
-    </div>
+    <p>
+      Educational information only. Not legal advice. No attorney-client relationship is formed.
+    </p>
+  </div>
+
+</div>
+
+
   </section>
 
 </main>
@@ -511,43 +472,45 @@
 <footer>
   <div class="container footer-content">
 
-    <div>
-      <h3>Lawsuit Informer</h3>
-      <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-      <p><strong>Questions about a potential case? Contact us directly.</strong></p>
 
-      <p>
-        <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'afff_footer')">
-          hello@lawsuitinformer.com
-        </a>
-      </p>
-    </div>
+<div>
+  <h3>Lawsuit Informer</h3>
+  <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
+  <p><strong>Questions about a potential case? Contact us directly.</strong></p>
 
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="editorial-policy.html">Editorial Policy</a></li>
-        <li><a href="legal-guides.html">Legal Guides</a></li>
-        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-        <li><a href="mass-torts.html">Mass Torts</a></li>
-        <li><a href="class-action.html">Class Actions</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-      </ul>
-    </div>
+  <p>
+    <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'afff_footer')">
+      hello@lawsuitinformer.com
+    </a>
+  </p>
+</div>
 
-    <div class="footer-col">
-      <h3>Explore</h3>
-      <ul class="footer-links">
-        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-        <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
-        <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
-        <li><a href="toxic-exposure-lawsuits.html">Toxic Exposure</a></li>
-      </ul>
-    </div>
+<div class="footer-col">
+  <h3>Quick Links</h3>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="editorial-policy.html">Editorial Policy</a></li>
+    <li><a href="legal-guides.html">Legal Guides</a></li>
+    <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+    <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+    <li><a href="mass-torts.html">Mass Torts</a></li>
+    <li><a href="class-action.html">Class Actions</a></li>
+    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="disclaimer.html">Legal Disclaimer</a></li>
+  </ul>
+</div>
+
+<div class="footer-col">
+  <h3>Explore</h3>
+  <ul class="footer-links">
+    <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+    <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
+    <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
+    <li><a href="toxic-exposure-lawsuits.html">Toxic Exposure</a></li>
+  </ul>
+</div>
+
 
   </div>
 
