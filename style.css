@@ -931,6 +931,23 @@ footer, .site-footer {
     overflow-wrap: break-word;
     hyphens: none;
   }
+   /* ===== STAT-BLOCK MOBILE FIX ===== */
+@media (max-width: 600px) {
+  .stat-block {
+    flex-direction: column;
+  }
+  .stat-item {
+    min-width: 0;
+    width: 100%;
+  }
+  .stat-number {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+}
+
 }
 
 
