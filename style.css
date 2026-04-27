@@ -917,6 +917,22 @@ footer, .site-footer {
 .subscribe-box input[type="email"]:focus {
   border-color: var(--link);
 }
+/* ===== MOBILE CARD FIXES ===== */
+@media (max-width: 600px) {
+  .grid, .topic-grid, .resource-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .card h3, .topic-card h3, .resource-card h3,
+  .contributor-card h3, .trust-card h3,
+  .content-card h3 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+}
+
 
 
 ​​​​​​​​​
