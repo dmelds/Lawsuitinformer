@@ -67,9 +67,21 @@ button, input, textarea, select { font: inherit; }
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
   min-height: 72px; padding-top: 8px; padding-bottom: 8px;
 }
-.logo, .logo-link { display: inline-flex; align-items: center; flex-shrink: 0; border-bottom: 0; }
+
+.logo, .logo-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom: 0;
+  background: transparent;
+  padding: 0;
+}
 .logo a, .logo-link a { border-bottom: 0; }
-.logo img, .site-logo { width: auto; max-height: 72px; }
+.logo img, .site-logo {
+  width: auto;
+  height: 56px;
+  max-height: none;
+}
 
 .brand { display: flex; flex-direction: column; flex-shrink: 0; line-height: 1.05; border-bottom: 0; color: var(--ink-strong); }
 .brand:hover { border-bottom: 0; color: var(--ink-strong); }
