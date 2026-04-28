@@ -917,7 +917,8 @@ footer, .site-footer {
 .subscribe-box input[type="email"]:focus {
   border-color: var(--link);
 }
-/* ===== MOBILE CARD FIXES ===== */
+
+/* ===== MOBILE CARD + STAT-BLOCK FIXES ===== */
 @media (max-width: 600px) {
   .grid, .topic-grid, .resource-card-grid {
     grid-template-columns: 1fr;
@@ -945,10 +946,3 @@ footer, .site-footer {
     overflow-wrap: break-word;
   }
 }
-
-
-
-
-
-​​​​​​​​​
-
