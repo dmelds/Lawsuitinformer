@@ -78,9 +78,9 @@ button, input, textarea, select { font: inherit; }
 }
 .logo a, .logo-link a { border-bottom: 0; }
 .logo img, .site-logo {
-  width: auto;
-  height: 56px;
-  max-height: none;
+  width: auto !important;
+  height: 56px !important;
+  max-height: none !important;
 }
 
 .brand { display: flex; flex-direction: column; flex-shrink: 0; line-height: 1.05; border-bottom: 0; color: var(--ink-strong); }
