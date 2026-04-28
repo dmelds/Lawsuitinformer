@@ -959,13 +959,9 @@ footer, .site-footer {
   }
    @media (min-width: 1024px) {
   .content-page .author-hero {
-    max-width: 880px;
-    width: calc(100vw - 80px);
-    margin-left: 50%;
-    transform: translateX(-50%);
+    width: calc(100% + 200px);
+    margin-left: -100px;
     grid-template-columns: 320px 1fr;
     gap: 48px;
   }
 }
-
-
