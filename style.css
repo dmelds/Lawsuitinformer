@@ -73,8 +73,8 @@ button, input, textarea, select { font: inherit; }
   align-items: center;
   flex-shrink: 0;
   border-bottom: 0;
-  background: transparent;
-  padding: 0;
+  background: transparent !important;
+  padding: 0 !important;
 }
 .logo a, .logo-link a { border-bottom: 0; }
 .logo img, .site-logo {
