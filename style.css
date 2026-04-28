@@ -931,8 +931,6 @@ footer, .site-footer {
     overflow-wrap: break-word;
     hyphens: none;
   }
-   /* ===== STAT-BLOCK MOBILE FIX ===== */
-@media (max-width: 600px) {
   .stat-block {
     flex-direction: column;
   }
