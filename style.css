@@ -957,7 +957,10 @@ footer, .site-footer {
     word-break: normal;
     overflow-wrap: break-word;
   }
-  @media (min-width: 1024px) {
+}
+
+/* ===== DESKTOP AUTHOR HERO ===== */
+@media (min-width: 1024px) {
   .content-page {
     max-width: 1080px;
   }
@@ -972,4 +975,3 @@ footer, .site-footer {
     margin-right: auto;
   }
 }
-
