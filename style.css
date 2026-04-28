@@ -957,15 +957,21 @@ footer, .site-footer {
     word-break: normal;
     overflow-wrap: break-word;
   }
-   @media (min-width: 1024px) {
-  .content-page .author-hero {
-    max-width: 880px;
-    width: calc(100vw - 80px);
-    margin-left: 50%;
-    transform: translateX(-50%);
-    grid-template-columns: 320px 1fr;
-    gap: 48px;
-  }
 }
 
-
+/* ===== DESKTOP AUTHOR HERO ===== */
+@media (min-width: 1024px) {
+  .content-page {
+    max-width: 1080px;
+  }
+  .content-page .author-hero {
+    grid-template-columns: 320px 1fr;
+    gap: 48px;
+    max-width: 100%;
+  }
+  .content-page > *:not(.author-hero) {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
