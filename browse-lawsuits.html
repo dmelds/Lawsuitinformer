@@ -25,6 +25,47 @@
     .back-to-top:hover{opacity:1;text-decoration:underline;}
     .browse-category.deep-dive{border-top:3px solid #d4a24e;padding-top:28px;margin-top:12px;}
     .browse-category.deep-dive>h2::before{content:"DEEP DIVE";display:block;font-size:11px;font-weight:700;letter-spacing:.14em;color:#b8853b;margin-bottom:6px;}
+
+    /* Prominent case review CTA so it doesn't blend into the page */
+    .case-review-box{
+      background:#1a3a5c;
+      color:#fff;
+      border-radius:16px;
+      padding:36px 32px;
+      margin:48px 0;
+      text-align:center;
+      box-shadow:0 8px 24px rgba(26,58,92,.18);
+    }
+    .case-review-box h2{
+      color:#fff;
+      margin:0 0 14px;
+      font-size:clamp(24px,3vw,32px);
+    }
+    .case-review-box p{
+      color:#e6ecf3;
+      max-width:60ch;
+      margin:0 auto 14px;
+      line-height:1.6;
+    }
+    .case-review-box a{color:#f0c674;text-decoration:underline;}
+    .case-review-box .btn-primary{
+      display:inline-block;
+      background:#d4a24e;
+      color:#1a1306;
+      text-decoration:none;
+      padding:16px 32px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:16px;
+      margin-top:10px;
+      transition:background .15s,transform .15s;
+    }
+    .case-review-box .btn-primary:hover{background:#e7b961;transform:translateY(-1px);}
+    .case-review-box .cta-note{
+      font-size:13px;
+      color:#b8c4d2;
+      margin-top:18px;
+    }
   </style>
 
   <script type="application/ld+json">
