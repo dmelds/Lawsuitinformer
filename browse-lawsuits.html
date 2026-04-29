@@ -19,6 +19,65 @@
   <link rel="publisher" href="about.html" />
   <link rel="canonical" href="https://lawsuitinformer.com/browse-lawsuits.html" />
 
+  <style>
+    /* Category jump nav — scoped to this page so it won't conflict with style.css */
+    .browse-toc {
+      background: #faf7ef;
+      border: 1px solid #e6dfc7;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 28px 0 36px;
+    }
+    .browse-toc h2 {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b5e3a;
+    }
+    .browse-toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .browse-toc li { margin: 0; }
+    .browse-toc a {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #ffffff;
+      border: 1px solid #d8cea8;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #1a3a5c;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .browse-toc a:hover,
+    .browse-toc a:focus {
+      background: #1a3a5c;
+      color: #ffffff;
+      border-color: #1a3a5c;
+    }
+
+    /* Anchor jumps shouldn't land under a sticky header */
+    .browse-category { scroll-margin-top: 96px; }
+
+    /* Subtle "back to top" link at the end of each category */
+    .back-to-top {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #1a3a5c;
+      text-decoration: none;
+      opacity: 0.75;
+    }
+    .back-to-top:hover { opacity: 1; text-decoration: underline; }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +86,7 @@
     "description": "Browse lawsuit topics involving chemical exposure, product liability, environmental contamination, consumer products, addiction-related litigation, and broader consumer safety claims.",
     "url": "https://lawsuitinformer.com/browse-lawsuits.html",
     "datePublished": "2026-03-19",
-    "dateModified": "2026-04-28",
+    "dateModified": "2026-04-29",
     "author": {
       "@type": "Person",
       "name": "David Meldofsky",
@@ -43,7 +102,7 @@
       "name": "Lawsuit Informer",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://lawsuitinformer.com/logo-informer.png"
+        "url": "https://lawsuitinformer.com/lawsuit-informer-1.png"
       }
     },
     "about": [
@@ -79,15 +138,15 @@
 
 </head>
 
-<body>
+<body id="top">
 
   <header class="site-header">
     <div class="container nav">
-      <div class="logo">
-        <a href="index.html">
-          </a><a href="index.html" class="brand" aria-label="Lawsuit Informer home"><span class="brand__name">Lawsuit Informer</span><span class="brand__tag">Attorney-Led</span>
 
-
+```
+  <div class="logo">
+    <a href="index.html" aria-label="Lawsuit Informer home">
+      <img src="lawsuit-informer-1.png" alt="Lawsuit Informer">
     </a>
   </div>
 
@@ -103,26 +162,25 @@
     <span></span>
   </button>
 
- <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+  <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="start-here.html">Start Here</a>
+    <a href="legal-guides.html">Guides</a>
+    <a href="news-and-analysis.html">News &amp; Analysis</a>
+    <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+    <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+    <a href="browse-lawsuits.html" aria-current="page">Browse Lawsuits</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+```
 
-
-<a href="index.html">Home</a>
-<a href="start-here.html">Start Here</a>
-<a href="legal-guides.html">Guides</a>
-<a href="news-and-analysis.html">News & Analysis</a>
-<a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
-<a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
-<a href="browse-lawsuits.html">Browse Lawsuits</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-
-</nav>
-    </div>
   </header>
 
   <main class="content-page">
 
-
+```
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <a href="index.html">Home</a>
   <span class="breadcrumb-separator">›</span>
@@ -132,15 +190,11 @@
 <h1>Explore Lawsuit Topics</h1>
 
 <p class="article-date">
-  Last updated: April 28, 2026
+  Last updated: April 29, 2026
 </p>
 
 <p class="article-intro">
-  Browse educational guides covering chemical exposure, defective products, environmental contamination, addiction-related litigation, and broader consumer safety issues.
-</p>
-
-<p>
-  Some readers begin with a specific product or exposure. Others start with a diagnosis, a symptom pattern, or a general question about how lawsuits work. This page is designed to help you move into the topic that fits your research best.
+  Browse educational guides covering chemical exposure, defective products, environmental contamination, addiction-related litigation, and broader consumer safety issues. Some readers begin with a specific product or exposure. Others start with a diagnosis, a symptom pattern, or a general question about how lawsuits work.
 </p>
 
 <form class="hero-search" action="browse-lawsuits.html" method="get" role="search">
@@ -153,6 +207,23 @@
   />
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
+
+<nav class="browse-toc" aria-label="Jump to category">
+  <h2>Jump to a Category</h2>
+  <ul>
+    <li><a href="#environmental-contamination">Environmental Contamination</a></li>
+    <li><a href="#toxic-exposure">Toxic Exposure</a></li>
+    <li><a href="#consumer-products">Consumer Products</a></li>
+    <li><a href="#addiction-media">Addiction &amp; Media</a></li>
+    <li><a href="#legal-frameworks">Legal Frameworks</a></li>
+    <li><a href="#illness-injury">Illness &amp; Injury</a></li>
+    <li><a href="#popular-paths">Popular Paths</a></li>
+    <li><a href="#asbestos-guides">Asbestos Guides</a></li>
+    <li><a href="#pfas-chemical-guides">PFAS &amp; Chemical Guides</a></li>
+    <li><a href="#recent-updates">Recent Updates</a></li>
+    <li><a href="#case-review">Request a Case Review</a></li>
+  </ul>
+</nav>
 
 <p>
   Looking for state-focused topics? Explore
@@ -177,7 +248,7 @@
 <div id="browse-search-status" class="info-box" hidden></div>
 <section id="search-results" class="browse-category" hidden></section>
 
-<section class="browse-category">
+<section id="environmental-contamination" class="browse-category">
   <h2>Environmental Contamination Lawsuits</h2>
 
   <p class="section-intro">
@@ -185,16 +256,12 @@
   </p>
 
   <div class="related-paths">
-
-
-<a href="toxic-exposure-lawsuits.html">Toxic Exposure</a>
-<a href="chemical-exposure-lawsuits.html">Chemical Exposure</a>
-<a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>
-<a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>
-<a href="pfas-drinking-water-contamination-by-state.html">PFAS by State</a>
-
-</div>
-
+    <a href="toxic-exposure-lawsuits.html">Toxic Exposure</a>
+    <a href="chemical-exposure-lawsuits.html">Chemical Exposure</a>
+    <a href="water-contamination-illnesses.html">Water Contamination Illnesses</a>
+    <a href="environmental-contamination-illnesses.html">Environmental Contamination Illnesses</a>
+    <a href="pfas-drinking-water-contamination-by-state.html">PFAS by State</a>
+  </div>
 
   <div class="grid">
     <a class="card" href="environmental-contamination-lawsuits.html">
@@ -222,9 +289,11 @@
       <p>Explore illness topics often discussed in lawsuits involving PFAS, contaminated drinking water, firefighting foam, and other pollution claims.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="toxic-exposure" class="browse-category">
   <h2>Toxic Exposure Lawsuits</h2>
 
   <p class="section-intro">
@@ -269,9 +338,11 @@
       <p>A broader overview of toxic exposure litigation involving chemicals, contaminants, and long-term health risks.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="consumer-products" class="browse-category">
   <h2>Consumer Product Lawsuits</h2>
 
   <p class="section-intro">
@@ -332,9 +403,11 @@
       <p>Learn how PFAS allegations involving makeup, beauty products, and personal care items fit into broader consumer product litigation.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="addiction-media" class="browse-category">
   <h2>Addiction, Media, and Emerging Topics</h2>
 
   <p class="section-intro">
@@ -363,12 +436,12 @@
       <h3>Social Media Addiction Lawsuit</h3>
       <p>Learn what these lawsuits allege, which platforms have been named, and how these claims are moving through the courts.</p>
     </a>
-
-
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="legal-frameworks" class="browse-category">
   <h2>Related Legal Frameworks</h2>
 
   <p class="section-intro">
@@ -387,18 +460,18 @@
     </a>
 
     <a class="card" href="mass-torts.html">
-     <h3>Mass Torts</h3>
-     <p>See how large groups of similar claims are often handled in coordinated litigation.</p>
+      <h3>Mass Torts</h3>
+      <p>See how large groups of similar claims are often handled in coordinated litigation.</p>
     </a>
 
-     <a class="card" href="current-mass-tort-cases.html">
-       <h3>Current Mass Tort Cases</h3>
-       <p>Browse mass tort topics involving toxic exposure, pesticides, contaminated water, consumer products, and product liability issues.</p>
-       </a>
+    <a class="card" href="current-mass-tort-cases.html">
+      <h3>Current Mass Tort Cases</h3>
+      <p>Browse mass tort topics involving toxic exposure, pesticides, contaminated water, consumer products, and product liability issues.</p>
+    </a>
 
     <a class="card" href="mdl-basics.html">
-    <h3>MDL Basics</h3>
-    <p>Learn how many federal mass tort cases are coordinated through multidistrict litigation.</p>
+      <h3>MDL Basics</h3>
+      <p>Learn how many federal mass tort cases are coordinated through multidistrict litigation.</p>
     </a>
 
     <a class="card" href="personal-injury.html">
@@ -406,9 +479,11 @@
       <p>Learn how injury-based civil claims work, what damages may be involved, and how these cases differ from other lawsuits.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="illness-injury" class="browse-category">
   <h2>Illness and Injury Topics</h2>
 
   <p class="section-intro">
@@ -451,9 +526,11 @@
       <p>Explore illnesses discussed in lawsuits involving polluted water, industrial releases, PFAS, pesticide drift, and other contamination claims.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="popular-paths" class="browse-category">
   <h2>Popular Paths Through the Site</h2>
 
   <p class="section-intro">
@@ -486,9 +563,11 @@
       <p>Review practical questions people often ask before moving forward with a law firm or case evaluation.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="asbestos-guides" class="browse-category">
   <h2>Asbestos Exposure Guides</h2>
 
   <p class="section-intro">
@@ -536,9 +615,11 @@
       <p>Understand how asbestos trust funds and related claim processes may fit into asbestos compensation systems.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="pfas-chemical-guides" class="browse-category">
   <h2>PFAS and Chemical Exposure Guides</h2>
 
   <p class="section-intro">
@@ -561,10 +642,10 @@
       <p>Explore how kidney cancer allegations may arise in toxic exposure, PFAS, solvent, and contamination cases.</p>
     </a>
 
-     <a class="card" href="kidney-cancer-lawsuits.html">
-    <h3>Kidney Cancer Lawsuits</h3>
-    <p>Explore kidney cancer lawsuit topics involving alleged links to PFAS, chemical exposure, contaminated water, and toxic exposure claims.</p>
-   </a>
+    <a class="card" href="kidney-cancer-lawsuits.html">
+      <h3>Kidney Cancer Lawsuits</h3>
+      <p>Explore kidney cancer lawsuit topics involving alleged links to PFAS, chemical exposure, contaminated water, and toxic exposure claims.</p>
+    </a>
 
     <a class="card" href="toxic-water-contamination-lawsuits.html">
       <h3>Toxic Water Contamination Lawsuits</h3>
@@ -586,9 +667,11 @@
       <p>Read analysis of what EPA PFAS rule changes may mean for regulated entities, communities, and litigation.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<section class="browse-category">
+<section id="recent-updates" class="browse-category">
   <h2>Recent Litigation Updates and Analysis</h2>
 
   <p class="section-intro">
@@ -636,9 +719,11 @@
       <p>Review toxic exposure litigation trends involving contamination, chemical exposure, and public safety claims.</p>
     </a>
   </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
 </section>
 
-<div class="case-review-box">
+<div id="case-review" class="case-review-box">
   <h2>Ready to Request a Case Review?</h2>
   <p>
     If a topic above may relate to your situation — exposure to a chemical or contaminated water source,
@@ -708,7 +793,7 @@
     </div>
   </div>
 </section>
-
+```
 
   </main>
 
@@ -723,7 +808,7 @@
         </p>
       </div>
 
-
+```
   <div class="footer-col">
     <h3>Quick Links</h3>
     <ul class="footer-links">
@@ -756,7 +841,7 @@
   <p>Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
   <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
 </div>
-
+```
 
   </footer>
 
@@ -788,7 +873,7 @@
       const resultsContainer = document.getElementById("search-results");
 
       const introParagraphs = document.querySelectorAll(
-        ".content-page > p, .content-page > .link-cluster, .content-page > .info-box"
+        ".content-page > p, .content-page > .link-cluster, .content-page > .info-box, .content-page > .browse-toc"
       );
 
       const browseSections = document.querySelectorAll(
