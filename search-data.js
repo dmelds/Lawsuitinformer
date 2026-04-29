@@ -148,5 +148,24 @@ window.SEARCH_INDEX = [
     url: "browse-lawsuits.html",
     category: "Browse Section",
     text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
-  }
+  },
+{
+title: “News and Analysis”,
+url: “news-and-analysis.html”,
+category: “News and Analysis”,
+text: “news analysis legal commentary litigation updates consumer safety law360 pfas glyphosate roundup bayer epa regulatory developments published commentary”
+},
+{
+title: “Published in Law360: PFAS Reporting and Litigation Risk”,
+url: “published-in-law360-pfas-reporting-litigation-risk.html”,
+category: “News and Analysis”,
+text: “law360 pfas forever chemicals reporting litigation risk compliance documentation regulatory david meldofsky published commentary attorney perspective epa rule analysis water contamination”
+},
+{
+title: “Glyphosate Lawsuits: EPA, Bayer and the Supreme Court”,
+url: “glyphosate-lawsuits-epa-bayer-supreme-court.html”,
+category: “News and Analysis”,
+text: “glyphosate roundup lawsuits epa bayer monsanto supreme court scotus preemption herbicide pesticide cancer non hodgkin lymphoma analysis litigation regulatory labeling”
+}
+
 ];
