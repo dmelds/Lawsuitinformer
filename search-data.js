@@ -36,10 +36,10 @@ window.SEARCH_INDEX = [
     text: "talc talcum powder ovarian cancer reproductive injuries"
   },
   {
-    title: "Paraquat Parkinson’s Lawsuits",
+    title: "Paraquat Parkinsons Lawsuits",
     url: "paraquat-parkinsons-lawsuits.html",
     category: "Lawsuit Topic",
-    text: "paraquat parkinson's parkinsons neurological pesticide exposure"
+    text: "paraquat parkinson parkinsons neurological pesticide exposure"
   },
   {
     title: "Heavy Metals in Baby Food Lawsuit",
@@ -69,7 +69,7 @@ window.SEARCH_INDEX = [
     title: "Processed Food Addiction Lawsuit",
     url: "processed-food-addiction-lawsuit.html",
     category: "Lawsuit Topic",
-    text: "processed food addiction ultra-processed food addictive design overconsumption health harm"
+    text: "processed food addiction ultra processed food addictive design overconsumption health harm"
   },
   {
     title: "Chemical Exposure Lawsuits",
@@ -81,7 +81,7 @@ window.SEARCH_INDEX = [
     title: "Illnesses Linked to Lawsuits",
     url: "illnesses-linked-to-lawsuits.html",
     category: "Illness Hub",
-    text: "illnesses exposures mesothelioma kidney cancer testicular cancer ovarian cancer lung cancer parkinson's pfas asbestos pesticides contaminated water"
+    text: "illnesses exposures mesothelioma kidney cancer testicular cancer ovarian cancer lung cancer parkinsons pfas asbestos pesticides contaminated water"
   },
   {
     title: "Cancers Linked to Lawsuits",
@@ -93,7 +93,7 @@ window.SEARCH_INDEX = [
     title: "Neurological Conditions Linked to Lawsuits",
     url: "neurological-conditions-linked-to-lawsuits.html",
     category: "Illness Hub",
-    text: "neurological conditions parkinson's parkinsons tremor brain nerve developmental toxic exposure"
+    text: "neurological conditions parkinson parkinsons tremor brain nerve developmental toxic exposure"
   },
   {
     title: "Reproductive Injuries Linked to Lawsuits",
@@ -148,5 +148,23 @@ window.SEARCH_INDEX = [
     url: "browse-lawsuits.html",
     category: "Browse Section",
     text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
+  },
+  {
+    title: "News and Analysis",
+    url: "news-and-analysis.html",
+    category: "News and Analysis",
+    text: "news analysis legal commentary litigation updates consumer safety law360 pfas glyphosate roundup bayer epa regulatory developments published commentary"
+  },
+  {
+    title: "Published in Law360: PFAS Reporting and Litigation Risk",
+    url: "published-in-law360-pfas-reporting-litigation-risk.html",
+    category: "News and Analysis",
+    text: "law360 pfas forever chemicals reporting litigation risk compliance documentation regulatory david meldofsky published commentary attorney perspective epa rule analysis water contamination"
+  },
+  {
+    title: "Glyphosate Lawsuits: EPA, Bayer and the Supreme Court",
+    url: "glyphosate-lawsuits-epa-bayer-supreme-court.html",
+    category: "News and Analysis",
+    text: "glyphosate roundup lawsuits epa bayer monsanto supreme court scotus preemption herbicide pesticide cancer non hodgkin lymphoma analysis litigation regulatory labeling"
   }
 ];
