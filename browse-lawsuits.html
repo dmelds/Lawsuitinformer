@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const params = new URLSearchParams(window.location.search);
   const rawQuery = params.get("q");
-  const query = rawQuery ? rawQuery.trim().toLowerCase() : "";
+ const query = rawQuery ? rawQuery.trim().toLowerCase().replace(/['']/g, "") : "";
   const searchInput = document.getElementById("browse-search");
   if (searchInput && rawQuery) searchInput.value = rawQuery;
   if (!query) return;
