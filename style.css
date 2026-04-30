@@ -1031,19 +1031,14 @@ footer, .site-footer {
     margin-left: auto;
     margin-right: auto;
   }
- .content-page > ul,
-.content-page > ol {
+ .content-page ul:not(.toc-list):not(.footer-links),
+.content-page ol {
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0;
-  list-style-position: inside;
-  box-sizing: border-box;
-}
-.content-page > ul > li,
-.content-page > ol > li {
   padding-left: 22px;
-  text-indent: -22px;
+  list-style-position: outside;
+  box-sizing: border-box;
 }
 }
 
