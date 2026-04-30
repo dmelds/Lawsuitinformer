@@ -8,22 +8,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
 
 :root {
-  --bg: #fafaf7;            /* warm off-white paper */
-  --bg-alt: #f4f3ee;        /* slightly darker for alt sections */
-  --surface: #ffffff;       /* card surfaces */
+  --bg: #fafaf7;
+  --bg-alt: #f4f3ee;
+  --surface: #ffffff;
   --border: #e5e3dc;
   --border-strong: #cfccc1;
   --rule: #d8d5cc;
 
-  --ink: #1a1a1a;           /* near-black for body text */
-  --ink-strong: #0a0a0a;    /* pure black for headlines */
+  --ink: #1a1a1a;
+  --ink-strong: #0a0a0a;
   --ink-muted: #5a5750;
   --ink-soft: #8a877e;
 
-  --link: #b04a2f;          /* warm rust — distinctive, editorial, not blue */
+  --link: #b04a2f;
   --link-hover: #8a3621;
 
-  --amber: #d4a24e;         /* RESERVED for case-review CTAs */
+  --amber: #d4a24e;
   --amber-bright: #e7b961;
   --amber-deep: #b88a3d;
 
@@ -821,6 +821,94 @@ footer, .site-footer {
 .trust-card a { color: var(--link); border-bottom: 1px solid rgba(176,74,47,.3); }
 .trust-card a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
 
+/* ===== BUTTON COLOR OVERRIDE — rust accent ===== */
+.btn, .btn-primary {
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--bg);
+}
+.btn:hover, .btn-primary:hover {
+  background: var(--link-hover);
+  border-color: var(--link-hover);
+  color: var(--bg);
+}
+
+.subscribe-box button { background: var(--link); }
+.subscribe-box button:hover { background: var(--link-hover); }
+
+.case-review-form .checkbox-label input[type="checkbox"] {
+  accent-color: var(--link) !important;
+}
+
+.hero-search input[type="search"]:focus,
+.case-review-form input:focus, .case-review-form textarea:focus, .case-review-form select:focus,
+.subscribe-box input[type="email"]:focus {
+  border-color: var(--link);
+}
+
+/* ===== INLINE MID-PAGE CTA ===== */
+/* Used on lawsuit topic pages to capture peak-intent moments
+   between content sections. Amber accent ties to case-review CTAs. */
+.inline-cta {
+  margin: 28px 0;
+  padding: 24px 26px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius);
+}
+.inline-cta p {
+  font-family: var(--serif);
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.inline-cta p:last-child { margin-bottom: 0; }
+.inline-cta strong { color: var(--ink-strong); font-weight: 600; }
+.inline-cta .btn-primary {
+  display: inline-flex;
+  background: var(--amber);
+  color: #1a1306;
+  border-color: var(--amber);
+}
+.inline-cta .btn-primary:hover {
+  background: var(--amber-bright);
+  border-color: var(--amber-bright);
+  color: #1a1306;
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTNOTE-STYLE CTA ===== */
+/* Used on editorial/credibility pages where a soft pointer
+   to intake makes sense without the full CTA box treatment. */
+.footnote-cta {
+  font-family: var(--serif);
+  font-size: 0.95em;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--amber);
+  background: var(--bg-alt);
+  line-height: 1.6;
+}
+.footnote-cta strong {
+  color: var(--ink-strong);
+  font-weight: 600;
+  font-style: normal;
+}
+.footnote-cta a {
+  color: var(--link);
+  border-bottom: 1px solid rgba(176,74,47,.3);
+  font-style: normal;
+}
+.footnote-cta a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
 @media (max-width: 900px) {
   .site-header .container.nav, header .container.nav, .site-header .header-inner {
     flex-wrap: wrap; min-height: 60px; padding-top: 8px; padding-bottom: 8px;
@@ -886,6 +974,9 @@ footer, .site-footer {
   .subscribe-box button { width: 100%; }
   .note-box, .link-box, .content-card { padding: 22px; }
   .case-review-box, .cta-box { padding: 40px 28px; }
+  .inline-cta { padding: 20px; }
+  .inline-cta .btn-primary { width: 100%; text-align: center; }
+  .footnote-cta { padding: 12px 14px; font-size: 0.93em; }
 }
 
 @media (max-width: 700px) {
@@ -896,41 +987,6 @@ footer, .site-footer {
   .resource-card-grid { grid-template-columns: 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-  html { scroll-behavior: auto; }
-}
-:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
-/* ===== BUTTON COLOR OVERRIDE — rust accent ===== */
-.btn, .btn-primary {
-  background: var(--link);
-  border-color: var(--link);
-  color: var(--bg);
-}
-.btn:hover, .btn-primary:hover {
-  background: var(--link-hover);
-  border-color: var(--link-hover);
-  color: var(--bg);
-}
-
-.subscribe-box button {
-  background: var(--link);
-}
-.subscribe-box button:hover {
-  background: var(--link-hover);
-}
-
-.case-review-form .checkbox-label input[type="checkbox"] {
-  accent-color: var(--link) !important;
-}
-
-.hero-search input[type="search"]:focus,
-.case-review-form input:focus, .case-review-form textarea:focus, .case-review-form select:focus,
-.subscribe-box input[type="email"]:focus {
-  border-color: var(--link);
-}
-
-/* ===== MOBILE CARD + STAT-BLOCK FIXES ===== */
 @media (max-width: 600px) {
   .grid, .topic-grid, .resource-card-grid {
     grid-template-columns: 1fr;
@@ -944,13 +1000,8 @@ footer, .site-footer {
     overflow-wrap: break-word;
     hyphens: none;
   }
-  .stat-block {
-    flex-direction: column;
-  }
-  .stat-item {
-    min-width: 0;
-    width: 100%;
-  }
+  .stat-block { flex-direction: column; }
+  .stat-item { min-width: 0; width: 100%; }
   .stat-number {
     font-size: 1.3rem;
     line-height: 1.2;
@@ -974,85 +1025,11 @@ footer, .site-footer {
     margin-left: auto;
     margin-right: auto;
   }
-   /* ===== INLINE MID-PAGE CTA ===== */
-/* Used on lawsuit topic pages to capture peak-intent moments
-   between content sections. Amber accent ties to case-review CTAs. */
-.inline-cta {
-  margin: 28px 0;
-  padding: 24px 26px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--amber);
-  border-radius: var(--radius);
-}
-.inline-cta p {
-  font-family: var(--serif);
-  margin: 0 0 16px;
-  color: var(--ink);
-  font-size: 1.02rem;
-  line-height: 1.65;
-}
-.inline-cta p:last-child { margin-bottom: 0; }
-.inline-cta strong { color: var(--ink-strong); font-weight: 600; }
-.inline-cta .btn-primary {
-  display: inline-flex;
-  background: var(--amber);
-  color: #1a1306;
-  border-color: var(--amber);
-}
-.inline-cta .btn-primary:hover {
-  background: var(--amber-bright);
-  border-color: var(--amber-bright);
-  color: #1a1306;
-  transform: translateY(-1px);
 }
 
-/* ===== FOOTNOTE-STYLE CTA ===== */
-/* Used on editorial/credibility pages where a soft pointer
-   to intake makes sense without the full CTA box treatment. */
-.footnote-cta {
-  font-family: var(--serif);
-  font-size: 0.95em;
-  color: var(--ink-muted);
-  font-style: italic;
-  margin: 18px 0;
-  padding: 14px 18px;
-  border-left: 3px solid var(--amber);
-  background: var(--bg-alt);
-  line-height: 1.6;
-}
-.footnote-cta strong {
-  color: var(--ink-strong);
-  font-weight: 600;
-  font-style: normal;
-}
-.footnote-cta a {
-  color: var(--link);
-  border-bottom: 1px solid rgba(176,74,47,.3);
-  font-style: normal;
-}
-.footnote-cta a:hover  {
-  color: var(--link-hover);
-  border-bottom-color: var(--link-hover);
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
 }
 
-/* Mobile tweaks for both CTA types */
-@media (max-width: 768px) {
-  .inline-cta { padding: 20px; }
-  .inline-cta .btn-primary { width: 100%; text-align: center; }
-  .footnote-cta { padding: 12px 14px; font-size: 0.93em; }
-}
-
-}
-.footnote-cta a:hover {
-  color: var(--link-hover);
-  border-bottom-color: var(--link-hover);
-}
-
-/* Mobile tweaks for both CTA types */
-@media (max-width: 768px) {
-  .inline-cta { padding: 20px; }
-  .inline-cta .btn-primary { width: 100%; text-align: center; }
-  .footnote-cta { padding: 12px 14px; font-size: 0.93em; }
-}
-
+:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
