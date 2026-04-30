@@ -1032,13 +1032,19 @@ footer, .site-footer {
     margin-right: auto;
   }
   .content-page > ul,
-  .content-page > ol {
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left:22px;
-    box-sizing: border-box;
-  }
+.content-page > ol {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  list-style-position: inside;
+  box-sizing: border-box;
+}
+.content-page > ul > li,
+.content-page > ol > li {
+  text-indent: 0;
+  padding-left: 0;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
