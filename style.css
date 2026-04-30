@@ -974,4 +974,72 @@ footer, .site-footer {
     margin-left: auto;
     margin-right: auto;
   }
+   /* ===== INLINE MID-PAGE CTA ===== */
+/* Used on lawsuit topic pages to capture peak-intent moments
+   between content sections. Amber accent ties to case-review CTAs. */
+.inline-cta {
+  margin: 28px 0;
+  padding: 24px 26px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius);
+}
+.inline-cta p {
+  font-family: var(--serif);
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.inline-cta p:last-child { margin-bottom: 0; }
+.inline-cta strong { color: var(--ink-strong); font-weight: 600; }
+.inline-cta .btn-primary {
+  display: inline-flex;
+  background: var(--amber);
+  color: #1a1306;
+  border-color: var(--amber);
+}
+.inline-cta .btn-primary:hover {
+  background: var(--amber-bright);
+  border-color: var(--amber-bright);
+  color: #1a1306;
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTNOTE-STYLE CTA ===== */
+/* Used on editorial/credibility pages where a soft pointer
+   to intake makes sense without the full CTA box treatment. */
+.footnote-cta {
+  font-family: var(--serif);
+  font-size: 0.95em;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--amber);
+  background: var(--bg-alt);
+  line-height: 1.6;
+}
+.footnote-cta strong {
+  color: var(--ink-strong);
+  font-weight: 600;
+  font-style: normal;
+}
+.footnote-cta a {
+  color: var(--link);
+  border-bottom: 1px solid rgba(176,74,47,.3);
+  font-style: normal;
+}
+.footnote-cta a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+/* Mobile tweaks for both CTA types */
+@media (max-width: 768px) {
+  .inline-cta { padding: 20px; }
+  .inline-cta .btn-primary { width: 100%; text-align: center; }
+  .footnote-cta { padding: 12px 14px; font-size: 0.93em; }
+}
 }
