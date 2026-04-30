@@ -326,8 +326,24 @@ header nav a:hover, header nav a[aria-current="page"],
 }
 .content-page ul:not(.toc-list):not(.footer-links), .content-page ol,
 .legal-page ul, .legal-page ol, .editorial-policy ul, .editorial-policy ol {
-  margin: 14px 0 24px; padding-left: 24px;
+  margin: 14px 0 24px;
+  padding-left: 0;
+  list-style-position: outside;
 }
+.content-page ul:not(.toc-list):not(.footer-links) li,
+.content-page ol li,
+.legal-page ul li, .legal-page ol li,
+.editorial-policy ul li, .editorial-policy ol li {
+  padding-left: 22px;
+  text-indent: -22px;
+}
+.content-page ul:not(.toc-list):not(.footer-links) li::marker,
+.content-page ol li::marker,
+.legal-page ul li::marker, .legal-page ol li::marker,
+.editorial-policy ul li::marker, .editorial-policy ol li::marker {
+  color: var(--ink-muted);
+}
+
 .article-intro {
   font-family: var(--serif);
   font-size: 1.25rem; line-height: 1.6;
