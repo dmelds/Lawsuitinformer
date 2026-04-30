@@ -327,20 +327,41 @@ header nav a:hover, header nav a[aria-current="page"],
 .content-page ul:not(.toc-list):not(.footer-links), .content-page ol,
 .legal-page ul, .legal-page ol, .editorial-policy ul, .editorial-policy ol {
   margin: 14px 0 24px;
-  padding-left: 22px;
-  list-style-position: outside;
+  padding-left: 0;
+  list-style: none;
 }
 .content-page ul:not(.toc-list):not(.footer-links) li,
 .content-page ol li,
 .legal-page ul li, .legal-page ol li,
 .editorial-policy ul li, .editorial-policy ol li {
-  padding-left: 0;
+  position: relative;
+  padding-left: 22px;
   text-indent: 0;
+  list-style: none;
 }
-.content-page ul:not(.toc-list):not(.footer-links) li::marker,
-.content-page ol li::marker,
-.legal-page ul li::marker, .legal-page ol li::marker,
-.editorial-policy ul li::marker, .editorial-policy ol li::marker {
+.content-page ul:not(.toc-list):not(.footer-links) li::before,
+.legal-page ul li::before,
+.editorial-policy ul li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--ink-muted);
+  font-weight: bold;
+}
+.content-page ol,
+.legal-page ol,
+.editorial-policy ol { counter-reset: item; }
+.content-page ol li,
+.legal-page ol li,
+.editorial-policy ol li { counter-increment: item; }
+.content-page ol li::before,
+.legal-page ol li::before,
+.editorial-policy ol li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--ink-muted);
 }
 
