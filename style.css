@@ -974,6 +974,8 @@ footer, .site-footer {
     margin-left: auto;
     margin-right: auto;
   }
+     }
+   
    /* ===== INLINE MID-PAGE CTA ===== */
 /* Used on lawsuit topic pages to capture peak-intent moments
    between content sections. Amber accent ties to case-review CTAs. */
@@ -1042,4 +1044,4 @@ footer, .site-footer {
   .inline-cta .btn-primary { width: 100%; text-align: center; }
   .footnote-cta { padding: 12px 14px; font-size: 0.93em; }
 }
-}
+
