@@ -1048,3 +1048,22 @@ footer, .site-footer {
 }
 
 :focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+/* Tighten homepage News & Analysis feature spacing */
+.homepage-news-feature {
+  padding-bottom: 40px;
+}
+
+.homepage-news-feature + .start-here {
+  padding-top: 48px;
+}
+
+@media (max-width: 768px) {
+  .homepage-news-feature {
+    padding-top: 48px;
+    padding-bottom: 28px;
+  }
+
+  .homepage-news-feature + .start-here {
+    padding-top: 36px;
+  }
+}
