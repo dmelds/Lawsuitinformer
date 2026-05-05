@@ -12,6 +12,12 @@ window.SEARCH_INDEX = [
     text: "pfas forever chemicals contaminated water drinking water kidney cancer testicular cancer ulcerative colitis thyroid disease"
   },
   {
+    title: "PFAS Water Contamination Lawsuit Update",
+    url: "pfas-water-contamination-lawsuit-update.html",
+    category: "News and Analysis",
+    text: "pfas water contamination lawsuit update may 2026 afff mdl multidistrict litigation bellwether trials 3m dupont public water system settlement individual injury claims forever chemicals drinking water firefighting foam new jersey hoosick falls phase 2 deadline"
+  },
+  {
     title: "AFFF Firefighting Foam Lawsuits",
     url: "afff-firefighting-foam-lawsuits.html",
     category: "Lawsuit Topic",
