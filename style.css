@@ -1091,7 +1091,7 @@ footer, .site-footer {
   padding-bottom: 18px;
   border-bottom: 1px solid var(--rule);
 }
-.law360-mark {
+.law360-mark, .press-mark {
   font-family: var(--sans);
   font-weight: 600;
   font-size: 13px;
@@ -1100,7 +1100,7 @@ footer, .site-footer {
   color: var(--ink-strong);
 }
 
-.press-card h2 {
+.press-card h2, .press-card h3 {
   font-family: var(--display);
   font-weight: 600;
   font-size: clamp(1.4rem, 2.4vw, 1.75rem);
@@ -1155,7 +1155,7 @@ footer, .site-footer {
 
 @media (max-width: 768px) {
   .press-card { padding: 28px 24px; margin-bottom: 24px; }
-  .press-card h2 { font-size: 1.25rem; }
+   .press-card h2, .press-card h3 { font-size: 1.25rem; }
   .press-card .pull-quote { font-size: 1.05rem; padding-left: 16px; }
   .press-card .button { width: 100%; text-align: center; justify-content: center; }
 }
