@@ -584,45 +584,13 @@
   </main>
 
   <footer>
-    <div class="container footer-content">
-      <div>
-        <h3>Lawsuit Informer</h3>
-        <p>Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.</p>
-        <p><strong>Questions about the site or its educational content?</strong></p>
-        <p><a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'pfas_biosolids_footer')">hello@lawsuitinformer.com</a></p>
-      </div>
-
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="dr-thomas-hatzilabrou.html">Medical Reviewer</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="editorial-policy.html">Editorial Policy</a></li>
-          <li><a href="contributor-guidelines.html">Write for Us</a></li>
-          <li><a href="legal-guides.html">Legal Guides</a></li>
-          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-          <li><a href="news-and-analysis.html">News &amp; Analysis</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Explore</h3>
-        <ul class="footer-links">
-          <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-          <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
-          <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
-      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
+</footer>
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
+</script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
