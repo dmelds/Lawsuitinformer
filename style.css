@@ -1048,7 +1048,7 @@ footer, .site-footer {
 }
 
 :focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
-}
+
 /* ===== PRESS / FEATURED IN ===== */
 .press-section {
   padding: clamp(64px, 8vw, 96px) 0;
