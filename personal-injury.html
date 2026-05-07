@@ -427,52 +427,13 @@
 </main>
 
 <footer>
-  <div class="container footer-content">
-
-    <div>
-      <h3>Lawsuit Informer</h3>
-      <p>Clear educational information about lawsuits, legal rights, toxic exposure, and consumer safety topics.</p>
-
-      <p><strong>Questions about a potential case? Contact us directly.</strong></p>
-
-      <p>
-        <a href="mailto:hello@lawsuitinformer.com" onclick="clicky.log('email_click', 'article_footer')">
-          hello@lawsuitinformer.com
-        </a>
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="editorial-policy.html">Editorial Policy</a></li>
-<li><a href="contributor-guidelines.html">Write for Us</a></li>
-        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
-        <li><a href="mass-torts.html">Mass Torts</a></li>
-        <li><a href="class-action.html">Class Actions</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="disclaimer.html">Legal Disclaimer</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Explore</h3>
-      <ul class="footer-links">
-        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
-        <li><a href="illnesses-linked-to-lawsuits.html">Illnesses</a></li>
-        <li><a href="symptoms-linked-to-lawsuits.html">Symptoms</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="container footer-bottom">
-    <p>Attorney-led legal education. Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
-    <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
-  </div>
+  <div id="footer-placeholder"></div>
 </footer>
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
