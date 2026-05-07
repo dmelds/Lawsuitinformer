@@ -212,10 +212,13 @@
   </main>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2026 Lawsuit Informer. For educational purposes only. Not legal advice.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
+</footer>
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
+</script>
 
 </body>
 </html>

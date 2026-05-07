@@ -777,7 +777,7 @@ footer, .site-footer {
   background: var(--ink-strong); color: var(--bg);
   border-top: 0; margin-top: 0; padding: 72px 0 36px;
 }
-.footer-content, .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; align-items: start; }
+.footer-content, .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; align-items: start; }
 .footer-content > div, .footer-grid > div { min-width: 0; }
 .footer-content h3, .footer-grid h3, .footer-col h3 {
   font-family: var(--sans); margin: 0 0 14px;
@@ -1152,4 +1152,3 @@ footer, .site-footer {
 @media (max-width: 768px) {
   .press-card .press-summary { font-size: 1rem; }
 }
-
