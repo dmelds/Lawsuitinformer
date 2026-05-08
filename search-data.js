@@ -12,6 +12,12 @@ window.SEARCH_INDEX = [
     text: "pfas forever chemicals contaminated water drinking water kidney cancer testicular cancer ulcerative colitis thyroid disease"
   },
   {
+     title: "Depo-Provera Lawsuits",
+     category: "Consumer Products",
+     url: "depo-provera-lawsuits.html",
+     text: "Lawsuits alleging long-term Depo-Provera birth control injection use is linked to meningioma brain tumors. Federal MDL 3140 in the Northern District of Florida, FDA's December 2025 label change, medroxyprogesterone acetate, Pfizer."
+  },
+  {
     title: "PFAS Water Contamination Lawsuit Update",
     url: "pfas-water-contamination-lawsuit-update.html",
     category: "News and Analysis",
