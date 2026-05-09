@@ -133,7 +133,7 @@
     <loc>https://lawsuitinformer.com/browse-lawsuits.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/news-and-analysis.html</loc>
+    <loc>https://lawsuitinformer.com/news-and-analysis.html</loc>
   </url>
   <url>
     <loc>https://lawsuitinformer.com/california-lawsuits.html</loc>
@@ -159,7 +159,7 @@
   <url>
     <loc>https://lawsuitinformer.com/community-education.html</loc>
   </url>
-   <url>
+  <url>
     <loc>https://lawsuitinformer.com/contributor-guidelines.html</loc>
   </url>
   <url>
@@ -175,7 +175,8 @@
     <loc>https://lawsuitinformer.com/david-meldofsky.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/dr-thomas-hatzilabrou.html</loc>
+    <loc>https://lawsuitinformer.com/dr-thomas-hatzilabrou.html</loc>
+  </url>
   <url>
     <loc>https://lawsuitinformer.com/depo-provera-lawsuits.html</loc>
   </url>
@@ -202,7 +203,7 @@
   </url>
   <url>
     <loc>https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit.html</loc>
-  </url>  
+  </url>
   <url>
     <loc>https://lawsuitinformer.com/hair-relaxer-lawsuit-updates.html</loc>
   </url>
@@ -291,13 +292,12 @@
     <loc>https://lawsuitinformer.com/pfas-water-contamination-lawsuits.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/pfas-water-contamination-lawsuit-update.html</loc>
- </url>
+    <loc>https://lawsuitinformer.com/pfas-water-contamination-lawsuit-update.html</loc>
+  </url>
   <url>
-  <loc>https://lawsuitinformer.com/pfas-sewage-sludge-farm-lawsuit-epa.html</loc>
- </url>
-
- <url>
+    <loc>https://lawsuitinformer.com/pfas-sewage-sludge-farm-lawsuit-epa.html</loc>
+  </url>
+  <url>
     <loc>https://lawsuitinformer.com/privacy-policy.html</loc>
   </url>
   <url>
@@ -325,7 +325,7 @@
     <loc>https://lawsuitinformer.com/roundup-cancer-lawsuits.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/openai-school-shooting-lawsuits-ai-product-liability.html</loc>
+    <loc>https://lawsuitinformer.com/openai-school-shooting-lawsuits-ai-product-liability.html</loc>
   </url>
   <url>
     <loc>https://lawsuitinformer.com/glyphosate-lawsuits-epa-bayer-supreme-court.html</loc>
@@ -424,12 +424,12 @@
     <loc>https://lawsuitinformer.com/who-qualifies-for-an-asbestos-lawsuit.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/epa-pfas-rule-analysis.html</loc>
+    <loc>https://lawsuitinformer.com/epa-pfas-rule-analysis.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/toxic-exposure-litigation-trends.html</loc>
+    <loc>https://lawsuitinformer.com/toxic-exposure-litigation-trends.html</loc>
   </url>
   <url>
-  <loc>https://lawsuitinformer.com/consumer-safety-lawsuit-developments.html</loc>
+    <loc>https://lawsuitinformer.com/consumer-safety-lawsuit-developments.html</loc>
   </url>
-  </urlset>
+</urlset>
