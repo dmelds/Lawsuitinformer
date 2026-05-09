@@ -607,6 +607,13 @@
 
     if (!searchInput || !filterChips.length) return;
 
+    // Pre-fill from URL parameter ?q=
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get("q");
+    if (initialQuery) {
+      searchInput.value = initialQuery;
+    }
+
     let activeFilter = "all";
     const totalCount = cards.length;
 
@@ -643,7 +650,6 @@
         }
       });
 
-      // Status text
       if (query === "" && activeFilter === "all") {
         status.textContent = "";
       } else if (visibleCount === 0) {
@@ -654,14 +660,12 @@
         status.textContent = "Showing " + visibleCount + " of " + totalCount + " guides.";
       }
 
-      // No results message
       if (visibleCount === 0) {
         noResults.classList.add("visible");
       } else {
         noResults.classList.remove("visible");
       }
 
-      // Clear button visibility
       if (query === "") {
         clearBtn.classList.remove("visible");
       } else {
@@ -685,6 +689,9 @@
         applyFilters();
       });
     });
+
+    // Run initial filter (handles URL ?q= param if present)
+    applyFilters();
 
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
