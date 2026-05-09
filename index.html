@@ -609,10 +609,16 @@
         return false;
       }
 
-      function routeQuery(query) {
+           function routeQuery(query) {
         if (!query) return null;
         const q = query.trim();
         if (!q) return null;
+        const qLower = q.toLowerCase();
+
+        // Direct intent — searching "guide" or "guides" goes to legal-guides.html
+        if (qLower === "guide" || qLower === "guides" || qLower === "legal guide" || qLower === "legal guides") {
+          return "legal-guides.html";
+        }
 
         if (matchesGuide(q)) {
           return "legal-guides.html?q=" + encodeURIComponent(q);
