@@ -10,7 +10,7 @@
   />
   <link rel="stylesheet" href="style.css" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-       
+
   <link rel="author" href="david-meldofsky.html" />
   <link rel="publisher" href="about.html" />
   <link rel="canonical" href="https://lawsuitinformer.com/" />
@@ -124,28 +124,28 @@
         </p>
 
         <form class="hero-search" action="browse-lawsuits.html" method="get" role="search" id="homepage-search-form">
-          <label class="sr-only" for="homepage-search">Search topics</label>
+          <label class="sr-only" for="homepage-search">Search topics and guides</label>
           <input
             type="search"
             id="homepage-search"
             name="q"
-            placeholder="Search addiction, fatigue, PFAS, ADHD..."
+            placeholder="Search lawsuits, guides, illnesses, symptoms..."
           />
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
 
         <p class="search-helper">
-          Search by lawsuit topic, illness, symptom, or exposure.
+          Search lawsuit topics, legal guides (settlement, discovery, deadlines), illnesses, symptoms, or exposures.
         </p>
 
         <div class="search-examples">
           <span class="search-examples-label">Try:</span>
           <a href="browse-lawsuits.html?q=mesothelioma">Mesothelioma</a>
           <a href="browse-lawsuits.html?q=PFAS">PFAS</a>
-          <a href="browse-lawsuits.html?q=Parkinson%27s">Parkinson’s</a>
+          <a href="legal-guides.html?q=settlement">Settlement</a>
+          <a href="legal-guides.html?q=statute%20of%20limitations">Deadlines</a>
+          <a href="legal-guides.html?q=retainer">Retainer</a>
           <a href="browse-lawsuits.html?q=addiction">Addiction</a>
-          <a href="browse-lawsuits.html?q=fatigue">Fatigue</a>
-          <a href="browse-lawsuits.html?q=ADHD">ADHD</a>
         </div>
 
         <div class="hero-buttons">
@@ -231,7 +231,7 @@
               David's writing has been published in <strong>Attorney at Law Magazine</strong>, <strong>Law360</strong>, and the <strong>Daily Journal</strong>.
             </p>
             <p>
-              <a href="david-meldofsky.html">Read David’s full profile &rarr;</a>
+              <a href="david-meldofsky.html">Read David's full profile &rarr;</a>
             </p>
           </div>
         </div>
@@ -329,7 +329,7 @@
 
           <a class="card" href="pfas-water-contamination-lawsuits.html">
             <h3>PFAS Water Contamination</h3>
-            <p>Lawsuits involving contamination of drinking water by PFAS chemicals, sometimes called “forever chemicals.”</p>
+            <p>Lawsuits involving contamination of drinking water by PFAS chemicals, sometimes called "forever chemicals."</p>
           </a>
 
           <a class="card" href="environmental-contamination-lawsuits.html">
@@ -369,8 +369,8 @@
         <h3 class="subsection-title">Additional and Emerging Topics</h3>
         <div class="grid">
           <a class="card" href="paraquat-parkinsons-lawsuits.html">
-            <h3>Paraquat Parkinson’s Lawsuits</h3>
-            <p>Cases involving allegations that exposure to the herbicide paraquat may contribute to Parkinson’s disease.</p>
+            <h3>Paraquat Parkinson's Lawsuits</h3>
+            <p>Cases involving allegations that exposure to the herbicide paraquat may contribute to Parkinson's disease.</p>
           </a>
 
           <a class="card" href="processed-food-addiction-lawsuit.html">
@@ -451,7 +451,7 @@
 
           <a class="card" href="neurological-conditions-linked-to-lawsuits.html">
             <h3>Neurological Conditions Linked to Lawsuits</h3>
-            <p>Explore lawsuit topics involving Parkinson’s disease, developmental conditions, toxic exposure, and other neurological claims.</p>
+            <p>Explore lawsuit topics involving Parkinson's disease, developmental conditions, toxic exposure, and other neurological claims.</p>
           </a>
         </div>
       </div>
@@ -570,20 +570,54 @@
         });
       }
 
+      // Guide keywords — when query matches, route to legal-guides.html instead of browse-lawsuits.html
+      const guideKeywords = [
+        "settlement", "discovery", "deposition", "mediation", "trial", "appeal",
+        "demand letter", "statute of limitations", "deadline", "retainer",
+        "fee agreement", "contingency", "lawyer", "attorney", "evidence",
+        "qualify", "worth suing", "should i sue", "ignore", "default judgment",
+        "mass tort", "class action", "mdl", "multidistrict", "bellwether",
+        "product liability", "toxic tort", "how lawsuits work", "lawsuit process",
+        "complaint", "filing", "plaintiff", "defendant", "glossary", "terms",
+        "mistakes", "verdict"
+      ];
+
+      function routeQuery(query) {
+        if (!query) return null;
+        const q = query.trim().toLowerCase();
+        if (!q) return null;
+
+        for (let i = 0; i < guideKeywords.length; i++) {
+          const kw = guideKeywords[i];
+          if (q.indexOf(kw) !== -1 || kw.indexOf(q) !== -1) {
+            return "legal-guides.html?q=" + encodeURIComponent(query.trim());
+          }
+        }
+        return "browse-lawsuits.html?q=" + encodeURIComponent(query.trim());
+      }
+
       const homepageSearchForm = document.getElementById("homepage-search-form");
       const homepageSearchInput = document.getElementById("homepage-search");
 
       if (homepageSearchForm && homepageSearchInput) {
-        homepageSearchForm.addEventListener("submit", function () {
+        homepageSearchForm.addEventListener("submit", function (e) {
           const query = homepageSearchInput.value.trim();
-          if (!query) return;
+          if (!query) {
+            e.preventDefault();
+            return;
+          }
 
-          if (typeof clicky !== "undefined") {
-            clicky.log(
-              "/search-home?q=" + encodeURIComponent(query),
-              "homepage_search_submit",
-              "search"
-            );
+          const target = routeQuery(query);
+          if (target) {
+            e.preventDefault();
+            if (typeof clicky !== "undefined") {
+              clicky.log(
+                "/search-home?q=" + encodeURIComponent(query),
+                "homepage_search_submit",
+                "search"
+              );
+            }
+            window.location.href = target;
           }
         });
       }
