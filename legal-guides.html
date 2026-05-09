@@ -595,7 +595,6 @@
       });
     }
 
-    // Guides search + filter
     const searchInput = document.getElementById("guides-search-input");
     const clearBtn = document.querySelector(".guides-search-clear");
     const filterChips = document.querySelectorAll(".guides-filter-chip");
@@ -618,7 +617,11 @@
     const totalCount = cards.length;
 
     function applyFilters() {
-      const query = searchInput.value.trim().toLowerCase();
+      let query = searchInput.value.trim().toLowerCase();
+      // Treat "guide" or "guides" as a no-op — user wants to see everything
+      if (query === "guide" || query === "guides" || query === "legal guide" || query === "legal guides") {
+        query = "";
+      }
       let visibleCount = 0;
 
       categories.forEach(function (cat) {
@@ -650,8 +653,8 @@
         }
       });
 
-      if (query === "" && activeFilter === "      
-      status.textContent = "Showing all " + totalCount + " guides.";
+      if (query === "" && activeFilter === "all") {
+        status.textContent = "Showing all " + totalCount + " guides.";
       } else if (visibleCount === 0) {
         status.textContent = "No matching guides.";
       } else if (visibleCount === 1) {
@@ -666,7 +669,7 @@
         noResults.classList.remove("visible");
       }
 
-      if (query === "") {
+      if (searchInput.value.trim() === "") {
         clearBtn.classList.remove("visible");
       } else {
         clearBtn.classList.add("visible");
@@ -690,7 +693,6 @@
       });
     });
 
-    // Run initial filter (handles URL ?q= param if present)
     applyFilters();
 
     if (resetBtn) {
