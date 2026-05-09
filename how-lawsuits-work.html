@@ -15,15 +15,41 @@
 <link rel="publisher" href="about.html">
 
 <style>
-  .video-embed { margin: 2rem 0; }
+  .video-embed {
+    margin: 32px auto;
+    max-width: 680px;
+  }
+  .video-embed h2 {
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-weight: 600;
+    margin: 0 0 12px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: #0a0a0a;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .video-embed > p {
+    font-family: "Source Serif 4", Georgia, serif;
+    margin: 0 0 18px;
+    color: #5a5750;
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
   .video-wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
-    background: #000;
+    background: #0a0a0a;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
+    border: 1px solid #e5e3dc;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .video-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
   }
   .video-wrapper img {
     position: absolute;
@@ -38,19 +64,33 @@
     width: 100%; height: 100%;
     border: 0;
   }
-  .play-button {
+  .video-wrapper .play-button {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 68px; height: 48px;
-    background: rgba(0,0,0,0.75);
-    color: #fff;
-    font-size: 24px;
+    width: 72px;
+    height: 50px;
+    background: rgba(26,26,26,0.85);
+    color: #fafaf7;
+    font-size: 22px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
+    font-family: "IBM Plex Sans", sans-serif;
+    transition: background .2s ease;
   }
-  .video-wrapper:hover .play-button { background: #c00; }
+  .video-wrapper:hover .play-button {
+    background: #b04a2f;
+  }
+  @media (max-width: 768px) {
+    .video-embed { margin: 24px auto; }
+    .video-embed h2 { font-size: 1.25rem; }
+    .video-wrapper .play-button {
+      width: 60px;
+      height: 42px;
+      font-size: 18px;
+    }
+  }
 </style>
 
 <script type="application/ld+json">
@@ -540,69 +580,6 @@
       Still learning how lawsuits work?
       <a href="start-here.html"><strong>Start here</strong></a>
       for a simple step-by-step overview.
-    </p>
-  </div>
-
-  <div class="cta-box">
-    <h2>Explore Related Lawsuit Topics</h2>
-
-    <p>
-      Choose your next step below or share a few details to get started.
-    </p>
-
-    <div class="cta-buttons">
-      <a class="btn btn-primary" href="browse-lawsuits.html">Browse Lawsuits</a>
-      <a class="btn btn-secondary" href="do-you-qualify-for-a-lawsuit.html">Do You Qualify?</a>
-    </div>
-
-    <p class="form-bridge">
-      Prefer to share details instead? Use the form below.
-    </p>
-
-    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
-      <input type="hidden" name="form-name" value="case-review">
-      <p hidden>
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
-
-      <label for="name">Your Name</label>
-      <input id="name" type="text" name="name" placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" placeholder="Your email">
-
-      <label for="location">Location (City / State)</label>
-      <input id="location" type="text" name="location" placeholder="e.g. Los Angeles, CA">
-
-      <label for="case_type">Type of Exposure or Issue</label>
-      <select id="case_type" name="case_type">
-        <option value="">Select one</option>
-        <option>Asbestos / Mesothelioma / Lung Cancer</option>
-        <option>PFAS / Water Contamination</option>
-        <option>Paraquat / Parkinson’s</option>
-        <option>AFFF Firefighting Foam</option>
-        <option>Talcum Powder</option>
-        <option>Roundup</option>
-        <option>Hair Relaxer</option>
-        <option>Other</option>
-      </select>
-
-      <label for="lawyer_status">Have you spoken to a lawyer?</label>
-      <select id="lawyer_status" name="lawyer_status">
-        <option value="">Select one</option>
-        <option>No</option>
-        <option>Yes</option>
-        <option>Not sure</option>
-      </select>
-
-      <label for="message">What happened?</label>
-      <textarea id="message" name="message" rows="4" placeholder="Briefly describe your situation"></textarea>
-
-      <button type="submit" class="btn btn-primary">Submit for Review</button>
-    </form>
-
-    <p class="form-note">
-      Educational purposes only. Submitting this form does not create an attorney-client relationship.
     </p>
   </div>
 
