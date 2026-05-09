@@ -297,17 +297,18 @@
     In simple terms, a lawsuit is the legal process people use when they believe they were harmed and want a court to decide responsibility, damages, or other relief.
   </p>
 
-  <div class="video-embed">
+    <div class="video-embed">
     <h2>Watch: How Lawsuits Start</h2>
     <p>A short overview of how a civil lawsuit actually begins — from initial investigation through filing the complaint.</p>
 
-    <div class="video-wrapper" onclick="loadVideo(this)" data-video-id="rK7jdahizPg">
-      <img
-        src="https://i.ytimg.com/vi/rK7jdahizPg/hqdefault.jpg"
-        alt="How Lawsuits Start — video by David Meldofsky"
-        loading="lazy"
-      >
-      <button type="button" class="play-button" aria-label="Play video">▶</button>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/rK7jdahizPg"
+        title="How Lawsuits Start"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 
@@ -646,18 +647,6 @@
     .then(response => response.text())
     .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
 </script>
-
-<script>
-    function loadVideo(wrapper) {
-    const id = wrapper.getAttribute('data-video-id');
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=1';
-    iframe.title = 'How Lawsuits Start';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.setAttribute('allowfullscreen', '');
-    wrapper.innerHTML = '';
-    wrapper.appendChild(iframe);
-  }
 
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
