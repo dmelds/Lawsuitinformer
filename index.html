@@ -570,30 +570,54 @@
         });
       }
 
-      // Guide keywords — when query matches, route to legal-guides.html instead of browse-lawsuits.html
-      const guideKeywords = [
-        "settlement", "discovery", "deposition", "mediation", "trial", "appeal",
-        "demand letter", "statute of limitations", "deadline", "retainer",
-        "fee agreement", "contingency", "lawyer", "attorney", "evidence",
-        "qualify", "worth suing", "should i sue", "ignore", "default judgment",
-        "mass tort", "class action", "mdl", "multidistrict", "bellwether",
-        "product liability", "toxic tort", "how lawsuits work", "lawsuit process",
-        "complaint", "filing", "plaintiff", "defendant", "glossary", "terms",
-        "mistakes", "verdict"
+      // Index of all guide titles + descriptions (mirrors legal-guides.html cards)
+      const guideIndex = [
+        "new to lawsuits start here a step-by-step guide to understanding lawsuits key legal terms and where to begin",
+        "legal terms glossary plain-english definitions of common lawsuit and legal terms including settlement discovery negligence mdl and statute of limitations",
+        "how lawsuits work basics of how civil lawsuits typically begin move forward and resolve",
+        "do you qualify for a lawsuit common factors people look at when trying to understand whether they may qualify for a lawsuit",
+        "is it worth suing five questions that help decide whether a lawsuit is worth pursuing including viable claims collectibility cost deadlines and alternatives to filing",
+        "what happens if you ignore a lawsuit missed deadlines and non-response can lead to default judgment and other serious consequences",
+        "what happens after you contact a lawyer intake case review follow-up questions and possible next steps",
+        "what questions should you ask before signing with a lawyer common questions people may want to ask before agreeing to legal representation",
+        "attorney retainer agreement guide what a retainer agreement is what terms it usually includes and what to review before signing with a lawyer",
+        "how long do lawsuits take common factors that can affect how long a lawsuit may take",
+        "what evidence helps a lawsuit kinds of records photos messages and documents may help support a lawsuit and clarify what happened",
+        "statute of limitations basics what a statute of limitations is why deadlines matter and why timing can affect whether a claim can move forward",
+        "common lawsuit mistakes avoidable errors involving timing records public statements expectations and communication during a potential claim",
+        "what is a demand letter what a demand letter is what it often includes and how it can fit into a dispute or potential lawsuit",
+        "what is a settlement what settlements are how they work and why cases may resolve before trial",
+        "what is discovery the discovery process and how evidence is exchanged in civil litigation",
+        "what is a deposition what a deposition is why it happens and how it fits into the lawsuit process",
+        "what is mediation how mediation works and why some cases try to resolve before trial",
+        "what happens at trial when a lawsuit goes to trial and how that stage differs from earlier phases",
+        "what is an appeal basics of appeals and how they differ from a trial",
+        "mass torts how mass tort litigation works and how it differs from other kinds of cases",
+        "class actions basics of class action lawsuits and how they differ from mass tort claims",
+        "mdl basics multidistrict litigation and how mdls can affect groups of similar cases",
+        "bellwether trials what bellwether trials are and why they can matter in larger coordinated litigation",
+        "product liability lawsuits basics of product liability claims involving defective or dangerous products",
+        "toxic tort basics toxic tort claims involving chemical exposure contamination and related harm"
       ];
+
+      function matchesGuide(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) return false;
+        for (let i = 0; i < guideIndex.length; i++) {
+          if (guideIndex[i].indexOf(q) !== -1) return true;
+        }
+        return false;
+      }
 
       function routeQuery(query) {
         if (!query) return null;
-        const q = query.trim().toLowerCase();
+        const q = query.trim();
         if (!q) return null;
 
-        for (let i = 0; i < guideKeywords.length; i++) {
-          const kw = guideKeywords[i];
-          if (q.indexOf(kw) !== -1 || kw.indexOf(q) !== -1) {
-            return "legal-guides.html?q=" + encodeURIComponent(query.trim());
-          }
+        if (matchesGuide(q)) {
+          return "legal-guides.html?q=" + encodeURIComponent(q);
         }
-        return "browse-lawsuits.html?q=" + encodeURIComponent(query.trim());
+        return "browse-lawsuits.html?q=" + encodeURIComponent(q);
       }
 
       const homepageSearchForm = document.getElementById("homepage-search-form");
@@ -623,6 +647,7 @@
       }
     });
   </script>
+
 
 </body>
 </html>
