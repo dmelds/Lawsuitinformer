@@ -6,16 +6,16 @@ window.SEARCH_INDEX = [
     text: "asbestos mesothelioma lung cancer asbestosis exposure toxic exposure"
   },
   {
-    title: "PFAS Water Contamination",
+    title: "PFAS Water Contamination Lawsuits",
     url: "pfas-water-contamination-lawsuits.html",
     category: "Lawsuit Topic",
-    text: "pfas forever chemicals contaminated water drinking water kidney cancer testicular cancer ulcerative colitis thyroid disease"
+    text: "pfas water contamination lawsuits forever chemicals drinking water exposure firefighting foam afff afff mdl mdl 2873 3m dupont chemours corteva basf tyco kidney cancer testicular cancer thyroid cancer thyroid disease ulcerative colitis liver cancer immune system effects military bases airports industrial sites landfills public water systems private wells groundwater toxic water contamination environmental contamination chemical exposure"
   },
   {
-     title: "Depo-Provera Lawsuits",
-     category: "Consumer Products",
-     url: "depo-provera-lawsuits.html",
-     text: "Lawsuits alleging long-term Depo-Provera birth control injection use is linked to meningioma brain tumors. Federal MDL 3140 in the Northern District of Florida, FDA's December 2025 label change, medroxyprogesterone acetate, Pfizer."
+    title: "Depo-Provera Lawsuits",
+    category: "Consumer Products",
+    url: "depo-provera-lawsuits.html",
+    text: "Lawsuits alleging long-term Depo-Provera birth control injection use is linked to meningioma brain tumors. Federal MDL 3140 in the Northern District of Florida, FDA's December 2025 label change, medroxyprogesterone acetate, Pfizer."
   },
   {
     title: "PFAS Water Contamination Lawsuit Update",
