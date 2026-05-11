@@ -24,6 +24,12 @@ window.SEARCH_INDEX = [
     text: "pfas water contamination lawsuit update may 2026 afff mdl multidistrict litigation bellwether trials 3m dupont public water system settlement individual injury claims forever chemicals drinking water firefighting foam new jersey hoosick falls phase 2 deadline"
   },
   {
+    title: "PFAS Lawsuit Statute of Limitations by State",
+    url: "pfas-lawsuit-statute-of-limitations-by-state.html",
+    category: "Legal Guide",
+    text: "pfas lawsuit statute of limitations filing deadlines all 50 states district of columbia personal injury discovery rule statutes of repose toxic tort considerations afff multidistrict litigation"
+  },
+  {
     title: "AFFF Firefighting Foam Lawsuits",
     url: "afff-firefighting-foam-lawsuits.html",
     category: "Lawsuit Topic",
