@@ -1241,3 +1241,44 @@ footer, .site-footer {
   }
 }
 
+/* ===== CRISIS RESOURCE BLOCK ===== */
+.info-box.crisis-resource-box {
+  background: #fef6f3;
+  border: 1px solid #e8c5b5;
+  border-left: 3px solid #b04a2f;
+}
+.info-box.crisis-resource-box p {
+  font-family: var(--serif);
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.info-box.crisis-resource-box strong {
+  font-family: var(--display);
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--ink-strong);
+  font-weight: 600;
+  line-height: inherit;
+}
+.info-box.crisis-resource-box a {
+  color: var(--link);
+  border-bottom: 1px solid rgba(176,74,47,.3);
+  word-break: break-word;
+}
+.info-box.crisis-resource-box a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+@media (max-width: 768px) {
+  .info-box.crisis-resource-box {
+    padding: 16px 18px;
+  }
+  .info-box.crisis-resource-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
