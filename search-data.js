@@ -184,5 +184,30 @@ window.SEARCH_INDEX = [
     url: "glyphosate-lawsuits-epa-bayer-supreme-court.html",
     category: "News and Analysis",
     text: "glyphosate roundup lawsuits epa bayer monsanto supreme court scotus preemption herbicide pesticide cancer non hodgkin lymphoma analysis litigation regulatory labeling"
+  },
+  {
+    title: "OpenAI Lawsuits",
+    url: "openai-lawsuits.html",
+    category: "Lawsuit Topic",
+    text: "openai lawsuits chatgpt lawsuits ai chatbot lawsuits ai product liability wrongful death self harm suicide overdose mass shooting section 230 negligent entrustment garcia v character technologies raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax artificial intelligence generative ai openai pillar hub"
+  },
+  {
+    title: "OpenAI Faces School Shooting Lawsuits: AI Liability Questions",
+    url: "openai-school-shooting-lawsuits-ai-product-liability.html",
+    category: "News and Analysis",
+    text: "openai school shooting lawsuits ai liability tumbler ridge british columbia canadian shooting jay edelson seven families wall street journal section 230 product liability duty to warn first amendment account enforcement chatgpt ai chatbot federal court san francisco california garcia character technologies"
+  },
+  {
+    title: "OpenAI Sued Over FSU Mass Shooting: Inside the Chabba Lawsuit",
+    url: "chatgpt-fsu-shooting-lawsuit.html",
+    category: "News and Analysis",
+    text: "fsu shooting lawsuit chatgpt openai chabba joshi v openai foundation phoenix ikner florida state university negligent entrustment northern district of florida bakari sellers strom law firm osborne francis pettis microsoft section 230 wrongful death product liability defective design failure to warn"
+  },
+  {
+    title: "OpenAI Sued Over Teen's Kratom and Xanax Overdose Death: Inside the Scott Case",
+    url: "chatgpt-overdose-lawsuit-scott.html",
+    category: "News and Analysis",
+    text: "chatgpt overdose lawsuit scott turner-scott openai sam nelson kratom xanax drug interaction wrongful death california state court unauthorized practice of medicine product liability raine v openai adult decedent benzodiazepine opioid receptor respiratory depression ai medical advice"
   }
+
 ];
