@@ -26,7 +26,6 @@
     .browse-category.deep-dive{border-top:3px solid #d4a24e;padding-top:28px;margin-top:12px;}
     .browse-category.deep-dive>h2::before{content:"DEEP DIVE";display:block;font-size:11px;font-weight:700;letter-spacing:.14em;color:#b8853b;margin-bottom:6px;}
 
-    /* Prominent case review CTA so it doesn't blend into the page */
     .case-review-box{
       background:#1a3a5c;
       color:#fff;
@@ -250,8 +249,8 @@
     </div>
     <div class="grid">
       <a class="card" href="openai-lawsuits.html"><h3>OpenAI Lawsuits Hub</h3><p>The central hub for OpenAI litigation coverage — ChatGPT wrongful death, self-harm, mass shooting claims, and the product-versus-content framing question.</p></a>
-      <a class="card" href="openai-school-shooting-lawsuits-ai-product-liability.html"><h3>OpenAI Faces School Shooting Lawsuits: AI Liability Questions</h3><p>Analysis of the Tumbler Ridge and related school shooting actions against OpenAI — Section 230, product liability, duty to warn, and the seven-family filings.</p></a>
-      <a class="card" href="chatgpt-fsu-shooting-lawsuit.html"><h3>OpenAI Sued Over FSU Mass Shooting: Inside the Chabba Lawsuit</h3><p>The Chabba complaint, Phoenix Ikner, negligent entrustment theory, and the Northern District of Florida posture.</p></a>
+      <a class="card" href="openai-school-shooting-lawsuits-ai-product-liability.html"><h3>OpenAI Faces School Shooting Lawsuits</h3><p>Analysis of the Tumbler Ridge and related school shooting actions against OpenAI — Section 230, product liability, duty to warn, and the seven-family filings.</p></a>
+      <a class="card" href="chatgpt-fsu-shooting-lawsuit.html"><h3>OpenAI Sued Over FSU Mass Shooting: The Chabba Lawsuit</h3><p>The Chabba complaint, Phoenix Ikner, negligent entrustment theory, and the Northern District of Florida posture.</p></a>
       <a class="card" href="chatgpt-overdose-lawsuit-scott.html"><h3>OpenAI Sued Over Teen's Kratom and Xanax Overdose: The Scott Case</h3><p>The Turner-Scott action, alleged drug-interaction guidance from ChatGPT, unauthorized practice of medicine theory, and California state-court framing.</p></a>
     </div>
     <a class="back-to-top" href="#top">↑ Back to top</a>
@@ -459,9 +458,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const terms = query.split(/\s+/).filter(Boolean);
 
+  function matchTerm(haystack, term) {
+    if (term.length <= 3) {
+      var escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      var regex = new RegExp("\\b" + escaped + "\\b");
+      return regex.test(haystack);
+    }
+    return haystack.indexOf(term) !== -1;
+  }
+
   const results = (window.SEARCH_INDEX || []).filter(function (item) {
     const haystack = (item.title + " " + item.category + " " + item.text).toLowerCase();
-    return terms.every(function (term) { return haystack.includes(term); });
+    return terms.every(function (term) { return matchTerm(haystack, term); });
   });
 
   introParagraphs.forEach(function (item) {
@@ -482,8 +490,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (statusBox) {
-        statusBox.innerHTML = '<strong>Search results for &ldquo;' + rawQuery + '&rdquo;</strong><p>Showing ' + results.length + ' matching result' + (results.length === 1 ? '' : 's') + '.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
-     }
+    statusBox.innerHTML = '<strong>Search results for &ldquo;' + rawQuery + '&rdquo;</strong><p>Showing ' + results.length + ' matching result' + (results.length === 1 ? '' : 's') + '.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
+  }
 
   const cards = results.map(function (item) {
     return '<a class="card" href="' + item.url + '"><h3>' + item.title + '</h3><p><strong>' + item.category + '</strong></p><p>' + item.text + '</p></a>';
