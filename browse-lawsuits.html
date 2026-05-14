@@ -243,14 +243,16 @@
     <h2>AI Lawsuits</h2>
     <p class="section-intro">Lawsuit topics involving artificial intelligence products, chatbot harms, wrongful death and self-harm claims, and emerging questions about how product liability, Section 230, and negligent entrustment apply to generative AI systems.</p>
     <div class="related-paths">
-      <a href="#addiction-media">Addiction &amp; Media</a>
-      <a href="#consumer-products">Consumer Products</a>
-      <a href="#legal-frameworks">Legal Frameworks</a>
-      <a href="product-liability-lawsuits.html">Product Liability</a>
-      <a href="mass-torts.html">Mass Torts</a>
+      <a href="openai-lawsuits.html">OpenAI Lawsuits Hub</a>
+      <a href="openai-school-shooting-lawsuits-ai-product-liability.html">Tumbler Ridge / School Shooting</a>
+      <a href="chatgpt-fsu-shooting-lawsuit.html">FSU / Chabba</a>
+      <a href="chatgpt-overdose-lawsuit-scott.html">Scott Overdose Case</a>
     </div>
     <div class="grid">
       <a class="card" href="openai-lawsuits.html"><h3>OpenAI Lawsuits Hub</h3><p>The central hub for OpenAI litigation coverage — ChatGPT wrongful death, self-harm, mass shooting claims, and the product-versus-content framing question.</p></a>
+      <a class="card" href="openai-school-shooting-lawsuits-ai-product-liability.html"><h3>OpenAI Faces School Shooting Lawsuits: AI Liability Questions</h3><p>Analysis of the Tumbler Ridge and related school shooting actions against OpenAI — Section 230, product liability, duty to warn, and the seven-family filings.</p></a>
+      <a class="card" href="chatgpt-fsu-shooting-lawsuit.html"><h3>OpenAI Sued Over FSU Mass Shooting: Inside the Chabba Lawsuit</h3><p>The Chabba complaint, Phoenix Ikner, negligent entrustment theory, and the Northern District of Florida posture.</p></a>
+      <a class="card" href="chatgpt-overdose-lawsuit-scott.html"><h3>OpenAI Sued Over Teen's Kratom and Xanax Overdose: The Scott Case</h3><p>The Turner-Scott action, alleged drug-interaction guidance from ChatGPT, unauthorized practice of medicine theory, and California state-court framing.</p></a>
     </div>
     <a class="back-to-top" href="#top">↑ Back to top</a>
   </section>
@@ -480,8 +482,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (statusBox) {
-    statusBox.innerHTML = '<strong>Search results for &ldquo;' + rawQuery + '&rdquo;</strong><p>Showing ' + results.length + ' matching result' + (results.length === 1 ? '' : 's') + '.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
-  }
+        statusBox.innerHTML = '<strong>Search results for &ldquo;' + rawQuery + '&rdquo;</strong><p>Showing ' + results.length + ' matching result' + (results.length === 1 ? '' : 's') + '.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
+     }
 
   const cards = results.map(function (item) {
     return '<a class="card" href="' + item.url + '"><h3>' + item.title + '</h3><p><strong>' + item.category + '</strong></p><p>' + item.text + '</p></a>';
