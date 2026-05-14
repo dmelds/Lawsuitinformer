@@ -138,7 +138,7 @@
           <span class="search-examples-label">Try:</span>
           <a href="browse-lawsuits.html?q=mesothelioma">Mesothelioma</a>
           <a href="browse-lawsuits.html?q=PFAS">PFAS</a>
-          <a href="browse-lawsuits.html#ai-lawsuits">AI Lawsuits</a>
+          <a href="browse-lawsuits.html?q=ai">AI Lawsuits</a>
           <a href="legal-guides.html?q=settlement">Settlement</a>
           <a href="legal-guides.html?q=statute%20of%20limitations">Deadlines</a>
           <a href="legal-guides.html?q=retainer">Retainer</a>
@@ -606,16 +606,6 @@
         "pfas lawsuit statute of limitations by state filing deadlines for pfas personal injury claims in all 50 states and dc including discovery rule treatment statutes of repose and toxic tort considerations"
       ];
 
-      const lawsuitAnchorMap = {
-        "ai": "browse-lawsuits.html#ai-lawsuits",
-        "ai lawsuit": "browse-lawsuits.html#ai-lawsuits",
-        "ai lawsuits": "browse-lawsuits.html#ai-lawsuits",
-        "chatgpt": "browse-lawsuits.html#ai-lawsuits",
-        "chat gpt": "browse-lawsuits.html#ai-lawsuits",
-        "openai": "browse-lawsuits.html#ai-lawsuits",
-        "open ai": "browse-lawsuits.html#ai-lawsuits"
-      };
-
       function matchesGuide(query) {
         const q = query.trim().toLowerCase();
         if (!q) return false;
@@ -633,10 +623,6 @@
 
         if (qLower === "guide" || qLower === "guides" || qLower === "legal guide" || qLower === "legal guides") {
           return "legal-guides.html";
-        }
-
-        if (lawsuitAnchorMap[qLower]) {
-          return lawsuitAnchorMap[qLower];
         }
 
         if (matchesGuide(q)) {
