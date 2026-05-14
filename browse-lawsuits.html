@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +7,7 @@
   <meta name="description" content="Browse lawsuit topics involving chemical exposure, product liability, environmental contamination, consumer products, addiction-related litigation, and broader consumer safety claims." />
   <link rel="stylesheet" href="style.css" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-       
+       
   <script src="search-data.js"></script>
   <link rel="author" href="david-meldofsky.html" />
   <link rel="publisher" href="about.html" />
@@ -70,7 +69,7 @@
   </style>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CollectionPage","name":"Browse Lawsuit Topics","description":"Browse lawsuit topics involving chemical exposure, product liability, environmental contamination, consumer products, addiction-related litigation, and broader consumer safety claims.","url":"https://lawsuitinformer.com/browse-lawsuits.html","datePublished":"2026-03-19","dateModified":"2026-05-08","author":{"@type":"Person","name":"David Meldofsky","url":"https://lawsuitinformer.com/david-meldofsky.html","jobTitle":"California-licensed attorney","worksFor":{"@type":"Organization","name":"Lawsuit Informer"}},"publisher":{"@type":"Organization","name":"Lawsuit Informer","logo":{"@type":"ImageObject","url":"https://lawsuitinformer.com/lawsuit-informer-1.png"}}}
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Browse Lawsuit Topics","description":"Browse lawsuit topics involving chemical exposure, product liability, environmental contamination, consumer products, addiction-related litigation, and broader consumer safety claims.","url":"https://lawsuitinformer.com/browse-lawsuits.html","datePublished":"2026-03-19","dateModified":"2026-05-14","author":{"@type":"Person","name":"David Meldofsky","url":"https://lawsuitinformer.com/david-meldofsky.html","jobTitle":"California-licensed attorney","worksFor":{"@type":"Organization","name":"Lawsuit Informer"}},"publisher":{"@type":"Organization","name":"Lawsuit Informer","logo":{"@type":"ImageObject","url":"https://lawsuitinformer.com/lawsuit-informer-1.png"}}}
   </script>
 
   <script type="application/ld+json">
@@ -114,7 +113,7 @@
   </nav>
 
   <h1>Explore Lawsuit Topics</h1>
-  <p class="article-date">Last updated: May 8, 2026</p>
+  <p class="article-date">Last updated: May 14, 2026</p>
 
   <p class="article-intro">
     Browse educational guides covering chemical exposure, defective products, environmental contamination, addiction-related litigation, and broader consumer safety issues. Some readers begin with a specific product or exposure. Others start with a diagnosis, a symptom pattern, or a general question about how lawsuits work.
@@ -122,7 +121,7 @@
 
   <form class="hero-search" action="browse-lawsuits.html" method="get" role="search">
     <label class="sr-only" for="browse-search">Search topics</label>
-    <input type="search" id="browse-search" name="q" placeholder="Search mesothelioma, PFAS, Parkinson’s..." />
+    <input type="search" id="browse-search" name="q" placeholder="Search mesothelioma, PFAS, Parkinson’s, AI" />
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
@@ -133,6 +132,7 @@
       <li><a href="#toxic-exposure">Toxic Exposure</a></li>
       <li><a href="#consumer-products">Consumer Products</a></li>
       <li><a href="#addiction-media">Addiction &amp; Media</a></li>
+      <li><a href="#ai-lawsuits">AI Lawsuits</a></li>
       <li><a href="#illness-injury">Illness &amp; Injury</a></li>
       <li><a href="#pfas-guides">PFAS Lawsuits &amp; Guides</a></li>
       <li><a href="#asbestos-guides">Asbestos Lawsuits &amp; Guides</a></li>
@@ -229,12 +229,28 @@
     <div class="related-paths">
       <a href="consumer-product-lawsuits.html">Consumer Product Lawsuits</a>
       <a href="class-action.html">Class Actions</a>
+      <a href="#ai-lawsuits">AI Lawsuits</a>
     </div>
     <div class="grid">
       <a class="card" href="processed-food-addiction-lawsuit.html"><h3>Processed Food Addiction</h3><p>Litigation and legal theories involving highly processed foods and addictive product design.</p></a>
       <a class="card" href="video-game-addiction-lawsuit.html"><h3>Video Game Addiction</h3><p>Lawsuits involving allegations related to compulsive design and addiction-related harm.</p></a>
       <a class="card" href="social-media-addiction-lawsuit.html"><h3>Social Media Addiction Lawsuit</h3><p>What these lawsuits allege, which platforms have been named, and how these claims are moving through the courts.</p></a>
-          <a class="card" href="openai-lawsuits.html"><h3>OpenAI Lawsuits</h3><p>The central hub for OpenAI litigation coverage — ChatGPT wrongful death, self-harm, mass shooting claims, and the product-versus-content framing question.</p></a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to top</a>
+  </section>
+
+  <section id="ai-lawsuits" class="browse-category">
+    <h2>AI Lawsuits</h2>
+    <p class="section-intro">Lawsuit topics involving artificial intelligence products, chatbot harms, wrongful death and self-harm claims, and emerging questions about how product liability, Section 230, and negligent entrustment apply to generative AI systems.</p>
+    <div class="related-paths">
+      <a href="#addiction-media">Addiction &amp; Media</a>
+      <a href="#consumer-products">Consumer Products</a>
+      <a href="#legal-frameworks">Legal Frameworks</a>
+      <a href="product-liability-lawsuits.html">Product Liability</a>
+      <a href="mass-torts.html">Mass Torts</a>
+    </div>
+    <div class="grid">
+      <a class="card" href="openai-lawsuits.html"><h3>OpenAI Lawsuits Hub</h3><p>The central hub for OpenAI litigation coverage — ChatGPT wrongful death, self-harm, mass shooting claims, and the product-versus-content framing question.</p></a>
     </div>
     <a class="back-to-top" href="#top">↑ Back to top</a>
   </section>
@@ -457,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (results.length === 0) {
     if (statusBox) {
-      statusBox.innerHTML = '<strong>No results found for &ldquo;' + rawQuery + '&rdquo;</strong><p>Try a broader term like asbestos, mesothelioma, PFAS, Parkinson&rsquo;s, ovarian cancer, autism, talc, or product liability.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
+      statusBox.innerHTML = '<strong>No results found for &ldquo;' + rawQuery + '&rdquo;</strong><p>Try a broader term like asbestos, mesothelioma, PFAS, Parkinson&rsquo;s, ovarian cancer, autism, talc, AI, or product liability.</p><p><a href="browse-lawsuits.html">Clear search</a></p>';
     }
     resultsContainer.innerHTML = "";
     return;

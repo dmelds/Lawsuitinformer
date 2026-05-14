@@ -163,15 +163,21 @@ window.SEARCH_INDEX = [
   },
   {
     title: "Addiction, Media, and Emerging Topics",
-    url: "browse-lawsuits.html",
+    url: "browse-lawsuits.html#addiction-media",
     category: "Browse Section",
     text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
+  },
+  {
+    title: "AI Lawsuits",
+    url: "browse-lawsuits.html#ai-lawsuits",
+    category: "Browse Section",
+    text: "ai lawsuits artificial intelligence chatbot lawsuits openai chatgpt anthropic claude generative ai ai product liability ai litigation chatbot harm ai wrongful death ai self harm ai suicide ai mass shooting section 230 negligent entrustment duty to warn product versus content emerging technology"
   },
   {
     title: "News and Analysis",
     url: "news-and-analysis.html",
     category: "News and Analysis",
-    text: "news analysis legal commentary litigation updates consumer safety law360 pfas glyphosate roundup bayer epa regulatory developments published commentary"
+    text: "news analysis legal commentary litigation updates consumer safety law360 pfas glyphosate roundup bayer epa regulatory developments published commentary ai lawsuits openai chatgpt"
   },
   {
     title: "Published in Law360: PFAS Reporting and Litigation Risk",
@@ -189,25 +195,25 @@ window.SEARCH_INDEX = [
     title: "OpenAI Lawsuits",
     url: "openai-lawsuits.html",
     category: "Lawsuit Topic",
-    text: "openai lawsuits chatgpt lawsuits ai chatbot lawsuits ai product liability wrongful death self harm suicide overdose mass shooting section 230 negligent entrustment garcia v character technologies raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax artificial intelligence generative ai openai pillar hub"
+    text: "ai lawsuits ai lawsuit artificial intelligence chatbot lawsuits chatbot lawsuit openai lawsuits openai lawsuit chatgpt lawsuits chatgpt lawsuit ai product liability ai chatbot wrongful death self harm suicide overdose mass shooting school shooting section 230 negligent entrustment garcia v character technologies raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax artificial intelligence generative ai openai pillar hub"
   },
   {
     title: "OpenAI Faces School Shooting Lawsuits: AI Liability Questions",
     url: "openai-school-shooting-lawsuits-ai-product-liability.html",
     category: "News and Analysis",
-    text: "openai school shooting lawsuits ai liability tumbler ridge british columbia canadian shooting jay edelson seven families wall street journal section 230 product liability duty to warn first amendment account enforcement chatgpt ai chatbot federal court san francisco california garcia character technologies"
+    text: "ai lawsuits ai product liability openai school shooting lawsuits ai liability tumbler ridge british columbia canadian shooting jay edelson seven families wall street journal section 230 product liability duty to warn first amendment account enforcement chatgpt ai chatbot federal court san francisco california garcia character technologies"
   },
   {
     title: "OpenAI Sued Over FSU Mass Shooting: Inside the Chabba Lawsuit",
     url: "chatgpt-fsu-shooting-lawsuit.html",
     category: "News and Analysis",
-    text: "fsu shooting lawsuit chatgpt openai chabba joshi v openai foundation phoenix ikner florida state university negligent entrustment northern district of florida bakari sellers strom law firm osborne francis pettis microsoft section 230 wrongful death product liability defective design failure to warn"
+    text: "ai lawsuits ai chatbot fsu shooting lawsuit chatgpt openai chabba joshi v openai foundation phoenix ikner florida state university negligent entrustment northern district of florida bakari sellers strom law firm osborne francis pettis microsoft section 230 wrongful death product liability defective design failure to warn"
   },
   {
     title: "OpenAI Sued Over Teen's Kratom and Xanax Overdose Death: Inside the Scott Case",
     url: "chatgpt-overdose-lawsuit-scott.html",
     category: "News and Analysis",
-    text: "chatgpt overdose lawsuit scott turner-scott openai sam nelson kratom xanax drug interaction wrongful death california state court unauthorized practice of medicine product liability raine v openai adult decedent benzodiazepine opioid receptor respiratory depression ai medical advice"
+    text: "ai lawsuits ai chatbot chatgpt overdose lawsuit scott turner-scott openai sam nelson kratom xanax drug interaction wrongful death california state court unauthorized practice of medicine product liability raine v openai adult decedent benzodiazepine opioid receptor respiratory depression ai medical advice"
   }
 
 ];
