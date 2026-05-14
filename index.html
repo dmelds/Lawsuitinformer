@@ -23,7 +23,7 @@
     "url": "https://lawsuitinformer.com/",
     "logo": "https://lawsuitinformer.com/lawsuit-informer-1.png",
     "description": "Attorney-led editorial site covering lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety in plain language.",
-    "dateModified": "2026-05-12",
+    "dateModified": "2026-05-14",
     "founder": {
       "@type": "Person",
       "name": "David Meldofsky",
@@ -125,7 +125,7 @@
             type="search"
             id="homepage-search"
             name="q"
-            placeholder="Search lawsuits, guides, illnesses, symptoms..."
+            placeholder="Search lawsuits, guides, illnesses, symptoms, AI"
           />
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
@@ -138,6 +138,7 @@
           <span class="search-examples-label">Try:</span>
           <a href="browse-lawsuits.html?q=mesothelioma">Mesothelioma</a>
           <a href="browse-lawsuits.html?q=PFAS">PFAS</a>
+          <a href="browse-lawsuits.html#ai-lawsuits">AI Lawsuits</a>
           <a href="legal-guides.html?q=settlement">Settlement</a>
           <a href="legal-guides.html?q=statute%20of%20limitations">Deadlines</a>
           <a href="legal-guides.html?q=retainer">Retainer</a>
@@ -373,6 +374,11 @@
             <h3>Processed Food Addiction Lawsuits</h3>
             <p>Claims involving allegations that certain ultra-processed foods may contribute to harmful consumption patterns and health risks.</p>
           </a>
+
+          <a class="card" href="openai-lawsuits.html">
+            <h3>OpenAI Lawsuits</h3>
+            <p>Central hub for OpenAI litigation coverage &mdash; ChatGPT wrongful death, self-harm, and mass shooting claims, plus the product-versus-content framing question.</p>
+          </a>
         </div>
       </div>
     </section>
@@ -600,6 +606,16 @@
         "pfas lawsuit statute of limitations by state filing deadlines for pfas personal injury claims in all 50 states and dc including discovery rule treatment statutes of repose and toxic tort considerations"
       ];
 
+      const lawsuitAnchorMap = {
+        "ai": "browse-lawsuits.html#ai-lawsuits",
+        "ai lawsuit": "browse-lawsuits.html#ai-lawsuits",
+        "ai lawsuits": "browse-lawsuits.html#ai-lawsuits",
+        "chatgpt": "browse-lawsuits.html#ai-lawsuits",
+        "chat gpt": "browse-lawsuits.html#ai-lawsuits",
+        "openai": "browse-lawsuits.html#ai-lawsuits",
+        "open ai": "browse-lawsuits.html#ai-lawsuits"
+      };
+
       function matchesGuide(query) {
         const q = query.trim().toLowerCase();
         if (!q) return false;
@@ -617,6 +633,10 @@
 
         if (qLower === "guide" || qLower === "guides" || qLower === "legal guide" || qLower === "legal guides") {
           return "legal-guides.html";
+        }
+
+        if (lawsuitAnchorMap[qLower]) {
+          return lawsuitAnchorMap[qLower];
         }
 
         if (matchesGuide(q)) {
