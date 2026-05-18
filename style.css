@@ -1376,4 +1376,23 @@ footer, .site-footer {
 }
 .info-box.alert-box ul li { margin-bottom: 8px; }
 .info-box.alert-box ul li:last-child { margin-bottom: 0; }
+/* ===== CALLOUT SPACING LOCK =====
+   crisis-resource-box and alert-box must never need inline
+   padding/margin. The 1024px+ rule centers .content-page
+   children with margin:auto; an inline margin overrides that
+   and breaks the reading-column alignment. Supplying spacing
+   on the class removes any reason for a page to set it inline. */
+.info-box.crisis-resource-box,
+.info-box.alert-box {
+  padding: 16px 20px;
+}
+@media (min-width: 1024px) {
+  .content-page > .info-box.crisis-resource-box,
+  .content-page > .info-box.alert-box {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 
