@@ -1,223 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How Mass Tort Cases Are Structured and Resolved | Lawsuit Informer</title>
-<meta name="description" content="A plain, primary-sourced reference on how mass tort litigation actually works: what an MDL is, why it is not a class action, how bellwether trials drive settlement, the four ways these cases resolve, and the structural exceptions most coverage gets wrong.">
-<link rel="canonical" href="https://lawsuitinformer.com/how-mass-torts-work.html">
-<meta property="og:title" content="How Mass Tort Cases Are Structured and Resolved">
-<meta property="og:description" content="A plain, primary-sourced reference on how mass tort litigation actually works and the structural distinctions most coverage gets wrong.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://lawsuitinformer.com/how-mass-torts-work.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#faf7f2;
-    --ink:#1f1b17;
-    --muted:#6b6259;
-    --line:#e3ddd2;
-    --oxblood:#7b2233;
-    --oxblood-soft:#f3e6e8;
-    --card:#fffdf9;
-    --maxw:780px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How Mass Tort Cases Are Structured and Resolved | Lawsuit Informer</title>
+  <meta
+    name="description"
+    content="A plain, primary-sourced reference on how mass tort litigation actually works: what an MDL is, why it is not a class action, how bellwether trials drive settlement, the four ways these cases resolve, and the structural distinctions most coverage gets wrong."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <link rel="author" href="david-meldofsky.html" />
+  <link rel="publisher" href="about.html" />
+  <link rel="canonical" href="https://lawsuitinformer.com/how-mass-torts-work.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Mass Tort Cases Are Structured and Resolved",
+    "alternativeHeadline": "MDLs, Bellwethers, Settlement Structures, and the Camp Lejeune and AFFF Distinctions Most Coverage Gets Wrong",
+    "description": "A plain, primary-sourced reference on how mass tort litigation actually works and the structural distinctions most coverage gets wrong.",
+    "url": "https://lawsuitinformer.com/how-mass-torts-work.html",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://lawsuitinformer.com/how-mass-torts-work.html"
+    },
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Person",
+      "name": "David Meldofsky",
+      "jobTitle": "Attorney",
+      "url": "https://lawsuitinformer.com/david-meldofsky.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lawsuit Informer",
+      "url": "https://lawsuitinformer.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lawsuitinformer.com/lawsuit-informer-1.png"
+      }
+    },
+    "image": ["https://lawsuitinformer.com/lawsuit-informer-1.png"],
+    "articleSection": "Legal Guides",
+    "keywords": [
+      "what is an MDL",
+      "MDL vs class action",
+      "bellwether trial",
+      "mass tort settlement",
+      "Camp Lejeune not an MDL",
+      "AFFF water utility vs personal injury",
+      "how mass tort lawsuits work"
+    ],
+    "isAccessibleForFree": true
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:"Inter",system-ui,sans-serif;
-    line-height:1.7;-webkit-font-smoothing:antialiased;
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lawsuitinformer.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://lawsuitinformer.com/legal-guides.html" },
+      { "@type": "ListItem", "position": 3, "name": "How Mass Tort Cases Are Structured and Resolved", "item": "https://lawsuitinformer.com/how-mass-torts-work.html" }
+    ]
   }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  a{color:var(--oxblood)}
+  </script>
 
-  .crumb{font-size:.78rem;color:var(--muted);padding:26px 0 0;letter-spacing:.02em}
-  .crumb a{color:var(--muted);text-decoration:none}
-  .crumb a:hover{color:var(--oxblood)}
-
-  header.hero{padding:36px 0 30px;border-bottom:1px solid var(--line)}
-  .kicker{font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;color:var(--oxblood);font-weight:600}
-  h1{
-    font-family:"Newsreader",Georgia,serif;font-weight:500;
-    font-size:clamp(2.05rem,5vw,3rem);line-height:1.12;
-    letter-spacing:-.01em;margin:.55rem 0 .7rem;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is a mass tort MDL the same as a class action?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. In a class action a single judgment or settlement binds the whole class on the same terms. In an MDL every plaintiff keeps an individual lawsuit with its own facts and value; cases are coordinated for pretrial efficiency but are not merged into one class and are not resolved by a single verdict."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Camp Lejeune not considered an MDL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Camp Lejeune Justice Act, enacted as Section 804 of the PACT Act in 2022, gave the U.S. District Court for the Eastern District of North Carolina exclusive jurisdiction and venue by statute. Because Congress fixed venue in one designated court, the cases never entered the federal MDL system under 28 U.S.C. Section 1407. An early request to consolidate the cases within that district was denied, and the court later built its own coordinated structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a settlement announcement mean claimants get paid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. An announced settlement marks the start of a process. Funds move only after the framework is finalized, claims are documented and reviewed, and individual amounts are assigned, which typically takes many months and often longer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do the large reported PFAS and AFFF settlements pay individual cancer claimants?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generally no. The very large reported AFFF settlement figures resolved claims brought by public water systems and municipalities. Individual personal-injury claims are on a separate track in the same MDL and, as of this writing, have not produced a global settlement for individuals."
+        }
+      }
+    ]
   }
-  .standfirst{font-family:"Newsreader",Georgia,serif;font-size:1.2rem;color:var(--muted);font-weight:400;max-width:60ch}
+  </script>
 
-  .toc{margin:30px 0 6px;padding:20px 22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
-  .toc h2{font-family:"Inter";font-size:.74rem;text-transform:uppercase;letter-spacing:.13em;color:var(--oxblood);font-weight:600;margin-bottom:12px}
-  .toc ol{list-style:none;counter-reset:t}
-  .toc li{counter-increment:t;font-size:.92rem;padding:5px 0;border-bottom:1px solid var(--line)}
-  .toc li:last-child{border-bottom:0}
-  .toc li::before{content:counter(t,decimal-leading-zero);color:var(--oxblood);font-weight:600;margin-right:12px;font-size:.82rem}
-  .toc a{text-decoration:none;color:var(--ink)}
-  .toc a:hover{color:var(--oxblood)}
-
-  section.s{padding:34px 0;border-bottom:1px solid var(--line)}
-  h2.sec{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:1.7rem;margin-bottom:.7rem;line-height:1.2}
-  h2.sec .n{display:block;font-family:"Inter";font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--oxblood);margin-bottom:.45rem}
-  h3.sub{font-family:"Newsreader",serif;font-weight:600;font-size:1.18rem;margin:22px 0 6px}
-  p{margin-bottom:15px;font-size:1.02rem}
-  p.note{font-size:.92rem;color:var(--muted)}
-  strong{font-weight:600}
-
-  .keypoint{
-    margin:20px 0;padding:18px 20px;border-left:3px solid var(--oxblood);
-    background:var(--oxblood-soft);border-radius:0 10px 10px 0;
-  }
-  .keypoint p{margin:0;font-size:.98rem}
-  .keypoint .tag{display:block;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;color:var(--oxblood);margin-bottom:6px}
-
-  ul.clean{list-style:none;margin:6px 0 16px}
-  ul.clean li{font-size:.99rem;padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--line)}
-  ul.clean li:last-child{border-bottom:0}
-  ul.clean li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:6px;border-radius:50%;background:var(--oxblood)}
-  ul.clean li strong{display:inline}
-
-  .tablewrap{overflow-x:auto;margin:18px 0 6px;border:1px solid var(--line);border-radius:12px}
-  table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem;background:var(--card)}
-  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--oxblood);font-weight:600;background:var(--paper)}
-  td:first-child{font-weight:600;font-family:"Newsreader",serif;font-size:.98rem}
-  tr:last-child td{border-bottom:0}
-
-  .basis{margin:22px 0 0;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
-  .basis h3{font-family:"Inter";font-size:.74rem;text-transform:uppercase;letter-spacing:.13em;color:var(--oxblood);font-weight:600;margin-bottom:12px}
-  .basis ul{list-style:none}
-  .basis li{font-size:.9rem;padding:7px 0;border-bottom:1px solid var(--line);color:var(--muted)}
-  .basis li:last-child{border-bottom:0}
-  .basis li strong{color:var(--ink)}
-
-  .companion{margin:22px 0;padding:18px 20px;border:1px dashed var(--line);border-radius:12px;font-size:.95rem}
-  .companion strong{color:var(--oxblood)}
-  .companion a{font-weight:600;text-decoration:none}
-
-  .cta{margin:26px 0 6px;background:var(--ink);color:var(--paper);border-radius:13px;padding:24px}
-  .cta p{font-size:.93rem;color:#cdc4b8;margin-bottom:14px;max-width:60ch}
-  .cta a.btn{display:inline-block;background:var(--oxblood);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;padding:11px 22px;border-radius:9px}
-
-  .disclaimer{font-size:.82rem;color:var(--muted);padding:26px 0 10px}
-  .disclaimer p{margin-bottom:10px;max-width:70ch}
-  .disclaimer strong{color:var(--ink)}
-
-  .author{display:flex;gap:14px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
-  .author .av{width:46px;height:46px;border-radius:50%;background:var(--oxblood-soft);color:var(--oxblood);display:flex;align-items:center;justify-content:center;font-family:"Newsreader",serif;font-weight:600;font-size:1.05rem}
-  .author .meta{font-size:.85rem}
-  .author .meta strong{display:block;font-size:.95rem}
-  .author .meta span{color:var(--muted)}
-  .author .meta a{color:var(--oxblood);text-decoration:none}
-
-  footer{padding:24px 0 60px;font-size:.8rem;color:var(--muted)}
-</style>
+  <style>
+    /* Page-scoped: bespoke components style.css does not define */
+    .mt-toc{background:#fbfaf7;border:1px solid #e3ddd2;border-radius:10px;padding:18px 22px;margin:24px 0;}
+    .mt-toc strong{display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:#7b2233;margin-bottom:10px;}
+    .mt-toc ol{margin:0;padding-left:20px;}
+    .mt-toc li{padding:4px 0;}
+    .mt-keypoint{border-left:4px solid #7b2233;background:#f7eef0;padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0;}
+    .mt-keypoint .lbl{display:block;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#7b2233;margin-bottom:6px;}
+    .mt-keypoint p{margin:0;}
+    .mt-tablewrap{overflow-x:auto;margin:18px 0;border:1px solid #e3ddd2;border-radius:10px;}
+    .mt-tablewrap table{border-collapse:collapse;width:100%;min-width:620px;font-size:0.9rem;}
+    .mt-tablewrap th,.mt-tablewrap td{text-align:left;padding:11px 13px;border-bottom:1px solid #e3ddd2;vertical-align:top;}
+    .mt-tablewrap th{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#7b2233;background:#fbfaf7;}
+    .mt-tablewrap td:first-child{font-weight:600;}
+    .mt-tablewrap tr:last-child td{border-bottom:0;}
+    .mt-basis{background:#fbfaf7;border:1px solid #e3ddd2;border-radius:10px;padding:18px 22px;margin:18px 0;}
+    .mt-basis strong.h{display:block;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.12em;color:#7b2233;margin-bottom:10px;}
+    .mt-basis ul{margin:0;padding-left:20px;}
+    .mt-basis li{padding:5px 0;font-size:0.92rem;}
+  </style>
 </head>
+
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo">
+        <a href="index.html" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" />
+        </a>
+      </div>
 
-<div class="wrap">
-  <nav class="crumb" aria-label="Breadcrumb">
-    <a href="https://lawsuitinformer.com/">Home</a> &nbsp;/&nbsp;
-    <a href="https://lawsuitinformer.com/legal-guides.html">Legal Guides</a> &nbsp;/&nbsp;
-    How Mass Tort Cases Are Structured and Resolved
-  </nav>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
+        <span></span><span></span><span></span>
+      </button>
 
-  <header class="hero">
-    <div class="kicker">Reference</div>
-    <h1>How mass tort cases are structured and resolved</h1>
-    <p class="standfirst">A plain, primary-sourced explanation of how this litigation actually works, including the structural distinctions that most coverage gets wrong because getting them right does not generate clients.</p>
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="start-here.html">Start Here</a>
+        <a href="legal-guides.html" aria-current="page">Guides</a>
+        <a href="browse-lawsuits.html">Browse Lawsuits</a>
+        <a href="news-and-analysis.html">News &amp; Analysis</a>
+        <a href="illnesses-linked-to-lawsuits.html">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits.html">Symptoms</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="toc">
-    <h2>On this page</h2>
-    <ol>
-      <li><a href="#mdl">What a multidistrict litigation actually is</a></li>
-      <li><a href="#notclass">Why an MDL is not a class action</a></li>
-      <li><a href="#bellwether">Bellwether trials, and why they decide everything</a></li>
-      <li><a href="#resolve">The four ways a mass tort resolves</a></li>
-      <li><a href="#lejeune">The Camp Lejeune exception</a></li>
-      <li><a href="#afff">The AFFF distinction almost everyone gets wrong</a></li>
-      <li><a href="#compare">Structural comparison across major litigations</a></li>
-      <li><a href="#reading">How to read litigation news without being misled</a></li>
-      <li><a href="#basis">How this page is sourced</a></li>
-    </ol>
-  </div>
+  <main class="content-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="legal-guides.html">Guides</a>
+      <span class="breadcrumb-separator">/</span>
+      <span aria-current="page">How Mass Tort Cases Are Structured and Resolved</span>
+    </nav>
 
-  <div class="companion">
-    <strong>Looking for current status, not structure?</strong> This page explains how the machinery works and rarely changes. For where each specific litigation stands right now, see the companion <a href="https://lawsuitinformer.com/where-does-my-lawsuit-stand.html">litigation status tracker</a>, which is updated as dockets move.
-  </div>
+    <p class="eyebrow">Reference</p>
+    <h1>How Mass Tort Cases Are Structured and Resolved</h1>
 
-  <section class="s" id="mdl">
-    <h2 class="sec"><span class="n">Section 1</span>What a multidistrict litigation actually is</h2>
-    <p>Most large product and toxic-exposure cases are handled through a multidistrict litigation, almost always shortened to MDL. The mechanism comes from a single federal statute, 28 U.S.C. Section 1407. When many lawsuits filed in different federal courts share common factual questions, a body called the Judicial Panel on Multidistrict Litigation can transfer those cases to one federal judge in one district for coordinated pretrial proceedings.</p>
-    <p>The word to hold onto is <strong>pretrial</strong>. An MDL exists to run discovery, decide shared legal questions, fight out expert admissibility, and manage settlement once, instead of thousands of times in thousands of courtrooms. The transferee judge does not try every case. Unless a case settles or is reassigned, it is meant to return to the court it came from for trial. In practice the overwhelming majority never get there, because the MDL produces a resolution first.</p>
-    <div class="keypoint">
-      <span class="tag">The point</span>
+    <p class="article-reviewer">
+      By <a href="david-meldofsky.html">David Meldofsky</a>
+    </p>
+    <p class="article-date">Published May 18, 2026</p>
+
+    <p class="article-intro">
+      A plain, primary-sourced explanation of how this litigation actually works, including the structural distinctions that most coverage gets wrong because getting them right does not generate clients. This page explains the machinery and rarely changes. For where each specific litigation stands right now, see the companion <a href="where-does-my-lawsuit-stand.html">litigation status tracker</a>, which is updated as dockets move.
+    </p>
+
+    <div class="mt-toc">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#mdl">What a multidistrict litigation actually is</a></li>
+        <li><a href="#notclass">Why an MDL is not a class action</a></li>
+        <li><a href="#bellwether">Bellwether trials, and why they decide everything</a></li>
+        <li><a href="#resolve">The four ways a mass tort resolves</a></li>
+        <li><a href="#lejeune">The Camp Lejeune exception</a></li>
+        <li><a href="#afff">The AFFF distinction almost everyone gets wrong</a></li>
+        <li><a href="#compare">Structural comparison across major litigations</a></li>
+        <li><a href="#reading">How to read litigation news without being misled</a></li>
+        <li><a href="#basis">How this page is sourced</a></li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <strong>Important note</strong>
+      <p>
+        This page is general legal information, not legal advice, and does not create an attorney-client relationship. It describes how this litigation is structured in general and cannot tell you the status, value, or merits of any individual claim.
+      </p>
+    </div>
+
+    <h2 id="mdl">What a multidistrict litigation actually is</h2>
+    <p>
+      Most large product and toxic-exposure cases are handled through a multidistrict litigation, almost always shortened to MDL. The mechanism comes from a single federal statute, 28 U.S.C. Section 1407. When many lawsuits filed in different federal courts share common factual questions, a body called the Judicial Panel on Multidistrict Litigation can transfer those cases to one federal judge in one district for coordinated pretrial proceedings.
+    </p>
+    <p>
+      The word to hold onto is <strong>pretrial</strong>. An MDL exists to run discovery, decide shared legal questions, fight out expert admissibility, and manage settlement once, instead of thousands of times in thousands of courtrooms. The transferee judge does not try every case. Unless a case settles or is reassigned, it is meant to return to the court it came from for trial. In practice the overwhelming majority never get there, because the MDL produces a resolution first.
+    </p>
+    <div class="mt-keypoint">
+      <span class="lbl">The point</span>
       <p>An MDL is a coordination tool for the pretrial phase, not a single super-lawsuit and not a verdict machine. This is why these cases are slow by design and why long silent stretches are normal rather than a sign that something has gone wrong.</p>
     </div>
-  </section>
 
-  <section class="s" id="notclass">
-    <h2 class="sec"><span class="n">Section 2</span>Why an MDL is not a class action</h2>
-    <p>This is the single most common misunderstanding, and a lot of marketing is content to leave it uncorrected because the phrase class action sounds reassuringly automatic.</p>
-    <p>In a class action, one or a few named plaintiffs represent everyone in the class, the case is certified by a court, and a single judgment or settlement binds the whole group on the same terms. In an MDL, every plaintiff still has their own individual lawsuit. There is no class, no class certification, and no single judgment that resolves everyone at once. Cases are grouped for efficiency, but each one keeps its own facts, its own value, and its own outcome.</p>
-    <p>Why it matters to a claimant: in an MDL, your individual facts, your diagnosis, your exposure history, and the strength of your documentation still determine what your case is worth. You are not a passive member of a group waiting for one verdict to land. The cases move together through the structure, but they are valued separately.</p>
-    <div class="keypoint">
-      <span class="tag">The point</span>
+    <h2 id="notclass">Why an MDL is not a class action</h2>
+    <p>
+      This is the single most common misunderstanding, and a lot of marketing is content to leave it uncorrected because the phrase class action sounds reassuringly automatic.
+    </p>
+    <p>
+      In a class action, one or a few named plaintiffs represent everyone in the class, the case is certified by a court, and a single judgment or settlement binds the whole group on the same terms. In an MDL, every plaintiff still has their own individual lawsuit. There is no class, no class certification, and no single judgment that resolves everyone at once. Cases are grouped for efficiency, but each one keeps its own facts, its own value, and its own outcome.
+    </p>
+    <p>
+      Why it matters to a claimant: in an MDL, your individual facts, your diagnosis, your exposure history, and the strength of your documentation still determine what your case is worth. You are not a passive member of a group waiting for one verdict to land. The cases move together through the structure, but they are valued separately.
+    </p>
+    <div class="mt-keypoint">
+      <span class="lbl">The point</span>
       <p>If something is described as a class action lawsuit when it is actually an MDL, treat that as a signal to read everything else from that source more carefully.</p>
     </div>
-  </section>
 
-  <section class="s" id="bellwether">
-    <h2 class="sec"><span class="n">Section 3</span>Bellwether trials, and why they decide everything</h2>
-    <p>Because thousands of individual cases cannot all be tried, an MDL selects a small set of representative cases to go to trial first. These are bellwether trials. They are real trials with real verdicts for those specific plaintiffs, but their function is informational: they show both sides how juries actually respond to the evidence, the experts, and the core liability story.</p>
-    <p>A bellwether verdict does not legally bind the other cases. Its power is leverage. A string of large plaintiff verdicts pushes a defendant toward a broad settlement to stop the bleeding. A string of defense verdicts collapses settlement value and can end a litigation. Mixed results produce a more precise sense of which fact patterns are strong, which then shapes how settlements are tiered.</p>
-    <p>This is why the calendar around bellwethers matters more than almost anything else, and why a vacated or delayed bellwether date is a meaningful event, not a footnote. Until those test cases are tried, both sides are negotiating partly in the dark.</p>
-  </section>
+    <h2 id="bellwether">Bellwether trials, and why they decide everything</h2>
+    <p>
+      Because thousands of individual cases cannot all be tried, an MDL selects a small set of representative cases to go to trial first. These are bellwether trials. They are real trials with real verdicts for those specific plaintiffs, but their function is informational: they show both sides how juries actually respond to the evidence, the experts, and the core liability story.
+    </p>
+    <p>
+      A bellwether verdict does not legally bind the other cases. Its power is leverage. A string of large plaintiff verdicts pushes a defendant toward a broad settlement to stop the bleeding. A string of defense verdicts collapses settlement value and can end a litigation. Mixed results produce a more precise sense of which fact patterns are strong, which then shapes how settlements are tiered.
+    </p>
+    <p>
+      This is why the calendar around bellwethers matters more than almost anything else, and why a vacated or delayed bellwether date is a meaningful event, not a footnote. Until those test cases are tried, both sides are negotiating partly in the dark.
+    </p>
 
-  <section class="s" id="resolve">
-    <h2 class="sec"><span class="n">Section 4</span>The four ways a mass tort resolves</h2>
-    <p>Despite the variety of products and injuries, mass torts resolve through a small number of structures. Knowing which one a given litigation is using tells you more about your realistic timeline than any single news headline.</p>
+    <h2 id="resolve">The four ways a mass tort resolves</h2>
+    <p>
+      Despite the variety of products and injuries, mass torts resolve through a small number of structures. Knowing which one a given litigation is using tells you more about your realistic timeline than any single news headline.
+    </p>
+    <h3>1. Aggregate settlement program</h3>
+    <p>
+      The most common endpoint. The parties negotiate a framework that resolves large numbers of individual cases through a claims process, usually with compensation tiered by injury type, exposure, and other factors. Money does not move when a settlement is announced. It moves after the framework is finalized, claims are documented and reviewed, and amounts are assigned, which typically takes many months and often longer.
+    </p>
+    <h3>2. Class-action settlement</h3>
+    <p>
+      Rare in personal-injury mass torts, because individual injuries vary too much to bind everyone to one set of terms. It is sometimes attempted to resolve future claims at once. When you see a proposed class settlement in a litigation that has otherwise been run as individual cases, expect contested approval fights and disputes over who is actually bound.
+    </p>
+    <h3>3. Bankruptcy trust</h3>
+    <p>
+      When liability threatens a company's solvency, claims can be channeled into a court-supervised trust that pays current and future claimants on a schedule. This is the long-established path in asbestos. It has also been attempted as a liability-management tactic by financially healthy companies through a maneuver of placing liabilities into a newly created subsidiary that then files for bankruptcy. Courts have rejected that tactic where the parent was not in genuine financial distress, which sends those cases back into ordinary litigation.
+    </p>
+    <h3>4. Statutory or administrative program</h3>
+    <p>
+      Occasionally a legislature creates the cause of action and the resolution path directly. The clearest current example is Camp Lejeune, covered next. These programs can offer a faster administrative settlement option running in parallel with the right to litigate, on terms set by statute and government policy rather than purely by private negotiation.
+    </p>
 
-    <h3 class="sub">1. Aggregate settlement program</h3>
-    <p>The most common endpoint. The parties negotiate a framework that resolves large numbers of individual cases through a claims process, usually with compensation tiered by injury type, exposure, and other factors. Money does not move when a settlement is announced. It moves after the framework is finalized, claims are documented and reviewed, and amounts are assigned, which typically takes many months and often longer.</p>
-
-    <h3 class="sub">2. Class-action settlement</h3>
-    <p>Rare in personal-injury mass torts, because individual injuries vary too much to bind everyone to one set of terms. It is sometimes attempted to resolve future claims at once. When you see a proposed class settlement in a litigation that has otherwise been run as individual cases, expect contested approval fights and disputes over who is actually bound.</p>
-
-    <h3 class="sub">3. Bankruptcy trust</h3>
-    <p>When liability threatens a company's solvency, claims can be channeled into a court-supervised trust that pays current and future claimants on a schedule. This is the long-established path in asbestos. It has also been attempted as a liability-management tactic by financially healthy companies through a maneuver of placing liabilities into a newly created subsidiary that then files for bankruptcy. Courts have rejected that tactic where the parent was not in genuine financial distress, which sends those cases back into ordinary litigation.</p>
-
-    <h3 class="sub">4. Statutory or administrative program</h3>
-    <p>Occasionally a legislature creates the cause of action and the resolution path directly. The clearest current example is Camp Lejeune, covered next. These programs can offer a faster administrative settlement option running in parallel with the right to litigate, on terms set by statute and government policy rather than purely by private negotiation.</p>
-  </section>
-
-  <section class="s" id="lejeune">
-    <h2 class="sec"><span class="n">Section 5</span>The Camp Lejeune exception</h2>
-    <p>Camp Lejeune is routinely described as an MDL. It is not one, and the distinction is structural rather than pedantic.</p>
-    <p>The Camp Lejeune Justice Act, enacted in 2022 as Section 804 of the PACT Act, created the cause of action and, by statute, gave the United States District Court for the Eastern District of North Carolina exclusive jurisdiction and venue over these claims. Because Congress fixed jurisdiction and venue in one named district by law, the cases never entered the federal MDL system under Section 1407. There was no panel transfer because there was nothing for the panel to centralize. Every qualifying case was already required to be in the same court.</p>
-    <p>Separately, an early request to formally consolidate the Camp Lejeune cases for coordinated pretrial proceedings within that district was denied. The judges in the Eastern District of North Carolina later built their own coordinated structure, including a plaintiffs' leadership group and case-management orders, so the litigation now functions in an MDL-like way without being a JPML MDL. Alongside the lawsuits, the government created an administrative settlement path, the Elective Option, that runs in parallel with the right to sue.</p>
-    <div class="keypoint">
-      <span class="tag">Why this matters</span>
+    <h2 id="lejeune">The Camp Lejeune exception</h2>
+    <p>
+      Camp Lejeune is routinely described as an MDL. It is not one, and the distinction is structural rather than pedantic.
+    </p>
+    <p>
+      The Camp Lejeune Justice Act, enacted in 2022 as Section 804 of the PACT Act, created the cause of action and, by statute, gave the United States District Court for the Eastern District of North Carolina exclusive jurisdiction and venue over these claims. Because Congress fixed jurisdiction and venue in one named district by law, the cases never entered the federal MDL system under Section 1407. There was no panel transfer because there was nothing for the panel to centralize. Every qualifying case was already required to be in the same court.
+    </p>
+    <p>
+      Separately, an early request to formally consolidate the Camp Lejeune cases for coordinated pretrial proceedings within that district was denied. The judges in the Eastern District of North Carolina later built their own coordinated structure, including a plaintiffs' leadership group and case-management orders, so the litigation now functions in an MDL-like way without being a JPML MDL. Alongside the lawsuits, the government created an administrative settlement path, the Elective Option, that runs in parallel with the right to sue.
+    </p>
+    <div class="mt-keypoint">
+      <span class="lbl">Why this matters</span>
       <p>Because it is a statutory program in a single designated court rather than a panel-centralized MDL, Camp Lejeune behaves differently from the other litigations: the filing window was set by statute and has closed, an administrative settlement track exists next to litigation, and processing speed is driven by government capacity rather than ordinary MDL pretrial mechanics.</p>
     </div>
-  </section>
 
-  <section class="s" id="afff">
-    <h2 class="sec"><span class="n">Section 6</span>The AFFF distinction almost everyone gets wrong</h2>
-    <p>The firefighting foam litigation, formally the AFFF MDL in the District of South Carolina, is the clearest case of a structural distinction that is widely blurred because blurring it is useful to whoever is generating leads.</p>
-    <p>That MDL contains two fundamentally different kinds of claims on separate tracks. One track is brought by public water systems and municipalities for the cost of contamination and cleanup. The other is brought by individuals, largely firefighters, service members, and people in affected communities, for personal injuries such as specific cancers.</p>
-    <p>The very large settlement figures reported publicly in this litigation, the multibillion-dollar numbers, resolved the <strong>water-system</strong> claims. They are payments to utilities and public entities. They are not a fund for individual cancer claimants, and as a structural matter they do not pay personal-injury plaintiffs. The personal-injury track is a separate proceeding that, as of this writing, has not produced a global settlement for individuals.</p>
-    <div class="keypoint">
-      <span class="tag">The misread to avoid</span>
+    <h2 id="afff">The AFFF distinction almost everyone gets wrong</h2>
+    <p>
+      The firefighting foam litigation, formally the AFFF MDL in the District of South Carolina, is the clearest case of a structural distinction that is widely blurred because blurring it is useful to whoever is generating leads.
+    </p>
+    <p>
+      That MDL contains two fundamentally different kinds of claims on separate tracks. One track is brought by public water systems and municipalities for the cost of contamination and cleanup. The other is brought by individuals, largely firefighters, service members, and people in affected communities, for personal injuries such as specific cancers.
+    </p>
+    <p>
+      The very large settlement figures reported publicly in this litigation, the multibillion-dollar numbers, resolved the <strong>water-system</strong> claims. They are payments to utilities and public entities. They are not a fund for individual cancer claimants, and as a structural matter they do not pay personal-injury plaintiffs. The personal-injury track is a separate proceeding that, as of this writing, has not produced a global settlement for individuals.
+    </p>
+    <div class="mt-keypoint">
+      <span class="lbl">The misread to avoid</span>
       <p>Reading a headline about billions in PFAS or AFFF settlements and concluding that individual injury claimants have been paid, or are about to be, is a category error. Two different tracks, two different kinds of plaintiff, two different timelines. Any source that lets you believe otherwise is either careless or motivated.</p>
     </div>
-  </section>
 
-  <section class="s" id="compare">
-    <h2 class="sec"><span class="n">Section 7</span>Structural comparison across major litigations</h2>
-    <p>This table compares structure, not status. These attributes change slowly, if at all. For current phase, case counts, and recent developments, use the <a href="https://lawsuitinformer.com/where-does-my-lawsuit-stand.html">status tracker</a>.</p>
-    <div class="tablewrap">
+    <h2 id="compare">Structural comparison across major litigations</h2>
+    <p>
+      This table compares structure, not status. These attributes change slowly, if at all. For current phase, case counts, and recent developments, use the <a href="where-does-my-lawsuit-stand.html">status tracker</a>.
+    </p>
+    <div class="mt-tablewrap">
       <table>
         <thead>
           <tr><th>Litigation</th><th>Proceeding type</th><th>Coordinating court</th><th>Primary resolution structure</th></tr>
@@ -233,25 +316,25 @@
         </tbody>
       </table>
     </div>
-  </section>
 
-  <section class="s" id="reading">
-    <h2 class="sec"><span class="n">Section 8</span>How to read litigation news without being misled</h2>
-    <p>Once the structure is clear, most misleading coverage falls into three recognizable patterns. These rules of interpretation do not expire.</p>
-    <ul class="clean">
+    <h2 id="reading">How to read litigation news without being misled</h2>
+    <p>
+      Once the structure is clear, most misleading coverage falls into a few recognizable patterns. These rules of interpretation do not expire.
+    </p>
+    <ul>
       <li><strong>A settlement being announced is not a payment.</strong> Money follows finalization, claims processing, and individual review, usually many months later. Headlines mark the start of that process, not the end.</li>
       <li><strong>No global settlement does not mean a case is dead.</strong> Many active litigations have no settlement and are proceeding through discovery and bellwethers. Absence of a deal is a phase, not a verdict.</li>
       <li><strong>A large reported number is not necessarily compensation for individuals.</strong> As with AFFF, settlement figures may resolve a different category of claimant entirely. Always ask which track and which kind of plaintiff a number refers to.</li>
       <li><strong>Quiet does not mean inactive.</strong> Discovery and the wait for bellwethers are long and silent by design. Silence is the default state of a healthy mass tort, not evidence of a problem.</li>
       <li><strong>Class action and MDL are not interchangeable.</strong> If a source uses them as synonyms, weigh its other claims accordingly.</li>
     </ul>
-  </section>
 
-  <section class="s" id="basis">
-    <h2 class="sec"><span class="n">Section 9</span>How this page is sourced</h2>
-    <p>This is reference material, so the basis for the load-bearing claims is stated openly rather than asserted. Structural claims here rest on primary authority, not on secondary commentary.</p>
-    <div class="basis">
-      <h3>Primary basis</h3>
+    <h2 id="basis">How this page is sourced</h2>
+    <p>
+      This is reference material, so the basis for the load-bearing claims is stated openly rather than asserted. Structural claims here rest on primary authority, not on secondary commentary.
+    </p>
+    <div class="mt-basis">
+      <strong class="h">Primary basis</strong>
       <ul>
         <li><strong>MDL mechanism:</strong> the federal multidistrict litigation statute, 28 U.S.C. Section 1407, and the Judicial Panel on Multidistrict Litigation, which administers transfers and publishes the pending-case statistics for each MDL.</li>
         <li><strong>Camp Lejeune structure:</strong> the Camp Lejeune Justice Act, enacted as Section 804 of the Honoring our PACT Act of 2022, which establishes exclusive jurisdiction and venue in the Eastern District of North Carolina; the Eastern District of North Carolina's own published information for Camp Lejeune water litigation; and the U.S. Department of Justice Civil Division materials describing the Elective Option settlement framework.</li>
@@ -259,93 +342,56 @@
         <li><strong>Resolution structures:</strong> longstanding practice in asbestos bankruptcy trusts and in aggregate mass tort settlement administration, and the publicly reported rejection of subsidiary-bankruptcy liability-management attempts by solvent companies.</li>
       </ul>
     </div>
-    <p class="note">This page intentionally contains almost no dated figures or case counts. Those belong in the regularly updated status tracker, not in a structural reference, precisely so that this page stays accurate without constant revision.</p>
-  </section>
+    <p>
+      This page intentionally contains almost no dated figures or case counts. Those belong in the regularly updated status tracker, not in a structural reference, precisely so that this page stays accurate without constant revision.
+    </p>
 
-  <div class="cta">
-    <p>This page is general legal information, not advice about your situation. If you are deciding whether you may have a claim and want to understand your options, you can request a free, no-obligation case review.</p>
-    <a class="btn" href="https://lawsuit.center/case-review.html">Request a free case review</a>
-  </div>
-
-  <div class="disclaimer">
-    <p><strong>Important.</strong> This page is general legal information, not legal advice, and does not create an attorney-client relationship between you and Lawsuit Informer or any attorney. It describes how this litigation is structured in general and cannot tell you the status, value, or merits of any individual claim.</p>
-    <p><strong>The law and these proceedings can change.</strong> Statutes are amended, courts issue new orders, and litigation structures evolve. Structural descriptions here reflect the position as understood at the time of writing. Verify anything you intend to rely on with primary sources or a qualified attorney.</p>
-    <p>If you have a serious illness or a potential deadline, consult a qualified attorney promptly. Statutes of limitation and statutory filing windows can permanently end a claim.</p>
-  </div>
-
-  <div class="author">
-    <div class="av">DM</div>
-    <div class="meta">
-      <strong>Written and reviewed by David Meldofsky</strong>
-      <span>Attorney, California Bar No. 263673 &middot; <a href="https://lawsuitinformer.com/author/david-meldofsky.html">About the author</a></span>
+    <div class="related-box">
+      <strong>Related reading</strong>
+      <ul>
+        <li><a href="where-does-my-lawsuit-stand.html">Where Does My Lawsuit Stand? Litigation Status Tracker</a></li>
+        <li><a href="legal-guides.html">Legal Guides</a></li>
+        <li><a href="browse-lawsuits.html">Browse Lawsuits</a></li>
+        <li><a href="how-lawsuits-work.html">How Lawsuits Work</a></li>
+      </ul>
     </div>
-  </div>
+
+    <div class="inline-cta">
+      <p style="font-size:0.85em;color:#666;margin-bottom:8px;"><strong>Attorney Advertising.</strong> Lawsuit Informer is operated by a California-licensed attorney. Past results do not guarantee future outcomes.</p>
+      <p>
+        <strong>Wondering whether you may have a claim?</strong> This page is general legal information, not advice about your situation. If you want to understand your options, you can request a free case review through Lawsuit Center. Reviews are conducted by participating legal professionals and intake partners. Submitting a request does not create an attorney-client relationship.
+      </p>
+      <p>
+        <a href="https://lawsuit.center/case-review.html" class="btn-primary">Request a Case Review &rarr;</a>
+      </p>
+    </div>
+
+    <p class="article-disclaimer">
+      Educational reference only. Not legal advice. No attorney-client relationship is created.
+    </p>
+  </main>
 
   <footer>
-    Lawsuit Informer publishes editorial and educational content on lawsuits, toxic exposure, product liability, and consumer safety. It does not represent claimants and is not a law firm.
+    <div id="footer-placeholder"></div>
   </footer>
-</div>
+  <script>
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
+  </script>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"WebPage",
-      "@id":"https://lawsuitinformer.com/how-mass-torts-work.html",
-      "name":"How Mass Tort Cases Are Structured and Resolved",
-      "description":"A plain, primary-sourced reference on how mass tort litigation works: MDLs, why an MDL is not a class action, bellwether trials, the four ways these cases resolve, and the structural exceptions most coverage gets wrong.",
-      "isPartOf":{"@type":"WebSite","name":"Lawsuit Informer","url":"https://lawsuitinformer.com/"},
-      "breadcrumb":{"@id":"https://lawsuitinformer.com/how-mass-torts-work.html#breadcrumb"},
-      "reviewedBy":{"@type":"Person","name":"David Meldofsky","url":"https://lawsuitinformer.com/author/david-meldofsky.html"},
-      "significantLink":"https://lawsuitinformer.com/where-does-my-lawsuit-stand.html"
-    },
-    {
-      "@type":"BreadcrumbList",
-      "@id":"https://lawsuitinformer.com/how-mass-torts-work.html#breadcrumb",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://lawsuitinformer.com/"},
-        {"@type":"ListItem","position":2,"name":"Legal Guides","item":"https://lawsuitinformer.com/legal-guides.html"},
-        {"@type":"ListItem","position":3,"name":"How Mass Tort Cases Are Structured and Resolved","item":"https://lawsuitinformer.com/how-mass-torts-work.html"}
-      ]
-    },
-    {
-      "@type":"Article",
-      "headline":"How Mass Tort Cases Are Structured and Resolved",
-      "description":"A plain, primary-sourced reference on how mass tort litigation actually works and the structural distinctions most coverage gets wrong.",
-      "author":{"@type":"Person","name":"David Meldofsky","url":"https://lawsuitinformer.com/author/david-meldofsky.html"},
-      "publisher":{"@type":"Organization","name":"Lawsuit Informer","url":"https://lawsuitinformer.com/"},
-      "dateModified":"2026-05-18",
-      "mainEntityOfPage":"https://lawsuitinformer.com/how-mass-torts-work.html"
-    },
-    {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {
-          "@type":"Question",
-          "name":"Is a mass tort MDL the same as a class action?",
-          "acceptedAnswer":{"@type":"Answer","text":"No. In a class action a single judgment or settlement binds the whole class on the same terms. In an MDL every plaintiff keeps an individual lawsuit with its own facts and value; cases are coordinated for pretrial efficiency but are not merged into one class and are not resolved by a single verdict."}
-        },
-        {
-          "@type":"Question",
-          "name":"Why is Camp Lejeune not considered an MDL?",
-          "acceptedAnswer":{"@type":"Answer","text":"The Camp Lejeune Justice Act, enacted as Section 804 of the PACT Act in 2022, gave the U.S. District Court for the Eastern District of North Carolina exclusive jurisdiction and venue by statute. Because Congress fixed venue in one designated court, the cases never entered the federal MDL system under 28 U.S.C. Section 1407. An early request to consolidate the cases within that district was denied, and the court later built its own coordinated structure."}
-        },
-        {
-          "@type":"Question",
-          "name":"Does a settlement announcement mean claimants get paid?",
-          "acceptedAnswer":{"@type":"Answer","text":"No. An announced settlement marks the start of a process. Funds move only after the framework is finalized, claims are documented and reviewed, and individual amounts are assigned, which typically takes many months and often longer."}
-        },
-        {
-          "@type":"Question",
-          "name":"Do the large reported PFAS and AFFF settlements pay individual cancer claimants?",
-          "acceptedAnswer":{"@type":"Answer","text":"Generally no. The very large reported AFFF settlement figures resolved claims brought by public water systems and municipalities. Individual personal-injury claims are on a separate track in the same MDL and, as of this writing, have not produced a global settlement for individuals."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".site-nav");
+      if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+          const isOpen = menu.classList.toggle("open");
+          toggle.classList.toggle("active", isOpen);
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
