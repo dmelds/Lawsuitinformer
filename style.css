@@ -1343,7 +1343,6 @@ footer, .site-footer {
   color: var(--link-hover);
   border-bottom-color: var(--link-hover);
 }
-
 @media (max-width: 768px) {
   .info-box.crisis-resource-box {
     padding: 16px 18px;
@@ -1353,3 +1352,28 @@ footer, .site-footer {
     line-height: 1.6;
   }
 }
+
+/* ===== ALERT CALLOUT (warning / caution box) =====
+   Reusable so pages stop hand-rolling inline styles that
+   break the 1024px+ reading-column centering. */
+.info-box.alert-box {
+  background: #fdecea;
+  border: 1px solid #e8b7b0;
+  border-left: 4px solid #c0392b;
+}
+.info-box.alert-box p {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.info-box.alert-box p:first-child { margin-top: 0; }
+.info-box.alert-box p:last-child { margin-bottom: 0; }
+.info-box.alert-box ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+.info-box.alert-box ul li { margin-bottom: 8px; }
+.info-box.alert-box ul li:last-child { margin-bottom: 0; }
+
