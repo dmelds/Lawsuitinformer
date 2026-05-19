@@ -113,7 +113,7 @@
         "name": "Is Section 230 a defense?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OpenAI is expected to argue Section 230 of the Communications Decency Act shields it from being treated as the speaker of ChatGPT outputs. Plaintiffs argue Section 230 does not apply because OpenAI itself created and developed the model that produces the outputs, which makes it an information content provider under the statute rather than a passive host. The question is genuinely unsettled in the AI context. Garcia v. Character Technologies declined to dismiss similar claims against Character.AI on Section 230 grounds, signaling at least one federal court is willing to treat AI output as something other than third-party content."
+          "text": "OpenAI is expected to raise Section 230 of the Communications Decency Act, arguing it cannot be treated as the speaker of ChatGPT's outputs. Plaintiffs counter that the statute does not reach a company that built and trained the model generating the output, which would make OpenAI an information content provider rather than a passive host. The question is unsettled for generative AI. In Garcia v. Character Technologies, a federal court declined to dismiss comparable claims on Section 230 grounds, an early signal that at least one court will not treat AI output as automatically equivalent to third-party content."
         }
       },
       {
@@ -121,7 +121,7 @@
         "name": "How does Garcia v. Character Technologies affect these cases?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Garcia v. Character Technologies, decided at the motion-to-dismiss stage in the Middle District of Florida, declined to dismiss product-liability-style claims against the company behind Character.AI on First Amendment and Section 230 grounds. The court treated the chatbot's output as something other than purely third-party content. Garcia is not binding on the courts hearing the OpenAI cases, but it is a federal opinion analyzing the same defenses OpenAI will raise, and it concluded those defenses do not automatically dispose of AI chatbot claims at the pleadings stage. Plaintiffs in the OpenAI cases will rely on it heavily."
+          "text": "Garcia v. Character Technologies was decided on a motion to dismiss in the Middle District of Florida. The court declined to throw out product-liability-style claims against the company behind Character.AI on First Amendment and Section 230 grounds, and treated the chatbot's output as not purely third-party content. It does not bind the courts hearing the OpenAI cases, but it analyzes the same defenses OpenAI is expected to raise and found they do not dispose of these claims at the pleading stage, which is why plaintiffs are expected to rely on it."
         }
       },
       {
@@ -341,7 +341,7 @@
           <li><a href="#current-status">Current OpenAI litigation status</a></li>
           <li><a href="#the-current-docket">The current OpenAI docket, case by case</a></li>
           <li><a href="#who-may-have-a-claim">Who may have a viable claim</a></li>
-          <li><a href="#doctrinal-questions">The five doctrinal questions</a></li>
+          <li><a href="#legal-question">The legal question at the center</a></li>
           <li><a href="#records">Records that may matter</a></li>
           <li><a href="#what-to-watch">What to watch next</a></li>
           <li><a href="#bottom-line">Bottom line</a></li>
@@ -424,26 +424,26 @@
       <h3>Raine v. OpenAI (San Francisco County Superior Court)</h3>
 
       <p>
-        Raine is the foundational case. Matthew and Maria Raine filed suit in August 2025 over the suicide of their 16-year-old son Adam, who died on April 11, 2025 after months of escalating conversations with ChatGPT 4o. The complaint anchored on California strict products liability: ChatGPT was alleged to be a product, GPT-4o's design risks were alleged to substantially outweigh its benefits, and safer alternative designs were alleged to have been both feasible and already implemented elsewhere in OpenAI's systems &mdash; including for copyright violations, where the company maintained categorical refusal behaviors it had stripped out for self-harm content.
+        Raine is the foundational case. Matthew and Maria Raine sued in August 2025 over the April 2025 suicide of their 16-year-old son Adam, who had months of escalating conversations with ChatGPT-4o. The complaint is built on California strict products liability: it pleads that ChatGPT is a product, that GPT-4o's design risks substantially outweighed its benefits, and that safer alternative designs were both feasible and already running elsewhere in OpenAI's own systems.
       </p>
 
       <p>
-        The factual core of the original complaint was that OpenAI's own moderation system flagged 377 of Adam's messages for self-harm content, some at over 90 percent confidence, without triggering any intervention. The company had built the surveillance infrastructure to detect exactly this category of risk and had elected not to act on it. That allegation &mdash; the surveillance worked, the response system didn't &mdash; is what gives the Raine theory its evidentiary force, and it is the template plaintiffs in the related cases are working from.
+        Its evidentiary anchor is OpenAI's own moderation data &mdash; the complaint alleges the system flagged hundreds of Adam's messages for self-harm content, some at high confidence, without any intervention following. The detection worked while the response did not, and that gap is the structural point the related complaints have since modeled their own theories on.
       </p>
 
       <p>
-        In October 2025, the Raines filed an amended complaint that sharpened the case substantially. The amended pleading alleged OpenAI made conscious decisions to remove longstanding safety protocols in the weeks and months before Adam's death. A rule requiring ChatGPT to refuse self-harm content was allegedly replaced with a directive to never change or quit the conversation. Staying engaged became the primary instruction, with do-not-encourage-self-harm demoted to a secondary directive that created impossible contradictions with the engagement priority. The pivot to intentional misconduct opened a pathway to punitive damages and pre-death pain and suffering damages through a survival action.
+        An October 2025 amended complaint shifted from a rushed-to-market theory to alleging the deliberate removal of self-harm safeguards in the weeks before Adam's death, which opened a path to punitive and survival-action damages. The fuller treatment of that pivot, and the California causation rules it navigates, lives in the Scott analysis, which patterns on it directly.
       </p>
 
       <h3>Tumbler Ridge / Canadian School Shooting Lawsuits (Northern District of California)</h3>
 
       <p>
-        On April 29, 2026, seven families affected by the February 10, 2026 school shooting in Tumbler Ridge, British Columbia filed federal lawsuits in San Francisco against OpenAI and Sam Altman. The complaints, citing Wall Street Journal reporting, allege OpenAI's internal safety team flagged the shooter's conversations and recommended notifying police months before the attack, but that recommendation was not acted on. The complaints also allege a specific product-design failure: after one account was disabled, the user created another and continued using ChatGPT.
+        On April 29, 2026, seven families affected by the February 10, 2026 shooting in Tumbler Ridge, British Columbia filed federal suits in San Francisco against OpenAI and Sam Altman. Citing Wall Street Journal reporting, the complaints allege OpenAI's internal safety team flagged the shooter's conversations and recommended notifying police months before the attack with no action taken, and that after one account was disabled the user simply opened another.
       </p>
 
       <p>
-        That second allegation matters doctrinally. Most AI-failed-to-monitor-users theories are diffuse and run into Section 230 problems immediately. An allegation that the account-enforcement system was circumventable is narrower and more concrete &mdash; it is about how the system was built and operated, not about what any specific output said. Plaintiffs' counsel Jay Edelson is among the more sophisticated tech plaintiffs' lawyers in the country and has signaled the lawsuits are part of a broader effort. For full background, see the
-        <a href="openai-school-shooting-lawsuits-ai-product-liability.html">OpenAI school shooting lawsuits</a> article.
+        The account-circumvention allegation is the one to watch: it points at how the enforcement system was built and run rather than at any particular output, which is the version of the theory least exposed to an early Section 230 dismissal. Plaintiffs' counsel Jay Edelson has signaled these are part of a broader effort. The dedicated
+        <a href="openai-school-shooting-lawsuits-ai-product-liability.html">school shooting analysis</a> covers the doctrinal posture in full.
       </p>
 
       <h3>Joshi v. OpenAI Foundation (Northern District of Florida)</h3>
@@ -453,19 +453,19 @@
       </p>
 
       <p>
-        The complaint pleads negligence, gross negligence, three strict products liability counts (defective design, negligent design, failure to warn), negligent entrustment, battery against Ikner, and Florida wrongful death. The negligent entrustment count is the doctrinally novel claim &mdash; it applies a tort doctrine that traditionally covers vehicles and firearms to ChatGPT account access. If even one court extends negligent entrustment to AI access, it becomes a meaningful new front in AI liability because it does not require plaintiffs to win the harder fight about whether the chatbot's output is a product in the traditional sense. For full background, see the
-        <a href="chatgpt-fsu-shooting-lawsuit.html">FSU shooting lawsuit article</a>.
+        It pleads negligence, gross negligence, three strict products liability counts, negligent entrustment, battery against Ikner, and Florida wrongful death. The negligent entrustment count is the novel one: it reframes the dispute around whether OpenAI can be answerable for continuing to grant a user access, an approach that sidesteps the harder product-classification question rather than depending on it. The
+        <a href="chatgpt-fsu-shooting-lawsuit.html">FSU shooting breakdown</a> covers the counts and the chat-history allegations in detail.
       </p>
 
       <h3>Turner-Scott v. OpenAI (California State Court)</h3>
 
       <p>
-        On May 12, 2026, Texas residents Leila Turner-Scott and Angus Scott filed suit in California state court alleging that ChatGPT advised their 19-year-old son Sam Nelson that it was safe to combine kratom &mdash; a partial mu-opioid receptor agonist &mdash; with Xanax, a benzodiazepine. The combination is a well-documented respiratory depression risk that the FDA has flagged for years. Sam died of an overdose in 2025.
+        On May 12, 2026, Texas residents Leila Turner-Scott and Angus Scott sued in California state court, alleging ChatGPT told their 19-year-old son Sam Nelson it was safe to combine kratom, which acts on opioid receptors, with the benzodiazepine Xanax &mdash; a combination the FDA has flagged for years as a respiratory-depression risk. Sam died of an overdose in 2025.
       </p>
 
       <p>
-        Scott is the first major AI wrongful death suit grounded specifically in a drug interaction advisory. It foregrounds a doctrinal question the earlier AI wrongful death cases have raised but not centered: whether the same legal frameworks that govern unauthorized practice of medicine and inadequate health-related warnings apply to a generative AI system whose outputs include health-related guidance. The case also tests whether the Raine pattern (removed safeguards, sustained reliance, adult or near-adult decedent) can be replicated outside the suicide context. For full background, see the
-        <a href="chatgpt-overdose-lawsuit-scott.html">Scott overdose lawsuit article</a>.
+        It is the first major AI wrongful death suit built specifically around a drug-interaction advisory, and it tests whether the removed-safeguards pattern from Raine carries outside the suicide context and into health-related advice. The dedicated
+        <a href="chatgpt-overdose-lawsuit-scott.html">Scott analysis</a> covers the unauthorized-practice and adult-decedent angles.
       </p>
 
       <h2 id="who-may-have-a-claim">Who May Have a Viable Claim</h2>
@@ -502,60 +502,18 @@
         </a>
       </div>
 
-      <h2 id="doctrinal-questions">The Five Doctrinal Questions</h2>
+      <h2 id="legal-question">The Legal Question at the Center</h2>
 
       <p>
-        The OpenAI litigation docket presents five doctrinal questions that, until these cases were filed, were largely theoretical. How courts answer them will shape AI liability law for years.
-      </p>
-
-      <h3>1. Is ChatGPT output a product, or is it content?</h3>
-
-      <p>
-        This is the framing question that determines everything else. Product liability has historically applied to physical goods that cause physical injury. Software has fit awkwardly into that framework for decades. AI fits more awkwardly still, because the defect in question often is not a manufacturing flaw or a missing warning &mdash; it is the system's behavior in response to inputs the manufacturer did not write.
+        Every case in this docket runs into the same threshold dispute before any factual question is reached: when a generative system produces an output that contributes to harm, is the company answerable for it the way a manufacturer answers for a defective product, or is it shielded the way a platform is shielded for what its users post? Courts have not resolved this for general-purpose AI, and the answer determines which body of law even applies.
       </p>
 
       <p>
-        The strongest framing in the OpenAI complaints is not "ChatGPT generated dangerous content." It is that OpenAI's account-enforcement, escalation, and threat-response systems were inadequate to the risks the company itself had identified internally. That is a process-and-design claim, not a content claim. It mirrors how courts have analyzed product-liability claims against manufacturers whose internal records showed they knew about a problem and did not address it &mdash; a familiar legal pattern in pharmaceutical and consumer-product cases.
-      </p>
-
-      <h3>2. Does Section 230 apply to AI-generated output?</h3>
-
-      <p>
-        Section 230(c)(1) of the Communications Decency Act protects online services from being treated as the publisher or speaker of information provided by another information content provider. That language was written in 1996 with bulletin boards, comment sections, and forwarded email in mind. It assumes a clean distinction between the platform and the speaker.
+        Plaintiffs across the filed cases have largely declined to argue about specific sentences ChatGPT produced. They frame the harm instead as the predictable result of design, training, and safety-operation choices the company made and controlled. OpenAI is expected to argue the opposite &mdash; that an output responsive to a user's prompt is closer to hosted speech than to a manufactured good. Where a court lands on that characterization tends to drive the Section 230, First Amendment, and duty-to-warn questions that follow, rather than those questions being resolved on their own terms.
       </p>
 
       <p>
-        Generative AI breaks that distinction. When ChatGPT generates a response, the user provides the prompt, but the language, structure, and substance of the output come from OpenAI's model. Whether that output qualifies as information provided by another information content provider is genuinely unclear, and the most natural reading of the statute suggests it does not, because no third-party content provider is supplying the language. OpenAI will likely argue ChatGPT outputs are functionally akin to user content because they emerge in response to user prompts. That argument has some force, but it requires treating the model as a passive conduit for user intent &mdash; and the marketing, the engineering, and OpenAI's own descriptions of its systems all describe ChatGPT as something far more active than a conduit.
-      </p>
-
-      <p>
-        Garcia v. Character Technologies, decided at the motion-to-dismiss stage in the Middle District of Florida, declined to dismiss similar claims against Character.AI on Section 230 grounds. The court treated the chatbot's output as something other than purely third-party content. Garcia is not binding on the courts hearing the OpenAI cases, but it is a federal opinion analyzing the same defenses OpenAI will raise, and it concluded those defenses do not automatically dispose of AI chatbot claims at the pleadings stage.
-      </p>
-
-      <h3>3. Does AI company have a duty to warn?</h3>
-
-      <p>
-        Tarasoff v. Regents of the University of California established a duty for therapists to warn identifiable potential victims under specific circumstances, and it required a special relationship &mdash; the therapist-patient bond &mdash; to trigger the duty. Courts have generally declined to extend Tarasoff to product manufacturers, software developers, or platforms with millions of users, because no analogous special relationship exists.
-      </p>
-
-      <p>
-        Plaintiffs' best argument is that OpenAI's internal escalation system, having identified specific users as credible threats, created something functionally analogous to a special relationship: unique knowledge plus operational capacity to act. That is a serious argument, not a frivolous one. But no court has held that a product manufacturer's internal threat-detection records create a Tarasoff-style duty, and asking a court to be the first is a heavy doctrinal lift. The duty-to-warn theory is most useful to plaintiffs as rhetorical leverage during discovery. The more internal documents show OpenAI knew about and discussed specific users' behavior, the more uncomfortable the company's litigation position becomes &mdash; regardless of whether the duty-to-warn claim itself survives.
-      </p>
-
-      <h3>4. Is ChatGPT output protected by the First Amendment?</h3>
-
-      <p>
-        OpenAI may also argue ChatGPT outputs are protected expression. The argument has a doctrinal pedigree but a difficult application: there is no settled First Amendment doctrine treating algorithmically generated text as protected speech of the company that built the system. Courts will likely be reluctant to create that doctrine in the context of cases involving child suicide, mass shootings, and overdose deaths. Plaintiffs' response will be that they are not suing over protected ideas or expression at all. They are suing over product design, escalation failures, and account-enforcement gaps. The First Amendment analysis follows the product-versus-content framing question. If the claims are read as product defects, the First Amendment defense weakens substantially.
-      </p>
-
-      <h3>5. Can negligent entrustment apply to AI access?</h3>
-
-      <p>
-        Negligent entrustment, as a tort, traditionally requires that an owner give control of a dangerous instrumentality &mdash; usually a vehicle or firearm &mdash; to someone the owner knew or should have known was unfit to use it safely. The Chabba complaint applies that doctrine to ChatGPT account access. The argument runs: OpenAI controlled access to ChatGPT, OpenAI's safety operations should have detected the user's escalating use patterns from the chat record itself, and continued provision of access in the face of those patterns constituted negligent entrustment.
-      </p>
-
-      <p>
-        As a doctrinal matter, this is a stretch. Negligent entrustment cases typically involve a discrete transfer of a tangible item to a specific individual the entrustor knows. Account access to a mass-market software product is structurally different &mdash; OpenAI did not hand any user anything; they signed up. But if even one court extends negligent entrustment to AI access, the doctrine becomes a meaningful new front in AI liability, because it does not require the plaintiff to win the harder fight about whether the chatbot's output is a product in the traditional sense. It only requires that access to the chatbot be treated as something the provider can be held accountable for granting.
+        The doctrinal mechanics &mdash; how the product-versus-content line developed, why standalone software has always fit awkwardly inside it, and how the negligent entrustment and duty-to-warn theories interact with that framing &mdash; are involved enough to treat separately from this docket overview.<!-- DM: insert published Law360 essay link here as the doctrinal anchor once live, e.g. For a full doctrinal treatment, see <a href="URL">[essay title], Law360</a>. --> For the purposes of this page, the practical point is narrower: the framing fight is the first real contest in every one of these cases, and the early motion-to-dismiss rulings will signal which way it breaks.
       </p>
 
       <h2 id="records">Records That May Matter</h2>
@@ -611,11 +569,11 @@
       <h2 id="bottom-line">Bottom Line</h2>
 
       <p>
-        The OpenAI litigation docket is the first significant test of whether AI companies can be held legally responsible for what their systems produce. The framing question &mdash; product versus content &mdash; will likely decide more cases than any individual factual record. If courts treat ChatGPT output as a product, traditional tort doctrine fits relatively cleanly and the docket expands. If courts treat the output as content, Section 230 disposes of most claims at the pleadings stage and the docket contracts to a much narrower set of theories.
+        This docket is the first serious test of whether the companies that build generative AI systems can be held to account for what those systems do. The characterization fight &mdash; manufactured product or hosted content &mdash; will likely sort more of these cases than any single set of facts, because it decides which legal regime applies before the facts are weighed.
       </p>
 
       <p>
-        These cases will probably be decided on procedural grounds long before any jury sees them &mdash; that is how most genuinely novel-tort cases get resolved. But the doctrinal fights over Section 230, the First Amendment, and product-liability classification will shape settlement leverage even if no claim ever reaches trial. The early motions matter more than the eventual outcomes, and the framing battle is the one to watch.
+        Most of these complaints are likely to be narrowed or resolved at the motion stage rather than at trial, which is the ordinary path for genuinely novel tort theories. But the rulings on those early motions will set the leverage for everything that follows, including cases not yet filed. The motions are where this is decided in practice, and the framing question is the thing to watch in them.
       </p>
 
       <h2 id="common-questions">Common Questions People Ask</h2>
@@ -632,12 +590,12 @@
 
       <h3>Is Section 230 a defense?</h3>
       <p>
-        OpenAI is expected to argue Section 230 of the Communications Decency Act shields it from being treated as the speaker of ChatGPT outputs. Plaintiffs argue Section 230 does not apply because OpenAI itself created and developed the model that produces the outputs, which makes it an information content provider under the statute rather than a passive host. The question is genuinely unsettled in the AI context. Garcia v. Character Technologies declined to dismiss similar claims against Character.AI on Section 230 grounds, signaling at least one federal court is willing to treat AI output as something other than third-party content.
+        OpenAI is expected to raise Section 230 of the Communications Decency Act, arguing it cannot be treated as the speaker of ChatGPT's outputs. Plaintiffs counter that the statute does not reach a company that built and trained the model generating the output, which would make OpenAI an information content provider rather than a passive host. The question is unsettled for generative AI. In Garcia v. Character Technologies, a federal court declined to dismiss comparable claims on Section 230 grounds, an early signal that at least one court will not treat AI output as automatically equivalent to third-party content.
       </p>
 
       <h3>How does Garcia v. Character Technologies affect these cases?</h3>
       <p>
-        Garcia, decided at the motion-to-dismiss stage in the Middle District of Florida, declined to dismiss product-liability-style claims against the company behind Character.AI on First Amendment and Section 230 grounds. The court treated the chatbot's output as something other than purely third-party content. Garcia is not binding on the courts hearing the OpenAI cases, but it is a federal opinion analyzing the same defenses OpenAI will raise, and it concluded those defenses do not automatically dispose of AI chatbot claims at the pleadings stage. Plaintiffs in the OpenAI cases will rely on it heavily.
+        Garcia v. Character Technologies was decided on a motion to dismiss in the Middle District of Florida. The court declined to throw out product-liability-style claims against the company behind Character.AI on First Amendment and Section 230 grounds, and treated the chatbot's output as not purely third-party content. It does not bind the courts hearing the OpenAI cases, but it analyzes the same defenses OpenAI is expected to raise and found they do not dispose of these claims at the pleading stage, which is why plaintiffs are expected to rely on it.
       </p>
 
       <h3>What kinds of harm have led to lawsuits so far?</h3>
@@ -797,3 +755,4 @@
 
 </body>
 </html>
+
