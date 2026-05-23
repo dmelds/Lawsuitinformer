@@ -937,17 +937,25 @@
    }
  };
 
- function init() {
-   sticky  = document.getElementById('lcSticky');
-   chip    = document.getElementById('lcChip');
-   sheet   = document.getElementById('lcSheet');
-   overlay = document.getElementById('lcOverlay');
-   window.addEventListener('scroll', checkScroll, { passive: true });
-   document.addEventListener('keydown', function (e) {
-     if (e.key === 'Escape') LC.closeSheet();
-   });
-   checkScroll();
- }
+   function init() {
+    sticky  = document.getElementById('lcSticky');
+    chip    = document.getElementById('lcChip');
+    sheet   = document.getElementById('lcSheet');
+    overlay = document.getElementById('lcOverlay');
+
+    // If the sticky bar was dismissed in a prior session, mark the body
+    // immediately so the chip lands in its lower position instead of
+    // floating where the sticky bar would have been.
+    if (safeGet(KEY_STICKY)) {
+      document.body.classList.add('lc-sticky-dismissed');
+    }
+
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') LC.closeSheet();
+    });
+    checkScroll();
+  }
 
  if (document.readyState === 'loading') {
    document.addEventListener('DOMContentLoaded', init);
