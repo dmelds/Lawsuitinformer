@@ -20,6 +20,11 @@
   <link rel="publisher" href="about.html" />
   <link rel="canonical" href="https://lawsuitinformer.com/" />
 
+  <!-- Load SEARCH_INDEX so the homepage search can route by real index hits.
+       If your search index file isn't named "search-index.js", update the src
+       below to match the actual filename (check what browse-lawsuits.html loads). -->
+  <script src="search-index.js"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -616,6 +621,20 @@
         return false;
       }
 
+      // Count how many entries in the site-wide SEARCH_INDEX match the query.
+      // SEARCH_INDEX is loaded from search-index.js in the <head>.
+      function countIndexMatches(query) {
+        if (!Array.isArray(window.SEARCH_INDEX)) return 0;
+        const q = query.toLowerCase();
+        let n = 0;
+        for (let i = 0; i < window.SEARCH_INDEX.length; i++) {
+          const item = window.SEARCH_INDEX[i];
+          const hay = ((item.title || "") + " " + (item.text || "") + " " + (item.category || "")).toLowerCase();
+          if (hay.indexOf(q) !== -1) n++;
+        }
+        return n;
+      }
+
       function routeQuery(query) {
         if (!query) return null;
         const q = query.trim();
@@ -626,9 +645,19 @@
           return "legal-guides.html";
         }
 
+        // If SEARCH_INDEX has 2+ matches, this is a topic search.
+        // Route to browse-lawsuits.html so SEARCH_INDEX is the source of truth.
+        const indexHits = countIndexMatches(qLower);
+        if (indexHits >= 2) {
+          return "browse-lawsuits.html?q=" + encodeURIComponent(q);
+        }
+
+        // Otherwise check if it matches a process/guide term.
         if (matchesGuide(q)) {
           return "legal-guides.html?q=" + encodeURIComponent(q);
         }
+
+        // Default fallback.
         return "browse-lawsuits.html?q=" + encodeURIComponent(q);
       }
 
