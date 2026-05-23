@@ -213,20 +213,6 @@
       This page provides general educational information only and does not constitute legal advice. Statutes of limitations are state-specific, may be modified by legislation, and may be subject to exceptions, tolling provisions, and case-specific interpretation. Anyone considering a PFAS claim should confirm the applicable deadline with an attorney licensed in their state.
     </p>
 
-    <!-- =================================================================
-     PFAS State Quick-Jump Selector
-     Paste this block inside the .page-hero > .container.narrow,
-     immediately AFTER the <p class="article-disclaimer"> paragraph
-     and BEFORE the <div class="info-box key-takeaways-box"> block.
-
-     This adds a state picker that:
-     • Shows an instant deadline summary when a state is chosen
-     • Smooth-scrolls to and highlights the matching row in the SOL table
-     • Tracks selections via clicky as discovery / pfas_sol_state_<name>
-
-     Accent color matches the warm-gold .btn-primary on the site.
-================================================================= -->
-
 <style>
   .lc-state-jumper {
     background: #fff;
@@ -305,7 +291,6 @@
     from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  /* Highlight target row in the SOL table */
   @keyframes lcRowFlash {
     0%   { background: rgba(184, 149, 111, 0.35); }
     100% { background: transparent; }
@@ -432,10 +417,8 @@
 
   function scrollToRow(row) {
     if (!row) return;
-    // Clear any prior flash
     var prior = document.querySelector('.sol-table tr.lc-row-flash');
     if (prior) prior.classList.remove('lc-row-flash');
-    // Trigger reflow so animation restarts cleanly
     void row.offsetWidth;
     row.classList.add('lc-row-flash');
     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -456,8 +439,15 @@
     trackSelection(state);
 
     var row = findRowByState(state);
-    // Small delay so the user sees the inline answer first
     setTimeout(function () { scrollToRow(row); }, 600);
+
+    // Surface the exposure-checker sticky bar shortly after,
+    // while the visitor's just-saw-their-state moment is fresh.
+    setTimeout(function () {
+      if (window.LC && typeof window.LC.showSticky === 'function') {
+        window.LC.showSticky();
+      }
+    }, 1500);
   });
 })();
 </script>
@@ -877,14 +867,6 @@
     });
   });
 </script>
-<!-- =================================================================
-     PFAS Discovery Widgets v2 — sticky bar + intent picker
-     Paste this block immediately before </body> on
-     pfas-lawsuit-statute-of-limitations-by-state.html
-
-     If your --accent in style.css isn't a warm gold, update the two
-     #b8956f values in .lc-chip below (background and box-shadow rgba).
-================================================================= -->
 
 <style>
   .lc-sticky {
@@ -908,7 +890,6 @@
   .lc-sticky-body span {
     display: block; font-size: 0.78rem; color: #5a5a5a; line-height: 1.3;
   }
-  /* Override site's full-width .btn-primary inside the sticky bar */
   .lc-sticky a.btn,
   .lc-sticky .btn {
     width: auto !important;
@@ -1090,6 +1071,14 @@
   }
 
   window.LC = {
+    showSticky: function () {
+      if (!sticky) return;
+      if (safeGet(KEY_STICKY)) return;
+      if (stickyShown) return;
+      sticky.classList.add('is-visible');
+      stickyShown = true;
+      track('pfas_sol_sticky_shown_by_state');
+    },
     dismissSticky: function () {
       sticky.classList.remove('is-visible');
       safeSet(KEY_STICKY, '1');
