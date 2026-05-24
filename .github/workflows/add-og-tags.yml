@@ -31,7 +31,7 @@ jobs:
             python add_og_tags.py
           fi
 
-            - name: Commit and push changes
+      - name: Commit and push changes
         if: ${{ inputs.dry_run != true }}
         run: |
           git config user.name "github-actions[bot]"
