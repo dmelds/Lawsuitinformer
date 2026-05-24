@@ -42,5 +42,6 @@ jobs:
           fi
           git add -A
           git commit -m "Add OG + Twitter card meta tags to all pages"
+          git pull --rebase origin "$(git branch --show-current)"
           git push
           echo "Pushed changes to $(git branch --show-current)"
