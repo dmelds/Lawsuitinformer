@@ -2,15 +2,17 @@ def process_file(filepath, dry_run=False):
     with open(filepath, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Clean the HTML: Remove .html from canonical, og:url, and twitter:url
-    # Yeh part har file ke andar se .html hata dega
-    html = html.replace('.html"', '"').replace('.html">', '">')
+    # 1. Universal Link Cleaner: 
+    # This removes .html from ALL href links (nav, footer, body, etc.)
+    html = re.sub(r'href="([^"]+)\.html"', r'href="\1"', html)
     
+    # Existing cleanup for meta tags
+    html = html.replace('.html"', '"').replace('.html">', '">')
+
     # 2. Proceed with OG Tag logic
     if OG_PRESENT_RE.search(html):
         # Even if skipped, we still save the clean version if changes were made
         if ".html" in html:
-            html = html.replace('.html"', '"')
             if not dry_run:
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(html)
