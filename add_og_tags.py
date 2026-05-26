@@ -2,22 +2,23 @@ def process_file(filepath, dry_run=False):
     with open(filepath, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Universal Link Cleaner: 
-    # This removes .html from ALL href links (nav, footer, body, etc.)
-    html = re.sub(r'href="([^"]+)\.html"', r'href="\1"', html)
+    # 1. Clean all .html links globally
+    new_html = re.sub(r'href="([^"]+)\.html"', r'href="\1"', html)
+    new_html = new_html.replace('.html"', '"').replace('.html">', '">')
     
-    # Existing cleanup for meta tags
-    html = html.replace('.html"', '"').replace('.html">', '">')
+    # 2. Check if the file was modified by link cleaning
+    has_changed = (new_html != html)
+    html = new_html
 
-    # 2. Proceed with OG Tag logic
+    # 3. Check for OG tags
     if OG_PRESENT_RE.search(html):
-        # Even if skipped, we still save the clean version if changes were made
-        if ".html" in html:
-            if not dry_run:
-                with open(filepath, "w", encoding="utf-8") as f:
-                    f.write(html)
+        if has_changed and not dry_run:
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(html)
+            return "updated (links cleaned)"
         return "skipped (already has og: tags)"
 
+    # 4. If no OG tags, proceed to add them
     title = extract_first(TITLE_RE, html)
     description = extract_first(DESC_RE, html) or extract_first(DESC_RE_ALT, html)
 
@@ -25,13 +26,16 @@ def process_file(filepath, dry_run=False):
     canonical = m.group(1).strip() if m else None
 
     if not title or not description:
+        if has_changed and not dry_run:
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(html)
+            return "updated (links cleaned)"
         return f"skipped (title={bool(title)}, desc={bool(description)})"
 
     if not canonical:
         fn = os.path.basename(filepath)
         canonical = f"{SITE_URL}/" if fn == "index.html" else f"{SITE_URL}/{fn.replace('.html', '')}"
     else:
-        # Clean canonical URL
         canonical = canonical.replace('.html', '')
 
     og_block = make_og_block(canonical, title, description)
@@ -51,4 +55,4 @@ def process_file(filepath, dry_run=False):
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(new_html)
 
-    return "updated"
+    return "updated (metadata added)"
