@@ -89,9 +89,14 @@ def process_file(filepath, dry_run=False):
 
     # For og:type, use "website" for homepage / hub pages, "article" otherwise.
     # Homepage is index.html; everything else defaults to article.
+    # URLs use the clean-URL format (no .html extension) to match canonicals.
     if not canonical:
         fn = os.path.basename(filepath)
-        canonical = f"{SITE_URL}/" if fn == "index.html" else f"{SITE_URL}/{fn}"
+        if fn == "index.html":
+            canonical = f"{SITE_URL}/"
+        else:
+            slug = fn[:-5] if fn.endswith(".html") else fn
+            canonical = f"{SITE_URL}/{slug}"
 
     og_block = make_og_block(canonical, title, description)
 
