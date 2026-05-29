@@ -206,82 +206,38 @@
          Understated authority signal: three publications, one
          named attorney. Not "network" branded; factual framing.
          ============================================================ -->
-    <style>
-      .cred-strip {
-        --cs-navy: #1c2a3a;
-        --cs-amber: #c9821f;
-        background: #fffdf7;
-        border-top: 1px solid rgba(28,42,58,.1);
-        border-bottom: 1px solid rgba(28,42,58,.1);
-        padding: 36px 0;
-      }
-      .cred-strip__inner { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-      .cred-strip__lead {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 13px; letter-spacing: .07em; text-transform: uppercase;
-        color: var(--cs-amber); font-weight: 600; margin: 0 0 6px;
-      }
-      .cred-strip__intro {
-        font-family: Georgia, serif; font-size: 17px; line-height: 1.5;
-        color: var(--cs-navy); margin: 0 0 22px; max-width: 680px;
-      }
-      .cred-strip__intro a { color: var(--cs-navy); font-weight: 700; }
-      .cred-strip__grid {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      }
-      .cred-strip__card {
-        display: block; padding: 18px 18px 20px;
-        background: #fff; border: 1px solid rgba(28,42,58,.12);
-        border-radius: 6px; text-decoration: none;
-        transition: border-color .15s, transform .15s;
-      }
-      .cred-strip__card:hover { border-color: var(--cs-amber); transform: translateY(-2px); }
-      .cred-strip__name {
-        font-family: Georgia, serif; font-size: 17px; font-weight: 700;
-        color: var(--cs-navy); margin: 0 0 4px;
-      }
-      .cred-strip__role {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 13px; color: rgba(28,42,58,.6); margin: 0 0 10px;
-      }
-      .cred-strip__desc {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 14px; line-height: 1.5; color: #4a4a4a; margin: 0;
-      }
-      @media (max-width: 720px) {
-        .cred-strip__grid { grid-template-columns: 1fr; gap: 12px; }
-        .cred-strip { padding: 28px 0; }
-        .cred-strip__intro { font-size: 16px; }
-      }
-    </style>
+   <!-- CREDIBILITY STRIP — one line, below hero. Quiet credential, not a section. -->
+<style>
+  .cred-line {
+    --cl-navy: #1c2a3a;
+    --cl-amber: #c9821f;
+    background: #fffdf7;
+    border-top: 1px solid rgba(28,42,58,.1);
+    border-bottom: 1px solid rgba(28,42,58,.1);
+    padding: 12px 20px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(28,42,58,.75);
+  }
+  .cred-line a { color: var(--cl-navy); font-weight: 600; text-decoration: none; }
+  .cred-line a:hover { color: var(--cl-amber); }
+  .cred-line__label { color: var(--cl-amber); font-weight: 600; }
+  @media (max-width: 600px) { .cred-line { font-size: 13px; padding: 12px 16px; } }
+</style>
 
-    <section class="cred-strip" aria-label="About this work">
-      <div class="cred-strip__inner">
-        <p class="cred-strip__lead">Attorney-led, across three publications</p>
-        <p class="cred-strip__intro">
-          Lawsuit Informer is one of three publications written and edited by
-          <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a>,
-          a California-licensed attorney &mdash; spanning public education, case review, and industry analysis.
-        </p>
-        <div class="cred-strip__grid">
-          <a class="cred-strip__card" href="https://lawsuit.center" target="_blank" rel="noopener">
-            <p class="cred-strip__name">Lawsuit Center</p>
-            <p class="cred-strip__role">Case-review directory</p>
-            <p class="cred-strip__desc">Where people researching a potential claim can request a free case review, handled separately from editorial work.</p>
-          </a>
-          <a class="cred-strip__card" href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">
-            <p class="cred-strip__name">Lawsuit Intelligencer</p>
-            <p class="cred-strip__role">Industry analysis</p>
-            <p class="cred-strip__desc">Editorial analysis of mass torts and plaintiff-side law, written for the legal industry rather than the public.</p>
-          </a>
-          <a class="cred-strip__card" href="https://davidmeldofsky.com" target="_blank" rel="noopener">
-            <p class="cred-strip__name">David Meldofsky</p>
-            <p class="cred-strip__role">Attorney &amp; founder</p>
-            <p class="cred-strip__desc">Bylines in Law360, the Daily Journal, and Attorney at Law Magazine, with verifiable California Bar standing.</p>
-          </a>
-        </div>
-      </div>
-    </section>
+<div class="cred-line">
+  <span class="cred-line__label">Attorney-led.</span>
+  Lawsuit Informer is one of three publications by
+  <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a>,
+  a California-licensed attorney &mdash; alongside
+  <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a>
+  (case review) and
+  <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a>
+  (industry analysis).
+</div>
+
     <!-- ===================== END CREDIBILITY STRIP ===================== -->
 
     <section class="start-here">
