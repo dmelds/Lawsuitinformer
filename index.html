@@ -100,32 +100,6 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       THE LAWSUIT NETWORK BAR — fetches /network-bar.html and
-       highlights the current site. Identical block on all four sites.
-       Requires network-bar.html at the repo root.
-       ============================================================ -->
-  <div id="ln-bar-mount"></div>
-  <script>
-    (function () {
-      fetch("/network-bar.html")
-        .then(function (r) { return r.text(); })
-        .then(function (html) {
-          var mount = document.getElementById("ln-bar-mount");
-          mount.innerHTML = html;
-          var host = location.hostname.replace(/^www\./, "");
-          mount.querySelectorAll(".ln-bar a[data-site]").forEach(function (a) {
-            if (a.getAttribute("data-site") === host) {
-              a.setAttribute("aria-current", "true");
-              a.removeAttribute("href"); /* current site is not a link */
-            }
-          });
-        })
-        .catch(function () { /* bar is non-critical; fail silently */ });
-    })();
-  </script>
-  <!-- ===================== END NETWORK BAR ===================== -->
-
   <header class="site-header">
     <div class="container nav">
       <div class="logo">
@@ -201,7 +175,18 @@
       </div>
     </section>
 
-    <!-- ============================================================
+    <section class="start-here">
+      <div class="container narrow">
+        <p class="eyebrow">START HERE</p>
+        <h2>New to Lawsuits?</h2>
+        <p class="start-text">
+          Begin with a simple guide to how lawsuits work, what happens after contacting a lawyer, and what people often research first.
+        </p>
+        <a href="start-here" class="btn btn-primary">Go to Start Here</a>
+      </div>
+    </section>
+
+      <!-- ============================================================
          CREDIBILITY STRIP — below hero, before "Start Here".
          Understated authority signal: three publications, one
          named attorney. Not "network" branded; factual framing.
@@ -239,17 +224,6 @@
 </div>
 
     <!-- ===================== END CREDIBILITY STRIP ===================== -->
-
-    <section class="start-here">
-      <div class="container narrow">
-        <p class="eyebrow">START HERE</p>
-        <h2>New to Lawsuits?</h2>
-        <p class="start-text">
-          Begin with a simple guide to how lawsuits work, what happens after contacting a lawyer, and what people often research first.
-        </p>
-        <a href="start-here" class="btn btn-primary">Go to Start Here</a>
-      </div>
-    </section>
 
         <section class="section alt homepage-news-feature">
       <div class="container narrow">
