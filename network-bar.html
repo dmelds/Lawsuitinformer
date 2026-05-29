@@ -1,7 +1,9 @@
-<!-- network-bar.html — IDENTICAL on all four sites. Auto-highlights current site by hostname. -->
+<!-- network-bar.html — IDENTICAL across all four sites.
+     Pure markup + styles, no script. The page that fetches this
+     handles current-site highlighting. Override --ln-accent per site. -->
 <style>
   .ln-bar {
-    --ln-accent: #d99a2b; /* each site can override this one line to match its own amber */
+    --ln-accent: #d99a2b; /* per-site amber; change this one line if desired */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 13px;
     background: #14181f;
@@ -18,7 +20,7 @@
   .ln-bar__pubs { display: flex; gap: 16px; flex-wrap: wrap; }
   .ln-bar__author { margin-left: auto; display: flex; align-items: center; gap: 8px; }
   .ln-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.18); }
-  .ln-bar a[aria-current="true"] { color: var(--ln-accent); font-weight: 600; }
+  .ln-bar a[aria-current="true"] { color: var(--ln-accent); font-weight: 600; cursor: default; }
   @media (max-width: 600px) {
     .ln-bar__author { margin-left: 0; width: 100%; }
   }
@@ -37,15 +39,3 @@
     </div>
   </div>
 </nav>
-
-<script>
-  (function () {
-    var host = location.hostname.replace(/^www\./, "");
-    document.querySelectorAll(".ln-bar a[data-site]").forEach(function (a) {
-      if (a.getAttribute("data-site") === host) {
-        a.setAttribute("aria-current", "true");
-        a.removeAttribute("href"); /* current site isn't a link */
-      }
-    });
-  })();
-</script>
