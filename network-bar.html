@@ -21,8 +21,13 @@
   .ln-bar__author { margin-left: auto; display: flex; align-items: center; gap: 8px; }
   .ln-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.18); }
   .ln-bar a[aria-current="true"] { color: var(--ln-accent); font-weight: 600; cursor: default; }
+
   @media (max-width: 600px) {
-    .ln-bar__author { margin-left: 0; width: 100%; }
+    .ln-bar { font-size: 12px; }
+    .ln-bar__inner { padding: 8px 14px; gap: 6px 14px; }
+    .ln-bar__pubs { gap: 14px; }
+    .ln-bar__author { margin-left: 0; gap: 0; }   /* flows left under the pubs, no right-push */
+    .ln-bar__divider { display: none; }            /* removes the orphaned pipe */
   }
 </style>
 
