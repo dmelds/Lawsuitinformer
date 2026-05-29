@@ -1,0 +1,51 @@
+<!-- network-bar.html — IDENTICAL on all four sites. Auto-highlights current site by hostname. -->
+<style>
+  .ln-bar {
+    --ln-accent: #d99a2b; /* each site can override this one line to match its own amber */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+    background: #14181f;
+    color: #c9ccd1;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    width: 100%;
+  }
+  .ln-bar__inner {
+    max-width: 1100px; margin: 0 auto; padding: 7px 16px;
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  }
+  .ln-bar a { color: #c9ccd1; text-decoration: none; white-space: nowrap; }
+  .ln-bar a:hover { color: #fff; }
+  .ln-bar__pubs { display: flex; gap: 16px; flex-wrap: wrap; }
+  .ln-bar__author { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .ln-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.18); }
+  .ln-bar a[aria-current="true"] { color: var(--ln-accent); font-weight: 600; }
+  @media (max-width: 600px) {
+    .ln-bar__author { margin-left: 0; width: 100%; }
+  }
+</style>
+
+<nav class="ln-bar" aria-label="The Lawsuit Network">
+  <div class="ln-bar__inner">
+    <div class="ln-bar__pubs">
+      <a href="https://lawsuitinformer.com" data-site="lawsuitinformer.com">Lawsuit Informer</a>
+      <a href="https://lawsuit.center" data-site="lawsuit.center">Lawsuit Center</a>
+      <a href="https://lawsuitintelligencer.com" data-site="lawsuitintelligencer.com">Lawsuit Intelligencer</a>
+    </div>
+    <div class="ln-bar__author">
+      <span class="ln-bar__divider"></span>
+      <a href="https://davidmeldofsky.com" data-site="davidmeldofsky.com">By David Meldofsky</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    var host = location.hostname.replace(/^www\./, "");
+    document.querySelectorAll(".ln-bar a[data-site]").forEach(function (a) {
+      if (a.getAttribute("data-site") === host) {
+        a.setAttribute("aria-current", "true");
+        a.removeAttribute("href"); /* current site isn't a link */
+      }
+    });
+  })();
+</script>
