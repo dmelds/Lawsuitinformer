@@ -99,6 +99,7 @@
   </script>
 </head>
 <body>
+
   <header class="site-header">
     <div class="container nav">
       <div class="logo">
@@ -184,6 +185,46 @@
         <a href="start-here" class="btn btn-primary">Go to Start Here</a>
       </div>
     </section>
+
+      <!-- ============================================================
+         CREDIBILITY STRIP — below hero, before "Start Here".
+         Understated authority signal: three publications, one
+         named attorney. Not "network" branded; factual framing.
+         ============================================================ -->
+<!-- CREDIBILITY STRIP — one line, centered. Shorter lead, clear function labels. -->
+<style>
+  .cred-line {
+    --cl-navy: #1c2a3a;
+    --cl-amber: #c9821f;
+    background: #fffdf7;
+    border-top: 1px solid rgba(28,42,58,.1);
+    border-bottom: 1px solid rgba(28,42,58,.1);
+    padding: 13px 20px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(28,42,58,.75);
+  }
+  .cred-line a { color: var(--cl-navy); font-weight: 600; text-decoration: none; }
+  .cred-line a:hover { color: var(--cl-amber); }
+  .cred-line__label { color: var(--cl-amber); font-weight: 600; }
+  .cred-line__role { color: rgba(28,42,58,.55); font-weight: 400; }
+  @media (max-width: 600px) { .cred-line { font-size: 13px; padding: 13px 16px; } }
+</style>
+
+<div class="cred-line">
+  <span class="cred-line__label">Attorney-led by David Meldofsky.</span>
+  Three publications:
+  <a href="https://lawsuitinformer.com">Lawsuit Informer</a> <span class="cred-line__role">(legal education)</span>
+  &middot;
+  <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a> <span class="cred-line__role">(case review)</span>
+  &middot;
+  <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a> <span class="cred-line__role">(industry analysis)</span>
+</div>
+
+
+    <!-- ===================== END CREDIBILITY STRIP ===================== -->
 
         <section class="section alt homepage-news-feature">
       <div class="container narrow">
