@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How Do PFAS Get Into the Body? Exposure Routes Explained</title>
+  <meta name="description" content="The main way people are exposed to PFAS is contaminated drinking water. Food, food packaging, consumer products, household dust, and some workplaces also play a role. Here is how PFAS enter the body." />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#fbf6e8">
+  <link rel="canonical" href="https://lawsuitinformer.com/how-do-pfas-get-into-the-body" />
+
+  <link rel="author" href="david-meldofsky" />
+  <link rel="publisher" href="about" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lawsuitinformer.com/how-do-pfas-get-into-the-body">
+  <meta property="og:title" content="How Do PFAS Get Into the Body? Exposure Routes Explained">
+  <meta property="og:description" content="The main way people are exposed to PFAS is contaminated drinking water. Food, packaging, products, dust, and some workplaces also play a role.">
+  <meta property="og:image" content="https://lawsuitinformer.com/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lawsuit Informer — Attorney-led legal education">
+  <meta property="og:site_name" content="Lawsuit Informer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Do PFAS Get Into the Body? Exposure Routes Explained">
+  <meta name="twitter:description" content="The main way people are exposed to PFAS is contaminated drinking water. Food, packaging, products, dust, and some workplaces also play a role.">
+  <meta name="twitter:image" content="https://lawsuitinformer.com/og-default.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Do PFAS Get Into the Body?",
+    "description": "The main way people are exposed to PFAS is contaminated drinking water. Food, food packaging, consumer products, household dust, and some workplaces also play a role.",
+    "author": { "@type": "Person", "name": "David Meldofsky", "url": "https://lawsuitinformer.com/david-meldofsky", "jobTitle": "California-licensed attorney", "worksFor": { "@type": "Organization", "name": "Lawsuit Informer" } },
+    "publisher": { "@type": "Organization", "name": "Lawsuit Informer", "url": "https://lawsuitinformer.com/", "logo": "https://lawsuitinformer.com/lawsuit-informer-1.png" },
+    "isPartOf": { "@type": "WebPage", "@id": "https://lawsuitinformer.com/pfas" },
+    "datePublished": "2026-06-02",
+    "dateModified": "2026-06-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lawsuitinformer.com/how-do-pfas-get-into-the-body" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lawsuitinformer.com/" },
+      { "@type": "ListItem", "position": 2, "name": "What Are PFAS", "item": "https://lawsuitinformer.com/pfas" },
+      { "@type": "ListItem", "position": 3, "name": "How Do PFAS Get Into the Body", "item": "https://lawsuitinformer.com/how-do-pfas-get-into-the-body" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How are people exposed to PFAS?", "acceptedAnswer": { "@type": "Answer", "text": "The most common route is contaminated drinking water. People may also be exposed through certain food and food packaging, consumer products, household dust, and some occupational settings." } },
+      { "@type": "Question", "name": "Is drinking water the main source of PFAS exposure?", "acceptedAnswer": { "@type": "Answer", "text": "For many people, contaminated drinking water is the largest single source, especially near military bases, airports, landfills, and industrial sites. Diet and consumer products also contribute." } },
+      { "@type": "Question", "name": "Can you absorb PFAS through the skin?", "acceptedAnswer": { "@type": "Answer", "text": "Ingestion and, to a lesser extent, inhalation of dust are generally considered the more significant routes. Skin absorption is studied but typically viewed as a smaller contributor for most people." } }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo"><a href="/" aria-label="Lawsuit Informer home"><img src="lawsuit-informer-1.png" alt="Lawsuit Informer"></a></div>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="start-here">Start Here</a>
+        <a href="legal-guides" aria-current="page">Guides</a>
+        <a href="news-and-analysis">News & Analysis</a>
+        <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits">Symptoms</a>
+        <a href="browse-lawsuits">Browse Lawsuits</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-page">
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">›</span>
+      <a href="pfas">What Are PFAS</a>
+      <span class="breadcrumb-separator">›</span>
+      <span aria-current="page">How Do PFAS Get Into the Body</span>
+    </nav>
+
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">PFAS GUIDE</p>
+        <h1>How Do PFAS Get Into the Body?</h1>
+        <p class="article-byline">By <a href="david-meldofsky">David Meldofsky</a>, California-licensed attorney · Founder, Lawsuit Informer</p>
+        <p class="article-date">Last updated: June 2, 2026</p>
+
+        <p class="article-intro">
+          Most people take in PFAS primarily through <strong>contaminated drinking water</strong>. Other routes include certain foods, grease-resistant food packaging, some consumer products, household dust, and workplace exposure. Because PFAS resist breaking down, repeated low-level intake from these sources can build up in the body over time.
+        </p>
+
+        <p>For the full overview, start with <a href="pfas">What Are PFAS (Forever Chemicals)?</a></p>
+
+        <p class="article-disclaimer">This page provides general educational information only and does not constitute medical or legal advice.</p>
+
+        <div class="info-box key-takeaways-box">
+          <strong>Key Takeaways:</strong>
+          <ul>
+            <li>Contaminated drinking water is the most commonly cited route.</li>
+            <li>Diet and food packaging are meaningful secondary sources.</li>
+            <li>Household dust matters, especially for young children.</li>
+            <li>Certain jobs carry higher occupational exposure.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="article-section">
+      <div class="container narrow">
+
+        <h2>Drinking Water</h2>
+        <p>The route discussed most often is drinking water, particularly in communities near military bases, airports, landfills, or industrial facilities where PFAS were used or released. The U.S. Geological Survey has estimated that a significant share of U.S. tap water contains at least one type of PFAS. To sort which exposure path may apply to you, the <a href="https://lawsuit.center/pfas-exposure-checker?utm_source=lawsuitinformer&amp;utm_medium=article&amp;utm_campaign=pfas_cluster&amp;utm_content=exposure_intro" rel="noopener">free PFAS exposure checker on Lawsuit Center</a> walks through it in four questions.</p>
+
+        <h2>Food and Food Packaging</h2>
+        <p>PFAS can reach the diet through fish from contaminated water, produce grown in contaminated soil, and some animal products. Grease-resistant packaging — certain wrappers, microwave popcorn bags, and takeout containers — can also transfer small amounts of PFAS into food.</p>
+
+        <h2>Consumer Products and Dust</h2>
+        <p>Stain- and water-resistant treatments on carpets, upholstery, and clothing, along with some cosmetics, can shed PFAS into household dust. Because young children spend time on the floor and put hands in their mouths, dust is considered a more notable route for them. See <a href="pfas-cosmetics-lawsuits">PFAS Cosmetics Lawsuits</a> and <a href="pfas-consumer-product-lawsuits">PFAS Consumer Product Lawsuits</a>.</p>
+
+        <h2>Occupational Exposure</h2>
+        <p>People who work in chemical manufacturing, and firefighters who have used aqueous film-forming foam (AFFF), can face higher exposure. Firefighting foam is covered in <a href="afff-firefighting-foam-lawsuits">AFFF Firefighting Foam Lawsuits</a>.</p>
+
+        <h2>What Happens After Exposure</h2>
+        <p>Once absorbed, many PFAS bind to proteins in the blood and distribute to organs such as the liver and kidneys. They tend to leave the body slowly — see <a href="how-long-do-pfas-stay-in-the-body">How Long Do PFAS Stay in the Body?</a></p>
+
+        <div class="inline-cta">
+          <p><strong>Not sure which exposure path applies to your situation?</strong> The free PFAS exposure checker on Lawsuit Center sorts drinking water, firefighting foam, occupational, and farm/biosolids paths in four short questions. No contact info required to see your result.</p>
+          <a class="btn btn-primary" href="https://lawsuit.center/pfas-exposure-checker?utm_source=lawsuitinformer&amp;utm_medium=article&amp;utm_campaign=pfas_cluster&amp;utm_content=exposure_checker_cta" onclick="if(typeof clicky!=='undefined')clicky.log('cta_click', 'pfas_exposure_routes_checker')" rel="noopener">Try the Free PFAS Exposure Checker</a>
+        </div>
+
+        <h2>Common Questions</h2>
+        <h3>Is drinking water the main source of PFAS exposure?</h3>
+        <p>For many people it is the largest single source, especially near contamination sites. Diet and consumer products also contribute.</p>
+        <h3>Can you absorb PFAS through the skin?</h3>
+        <p>Ingestion and inhalation of dust are generally considered the more significant routes; skin absorption is usually viewed as a smaller contributor for most people.</p>
+
+      </div>
+    </section>
+
+    <section class="article-section alt">
+      <div class="container narrow">
+        <div class="related-guides">
+          <h3>Related PFAS Topics</h3>
+          <ul class="link-list">
+            <li><a href="pfas">What Are PFAS (Forever Chemicals)?</a></li>
+            <li><a href="how-long-do-pfas-stay-in-the-body">How Long Do PFAS Stay in the Body?</a></li>
+            <li><a href="are-pfas-dangerous">Are PFAS Dangerous to Humans?</a></li>
+            <li><a href="https://lawsuit.center/pfas-exposure-checker?utm_source=lawsuitinformer&amp;utm_medium=article&amp;utm_campaign=pfas_cluster&amp;utm_content=related_links" rel="noopener">Free PFAS Exposure Checker</a></li>
+            <li><a href="pfas-water-contamination-lawsuits">PFAS Water Contamination Lawsuits</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="author-box-section">
+      <div class="container author-box">
+        <div class="author-photo"><img src="david-meldofsky.webp" alt="David Meldofsky" width="600" height="600" loading="lazy" /></div>
+        <div class="author-details">
+          <h3>About the Author</h3>
+          <p><strong><a href="david-meldofsky">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.</p>
+          <p>Learn more about our <a href="editorial-policy">Editorial Policy</a>, <a href="about">About page</a>, or <a href="contact">Contact us</a>.</p>
+          <p><strong>Last Updated:</strong> June 2, 2026</p>
+          <p>Educational information only. Not legal advice. No attorney-client relationship is formed.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>Lawsuit Informer</h3>
+        <p>Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.</p>
+        <p><strong>Questions about the site or its educational content?</strong></p>
+        <p><a href="mailto:hello@lawsuitinformer.com" onclick="if(typeof clicky!=='undefined')clicky.log('email_click', 'footer')">hello@lawsuitinformer.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about">About</a></li>
+          <li><a href="dr-thomas-hatzilabrou">Medical Reviewer</a></li>
+          <li><a href="professor-perspective">Professor Perspective</a></li>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="editorial-policy">Editorial Policy</a></li>
+          <li><a href="contributor-guidelines">Write for Us</a></li>
+          <li><a href="legal-guides">Legal Guides</a></li>
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="news-and-analysis">News &amp; Analysis</a></li>
+          <li><a href="how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="disclaimer">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Network</h3>
+        <ul class="footer-links">
+          <li><a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a><br><span style="color:#888;font-size:0.9em;">Case-review directory</span></li>
+          <li><a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a><br><span style="color:#888;font-size:0.9em;">Industry analysis</span></li>
+          <li><a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a><br><span style="color:#888;font-size:0.9em;">Editor &amp; founder</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h3>Follow Lawsuit Informer</h3>
+        <div class="social-links"><a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a></div>
+      </div>
+      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("site-menu");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("open");
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    });
+  </script>
+
+</body>
+</html>

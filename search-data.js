@@ -238,6 +238,48 @@ window.SEARCH_INDEX = [
     url: "chatgpt-overdose-lawsuit-scott",
     category: "News and Analysis",
     text: "ai lawsuits ai chatbot chatgpt overdose lawsuit scott turner-scott openai sam nelson kratom xanax drug interaction wrongful death california state court unauthorized practice of medicine product liability raine v openai adult decedent benzodiazepine opioid receptor respiratory depression ai medical advice"
+  },
+  {
+    title: "What Are PFAS (Forever Chemicals)?",
+    url: "pfas",
+    category: "Legal Guide",
+    text: "what are pfas forever chemicals per- and polyfluoroalkyl substances pfoa pfos genx carbon fluorine bond persistent chemicals pfas explained pfas meaning pfas exposure pfas health effects pfas lawsuits overview pfas fundamentals what does pfas stand for"
+  },
+  {
+    title: "What Does PFAS Stand For?",
+    url: "what-does-pfas-stand-for",
+    category: "Legal Guide",
+    text: "what does pfas stand for pfas meaning pfas acronym per- and polyfluoroalkyl substances pfas pronunciation perfluoroalkyl polyfluoroalkyl pfas definition pfas full form"
+  },
+  {
+    title: "PFAS vs. PFOA vs. PFOS Explained",
+    url: "pfas-vs-pfoa-vs-pfos",
+    category: "Legal Guide",
+    text: "pfas vs pfoa vs pfos difference between pfas pfoa pfos perfluorooctanoic acid perfluorooctane sulfonate c8 genx legacy pfas replacement pfas pfoa pfos explained pfas class"
+  },
+  {
+    title: "How Do PFAS Get Into the Body?",
+    url: "how-do-pfas-get-into-the-body",
+    category: "Legal Guide",
+    text: "how do pfas get into the body pfas exposure routes pfas in drinking water pfas in food packaging pfas dust occupational pfas exposure how are people exposed to pfas pfas ingestion firefighting foam afff"
+  },
+  {
+    title: "How Long Do PFAS Stay in the Body?",
+    url: "how-long-do-pfas-stay-in-the-body",
+    category: "Legal Guide",
+    text: "how long do pfas stay in the body pfas half-life pfas elimination do pfas leave the body flush pfas out of system pfas bioaccumulation pfas persistence in blood pfoa pfos half life"
+  },
+  {
+    title: "Are PFAS Dangerous to Humans?",
+    url: "are-pfas-dangerous",
+    category: "Illness Topic",
+    text: "are pfas dangerous pfas health risks pfas harmful pfas dangerous to humans pfas toxicity health effects of pfas is pfas bad pfas cancer thyroid immune cholesterol"
+  },
+  {
+    title: "PFAS Health Effects",
+    url: "pfas-health-effects",
+    category: "Illness Hub",
+    text: "pfas health effects conditions linked to pfas pfas kidney cancer pfas testicular cancer pfas thyroid disease pfas ulcerative colitis pfas cholesterol pfas immune response pfas pregnancy c8 science panel nasem pfas blood test"
   }
 
 ];
