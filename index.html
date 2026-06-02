@@ -21,8 +21,7 @@
   <link rel="canonical" href="https://lawsuitinformer.com/" />
 
   <!-- Load SEARCH_INDEX so the homepage search can route by real index hits.
-       If your search index file isn't named "search-index.js", update the src
-       below to match the actual filename (check what browse-lawsuits.html loads). -->
+       This loads search-data.js (the site-wide search index). -->
  <script src="search-data.js"></script>
 
   <meta property="og:type" content="article">
@@ -44,16 +43,18 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://lawsuitinformer.com/#organization",
     "name": "Lawsuit Informer",
     "url": "https://lawsuitinformer.com/",
     "logo": "https://lawsuitinformer.com/lawsuit-informer-1.png",
     "description": "Attorney-led editorial site covering lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety in plain language.",
-    "dateModified": "2026-05-14",
+    "dateModified": "2026-06-01",
     "founder": {
       "@type": "Person",
+      "@id": "https://davidmeldofsky.com/#person",
       "name": "David Meldofsky",
       "jobTitle": "Attorney",
-      "url": "https://lawsuitinformer.com/david-meldofsky",
+      "url": "https://davidmeldofsky.com/",
       "subjectOf": [
         {
           "@type": "Article",
@@ -82,10 +83,10 @@
       "jobTitle": "Medical Reviewer"
     },
     "email": "hello@lawsuitinformer.com",
-        "sameAs": [
-      "https://linkedin.com/company/lawsuitinformer"
+    "sameAs": [
+      "https://linkedin.com/company/lawsuitinformer",
+      "https://lawsuit.center"
     ]
-
   }
   </script>
 
@@ -746,7 +747,7 @@
       }
 
       // Count how many entries in the site-wide SEARCH_INDEX match the query.
-      // SEARCH_INDEX is loaded from search-index.js in the <head>.
+      // SEARCH_INDEX is loaded from search-data.js in the <head>.
       function countIndexMatches(query) {
         if (!Array.isArray(window.SEARCH_INDEX)) return 0;
         const q = query.toLowerCase();
