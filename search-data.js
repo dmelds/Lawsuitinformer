@@ -30,6 +30,30 @@ window.SEARCH_INDEX = [
     text: "pfas lawsuit statute of limitations filing deadlines all 50 states district of columbia personal injury discovery rule statutes of repose toxic tort considerations afff multidistrict litigation"
   },
   {
+    title: "PFAS and Kidney Cancer",
+    url: "pfas-kidney-cancer",
+    category: "Illness Topic",
+    text: "pfas and kidney cancer does pfas cause kidney cancer pfoa renal cell carcinoma forever chemicals c8 science panel iarc carcinogenic group 1 drinking water firefighting foam afff exposure probable link"
+  },
+  {
+    title: "PFAS and Testicular Cancer",
+    url: "pfas-testicular-cancer",
+    category: "Illness Topic",
+    text: "pfas and testicular cancer does pfas cause testicular cancer pfoa forever chemicals c8 science panel iarc carcinogenic probable link drinking water firefighting foam afff occupational exposure firefighters"
+  },
+  {
+    title: "PFAS and Thyroid Disease",
+    url: "pfas-thyroid-disease",
+    category: "Illness Topic",
+    text: "pfas and thyroid disease does pfas affect the thyroid pfoa pfos forever chemicals c8 science panel hypothyroidism thyroid hormones endocrine disruptor probable link thyroid cancer drinking water firefighting foam afff exposure"
+  },
+  {
+    title: "PFAS and Ulcerative Colitis",
+    url: "pfas-ulcerative-colitis",
+    category: "Illness Topic",
+    text: "pfas and ulcerative colitis inflammatory bowel disease ibd pfoa forever chemicals c8 science panel immune system effects probable link crohns disease drinking water firefighting foam afff exposure colon inflammation"
+  },
+  {
     title: "AFFF Firefighting Foam Lawsuits",
     url: "afff-firefighting-foam-lawsuits",
     category: "Lawsuit Topic",
