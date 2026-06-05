@@ -281,5 +281,12 @@ window.SEARCH_INDEX = [
     category: "Illness Hub",
     text: "pfas health effects conditions linked to pfas pfas kidney cancer pfas testicular cancer pfas thyroid disease pfas ulcerative colitis pfas cholesterol pfas immune response pfas pregnancy c8 science panel nasem pfas blood test"
   }
+    {
+    title: "Talking With Your Family About AI Chatbots: A Guide for Parents",
+    url: "family-ai-safety-guide",
+    category: "Guide",
+    text: "ai chatbots parents family teens teenagers child safety online safety chatgpt how to talk to teen about ai healthy use warning signs mental health crisis resources 988 suicide crisis lifeline screen time companion apps parental guidance ai safety for kids"
+  }
+
 
 ];
