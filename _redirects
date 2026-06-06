@@ -1,1 +1,27 @@
-/*.html  /:splat  301!
+/*.html /:splat 301!
+
+
+
+# --- Asbestos occupation consolidation (June 2026) ---
+# Cluster 1 -> pipe-insulation-and-boilers
+/asbestos-exposure-in-boiler-overhaul-and-rebuild-work        /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-in-engine-rooms-and-boiler-rooms           /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-from-steam-lines-and-high-pressure-piping  /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-in-turbine-maintenance-and-repair          /asbestos-exposure-from-pipe-insulation-and-boilers   301
+# Cluster 2 -> industrial-insulation-work
+/asbestos-exposure-from-insulation-removal-and-tear-out-work  /asbestos-exposure-in-industrial-insulation-work      301
+# Cluster 3 -> industrial-shutdowns-and-turnarounds
+/asbestos-exposure-in-outage-and-maintenance-contract-work        /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-refinery-turnaround-crews                   /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-plant-maintenance-and-mechanical-repair     /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-chemical-plant-maintenance-work             /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-tank-and-vessel-maintenance-work            /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-industrial-cleanout-and-debris-removal-work /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+# Cluster 4 -> power-plants-and-refineries
+/asbestos-exposure-in-factories-and-industrial-sites          /asbestos-exposure-in-power-plants-and-refineries     301
+# Cluster 5 -> industrial-valves-pumps-and-gaskets
+/asbestos-exposure-in-pump-and-valve-repair-work              /asbestos-exposure-from-industrial-valves-pumps-and-gaskets  301
+# Cluster 6 -> shipyards-and-naval-service
+/asbestos-exposure-in-dry-docks-and-naval-shipyards           /asbestos-exposure-in-shipyards-and-naval-service     301
+/asbestos-exposure-in-shipbuilding-and-ship-repair            /asbestos-exposure-in-shipyards-and-naval-service     301
+/asbestos-exposure-in-marine-engine-and-mechanical-work       /asbestos-exposure-in-shipyards-and-naval-service     301
