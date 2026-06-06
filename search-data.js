@@ -180,6 +180,12 @@ window.SEARCH_INDEX = [
     text: "asbestos exposure symptoms shortness of breath chest pain persistent cough wheezing fatigue mesothelioma lung cancer asbestosis breathing problems"
   },
   {
+    title: "Peritoneal Mesothelioma",
+    url: "peritoneal-mesothelioma",
+    category: "Illness Topic",
+    text: "peritoneal mesothelioma abdominal mesothelioma peritoneum asbestos exposure abdominal pain swelling bloating weight loss mesothelioma cancer pleural mesothelioma lawsuit claims trust funds"
+  },
+  {
     title: "Diseases Linked to Chemical Exposure",
     url: "diseases-linked-to-chemical-exposure",
     category: "Illness Hub",
