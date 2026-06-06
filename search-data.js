@@ -192,6 +192,12 @@ window.SEARCH_INDEX = [
     text: "mesothelioma symptoms early symptoms of mesothelioma pleural mesothelioma symptoms peritoneal mesothelioma symptoms signs of mesothelioma shortness of breath chest pain cough abdominal pain swelling weight loss fatigue when to see a doctor late diagnosis latency asbestos symptoms"
   },
   {
+    title: "Pleural Mesothelioma: Symptoms, Causes, and Claims",
+    url: "pleural-mesothelioma",
+    category: "Illness Topic",
+    text: "pleural mesothelioma most common mesothelioma lungs pleura chest lining asbestos lung cancer difference shortness of breath chest pain cough pleural effusion symptoms causes claims diagnosis latency navy shipyard insulation"
+  },
+  {
     title: "Mesothelioma Lawsuit Guide",
     url: "mesothelioma-lawsuit",
     category: "Illness Topic",
