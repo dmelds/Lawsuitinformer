@@ -261,7 +261,37 @@ window.SEARCH_INDEX = [
     title: "OpenAI Lawsuits",
     url: "openai-lawsuits",
     category: "Lawsuit Topic",
-    text: "ai lawsuits ai lawsuit artificial intelligence chatbot lawsuits chatbot lawsuit openai lawsuits openai lawsuit chatgpt lawsuits chatgpt lawsuit ai product liability ai chatbot wrongful death self harm suicide overdose mass shooting school shooting section 230 negligent entrustment garcia v character technologies raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax artificial intelligence generative ai openai pillar hub"
+    text: "openai lawsuits openai lawsuit chatgpt lawsuits chatgpt lawsuit ai product liability ai chatbot wrongful death self harm suicide overdose mass shooting school shooting section 230 negligent entrustment raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax generative ai"
+  },
+  {
+    title: "AI Lawsuits",
+    url: "ai-lawsuits",
+    category: "Lawsuit Topic",
+    text: "ai lawsuits ai lawsuit artificial intelligence lawsuit ai litigation ai class action lawsuit against ai chatbot lawsuit deepfake lawsuit who is being sued openai character ai grok xai product liability overview hub"
+  },
+  {
+    title: "The TAKE IT DOWN Act Explained",
+    url: "take-it-down-act",
+    category: "Legal Guide",
+    text: "take it down act take it down act explained nonconsensual intimate images ncii ai deepfake law deepfake laws is it illegal to make deepfakes platform removal 48 hours ftc enforcement victim rights digital forgery report deepfake federal law"
+  },
+  {
+    title: "Grok and xAI Lawsuits",
+    url: "grok-lawsuits",
+    category: "Lawsuit Topic",
+    text: "grok lawsuit grok deepfake lawsuit xai lawsuit grok ai images nonconsensual deepfake ai generated images class action st clair baltimore consumer protection privacy likeness take it down act minor victims"
+  },
+  {
+    title: "Character.AI Lawsuits",
+    url: "character-ai-lawsuit",
+    category: "Lawsuit Topic",
+    text: "character ai lawsuit character technologies companion chatbot teen safety wrongful death settlement google garcia medical impersonation chatbot posing as doctor psychiatrist kentucky pennsylvania self harm minors"
+  },
+  {
+    title: "States Suing AI Companies",
+    url: "states-suing-ai-companies",
+    category: "Lawsuit Topic",
+    text: "states suing ai companies state attorney general ai lawsuit florida openai kentucky pennsylvania character ai california grok baltimore consumer protection multistate letter enforcement action deceptive trade practices child safety"
   },
   {
     title: "OpenAI Faces School Shooting Lawsuits: AI Liability Questions",
