@@ -180,6 +180,12 @@ window.SEARCH_INDEX = [
     text: "asbestos exposure symptoms shortness of breath chest pain persistent cough wheezing fatigue mesothelioma lung cancer asbestosis breathing problems"
   },
   {
+    title: "Mesothelioma: Types, Symptoms, Causes, and Diagnosis",
+    url: "mesothelioma",
+    category: "Illness Topic",
+    text: "mesothelioma what is mesothelioma mesothelioma symptoms mesothelioma types pleural mesothelioma peritoneal mesothelioma pericardial mesothelioma mesothelioma causes asbestos cancer mesothelioma diagnosis biopsy mesothelioma stages prognosis treatment latency period mesothelioma risk"
+  },
+  {
     title: "Mesothelioma Lawsuit Guide",
     url: "mesothelioma-lawsuit",
     category: "Illness Topic",
