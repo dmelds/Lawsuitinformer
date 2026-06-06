@@ -180,6 +180,48 @@ window.SEARCH_INDEX = [
     text: "asbestos exposure symptoms shortness of breath chest pain persistent cough wheezing fatigue mesothelioma lung cancer asbestosis breathing problems"
   },
   {
+    title: "Mesothelioma Lawsuit Guide",
+    url: "mesothelioma-lawsuit",
+    category: "Illness Topic",
+    text: "mesothelioma lawsuit mesothelioma cancer pleural mesothelioma asbestos exposure diagnosis claims compensation settlement trust funds work history job sites navy shipyard"
+  },
+  {
+    title: "Peritoneal Mesothelioma",
+    url: "peritoneal-mesothelioma",
+    category: "Illness Topic",
+    text: "peritoneal mesothelioma abdominal mesothelioma peritoneum asbestos exposure abdominal pain swelling bloating weight loss mesothelioma cancer pleural mesothelioma lawsuit claims trust funds"
+  },
+  {
+    title: "Lung Cancer from Asbestos",
+    url: "asbestos-lung-cancer-lawsuit",
+    category: "Illness Topic",
+    text: "asbestos lung cancer lawsuit lung cancer from asbestos exposure smoking causation diagnosis claims compensation settlement work history mesothelioma"
+  },
+  {
+    title: "Asbestosis Lawsuit Guide",
+    url: "what-is-asbestosis",
+    category: "Illness Topic",
+    text: "asbestosis lung scarring asbestos exposure shortness of breath breathing problems persistent cough noncancerous lung disease claims compensation work history"
+  },
+  {
+    title: "Mesothelioma vs. Lung Cancer",
+    url: "mesothelioma-vs-lung-cancer",
+    category: "Illness Topic",
+    text: "mesothelioma vs lung cancer difference between mesothelioma and lung cancer diagnosis comparison asbestos exposure pleural causation smoking"
+  },
+  {
+    title: "Who Qualifies for an Asbestos Lawsuit",
+    url: "who-qualifies-for-an-asbestos-lawsuit",
+    category: "Legal Guide",
+    text: "who qualifies asbestos lawsuit eligibility diagnosis mesothelioma lung cancer asbestosis exposure history work records military service filing deadline claims"
+  },
+  {
+    title: "Asbestos Trust Funds and Claims",
+    url: "asbestos-trust-funds-and-claims",
+    category: "Legal Guide",
+    text: "asbestos trust funds bankruptcy trusts trust claims compensation mesothelioma asbestosis lung cancer filing claim manufacturer bankrupt companies settlement payout"
+  },
+  {
     title: "Diseases Linked to Chemical Exposure",
     url: "diseases-linked-to-chemical-exposure",
     category: "Illness Hub",
