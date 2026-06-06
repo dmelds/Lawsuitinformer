@@ -222,6 +222,12 @@ window.SEARCH_INDEX = [
     text: "asbestos trust funds bankruptcy trusts trust claims compensation mesothelioma asbestosis lung cancer filing claim manufacturer bankrupt companies settlement payout"
   },
   {
+    title: "Asbestos Settlement Amounts",
+    url: "asbestos-settlement-amounts",
+    category: "Legal Guide",
+    text: "asbestos settlement amount average asbestos settlement mesothelioma settlement amounts asbestos claim payout asbestos lawsuit payouts how much is an asbestos claim worth claim value compensation trust claim vs lawsuit largest asbestos settlement wrongful death after death payment percentage"
+  },
+  {
     title: "Diseases Linked to Chemical Exposure",
     url: "diseases-linked-to-chemical-exposure",
     category: "Illness Hub",
