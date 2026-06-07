@@ -382,5 +382,36 @@ window.SEARCH_INDEX = [
     url: "family-ai-safety-guide",
     category: "Guide",
     text: "ai chatbots parents family teens teenagers child safety online safety chatgpt how to talk to teen about ai healthy use warning signs mental health crisis resources 988 suicide crisis lifeline screen time companion apps parental guidance ai safety for kids"
-  }
+  },
+  {
+    title: "Asbestos Exposure at the Brooklyn Navy Yard",
+    url: "brooklyn-navy-yard-asbestos-exposure",
+    category: "Exposure Site",
+    text: "brooklyn navy yard asbestos exposure new york naval shipyard mesothelioma boilers pipe insulation gaskets shipfitters boilermakers pipefitters insulators welders navy veterans uss missouri uss arizona wallabout bay shipyard exposure site take-home secondary exposure"
+  },
+  {
+    title: "Asbestos Exposure at the Philadelphia Naval Shipyard",
+    url: "philadelphia-naval-shipyard-asbestos-exposure",
+    category: "Exposure Site",
+    text: "philadelphia naval shipyard asbestos exposure pennsylvania league island delaware river mesothelioma boilers turbines pumps valves pipe insulation gaskets shipfitters boilermakers pipefitters insulators welders navy veterans warships overhaul BRAC shipyard exposure site take-home secondary exposure"
+  },
+  {
+    title: "Asbestos Exposure Along the Houston Ship Channel",
+    url: "houston-ship-channel-asbestos-exposure",
+    category: "Exposure Site",
+    text: "houston ship channel asbestos exposure texas gulf coast refineries petrochemical plants baytown mesothelioma insulation pipefitters boilermakers insulators refinery operators turnarounds shutdowns heat exchangers boilers gaskets harris county exposure site take-home secondary exposure"
+  },
+  {
+    title: "Asbestos Exposure at Mare Island Naval Shipyard",
+    url: "mare-island-naval-shipyard-asbestos-exposure",
+    category: "Exposure Site",
+    text: "mare island naval shipyard asbestos exposure vallejo california pacific coast submarines nuclear submarine overhaul mesothelioma boilers pipe insulation gaskets insulators pipefitters boilermakers shipfitters welders navy veterans enclosed compartments exposure site take-home secondary exposure"
+  },
+  {
+    title: "Asbestos Exposure at Jacksonville Shipyards and Naval Stations",
+    url: "jacksonville-shipyards-asbestos-exposure",
+    category: "Exposure Site",
+    text: "jacksonville shipyards naval stations asbestos exposure florida st johns river naval station mayport naval air station jacksonville nas dry dock ship repair mesothelioma boilers pipe insulation gaskets insulators pipefitters boilermakers shipfitters welders navy veterans exposure site take-home secondary exposure"
+  },
+
 ];
