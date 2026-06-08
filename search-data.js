@@ -587,5 +587,23 @@ window.SEARCH_INDEX = [
     category: "News and Analysis",
     text: "which asbestos diagnoses most often lead to lawsuits? a reporter-friendly data snapshot comparing annual diagnoses of asbestos-linked illnesses to asbestos lawsuit filing volume, with methodology notes and interpretation cautions. data snapshot diagnoses vs filings methodology mesothelioma lung cancer asbestosis reporter"
   },
+  {
+    title: "What Is Paraquat? Uses, Products, and Risks",
+    url: "what-is-paraquat",
+    category: "Legal Guide",
+    text: "what is paraquat what paraquat is paraquat dichloride paraquat herbicide what is paraquat used for paraquat uses gramoxone paraquat brand names trade names products that contain paraquat is paraquat banned why is paraquat banned paraquat legal epa restricted use pesticide is paraquat dangerous to humans paraquat poisoning paraquat health effects paraquat and parkinsons disease syngenta chevron agricultural herbicide weed killer"
+  },
+  {
+    title: "Paraquat Products and Brand Names, Including Gramoxone",
+    url: "paraquat-products-and-brand-names",
+    category: "Legal Guide",
+    text: "paraquat products and brand names gramoxone what is gramoxone what products contain paraquat paraquat brand names paraquat trade names herbicides that contain paraquat products containing paraquat generic paraquat dichloride firestorm helmquat parazone quik-quat bonedry blanco cyclone gramoxone sl gramoxone 2.0 active ingredient how to identify paraquat product syngenta chevron"
+  },
+  {
+    title: "Does Paraquat Cause Parkinson's Disease?",
+    url: "does-paraquat-cause-parkinsons",
+    category: "Illness Topic",
+    text: "does paraquat cause parkinsons paraquat and parkinsons disease paraquat parkinsons link paraquat parkinsons risk paraquat exposure parkinsons herbicide parkinsons agricultural workers farmers applicators long term exposure oxidative stress dopamine epidemiological studies epa causation association neurological injury research"
+  },
 
 ];
