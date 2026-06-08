@@ -413,5 +413,179 @@ window.SEARCH_INDEX = [
     category: "Exposure Site",
     text: "jacksonville shipyards naval stations asbestos exposure florida st johns river naval station mayport naval air station jacksonville nas dry dock ship repair mesothelioma boilers pipe insulation gaskets insulators pipefitters boilermakers shipfitters welders navy veterans exposure site take-home secondary exposure"
   },
+  {
+    title: "Is It Too Late to File an Asbestos Claim After Symptoms Appear Years Later?",
+    url: "asbestos-claim-deadline-after-symptoms-appear",
+    category: "Legal Guide",
+    text: "is it too late to file an asbestos claim after symptoms appear years later? learn how asbestos claim timing may be affected by late symptoms, diagnosis dates, and exposure history. filing deadline statute of limitations late diagnosis discovery rule timing too late to file"
+  },
+  {
+    title: "Asbestos Exposure Among Boilermakers",
+    url: "asbestos-exposure-among-boilermakers",
+    category: "Legal Guide",
+    text: "asbestos exposure among boilermakers learn how asbestos exposure happened among boilermakers, why boilers and insulation systems created risk, and how these jobs are often discussed in asbestos claims. occupation trade boilers insulation"
+  },
+  {
+    title: "Pipefitters and Steamfitters Asbestos Exposure",
+    url: "asbestos-exposure-among-pipefitters-and-steamfitters",
+    category: "Legal Guide",
+    text: "pipefitters and steamfitters asbestos exposure learn how asbestos exposure happened among pipefitters and steamfitters, why pipe systems and insulation created risk, and how these jobs are often discussed in asbestos claims. occupation trade pipe systems insulation"
+  },
+  {
+    title: "Industrial Shutdowns and Turnarounds Asbestos Exposure",
+    url: "asbestos-exposure-during-industrial-shutdowns-and-turnarounds",
+    category: "Legal Guide",
+    text: "industrial shutdowns and turnarounds asbestos exposure learn how asbestos exposure happened during industrial shutdowns and turnarounds, which jobs and materials were often involved, and why these projects are frequently discussed in asbestos claims. outage maintenance refinery plant turnaround"
+  },
+  {
+    title: "Asbestos Exposure from Brakes and Clutches",
+    url: "asbestos-exposure-from-brakes-and-clutches",
+    category: "Legal Guide",
+    text: "asbestos exposure from brakes and clutches learn how asbestos exposure happened through brakes and clutches, which workers may have been affected, and why automotive repair is often discussed in asbestos claims. automotive mechanics friction products brake dust"
+  },
+  {
+    title: "Asbestos Exposure from Industrial Valves, Pumps, and Gaskets",
+    url: "asbestos-exposure-from-industrial-valves-pumps-and-gaskets",
+    category: "Legal Guide",
+    text: "asbestos exposure from industrial valves, pumps, and gaskets learn how asbestos exposure happened from industrial valves, pumps, and gaskets, which jobs often involved these materials, and why they are frequently discussed in asbestos claims. industrial equipment packing seals"
+  },
+  {
+    title: "Asbestos Exposure from Pipe Insulation and Boilers",
+    url: "asbestos-exposure-from-pipe-insulation-and-boilers",
+    category: "Legal Guide",
+    text: "asbestos exposure from pipe insulation and boilers learn how asbestos exposure happened around pipe insulation and boilers, which workers may have been affected, and why these materials are often discussed in asbestos claims. thermal insulation lagging engine room boiler room"
+  },
+  {
+    title: "Asbestos Exposure from Refractory and Heat-Resistant Materials",
+    url: "asbestos-exposure-from-refractory-and-heat-resistant-materials",
+    category: "Legal Guide",
+    text: "asbestos exposure from refractory and heat-resistant materials learn how asbestos exposure happened from refractory and heat-resistant materials, which jobs often involved these products, and why they are frequently discussed in asbestos claims. furnace kiln high temperature firebrick"
+  },
+  {
+    title: "Asbestos Exposure in Construction and Demolition",
+    url: "asbestos-exposure-in-construction-and-demolition",
+    category: "Legal Guide",
+    text: "asbestos exposure in construction and demolition learn how asbestos exposure happened in construction and demolition work, which materials often contained asbestos, and why these jobs are often linked to later legal claims. building trades renovation drywall joint compound"
+  },
+  {
+    title: "Asbestos Exposure in Industrial Insulation Work",
+    url: "asbestos-exposure-in-industrial-insulation-work",
+    category: "Legal Guide",
+    text: "asbestos exposure in industrial insulation work learn how asbestos exposure happened in industrial insulation work, which jobs and materials were often involved, and why this type of work is frequently discussed in asbestos claims. insulators laggers thermal insulation"
+  },
+  {
+    title: "Asbestos Exposure in Millwright and Machinist Work",
+    url: "asbestos-exposure-in-millwright-and-machinist-work",
+    category: "Legal Guide",
+    text: "asbestos exposure in millwright and machinist work learn how asbestos exposure happened in millwright and machinist work, which jobs and materials were often involved, and why this work is frequently discussed in asbestos claims. occupation trade machinery maintenance"
+  },
+  {
+    title: "Asbestos Exposure in Power Plants and Refineries",
+    url: "asbestos-exposure-in-power-plants-and-refineries",
+    category: "Legal Guide",
+    text: "asbestos exposure in power plants and refineries learn how asbestos exposure happened in power plants and refineries, which jobs and materials were often involved, and why these settings are frequently discussed in asbestos claims. utility energy turbines boilers"
+  },
+  {
+    title: "Asbestos Exposure in Schools, Hospitals, and Commercial Buildings",
+    url: "asbestos-exposure-in-schools-hospitals-and-commercial-buildings",
+    category: "Legal Guide",
+    text: "asbestos exposure in schools, hospitals, and commercial buildings learn how asbestos exposure happened in schools, hospitals, and commercial buildings, which workers and occupants may have been affected, and why these settings are often discussed in asbestos claims. teachers custodians occupants building materials"
+  },
+  {
+    title: "Asbestos Exposure in Shipyards and Naval Service",
+    url: "asbestos-exposure-in-shipyards-and-naval-service",
+    category: "Legal Guide",
+    text: "asbestos exposure in shipyards and naval service learn how asbestos exposure happened in shipyards and naval service, why ships contained asbestos materials, and how these exposures are often linked to later legal claims. shipbuilding ship repair dry dock naval shipyard marine engine navy veterans"
+  },
+  {
+    title: "How Do Lawyers Prove Asbestos Exposure From Decades Ago?",
+    url: "asbestos-exposure-proven-decades-later",
+    category: "Legal Guide",
+    text: "how do lawyers prove asbestos exposure from decades ago? learn how asbestos exposure may be reconstructed years later through work history, medical records, jobsite details, product evidence, witness accounts, and related asbestos claim research. reconstructing exposure work history product identification witness testimony proof"
+  },
+  {
+    title: "Asbestos Guides",
+    url: "asbestos-guides",
+    category: "Legal Guide",
+    text: "asbestos guides browse asbestos guides covering exposure history, jobs, worksites, illnesses, records, trust claims, symptoms, and other asbestos-related legal education topics. asbestos guides hub index browse all asbestos topics"
+  },
+  {
+    title: "Asbestos in Older Homes and Buildings",
+    url: "asbestos-in-older-homes-and-buildings",
+    category: "Legal Guide",
+    text: "asbestos in older homes and buildings learn where asbestos may be found in older homes and buildings, how exposure can happen during renovation or maintenance, and why old materials still matter in asbestos claims. home renovation maintenance old building materials"
+  },
+  {
+    title: "What Records Help Support an Asbestos Claim?",
+    url: "asbestos-records-that-help-support-a-claim",
+    category: "Legal Guide",
+    text: "what records help support an asbestos claim? learn which medical, employment, military, worksite, product, and witness records may help support an asbestos claim and why older exposure histories often require multiple sources of proof. evidence medical employment military worksite product witness records proof"
+  },
+  {
+    title: "Kidney Cancer and Chemical Exposure",
+    url: "chemical-exposure-kidney-cancer",
+    category: "Illness Topic",
+    text: "kidney cancer and chemical exposure learn how kidney cancer is sometimes researched alongside chemical exposure, pfas contamination, contaminated drinking water, industrial pollution, and related legal claims. renal cell carcinoma pfas contamination industrial pollution"
+  },
+  {
+    title: "How Long After Asbestos Exposure Do Symptoms Appear?",
+    url: "how-long-after-asbestos-exposure-do-symptoms-appear",
+    category: "Symptom Topic",
+    text: "how long after asbestos exposure do symptoms appear? learn how long it may take for asbestos exposure symptoms to appear, why diagnosis can happen decades later, and which illnesses are often linked to asbestos. latency period diagnosis timeline mesothelioma asbestosis"
+  },
+  {
+    title: "Jobs With High Risk of Asbestos Exposure",
+    url: "jobs-with-high-risk-of-asbestos-exposure",
+    category: "Legal Guide",
+    text: "jobs with high risk of asbestos exposure learn which jobs historically involved high risk of asbestos exposure, how workers were affected, and how exposure may relate to legal claims. occupations trades high risk workers"
+  },
+  {
+    title: "Pesticide Exposure Lawsuits",
+    url: "pesticide-exposure-lawsuits",
+    category: "Lawsuit Topic",
+    text: "pesticide exposure lawsuits learn about pesticide exposure lawsuits involving herbicides, agricultural chemicals, cancer allegations, neurological injury claims, and other toxic exposure issues. herbicides agricultural chemicals paraquat roundup cancer neurological injury toxic tort"
+  },
+  {
+    title: "Products and Materials That Contained Asbestos",
+    url: "products-and-materials-that-contained-asbestos",
+    category: "Legal Guide",
+    text: "products and materials that contained asbestos learn about products and materials that contained asbestos and why they are often discussed in asbestos exposure claims. insulation gaskets tiles cement textiles brake pads"
+  },
+  {
+    title: "Secondhand Asbestos Exposure",
+    url: "secondhand-asbestos-exposure",
+    category: "Legal Guide",
+    text: "secondhand asbestos exposure learn how secondhand asbestos exposure may affect spouses, children, and other family members, and how household exposure can relate to legal claims. take-home household family spouse children fibers on clothing"
+  },
+  {
+    title: "Toxic Exposure Illnesses and Lawsuits",
+    url: "toxic-exposure-illnesses-lawsuits",
+    category: "Illness Hub",
+    text: "toxic exposure illnesses and lawsuits learn about illnesses often discussed in toxic exposure lawsuits, including cancers, neurological conditions, respiratory disease, reproductive injuries, kidney disease, and other exposure-related health concerns. cancers neurological respiratory reproductive kidney exposure illnesses"
+  },
+  {
+    title: "Toxic Exposure Lawsuits",
+    url: "toxic-exposure-lawsuits",
+    category: "Lawsuit Topic",
+    text: "toxic exposure lawsuits learn about toxic exposure lawsuits involving contaminated water, pesticides, industrial chemicals, asbestos, consumer products, and other alleged exposure-related claims. toxic torts chemical contamination industrial occupational environmental exposure injury claims"
+  },
+  {
+    title: "Toxic Exposure Litigation Trends: What Plaintiffs and Observers Should Watch",
+    url: "toxic-exposure-litigation-trends",
+    category: "News and Analysis",
+    text: "toxic exposure litigation trends: what plaintiffs and observers should watch a plain-english overview of toxic exposure litigation trends, including causation, latency, records, experts, and why these cases can be complex. mass tort trends mdl multidistrict litigation settlements emerging toxic tort claims"
+  },
+  {
+    title: "Where Asbestos Exposure Happened",
+    url: "where-asbestos-exposure-happened",
+    category: "Legal Guide",
+    text: "where asbestos exposure happened learn where asbestos exposure often happened, including job sites, shipyards, factories, older buildings, automotive work, and secondhand household exposure. exposure locations settings worksites shipyards factories buildings automotive secondhand job sites"
+  },
+  {
+    title: "Which Asbestos Diagnoses Most Often Lead to Lawsuits?",
+    url: "which-asbestos-diagnoses-most-often-lead-to-lawsuits",
+    category: "News and Analysis",
+    text: "which asbestos diagnoses most often lead to lawsuits? a reporter-friendly data snapshot comparing annual diagnoses of asbestos-linked illnesses to asbestos lawsuit filing volume, with methodology notes and interpretation cautions. data snapshot diagnoses vs filings methodology mesothelioma lung cancer asbestosis reporter"
+  },
 
 ];
