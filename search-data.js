@@ -72,6 +72,12 @@ window.SEARCH_INDEX = [
     text: "hair relaxer uterine cancer ovarian cancer reproductive injury endocrine chemicals"
   },
   {
+    title: "Is Talcum Powder Safe?",
+    url: "is-talcum-powder-safe",
+    category: "Legal Guide",
+    text: "is talcum powder safe talc powder is it safe talcum powder side effects asbestos in talcum powder talcum and asbestos does talcum powder contain asbestos asbestos free talcum powder talc free body powder ovarian cancer mesothelioma what cancers does talc cause is talcum powder safe for genital area baby powder cornstarch johnson"
+  },
+  {
     title: "Talcum Powder Ovarian Cancer Lawsuit",
     url: "talcum-powder-ovarian-cancer-lawsuit",
     category: "Lawsuit Topic",
