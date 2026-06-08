@@ -78,6 +78,12 @@ window.SEARCH_INDEX = [
     text: "is talcum powder safe talc powder is it safe talcum powder side effects asbestos in talcum powder talcum and asbestos does talcum powder contain asbestos asbestos free talcum powder talc free body powder ovarian cancer mesothelioma what cancers does talc cause is talcum powder safe for genital area baby powder cornstarch johnson"
   },
   {
+    title: "Which Talcum Powder Brands Have Faced Asbestos Concerns?",
+    url: "talcum-powder-brands-and-asbestos",
+    category: "Legal Guide",
+    text: "talc brands asbestos is johnsons talcum powder safe is gold bond talc safe is gold bond talcum powder safe is yardley talcum powder safe is ponds talcum powder safe is cussons talcum powder safe does cuticura talc contain asbestos clubman talc asbestos imperial leather talc asbestos johnson and johnson talcum powder asbestos recall which talcum powder is safe asbestos free talcum powder fda tested positive cosmetics childrens makeup"
+  },
+  {
     title: "Talcum Powder Ovarian Cancer Lawsuit",
     url: "talcum-powder-ovarian-cancer-lawsuit",
     category: "Lawsuit Topic",
