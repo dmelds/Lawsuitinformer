@@ -587,5 +587,11 @@ window.SEARCH_INDEX = [
     category: "News and Analysis",
     text: "which asbestos diagnoses most often lead to lawsuits? a reporter-friendly data snapshot comparing annual diagnoses of asbestos-linked illnesses to asbestos lawsuit filing volume, with methodology notes and interpretation cautions. data snapshot diagnoses vs filings methodology mesothelioma lung cancer asbestosis reporter"
   },
+  {
+    title: "What Is Paraquat? Uses, Products, and Risks",
+    url: "what-is-paraquat",
+    category: "Legal Guide",
+    text: "what is paraquat what paraquat is paraquat dichloride paraquat herbicide what is paraquat used for paraquat uses gramoxone paraquat brand names trade names products that contain paraquat is paraquat banned why is paraquat banned paraquat legal epa restricted use pesticide is paraquat dangerous to humans paraquat poisoning paraquat health effects paraquat and parkinsons disease syngenta chevron agricultural herbicide weed killer"
+  },
 
 ];
