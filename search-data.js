@@ -114,6 +114,30 @@ window.SEARCH_INDEX = [
     text: "social media addiction instagram tiktok snapchat youtube platform harm compulsive use behavioral harm"
   },
   {
+    title: "Social Media and Mental Health",
+    url: "social-media-and-mental-health",
+    category: "Symptom Topic",
+    text: "social media and mental health effects of social media on mental health how social media affects mental health social media impact on mental health is social media bad for mental health social media anxiety depression comparison"
+  },
+  {
+    title: "Effects of Social Media on Teens",
+    url: "effects-of-social-media-on-teens",
+    category: "Symptom Topic",
+    text: "effects of social media on teens social media impact on teenagers social media affecting teens how social media affects teenagers teen mental health body image cyberbullying surgeon general youth"
+  },
+  {
+    title: "Is Social Media Addictive?",
+    url: "is-social-media-addictive",
+    category: "Symptom Topic",
+    text: "is social media addictive social media addiction addictive design dopamine infinite scroll variable rewards signs of social media addiction how to stop social media addiction quit cut back"
+  },
+  {
+    title: "Social Media, Depression, and Anxiety",
+    url: "social-media-depression-and-anxiety",
+    category: "Symptom Topic",
+    text: "social media and depression social media and anxiety social media causes depression social media causes anxiety social media depression teens correlation mood fomo comparison"
+  },
+  {
     title: "Video Game Addiction Lawsuit",
     url: "video-game-addiction-lawsuit",
     category: "Lawsuit Topic",
