@@ -617,5 +617,23 @@ window.SEARCH_INDEX = [
     category: "Illness Topic",
     text: "does paraquat cause parkinsons paraquat and parkinsons disease paraquat parkinsons link paraquat parkinsons risk paraquat exposure parkinsons herbicide parkinsons agricultural workers farmers applicators long term exposure oxidative stress dopamine epidemiological studies epa causation association neurological injury research"
   },
+  {
+    title: "Depo-Provera and Meningioma",
+    url: "depo-provera-meningioma",
+    category: "Illness Topic",
+    text: "depo provera meningioma depo provera brain tumor medroxyprogesterone acetate intracranial meningioma progestogen prolonged use bmj 2024 study association causation meningioma symptoms headaches vision changes seizures mri diagnosis mdl 3140 northern district of florida fda december 2025 label change pfizer birth control injection neurological injury noncancerous brain tumor"
+  },
+  {
+    title: "Depo-Provera Side Effects",
+    url: "depo-provera-side-effects",
+    category: "Symptom Topic",
+    text: "depo provera side effects depo shot side effects depo injection side effects medroxyprogesterone acetate weight gain irregular bleeding spotting breakthrough bleeding mood changes depression headaches breast tenderness low sex drive bone density loss bone mineral density boxed warning long term effects of depo birth control injection contraceptive side effects"
+  },
+  {
+    title: "Coming Off Depo-Provera",
+    url: "coming-off-depo-provera-side-effects",
+    category: "Symptom Topic",
+    text: "coming off depo provera stopping depo shot side effects after stopping depo withdrawal symptoms return of periods fertility return spotting after depo irregular bleeding weight gain after stopping mood changes bone density recovery how long depo wears off signs of depo wearing off discontinuation medroxyprogesterone acetate"
+  },
 
 ];
