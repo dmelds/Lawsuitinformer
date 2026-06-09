@@ -1,5 +1,29 @@
 window.SEARCH_INDEX = [
   {
+    title: "What Is Glyphosate?",
+    url: "what-is-glyphosate",
+    category: "Legal Guide",
+    text: "what is glyphosate glyphosate definition glyphosate meaning what is glyphosate used for what is glyphosate herbicide active ingredient in roundup weed killer monsanto bayer shikimate pathway epsp synthase broad spectrum systemic herbicide what is in roundup what chemical is roundup glyphosate vs roundup"
+  },
+  {
+    title: "Is Roundup Dangerous to Humans?",
+    url: "is-roundup-dangerous",
+    category: "Illness Topic",
+    text: "is roundup dangerous is roundup dangerous to humans is roundup harmful to humans does roundup cause cancer roundup cancer risk roundup health risks glyphosate dangerous glyphosate health effects iarc probably carcinogenic epa non hodgkin lymphoma dose duration exposure"
+  },
+  {
+    title: "Glyphosate Exposure Symptoms",
+    url: "glyphosate-exposure-symptoms",
+    category: "Symptom Topic",
+    text: "glyphosate exposure symptoms symptoms of roundup exposure symptoms of glyphosate exposure roundup side effects on humans glyphosate side effects skin irritation eye irritation nausea ingestion long term exposure non hodgkin lymphoma swollen lymph nodes fatigue night sweats poison control"
+  },
+  {
+    title: "Roundup and Non-Hodgkin Lymphoma",
+    url: "roundup-non-hodgkins-lymphoma",
+    category: "Illness Topic",
+    text: "roundup non hodgkin lymphoma glyphosate non hodgkin lymphoma what type of non hodgkins lymphoma is caused by roundup nhl diffuse large b cell lymphoma follicular lymphoma iarc probably carcinogenic agricultural workers landscapers exposure history causation failure to warn product liability"
+  },
+  {
     title: "Asbestos Exposure Lawsuits",
     url: "asbestos-exposure-lawsuits",
     category: "Lawsuit Topic",
