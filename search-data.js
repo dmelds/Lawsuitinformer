@@ -1,5 +1,29 @@
 window.SEARCH_INDEX = [
   {
+    title: "Does Hair Relaxer Cause Cancer?",
+    url: "does-hair-relaxer-cause-cancer",
+    category: "Illness Topic",
+    text: "does hair relaxer cause cancer hair relaxer cancer hair relaxers and cancer chemical hair straightener cancer uterine cancer endometrial cancer ovarian cancer nih sister study 2022 endocrine disrupting chemicals phthalates parabens formaldehyde association not causation"
+  },
+  {
+    title: "Hair Relaxers and Fibroids",
+    url: "hair-relaxer-and-fibroids",
+    category: "Illness Topic",
+    text: "hair relaxers and fibroids relaxer and fibroids hair relaxer causes fibroids uterine fibroids relaxers cause fibroids fibroids linked to hair relaxers endocrine disrupting chemicals state court claims separate from mdl"
+  },
+  {
+    title: "The Hair Relaxer Cancer Studies, Explained",
+    url: "hair-relaxer-cancer-study",
+    category: "Legal Guide",
+    text: "hair relaxer cancer study hair relaxer study sister study hair relaxer nih study hair straightener chang jnci 2022 uterine cancer observational study association black womens health study endocrine disruptors mechanism relative risk absolute risk"
+  },
+  {
+    title: "Are Hair Relaxers Safe?",
+    url: "are-hair-relaxers-safe",
+    category: "Illness Topic",
+    text: "are hair relaxers safe which hair relaxers are safe are relaxers safe hair relaxer health risks hair relaxer side effects safe relaxer endocrine disrupting chemicals phthalates parabens formaldehyde bpa frequency duration of use"
+  },
+  {
     title: "Is Tylenol Safe During Pregnancy?",
     url: "is-tylenol-safe-during-pregnancy",
     category: "Legal Guide",
