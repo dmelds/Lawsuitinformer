@@ -1,735 +1,851 @@
-window.SEARCH_INDEX = [
-  {
-    title: "Does Hair Relaxer Cause Cancer?",
-    url: "does-hair-relaxer-cause-cancer",
-    category: "Illness Topic",
-    text: "does hair relaxer cause cancer hair relaxer cancer hair relaxers and cancer chemical hair straightener cancer uterine cancer endometrial cancer ovarian cancer nih sister study 2022 endocrine disrupting chemicals phthalates parabens formaldehyde association not causation"
-  },
-  {
-    title: "Hair Relaxers and Fibroids",
-    url: "hair-relaxer-and-fibroids",
-    category: "Illness Topic",
-    text: "hair relaxers and fibroids relaxer and fibroids hair relaxer causes fibroids uterine fibroids relaxers cause fibroids fibroids linked to hair relaxers endocrine disrupting chemicals state court claims separate from mdl"
-  },
-  {
-    title: "The Hair Relaxer Cancer Studies, Explained",
-    url: "hair-relaxer-cancer-study",
-    category: "Legal Guide",
-    text: "hair relaxer cancer study hair relaxer study sister study hair relaxer nih study hair straightener chang jnci 2022 uterine cancer observational study association black womens health study endocrine disruptors mechanism relative risk absolute risk"
-  },
-  {
-    title: "Are Hair Relaxers Safe?",
-    url: "are-hair-relaxers-safe",
-    category: "Illness Topic",
-    text: "are hair relaxers safe which hair relaxers are safe are relaxers safe hair relaxer health risks hair relaxer side effects safe relaxer endocrine disrupting chemicals phthalates parabens formaldehyde bpa frequency duration of use"
-  },
-  {
-    title: "Is Tylenol Safe During Pregnancy?",
-    url: "is-tylenol-safe-during-pregnancy",
-    category: "Legal Guide",
-    text: "is tylenol safe during pregnancy is acetaminophen safe during pregnancy is tylenol ok while pregnant tylenol first trimester tylenol 500mg pregnancy is tylenol safe to take while pregnant acetaminophen pregnancy preferred pain reliever fever lowest effective dose fda label autism adhd debate"
-  },
-  {
-    title: "Does Tylenol Cause Autism?",
-    url: "does-tylenol-cause-autism",
-    category: "Illness Topic",
-    text: "does tylenol cause autism acetaminophen autism link tylenol autism acetaminophen and autism prenatal exposure association causation daubert mdl second circuit appeal hhs report fda sibling control study contested not established"
-  },
-  {
-    title: "The Tylenol Autism Studies, Explained",
-    url: "tylenol-autism-study",
-    category: "Legal Guide",
-    text: "tylenol autism study tylenol and autism study acetaminophen autism research studies linking tylenol to autism observational cohort sibling control 2024 confounding fever genetics jama epidemiology hhs report mixed findings"
-  },
-  {
-    title: "Tylenol, Acetaminophen, and ADHD",
-    url: "tylenol-acetaminophen-and-adhd",
-    category: "Illness Topic",
-    text: "tylenol adhd acetaminophen adhd tylenol and adhd tylenol linked to adhd prenatal acetaminophen adhd attention deficit hyperactivity disorder asd adhd mdl 3043 sibling control association causation contested neurodevelopmental"
-  },
-  {
-    title: "What Is Glyphosate?",
-    url: "what-is-glyphosate",
-    category: "Legal Guide",
-    text: "what is glyphosate glyphosate definition glyphosate meaning what is glyphosate used for what is glyphosate herbicide active ingredient in roundup weed killer monsanto bayer shikimate pathway epsp synthase broad spectrum systemic herbicide what is in roundup what chemical is roundup glyphosate vs roundup"
-  },
-  {
-    title: "Is Roundup Dangerous to Humans?",
-    url: "is-roundup-dangerous",
-    category: "Illness Topic",
-    text: "is roundup dangerous is roundup dangerous to humans is roundup harmful to humans does roundup cause cancer roundup cancer risk roundup health risks glyphosate dangerous glyphosate health effects iarc probably carcinogenic epa non hodgkin lymphoma dose duration exposure"
-  },
-  {
-    title: "Glyphosate Exposure Symptoms",
-    url: "glyphosate-exposure-symptoms",
-    category: "Symptom Topic",
-    text: "glyphosate exposure symptoms symptoms of roundup exposure symptoms of glyphosate exposure roundup side effects on humans glyphosate side effects skin irritation eye irritation nausea ingestion long term exposure non hodgkin lymphoma swollen lymph nodes fatigue night sweats poison control"
-  },
-  {
-    title: "Roundup and Non-Hodgkin Lymphoma",
-    url: "roundup-non-hodgkins-lymphoma",
-    category: "Illness Topic",
-    text: "roundup non hodgkin lymphoma glyphosate non hodgkin lymphoma what type of non hodgkins lymphoma is caused by roundup nhl diffuse large b cell lymphoma follicular lymphoma iarc probably carcinogenic agricultural workers landscapers exposure history causation failure to warn product liability"
-  },
-  {
-    title: "Asbestos Exposure Lawsuits",
-    url: "asbestos-exposure-lawsuits",
-    category: "Lawsuit Topic",
-    text: "asbestos mesothelioma lung cancer asbestosis exposure toxic exposure"
-  },
-  {
-    title: "PFAS Water Contamination Lawsuits",
-    url: "pfas-water-contamination-lawsuits",
-    category: "Lawsuit Topic",
-    text: "pfas water contamination lawsuits forever chemicals drinking water exposure firefighting foam afff afff mdl mdl 2873 3m dupont chemours corteva basf tyco kidney cancer testicular cancer thyroid cancer thyroid disease ulcerative colitis liver cancer immune system effects military bases airports industrial sites landfills public water systems private wells groundwater toxic water contamination environmental contamination chemical exposure"
-  },
-  {
-    title: "Depo-Provera Lawsuits",
-    category: "Consumer Products",
-    url: "depo-provera-lawsuits",
-    text: "Lawsuits alleging long-term Depo-Provera birth control injection use is linked to meningioma brain tumors. Federal MDL 3140 in the Northern District of Florida, FDA's December 2025 label change, medroxyprogesterone acetate, Pfizer."
-  },
-  {
-    title: "PFAS Water Contamination Lawsuit Update",
-    url: "pfas-water-contamination-lawsuit-update",
-    category: "News and Analysis",
-    text: "pfas water contamination lawsuit update may 2026 afff mdl multidistrict litigation bellwether trials 3m dupont public water system settlement individual injury claims forever chemicals drinking water firefighting foam new jersey hoosick falls phase 2 deadline"
-  },
-  {
-    title: "PFAS Lawsuit Statute of Limitations by State",
-    url: "pfas-lawsuit-statute-of-limitations-by-state",
-    category: "Legal Guide",
-    text: "pfas lawsuit statute of limitations filing deadlines all 50 states district of columbia personal injury discovery rule statutes of repose toxic tort considerations afff multidistrict litigation"
-  },
-  {
-    title: "PFAS and Kidney Cancer",
-    url: "pfas-kidney-cancer",
-    category: "Illness Topic",
-    text: "pfas and kidney cancer does pfas cause kidney cancer pfoa renal cell carcinoma forever chemicals c8 science panel iarc carcinogenic group 1 drinking water firefighting foam afff exposure probable link"
-  },
-  {
-    title: "PFAS and Testicular Cancer",
-    url: "pfas-testicular-cancer",
-    category: "Illness Topic",
-    text: "pfas and testicular cancer does pfas cause testicular cancer pfoa forever chemicals c8 science panel iarc carcinogenic probable link drinking water firefighting foam afff occupational exposure firefighters"
-  },
-  {
-    title: "PFAS and Thyroid Disease",
-    url: "pfas-thyroid-disease",
-    category: "Illness Topic",
-    text: "pfas and thyroid disease does pfas affect the thyroid pfoa pfos forever chemicals c8 science panel hypothyroidism thyroid hormones endocrine disruptor probable link thyroid cancer drinking water firefighting foam afff exposure"
-  },
-  {
-    title: "PFAS and Ulcerative Colitis",
-    url: "pfas-ulcerative-colitis",
-    category: "Illness Topic",
-    text: "pfas and ulcerative colitis inflammatory bowel disease ibd pfoa forever chemicals c8 science panel immune system effects probable link crohns disease drinking water firefighting foam afff exposure colon inflammation"
-  },
-  {
-    title: "AFFF Firefighting Foam Lawsuits",
-    url: "afff-firefighting-foam-lawsuits",
-    category: "Lawsuit Topic",
-    text: "afff firefighting foam pfas contamination cancer water exposure"
-  },
-  {
-    title: "Roundup Cancer Lawsuits",
-    url: "roundup-cancer-lawsuits",
-    category: "Lawsuit Topic",
-    text: "roundup glyphosate cancer non hodgkin lymphoma herbicide pesticide"
-  },
-  {
-    title: "Hair Relaxer Cancer Lawsuit",
-    url: "hair-relaxer-cancer-lawsuit",
-    category: "Lawsuit Topic",
-    text: "hair relaxer uterine cancer ovarian cancer reproductive injury endocrine chemicals"
-  },
-  {
-    title: "Is Talcum Powder Safe?",
-    url: "is-talcum-powder-safe",
-    category: "Legal Guide",
-    text: "is talcum powder safe talc powder is it safe talcum powder side effects asbestos in talcum powder talcum and asbestos does talcum powder contain asbestos asbestos free talcum powder talc free body powder ovarian cancer mesothelioma what cancers does talc cause is talcum powder safe for genital area baby powder cornstarch johnson"
-  },
-  {
-    title: "Which Talcum Powder Brands Have Faced Asbestos Concerns?",
-    url: "talcum-powder-brands-and-asbestos",
-    category: "Legal Guide",
-    text: "talc brands asbestos is johnsons talcum powder safe is gold bond talc safe is gold bond talcum powder safe is yardley talcum powder safe is ponds talcum powder safe is cussons talcum powder safe does cuticura talc contain asbestos clubman talc asbestos imperial leather talc asbestos johnson and johnson talcum powder asbestos recall which talcum powder is safe asbestos free talcum powder fda tested positive cosmetics childrens makeup"
-  },
-  {
-    title: "Talcum Powder Ovarian Cancer Lawsuit",
-    url: "talcum-powder-ovarian-cancer-lawsuit",
-    category: "Lawsuit Topic",
-    text: "talc talcum powder ovarian cancer reproductive injuries"
-  },
-  {
-    title: "Paraquat Parkinsons Lawsuits",
-    url: "paraquat-parkinsons-lawsuits",
-    category: "Lawsuit Topic",
-    text: "paraquat parkinson parkinsons neurological pesticide exposure"
-  },
-  {
-    title: "Heavy Metals in Baby Food Lawsuit",
-    url: "heavy-metals-baby-food-lawsuit",
-    category: "Lawsuit Topic",
-    text: "heavy metals baby food lead arsenic cadmium mercury developmental injuries autism child development"
-  },
-  {
-    title: "Tylenol Autism Lawsuits",
-    url: "tylenol-autism-lawsuits",
-    category: "Lawsuit Topic",
-    text: "tylenol autism acetaminophen prenatal exposure developmental injuries"
-  },
-  {
-    title: "Social Media Addiction Lawsuit",
-    url: "social-media-addiction-lawsuit",
-    category: "Lawsuit Topic",
-    text: "social media addiction instagram tiktok snapchat youtube platform harm compulsive use behavioral harm"
-  },
-  {
-    title: "Social Media and Mental Health",
-    url: "social-media-and-mental-health",
-    category: "Symptom Topic",
-    text: "social media and mental health effects of social media on mental health how social media affects mental health social media impact on mental health is social media bad for mental health social media anxiety depression comparison"
-  },
-  {
-    title: "Effects of Social Media on Teens",
-    url: "effects-of-social-media-on-teens",
-    category: "Symptom Topic",
-    text: "effects of social media on teens social media impact on teenagers social media affecting teens how social media affects teenagers teen mental health body image cyberbullying surgeon general youth"
-  },
-  {
-    title: "Is Social Media Addictive?",
-    url: "is-social-media-addictive",
-    category: "Symptom Topic",
-    text: "is social media addictive social media addiction addictive design dopamine infinite scroll variable rewards signs of social media addiction how to stop social media addiction quit cut back"
-  },
-  {
-    title: "Social Media, Depression, and Anxiety",
-    url: "social-media-depression-and-anxiety",
-    category: "Symptom Topic",
-    text: "social media and depression social media and anxiety social media causes depression social media causes anxiety social media depression teens correlation mood fomo comparison"
-  },
-  {
-    title: "Video Game Addiction Lawsuit",
-    url: "video-game-addiction-lawsuit",
-    category: "Lawsuit Topic",
-    text: "video game addiction gaming compulsive use behavioral harm"
-  },
-  {
-    title: "Processed Food Addiction Lawsuit",
-    url: "processed-food-addiction-lawsuit",
-    category: "Lawsuit Topic",
-    text: "processed food addiction ultra processed food addictive design overconsumption health harm"
-  },
-  {
-    title: "Chemical Exposure Lawsuits",
-    url: "chemical-exposure-lawsuits",
-    category: "Lawsuit Topic",
-    text: "chemical exposure toxic exposure industrial chemicals kidney cancer symptoms contamination"
-  },
-  {
-    title: "Illnesses Linked to Lawsuits",
-    url: "illnesses-linked-to-lawsuits",
-    category: "Illness Hub",
-    text: "illnesses exposures mesothelioma kidney cancer testicular cancer ovarian cancer lung cancer parkinsons pfas asbestos pesticides contaminated water"
-  },
-  {
-    title: "Cancers Linked to Lawsuits",
-    url: "cancers-linked-to-lawsuits",
-    category: "Illness Hub",
-    text: "cancers mesothelioma kidney cancer ovarian cancer lung cancer leukemia lymphoma toxic exposure contamination"
-  },
-  {
-    title: "Neurological Conditions Linked to Lawsuits",
-    url: "neurological-conditions-linked-to-lawsuits",
-    category: "Illness Hub",
-    text: "neurological conditions parkinson parkinsons tremor brain nerve developmental toxic exposure"
-  },
-  {
-    title: "Reproductive Injuries Linked to Lawsuits",
-    url: "reproductive-injuries-linked-to-lawsuits",
-    category: "Illness Hub",
-    text: "reproductive injuries ovarian cancer uterine cancer fertility prenatal reproductive harm"
-  },
-  {
-    title: "Developmental Injuries Linked to Lawsuits",
-    url: "developmental-injuries-linked-to-lawsuits",
-    category: "Illness Hub",
-    text: "developmental injuries autism adhd child development prenatal exposure baby food medications heavy metals"
-  },
-  {
-    title: "Water Contamination Illnesses",
-    url: "water-contamination-illnesses",
-    category: "Illness Hub",
-    text: "water contamination illnesses pfas kidney cancer testicular cancer ulcerative colitis thyroid disease firefighting foam"
-  },
-  {
-    title: "Environmental Contamination Illnesses",
-    url: "environmental-contamination-illnesses",
-    category: "Illness Hub",
-    text: "environmental contamination illnesses polluted water industrial releases pfas pesticide drift community exposure"
-  },
-  {
-    title: "Symptoms Linked to Lawsuits",
-    url: "symptoms-linked-to-lawsuits",
-    category: "Symptom Hub",
-    text: "symptoms shortness of breath breathing problems chest pain persistent cough wheezing fatigue rash skin irritation headaches dizziness nausea numbness tingling tremors memory problems neurological symptoms chemical exposure contamination asbestos pfas pesticides"
-  },
-  {
-    title: "Chemical Exposure Symptoms",
-    url: "chemical-exposure-symptoms",
-    category: "Symptom Topic",
-    text: "chemical exposure symptoms headaches dizziness nausea rash breathing problems fatigue chest pain neurological symptoms skin irritation toxic exposure"
-  },
-  {
-    title: "Symptoms of Asbestos Exposure",
-    url: "symptoms-of-asbestos-exposure",
-    category: "Symptom Topic",
-    text: "asbestos exposure symptoms shortness of breath chest pain persistent cough wheezing fatigue mesothelioma lung cancer asbestosis breathing problems"
-  },
-  {
-    title: "Mesothelioma: Types, Symptoms, Causes, and Diagnosis",
-    url: "mesothelioma",
-    category: "Illness Topic",
-    text: "mesothelioma what is mesothelioma mesothelioma symptoms mesothelioma types pleural mesothelioma peritoneal mesothelioma pericardial mesothelioma mesothelioma causes asbestos cancer mesothelioma diagnosis biopsy mesothelioma stages prognosis treatment latency period mesothelioma risk"
-  },
-  {
-    title: "Mesothelioma Symptoms: Early Signs by Type",
-    url: "mesothelioma-symptoms",
-    category: "Illness Topic",
-    text: "mesothelioma symptoms early symptoms of mesothelioma pleural mesothelioma symptoms peritoneal mesothelioma symptoms signs of mesothelioma shortness of breath chest pain cough abdominal pain swelling weight loss fatigue when to see a doctor late diagnosis latency asbestos symptoms"
-  },
-  {
-    title: "Pleural Mesothelioma: Symptoms, Causes, and Claims",
-    url: "pleural-mesothelioma",
-    category: "Illness Topic",
-    text: "pleural mesothelioma most common mesothelioma lungs pleura chest lining asbestos lung cancer difference shortness of breath chest pain cough pleural effusion symptoms causes claims diagnosis latency navy shipyard insulation"
-  },
-  {
-    title: "Mesothelioma Lawsuit Guide",
-    url: "mesothelioma-lawsuit",
-    category: "Illness Topic",
-    text: "mesothelioma lawsuit mesothelioma cancer pleural mesothelioma asbestos exposure diagnosis claims compensation settlement trust funds work history job sites navy shipyard"
-  },
-  {
-    title: "Peritoneal Mesothelioma",
-    url: "peritoneal-mesothelioma",
-    category: "Illness Topic",
-    text: "peritoneal mesothelioma abdominal mesothelioma peritoneum asbestos exposure abdominal pain swelling bloating weight loss mesothelioma cancer pleural mesothelioma lawsuit claims trust funds"
-  },
-  {
-    title: "Lung Cancer from Asbestos",
-    url: "asbestos-lung-cancer-lawsuit",
-    category: "Illness Topic",
-    text: "asbestos lung cancer lawsuit lung cancer from asbestos exposure smoking causation diagnosis claims compensation settlement work history mesothelioma"
-  },
-  {
-    title: "Asbestosis Lawsuit Guide",
-    url: "what-is-asbestosis",
-    category: "Illness Topic",
-    text: "asbestosis lung scarring asbestos exposure shortness of breath breathing problems persistent cough noncancerous lung disease claims compensation work history"
-  },
-  {
-    title: "Mesothelioma vs. Lung Cancer",
-    url: "mesothelioma-vs-lung-cancer",
-    category: "Illness Topic",
-    text: "mesothelioma vs lung cancer difference between mesothelioma and lung cancer diagnosis comparison asbestos exposure pleural causation smoking"
-  },
-  {
-    title: "Who Qualifies for an Asbestos Lawsuit",
-    url: "who-qualifies-for-an-asbestos-lawsuit",
-    category: "Legal Guide",
-    text: "who qualifies asbestos lawsuit eligibility diagnosis mesothelioma lung cancer asbestosis exposure history work records military service filing deadline claims"
-  },
-  {
-    title: "Asbestos Trust Funds and Claims",
-    url: "asbestos-trust-funds-and-claims",
-    category: "Legal Guide",
-    text: "asbestos trust funds bankruptcy trusts trust claims compensation mesothelioma asbestosis lung cancer filing claim manufacturer bankrupt companies settlement payout"
-  },
-  {
-    title: "Asbestos Settlement Amounts",
-    url: "asbestos-settlement-amounts",
-    category: "Legal Guide",
-    text: "asbestos settlement amount average asbestos settlement mesothelioma settlement amounts asbestos claim payout asbestos lawsuit payouts how much is an asbestos claim worth claim value compensation trust claim vs lawsuit largest asbestos settlement wrongful death after death payment percentage"
-  },
-  {
-    title: "Diseases Linked to Chemical Exposure",
-    url: "diseases-linked-to-chemical-exposure",
-    category: "Illness Hub",
-    text: "diseases linked to chemical exposure illness contamination toxic exposure industrial releases"
-  },
-  {
-    title: "Addiction, Media, and Emerging Topics",
-    url: "browse-lawsuits#addiction-media",
-    category: "Browse Section",
-    text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
-  },
-  {
-    title: "AI Lawsuits",
-    url: "browse-lawsuits#ai-lawsuits",
-    category: "Browse Section",
-    text: "ai lawsuits artificial intelligence chatbot lawsuits openai chatgpt anthropic claude generative ai ai product liability ai litigation chatbot harm ai wrongful death ai self harm ai suicide ai mass shooting section 230 negligent entrustment duty to warn product versus content emerging technology"
-  },
-  {
-    title: "News and Analysis",
-    url: "news-and-analysis",
-    category: "News and Analysis",
-    text: "news analysis legal commentary litigation updates consumer safety law360 pfas glyphosate roundup bayer epa regulatory developments published commentary ai lawsuits openai chatgpt"
-  },
-  {
-    title: "Published in Law360: PFAS Reporting and Litigation Risk",
-    url: "published-in-law360-pfas-reporting-litigation-risk",
-    category: "News and Analysis",
-    text: "law360 pfas forever chemicals reporting litigation risk compliance documentation regulatory david meldofsky published commentary attorney perspective epa rule analysis water contamination"
-  },
-  {
-    title: "Glyphosate Lawsuits: EPA, Bayer and the Supreme Court",
-    url: "glyphosate-lawsuits-epa-bayer-supreme-court",
-    category: "News and Analysis",
-    text: "glyphosate roundup lawsuits epa bayer monsanto supreme court scotus preemption herbicide pesticide cancer non hodgkin lymphoma analysis litigation regulatory labeling"
-  },
-  {
-    title: "OpenAI Lawsuits",
-    url: "openai-lawsuits",
-    category: "Lawsuit Topic",
-    text: "openai lawsuits openai lawsuit chatgpt lawsuits chatgpt lawsuit ai product liability ai chatbot wrongful death self harm suicide overdose mass shooting school shooting section 230 negligent entrustment raine v openai tumbler ridge fsu chabba scott turner-scott california products liability first amendment duty to warn tarasoff sam altman drug interaction kratom xanax generative ai"
-  },
-  {
-    title: "AI Lawsuits",
-    url: "ai-lawsuits",
-    category: "Lawsuit Topic",
-    text: "ai lawsuits ai lawsuit artificial intelligence lawsuit ai litigation ai class action lawsuit against ai chatbot lawsuit deepfake lawsuit who is being sued openai character ai grok xai product liability overview hub"
-  },
-  {
-    title: "The TAKE IT DOWN Act Explained",
-    url: "take-it-down-act",
-    category: "Legal Guide",
-    text: "take it down act take it down act explained nonconsensual intimate images ncii ai deepfake law deepfake laws is it illegal to make deepfakes platform removal 48 hours ftc enforcement victim rights digital forgery report deepfake federal law"
-  },
-  {
-    title: "Grok and xAI Lawsuits",
-    url: "grok-lawsuits",
-    category: "Lawsuit Topic",
-    text: "grok lawsuit grok deepfake lawsuit xai lawsuit grok ai images nonconsensual deepfake ai generated images class action st clair baltimore consumer protection privacy likeness take it down act minor victims"
-  },
-  {
-    title: "Character.AI Lawsuits",
-    url: "character-ai-lawsuit",
-    category: "Lawsuit Topic",
-    text: "character ai lawsuit character technologies companion chatbot teen safety wrongful death settlement google garcia medical impersonation chatbot posing as doctor psychiatrist kentucky pennsylvania self harm minors"
-  },
-  {
-    title: "States Suing AI Companies",
-    url: "states-suing-ai-companies",
-    category: "Lawsuit Topic",
-    text: "states suing ai companies state attorney general ai lawsuit florida openai kentucky pennsylvania character ai california grok baltimore consumer protection multistate letter enforcement action deceptive trade practices child safety"
-  },
-  {
-    title: "OpenAI Faces School Shooting Lawsuits: AI Liability Questions",
-    url: "openai-school-shooting-lawsuits-ai-product-liability",
-    category: "News and Analysis",
-    text: "ai lawsuits ai product liability openai school shooting lawsuits ai liability tumbler ridge british columbia canadian shooting jay edelson seven families wall street journal section 230 product liability duty to warn first amendment account enforcement chatgpt ai chatbot federal court san francisco california garcia character technologies"
-  },
-  {
-    title: "OpenAI Sued Over FSU Mass Shooting: Inside the Chabba Lawsuit",
-    url: "chatgpt-fsu-shooting-lawsuit",
-    category: "News and Analysis",
-    text: "ai lawsuits ai chatbot fsu shooting lawsuit chatgpt openai chabba joshi v openai foundation phoenix ikner florida state university negligent entrustment northern district of florida bakari sellers strom law firm osborne francis pettis microsoft section 230 wrongful death product liability defective design failure to warn"
-  },
-  {
-    title: "OpenAI Sued Over Teen's Kratom and Xanax Overdose Death: Inside the Scott Case",
-    url: "chatgpt-overdose-lawsuit-scott",
-    category: "News and Analysis",
-    text: "ai lawsuits ai chatbot chatgpt overdose lawsuit scott turner-scott openai sam nelson kratom xanax drug interaction wrongful death california state court unauthorized practice of medicine product liability raine v openai adult decedent benzodiazepine opioid receptor respiratory depression ai medical advice"
-  },
-  {
-    title: "What Are PFAS (Forever Chemicals)?",
-    url: "pfas",
-    category: "Legal Guide",
-    text: "what are pfas forever chemicals per- and polyfluoroalkyl substances pfoa pfos genx carbon fluorine bond persistent chemicals pfas explained pfas meaning pfas exposure pfas health effects pfas lawsuits overview pfas fundamentals what does pfas stand for"
-  },
-  {
-    title: "What Does PFAS Stand For?",
-    url: "what-does-pfas-stand-for",
-    category: "Legal Guide",
-    text: "what does pfas stand for pfas meaning pfas acronym per- and polyfluoroalkyl substances pfas pronunciation perfluoroalkyl polyfluoroalkyl pfas definition pfas full form"
-  },
-  {
-    title: "PFAS vs. PFOA vs. PFOS Explained",
-    url: "pfas-vs-pfoa-vs-pfos",
-    category: "Legal Guide",
-    text: "pfas vs pfoa vs pfos difference between pfas pfoa pfos perfluorooctanoic acid perfluorooctane sulfonate c8 genx legacy pfas replacement pfas pfoa pfos explained pfas class"
-  },
-  {
-    title: "How Do PFAS Get Into the Body?",
-    url: "how-do-pfas-get-into-the-body",
-    category: "Legal Guide",
-    text: "how do pfas get into the body pfas exposure routes pfas in drinking water pfas in food packaging pfas dust occupational pfas exposure how are people exposed to pfas pfas ingestion firefighting foam afff"
-  },
-  {
-    title: "How Long Do PFAS Stay in the Body?",
-    url: "how-long-do-pfas-stay-in-the-body",
-    category: "Legal Guide",
-    text: "how long do pfas stay in the body pfas half-life pfas elimination do pfas leave the body flush pfas out of system pfas bioaccumulation pfas persistence in blood pfoa pfos half life"
-  },
-  {
-    title: "Are PFAS Dangerous to Humans?",
-    url: "are-pfas-dangerous",
-    category: "Illness Topic",
-    text: "are pfas dangerous pfas health risks pfas harmful pfas dangerous to humans pfas toxicity health effects of pfas is pfas bad pfas cancer thyroid immune cholesterol"
-  },
-  {
-    title: "PFAS Health Effects",
-    url: "pfas-health-effects",
-    category: "Illness Hub",
-    text: "pfas health effects conditions linked to pfas pfas kidney cancer pfas testicular cancer pfas thyroid disease pfas ulcerative colitis pfas cholesterol pfas immune response pfas pregnancy c8 science panel nasem pfas blood test"
-  },
-  {
-    title: "Talking With Your Family About AI Chatbots: A Guide for Parents",
-    url: "family-ai-safety-guide",
-    category: "Guide",
-    text: "ai chatbots parents family teens teenagers child safety online safety chatgpt how to talk to teen about ai healthy use warning signs mental health crisis resources 988 suicide crisis lifeline screen time companion apps parental guidance ai safety for kids"
-  },
-  {
-    title: "Asbestos Exposure at the Brooklyn Navy Yard",
-    url: "brooklyn-navy-yard-asbestos-exposure",
-    category: "Exposure Site",
-    text: "brooklyn navy yard asbestos exposure new york naval shipyard mesothelioma boilers pipe insulation gaskets shipfitters boilermakers pipefitters insulators welders navy veterans uss missouri uss arizona wallabout bay shipyard exposure site take-home secondary exposure"
-  },
-  {
-    title: "Asbestos Exposure at the Philadelphia Naval Shipyard",
-    url: "philadelphia-naval-shipyard-asbestos-exposure",
-    category: "Exposure Site",
-    text: "philadelphia naval shipyard asbestos exposure pennsylvania league island delaware river mesothelioma boilers turbines pumps valves pipe insulation gaskets shipfitters boilermakers pipefitters insulators welders navy veterans warships overhaul BRAC shipyard exposure site take-home secondary exposure"
-  },
-  {
-    title: "Asbestos Exposure Along the Houston Ship Channel",
-    url: "houston-ship-channel-asbestos-exposure",
-    category: "Exposure Site",
-    text: "houston ship channel asbestos exposure texas gulf coast refineries petrochemical plants baytown mesothelioma insulation pipefitters boilermakers insulators refinery operators turnarounds shutdowns heat exchangers boilers gaskets harris county exposure site take-home secondary exposure"
-  },
-  {
-    title: "Asbestos Exposure at Mare Island Naval Shipyard",
-    url: "mare-island-naval-shipyard-asbestos-exposure",
-    category: "Exposure Site",
-    text: "mare island naval shipyard asbestos exposure vallejo california pacific coast submarines nuclear submarine overhaul mesothelioma boilers pipe insulation gaskets insulators pipefitters boilermakers shipfitters welders navy veterans enclosed compartments exposure site take-home secondary exposure"
-  },
-  {
-    title: "Asbestos Exposure at Jacksonville Shipyards and Naval Stations",
-    url: "jacksonville-shipyards-asbestos-exposure",
-    category: "Exposure Site",
-    text: "jacksonville shipyards naval stations asbestos exposure florida st johns river naval station mayport naval air station jacksonville nas dry dock ship repair mesothelioma boilers pipe insulation gaskets insulators pipefitters boilermakers shipfitters welders navy veterans exposure site take-home secondary exposure"
-  },
-  {
-    title: "Is It Too Late to File an Asbestos Claim After Symptoms Appear Years Later?",
-    url: "asbestos-claim-deadline-after-symptoms-appear",
-    category: "Legal Guide",
-    text: "is it too late to file an asbestos claim after symptoms appear years later? learn how asbestos claim timing may be affected by late symptoms, diagnosis dates, and exposure history. filing deadline statute of limitations late diagnosis discovery rule timing too late to file"
-  },
-  {
-    title: "Asbestos Exposure Among Boilermakers",
-    url: "asbestos-exposure-among-boilermakers",
-    category: "Legal Guide",
-    text: "asbestos exposure among boilermakers learn how asbestos exposure happened among boilermakers, why boilers and insulation systems created risk, and how these jobs are often discussed in asbestos claims. occupation trade boilers insulation"
-  },
-  {
-    title: "Pipefitters and Steamfitters Asbestos Exposure",
-    url: "asbestos-exposure-among-pipefitters-and-steamfitters",
-    category: "Legal Guide",
-    text: "pipefitters and steamfitters asbestos exposure learn how asbestos exposure happened among pipefitters and steamfitters, why pipe systems and insulation created risk, and how these jobs are often discussed in asbestos claims. occupation trade pipe systems insulation"
-  },
-  {
-    title: "Industrial Shutdowns and Turnarounds Asbestos Exposure",
-    url: "asbestos-exposure-during-industrial-shutdowns-and-turnarounds",
-    category: "Legal Guide",
-    text: "industrial shutdowns and turnarounds asbestos exposure learn how asbestos exposure happened during industrial shutdowns and turnarounds, which jobs and materials were often involved, and why these projects are frequently discussed in asbestos claims. outage maintenance refinery plant turnaround"
-  },
-  {
-    title: "Asbestos Exposure from Brakes and Clutches",
-    url: "asbestos-exposure-from-brakes-and-clutches",
-    category: "Legal Guide",
-    text: "asbestos exposure from brakes and clutches learn how asbestos exposure happened through brakes and clutches, which workers may have been affected, and why automotive repair is often discussed in asbestos claims. automotive mechanics friction products brake dust"
-  },
-  {
-    title: "Asbestos Exposure from Industrial Valves, Pumps, and Gaskets",
-    url: "asbestos-exposure-from-industrial-valves-pumps-and-gaskets",
-    category: "Legal Guide",
-    text: "asbestos exposure from industrial valves, pumps, and gaskets learn how asbestos exposure happened from industrial valves, pumps, and gaskets, which jobs often involved these materials, and why they are frequently discussed in asbestos claims. industrial equipment packing seals"
-  },
-  {
-    title: "Asbestos Exposure from Pipe Insulation and Boilers",
-    url: "asbestos-exposure-from-pipe-insulation-and-boilers",
-    category: "Legal Guide",
-    text: "asbestos exposure from pipe insulation and boilers learn how asbestos exposure happened around pipe insulation and boilers, which workers may have been affected, and why these materials are often discussed in asbestos claims. thermal insulation lagging engine room boiler room"
-  },
-  {
-    title: "Asbestos Exposure from Refractory and Heat-Resistant Materials",
-    url: "asbestos-exposure-from-refractory-and-heat-resistant-materials",
-    category: "Legal Guide",
-    text: "asbestos exposure from refractory and heat-resistant materials learn how asbestos exposure happened from refractory and heat-resistant materials, which jobs often involved these products, and why they are frequently discussed in asbestos claims. furnace kiln high temperature firebrick"
-  },
-  {
-    title: "Asbestos Exposure in Construction and Demolition",
-    url: "asbestos-exposure-in-construction-and-demolition",
-    category: "Legal Guide",
-    text: "asbestos exposure in construction and demolition learn how asbestos exposure happened in construction and demolition work, which materials often contained asbestos, and why these jobs are often linked to later legal claims. building trades renovation drywall joint compound"
-  },
-  {
-    title: "Asbestos Exposure in Industrial Insulation Work",
-    url: "asbestos-exposure-in-industrial-insulation-work",
-    category: "Legal Guide",
-    text: "asbestos exposure in industrial insulation work learn how asbestos exposure happened in industrial insulation work, which jobs and materials were often involved, and why this type of work is frequently discussed in asbestos claims. insulators laggers thermal insulation"
-  },
-  {
-    title: "Asbestos Exposure in Millwright and Machinist Work",
-    url: "asbestos-exposure-in-millwright-and-machinist-work",
-    category: "Legal Guide",
-    text: "asbestos exposure in millwright and machinist work learn how asbestos exposure happened in millwright and machinist work, which jobs and materials were often involved, and why this work is frequently discussed in asbestos claims. occupation trade machinery maintenance"
-  },
-  {
-    title: "Asbestos Exposure in Power Plants and Refineries",
-    url: "asbestos-exposure-in-power-plants-and-refineries",
-    category: "Legal Guide",
-    text: "asbestos exposure in power plants and refineries learn how asbestos exposure happened in power plants and refineries, which jobs and materials were often involved, and why these settings are frequently discussed in asbestos claims. utility energy turbines boilers"
-  },
-  {
-    title: "Asbestos Exposure in Schools, Hospitals, and Commercial Buildings",
-    url: "asbestos-exposure-in-schools-hospitals-and-commercial-buildings",
-    category: "Legal Guide",
-    text: "asbestos exposure in schools, hospitals, and commercial buildings learn how asbestos exposure happened in schools, hospitals, and commercial buildings, which workers and occupants may have been affected, and why these settings are often discussed in asbestos claims. teachers custodians occupants building materials"
-  },
-  {
-    title: "Asbestos Exposure in Shipyards and Naval Service",
-    url: "asbestos-exposure-in-shipyards-and-naval-service",
-    category: "Legal Guide",
-    text: "asbestos exposure in shipyards and naval service learn how asbestos exposure happened in shipyards and naval service, why ships contained asbestos materials, and how these exposures are often linked to later legal claims. shipbuilding ship repair dry dock naval shipyard marine engine navy veterans"
-  },
-  {
-    title: "How Do Lawyers Prove Asbestos Exposure From Decades Ago?",
-    url: "asbestos-exposure-proven-decades-later",
-    category: "Legal Guide",
-    text: "how do lawyers prove asbestos exposure from decades ago? learn how asbestos exposure may be reconstructed years later through work history, medical records, jobsite details, product evidence, witness accounts, and related asbestos claim research. reconstructing exposure work history product identification witness testimony proof"
-  },
-  {
-    title: "Asbestos Guides",
-    url: "asbestos-guides",
-    category: "Legal Guide",
-    text: "asbestos guides browse asbestos guides covering exposure history, jobs, worksites, illnesses, records, trust claims, symptoms, and other asbestos-related legal education topics. asbestos guides hub index browse all asbestos topics"
-  },
-  {
-    title: "Asbestos in Older Homes and Buildings",
-    url: "asbestos-in-older-homes-and-buildings",
-    category: "Legal Guide",
-    text: "asbestos in older homes and buildings learn where asbestos may be found in older homes and buildings, how exposure can happen during renovation or maintenance, and why old materials still matter in asbestos claims. home renovation maintenance old building materials"
-  },
-  {
-    title: "What Records Help Support an Asbestos Claim?",
-    url: "asbestos-records-that-help-support-a-claim",
-    category: "Legal Guide",
-    text: "what records help support an asbestos claim? learn which medical, employment, military, worksite, product, and witness records may help support an asbestos claim and why older exposure histories often require multiple sources of proof. evidence medical employment military worksite product witness records proof"
-  },
-  {
-    title: "Kidney Cancer and Chemical Exposure",
-    url: "chemical-exposure-kidney-cancer",
-    category: "Illness Topic",
-    text: "kidney cancer and chemical exposure learn how kidney cancer is sometimes researched alongside chemical exposure, pfas contamination, contaminated drinking water, industrial pollution, and related legal claims. renal cell carcinoma pfas contamination industrial pollution"
-  },
-  {
-    title: "How Long After Asbestos Exposure Do Symptoms Appear?",
-    url: "how-long-after-asbestos-exposure-do-symptoms-appear",
-    category: "Symptom Topic",
-    text: "how long after asbestos exposure do symptoms appear? learn how long it may take for asbestos exposure symptoms to appear, why diagnosis can happen decades later, and which illnesses are often linked to asbestos. latency period diagnosis timeline mesothelioma asbestosis"
-  },
-  {
-    title: "Jobs With High Risk of Asbestos Exposure",
-    url: "jobs-with-high-risk-of-asbestos-exposure",
-    category: "Legal Guide",
-    text: "jobs with high risk of asbestos exposure learn which jobs historically involved high risk of asbestos exposure, how workers were affected, and how exposure may relate to legal claims. occupations trades high risk workers"
-  },
-  {
-    title: "Pesticide Exposure Lawsuits",
-    url: "pesticide-exposure-lawsuits",
-    category: "Lawsuit Topic",
-    text: "pesticide exposure lawsuits learn about pesticide exposure lawsuits involving herbicides, agricultural chemicals, cancer allegations, neurological injury claims, and other toxic exposure issues. herbicides agricultural chemicals paraquat roundup cancer neurological injury toxic tort"
-  },
-  {
-    title: "Products and Materials That Contained Asbestos",
-    url: "products-and-materials-that-contained-asbestos",
-    category: "Legal Guide",
-    text: "products and materials that contained asbestos learn about products and materials that contained asbestos and why they are often discussed in asbestos exposure claims. insulation gaskets tiles cement textiles brake pads"
-  },
-  {
-    title: "Secondhand Asbestos Exposure",
-    url: "secondhand-asbestos-exposure",
-    category: "Legal Guide",
-    text: "secondhand asbestos exposure learn how secondhand asbestos exposure may affect spouses, children, and other family members, and how household exposure can relate to legal claims. take-home household family spouse children fibers on clothing"
-  },
-  {
-    title: "Toxic Exposure Illnesses and Lawsuits",
-    url: "toxic-exposure-illnesses-lawsuits",
-    category: "Illness Hub",
-    text: "toxic exposure illnesses and lawsuits learn about illnesses often discussed in toxic exposure lawsuits, including cancers, neurological conditions, respiratory disease, reproductive injuries, kidney disease, and other exposure-related health concerns. cancers neurological respiratory reproductive kidney exposure illnesses"
-  },
-  {
-    title: "Toxic Exposure Lawsuits",
-    url: "toxic-exposure-lawsuits",
-    category: "Lawsuit Topic",
-    text: "toxic exposure lawsuits learn about toxic exposure lawsuits involving contaminated water, pesticides, industrial chemicals, asbestos, consumer products, and other alleged exposure-related claims. toxic torts chemical contamination industrial occupational environmental exposure injury claims"
-  },
-  {
-    title: "Toxic Exposure Litigation Trends: What Plaintiffs and Observers Should Watch",
-    url: "toxic-exposure-litigation-trends",
-    category: "News and Analysis",
-    text: "toxic exposure litigation trends: what plaintiffs and observers should watch a plain-english overview of toxic exposure litigation trends, including causation, latency, records, experts, and why these cases can be complex. mass tort trends mdl multidistrict litigation settlements emerging toxic tort claims"
-  },
-  {
-    title: "Where Asbestos Exposure Happened",
-    url: "where-asbestos-exposure-happened",
-    category: "Legal Guide",
-    text: "where asbestos exposure happened learn where asbestos exposure often happened, including job sites, shipyards, factories, older buildings, automotive work, and secondhand household exposure. exposure locations settings worksites shipyards factories buildings automotive secondhand job sites"
-  },
-  {
-    title: "Which Asbestos Diagnoses Most Often Lead to Lawsuits?",
-    url: "which-asbestos-diagnoses-most-often-lead-to-lawsuits",
-    category: "News and Analysis",
-    text: "which asbestos diagnoses most often lead to lawsuits? a reporter-friendly data snapshot comparing annual diagnoses of asbestos-linked illnesses to asbestos lawsuit filing volume, with methodology notes and interpretation cautions. data snapshot diagnoses vs filings methodology mesothelioma lung cancer asbestosis reporter"
-  },
-  {
-    title: "What Is Paraquat? Uses, Products, and Risks",
-    url: "what-is-paraquat",
-    category: "Legal Guide",
-    text: "what is paraquat what paraquat is paraquat dichloride paraquat herbicide what is paraquat used for paraquat uses gramoxone paraquat brand names trade names products that contain paraquat is paraquat banned why is paraquat banned paraquat legal epa restricted use pesticide is paraquat dangerous to humans paraquat poisoning paraquat health effects paraquat and parkinsons disease syngenta chevron agricultural herbicide weed killer"
-  },
-  {
-    title: "Paraquat Products and Brand Names, Including Gramoxone",
-    url: "paraquat-products-and-brand-names",
-    category: "Legal Guide",
-    text: "paraquat products and brand names gramoxone what is gramoxone what products contain paraquat paraquat brand names paraquat trade names herbicides that contain paraquat products containing paraquat generic paraquat dichloride firestorm helmquat parazone quik-quat bonedry blanco cyclone gramoxone sl gramoxone 2.0 active ingredient how to identify paraquat product syngenta chevron"
-  },
-  {
-    title: "Does Paraquat Cause Parkinson's Disease?",
-    url: "does-paraquat-cause-parkinsons",
-    category: "Illness Topic",
-    text: "does paraquat cause parkinsons paraquat and parkinsons disease paraquat parkinsons link paraquat parkinsons risk paraquat exposure parkinsons herbicide parkinsons agricultural workers farmers applicators long term exposure oxidative stress dopamine epidemiological studies epa causation association neurological injury research"
-  },
-  {
-    title: "Depo-Provera and Meningioma",
-    url: "depo-provera-meningioma",
-    category: "Illness Topic",
-    text: "depo provera meningioma depo provera brain tumor medroxyprogesterone acetate intracranial meningioma progestogen prolonged use bmj 2024 study association causation meningioma symptoms headaches vision changes seizures mri diagnosis mdl 3140 northern district of florida fda december 2025 label change pfizer birth control injection neurological injury noncancerous brain tumor"
-  },
-  {
-    title: "Depo-Provera Side Effects",
-    url: "depo-provera-side-effects",
-    category: "Symptom Topic",
-    text: "depo provera side effects depo shot side effects depo injection side effects medroxyprogesterone acetate weight gain irregular bleeding spotting breakthrough bleeding mood changes depression headaches breast tenderness low sex drive bone density loss bone mineral density boxed warning long term effects of depo birth control injection contraceptive side effects"
-  },
-  {
-    title: "Coming Off Depo-Provera",
-    url: "coming-off-depo-provera-side-effects",
-    category: "Symptom Topic",
-    text: "coming off depo provera stopping depo shot side effects after stopping depo withdrawal symptoms return of periods fertility return spotting after depo irregular bleeding weight gain after stopping mood changes bone density recovery how long depo wears off signs of depo wearing off discontinuation medroxyprogesterone acetate"
-  },
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-];
+<title>Legal Guides: Lawsuits, Settlements, Mass Torts &amp; MDLs</title>
+<meta name="description" content="Plain-English guides from a California-licensed attorney covering how lawsuits work, settlements, discovery, deadlines, mass torts, and MDLs.">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#fbf6e8">
+
+<link rel="author" href="david-meldofsky">
+<link rel="publisher" href="about">
+<link rel="canonical" href="https://lawsuitinformer.com/legal-guides">
+
+<style>
+  .guides-controls {
+    margin: 28px 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .guides-search {
+    position: relative;
+    max-width: 100%;
+  }
+  .guides-search input[type="search"] {
+    width: 100%;
+    padding: 14px 44px 14px 18px;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    border: 1px solid #cfccc1;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .2s ease;
+    -webkit-appearance: none;
+  }
+  .guides-search input[type="search"]:focus { border-color: #b04a2f; }
+  .guides-search input[type="search"]::placeholder { color: #8a877e; }
+  .guides-search input[type="search"]::-webkit-search-cancel-button { display: none; }
+  .guides-search-clear {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translate(0, -50%);
+    width: 28px;
+    height: 28px;
+    background: #f4f3ee;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #5a5750;
+    font-size: 16px;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .guides-search-clear:hover { background: #e5e3dc; color: #1a1a1a; }
+  .guides-search-clear.visible { display: flex; }
+
+  .guides-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .guides-filters-label {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #5a5750;
+    margin-right: 4px;
+  }
+  .guides-filter-chip {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    border: 1px solid #cfccc1;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .guides-filter-chip:hover {
+    background: #0a0a0a;
+    border-color: #0a0a0a;
+    color: #fafaf7;
+  }
+  .guides-filter-chip.active {
+    background: #b04a2f;
+    border-color: #b04a2f;
+    color: #fafaf7;
+  }
+
+  .guides-status {
+    margin: 14px 0 0;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 13px;
+    color: #5a5750;
+    min-height: 18px;
+  }
+
+  .guides-no-results {
+    display: none;
+    margin: 32px 0;
+    padding: 28px;
+    background: #f4f3ee;
+    border: 1px solid #e5e3dc;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .guides-no-results.visible { display: block; }
+  .guides-no-results p {
+    font-family: "Source Serif 4", Georgia, serif;
+    color: #1a1a1a;
+    margin: 0 0 14px;
+    font-size: 1.05rem;
+  }
+  .guides-no-results button {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    padding: 10px 20px;
+    background: #0a0a0a;
+    color: #fafaf7;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .guides-no-results button:hover { background: #1a1a1a; }
+
+  .browse-category.hidden { display: none; }
+  .card.hidden { display: none; }
+
+  @media (max-width: 768px) {
+    .guides-filters-label { width: 100%; margin: 0 0 4px; }
+    .guides-filter-chip { padding: 9px 14px; min-height: 38px; }
+  }
+</style>
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lawsuitinformer.com/legal-guides">
+  <meta property="og:title" content="Legal Guides: Lawsuits, Settlements, Mass Torts &amp; MDLs">
+  <meta property="og:description" content="Plain-English guides from a California-licensed attorney covering how lawsuits work, settlements, discovery, deadlines, mass torts, and MDLs.">
+  <meta property="og:image" content="https://lawsuitinformer.com/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lawsuit Informer — Attorney-led legal education">
+  <meta property="og:site_name" content="Lawsuit Informer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legal Guides: Lawsuits, Settlements, Mass Torts &amp; MDLs">
+  <meta name="twitter:description" content="Plain-English guides from a California-licensed attorney covering how lawsuits work, settlements, discovery, deadlines, mass torts, and MDLs.">
+  <meta name="twitter:image" content="https://lawsuitinformer.com/og-default.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Legal Guides: Lawsuits, Settlements, Mass Torts & MDLs",
+  "description": "Plain-English guides from a California-licensed attorney covering how lawsuits work, settlements, discovery, deadlines, mass torts, and MDLs.",
+  "url": "https://lawsuitinformer.com/legal-guides",
+  "author": {
+    "@type": "Person",
+    "name": "David Meldofsky",
+    "url": "https://lawsuitinformer.com/david-meldofsky"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lawsuit Informer",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lawsuitinformer.com/lawsuit-informer-1.png"
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lawsuitinformer.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Legal Guides",
+      "item": "https://lawsuitinformer.com/legal-guides"
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <div class="logo">
+  <a href="/" aria-label="Lawsuit Informer home">
+    <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" />
+  </a>
+</div>
+
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+  <a href="/">Home</a>
+  <a href="start-here">Start Here</a>
+  <a href="legal-guides">Guides</a>
+  <a href="news-and-analysis">News &amp; Analysis</a>
+  <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+  <a href="symptoms-linked-to-lawsuits">Symptoms</a>
+  <a href="browse-lawsuits">Browse Lawsuits</a>
+  <a href="about">About</a>
+  <a href="contact">Contact</a>
+</nav>
+  </div>
+</header>
+
+<main class="content-page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-separator">&rsaquo;</span>
+    <span aria-current="page">Legal Guides</span>
+  </nav>
+
+  <h1>Legal Guides</h1>
+
+  <p class="article-intro">
+    Explore educational guides about how lawsuits work, settlements, discovery, timelines, deadlines, mass torts, MDLs, and other core legal topics.
+  </p>
+
+  <p>
+    Some readers begin here because they want to understand the legal process before looking at a specific lawsuit. Others arrive after researching a product, illness, or exposure and want a clearer sense of how claims are evaluated and what usually happens next.
+  </p>
+
+  <div class="guides-controls" role="search" aria-label="Search and filter legal guides">
+    <div class="guides-search">
+      <label for="guides-search-input" class="sr-only">Search guides</label>
+      <input
+        type="search"
+        id="guides-search-input"
+        placeholder="Search guides, try &quot;settlement&quot; or &quot;deadlines&quot;"
+        autocomplete="off"
+      >
+      <button type="button" class="guides-search-clear" aria-label="Clear search">&times;</button>
+    </div>
+
+    <div class="guides-filters" role="group" aria-label="Filter by category">
+      <span class="guides-filters-label">Filter:</span>
+      <button type="button" class="guides-filter-chip active" data-filter="all">All Guides</button>
+      <button type="button" class="guides-filter-chip" data-filter="core">Core</button>
+      <button type="button" class="guides-filter-chip" data-filter="settlement">Settlement &amp; Discovery</button>
+      <button type="button" class="guides-filter-chip" data-filter="masstort">Mass Torts &amp; MDLs</button>
+      <button type="button" class="guides-filter-chip" data-filter="related">Related Topics</button>
+    </div>
+
+    <p class="guides-status" id="guides-status" aria-live="polite"></p>
+  </div>
+
+  <div class="guides-no-results" id="guides-no-results" role="status">
+    <p>No guides match your search. Try a different term or clear your filters.</p>
+    <button type="button" id="guides-reset-btn">Show All Guides</button>
+  </div>
+
+  <p class="link-cluster">
+    You can also explore
+    <a href="browse-lawsuits">Browse Lawsuits</a>,
+    <a href="illnesses-linked-to-lawsuits">Illnesses</a>,
+    <a href="symptoms-linked-to-lawsuits">Symptoms</a>,
+    <a href="start-here">Start Here</a>,
+    or visit the
+    <a href="legal-terms-glossary">Legal Terms Glossary</a>.
+  </p>
+
+  <div class="info-box">
+    <strong>Important:</strong>
+    <p>This page provides general educational information and does not constitute legal advice.</p>
+  </div>
+
+  <section class="browse-category" data-category="core">
+    <h2>Core Legal Guides</h2>
+
+    <p class="section-intro">
+      Start with the main process guides covering how lawsuits begin, how evidence and deadlines matter, and how cases may move toward settlement or trial.
+    </p>
+
+    <div class="grid">
+
+      <a href="start-here" class="card">
+        <h3>New to Lawsuits? Start Here</h3>
+        <p>A step-by-step walk through the lawsuit process, key terms, and the decisions that come first.</p>
+      </a>
+
+      <a href="legal-terms-glossary" class="card">
+        <h3>Legal Terms Glossary</h3>
+        <p>Plain-English definitions of settlement, discovery, negligence, MDL, statute of limitations, and other terms you'll hear in a case.</p>
+      </a>
+
+      <a href="how-lawsuits-work" class="card">
+        <h3>How Lawsuits Work</h3>
+        <p>How civil lawsuits begin, move through discovery and motions, and resolve at settlement or trial.</p>
+      </a>
+
+      <a href="do-you-qualify-for-a-lawsuit" class="card">
+        <h3>Do You Qualify for a Lawsuit?</h3>
+        <p>The factors that determine whether you have a viable claim: harm, causation, evidence, deadlines, and the right defendant.</p>
+      </a>
+
+      <a href="is-it-worth-suing" class="card">
+        <h3>Is It Worth Suing?</h3>
+        <p>Five questions to answer before suing: viable claim, collectibility, cost, deadlines, and alternatives.</p>
+      </a>
+
+      <a href="what-happens-if-you-ignore-a-lawsuit" class="card">
+        <h3>What Happens If You Ignore a Lawsuit?</h3>
+        <p>Why ignoring a lawsuit leads to default judgment, wage garnishment, and frozen accounts, and what to do instead.</p>
+      </a>
+
+      <a href="what-happens-after-you-contact-a-lawyer" class="card">
+        <h3>What Happens After You Contact a Lawyer?</h3>
+        <p>What to expect after your first call: intake, case review, follow-up questions, and the decision to take your case.</p>
+      </a>
+
+      <a href="questions-to-ask-before-signing-with-a-lawyer" class="card">
+        <h3>What Questions Should You Ask Before Signing With a Lawyer?</h3>
+        <p>The questions to ask about fees, communication, experience, and case strategy before you sign a retainer.</p>
+      </a>
+
+      <a href="attorney-retainer-agreement-guide" class="card">
+        <h3>Attorney Retainer Agreement Guide</h3>
+        <p>What a retainer agreement covers, the terms that matter most, and what to review before you sign.</p>
+      </a>
+
+
+      <a href="how-long-do-lawsuits-take" class="card">
+        <h3>How Long Do Lawsuits Take?</h3>
+        <p>Typical timelines from filing to resolution, and the factors that speed things up or slow them down.</p>
+      </a>
+
+      <a href="what-evidence-helps-a-lawsuit" class="card">
+        <h3>What Evidence Helps a Lawsuit?</h3>
+        <p>The records, photos, messages, and documents that strengthen a claim, and what to preserve before evidence disappears.</p>
+      </a>
+
+      <a href="statute-of-limitations-basics" class="card">
+        <h3>Statute of Limitations Basics</h3>
+        <p>What a statute of limitations is, how the clock starts, and why missing it can end a case before it begins.</p>
+      </a>
+
+      <a href="pfas-lawsuit-statute-of-limitations-by-state" class="card">
+        <h3>PFAS Lawsuit Statute of Limitations by State</h3>
+        <p>Filing deadlines for PFAS personal injury claims in all 50 states and DC, including discovery rule treatment, statutes of repose, and toxic tort considerations.</p>
+      </a>
+
+
+    </div>
+  </section>
+
+  <section class="browse-category" data-category="settlement">
+    <h2>Settlement, Discovery, and Litigation Process</h2>
+
+    <p class="section-intro">
+      These guides explain the stages many readers hear about after a case begins, including demand letters, discovery, depositions, mediation, trial, and appeals.
+    </p>
+
+    <div class="grid">
+
+      <a href="mistakes" class="card">
+        <h3>Common Lawsuit Mistakes</h3>
+        <p>Avoidable mistakes plaintiffs make with timing, records, social media, and communication with their lawyer.</p>
+      </a>
+
+      <a href="what-is-a-demand-letter" class="card">
+        <h3>What Is a Demand Letter?</h3>
+        <p>What a demand letter is, what it typically includes, and how it can resolve a dispute before a lawsuit is filed.</p>
+      </a>
+
+      <a href="what-is-a-settlement" class="card">
+        <h3>What Is a Settlement?</h3>
+        <p>How settlements work, why most cases resolve before trial, and what's typically negotiated in a settlement agreement.</p>
+      </a>
+
+      <a href="what-is-discovery" class="card">
+        <h3>What Is Discovery?</h3>
+        <p>How discovery works: document requests, interrogatories, depositions, and the evidence exchange that shapes every case.</p>
+      </a>
+
+      <a href="what-is-a-deposition" class="card">
+        <h3>What Is a Deposition?</h3>
+        <p>What a deposition is, how to prepare, and why testimony under oath often decides whether a case settles.</p>
+      </a>
+
+      <a href="what-is-mediation" class="card">
+        <h3>What Is Mediation?</h3>
+        <p>How mediation works, when courts require it, and why neutral-facilitated negotiation resolves many cases short of trial.</p>
+      </a>
+
+      <a href="what-happens-at-trial" class="card">
+        <h3>What Happens at Trial?</h3>
+        <p>What happens at trial, jury selection, opening statements, evidence, witnesses, and the verdict, step by step.</p>
+      </a>
+
+      <a href="what-is-an-appeal" class="card">
+        <h3>What Is an Appeal?</h3>
+        <p>How appeals work, what an appellate court actually reviews, and why most trial verdicts are not overturned.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="browse-category" data-category="masstort">
+    <h2>Mass Torts, MDLs, and Related Frameworks</h2>
+
+    <p class="section-intro">
+      These guides help explain how large groups of similar claims may be handled and how dangerous product and toxic exposure cases are often structured.
+    </p>
+
+    <div class="grid">
+
+      <a href="mass-torts" class="card">
+        <h3>Mass Torts</h3>
+        <p>How mass tort litigation works, how it differs from class actions, and why product and exposure cases often use this framework.</p>
+      </a>
+
+      <a href="how-mass-torts-work" class="card">
+        <h3>How Mass Tort Cases Are Structured and Resolved</h3>
+        <p>A plain, sourced guide to what an MDL is, why it is not a class action, bellwether trials, and the ways these cases actually resolve.</p>
+      </a>
+
+      <a href="where-does-my-lawsuit-stand" class="card">
+        <h3>Where Does My Lawsuit Stand? Litigation Status Tracker</h3>
+        <p>Where the major mass tort litigations stand now, what phase each is in, and what the next milestone is for each type of case.</p>
+      </a>
+
+      <a href="current-mass-tort-cases" class="card">
+        <h3>Current Mass Tort Cases</h3>
+        <p>Browse mass tort topics involving toxic exposure, pesticides, contaminated water, consumer products, and product liability issues.</p>
+      </a>
+
+            <a href="class-action" class="card">
+        <h3>Class Actions</h3>
+        <p>How class actions work, who qualifies as a class member, opt-out rights, and how class actions differ from mass torts.</p>
+      </a>
+
+      <a href="house-ncaa-settlement-explained" class="card">
+        <h3>The House v. NCAA Settlement, Explained for Athletes</h3>
+        <p>What the $2.8B college-athlete settlement is, how a court-supervised class settlement claims process works, and how to spot predatory claims-buyers and settlement advances.</p>
+      </a>
+
+      <a href="mdl-basics" class="card">
+        <h3>MDL Basics</h3>
+        <p>How multidistrict litigation consolidates similar cases, the role of bellwether trials, and how MDLs affect individual claims.</p>
+      </a>
+
+      <a href="bellwether-trials" class="card">
+        <h3>Bellwether Trials</h3>
+        <p>What bellwether trials are, how their verdicts shape settlement value across an MDL, and why they're closely watched.</p>
+      </a>
+
+      <a href="product-liability-lawsuits" class="card">
+        <h3>Product Liability Lawsuits</h3>
+        <p>How product liability claims work, design defects, manufacturing defects, and failure-to-warn theories, and what they require.</p>
+      </a>
+
+      <a href="personal-injury" class="card">
+        <h3>Personal Injury Lawsuits</h3>
+        <p>How injury-based civil claims work, what damages may be involved, and how these cases differ from other lawsuits.</p>
+      </a>
+
+      <a href="toxic-tort-basics" class="card">
+        <h3>Toxic Tort Basics</h3>
+        <p>How toxic tort claims work, what causation requires in exposure cases, and why these claims are evidence-intensive.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="browse-category" data-category="related">
+    <h2>Related Topics</h2>
+
+    <p class="section-intro">
+      These pages help readers move from legal basics into broader lawsuit categories, illness hubs, symptoms, and exposure-related topics.
+    </p>
+
+    <div class="grid">
+
+      <a href="browse-lawsuits" class="card">
+        <h3>Browse Lawsuits</h3>
+        <p>Active lawsuit categories, product liability, toxic exposure, defective drugs, environmental contamination, and consumer safety claims.</p>
+      </a>
+
+      <a href="illnesses-linked-to-lawsuits" class="card">
+        <h3>Illnesses Linked to Lawsuits</h3>
+        <p>Diagnosis-focused pages on cancers, neurological conditions, reproductive harm, and contamination-linked illnesses tied to active claims.</p>
+      </a>
+
+      <a href="symptoms-linked-to-lawsuits" class="card">
+        <h3>Symptoms Linked to Lawsuits</h3>
+        <p>Symptom-based pages for readers researching what may be causing their condition before a specific exposure or product is identified.</p>
+      </a>
+
+      <a href="news-and-analysis" class="card">
+        <h3>News &amp; Analysis</h3>
+        <p>Litigation updates, public verdicts, regulatory developments, and consumer safety commentary across active lawsuit topics.</p>
+      </a>
+
+      <a href="ai-lawsuits" class="card">
+        <h3>AI Lawsuits</h3>
+        <p>The hub for AI litigation topics, chatbot harm claims, deepfake litigation, state enforcement, and how product liability applies to AI.</p>
+      </a>
+
+      <a href="pfas" class="card">
+        <h3>PFAS Fundamentals</h3>
+        <p>What PFAS are, where they come from, how exposure happens, and how PFAS topics connect to water contamination claims.</p>
+      </a>
+
+      <a href="toxic-exposure-lawsuits" class="card">
+        <h3>Toxic Exposure Lawsuits</h3>
+        <p>Lawsuits involving PFAS, pesticide exposure, contaminated water, and industrial releases, plus what plaintiffs typically need to prove.</p>
+      </a>
+
+      <a href="chemical-exposure-lawsuits" class="card">
+        <h3>Chemical Exposure Lawsuits</h3>
+        <p>Claims involving industrial solvents, contaminated water, consumer product exposure, and other toxic substance harm.</p>
+      </a>
+
+      <a href="environmental-contamination-lawsuits" class="card">
+        <h3>Environmental Contamination Lawsuits</h3>
+        <p>Claims involving polluted groundwater, air emissions, agricultural runoff, landfill contamination, and community exposure.</p>
+      </a>
+
+      <a href="cancers-linked-to-lawsuits" class="card">
+        <h3>Cancers Linked to Lawsuits</h3>
+        <p>Cancers with documented links to toxic exposures, defective products, and contaminants currently subject to litigation.</p>
+      </a>
+
+      <a href="consumer-product-lawsuits" class="card">
+        <h3>Consumer Product Lawsuits</h3>
+        <p>Lawsuits over everyday products, cosmetics, household goods, baby products, involving contamination, defect, or inadequate warnings.</p>
+      </a>
+
+      <a href="water-contamination-illnesses" class="card">
+        <h3>Water Contamination Illnesses</h3>
+        <p>Illnesses linked to PFAS, heavy metals, and other contaminants in drinking water, and the claims that follow.</p>
+      </a>
+
+      <a href="asbestos-guides" class="card">
+        <h3>Asbestos Guides</h3>
+        <p>Asbestos resources covering exposure history, high-risk jobs and worksites, illness pathways, records gathering, and trust fund claims.</p>
+      </a>
+
+      <a href="community-education" class="card">
+        <h3>Community Education</h3>
+        <p>Educational resources and outreach topics for communities affected by contamination, exposure, and consumer safety issues.</p>
+      </a>
+
+      <a href="about" class="card">
+        <h3>About Lawsuit Informer</h3>
+        <p>The site's editorial mission, attorney-led background, and how Lawsuit Informer differs from law firm marketing pages.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-review-cta">
+  <div class="case-review-box">
+    <h2>Already Researching a Specific Lawsuit?</h2>
+    <p>
+      If you've worked through these guides because you think a situation may apply to you, you can submit details for a free case review at lawsuit.center and a team will follow up about whether it may qualify.
+    </p>
+    <a href="https://lawsuit.center/case-review" class="btn-primary" rel="noopener">
+      Get a Free Case Review &rarr;
+    </a>
+    <p class="cta-note">
+      Submitting a case review request does not create an attorney-client relationship.
+    </p>
+  </div>
+</section>
+
+
+  <section class="article-meta">
+    <div class="author-box">
+      <div class="author-photo">
+        <img src="david-meldofsky.webp" alt="David Meldofsky" loading="lazy">
+      </div>
+
+      <div class="author-details">
+        <h3>About the Author</h3>
+
+        <p>
+          <strong><a href="david-meldofsky">David Meldofsky</a></strong> is a California-licensed attorney and the founder of Lawsuit Informer, an educational platform focused on helping people understand lawsuits, consumer safety issues, and legal rights related to defective products and toxic exposures.
+        </p>
+
+        <p>
+          Learn more about our
+          <a href="editorial-policy">Editorial Policy</a>
+          or
+          <a href="contact">Contact us</a>.
+        </p>
+
+        <p>
+          Educational information only. Not legal advice. No attorney-client relationship is formed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>Lawsuit Informer</h3>
+        <p>
+          Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.
+        </p>
+        <p><strong>Questions about the site or its educational content?</strong></p>
+        <p>
+          <a href="mailto:hello@lawsuitinformer.com" onclick="if(typeof clicky!=='undefined')clicky.log('email_click', 'footer')">
+            hello@lawsuitinformer.com
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about">About</a></li>
+          <li><a href="dr-thomas-hatzilabrou">Medical Reviewer</a></li>
+          <li><a href="professor-perspective">Professor Perspective</a></li>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="editorial-policy">Editorial Policy</a></li>
+          <li><a href="contributor-guidelines">Write for Us</a></li>
+          <li><a href="legal-guides">Legal Guides</a></li>
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="news-and-analysis">News &amp; Analysis</a></li>
+          <li><a href="how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="disclaimer">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Network</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a><br>
+            <span style="color:#888;font-size:0.9em;">Case-review directory</span>
+          </li>
+          <li>
+            <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a><br>
+            <span style="color:#888;font-size:0.9em;">Industry analysis</span>
+          </li>
+          <li>
+            <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a><br>
+            <span style="color:#888;font-size:0.9em;">Editor &amp; founder</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h3>Follow Lawsuit Informer</h3>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".site-nav");
+
+    if (toggle && menu) {
+      toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("open");
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+
+    const searchInput = document.getElementById("guides-search-input");
+    const clearBtn = document.querySelector(".guides-search-clear");
+    const filterChips = document.querySelectorAll(".guides-filter-chip");
+    const categories = document.querySelectorAll(".browse-category");
+    const cards = document.querySelectorAll(".browse-category .card");
+    const status = document.getElementById("guides-status");
+    const noResults = document.getElementById("guides-no-results");
+    const resetBtn = document.getElementById("guides-reset-btn");
+
+    if (!searchInput || !filterChips.length) return;
+
+    // Pre-fill from URL parameter ?q=
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get("q");
+    if (initialQuery) {
+      searchInput.value = initialQuery;
+    }
+
+    let activeFilter = "all";
+    const totalCount = cards.length;
+
+    function applyFilters() {
+      let query = searchInput.value.trim().toLowerCase();
+      // Treat "guide" or "guides" as a no-op, user wants to see everything
+      if (query === "guide" || query === "guides" || query === "legal guide" || query === "legal guides") {
+        query = "";
+      }
+      let visibleCount = 0;
+
+      categories.forEach(function (cat) {
+        const catKey = cat.getAttribute("data-category");
+        const inCategory = activeFilter === "all" || activeFilter === catKey;
+        let categoryHasMatch = false;
+
+        const catCards = cat.querySelectorAll(".card");
+        catCards.forEach(function (card) {
+          const title = (card.querySelector("h3") || {}).textContent || "";
+          const desc = (card.querySelector("p") || {}).textContent || "";
+          const haystack = (title + " " + desc).toLowerCase();
+          const matchesQuery = query === "" || haystack.indexOf(query) !== -1;
+          const visible = inCategory && matchesQuery;
+
+          if (visible) {
+            card.classList.remove("hidden");
+            categoryHasMatch = true;
+            visibleCount++;
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+
+        if (inCategory && categoryHasMatch) {
+          cat.classList.remove("hidden");
+        } else {
+          cat.classList.add("hidden");
+        }
+      });
+
+      if (query === "" && activeFilter === "all") {
+        status.textContent = "Showing all " + totalCount + " guides.";
+      } else if (visibleCount === 0) {
+        status.textContent = "No matching guides.";
+      } else if (visibleCount === 1) {
+        status.textContent = "Showing 1 guide.";
+      } else {
+        status.textContent = "Showing " + visibleCount + " of " + totalCount + " guides.";
+      }
+
+      if (visibleCount === 0) {
+        noResults.classList.add("visible");
+      } else {
+        noResults.classList.remove("visible");
+      }
+
+      if (searchInput.value.trim() === "") {
+        clearBtn.classList.remove("visible");
+      } else {
+        clearBtn.classList.add("visible");
+      }
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+
+    clearBtn.addEventListener("click", function () {
+      searchInput.value = "";
+      searchInput.focus();
+      applyFilters();
+    });
+
+    filterChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        filterChips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+        activeFilter = chip.getAttribute("data-filter");
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        searchInput.value = "";
+        activeFilter = "all";
+        filterChips.forEach(function (c) {
+          c.classList.toggle("active", c.getAttribute("data-filter") === "all");
+        });
+        applyFilters();
+        searchInput.focus();
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
