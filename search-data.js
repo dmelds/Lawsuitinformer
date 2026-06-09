@@ -1,5 +1,29 @@
 window.SEARCH_INDEX = [
   {
+    title: "Is Tylenol Safe During Pregnancy?",
+    url: "is-tylenol-safe-during-pregnancy",
+    category: "Legal Guide",
+    text: "is tylenol safe during pregnancy is acetaminophen safe during pregnancy is tylenol ok while pregnant tylenol first trimester tylenol 500mg pregnancy is tylenol safe to take while pregnant acetaminophen pregnancy preferred pain reliever fever lowest effective dose fda label autism adhd debate"
+  },
+  {
+    title: "Does Tylenol Cause Autism?",
+    url: "does-tylenol-cause-autism",
+    category: "Illness Topic",
+    text: "does tylenol cause autism acetaminophen autism link tylenol autism acetaminophen and autism prenatal exposure association causation daubert mdl second circuit appeal hhs report fda sibling control study contested not established"
+  },
+  {
+    title: "The Tylenol Autism Studies, Explained",
+    url: "tylenol-autism-study",
+    category: "Legal Guide",
+    text: "tylenol autism study tylenol and autism study acetaminophen autism research studies linking tylenol to autism observational cohort sibling control 2024 confounding fever genetics jama epidemiology hhs report mixed findings"
+  },
+  {
+    title: "Tylenol, Acetaminophen, and ADHD",
+    url: "tylenol-acetaminophen-and-adhd",
+    category: "Illness Topic",
+    text: "tylenol adhd acetaminophen adhd tylenol and adhd tylenol linked to adhd prenatal acetaminophen adhd attention deficit hyperactivity disorder asd adhd mdl 3043 sibling control association causation contested neurodevelopmental"
+  },
+  {
     title: "What Is Glyphosate?",
     url: "what-is-glyphosate",
     category: "Legal Guide",
