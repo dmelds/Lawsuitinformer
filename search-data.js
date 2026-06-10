@@ -276,6 +276,30 @@ window.SEARCH_INDEX = [
     text: "processed food addiction ultra processed food addictive design overconsumption health harm"
   },
   {
+    title: "Ultra Processed Food Lawsuit",
+    url: "ultra-processed-food-lawsuit",
+    category: "Lawsuit Topic",
+    text: "ultra processed food lawsuit upf processed food lawsuit 2026 martinez san francisco type 2 diabetes nafld fatty liver tobacco playbook kraft coca cola"
+  },
+  {
+    title: "Kraft Heinz Lawsuit",
+    url: "kraft-heinz-lawsuit",
+    category: "Lawsuit Topic",
+    text: "kraft heinz lawsuit kraft lawsuit heinz kraft class action velveeta mac and cheese amanda ramirez ultra processed food sued"
+  },
+  {
+    title: "Coca-Cola Lawsuit",
+    url: "coca-cola-lawsuit",
+    category: "Lawsuit Topic",
+    text: "coca cola lawsuit coke sued ultra processed food sugary drinks class action san francisco type 2 diabetes"
+  },
+  {
+    title: "Ultra Processed Food Health Effects",
+    url: "ultra-processed-food-health-effects",
+    category: "Health Topic",
+    text: "ultra processed food health effects upf addiction food addiction obesity type 2 diabetes fatty liver nafld children lancet"
+  },
+  {
     title: "Chemical Exposure Lawsuits",
     url: "chemical-exposure-lawsuits",
     category: "Lawsuit Topic",
