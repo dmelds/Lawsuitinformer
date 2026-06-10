@@ -234,6 +234,42 @@ window.SEARCH_INDEX = [
     text: "video game addiction gaming compulsive use behavioral harm"
   },
   {
+    title: "Roblox Lawsuit",
+    url: "roblox-lawsuit",
+    category: "Lawsuit Topic",
+    text: "roblox lawsuit roblox sued child safety predators exploitation state attorney general mdl addiction robux minors class action"
+  },
+  {
+    title: "Fortnite Lawsuit",
+    url: "fortnite-lawsuit",
+    category: "Lawsuit Topic",
+    text: "fortnite lawsuit epic games addiction loot boxes battle pass v-bucks minors compulsive gaming class action"
+  },
+  {
+    title: "Epic Games Lawsuit",
+    url: "epic-games-lawsuit",
+    category: "Lawsuit Topic",
+    text: "epic games lawsuit fortnite ftc settlement refund apple google app store antitrust addiction claims"
+  },
+  {
+    title: "Video Game Addiction Symptoms",
+    url: "video-game-addiction-symptoms",
+    category: "Health Topic",
+    text: "video game addiction symptoms signs of gaming addiction computer game addiction withdrawal symptoms gaming disorder physical signs teenager mobile playstation warning signs"
+  },
+  {
+    title: "Is Video Game Addiction Real?",
+    url: "is-video-game-addiction-real",
+    category: "Health Topic",
+    text: "is video game addiction real is gaming addiction real internet gaming disorder definition who icd-11 dsm-5 gaming disorder debate"
+  },
+  {
+    title: "Video Game Lawsuit Updates",
+    url: "video-game-addiction-lawsuit-update",
+    category: "Lawsuit Topic",
+    text: "video game lawsuit update video game addiction lawsuit 2026 settlement status jccp 5363 mdl denied roblox fortnite"
+  },
+  {
     title: "Processed Food Addiction Lawsuit",
     url: "processed-food-addiction-lawsuit",
     category: "Lawsuit Topic",
