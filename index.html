@@ -141,7 +141,7 @@
           Attorney-written analysis of lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety &mdash; with visible authorship, dated reviews, and a clear separation between editorial work and case intake.
         </p>
 
-        <form class="hero-search" action="browse-lawsuits.html" method="get" role="search" id="homepage-search-form">
+        <form class="hero-search" action="browse-lawsuits" method="get" role="search" id="homepage-search-form">
           <label class="sr-only" for="homepage-search">Search topics and guides</label>
           <input
             type="search"
@@ -158,24 +158,24 @@
 
         <div class="search-examples">
           <span class="search-examples-label">Try:</span>
-          <a href="mesothelioma-lawsuit">Mesothelioma</a>
-          <a href="asbestos-exposure-lawsuits">Asbestos</a>
-          <a href="pfas">PFAS</a>
-          <a href="afff-firefighting-foam-lawsuits">AFFF</a>
-          <a href="asbestos-exposure-in-shipyards-and-naval-service">Navy Shipyards</a>
-          <a href="kidney-cancer-lawsuits">Kidney Cancer</a>
-          <a href="roundup-cancer-lawsuits">Roundup</a>
-          <a href="talcum-powder-ovarian-cancer-lawsuit">Talcum Powder</a>
-          <a href="paraquat-parkinsons-lawsuits">Paraquat</a>
-          <a href="ai-lawsuits">AI Lawsuits</a>
-          <a href="openai-lawsuits">OpenAI</a>
-          <a href="browse-lawsuits#addiction-media">Addiction</a>
-          <a href="what-is-a-settlement">Settlement</a>
-          <a href="what-is-discovery">Discovery</a>
-          <a href="what-is-mediation">Mediation</a>
-          <a href="mass-torts">Mass Tort</a>
-          <a href="statute-of-limitations-basics">Deadlines</a>
-          <a href="attorney-retainer-agreement-guide">Retainer</a>
+          <a href="browse-lawsuits" data-q="mesothelioma">Mesothelioma</a>
+          <a href="browse-lawsuits" data-q="asbestos">Asbestos</a>
+          <a href="browse-lawsuits" data-q="PFAS">PFAS</a>
+          <a href="browse-lawsuits" data-q="AFFF">AFFF</a>
+          <a href="browse-lawsuits" data-q="shipyard">Navy Shipyards</a>
+          <a href="browse-lawsuits" data-q="kidney cancer">Kidney Cancer</a>
+          <a href="browse-lawsuits" data-q="roundup">Roundup</a>
+          <a href="browse-lawsuits" data-q="talcum">Talcum Powder</a>
+          <a href="browse-lawsuits" data-q="paraquat">Paraquat</a>
+          <a href="browse-lawsuits" data-q="ai">AI Lawsuits</a>
+          <a href="browse-lawsuits" data-q="openai">OpenAI</a>
+          <a href="browse-lawsuits" data-q="addiction">Addiction</a>
+          <a href="legal-guides" data-q="settlement">Settlement</a>
+          <a href="legal-guides" data-q="discovery">Discovery</a>
+          <a href="legal-guides" data-q="mediation">Mediation</a>
+          <a href="legal-guides" data-q="mass tort">Mass Tort</a>
+          <a href="legal-guides" data-q="statute of limitations">Deadlines</a>
+          <a href="legal-guides" data-q="retainer">Retainer</a>
         </div>
 
         <div class="hero-buttons">
@@ -228,7 +228,7 @@
   Three publications:
   <a href="https://lawsuitinformer.com">Lawsuit Informer</a> <span class="cred-line__role">(legal education)</span>
   &middot;
-  <a href="https://lawsuit.center?utm_source=lawsuitinformer&amp;utm_medium=article&amp;utm_campaign=site_general&amp;utm_content=index_text_link" target="_blank" rel="noopener">Lawsuit Center</a> <span class="cred-line__role">(case review)</span>
+  <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a> <span class="cred-line__role">(case review)</span>
   &middot;
   <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a> <span class="cred-line__role">(industry analysis)</span>
 </div>
@@ -803,7 +803,7 @@
         const qLower = q.toLowerCase();
 
         if (qLower === "guide" || qLower === "guides" || qLower === "legal guide" || qLower === "legal guides") {
-          return "legal-guides.html";
+          return "legal-guides";
         }
 
         // If SEARCH_INDEX has 2+ matches, this is a topic search.
@@ -849,5 +849,15 @@
       }
     });
   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".search-examples a[data-q]").forEach(function (chip) {
+      chip.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = chip.getAttribute("href") + "?q=" + encodeURIComponent(chip.getAttribute("data-q"));
+      });
+    });
+  });
+</script>
 </body>
 </html>
