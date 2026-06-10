@@ -174,6 +174,24 @@ window.SEARCH_INDEX = [
     text: "heavy metals baby food lead arsenic cadmium mercury developmental injuries autism child development"
   },
   {
+    title: "Gerber Baby Food Lawsuit",
+    url: "gerber-baby-food-lawsuit",
+    category: "Lawsuit Topic",
+    text: "gerber lawsuit gerber baby food gerber sued gerber class action lawsuit gerber heavy metals lawsuit against gerber gerber puffs gerber cereal lead arsenic autism adhd"
+  },
+  {
+    title: "Beech-Nut Baby Food Lawsuit",
+    url: "beech-nut-baby-food-lawsuit",
+    category: "Lawsuit Topic",
+    text: "beech nut lawsuit beechnut beech-nut baby food rice cereal recall arsenic beech nut class action lawsuit against beechnut beech nut naturals heavy metals autism adhd"
+  },
+  {
+    title: "Baby Food Lawsuit Settlements and Updates",
+    url: "baby-food-lawsuit-settlement",
+    category: "Lawsuit Topic",
+    text: "baby food lawsuit settlement baby food lawsuit 2026 update toxic baby food settlement amounts payout mdl status heavy metals autism adhd"
+  },
+  {
     title: "Tylenol Autism Lawsuits",
     url: "tylenol-autism-lawsuits",
     category: "Lawsuit Topic",
