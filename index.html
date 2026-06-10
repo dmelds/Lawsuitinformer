@@ -158,24 +158,24 @@
 
         <div class="search-examples">
           <span class="search-examples-label">Try:</span>
-          <a href="browse-lawsuits?q=mesothelioma">Mesothelioma</a>
-          <a href="browse-lawsuits?q=asbestos">Asbestos</a>
-          <a href="browse-lawsuits?q=PFAS">PFAS</a>
-          <a href="browse-lawsuits?q=AFFF">AFFF</a>
-          <a href="browse-lawsuits?q=shipyard">Navy Shipyards</a>
-          <a href="browse-lawsuits?q=kidney%20cancer">Kidney Cancer</a>
-          <a href="browse-lawsuits?q=roundup">Roundup</a>
-          <a href="browse-lawsuits?q=talcum">Talcum Powder</a>
-          <a href="browse-lawsuits?q=paraquat">Paraquat</a>
-          <a href="browse-lawsuits?q=ai">AI Lawsuits</a>
-          <a href="browse-lawsuits?q=openai">OpenAI</a>
-          <a href="browse-lawsuits?q=addiction">Addiction</a>
-          <a href="legal-guides?q=settlement">Settlement</a>
-          <a href="legal-guides?q=discovery">Discovery</a>
-          <a href="legal-guides?q=mediation">Mediation</a>
-          <a href="legal-guides?q=mass%20tort">Mass Tort</a>
-          <a href="legal-guides?q=statute%20of%20limitations">Deadlines</a>
-          <a href="legal-guides?q=retainer">Retainer</a>
+          <a href="mesothelioma-lawsuit">Mesothelioma</a>
+          <a href="asbestos-exposure-lawsuits">Asbestos</a>
+          <a href="pfas">PFAS</a>
+          <a href="afff-firefighting-foam-lawsuits">AFFF</a>
+          <a href="asbestos-exposure-in-shipyards-and-naval-service">Navy Shipyards</a>
+          <a href="kidney-cancer-lawsuits">Kidney Cancer</a>
+          <a href="roundup-cancer-lawsuits">Roundup</a>
+          <a href="talcum-powder-ovarian-cancer-lawsuit">Talcum Powder</a>
+          <a href="paraquat-parkinsons-lawsuits">Paraquat</a>
+          <a href="ai-lawsuits">AI Lawsuits</a>
+          <a href="openai-lawsuits">OpenAI</a>
+          <a href="browse-lawsuits#addiction-media">Addiction</a>
+          <a href="what-is-a-settlement">Settlement</a>
+          <a href="what-is-discovery">Discovery</a>
+          <a href="what-is-mediation">Mediation</a>
+          <a href="mass-torts">Mass Tort</a>
+          <a href="statute-of-limitations-basics">Deadlines</a>
+          <a href="attorney-retainer-agreement-guide">Retainer</a>
         </div>
 
         <div class="hero-buttons">
@@ -810,16 +810,16 @@
         // Route to browse-lawsuits.html so SEARCH_INDEX is the source of truth.
         const indexHits = countIndexMatches(qLower);
         if (indexHits >= 2) {
-          return "browse-lawsuits.html?q=" + encodeURIComponent(q);
+          return "browse-lawsuits?q=" + encodeURIComponent(q);
         }
 
         // Otherwise check if it matches a process/guide term.
         if (matchesGuide(q)) {
-          return "legal-guides.html?q=" + encodeURIComponent(q);
+          return "legal-guides?q=" + encodeURIComponent(q);
         }
 
         // Default fallback.
-        return "browse-lawsuits.html?q=" + encodeURIComponent(q);
+        return "browse-lawsuits?q=" + encodeURIComponent(q);
       }
 
       const homepageSearchForm = document.getElementById("homepage-search-form");
