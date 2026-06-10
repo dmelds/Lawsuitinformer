@@ -204,6 +204,42 @@ window.SEARCH_INDEX = [
     text: "social media addiction instagram tiktok snapchat youtube platform harm compulsive use behavioral harm"
   },
   {
+    title: "Meta Lawsuit",
+    url: "meta-lawsuit",
+    category: "Lawsuit Topic",
+    text: "meta lawsuit meta lawsuits lawsuit against meta zuckerberg lawsuit meta class action meta settlement antitrust ftc new mexico verdict youth harm mdl 3047"
+  },
+  {
+    title: "Facebook Lawsuit",
+    url: "facebook-lawsuit",
+    category: "Lawsuit Topic",
+    text: "facebook lawsuit facebook class action lawsuit fb class action suing facebook lawsuit against facebook facebook privacy lawsuit cambridge analytica youth harm"
+  },
+  {
+    title: "Facebook Settlement",
+    url: "facebook-settlement",
+    category: "Lawsuit Topic",
+    text: "facebook settlement facebook privacy settlement facebook settlement payment payout checks status claim form 725 million biometric bipa internet tracking 90 million scam"
+  },
+  {
+    title: "Instagram Lawsuit",
+    url: "instagram-lawsuit",
+    category: "Lawsuit Topic",
+    text: "instagram lawsuit instagram class action meta youth harm eating disorder body image teen mental health kgm verdict"
+  },
+  {
+    title: "Snapchat Lawsuit",
+    url: "snapchat-lawsuit",
+    category: "Lawsuit Topic",
+    text: "snapchat lawsuit snapchat class action lawsuit snap suit snapchat filter lawsuit bipa fentanyl sextortion bellwether settlement youth harm"
+  },
+  {
+    title: "YouTube Lawsuit",
+    url: "youtube-lawsuit",
+    category: "Lawsuit Topic",
+    text: "youtube lawsuit youtube class action lawsuit sue youtube youtube being sued google kgm verdict coppa school district settlement youtube tv"
+  },
+  {
     title: "Social Media and Mental Health",
     url: "social-media-and-mental-health",
     category: "Symptom Topic",
