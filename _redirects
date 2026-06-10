@@ -30,3 +30,11 @@
 /asbestos-exposure-in-dry-docks-and-naval-shipyards           /asbestos-exposure-in-shipyards-and-naval-service     301
 /asbestos-exposure-in-shipbuilding-and-ship-repair            /asbestos-exposure-in-shipyards-and-naval-service     301
 /asbestos-exposure-in-marine-engine-and-mechanical-work       /asbestos-exposure-in-shipyards-and-naval-service     301
+
+# Retired pages (June 2026)
+# professor-jane-smith was placeholder content; free-case-review duplicated
+# Lawsuit Center intake and had zero internal links. Both .html files must be
+# DELETED from the repo for these redirects to fire (Netlify serves physical
+# files before processing _redirects).
+/professor-jane-smith   /professor-perspective   301
+/free-case-review       https://lawsuit.center/?utm_source=lawsuitinformer&utm_medium=redirect&utm_campaign=free_case_review   301
