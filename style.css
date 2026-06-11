@@ -1396,3 +1396,7 @@ footer, .site-footer {
 }
 
 
+
+/* Accessibility: skip link */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--ink-strong);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;font-family:var(--sans);text-decoration:none;border-bottom:0;}
+.skip-link:focus{left:0;color:#fff;}
