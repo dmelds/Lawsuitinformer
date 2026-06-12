@@ -1,0 +1,280 @@
+# Asbestos occupation consolidation (June 2026)
+# Merged occupation pages 301 -> their canonical page.
+
+# Cluster 1 -> pipe-insulation-and-boilers
+/asbestos-exposure-in-boiler-overhaul-and-rebuild-work        /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-in-engine-rooms-and-boiler-rooms           /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-from-steam-lines-and-high-pressure-piping  /asbestos-exposure-from-pipe-insulation-and-boilers   301
+/asbestos-exposure-in-turbine-maintenance-and-repair          /asbestos-exposure-from-pipe-insulation-and-boilers   301
+
+# Cluster 2 -> industrial-insulation-work
+/asbestos-exposure-from-insulation-removal-and-tear-out-work  /asbestos-exposure-in-industrial-insulation-work      301
+
+# Cluster 3 -> industrial-shutdowns-and-turnarounds
+/asbestos-exposure-in-outage-and-maintenance-contract-work        /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-refinery-turnaround-crews                   /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-plant-maintenance-and-mechanical-repair     /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-chemical-plant-maintenance-work             /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-tank-and-vessel-maintenance-work            /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-industrial-cleanout-and-debris-removal-work /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+
+# Cluster 4 -> power-plants-and-refineries
+/asbestos-exposure-in-factories-and-industrial-sites          /asbestos-exposure-in-power-plants-and-refineries     301
+
+# Cluster 5 -> industrial-valves-pumps-and-gaskets
+/asbestos-exposure-in-pump-and-valve-repair-work              /asbestos-exposure-from-industrial-valves-pumps-and-gaskets  301
+
+# Cluster 6 -> shipyards-and-naval-service
+/asbestos-exposure-in-dry-docks-and-naval-shipyards           /asbestos-exposure-in-shipyards-and-naval-service     301
+/asbestos-exposure-in-shipbuilding-and-ship-repair            /asbestos-exposure-in-shipyards-and-naval-service     301
+/asbestos-exposure-in-marine-engine-and-mechanical-work       /asbestos-exposure-in-shipyards-and-naval-service     301
+
+# Retired pages (June 2026)
+# professor-jane-smith was placeholder content; free-case-review duplicated
+# Lawsuit Center intake and had zero internal links. Both .html files must be
+# DELETED from the repo for these redirects to fire (Netlify serves physical
+# files before processing _redirects).
+/professor-jane-smith   /professor-perspective   301
+/free-case-review       https://lawsuit.center/?utm_source=lawsuitinformer&utm_medium=redirect&utm_campaign=free_case_review   301
+
+# ============================================================
+# Forced .html -> extensionless 301s (June 11, 2026)
+# GSC (last 3 months) showed 50 pages indexed under BOTH URLs,
+# with .html variants taking 71% of impressions despite canonical
+# tags. Canonicals alone did not consolidate; these forced rules
+# (trailing !) override Netlify physical-file shadowing so the
+# .html request 301s while Pretty URLs continues serving the
+# extensionless path. One rule per file, generated from the repo.
+# REGENERATE this block when pages are added or removed.
+# ============================================================
+
+/index.html  /  301!
+/about.html  /about  301!
+/afff-firefighting-foam-lawsuits.html  /afff-firefighting-foam-lawsuits  301!
+/ai-lawsuits.html  /ai-lawsuits  301!
+/air-pollution-lawsuits.html  /air-pollution-lawsuits  301!
+/are-hair-relaxers-safe.html  /are-hair-relaxers-safe  301!
+/are-pfas-dangerous.html  /are-pfas-dangerous  301!
+/asbestos-claim-deadline-after-symptoms-appear.html  /asbestos-claim-deadline-after-symptoms-appear  301!
+/asbestos-exposure-among-boilermakers.html  /asbestos-exposure-among-boilermakers  301!
+/asbestos-exposure-among-pipefitters-and-steamfitters.html  /asbestos-exposure-among-pipefitters-and-steamfitters  301!
+/asbestos-exposure-during-industrial-shutdowns-and-turnarounds.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301!
+/asbestos-exposure-from-brakes-and-clutches.html  /asbestos-exposure-from-brakes-and-clutches  301!
+/asbestos-exposure-from-industrial-valves-pumps-and-gaskets.html  /asbestos-exposure-from-industrial-valves-pumps-and-gaskets  301!
+/asbestos-exposure-from-pipe-insulation-and-boilers.html  /asbestos-exposure-from-pipe-insulation-and-boilers  301!
+/asbestos-exposure-from-refractory-and-heat-resistant-materials.html  /asbestos-exposure-from-refractory-and-heat-resistant-materials  301!
+/asbestos-exposure-in-construction-and-demolition.html  /asbestos-exposure-in-construction-and-demolition  301!
+/asbestos-exposure-in-industrial-insulation-work.html  /asbestos-exposure-in-industrial-insulation-work  301!
+/asbestos-exposure-in-millwright-and-machinist-work.html  /asbestos-exposure-in-millwright-and-machinist-work  301!
+/asbestos-exposure-in-power-plants-and-refineries.html  /asbestos-exposure-in-power-plants-and-refineries  301!
+/asbestos-exposure-in-schools-hospitals-and-commercial-buildings.html  /asbestos-exposure-in-schools-hospitals-and-commercial-buildings  301!
+/asbestos-exposure-in-shipyards-and-naval-service.html  /asbestos-exposure-in-shipyards-and-naval-service  301!
+/asbestos-exposure-lawsuits.html  /asbestos-exposure-lawsuits  301!
+/asbestos-exposure-proven-decades-later.html  /asbestos-exposure-proven-decades-later  301!
+/asbestos-guides.html  /asbestos-guides  301!
+/asbestos-in-older-homes-and-buildings.html  /asbestos-in-older-homes-and-buildings  301!
+/asbestos-lung-cancer-lawsuit.html  /asbestos-lung-cancer-lawsuit  301!
+/asbestos-records-that-help-support-a-claim.html  /asbestos-records-that-help-support-a-claim  301!
+/asbestos-settlement-amounts.html  /asbestos-settlement-amounts  301!
+/asbestos-trust-funds-and-claims.html  /asbestos-trust-funds-and-claims  301!
+/attorney-retainer-agreement-guide.html  /attorney-retainer-agreement-guide  301!
+/baby-food-lawsuit-settlement.html  /baby-food-lawsuit-settlement  301!
+/beech-nut-baby-food-lawsuit.html  /beech-nut-baby-food-lawsuit  301!
+/bellwether-trials.html  /bellwether-trials  301!
+/brooklyn-navy-yard-asbestos-exposure.html  /brooklyn-navy-yard-asbestos-exposure  301!
+/browse-lawsuits.html  /browse-lawsuits  301!
+/california-environmental-contamination-lawsuits.html  /california-environmental-contamination-lawsuits  301!
+/california-lawsuits.html  /california-lawsuits  301!
+/cancers-linked-to-lawsuits.html  /cancers-linked-to-lawsuits  301!
+/character-ai-lawsuit.html  /character-ai-lawsuit  301!
+/chatgpt-fsu-shooting-lawsuit.html  /chatgpt-fsu-shooting-lawsuit  301!
+/chatgpt-overdose-lawsuit-scott.html  /chatgpt-overdose-lawsuit-scott  301!
+/chemical-exposure-kidney-cancer.html  /chemical-exposure-kidney-cancer  301!
+/chemical-exposure-lawsuits.html  /chemical-exposure-lawsuits  301!
+/chemical-exposure-symptoms.html  /chemical-exposure-symptoms  301!
+/class-action.html  /class-action  301!
+/coca-cola-lawsuit.html  /coca-cola-lawsuit  301!
+/coming-off-depo-provera-side-effects.html  /coming-off-depo-provera-side-effects  301!
+/community-education.html  /community-education  301!
+/consumer-product-lawsuits.html  /consumer-product-lawsuits  301!
+/consumer-safety-lawsuit-developments.html  /consumer-safety-lawsuit-developments  301!
+/contact.html  /contact  301!
+/contributor-guidelines.html  /contributor-guidelines  301!
+/current-mass-tort-cases.html  /current-mass-tort-cases  301!
+/david-meldofsky.html  /david-meldofsky  301!
+/depo-provera-lawsuits.html  /depo-provera-lawsuits  301!
+/depo-provera-meningioma.html  /depo-provera-meningioma  301!
+/depo-provera-side-effects.html  /depo-provera-side-effects  301!
+/developmental-injuries-linked-to-lawsuits.html  /developmental-injuries-linked-to-lawsuits  301!
+/disclaimer.html  /disclaimer  301!
+/diseases-linked-to-chemical-exposure.html  /diseases-linked-to-chemical-exposure  301!
+/do-you-qualify-for-a-lawsuit.html  /do-you-qualify-for-a-lawsuit  301!
+/does-hair-relaxer-cause-cancer.html  /does-hair-relaxer-cause-cancer  301!
+/does-paraquat-cause-parkinsons.html  /does-paraquat-cause-parkinsons  301!
+/does-tylenol-cause-autism.html  /does-tylenol-cause-autism  301!
+/dr-thomas-hatzilabrou.html  /dr-thomas-hatzilabrou  301!
+/editorial-policy.html  /editorial-policy  301!
+/effects-of-social-media-on-teens.html  /effects-of-social-media-on-teens  301!
+/environmental-contamination-illnesses.html  /environmental-contamination-illnesses  301!
+/environmental-contamination-lawsuits.html  /environmental-contamination-lawsuits  301!
+/epa-pfas-rule-analysis.html  /epa-pfas-rule-analysis  301!
+/epic-games-lawsuit.html  /epic-games-lawsuit  301!
+/facebook-lawsuit.html  /facebook-lawsuit  301!
+/facebook-settlement.html  /facebook-settlement  301!
+/family-ai-safety-guide.html  /family-ai-safety-guide  301!
+/fortnite-lawsuit.html  /fortnite-lawsuit  301!
+/gerber-baby-food-lawsuit.html  /gerber-baby-food-lawsuit  301!
+/glyphosate-exposure-symptoms.html  /glyphosate-exposure-symptoms  301!
+/glyphosate-lawsuits-epa-bayer-supreme-court.html  /glyphosate-lawsuits-epa-bayer-supreme-court  301!
+/grok-lawsuits.html  /grok-lawsuits  301!
+/hair-relaxer-and-fibroids.html  /hair-relaxer-and-fibroids  301!
+/hair-relaxer-cancer-lawsuit.html  /hair-relaxer-cancer-lawsuit  301!
+/hair-relaxer-cancer-study.html  /hair-relaxer-cancer-study  301!
+/hair-relaxer-lawsuit-updates.html  /hair-relaxer-lawsuit-updates  301!
+/has-anyone-been-part-of-a-pfas-water-contamination-lawsuit.html  /has-anyone-been-part-of-a-pfas-water-contamination-lawsuit  301!
+/heavy-metals-baby-food-lawsuit.html  /heavy-metals-baby-food-lawsuit  301!
+/hernia-mesh-lawsuit.html  /hernia-mesh-lawsuit  301!
+/hernia-mesh-products.html  /hernia-mesh-products  301!
+/house-ncaa-settlement-explained.html  /house-ncaa-settlement-explained  301!
+/house-ncaa-settlement-update.html  /house-ncaa-settlement-update  301!
+/houston-ship-channel-asbestos-exposure.html  /houston-ship-channel-asbestos-exposure  301!
+/how-do-pfas-get-into-the-body.html  /how-do-pfas-get-into-the-body  301!
+/how-lawsuits-work.html  /how-lawsuits-work  301!
+/how-long-after-asbestos-exposure-do-symptoms-appear.html  /how-long-after-asbestos-exposure-do-symptoms-appear  301!
+/how-long-do-lawsuits-take.html  /how-long-do-lawsuits-take  301!
+/how-long-do-pfas-stay-in-the-body.html  /how-long-do-pfas-stay-in-the-body  301!
+/how-mass-torts-work.html  /how-mass-torts-work  301!
+/illnesses-linked-to-lawsuits.html  /illnesses-linked-to-lawsuits  301!
+/instagram-lawsuit.html  /instagram-lawsuit  301!
+/is-it-worth-suing.html  /is-it-worth-suing  301!
+/is-roundup-dangerous.html  /is-roundup-dangerous  301!
+/is-social-media-addictive.html  /is-social-media-addictive  301!
+/is-talcum-powder-safe.html  /is-talcum-powder-safe  301!
+/is-tylenol-safe-during-pregnancy.html  /is-tylenol-safe-during-pregnancy  301!
+/is-video-game-addiction-real.html  /is-video-game-addiction-real  301!
+/jacksonville-shipyards-asbestos-exposure.html  /jacksonville-shipyards-asbestos-exposure  301!
+/jobs-with-high-risk-of-asbestos-exposure.html  /jobs-with-high-risk-of-asbestos-exposure  301!
+/kidney-cancer-lawsuits.html  /kidney-cancer-lawsuits  301!
+/kraft-heinz-lawsuit.html  /kraft-heinz-lawsuit  301!
+/legal-guides.html  /legal-guides  301!
+/legal-terms-glossary.html  /legal-terms-glossary  301!
+/mare-island-naval-shipyard-asbestos-exposure.html  /mare-island-naval-shipyard-asbestos-exposure  301!
+/mass-torts.html  /mass-torts  301!
+/mdl-basics.html  /mdl-basics  301!
+/mesothelioma-lawsuit.html  /mesothelioma-lawsuit  301!
+/mesothelioma-symptoms.html  /mesothelioma-symptoms  301!
+/mesothelioma-vs-lung-cancer.html  /mesothelioma-vs-lung-cancer  301!
+/mesothelioma.html  /mesothelioma  301!
+/meta-lawsuit.html  /meta-lawsuit  301!
+/meta-new-mexico-child-safety-verdict.html  /meta-new-mexico-child-safety-verdict  301!
+/mistakes.html  /mistakes  301!
+/neurological-conditions-linked-to-lawsuits.html  /neurological-conditions-linked-to-lawsuits  301!
+/news-and-analysis.html  /news-and-analysis  301!
+/openai-lawsuits.html  /openai-lawsuits  301!
+/openai-school-shooting-lawsuits-ai-product-liability.html  /openai-school-shooting-lawsuits-ai-product-liability  301!
+/paraquat-parkinsons-lawsuits.html  /paraquat-parkinsons-lawsuits  301!
+/paraquat-products-and-brand-names.html  /paraquat-products-and-brand-names  301!
+/peritoneal-mesothelioma.html  /peritoneal-mesothelioma  301!
+/personal-injury.html  /personal-injury  301!
+/pesticide-exposure-lawsuits.html  /pesticide-exposure-lawsuits  301!
+/pfas-consumer-product-lawsuits.html  /pfas-consumer-product-lawsuits  301!
+/pfas-cosmetics-lawsuits.html  /pfas-cosmetics-lawsuits  301!
+/pfas-drinking-water-contamination-by-state.html  /pfas-drinking-water-contamination-by-state  301!
+/pfas-health-effects.html  /pfas-health-effects  301!
+/pfas-kidney-cancer.html  /pfas-kidney-cancer  301!
+/pfas-lawsuit-statute-of-limitations-by-state.html  /pfas-lawsuit-statute-of-limitations-by-state  301!
+/pfas-sewage-sludge-farm-lawsuit-epa.html  /pfas-sewage-sludge-farm-lawsuit-epa  301!
+/pfas-testicular-cancer.html  /pfas-testicular-cancer  301!
+/pfas-thyroid-disease.html  /pfas-thyroid-disease  301!
+/pfas-ulcerative-colitis.html  /pfas-ulcerative-colitis  301!
+/pfas-vs-pfoa-vs-pfos.html  /pfas-vs-pfoa-vs-pfos  301!
+/pfas-water-contamination-lawsuit-update.html  /pfas-water-contamination-lawsuit-update  301!
+/pfas-water-contamination-lawsuits.html  /pfas-water-contamination-lawsuits  301!
+/pfas.html  /pfas  301!
+/philadelphia-naval-shipyard-asbestos-exposure.html  /philadelphia-naval-shipyard-asbestos-exposure  301!
+/pleural-mesothelioma.html  /pleural-mesothelioma  301!
+/privacy-policy.html  /privacy-policy  301!
+/processed-food-addiction-lawsuit.html  /processed-food-addiction-lawsuit  301!
+/product-liability-lawsuits.html  /product-liability-lawsuits  301!
+/products-and-materials-that-contained-asbestos.html  /products-and-materials-that-contained-asbestos  301!
+/professor-perspective.html  /professor-perspective  301!
+/published-in-law360-pfas-reporting-litigation-risk.html  /published-in-law360-pfas-reporting-litigation-risk  301!
+/questions-to-ask-before-signing-with-a-lawyer.html  /questions-to-ask-before-signing-with-a-lawyer  301!
+/recent-developments-hernia-mesh-litigation.html  /recent-developments-hernia-mesh-litigation  301!
+/reproductive-injuries-linked-to-lawsuits.html  /reproductive-injuries-linked-to-lawsuits  301!
+/roblox-lawsuit.html  /roblox-lawsuit  301!
+/roundup-cancer-lawsuits.html  /roundup-cancer-lawsuits  301!
+/roundup-non-hodgkins-lymphoma.html  /roundup-non-hodgkins-lymphoma  301!
+/secondhand-asbestos-exposure.html  /secondhand-asbestos-exposure  301!
+/sms-terms.html  /sms-terms  301!
+/snapchat-lawsuit.html  /snapchat-lawsuit  301!
+/social-media-addiction-lawsuit-update.html  /social-media-addiction-lawsuit-update  301!
+/social-media-addiction-lawsuit.html  /social-media-addiction-lawsuit  301!
+/social-media-and-mental-health.html  /social-media-and-mental-health  301!
+/social-media-depression-and-anxiety.html  /social-media-depression-and-anxiety  301!
+/start-here.html  /start-here  301!
+/states-suing-ai-companies.html  /states-suing-ai-companies  301!
+/statute-of-limitations-basics.html  /statute-of-limitations-basics  301!
+/symptoms-linked-to-lawsuits.html  /symptoms-linked-to-lawsuits  301!
+/symptoms-of-asbestos-exposure.html  /symptoms-of-asbestos-exposure  301!
+/take-it-down-act.html  /take-it-down-act  301!
+/talcum-powder-brands-and-asbestos.html  /talcum-powder-brands-and-asbestos  301!
+/talcum-powder-ovarian-cancer-lawsuit.html  /talcum-powder-ovarian-cancer-lawsuit  301!
+/thank-you.html  /thank-you  301!
+/toxic-exposure-illnesses-lawsuits.html  /toxic-exposure-illnesses-lawsuits  301!
+/toxic-exposure-lawsuits.html  /toxic-exposure-lawsuits  301!
+/toxic-exposure-litigation-trends.html  /toxic-exposure-litigation-trends  301!
+/toxic-tort-basics.html  /toxic-tort-basics  301!
+/toxic-water-contamination-lawsuits.html  /toxic-water-contamination-lawsuits  301!
+/transvaginal-mesh-lawsuits.html  /transvaginal-mesh-lawsuits  301!
+/transvaginal-mesh-litigation-update.html  /transvaginal-mesh-litigation-update  301!
+/transvaginal-mesh-manufacturers-and-public-product-identifiers.html  /transvaginal-mesh-manufacturers-and-public-product-identifiers  301!
+/tylenol-acetaminophen-and-adhd.html  /tylenol-acetaminophen-and-adhd  301!
+/tylenol-autism-lawsuits.html  /tylenol-autism-lawsuits  301!
+/tylenol-autism-study.html  /tylenol-autism-study  301!
+/ultra-processed-food-health-effects.html  /ultra-processed-food-health-effects  301!
+/ultra-processed-food-lawsuit.html  /ultra-processed-food-lawsuit  301!
+/video-game-addiction-lawsuit-update.html  /video-game-addiction-lawsuit-update  301!
+/video-game-addiction-lawsuit.html  /video-game-addiction-lawsuit  301!
+/video-game-addiction-symptoms.html  /video-game-addiction-symptoms  301!
+/water-contamination-illnesses.html  /water-contamination-illnesses  301!
+/what-does-pfas-stand-for.html  /what-does-pfas-stand-for  301!
+/what-evidence-helps-a-lawsuit.html  /what-evidence-helps-a-lawsuit  301!
+/what-happens-after-you-contact-a-lawyer.html  /what-happens-after-you-contact-a-lawyer  301!
+/what-happens-at-trial.html  /what-happens-at-trial  301!
+/what-happens-if-you-ignore-a-lawsuit.html  /what-happens-if-you-ignore-a-lawsuit  301!
+/what-is-a-demand-letter.html  /what-is-a-demand-letter  301!
+/what-is-a-deposition.html  /what-is-a-deposition  301!
+/what-is-a-settlement.html  /what-is-a-settlement  301!
+/what-is-an-appeal.html  /what-is-an-appeal  301!
+/what-is-asbestosis.html  /what-is-asbestosis  301!
+/what-is-discovery.html  /what-is-discovery  301!
+/what-is-glyphosate.html  /what-is-glyphosate  301!
+/what-is-mediation.html  /what-is-mediation  301!
+/what-is-paraquat.html  /what-is-paraquat  301!
+/where-asbestos-exposure-happened.html  /where-asbestos-exposure-happened  301!
+/where-does-my-lawsuit-stand.html  /where-does-my-lawsuit-stand  301!
+/which-asbestos-diagnoses-most-often-lead-to-lawsuits.html  /which-asbestos-diagnoses-most-often-lead-to-lawsuits  301!
+/who-qualifies-for-an-asbestos-lawsuit.html  /who-qualifies-for-an-asbestos-lawsuit  301!
+/youtube-lawsuit.html  /youtube-lawsuit  301!
+
+# .html variants of previously merged/retired pages (files deleted,
+# but old .html URLs may persist in the index)
+/asbestos-exposure-in-boiler-overhaul-and-rebuild-work.html  /asbestos-exposure-from-pipe-insulation-and-boilers  301
+/asbestos-exposure-in-engine-rooms-and-boiler-rooms.html  /asbestos-exposure-from-pipe-insulation-and-boilers  301
+/asbestos-exposure-from-steam-lines-and-high-pressure-piping.html  /asbestos-exposure-from-pipe-insulation-and-boilers  301
+/asbestos-exposure-in-turbine-maintenance-and-repair.html  /asbestos-exposure-from-pipe-insulation-and-boilers  301
+/asbestos-exposure-from-insulation-removal-and-tear-out-work.html  /asbestos-exposure-in-industrial-insulation-work  301
+/asbestos-exposure-in-outage-and-maintenance-contract-work.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-refinery-turnaround-crews.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-plant-maintenance-and-mechanical-repair.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-chemical-plant-maintenance-work.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-tank-and-vessel-maintenance-work.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-industrial-cleanout-and-debris-removal-work.html  /asbestos-exposure-during-industrial-shutdowns-and-turnarounds  301
+/asbestos-exposure-in-factories-and-industrial-sites.html  /asbestos-exposure-in-power-plants-and-refineries  301
+/asbestos-exposure-in-pump-and-valve-repair-work.html  /asbestos-exposure-from-industrial-valves-pumps-and-gaskets  301
+/asbestos-exposure-in-dry-docks-and-naval-shipyards.html  /asbestos-exposure-in-shipyards-and-naval-service  301
+/asbestos-exposure-in-shipbuilding-and-ship-repair.html  /asbestos-exposure-in-shipyards-and-naval-service  301
+/asbestos-exposure-in-marine-engine-and-mechanical-work.html  /asbestos-exposure-in-shipyards-and-naval-service  301
+/professor-jane-smith.html  /professor-perspective  301
+/free-case-review.html  https://lawsuit.center/?utm_source=lawsuitinformer&utm_medium=redirect&utm_campaign=free_case_review  301
