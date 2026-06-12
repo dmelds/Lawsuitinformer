@@ -1055,5 +1055,35 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "house v ncaa settlement explained college athlete settlement 2.8 billion nil back damages revenue sharing class settlement claims process how to file claim predatory claims buyers settlement advances athletes"
   },
+  {
+    title: "Raine v. OpenAI Lawsuit: Status, Timeline, and Case Guide",
+    url: "raine-v-openai-lawsuit",
+    category: "News and Analysis",
+    text: "raine v openai raine lawsuit raine v openai status raine v openai update adam raine matthew maria raine chatgpt wrongful death suicide san francisco superior court amended complaint model spec punitive damages strict products liability sam altman openai answer parental controls foundational ai wrongful death case"
+  },
+  {
+    title: "Is AI Output a Product or Content?",
+    url: "ai-output-product-or-content",
+    category: "Legal Guide",
+    text: "is ai output a product or content is ai a product is chatgpt a product or service section 230 ai first amendment ai product liability winter v putnam software liability garcia v character technologies defective design negligent entrustment failure to warn safety operations plain english explainer threshold question ai liability law360"
+  },
+  {
+    title: "Florida v. OpenAI: The First State Lawsuit Against OpenAI, Explained",
+    url: "florida-v-openai-lawsuit",
+    category: "News and Analysis",
+    text: "florida v openai florida openai lawsuit uthmeier openai state lawsuit against openai sam altman personal liability fdutpa deceptive unfair trade practices negligence product liability fraudulent misrepresentation public nuisance civil enforcement fsu shooting criminal investigation age verification parental controls minors first state suit"
+  },
+  {
+    title: "Garcia v. Character Technologies: The Case That Opened the Door for AI Liability",
+    url: "garcia-v-character-ai-lawsuit",
+    category: "News and Analysis",
+    text: "garcia v character technologies garcia v character ai garcia ruling megan garcia sewell setzer character ai lawsuit settlement may 2025 ruling judge anne conway product liability motion to dismiss first amendment section 230 noam shazeer daniel de freitas google mediated settlement january 2026 companion chatbot teen suicide"
+  },
+  {
+    title: "The Tumbler Ridge Lawsuits: Seven Families Sue OpenAI Over a Flagged Shooter",
+    url: "tumbler-ridge-openai-lawsuits",
+    category: "News and Analysis",
+    text: "tumbler ridge openai lawsuits tumbler ridge shooting lawsuit seven federal lawsuits british columbia school shooting openai flagged conversations safety team police notification account circumvention jay edelson northern district of california negligence wrongful death product liability safety operations bc supreme court sam altman"
+  },
 
 ];
