@@ -1,0 +1,68 @@
+# Lawsuit Informer
+
+> Attorney-led legal education on mass torts and product liability. Plain-English guides to lawsuits, toxic exposure, dangerous drugs, and consumer-safety claims, reviewed by a medical doctor and written by a California-licensed attorney, with links to free, no-obligation case reviews. Educational only; not legal advice.
+
+## Start here
+- [How lawsuits work](https://lawsuitinformer.com/how-lawsuits-work): Plain-English overview of how a lawsuit is investigated, filed, and resolved.
+- [How mass torts work](https://lawsuitinformer.com/how-mass-torts-work): How many similar claims against the same defendant are coordinated.
+- [Do you qualify for a lawsuit](https://lawsuitinformer.com/do-you-qualify-for-a-lawsuit): The factors lawyers weigh first — injury, exposure, timing, records.
+- [Is it worth suing](https://lawsuitinformer.com/is-it-worth-suing): How to think about whether pursuing a claim makes sense.
+- [Browse all lawsuits](https://lawsuitinformer.com/browse-lawsuits): Index of every lawsuit topic on the site.
+
+## PFAS and forever chemicals
+- [PFAS water contamination lawsuits](https://lawsuitinformer.com/pfas-water-contamination-lawsuits): Drinking-water contamination and forever-chemical claims.
+- [PFAS overview](https://lawsuitinformer.com/pfas): What PFAS are and why they appear in litigation.
+- [AFFF firefighting foam lawsuits](https://lawsuitinformer.com/afff-firefighting-foam-lawsuits): PFAS-containing foam exposure claims for firefighters and military.
+- [PFAS health effects](https://lawsuitinformer.com/pfas-health-effects): Conditions associated with PFAS exposure.
+- [PFAS statute of limitations by state](https://lawsuitinformer.com/pfas-lawsuit-statute-of-limitations-by-state): Filing-deadline reference for all 50 states.
+
+## Asbestos and mesothelioma
+- [Asbestos exposure lawsuits](https://lawsuitinformer.com/asbestos-exposure-lawsuits): How asbestos claims work, including trust-fund claims.
+- [Mesothelioma](https://lawsuitinformer.com/mesothelioma): The disease, its asbestos link, and symptoms.
+- [Mesothelioma lawsuit guide](https://lawsuitinformer.com/mesothelioma-lawsuit): How mesothelioma claims are investigated.
+- [Jobs with high risk of asbestos exposure](https://lawsuitinformer.com/jobs-with-high-risk-of-asbestos-exposure): Occupations most often involved in claims.
+- [Asbestos trust funds and claims](https://lawsuitinformer.com/asbestos-trust-funds-and-claims): How bankruptcy trusts pay asbestos claims.
+
+## AI and chatbot lawsuits
+- [OpenAI lawsuits: case tracker](https://lawsuitinformer.com/openai-lawsuits): Status of the active lawsuits against OpenAI.
+- [AI lawsuits overview](https://lawsuitinformer.com/ai-lawsuits): The categories of litigation involving artificial intelligence.
+- [Is AI output a product or content](https://lawsuitinformer.com/ai-output-product-or-content): The threshold legal question in every AI case.
+- [Garcia v. Character Technologies](https://lawsuitinformer.com/garcia-v-character-ai-lawsuit): The foundational AI product-liability ruling.
+- [States suing AI companies](https://lawsuitinformer.com/states-suing-ai-companies): Tracker of state enforcement actions against AI companies.
+
+## Social media and video game litigation
+- [Social media addiction lawsuits](https://lawsuitinformer.com/social-media-addiction-lawsuit): Platform-design and youth mental-health claims.
+- [Video game addiction lawsuits](https://lawsuitinformer.com/video-game-addiction-lawsuit): Compulsive-design and youth-harm allegations.
+
+## Pharmaceuticals
+- [Depo-Provera lawsuits](https://lawsuitinformer.com/depo-provera-lawsuits): Injectable contraceptive and meningioma claims.
+- [Tylenol autism lawsuits](https://lawsuitinformer.com/tylenol-autism-lawsuits): Prenatal acetaminophen and neurodevelopmental claims.
+
+## Pesticides and herbicides
+- [Roundup cancer lawsuits](https://lawsuitinformer.com/roundup-cancer-lawsuits): Glyphosate exposure and non-Hodgkin lymphoma.
+- [Paraquat Parkinson's lawsuits](https://lawsuitinformer.com/paraquat-parkinsons-lawsuits): Herbicide exposure and Parkinson's disease claims.
+
+## Consumer products
+- [Product liability lawsuits](https://lawsuitinformer.com/product-liability-lawsuits): Design defect, manufacturing defect, and failure-to-warn claims.
+- [Hair relaxer cancer lawsuits](https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit): Chemical hair-straightener and cancer claims.
+- [Talcum powder ovarian cancer lawsuits](https://lawsuitinformer.com/talcum-powder-ovarian-cancer-lawsuit): Talc and ovarian-cancer litigation.
+- [Heavy metals in baby food lawsuits](https://lawsuitinformer.com/heavy-metals-baby-food-lawsuit): Toxic-metal contamination claims.
+- [Hernia mesh lawsuits](https://lawsuitinformer.com/hernia-mesh-lawsuit): Surgical mesh device claims.
+- [Ultra-processed food lawsuits](https://lawsuitinformer.com/ultra-processed-food-lawsuit): Emerging food-industry product-liability claims.
+
+## Injury and exposure hubs
+- [Cancers linked to lawsuits](https://lawsuitinformer.com/cancers-linked-to-lawsuits): Cancer diagnoses associated with product and exposure claims.
+- [Neurological conditions linked to lawsuits](https://lawsuitinformer.com/neurological-conditions-linked-to-lawsuits): Neurological diagnoses in litigation.
+- [Reproductive injuries linked to lawsuits](https://lawsuitinformer.com/reproductive-injuries-linked-to-lawsuits): Reproductive-harm claims.
+- [Toxic exposure lawsuits](https://lawsuitinformer.com/toxic-exposure-lawsuits): Chemical, water, and industrial exposure claims.
+
+## About and authorship
+- [About Lawsuit Informer](https://lawsuitinformer.com/about): Who runs the site and its editorial standards.
+- [David Meldofsky](https://lawsuitinformer.com/david-meldofsky): Founder; California-licensed attorney.
+- [Dr. Thomas Hatzilabrou, M.D.](https://lawsuitinformer.com/dr-thomas-hatzilabrou): Medical reviewer.
+- [Editorial policy](https://lawsuitinformer.com/editorial-policy): How content is written, reviewed, and sourced.
+
+## Optional
+- [Privacy policy](https://lawsuitinformer.com/privacy-policy)
+- [Legal disclaimer](https://lawsuitinformer.com/disclaimer)
+- [Contact](https://lawsuitinformer.com/contact)
