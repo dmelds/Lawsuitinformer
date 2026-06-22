@@ -20,6 +20,35 @@
 @font-face { font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2'); }
 
 
+/* ===== METRIC-MATCHED FALLBACKS (eliminate font-swap reflow; keeps CLS at 0) =====
+   Each fallback renders a system font scaled to occupy the exact footprint of its
+   web font, so when the real font swaps in there is no layout shift. */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Times New Roman');
+  size-adjust: 119.26%;
+  ascent-override: 82.00%;
+  descent-override: 21.38%;
+  line-gap-override: 0.00%;
+}
+@font-face {
+  font-family: 'Source Serif Fallback';
+  src: local('Georgia');
+  size-adjust: 107.45%;
+  ascent-override: 96.42%;
+  descent-override: 31.18%;
+  line-gap-override: 0.00%;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Fallback';
+  src: local('Arial');
+  size-adjust: 101.17%;
+  ascent-override: 101.32%;
+  descent-override: 27.18%;
+  line-gap-override: 0.00%;
+}
+
+
 :root {
   --bg: #fafaf7;
   --bg-alt: #f4f3ee;
@@ -40,9 +69,9 @@
   --amber-bright: #e7b961;
   --amber-deep: #b88a3d;
 
-  --display: "Fraunces", "Times New Roman", serif;
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Fraunces", "Fraunces Fallback", "Times New Roman", serif;
+  --serif: "Source Serif 4", "Source Serif Fallback", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", "IBM Plex Sans Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --container: 1180px;
   --reading: 680px;
