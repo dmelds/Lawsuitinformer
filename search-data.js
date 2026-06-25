@@ -1085,5 +1085,190 @@ window.SEARCH_INDEX = [
     category: "News and Analysis",
     text: "tumbler ridge openai lawsuits tumbler ridge shooting lawsuit seven federal lawsuits british columbia school shooting openai flagged conversations safety team police notification account circumvention jay edelson northern district of california negligence wrongful death product liability safety operations bc supreme court sam altman"
   },
-
+  {
+    title: "Angelilli v. Activision Blizzard Complaint (MDL 3109)",
+    url: "angelilli-v-activision-blizzard",
+    category: "Court Filing",
+    text: "angelilli activision blizzard complaint mdl 3109 read video game addiction schedule case no causes action summary plain english key allegations transcribed original court document how fits litigation related coverage lawsuits jpml order roblox lawsuit fortnite epic games about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Antonetti v. Activision Blizzard Complaint",
+    url: "antonetti-v-activision-blizzard",
+    category: "Court Filing",
+    text: "antonetti activision blizzard complaint read video game addiction which emphasizes alleged brain harm causes action summary plain english key allegations transcribed original court document how fits litigation related coverage lawsuits jpml order mdl no 3109 fortnite lawsuit minecraft epic games about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Attorney Retainer Agreement Guide | What to Know Before You Sign",
+    url: "attorney-retainer-agreement-guide",
+    category: "Legal Guide",
+    text: "attorney retainer agreement guide what know before sign learn fee agreements usually cover including contingency fees case costs referral arrangements termination clauses understand page common types legal terms review carefully signing why some may feel one sided questions ask when seek independent advice people have about hourly flat hybrid true retainers advance deposits most deducted after should someone get second opinion related guides start here author david meldofsky california licensed founder lawsuit informer"
+  },
+  {
+    title: "Baggaley v. Roblox Complaint: Gateway Games Case",
+    url: "baggaley-v-roblox",
+    category: "Court Filing",
+    text: "baggaley roblox complaint gateway games case read video game addiction naming epic microsoft mojang causes action plain english summary key allegations transcribed original court document how fits litigation related coverage lawsuits lawsuit fortnite minecraft updates about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Browse Lawsuit Topics",
+    url: "browse-lawsuits",
+    category: "Legal Guide",
+    text: "browse lawsuits lawsuit topics involving chemical exposure product liability environmental contamination consumer products safety claims explore jump category toxic addiction media emerging ai illness injury pfas guides asbestos related legal frameworks recent litigation updates analysis ready request case review need basics first understanding comes water illnesses air pollution afff firefighting foam pesticide roundup cancer glyphosate epa bayer supreme court paraquat parkinson talcum powder ovarian heavy metals baby food gerber beech nut settlements tylenol autism hair relaxer depo provera transvaginal mesh hernia cosmetics processed ultra kraft heinz coca cola meta instagram facebook snapchat youtube video game roblox fortnite epic games social new mexico child verdict overview openai hub raine guide tumbler ridge florida garcia character technologies output content take down act explained grok xai states suing companies family faces school shooting sued over fsu mass chabba teen kratom xanax overdose scott linked cancers neurological conditions reproductive injuries developmental fundamentals health effects kidney testicular thyroid disease ulcerative colitis has anyone been part drinking state statute limitations sewage sludge farm rule published law360 reporting risk update mesothelioma lung asbestosis jobs high where happened materials contained trust funds symptoms diseases tort torts current cases mdl personal news house ncaa settlement developments manufacturers identifiers trends last updated june 2026 educational covering defective broader issues some readers begin specific others start diagnosis symptom pattern general question about how work"
+  },
+  {
+    title: "Community Legal Education",
+    url: "community-education",
+    category: "Legal Guide",
+    text: "community education legal lawsuit informer offers plain language educational presentations schools libraries groups literacy consumer safety about program who these sample presentation topics what participants can learn format presented important note interested hosting how lawsuits work english guide public mass torts class actions evaluate information online civil justice everyday life through david meldofsky california licensed attorney when appropriate approved guest presenters selected topic audience"
+  },
+  {
+    title: "Do You Qualify for a Lawsuit?",
+    url: "do-you-qualify-for-a-lawsuit",
+    category: "Legal Guide",
+    text: "do qualify lawsuit learn common factors people look when asking whether they may including injury exposure timing documentation what does mean was there harm specific event matter records evidence talking lawyer guarantee case why answer not always simple questions ask frequently asked about qualifying read next need more guidance diagnosis if think exposed but am sure help show evaluating contacting have can someone without all their qualification yes no question author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "Dunn v. Activision Blizzard Complaint (MDL No. 3109)",
+    url: "dunn-v-activision-blizzard",
+    category: "Court Filing",
+    text: "dunn activision blizzard complaint mdl no 3109 read lead case petition causes action plain english summary video game addiction key allegations transcribed original court document how fits litigation related coverage lawsuits jpml order lawsuit updates fortnite epic games about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Goulds Pumps Asbestos Exposure and Mesothelioma Claims",
+    url: "goulds-pumps-mesothelioma",
+    category: "Legal Guide",
+    text: "goulds pumps mesothelioma asbestos exposure claims how happened around equipment itt corporate history why paid through lawsuits not trust fund company background jobs sites often involved litigation illnesses discussed these cases records help support claim frequently asked questions related guides there can still bring if decades ago what worked but also other who actually pays successful about author david meldofsky california licensed attorney founder lawsuit informer last updated june 11 2026"
+  },
+  {
+    title: "How Lawsuits Work",
+    url: "how-lawsuits-work",
+    category: "Legal Guide",
+    text: "how lawsuits work learn generally including investigation filing complaint discovery settlement discussions trial appeals watch start what lawsuit common stages usually begins happens after deadlines can affect case why do many settle appealed long take questions people ask frequently asked about have specific situation re researching related legal guides does most before filed dismissed early when author david meldofsky california licensed attorney founder informer last updated may 2026"
+  },
+  {
+    title: "How Long Do Lawsuits Take?",
+    url: "how-long-do-lawsuits-take",
+    category: "Legal Guide",
+    text: "how long do lawsuits take learn can what affects case timelines why some legal claims settle quickly while others years longer than common factors affect lawsuit takes does investigation stage happens after filed discovery usually motions court delays timing most before trial add appeals make even resolve faster mass tort class action cases questions people ask frequently asked about explore related topics guides few months longest phase trials always appeal often move author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "Is It Worth Suing? A Framework for Deciding Whether to File a Lawsuit",
+    url: "is-it-worth-suing",
+    category: "Legal Guide",
+    text: "worth suing framework deciding whether file lawsuit california attorney walks through five questions determine pursuing plus alternatives litigation pursue page honest answer most websites won give actually matter strong signals may probably isn considering first how decide four step process common people ask still do have legal claim just grievance defendant collectible what realistic recovery will cost get statute limitations when did clock start non financial much does sue someone long take can without lawyer if cannot afford go court happens lose related guides here about author guide david meldofsky licensed founder informer"
+  },
+  {
+    title: "Johnson v. Activision Blizzard Complaint",
+    url: "johnson-v-activision-blizzard",
+    category: "Court Filing",
+    text: "johnson activision blizzard complaint read video game addiction verified causes action party list plain english summary key allegations transcribed original court document how fits litigation related coverage lawsuits jpml order mdl no 3109 roblox lawsuit fortnite minecraft about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Legal Guides: Lawsuits, Settlements, Mass Torts & MDLs",
+    url: "legal-guides",
+    category: "Legal Guide",
+    text: "legal guides lawsuits settlements mass torts mdls plain english california licensed attorney covering how work discovery deadlines core settlement litigation process related frameworks topics already researching specific lawsuit new start here terms glossary do qualify worth suing what happens if ignore after contact lawyer questions should ask before signing retainer agreement guide long take evidence helps statute limitations basics pfas state common mistakes demand letter deposition mediation trial appeal tort cases structured resolved where does my stand status tracker current class actions house ncaa explained athletes mdl bellwether trials product liability personal injury toxic browse illnesses linked symptoms news analysis ai fundamentals exposure chemical environmental contamination cancers consumer water asbestos community education about informer author explore educational timelines other some readers begin because they want understand looking others arrive illness clearer sense claims evaluated usually next"
+  },
+  {
+    title: "Legal Terms Glossary | Plain-English Lawsuit Definitions",
+    url: "legal-terms-glossary",
+    category: "Legal Guide",
+    text: "legal terms glossary plain english lawsuit definitions learn common including statute limitations negligence settlement product liability damages claim class action complaint contingency fee defendant discovery evidence filing mass tort mdl plaintiff agreement toxic exposure wrongful death new basics about author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "Minecraft Lawsuit | Video Game Addiction Claims",
+    url: "minecraft-lawsuit",
+    category: "Lawsuit Topic",
+    text: "minecraft lawsuit video game addiction claims learn about lawsuits against microsoft mojang xbox platform what allege features described complaints how cases organized companies arguing who generally involve why records account history matter where litigation stands related topics frequently asked questions find out if may have case legal guides roblox fortnite epic games updates symptoms involved being sued over do describe there class action has been settlement these prove causes gaming work mass torts actions evidence helps long take author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "Common Lawsuit Mistakes",
+    url: "mistakes",
+    category: "Legal Guide",
+    text: "mistakes common lawsuit learn about people make including delays missing records oversharing publicly other issues can complicate legal claims why early matter waiting too long investigate failing keep throwing away important evidence social media public assuming every works same way overlooking importance timeline details intake means representation signing things without understanding them not limits information 10 ignoring how cases take what often do instead questions ask frequently asked explore related topics guides hurt claim should someone when issue may exist posts affect thrown does contacting lawyer mean has started dates timelines lawsuits general apply person case author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "Questions to Ask Before Signing With a Lawyer",
+    url: "questions-to-ask-before-signing-with-a-lawyer",
+    category: "Legal Guide",
+    text: "questions ask before signing lawyer learn common including fees communication case handling referral relationships why matter who will actually handle how may costs work another firm involved what look like whether has handled similar matters next steps bring first call consultation happens if not accepted later changes people frequently asked about final thought should my legal representation agreement okay related guides author guide david meldofsky california licensed attorney founder lawsuit informer"
+  },
+  {
+    title: "Thinking About a Lawsuit? Start Here — A Beginner's Guide",
+    url: "start-here",
+    category: "Legal Guide",
+    text: "start here thinking about lawsuit beginner guide plain english step learn how lawsuits work know what happens after contact lawyer understand evidence helps get realistic sense timing ask before signing few key legal terms explore specific topics frequently asked questions ready see if situation may qualify related guides should read first am new kinds records information matter long can take difference between mass tort class action author david meldofsky california licensed attorney ca bar no 263673 founder informer last updated 10 2026"
+  },
+  {
+    title: "Statute of Limitations Basics",
+    url: "statute-of-limitations-basics",
+    category: "Legal Guide",
+    text: "statute limitations basics learn what why legal deadlines matter how timing can affect whether lawsuit still filed these do all lawsuits have same deadline when does clock start complicated exposure cases happens if missed people should not assume online examples apply them often early common questions ask frequently asked about statutes explore related topics toxic claims different issues information help reviewing guides author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "JPML Order Denying MDL in Video Game Addiction Cases",
+    url: "video-game-addiction-mdl-3109-order",
+    category: "Court Filing",
+    text: "video game addiction mdl 3109 order jpml denying cases 2024 no centralization lawsuits full transcribed text plain english summary litigation what panel decided original court document how fits related coverage lawsuit updates roblox fortnite minecraft about author david meldofsky california licensed attorney founder informer last updated june 25 2026"
+  },
+  {
+    title: "What Evidence Helps a Lawsuit?",
+    url: "what-evidence-helps-a-lawsuit",
+    category: "Legal Guide",
+    text: "what evidence helps lawsuit learn kinds may help support including records photos messages timelines other documents people often gather early why matters common types medical videos communications receipts contracts purchase timeline events witnesses supporting sources do usually less if not have everything yet explore related legal guides about author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "What Happens After You Contact a Lawyer?",
+    url: "what-happens-after-you-contact-a-lawyer",
+    category: "Legal Guide",
+    text: "what happens after contact lawyer learn usually including intake case review records requests follow up questions possible next steps why contacting does not mean already have step initial documents may requested firm evaluates matter outcomes process can take time help during stage create attorney client relationship if might ask same more than once common people frequently asked about explore related legal guides they represent me would how long says no refer another do qualify lawsuit evidence helps statute limitations basics lawsuits work before signing author guide david meldofsky california licensed founder informer"
+  },
+  {
+    title: "What Happens at Trial?",
+    url: "what-happens-at-trial",
+    category: "Legal Guide",
+    text: "what happens trial learn lawsuit including jury selection opening statements witness testimony evidence closing arguments verdicts do all lawsuits go usually before how does begin presented during role experts play verdict after why can matter so much common questions people ask frequently asked about explore related topics civil difference between bench witnesses questioned legal guides author david meldofsky california licensed attorney founder informer last updated april 2026"
+  },
+  {
+    title: "What Happens If You Ignore a Lawsuit?",
+    url: "what-happens-if-you-ignore-a-lawsuit",
+    category: "Legal Guide",
+    text: "what happens if ignore lawsuit learn can happen someone ignores including missed deadlines default judgment collection efforts why responding matters ignoring serious possible financial consequences loss chance defend case people sometimes lawsuits how long have respond debt situation fixed later common questions ask frequently asked about explore related topics money collected after challenged court papers risky should do receiving does make go away end new start here work take mistakes statute limitations basics contact lawyer author legal guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is a Demand Letter?",
+    url: "what-is-a-demand-letter",
+    category: "Legal Guide",
+    text: "what demand letter learn usually includes how may fit into dispute settlement discussion potential lawsuit why people send letters does mean has been filed who sends kinds disputes involve happens after sent timing wording can matter often gather before sending one common questions ask frequently asked about explore related legal guides start include lead stop deadlines should author guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is a Deposition?",
+    url: "what-is-a-deposition",
+    category: "Legal Guide",
+    text: "what deposition learn how depositions work lawsuits who attends kinds questions asked why matter can deposed usually present same testifying trial lawyers object during long take affect settlement common people ask frequently about explore related lawsuit topics under oath does important legal guides author guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is a Settlement?",
+    url: "what-is-a-settlement",
+    category: "Legal Guide",
+    text: "what settlement learn how lawsuit settlements work when cases may settle why some legal claims resolve before trial do most lawsuits can case usually included release all confidential different class actions mass torts does mean someone admitted wrongdoing common questions people ask frequently asked about explore related topics filed tort action differently guides author guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is an Appeal?",
+    url: "what-is-an-appeal",
+    category: "Legal Guide",
+    text: "what appeal learn how appeals work after trial appellate courts review why different retrying case matter same new does court usually record do parties file can happen take time every ruling appealed immediately difficult common questions people ask frequently asked about explore related lawsuit topics civil long right away legal guides author guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is Discovery?",
+    url: "what-is-discovery",
+    category: "Legal Guide",
+    text: "what discovery learn means lawsuit including document requests interrogatories depositions expert evidence why often takes time does mean matters common tools admission deposition happens when disputes arise so long how affects settlement trial questions people ask frequently asked about explore related topics important difference between can include medical employment records if party refuses produce documents take affect legal guides author guide david meldofsky california licensed attorney founder informer"
+  },
+  {
+    title: "What Is Mediation?",
+    url: "what-is-mediation",
+    category: "Legal Guide",
+    text: "what mediation learn how works lawsuits who attends whether binding why many civil cases go through before trial lawsuit matters usually does mediator do same when happen some settle not fits into larger process common questions people ask frequently asked about explore related topics happens during case mean will legal guides author guide david meldofsky california licensed attorney founder informer"
+  },
 ];
