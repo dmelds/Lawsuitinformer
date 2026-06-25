@@ -1,3 +1,20 @@
 /family-ai-safety-guide.pdf
   X-Robots-Tag: noindex
   Link: <https://lawsuitinformer.com/family-ai-safety-guide>; rel="canonical"
+
+# Court filings (video game addiction cluster)
+# Canonical points each filing PDF at its HTML case page so link equity consolidates
+# onto the page. NO X-Robots-Tag: noindex here — unlike a reprint of our own article,
+# a court filing is a primary document that can earn its own backlinks and citations.
+/case-filings/mdl-3109-order-denying-transfer.pdf
+  Link: <https://lawsuitinformer.com/video-game-addiction-mdl-3109-order>; rel="canonical"
+/case-filings/dunn-v-activision-blizzard-complaint.pdf
+  Link: <https://lawsuitinformer.com/dunn-v-activision-blizzard>; rel="canonical"
+/case-filings/johnson-v-activision-blizzard-complaint.pdf
+  Link: <https://lawsuitinformer.com/johnson-v-activision-blizzard>; rel="canonical"
+/case-filings/angelilli-v-activision-blizzard-complaint.pdf
+  Link: <https://lawsuitinformer.com/angelilli-v-activision-blizzard>; rel="canonical"
+/case-filings/antonetti-v-activision-blizzard-complaint.pdf
+  Link: <https://lawsuitinformer.com/antonetti-v-activision-blizzard>; rel="canonical"
+/case-filings/baggaley-v-roblox-complaint.pdf
+  Link: <https://lawsuitinformer.com/baggaley-v-roblox>; rel="canonical"
