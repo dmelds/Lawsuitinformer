@@ -1,0 +1,53 @@
+name: Generate Search Index
+
+on:
+  # Auto: runs when pages change on main. The job only commits search-data.js
+  # (not an .html file), so it never re-triggers itself.
+  push:
+    branches: [main]
+    paths: ['**.html']
+  # Manual: same dry-run option as the OG-tags workflow.
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no commit)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate-search-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate search index
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_search_index.py --dry-run
+          else
+            python generate_search_index.py
+          fi
+
+      - name: Commit and push changes
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit (search index already up to date)"
+            exit 0
+          fi
+          git add search-data.js
+          git commit -m "Auto-update search index (search-data.js)"
+          git pull --rebase origin "$(git branch --show-current)"
+          git push
+          echo "Pushed search index update to $(git branch --show-current)"
