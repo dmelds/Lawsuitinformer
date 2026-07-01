@@ -1,0 +1,46 @@
+name: Perf - Critical CSS
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no commit)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  perf-head:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run critical CSS inline + async loader transform
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python perf_head.py --dry-run
+          else
+            python perf_head.py
+          fi
+
+      - name: Commit and push changes
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit (no files were modified)"
+            exit 0
+          fi
+          git add -A
+          git commit -m "Perf: inline critical CSS, async-load stylesheet, lazy search index, cache headers"
+          git pull --rebase origin "$(git branch --show-current)"
+          git push
