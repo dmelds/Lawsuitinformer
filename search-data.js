@@ -1271,4 +1271,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "what mediation learn how works lawsuits who attends whether binding why many civil cases go through before trial lawsuit matters usually does mediator do same when happen some settle not fits into larger process common questions people ask frequently asked about explore related topics happens during case mean will legal guides author guide david meldofsky california licensed attorney founder informer"
   },
+  {
+    title: "Depo-Provera Lawsuit Eligibility Checker",
+    url: "depo-provera-eligibility-checker",
+    category: "Legal Guide",
+    text: "depo provera eligibility checker lawsuit answer few quick questions see whether meningioma situation may worth free case review educational tool not legal advice david meldofsky california licensed attorney founder informer lawsuits allege link between long term use medroxyprogesterone birth control injection type brain spinal tumor below no obligation medical determination"
+  },
 ];
