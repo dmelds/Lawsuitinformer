@@ -1277,4 +1277,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "depo provera eligibility checker lawsuit answer few quick questions see whether meningioma situation may worth free case review educational tool not legal advice david meldofsky california licensed attorney founder informer lawsuits allege link between long term use medroxyprogesterone birth control injection type brain spinal tumor below no obligation medical determination"
   },
+  {
+    title: "JCCP 5431: The ChatGPT Product Liability Cases",
+    url: "jccp-5431-chatgpt-product-liability-cases",
+    category: "Legal Guide",
+    text: "jccp 5431 chatgpt product liability cases what no means san francisco coordination order grouping openai wrongful death lawsuits plain english re happened inside why matters watch how fits litigation common questions request case review related coverage class action same mdl which part does change individual family must prove raine tumbler ridge garcia character technologies ai output content about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
+  },
 ];
