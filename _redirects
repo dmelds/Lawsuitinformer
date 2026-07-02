@@ -45,14 +45,14 @@
 # (trailing !) override Netlify physical-file shadowing so the
 # .html request 301s while Pretty URLs continues serving the
 # extensionless path. One rule per file, generated from the repo.
-# REGENERATE this block when pages are added or removed.
-# ============================================================
-
-/index.html  /  301!
+# BEGIN AUTO-GENERATED HTML REDIRECTS (managed by generate_redirects.py - do not edit)
 /about.html  /about  301!
 /afff-firefighting-foam-lawsuits.html  /afff-firefighting-foam-lawsuits  301!
 /ai-lawsuits.html  /ai-lawsuits  301!
+/ai-output-product-or-content.html  /ai-output-product-or-content  301!
 /air-pollution-lawsuits.html  /air-pollution-lawsuits  301!
+/angelilli-v-activision-blizzard.html  /angelilli-v-activision-blizzard  301!
+/antonetti-v-activision-blizzard.html  /antonetti-v-activision-blizzard  301!
 /are-hair-relaxers-safe.html  /are-hair-relaxers-safe  301!
 /are-pfas-dangerous.html  /are-pfas-dangerous  301!
 /asbestos-claim-deadline-after-symptoms-appear.html  /asbestos-claim-deadline-after-symptoms-appear  301!
@@ -79,6 +79,7 @@
 /asbestos-trust-funds-and-claims.html  /asbestos-trust-funds-and-claims  301!
 /attorney-retainer-agreement-guide.html  /attorney-retainer-agreement-guide  301!
 /baby-food-lawsuit-settlement.html  /baby-food-lawsuit-settlement  301!
+/baggaley-v-roblox.html  /baggaley-v-roblox  301!
 /beech-nut-baby-food-lawsuit.html  /beech-nut-baby-food-lawsuit  301!
 /bellwether-trials.html  /bellwether-trials  301!
 /brooklyn-navy-yard-asbestos-exposure.html  /brooklyn-navy-yard-asbestos-exposure  301!
@@ -113,6 +114,7 @@
 /does-paraquat-cause-parkinsons.html  /does-paraquat-cause-parkinsons  301!
 /does-tylenol-cause-autism.html  /does-tylenol-cause-autism  301!
 /dr-thomas-hatzilabrou.html  /dr-thomas-hatzilabrou  301!
+/dunn-v-activision-blizzard.html  /dunn-v-activision-blizzard  301!
 /editorial-policy.html  /editorial-policy  301!
 /effects-of-social-media-on-teens.html  /effects-of-social-media-on-teens  301!
 /environmental-contamination-illnesses.html  /environmental-contamination-illnesses  301!
@@ -122,10 +124,13 @@
 /facebook-lawsuit.html  /facebook-lawsuit  301!
 /facebook-settlement.html  /facebook-settlement  301!
 /family-ai-safety-guide.html  /family-ai-safety-guide  301!
+/florida-v-openai-lawsuit.html  /florida-v-openai-lawsuit  301!
 /fortnite-lawsuit.html  /fortnite-lawsuit  301!
+/garcia-v-character-ai-lawsuit.html  /garcia-v-character-ai-lawsuit  301!
 /gerber-baby-food-lawsuit.html  /gerber-baby-food-lawsuit  301!
 /glyphosate-exposure-symptoms.html  /glyphosate-exposure-symptoms  301!
 /glyphosate-lawsuits-epa-bayer-supreme-court.html  /glyphosate-lawsuits-epa-bayer-supreme-court  301!
+/goulds-pumps-mesothelioma.html  /goulds-pumps-mesothelioma  301!
 /grok-lawsuits.html  /grok-lawsuits  301!
 /hair-relaxer-and-fibroids.html  /hair-relaxer-and-fibroids  301!
 /hair-relaxer-cancer-lawsuit.html  /hair-relaxer-cancer-lawsuit  301!
@@ -153,7 +158,9 @@
 /is-tylenol-safe-during-pregnancy.html  /is-tylenol-safe-during-pregnancy  301!
 /is-video-game-addiction-real.html  /is-video-game-addiction-real  301!
 /jacksonville-shipyards-asbestos-exposure.html  /jacksonville-shipyards-asbestos-exposure  301!
+/jccp-5431-chatgpt-product-liability-cases.html  /jccp-5431-chatgpt-product-liability-cases  301!
 /jobs-with-high-risk-of-asbestos-exposure.html  /jobs-with-high-risk-of-asbestos-exposure  301!
+/johnson-v-activision-blizzard.html  /johnson-v-activision-blizzard  301!
 /kidney-cancer-lawsuits.html  /kidney-cancer-lawsuits  301!
 /kraft-heinz-lawsuit.html  /kraft-heinz-lawsuit  301!
 /legal-guides.html  /legal-guides  301!
@@ -161,12 +168,13 @@
 /mare-island-naval-shipyard-asbestos-exposure.html  /mare-island-naval-shipyard-asbestos-exposure  301!
 /mass-torts.html  /mass-torts  301!
 /mdl-basics.html  /mdl-basics  301!
+/mesothelioma.html  /mesothelioma  301!
 /mesothelioma-lawsuit.html  /mesothelioma-lawsuit  301!
 /mesothelioma-symptoms.html  /mesothelioma-symptoms  301!
 /mesothelioma-vs-lung-cancer.html  /mesothelioma-vs-lung-cancer  301!
-/mesothelioma.html  /mesothelioma  301!
 /meta-lawsuit.html  /meta-lawsuit  301!
 /meta-new-mexico-child-safety-verdict.html  /meta-new-mexico-child-safety-verdict  301!
+/minecraft-lawsuit.html  /minecraft-lawsuit  301!
 /mistakes.html  /mistakes  301!
 /neurological-conditions-linked-to-lawsuits.html  /neurological-conditions-linked-to-lawsuits  301!
 /news-and-analysis.html  /news-and-analysis  301!
@@ -177,6 +185,7 @@
 /peritoneal-mesothelioma.html  /peritoneal-mesothelioma  301!
 /personal-injury.html  /personal-injury  301!
 /pesticide-exposure-lawsuits.html  /pesticide-exposure-lawsuits  301!
+/pfas.html  /pfas  301!
 /pfas-consumer-product-lawsuits.html  /pfas-consumer-product-lawsuits  301!
 /pfas-cosmetics-lawsuits.html  /pfas-cosmetics-lawsuits  301!
 /pfas-drinking-water-contamination-by-state.html  /pfas-drinking-water-contamination-by-state  301!
@@ -190,7 +199,6 @@
 /pfas-vs-pfoa-vs-pfos.html  /pfas-vs-pfoa-vs-pfos  301!
 /pfas-water-contamination-lawsuit-update.html  /pfas-water-contamination-lawsuit-update  301!
 /pfas-water-contamination-lawsuits.html  /pfas-water-contamination-lawsuits  301!
-/pfas.html  /pfas  301!
 /philadelphia-naval-shipyard-asbestos-exposure.html  /philadelphia-naval-shipyard-asbestos-exposure  301!
 /pleural-mesothelioma.html  /pleural-mesothelioma  301!
 /privacy-policy.html  /privacy-policy  301!
@@ -200,6 +208,7 @@
 /professor-perspective.html  /professor-perspective  301!
 /published-in-law360-pfas-reporting-litigation-risk.html  /published-in-law360-pfas-reporting-litigation-risk  301!
 /questions-to-ask-before-signing-with-a-lawyer.html  /questions-to-ask-before-signing-with-a-lawyer  301!
+/raine-v-openai-lawsuit.html  /raine-v-openai-lawsuit  301!
 /recent-developments-hernia-mesh-litigation.html  /recent-developments-hernia-mesh-litigation  301!
 /reproductive-injuries-linked-to-lawsuits.html  /reproductive-injuries-linked-to-lawsuits  301!
 /roblox-lawsuit.html  /roblox-lawsuit  301!
@@ -208,8 +217,8 @@
 /secondhand-asbestos-exposure.html  /secondhand-asbestos-exposure  301!
 /sms-terms.html  /sms-terms  301!
 /snapchat-lawsuit.html  /snapchat-lawsuit  301!
-/social-media-addiction-lawsuit-update.html  /social-media-addiction-lawsuit-update  301!
 /social-media-addiction-lawsuit.html  /social-media-addiction-lawsuit  301!
+/social-media-addiction-lawsuit-update.html  /social-media-addiction-lawsuit-update  301!
 /social-media-and-mental-health.html  /social-media-and-mental-health  301!
 /social-media-depression-and-anxiety.html  /social-media-depression-and-anxiety  301!
 /start-here.html  /start-here  301!
@@ -229,13 +238,15 @@
 /transvaginal-mesh-lawsuits.html  /transvaginal-mesh-lawsuits  301!
 /transvaginal-mesh-litigation-update.html  /transvaginal-mesh-litigation-update  301!
 /transvaginal-mesh-manufacturers-and-public-product-identifiers.html  /transvaginal-mesh-manufacturers-and-public-product-identifiers  301!
+/tumbler-ridge-openai-lawsuits.html  /tumbler-ridge-openai-lawsuits  301!
 /tylenol-acetaminophen-and-adhd.html  /tylenol-acetaminophen-and-adhd  301!
 /tylenol-autism-lawsuits.html  /tylenol-autism-lawsuits  301!
 /tylenol-autism-study.html  /tylenol-autism-study  301!
 /ultra-processed-food-health-effects.html  /ultra-processed-food-health-effects  301!
 /ultra-processed-food-lawsuit.html  /ultra-processed-food-lawsuit  301!
-/video-game-addiction-lawsuit-update.html  /video-game-addiction-lawsuit-update  301!
 /video-game-addiction-lawsuit.html  /video-game-addiction-lawsuit  301!
+/video-game-addiction-lawsuit-update.html  /video-game-addiction-lawsuit-update  301!
+/video-game-addiction-mdl-3109-order.html  /video-game-addiction-mdl-3109-order  301!
 /video-game-addiction-symptoms.html  /video-game-addiction-symptoms  301!
 /water-contamination-illnesses.html  /water-contamination-illnesses  301!
 /what-does-pfas-stand-for.html  /what-does-pfas-stand-for  301!
@@ -257,6 +268,10 @@
 /which-asbestos-diagnoses-most-often-lead-to-lawsuits.html  /which-asbestos-diagnoses-most-often-lead-to-lawsuits  301!
 /who-qualifies-for-an-asbestos-lawsuit.html  /who-qualifies-for-an-asbestos-lawsuit  301!
 /youtube-lawsuit.html  /youtube-lawsuit  301!
+# END AUTO-GENERATED HTML REDIRECTS
+# ============================================================
+
+/index.html  /  301!
 
 # .html variants of previously merged/retired pages (files deleted,
 # but old .html URLs may persist in the index)
