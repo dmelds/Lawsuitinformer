@@ -1,0 +1,53 @@
+name: Generate Redirects
+
+on:
+  # Auto: runs when pages change on main. The job only commits _redirects
+  # (not an .html file), so it never re-triggers itself.
+  push:
+    branches: [main]
+    paths: ['**.html']
+  # Manual: same dry-run option as the other workflows.
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no commit)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate-redirects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate redirects
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_redirects.py --dry-run
+          else
+            python generate_redirects.py
+          fi
+
+      - name: Commit and push changes
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit (_redirects already up to date)"
+            exit 0
+          fi
+          git add _redirects
+          git commit -m "Auto-regenerate forced .html redirects (_redirects)"
+          git pull --rebase origin "$(git branch --show-current)"
+          git push
+          echo "Pushed _redirects update to $(git branch --show-current)"
