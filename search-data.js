@@ -1283,4 +1283,22 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "jccp 5431 chatgpt product liability cases what no means san francisco coordination order grouping openai wrongful death lawsuits plain english re happened inside why matters watch how fits litigation common questions request case review related coverage class action same mdl which part does change individual family must prove raine tumbler ridge garcia character technologies ai output content about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
   },
+  {
+    title: "Buffalo Pumps Asbestos Exposure and Mesothelioma Claims",
+    url: "buffalo-pumps-mesothelioma",
+    category: "Legal Guide",
+    text: "buffalo pumps mesothelioma asbestos exposure claims how happened around equipment air liquid systems succession 2019 supreme court ruling navy company background jobs sites often involved litigation illnesses discussed these cases records help support claim frequently asked questions related guides there trust fund who what did decide devries case about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
+  },
+  {
+    title: "Crane Co. Asbestos Exposure and Mesothelioma Claims",
+    url: "crane-co-mesothelioma",
+    category: "Legal Guide",
+    text: "crane co mesothelioma asbestos exposure claims how happened around valves cranite gaskets litigation history why proceed lawsuits not trusts company background jobs sites often involved illnesses discussed these cases records help support claim frequently asked questions related guides there trust fund what was can responsible made other companies about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
+  },
+  {
+    title: "Warren Pumps Asbestos Exposure and Mesothelioma Claims",
+    url: "warren-pumps-mesothelioma",
+    category: "Legal Guide",
+    text: "warren pumps mesothelioma asbestos exposure claims how happened around marine industrial navy connection why proceed lawsuits not trusts company background jobs sites often involved litigation illnesses discussed these cases records help support claim frequently asked questions related guides there trust fund do so many involve can still bring if my service was decades ago about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
+  },
 ];
