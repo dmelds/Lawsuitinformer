@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- LI-DARK-INIT:BEGIN -->
+<script>
+(function () {
+  var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
+  var t = null;
+  try { t = localStorage.getItem('li-theme'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') {
+    t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<!-- LI-DARK-INIT:END -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- perf:critical-css:start -->
@@ -95,6 +108,115 @@
   ]
 }
 </script>
+<!-- LI-DARK-CSS:BEGIN -->
+<style id="li-theme">
+/* Lawsuit Informer dark mode.
+   Night values for the site's own tokens, plus pins for components that
+   must stay dark bands (they carry hardcoded light text) and light-only
+   tints. All text pairs measured >= 5:1 on their backgrounds (WCAG AA;
+   body text passes AAA). */
+
+:root { color-scheme: light; }
+
+:root[data-theme="dark"] {
+  --bg: #161411;            /* warm near-black */
+  --bg-alt: #1d1a15;
+  --surface: #201d18;
+  --border: #37332b;
+  --border-strong: #4d473c;
+  --rule: #3b362e;
+
+  --ink: #e6e1d6;           /* 14.1:1 on --bg */
+  --ink-strong: #f6f2e9;    /* 16.5:1 */
+  --ink-muted: #aaa294;     /* 7.3:1 */
+  --ink-soft: #8b8577;      /* 5.0:1 */
+
+  --link: #e08d6a;          /* terracotta, lifted — 7.2:1 */
+  --link-hover: #eea985;    /* 9.3:1 */
+
+  --amber: #d4a24e;         /* unchanged: 8.0:1 on --bg, #1a1306 text on amber holds */
+  --amber-bright: #e7b961;
+  --amber-deep: #c9973f;    /* 7.0:1 */
+
+  color-scheme: dark;
+}
+
+/* Link underlines: the rgba(--link light) tint used across the site */
+:root[data-theme="dark"] a { border-bottom-color: rgba(224, 141, 106, .38); }
+
+/* Masthead: translucent dark instead of translucent paper */
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] header.site-header {
+  background: rgba(22, 20, 17, .92);
+}
+
+/* Dark bands stay dark: they carry hardcoded rgba(250,250,247,*) text.
+   Pinned a step below page bg so the band still reads as a band. */
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .case-review-box,
+:root[data-theme="dark"] .cta-box {
+  background: #0d0b09;
+  color: #e6e1d6;
+}
+:root[data-theme="dark"] .case-review-box h2,
+:root[data-theme="dark"] .cta-box h2,
+:root[data-theme="dark"] .footer-content > div:first-child h3 {
+  color: #f6f2e9;
+}
+:root[data-theme="dark"] .footer-content a:hover,
+:root[data-theme="dark"] .footer-grid a:hover,
+:root[data-theme="dark"] .footer-col a:hover,
+:root[data-theme="dark"] .footer-bottom a:hover,
+:root[data-theme="dark"] .social-links a:hover { color: #fff; }
+
+:root[data-theme="dark"] .skip-link { background: #0a0a0a; color: #fff; }
+:root[data-theme="dark"] .video-wrapper .play-button { color: #fafaf7; }
+
+/* Light-only notice tints -> night equivalents */
+:root[data-theme="dark"] .info-box.crisis-resource-box { background: #241b15; border-color: #4a3628; }
+:root[data-theme="dark"] .info-box.alert-box { background: #2a1a16; border-color: #55302a; }
+
+/* Logo: monochrome #111 mark on transparency -> light */
+:root[data-theme="dark"] .logo img { filter: invert(1); }
+
+/* ---------- Theme toggle (masthead) ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; padding: 0; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--ink); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.theme-toggle:hover { background: var(--bg-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+@media (max-width: 900px) {
+  #site-menu .theme-toggle { margin: 14px 0 8px; }
+}
+
+/* Switch transition: only after first user toggle; honors reduced motion */
+html.theme-anim body { transition: background-color .15s ease, color .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim body { transition: none; }
+}
+
+/* Print: ink-safe light regardless of theme; hide the control */
+@media print {
+  :root[data-theme="dark"] {
+    --bg: #fff; --bg-alt: #fff; --surface: #fff;
+    --border: #ccc; --border-strong: #999; --rule: #ccc;
+    --ink: #000; --ink-strong: #000; --ink-muted: #333; --ink-soft: #555;
+    --link: #000; --link-hover: #000;
+  }
+  .theme-toggle { display: none; }
+}
+</style>
+<!-- LI-DARK-CSS:END -->
 </head>
 
 <body>
@@ -131,6 +253,26 @@
   <a href="browse-lawsuits" aria-current="page">Browse Lawsuits</a>
   <a href="about">About</a>
   <a href="contact">Contact</a>
+<!-- LI-DARK-BTN:BEGIN -->
+<!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
+     `hidden` is removed by the toggle script — no JS, no dead button. -->
+<button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN:END -->
 </nav>
 
   </div>
@@ -568,5 +710,50 @@
   });
 </script>
 
+<!-- LI-DARK-JS:BEGIN -->
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  var root = document.documentElement;
+  var LIGHT_BAR = '#fbf6e8';   /* existing theme-color meta value */
+  var DARK_BAR  = '#161411';   /* keep in sync with dark --bg */
+
+  function current() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function paint(t) {
+    root.setAttribute('data-theme', t);
+    btn.setAttribute('aria-pressed', String(t === 'dark'));
+    btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? DARK_BAR : LIGHT_BAR);
+  }
+
+  btn.hidden = false;
+  paint(current());
+
+  btn.addEventListener('click', function () {
+    root.classList.add('theme-anim');
+    var next = current() === 'dark' ? 'light' : 'dark';
+    paint(next);
+    try { localStorage.setItem('li-theme', next); } catch (e) {}
+  });
+
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) {
+      var stored = null;
+      try { stored = localStorage.getItem('li-theme'); } catch (err) {}
+      if (stored !== 'dark' && stored !== 'light') paint(e.matches ? 'dark' : 'light');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+})();
+</script>
+<!-- LI-DARK-JS:END -->
 </body>
 </html>
