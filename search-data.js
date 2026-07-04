@@ -1301,4 +1301,16 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "warren pumps mesothelioma asbestos exposure claims how happened around marine industrial navy connection why proceed lawsuits not trusts company background jobs sites often involved litigation illnesses discussed these cases records help support claim frequently asked questions related guides there trust fund do so many involve can still bring if my service was decades ago about author david meldofsky california licensed attorney founder lawsuit informer last updated july 2026"
   },
+  {
+    title: "Lacey v. OpenAI Lawsuit: Claims and Status (July 2026)",
+    url: "lacey-v-openai-lawsuit",
+    category: "Court Filing",
+    text: "lacey openai lawsuit claims status july 2026 filed november 2025 over death 17 year old amaurie gpt 4o allegations where case stands now background how fits litigation common questions about sources further reading class action does matter was minor what happens next news analysis david meldofsky"
+  },
+  {
+    title: "Shamblin v. OpenAI Lawsuit: Claims and Status (July 2026)",
+    url: "shamblin-v-openai-lawsuit",
+    category: "Court Filing",
+    text: "shamblin openai lawsuit claims status july 2026 filed november 2025 over death 23 year old zane gpt 4o allegations where case stands background how fits litigation common questions about sources further reading class action who defendants what happens next news analysis david meldofsky"
+  },
 ];
