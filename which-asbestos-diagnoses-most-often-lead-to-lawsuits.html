@@ -196,8 +196,14 @@
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
+/* Dual placement: nav instance on desktop, bar instance beside the
+   hamburger on mobile. The bar instance's auto margin pulls the pair
+   right; the hamburger stays outermost (its own auto margin is zeroed). */
+.theme-toggle--bar { display: none; }
 @media (max-width: 900px) {
-  #site-menu .theme-toggle { margin: 14px 0 8px; }
+  #site-menu .theme-toggle { display: none; }
+  .theme-toggle--bar { display: inline-flex; margin-left: auto; width: 40px; height: 40px; }
+  .container.nav .menu-toggle, .site-header .header-inner .menu-toggle { margin-left: 0; }
 }
 
 /* Switch transition: only after first user toggle; honors reduced motion */
@@ -232,7 +238,27 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       </a>
     </div>
 
-    <button
+    <!-- LI-DARK-BTN2:BEGIN -->
+<!-- Bar instance: renders only <=900px, beside the hamburger.
+     The in-nav instance hides at that width. `hidden` removed by JS. -->
+<button class="theme-toggle theme-toggle--bar" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN2:END -->
+<button
       class="menu-toggle"
       type="button"
       aria-label="Open menu"
@@ -616,8 +642,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <!-- LI-DARK-JS:BEGIN -->
 <script>
 (function () {
-  var btn = document.getElementById('theme-toggle');
-  if (!btn) return;
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
 
   var root = document.documentElement;
   var LIGHT_BAR = '#fbf6e8';   /* existing theme-color meta value */
@@ -629,21 +655,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
   function paint(t) {
     root.setAttribute('data-theme', t);
-    btn.setAttribute('aria-pressed', String(t === 'dark'));
-    btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(t === 'dark'));
+      btns[i].setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
     var m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', t === 'dark' ? DARK_BAR : LIGHT_BAR);
   }
 
-  btn.hidden = false;
-  paint(current());
-
-  btn.addEventListener('click', function () {
+  function onToggle() {
     root.classList.add('theme-anim');
     var next = current() === 'dark' ? 'light' : 'dark';
     paint(next);
     try { localStorage.setItem('li-theme', next); } catch (e) {}
-  });
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].hidden = false;
+    btns[i].addEventListener('click', onToggle);
+  }
+  paint(current());
 
   if (window.matchMedia) {
     var mq = matchMedia('(prefers-color-scheme: dark)');
