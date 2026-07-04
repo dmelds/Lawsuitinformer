@@ -34,6 +34,7 @@ jobs:
           if ! git diff --quiet sitemap.xml; then
             git add sitemap.xml
             git commit -m "Auto-update sitemap.xml [skip ci]"
+            git pull --rebase origin "$(git branch --show-current)"
             git push
           else
             echo "No sitemap changes."
