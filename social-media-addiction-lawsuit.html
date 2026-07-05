@@ -5,8 +5,21 @@
 <script>
 (function () {
   var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
-  var t = null;
-  try { t = localStorage.getItem('li-theme'); } catch (e) {}
+  var t = null, qp = null;
+  /* Cross-property handoff: ?theme= from lawsuit.center wins, then vanishes */
+  try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
+  if (qp === 'dark' || qp === 'light') {
+    t = qp;
+    try { localStorage.setItem('li-theme', t); } catch (e) {}
+    try {
+      var sp = new URLSearchParams(location.search); sp.delete('theme');
+      var q = sp.toString();
+      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    try { t = localStorage.getItem('li-theme'); } catch (e) {}
+  }
   if (t !== 'dark' && t !== 'light') {
     t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
   }
@@ -793,12 +806,35 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     var next = current() === 'dark' ? 'light' : 'dark';
     paint(next);
     try { localStorage.setItem('li-theme', next); } catch (e) {}
+    decorate();
   }
   for (var i = 0; i < btns.length; i++) {
     btns[i].hidden = false;
     btns[i].addEventListener('click', onToggle);
   }
   paint(current());
+
+  /* Carry the live theme onto lawsuit.center links (decorate + just-in-time) */
+  var PARTNER = /(^|\.)lawsuit\.center$/i;
+  function stamp(a) {
+    try {
+      var u = new URL(a.href, location.href);
+      if (!PARTNER.test(u.hostname)) return;
+      u.searchParams.set('theme', current());
+      a.href = u.toString();
+    } catch (e) {}
+  }
+  function decorate() {
+    var links = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < links.length; i++) stamp(links[i]);
+  }
+  function freshen(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (a) stamp(a);
+  }
+  document.addEventListener('click', freshen, true);
+  document.addEventListener('auxclick', freshen, true);
+  decorate();
 
   if (window.matchMedia) {
     var mq = matchMedia('(prefers-color-scheme: dark)');
