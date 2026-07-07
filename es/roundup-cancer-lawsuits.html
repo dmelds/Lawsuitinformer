@@ -36,6 +36,14 @@
 <link rel="preload" href="/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/style.css"></noscript>
 <!-- perf:critical-css:end -->
+<!-- LI-LANG-CSS:BEGIN -->
+<style id="li-lang-toggle-css">
+/* Language toggle (masthead) — matches .theme-toggle chrome */
+.lang-toggle{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;flex-shrink:0;border:1px solid var(--border-strong);border-radius:999px;background:transparent;color:var(--ink);font:600 12px/1 var(--sans);letter-spacing:.08em;text-decoration:none;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.lang-toggle:hover{background:var(--bg-alt);color:var(--ink);border-color:var(--border-strong)}
+.lang-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+</style>
+<!-- LI-LANG-CSS:END -->
 
 <title>Demandas por Cáncer de Roundup | Lawsuit Informer</title>
 <meta name="description" content="Conozca las demandas por cáncer de Roundup: exposición al glifosato, linfoma no Hodgkin, responsabilidad del producto y cuestiones legales.">
@@ -297,7 +305,9 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   <a href="/browse-lawsuits" aria-current="page">Explorar Demandas</a>
   <a href="/about">Acerca de</a>
   <a href="/contact">Contacto</a>
+<!-- LI-LANG-BTN:BEGIN -->
 <a class="lang-toggle" href="/roundup-cancer-lawsuits" lang="en" hreflang="en" aria-label="View this page in English">EN</a>
+<!-- LI-LANG-BTN:END -->
 <!-- LI-DARK-BTN:BEGIN -->
 <!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
      `hidden` is removed by the toggle script — no JS, no dead button. -->
@@ -659,6 +669,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           <li><a href="/how-lawsuits-work">Cómo Funcionan las Demandas</a></li>
           <li><a href="/privacy-policy">Política de Privacidad</a></li>
           <li><a href="/disclaimer">Aviso Legal</a></li>
+<li><a href="/roundup-cancer-lawsuits" lang="en">English</a></li>
         </ul>
       </div>
 
