@@ -264,7 +264,7 @@ def main():
         print("WARN: critical block is large; consider trimming TOKENS")
 
     head_block = build_head_block(critical)
-    pages = sorted(ROOT.glob("*.html"))
+    pages = sorted(ROOT.glob("*.html")) + sorted((ROOT / "es").glob("*.html"))
     print(f"transforming {len(pages)} pages{' (dry run)' if DRY else ''}\n")
     for p in pages:
         transform_page(p, head_block)

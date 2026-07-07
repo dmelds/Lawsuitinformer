@@ -49,15 +49,16 @@ def lastmod(path: str) -> str:
 
 
 def loc(fname: str) -> str:
-    slug = fname[:-5]                       # drop ".html"
+    slug = fname[:-5].replace(os.sep, "/")  # drop ".html"; es/ subdir keeps its prefix
     # homepage -> "/" (matches its canonical); everything else extensionless, no slash
     return BASE_URL + "/" if slug == "index" else f"{BASE_URL}/{slug}"
 
 
 def main() -> None:
-    files = [os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "*.html"))]
-    files = [f for f in files if f not in EXCLUDE]
-    files.sort(key=lambda f: (f != "index.html", f))   # homepage first, then A-Z
+    patterns = [os.path.join(ROOT, "*.html"), os.path.join(ROOT, "es", "*.html")]
+    files = [os.path.relpath(p, ROOT) for pat in patterns for p in glob.glob(pat)]
+    files = [f for f in files if os.path.basename(f) not in EXCLUDE]
+    files.sort(key=lambda f: (f != "index.html", f))   # homepage first, then A-Z (es/ after root)
 
     out = [
         '<?xml version="1.0" encoding="UTF-8"?>',
