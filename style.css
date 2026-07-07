@@ -121,8 +121,10 @@ button, input, textarea, select { font: inherit; }
 .logo a, .logo-link a { border-bottom: 0; }
 .logo img, .site-logo {
   width: auto !important;
-  height: 56px !important;
+  height: 44px !important;
+  max-width: 220px;
   max-height: none !important;
+  object-fit: contain;
 }
 
 .brand { display: flex; flex-direction: column; flex-shrink: 0; line-height: 1.05; border-bottom: 0; color: var(--ink-strong); }
@@ -1030,7 +1032,7 @@ footer, .site-footer {
   .site-header .container.nav, header .container.nav, .site-header .header-inner {
     flex-wrap: wrap; min-height: 60px; padding-top: 8px; padding-bottom: 8px;
   }
-  .logo img, .site-logo { max-height: 48px; }
+  .logo img, .site-logo { height: 38px !important; max-width: 180px; }
   .nav-toggle, .menu-toggle { display: flex; margin-left: auto; }
   .site-nav, header nav, #site-nav, #site-menu, .main-nav {
     display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0 4px;
