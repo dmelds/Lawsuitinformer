@@ -251,9 +251,13 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 .lang-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .lang-toggle--bar{display:none}
 @media (max-width: 900px){
+  header .container.nav{gap:12px}
   #site-menu .lang-toggle{display:none}
-  .lang-toggle--bar{display:inline-flex;margin-left:auto;height:40px}
+  .lang-toggle--bar{display:inline-flex;margin-left:auto;height:36px;padding:0 10px}
   .theme-toggle--bar{margin-left:0}
+}
+@media (max-width: 420px){
+  header .logo img{max-width:150px}
 }
 </style>
 <!-- LI-LANG-CSS:END -->
