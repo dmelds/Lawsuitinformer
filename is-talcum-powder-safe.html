@@ -239,7 +239,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
   <header class="site-header">
     <div class="container nav">
-      <div class="logo"><a href="/" aria-label="Lawsuit Informer home"><img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160"></a></div>
+      <div class="logo">
+        <a href="/" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160" />
+        </a>
+      </div>
+
       <!-- LI-DARK-BTN2:BEGIN -->
 <!-- Bar instance: renders only <=900px, beside the hamburger.
      The in-nav instance hides at that width. `hidden` removed by JS. -->
@@ -260,15 +265,24 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   </svg>
 </button>
 <!-- LI-DARK-BTN2:END -->
-<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+<button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
       <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="start-here">Start Here</a>
         <a href="legal-guides">Guides</a>
-        <a href="news-and-analysis">News & Analysis</a>
+        <a href="browse-lawsuits" aria-current="page">Browse Lawsuits</a>
+        <a href="news-and-analysis">News &amp; Analysis</a>
         <a href="illnesses-linked-to-lawsuits">Illnesses</a>
         <a href="symptoms-linked-to-lawsuits">Symptoms</a>
-        <a href="browse-lawsuits" aria-current="page">Browse Lawsuits</a>
         <a href="about">About</a>
         <a href="contact">Contact</a>
       <!-- LI-DARK-BTN:BEGIN -->
