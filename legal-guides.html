@@ -189,6 +189,20 @@
   /* Dark mode: fix the two labels that inherit a hardcoded light-ink gray. */
   :root[data-theme="dark"] .guides-filters-label { color: #aaa294; }
   :root[data-theme="dark"] .guides-status { color: #aaa294; }
+
+  /* Dark mode: convert the search and chip islands to night surfaces. */
+  :root[data-theme="dark"] .guides-search input[type="search"] { background: #201d18; color: #e6e1d6; border-color: #4d473c; }
+  :root[data-theme="dark"] .guides-search input[type="search"]:focus { border-color: #e08d6a; }
+  :root[data-theme="dark"] .guides-search input[type="search"]::placeholder { color: #aaa294; }
+  :root[data-theme="dark"] .guides-search-clear { background: #2b2620; color: #aaa294; }
+  :root[data-theme="dark"] .guides-search-clear:hover { background: #37332b; color: #f6f2e9; }
+  :root[data-theme="dark"] .guides-filter-chip { background: #201d18; color: #e6e1d6; border-color: #4d473c; }
+  :root[data-theme="dark"] .guides-filter-chip:hover { background: #f6f2e9; border-color: #f6f2e9; color: #161411; }
+  :root[data-theme="dark"] .guides-filter-chip.active { background: #b04a2f; border-color: #b04a2f; color: #fafaf7; }
+  :root[data-theme="dark"] .guides-no-results { background: #1d1a15; border-color: #37332b; }
+  :root[data-theme="dark"] .guides-no-results p { color: #e6e1d6; }
+  :root[data-theme="dark"] .guides-no-results button { background: #f6f2e9; color: #161411; }
+  :root[data-theme="dark"] .guides-no-results button:hover { background: #ffffff; }
   </style>
 
   <meta property="og:type" content="article">
