@@ -233,10 +233,9 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
   <header class="site-header">
     <div class="container nav">
-
       <div class="logo">
-        <a href="/">
-          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160">
+        <a href="/" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160" />
         </a>
       </div>
 
@@ -267,22 +266,20 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         aria-expanded="false"
         aria-controls="site-menu"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
-     <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
-  <a href="/">Home</a>
-  <a href="start-here">Start Here</a>
-  <a href="legal-guides">Guides</a>
-  <a href="news-and-analysis">News &amp; Analysis</a>
-  <a href="illnesses-linked-to-lawsuits">Illnesses</a>
-  <a href="symptoms-linked-to-lawsuits" aria-current="page">Symptoms</a>
-  <a href="browse-lawsuits">Browse Lawsuits</a>
-  <a href="about">About</a>
-  <a href="contact">Contact</a>
-<!-- LI-DARK-BTN:BEGIN -->
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="start-here">Start Here</a>
+        <a href="legal-guides">Guides</a>
+        <a href="browse-lawsuits">Browse Lawsuits</a>
+        <a href="news-and-analysis">News &amp; Analysis</a>
+        <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits" aria-current="page">Symptoms</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      <!-- LI-DARK-BTN:BEGIN -->
 <!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
      `hidden` is removed by the toggle script — no JS, no dead button. -->
 <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
@@ -303,7 +300,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 </button>
 <!-- LI-DARK-BTN:END -->
 </nav>
-
     </div>
   </header>
 
