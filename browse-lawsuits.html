@@ -105,6 +105,17 @@
 
     /* Dark mode: back-to-top was hardcoded navy (1.6:1 on the night bg). */
     :root[data-theme="dark"] .back-to-top{color:#e08d6a;}
+    /* Pin pill colors: .content-page li a (0,2,1) outranks .browse-toc a,
+       so the theme link token was bleeding into the light pills in both
+       modes. (0,3,1) restores the intended navy / white-on-navy hover. */
+    :root[data-theme] .browse-toc a{color:#1a3a5c;}
+    :root[data-theme] .browse-toc a:hover,:root[data-theme] .browse-toc a:focus{color:#fff;}
+    /* Dark mode: convert the TOC island to night surfaces (tracker treatment).
+       Placed after the pins above so the (0,3,1) tie resolves to these. */
+    :root[data-theme="dark"] .browse-toc{background:#1d1a15;border-color:#37332b;}
+    :root[data-theme="dark"] .browse-toc h2{color:#c9b37a;}
+    :root[data-theme="dark"] .browse-toc a{background:#201d18;border-color:#4d473c;color:#e6e1d6;}
+    :root[data-theme="dark"] .browse-toc a:hover,:root[data-theme="dark"] .browse-toc a:focus{background:#f6f2e9;color:#161411;border-color:#f6f2e9;}
   </style>
 
   <meta property="og:type" content="article">
