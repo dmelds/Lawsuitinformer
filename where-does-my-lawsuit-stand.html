@@ -194,6 +194,27 @@
     .lt-life .b p{margin:2px 0 0;font-size:0.88rem;color:#6b6259;}
     .lt-checkin{margin:6px 0;padding-left:18px;}
     .lt-checkin li{padding:6px 0;font-size:0.93rem;}
+
+    /* Dark mode for the litigation status widget. Same night tokens as the
+       site theme; all text pairs measured >= 5:1 (WCAG AA). */
+    :root[data-theme="dark"] .lt-asof{background:#2a1c1f;color:#d99aa6;}
+    :root[data-theme="dark"] .lt-asof::before{background:#d99aa6;}
+    :root[data-theme="dark"] .lt-sel button{background:#201d18;color:#e6e1d6;border-color:#4d473c;}
+    :root[data-theme="dark"] .lt-sel button:hover{border-color:#d99aa6;}
+    :root[data-theme="dark"] .lt-sel button[aria-pressed="true"]{background:#7b2233;color:#fff;border-color:#7b2233;}
+    :root[data-theme="dark"] .lt-card{background:#1d1a15;border-color:#37332b;}
+    :root[data-theme="dark"] .lt-card .tag{color:#d99aa6;}
+    :root[data-theme="dark"] .lt-card .venue{color:#aaa294;}
+    :root[data-theme="dark"] .lt-step{background:#201d18;color:#aaa294;border-color:#37332b;}
+    :root[data-theme="dark"] .lt-step.done{background:#2b2620;color:#e6e1d6;}
+    :root[data-theme="dark"] .lt-step.current{background:#7b2233;color:#fff;border-color:#7b2233;}
+    :root[data-theme="dark"] .lt-field h4{color:#d99aa6;}
+    :root[data-theme="dark"] .lt-field li .d{color:#aaa294;}
+    :root[data-theme="dark"] .lt-meaning{background:#2a1c1f;}
+    :root[data-theme="dark"] .lt-meaning h4{color:#d99aa6;}
+    :root[data-theme="dark"] .lt-life .row{border-bottom-color:#37332b;}
+    :root[data-theme="dark"] .lt-life .num{background:#2a1c1f;color:#d99aa6;}
+    :root[data-theme="dark"] .lt-life .b p{color:#aaa294;}
   </style>
 <!-- LI-DARK-CSS:BEGIN -->
 <style id="li-theme">
