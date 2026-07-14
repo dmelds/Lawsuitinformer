@@ -1161,7 +1161,24 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
    font-size: 0.72rem; color: #5a5a5a;
    margin: 0.9rem 0 0; line-height: 1.4; text-align: center;
  }
-</style>
+
+ /* Dark mode: night surfaces for the sticky bar, chip, and bottom sheet.
+    CTA button classes and the tan chip pair are unchanged in both modes. */
+ :root[data-theme="dark"] .lc-sticky{background:#1d1a15;border-top-color:#37332b;box-shadow:0 -8px 28px rgba(0,0,0,0.5);}
+ :root[data-theme="dark"] .lc-sticky-body strong{color:#f6f2e9;}
+ :root[data-theme="dark"] .lc-sticky-body span{color:#aaa294;}
+ :root[data-theme="dark"] .lc-sticky-close{color:#aaa294;}
+ :root[data-theme="dark"] .lc-sheet{background:#1d1a15;box-shadow:0 -12px 40px rgba(0,0,0,0.6);}
+ :root[data-theme="dark"] .lc-sheet-handle{background:#4d473c;}
+ :root[data-theme="dark"] .lc-sheet h3{color:#f6f2e9;}
+ :root[data-theme="dark"] .lc-sheet-sub{color:#aaa294;}
+ :root[data-theme="dark"] .lc-option{background:#2b2620;border-color:#4d473c;color:#e6e1d6;}
+ :root[data-theme="dark"] .lc-option:hover{background:#37332b;}
+ :root[data-theme="dark"] .lc-option-sub{color:#aaa294;}
+ :root[data-theme="dark"] .lc-sheet-close{color:#aaa294;}
+ :root[data-theme="dark"] .lc-sheet-disclaimer{color:#aaa294;}
+ :root[data-theme="dark"] .lc-overlay{background:rgba(0,0,0,0.65);}
+ </style>
 
 <aside class="lc-sticky" id="lcSticky" role="complementary" aria-label="PFAS exposure checker">
  <div class="lc-sticky-body">
