@@ -185,7 +185,11 @@
     .guides-filters-label { width: 100%; margin: 0 0 4px; }
     .guides-filter-chip { padding: 9px 14px; min-height: 38px; }
   }
-</style>
+
+  /* Dark mode: fix the two labels that inherit a hardcoded light-ink gray. */
+  :root[data-theme="dark"] .guides-filters-label { color: #aaa294; }
+  :root[data-theme="dark"] .guides-status { color: #aaa294; }
+  </style>
 
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://lawsuitinformer.com/legal-guides">

@@ -128,7 +128,12 @@
       font-size: 18px;
     }
   }
-</style>
+
+  /* Dark mode: heading and intro were hardcoded light-ink values. */
+  :root[data-theme="dark"] .video-embed h2 { color: #f6f2e9; }
+  :root[data-theme="dark"] .video-embed > p { color: #aaa294; }
+  :root[data-theme="dark"] .video-wrapper { border-color: #37332b; }
+  </style>
 
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://lawsuitinformer.com/how-lawsuits-work">
