@@ -1313,4 +1313,10 @@ window.SEARCH_INDEX = [
     category: "Court Filing",
     text: "shamblin openai lawsuit claims status july 2026 filed november 2025 over death 23 year old zane gpt 4o allegations where case stands background how fits litigation common questions about sources further reading class action who defendants what happens next news analysis david meldofsky"
   },
+  {
+    title: "Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026)",
+    url: "parish-v-openai-lawsuit",
+    category: "Court Filing",
+    text: "parish openai lawsuit status case guide july 2026 where stands adult ai psychosis wrongful death complaint seven causes action what happens next alleges makes different model spec through line fits docket timeline common questions about sources further reading current who defendants class how does relate raine other lawsuits news analysis david meldofsky"
+  },
 ];
