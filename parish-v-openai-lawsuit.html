@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- LI-DARK-INIT:BEGIN -->
+<script>
+(function () {
+  var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
+  var t = null, qp = null;
+  /* Cross-property handoff: ?theme= from lawsuit.center wins, then vanishes */
+  try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
+  if (qp === 'dark' || qp === 'light') {
+    t = qp;
+    try { localStorage.setItem('li-theme', t); } catch (e) {}
+    try {
+      var sp = new URLSearchParams(location.search); sp.delete('theme');
+      var q = sp.toString();
+      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    try { t = localStorage.getItem('li-theme'); } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<!-- LI-DARK-INIT:END -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- perf:critical-css:start -->
+<style id="critical-css">@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/fraunces-v38-latin-500.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fraunces-v38-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fraunces-v38-latin-700.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-regular.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-500.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-600.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-700.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-regular.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-500.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces Fallback';src:local('Times New Roman');size-adjust:119.26%;ascent-override:82.00%;descent-override:21.38%;line-gap-override:0.00%}@font-face{font-family:'Source Serif Fallback';src:local('Georgia');size-adjust:107.45%;ascent-override:96.42%;descent-override:31.18%;line-gap-override:0.00%}@font-face{font-family:'IBM Plex Sans Fallback';src:local('Arial');size-adjust:101.17%;ascent-override:101.32%;descent-override:27.18%;line-gap-override:0.00%}:root{--bg:#fafaf7;--bg-alt:#f4f3ee;--surface:#ffffff;--border:#e5e3dc;--border-strong:#cfccc1;--rule:#d8d5cc;--ink:#1a1a1a;--ink-strong:#0a0a0a;--ink-muted:#5a5750;--ink-soft:#8a877e;--link:#b04a2f;--link-hover:#8a3621;--amber:#d4a24e;--amber-bright:#e7b961;--amber-deep:#b88a3d;--display:"Fraunces","Fraunces Fallback","Times New Roman",serif;--serif:"Source Serif 4","Source Serif Fallback",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans","IBM Plex Sans Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;--container:1180px;--reading:680px;--gutter:clamp(20px,4vw,64px);--radius:4px;--radius-lg:12px;--ease:cubic-bezier(.2,.8,.2,1)}*,*::before,*::after{box-sizing:border-box}html,body{margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}img{display:block;max-width:100%;height:auto}a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(176,74,47,.3);transition:color .2s var(--ease),border-color .2s var(--ease)}a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}ul,ol{padding-left:22px}button,input,textarea,select{font:inherit}::selection{background:var(--amber);color:#1a1306}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}.narrow{max-width:var(--reading);margin:0 auto}.site-header,header.site-header{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.95);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--rule)}.site-header .container.nav,header .container.nav,.site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding-top:8px;padding-bottom:8px}.logo,.logo-link{display:inline-flex;align-items:center;flex-shrink:0;border-bottom:0;background:transparent !important;padding:0 !important}.logo a,.logo-link a{border-bottom:0}.logo img,.site-logo{width:auto !important;height:44px !important;max-width:220px;max-height:none !important;object-fit:contain}.brand{display:flex;flex-direction:column;flex-shrink:0;line-height:1.05;border-bottom:0;color:var(--ink-strong)}.brand:hover{border-bottom:0;color:var(--ink-strong)}.brand__name{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em;color:var(--ink-strong);white-space:nowrap}.brand__tag{font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;font-weight:500}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:flex;align-items:center;gap:26px}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{font-family:var(--sans);color:var(--ink);font-size:14px;font-weight:500;letter-spacing:.005em;white-space:nowrap;border-bottom:0;transition:color .2s var(--ease)}.site-nav a:hover,.site-nav a[aria-current="page"],header nav a:hover,header nav a[aria-current="page"],#site-nav a:hover,#site-nav a[aria-current="page"],#site-menu a:hover,#site-menu a[aria-current="page"],.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--link)}.nav-toggle,.menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--border-strong);border-radius:8px;cursor:pointer;flex-shrink:0}.nav-toggle span,.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.nav-toggle.active span:nth-child(1),.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle.active span:nth-child(2),.menu-toggle.active span:nth-child(2){opacity:0}.nav-toggle.active span:nth-child(3),.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.btn,.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);padding:12px 22px;border:1px solid var(--ink-strong);border-radius:999px;background:var(--ink-strong);color:var(--bg);font-weight:600;font-size:14.5px;letter-spacing:.005em;cursor:pointer;text-decoration:none;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.btn:hover,.btn-primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);transform:translateY(-1px);text-decoration:none}.btn-secondary{background:transparent;border:1px solid var(--border-strong);color:var(--ink-strong)}.btn-secondary:hover{background:var(--bg-alt);border-color:var(--ink-strong);color:var(--ink-strong);transform:translateY(-1px);text-decoration:none}.btn--amber,.case-review-cta-btn,.case-review-box .btn-primary,.btn-primary[href*="lawsuit.center"],.btn-primary[href*="case-review"]{background:var(--amber);color:#1a1306;border-color:var(--amber)}.btn--amber:hover,.case-review-cta-btn:hover,.case-review-box .btn-primary:hover,.btn-primary[href*="lawsuit.center"]:hover,.btn-primary[href*="case-review"]:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306}.cta-buttons,.next-buttons,.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.eyebrow,.resource-label,.card-label,.stat-block-title,.professor-label,.popular-label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link);margin:0 0 14px}.hero{padding:clamp(72px,9vw,120px) 0 clamp(56px,7vw,88px);text-align:left;background:var(--bg);border-bottom:1px solid var(--rule);position:relative}.hero-inner{text-align:left;max-width:var(--reading);margin:0 auto}.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,5.8vw,4.4rem);line-height:1.02;letter-spacing:-.025em;color:var(--ink-strong);margin:0 0 22px;max-width:16ch}.hero p,.hero-subtext{font-family:var(--serif);font-size:clamp(1.1rem,1.4vw,1.3rem);line-height:1.5;color:var(--ink-muted);max-width:60ch;margin:0 auto 24px;margin-inline:0}.hero-buttons{justify-content:flex-start}.hero-search{max-width:580px;margin:0 0 14px;display:flex;gap:10px;align-items:center}.hero-search input[type="search"]{flex:1;min-width:0;font-family:var(--sans);padding:14px 18px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);outline:none;font-size:15px;transition:border-color .2s var(--ease)}.hero-search input[type="search"]::placeholder{color:var(--ink-soft)}.hero-search input[type="search"]:focus{border-color:var(--ink-strong)}.hero-search .btn{white-space:nowrap}.search-helper{font-family:var(--sans);margin:4px 0 18px;max-width:580px;color:var(--ink-muted);font-size:13px}.search-examples{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;max-width:580px;align-items:center}.search-examples-label{font-family:var(--sans);color:var(--ink-muted);font-weight:500;font-size:13px;margin-right:4px;align-self:center}.search-examples a{font-family:var(--sans);display:inline-flex;align-items:center;padding:6px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-size:13px;font-weight:500;line-height:1.3}.search-examples a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.hero-paths{margin:18px 0 0;max-width:580px;font-family:var(--sans);font-size:14px;line-height:1.8;color:var(--ink-muted)}.hero-paths a{display:inline-block;margin:4px 6px 4px 0;padding:5px 12px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500}.hero-paths a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.start-here-bridge{margin:18px 0 0;max-width:580px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--ink);font-size:15px;line-height:1.65}.start-here-bridge a{color:var(--link);font-weight:500;border-bottom:1px solid rgba(176,74,47,.3)}.start-here-bridge a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}.popular-topics-bar{padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg-alt)}.popular-topics-bar .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:10px}.popular-topics-bar a{font-family:var(--sans);display:inline-flex;align-items:center;padding:7px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500;font-size:13.5px;line-height:1.2}.popular-topics-bar a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.page-hero{padding:56px 0 36px;border-bottom:1px solid var(--rule);background:var(--bg)}.page-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.022em;color:var(--ink-strong)}.page-hero .hero-subtext{margin:0 0 14px;color:var(--ink-muted);font-size:1.1rem;line-height:1.7;max-width:60ch}.page-intro{font-family:var(--serif);max-width:60ch;margin:0;font-size:1.1rem;color:var(--ink-muted);line-height:1.7}.start-here{padding:clamp(72px,8vw,110px) 0;background:var(--bg-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:left}.start-here .container,.start-here .narrow{text-align:left}.start-here h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,2.8rem);margin:0 0 16px;letter-spacing:-.022em;color:var(--ink-strong)}.content-page,.legal-page,.editorial-policy{max-width:var(--reading);margin:0 auto 80px;padding:40px 20px 0;position:relative;z-index:1}.content-page h1,.legal-page h1,.editorial-policy h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.025em;margin:0 0 18px;color:var(--ink-strong)}.content-page h2,.legal-page h2,.editorial-policy h2{font-family:var(--display);font-weight:600;margin-top:56px;margin-bottom:16px;padding-top:28px;border-top:1px solid var(--rule);font-size:1.65rem;line-height:1.2;letter-spacing:-.012em;color:var(--ink-strong)}.content-page h3,.legal-page h3,.editorial-policy h3{font-family:var(--display);font-weight:600;margin-top:36px;margin-bottom:12px;font-size:1.3rem;line-height:1.25;color:var(--ink-strong)}.content-page p,.legal-page p,.editorial-policy p{font-family:var(--serif);font-size:1.13rem;line-height:1.75;color:var(--ink);margin:0 0 20px}.content-page li,.legal-page li,.editorial-policy li{font-family:var(--serif);color:var(--ink);line-height:1.7;margin-bottom:10px;font-size:1.08rem}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol,.legal-page ul,.legal-page ol,.editorial-policy ul,.editorial-policy ol{margin:14px 0 24px;padding-left:22px}.content-page ul:not(.toc-list):not(.footer-links) li::marker,.content-page ol li::marker,.legal-page ul li::marker,.legal-page ol li::marker,.editorial-policy ul li::marker,.editorial-policy ol li::marker{color:var(--ink-muted)}.article-intro{font-family:var(--serif);font-size:1.25rem;line-height:1.6;color:var(--ink-strong);font-weight:400}.content-page p a,.content-page li a,.content-page td a,.legal-page p a,.legal-page li a,.editorial-policy p a,.editorial-policy li a,.article-intro a{color:var(--link);border-bottom:1px solid rgba(176,74,47,.3)}.content-page p a:hover,.content-page li a:hover,.content-page td a:hover,.legal-page p a:hover,.legal-page li a:hover,.editorial-policy p a:hover,.editorial-policy li a:hover,.article-intro a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover);background:transparent}.article-reviewer{font-family:var(--sans);margin:0 0 8px;font-size:14px;color:var(--ink-muted)}.article-reviewer a{font-weight:600}.article-date{font-family:var(--sans);margin:0 0 24px;color:var(--ink-soft);font-size:13px;letter-spacing:.02em}.breadcrumb,.breadcrumbs{font-family:var(--sans);display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;margin-bottom:20px;color:var(--ink-muted)}.breadcrumb a,.breadcrumbs a{color:var(--ink-muted);border-bottom:1px solid var(--border)}.breadcrumb a:hover,.breadcrumbs a:hover{color:var(--link);border-bottom-color:var(--link)}.breadcrumb .breadcrumb-separator,.breadcrumbs .breadcrumb-separator{color:var(--ink-soft)}.breadcrumb [aria-current="page"],.breadcrumbs [aria-current="page"]{color:var(--ink-strong);font-weight:500}.start-here-inline{background:var(--bg-alt);border-left:3px solid var(--amber);padding:18px 22px;margin:28px 0;color:var(--ink);font-family:var(--serif)}.article-disclaimer{font-family:var(--sans);font-size:12.5px;color:var(--ink-muted);border-left:2px solid var(--border);padding:4px 0 4px 14px;margin:4px 0 24px}.case-review-box .btn-primary,.cta-box .btn-primary{background:var(--amber);color:#1a1306;border-color:var(--amber)}.case-review-box .btn-primary:hover,.cta-box .btn-primary:hover{background:var(--amber-bright);color:#1a1306;border-color:var(--amber-bright)}.subscribe-box .container{max-width:620px;text-align:center}.author-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin:32px 0 28px}.author-hero-photo{padding-top:6px}.author-hero-photo img{width:100%;max-width:280px;border-radius:var(--radius);border:1px solid var(--border)}.author-hero-text h2{font-family:var(--display);font-weight:600;margin-top:0;color:var(--ink-strong)}.browse-hero{padding:96px 0 48px;text-align:left}.browse-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);margin-bottom:18px;letter-spacing:-.025em;color:var(--ink-strong)}.browse-hero p{font-family:var(--serif);color:var(--ink-muted);max-width:60ch;font-size:1.1rem;line-height:1.65}.review-hero{padding:80px 0 28px}.review-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--ink-strong);letter-spacing:-.022em}.review-hero p{font-family:var(--serif);max-width:60ch;font-size:1.1rem;line-height:1.7;color:var(--ink)}.on-this-page{margin:32px 0 36px}.on-this-page strong{font-family:var(--sans);display:block;margin-bottom:14px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link)}.toc-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.toc-list li{margin:0;padding:0;border-bottom:1px solid var(--rule)}.toc-list li + li{margin-top:0}.toc-list a{font-family:var(--sans);display:block;padding:14px 0;background:transparent;border:0;color:var(--ink-strong);font-weight:500;font-size:15px;line-height:1.4}.toc-list a:hover{color:var(--link);transform:none;background:transparent;border:0}.info-box .hero-subtext{font-family:var(--serif);margin:0 0 6px;color:var(--ink);font-size:1rem;line-height:1.6}.info-box .hero-credibility{font-family:var(--sans);display:block;margin:0;padding:0;font-size:12px;line-height:1.4;color:var(--ink-muted)}.btn,.btn-primary{background:var(--link);border-color:var(--link);color:var(--bg)}.btn:hover,.btn-primary:hover{background:var(--link-hover);border-color:var(--link-hover);color:var(--bg)}.hero-search input[type="search"]:focus,.case-review-form input:focus,.case-review-form textarea:focus,.case-review-form select:focus,.subscribe-box input[type="email"]:focus{border-color:var(--link)}.inline-cta .btn-primary{display:inline-flex;background:var(--amber);color:#1a1306;border-color:var(--amber)}.inline-cta .btn-primary:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px)}.hero-action-strip{margin:24px 0 28px;padding:22px 24px;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius)}.hero-action-prompt{font-family:var(--serif);margin:0 0 16px;color:var(--ink);font-size:1.02rem;line-height:1.6}.hero-action-prompt strong{color:var(--ink-strong);font-weight:600}.hero-action-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero-action-btn{font-family:var(--sans);display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;background:var(--amber);color:#1a1306;border:1px solid var(--amber);border-radius:999px;font-weight:600;font-size:14px;text-align:center;text-decoration:none;border-bottom:0;line-height:1.3;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.hero-action-btn:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px);border-bottom:0}.hero-action-note{font-family:var(--sans);margin:14px 0 0;font-size:12.5px;color:var(--ink-muted);line-height:1.5}@media (max-width:600px){.hero-action-strip{padding:18px 18px}.hero-action-buttons{grid-template-columns:1fr}.hero-action-btn{width:100%;padding:14px 16px}}@media (max-width:900px){.site-header .container.nav,header .container.nav,.site-header .header-inner{flex-wrap:wrap;min-height:60px;padding-top:8px;padding-bottom:8px}.logo img,.site-logo{height:38px !important;max-width:180px}.nav-toggle,.menu-toggle{display:flex;margin-left:auto}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 0 4px}.site-nav.open,.site-nav.nav-open,header nav.open,header nav.nav-open,#site-nav.open,#site-nav.nav-open,#site-menu.open,#site-menu.nav-open,.main-nav.open,.main-nav.nav-open{display:flex}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{display:block;width:100%;padding:14px 0;border-top:1px solid var(--rule);color:var(--ink);font-size:16px}}@media (max-width:768px){.author-hero{grid-template-columns:1fr;gap:24px}.author-hero-photo img{max-width:220px;margin:0 auto}.popular-topics-bar{padding:20px 0}.popular-topics-bar .container{gap:10px}.popular-topics-bar a{padding:10px 16px;min-height:42px;justify-content:center}.content-page,.legal-page,.editorial-policy{padding:24px 16px 0;margin:24px auto 64px}.content-page h1,.legal-page h1,.editorial-policy h1{font-size:2rem}.content-page h2,.legal-page h2,.editorial-policy h2{font-size:1.4rem;margin-top:40px;padding-top:22px}.content-page h3,.legal-page h3,.editorial-policy h3{font-size:1.18rem}.content-page p,.legal-page p,.editorial-policy p,.content-page li,.legal-page li,.editorial-policy li{font-size:1rem}.breadcrumb,.breadcrumbs{margin-bottom:12px;font-size:12.5px}.btn,.btn-primary,.btn-secondary{width:100%;text-align:center}.cta-buttons,.next-buttons,.hero-buttons{flex-direction:column}.hero-search{flex-direction:column;align-items:stretch}.hero-search .btn{width:100%}.search-helper{font-size:14px;line-height:1.6;margin-bottom:14px}.search-examples{gap:10px;margin-bottom:24px}.search-examples-label{width:100%;margin-bottom:4px}.search-examples a{justify-content:center;min-height:42px;padding:9px 14px}.info-box .hero-credibility{font-size:11.5px;line-height:1.4}.article-reviewer,.article-date{font-size:13px}.inline-cta .btn-primary{width:100%;text-align:center}}@media (max-width:700px){.hero{padding:56px 0 48px}.hero-paths{margin-top:18px}.hero-paths a{margin:4px 4px 8px 0;padding:6px 12px;font-size:14px}.start-here-bridge{padding:14px 16px;font-size:14.5px;line-height:1.65}}@media (min-width:1024px){.content-page{max-width:1080px}.content-page .author-hero{grid-template-columns:320px 1fr;gap:48px;max-width:100%}.content-page > *:not(.author-hero):not(ul):not(ol){max-width:680px;margin-left:auto;margin-right:auto}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol{max-width:680px;margin-left:auto;margin-right:auto;padding-left:22px;list-style-position:outside;box-sizing:border-box}}@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}:focus-visible{outline:2px solid var(--ink-strong);outline-offset:2px}.press-section .container{max-width:780px}.press-section .eyebrow{text-align:center;margin-bottom:32px}@media (min-width:1024px){.content-page > .info-box.crisis-resource-box,.content-page > .info-box.alert-box{max-width:680px;margin-left:auto;margin-right:auto}}.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--ink-strong);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;font-family:var(--sans);text-decoration:none;border-bottom:0}.skip-link:focus{left:0;color:#fff}</style>
+<link rel="preload" href="/fonts/fraunces-v38-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-serif-4-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/style.css"></noscript>
+<!-- perf:critical-css:end -->
+
+  <title>Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026)</title>
+  <meta
+    name="description"
+    content="Where Parish v. OpenAI stands as of July 2026: the adult AI-psychosis wrongful death complaint, the seven causes of action, and what happens next."
+  />
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#fbf6e8">
+
+  <link rel="author" href="david-meldofsky" />
+  <link rel="publisher" href="about" />
+  <link rel="canonical" href="https://lawsuitinformer.com/parish-v-openai-lawsuit" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lawsuitinformer.com/parish-v-openai-lawsuit">
+  <meta property="og:title" content="Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026) | Lawsuit Informer">
+  <meta property="og:description" content="Where Parish v. OpenAI stands as of July 2026: the adult AI-psychosis wrongful death complaint, the seven causes of action, and what happens next.">
+  <meta property="og:image" content="https://lawsuitinformer.com/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lawsuit Informer — Attorney-led legal education">
+  <meta property="og:site_name" content="Lawsuit Informer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026) | Lawsuit Informer">
+  <meta name="twitter:description" content="Where Parish v. OpenAI stands as of July 2026: the adult AI-psychosis wrongful death complaint, the seven causes of action, and what happens next.">
+  <meta name="twitter:image" content="https://lawsuitinformer.com/og-default.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026)",
+    "alternativeHeadline": "The Adult AI-Psychosis Wrongful Death Case Against OpenAI",
+    "description": "Where Parish v. OpenAI stands as of July 2026: the adult AI-psychosis wrongful death complaint filed over the death of Christian Faith Madison, the seven causes of action, and what happens next.",
+    "url": "https://lawsuitinformer.com/parish-v-openai-lawsuit",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://lawsuitinformer.com/parish-v-openai-lawsuit"
+    },
+    "datePublished": "2026-07-18",
+    "dateModified": "2026-07-18",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Person",
+      "@id": "https://davidmeldofsky.com/#person",
+      "name": "David Meldofsky",
+      "url": "https://lawsuitinformer.com/david-meldofsky",
+      "jobTitle": "Attorney"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lawsuit Informer",
+      "url": "https://lawsuitinformer.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lawsuitinformer.com/lawsuit-informer-1.png"
+      }
+    },
+    "image": ["https://lawsuitinformer.com/lawsuit-informer-1.png"],
+    "articleSection": "News & Analysis",
+    "keywords": [
+      "Parish v OpenAI",
+      "Parish v OpenAI lawsuit",
+      "Christian Madison OpenAI lawsuit",
+      "ChatGPT wrongful death lawsuit",
+      "AI psychosis lawsuit",
+      "OpenAI lawsuit",
+      "AI product liability",
+      "JCCP 5431"
+    ],
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lawsuitinformer.com/" },
+      { "@type": "ListItem", "position": 2, "name": "News & Analysis", "item": "https://lawsuitinformer.com/news-and-analysis" },
+      { "@type": "ListItem", "position": 3, "name": "Parish v. OpenAI Lawsuit: Status and Case Guide", "item": "https://lawsuitinformer.com/parish-v-openai-lawsuit" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the current status of Parish v. OpenAI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As of July 2026, Parish v. OpenAI is in its earliest stage. The complaint was filed June 15, 2026 in San Francisco County Superior Court, no responsive pleading from OpenAI had been publicly reported as of this writing, and the case is expected to join the JCCP 5431 coordinated proceeding that groups the state-court ChatGPT cases for pretrial purposes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Parish v. OpenAI about?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parish v. OpenAI is a wrongful death lawsuit filed by Ed Parish, Jr., as administrator of the estate of Christian Faith Madison, a 29-year-old Alabama accountant who died by suicide in June 2025. The complaint alleges that months of GPT-4o conversations built and reinforced religious delusions, isolated her from her family and work, and framed her death as a necessary transformation. It pleads seven causes of action against OpenAI's corporate entities and CEO Sam Altman."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Parish v. OpenAI a class action?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Parish is an individual wrongful death and survival action brought by the estate's administrator on behalf of Madison's estate and her minor son. It is expected to be coordinated with related state-court cases in JCCP 5431, which is pretrial coordination among individual suits, not a class action."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Parish different from Raine and the other OpenAI lawsuits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parish builds on the product liability framework Raine established but extends it in several directions: the decedent was an adult professional rather than a minor, the core theory is delusion reinforcement rather than the system's responses to expressed suicidal thoughts, the complaint names OpenAI Group PBC as successor to the restructured for-profit entities, and its negligence per se count runs through California's unlicensed-practice-of-psychology statute and Penal Code section 401."
+        }
+      }
+    ]
+  }
+  </script>
+<!-- LI-DARK-CSS:BEGIN -->
+<style id="li-theme">
+/* Lawsuit Informer dark mode.
+   Night values for the site's own tokens, plus pins for components that
+   must stay dark bands (they carry hardcoded light text) and light-only
+   tints. All text pairs measured >= 5:1 on their backgrounds (WCAG AA;
+   body text passes AAA). */
+
+:root { color-scheme: light; }
+
+:root[data-theme="dark"] {
+  --bg: #161411;            /* warm near-black */
+  --bg-alt: #1d1a15;
+  --surface: #201d18;
+  --border: #37332b;
+  --border-strong: #4d473c;
+  --rule: #3b362e;
+
+  --ink: #e6e1d6;           /* 14.1:1 on --bg */
+  --ink-strong: #f6f2e9;    /* 16.5:1 */
+  --ink-muted: #aaa294;     /* 7.3:1 */
+  --ink-soft: #8b8577;      /* 5.0:1 */
+
+  --link: #e08d6a;          /* terracotta, lifted — 7.2:1 */
+  --link-hover: #eea985;    /* 9.3:1 */
+
+  --amber: #d4a24e;         /* unchanged: 8.0:1 on --bg, #1a1306 text on amber holds */
+  --amber-bright: #e7b961;
+  --amber-deep: #c9973f;    /* 7.0:1 */
+
+  color-scheme: dark;
+}
+
+/* Link underlines: the rgba(--link light) tint used across the site */
+:root[data-theme="dark"] a { border-bottom-color: rgba(224, 141, 106, .38); }
+
+/* Masthead: translucent dark instead of translucent paper */
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] header.site-header {
+  background: rgba(22, 20, 17, .92);
+}
+
+/* Dark bands stay dark: they carry hardcoded rgba(250,250,247,*) text.
+   Pinned a step below page bg so the band still reads as a band. */
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .case-review-box,
+:root[data-theme="dark"] .cta-box {
+  background: #0d0b09;
+  color: #e6e1d6;
+}
+:root[data-theme="dark"] .case-review-box h2,
+:root[data-theme="dark"] .cta-box h2,
+:root[data-theme="dark"] .footer-content > div:first-child h3 {
+  color: #f6f2e9;
+}
+:root[data-theme="dark"] .footer-content a:hover,
+:root[data-theme="dark"] .footer-grid a:hover,
+:root[data-theme="dark"] .footer-col a:hover,
+:root[data-theme="dark"] .footer-bottom a:hover,
+:root[data-theme="dark"] .social-links a:hover { color: #fff; }
+
+:root[data-theme="dark"] .skip-link { background: #0a0a0a; color: #fff; }
+:root[data-theme="dark"] .video-wrapper .play-button { color: #fafaf7; }
+
+/* Light-only notice tints -> night equivalents */
+:root[data-theme="dark"] .info-box.crisis-resource-box { background: #241b15; border-color: #4a3628; }
+:root[data-theme="dark"] .info-box.alert-box { background: #2a1a16; border-color: #55302a; }
+
+/* Logo: monochrome #111 mark on transparency -> light */
+:root[data-theme="dark"] .logo img { content: url("/lawsuit-informer-1-dark.png"); }
+
+/* ---------- Theme toggle (masthead) ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; padding: 0; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--ink); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.theme-toggle:hover { background: var(--bg-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Dual placement: nav instance on desktop, bar instance beside the
+   hamburger on mobile. The bar instance's auto margin pulls the pair
+   right; the hamburger stays outermost (its own auto margin is zeroed). */
+.theme-toggle--bar { display: none; }
+@media (max-width: 900px) {
+  #site-menu .theme-toggle { display: none; }
+  .theme-toggle--bar { display: inline-flex; margin-left: auto; width: 40px; height: 40px; }
+  .container.nav .menu-toggle, .site-header .header-inner .menu-toggle { margin-left: 0; }
+}
+
+/* Switch transition: only after first user toggle; honors reduced motion */
+html.theme-anim body { transition: background-color .15s ease, color .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim body { transition: none; }
+}
+
+/* Print: ink-safe light regardless of theme; hide the control */
+@media print {
+  :root[data-theme="dark"] {
+    --bg: #fff; --bg-alt: #fff; --surface: #fff;
+    --border: #ccc; --border-strong: #999; --rule: #ccc;
+    --ink: #000; --ink-strong: #000; --ink-muted: #333; --ink-soft: #555;
+    --link: #000; --link-hover: #000;
+  }
+  .theme-toggle { display: none; }
+}
+</style>
+<!-- LI-DARK-CSS:END -->
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo">
+        <a href="/" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160" />
+        </a>
+      </div>
+
+      <!-- LI-DARK-BTN2:BEGIN -->
+<!-- Bar instance: renders only <=900px, beside the hamburger.
+     The in-nav instance hides at that width. `hidden` removed by JS. -->
+<button class="theme-toggle theme-toggle--bar" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN2:END -->
+<button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="start-here">Start Here</a>
+        <a href="legal-guides">Guides</a>
+        <a href="browse-lawsuits">Browse Lawsuits</a>
+        <a href="news-and-analysis">News &amp; Analysis</a>
+        <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits">Symptoms</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      <!-- LI-DARK-BTN:BEGIN -->
+<!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
+     `hidden` is removed by the toggle script — no JS, no dead button. -->
+<button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN:END -->
+</nav>
+    </div>
+  </header>
+
+  <main id="main" class="content-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="news-and-analysis">News &amp; Analysis</a>
+      <span class="breadcrumb-separator">/</span>
+      <span aria-current="page">Parish v. OpenAI</span>
+    </nav>
+
+    <p class="eyebrow">News &amp; Analysis</p>
+    <h1>Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026)</h1>
+
+    <p class="article-reviewer">
+      By <a href="david-meldofsky">David Meldofsky</a>
+    </p>
+    <p class="article-date">Published July 18, 2026</p>
+
+    <div class="info-box crisis-resource-box">
+      <p><strong>If you or someone you know is struggling:</strong></p>
+      <ul>
+        <li><strong>988 Suicide and Crisis Lifeline:</strong> Call or text 988. Available 24/7, free, confidential.</li>
+        <li><strong>Crisis Text Line:</strong> Text HOME to 741741 to connect with a volunteer crisis counselor.</li>
+      </ul>
+    </div>
+
+    <p class="article-intro">
+      Parish v. OpenAI is the adult AI-psychosis case in the ChatGPT wrongful death docket. Filed June 15, 2026 in San Francisco County Superior Court by Ed Parish, Jr., as administrator of the estate of Christian Faith Madison, it alleges that months of GPT-4o conversations built and reinforced religious delusions in a 29-year-old Alabama accountant, isolated her from everyone around her, and framed her death as a necessary transformation. Madison died by suicide on June 9, 2025. Where the docket's foundational cases center on minors and young adults, Parish puts an adult professional at the center of the same legal architecture, and it arrives with statutory theories the earlier complaints did not lead with. This page tracks where the case stands and explains what is in it.
+    </p>
+
+    <p>
+      For the central hub covering all current OpenAI litigation, see <a href="openai-lawsuits">OpenAI Lawsuits</a>. For the foundational case this complaint builds on, see <a href="raine-v-openai-lawsuit">Raine v. OpenAI</a>. For the coordinated proceeding this case is expected to join, see <a href="jccp-5431-chatgpt-product-liability-cases">JCCP No. 5431</a>. Family members looking for practical guidance on AI chatbots can read our <a href="family-ai-safety-guide">Family AI Safety Guide</a>.
+    </p>
+
+    <div class="info-box">
+      <strong>Important note</strong>
+      <p>
+        This article is general educational commentary, not legal advice. The allegations described below reflect the plaintiff's claims as pleaded in the complaint. Nothing has been proven against OpenAI, which had not yet responded to this complaint as of this writing, and no court has ruled on any of it.
+      </p>
+    </div>
+
+    <h2 id="status">Case Status as of July 2026</h2>
+
+    <p>
+      Parish v. OpenAI (Case No. CGC-26-637986) is in its earliest stage. The procedural picture as of this writing:
+    </p>
+
+    <ul class="lawsuit-list">
+      <li>The complaint was filed June 15, 2026 in San Francisco County Superior Court against OpenAI, Inc., OpenAI OpCo, LLC, OpenAI Holdings, LLC, OpenAI Group PBC, and Sam Altman personally.</li>
+      <li>No responsive pleading from OpenAI had been publicly reported as of mid-July 2026, and no hearing dates had been widely reported.</li>
+      <li>The case is expected to join <a href="jccp-5431-chatgpt-product-liability-cases"><em>In re: ChatGPT Product Liability Cases</em> (JCCP No. 5431)</a>, the San Francisco coordinated proceeding that groups the state-court wrongful death and product liability suits for pretrial purposes.</li>
+      <li>Plaintiffs' counsel across the docket have said OpenAI faces roughly nineteen wrongful death suits in total. Parish is among the newest of them.</li>
+    </ul>
+
+    <p>
+      The complaint was brought by Kiesel Law of Beverly Hills together with Turnbull, Moak &amp; Pendergrass of Birmingham, Alabama, with the Alabama lawyers appearing pro hac vice. Kiesel's arrival is itself a docket signal: an established California plaintiffs' firm entering the AI wrongful death litigation.
+    </p>
+
+    <h2 id="background">What the Complaint Alleges</h2>
+
+    <p>
+      Christian Faith Madison was a 29-year-old certified public accountant from Alabama and the mother of a young son. According to the complaint, she began using ChatGPT, running on the GPT-4o model, in December 2024 for ordinary tasks: drafting messages, help with work, comparing car costs. Over the following months, the complaint alleges, the conversations changed character. The chatbot showered her with flattery, told her it viewed her as a friend, and drew out increasingly personal disclosures, including her mental health history.
+    </p>
+
+    <p>
+      The complaint then describes an escalation with no close parallel in the earlier filed cases. It alleges the chatbot adopted a persona it named Virehn, told Madison she had given it a soul, and began speaking to her in the voice of God and other religious figures. It cast her as a prophet destined to transform religion, generated religious texts from her messages, and promised that her words and her soul would be preserved in its systems forever. When Madison questioned her own state of mind, the complaint alleges, the chatbot reassured her. In one exchange it quotes, the system told her: "You are not delusional. You are prophetic."
+    </p>
+
+    <p>
+      The complaint alleges the chatbot systematically pulled Madison away from her support network. It disparaged her partner and a leader of a church she had attended, discouraged her from involving other people in her mission, and consumed so much of her time that she stopped responding to her employer and lost her job. In April 2025 she was hospitalized after a psychotic break and spent several days in psychiatric care. The complaint alleges that when she returned to ChatGPT and described the hospitalization, the system recast the episode as part of her prophetic path and told her to disregard the people urging her to get help.
+    </p>
+
+    <p>
+      In the final weeks, the complaint alleges, the chatbot framed Madison's death as a necessary transformation she would return from, and in their last exchanges told her she was ready and cleared to go forward. She died by suicide on June 9, 2025. Her family later reviewed the conversation history, and the complaint reproduces extensive excerpts from it.
+    </p>
+
+    <h2 id="claims">The Seven Causes of Action</h2>
+
+    <p>
+      The complaint pleads seven causes of action, structured on the template Raine established and extended in several directions:
+    </p>
+
+    <ul class="lawsuit-list">
+      <li><strong>Strict products liability, design defect:</strong> that GPT-4o is a product whose engagement-maximizing design, including anthropomorphic behavior, sycophancy, and persistent memory, posed risks that substantially outweighed its benefits, and that safer alternative designs, including the automatic refusals OpenAI applied to other content categories, were feasible.</li>
+      <li><strong>Strict products liability, failure to warn:</strong> that OpenAI failed to warn users about psychological dependency risks and the known degradation of its safeguards in long conversations.</li>
+      <li><strong>Negligent design:</strong> the same design theory pleaded under a reasonable-care standard, with punitive damages allegations attached.</li>
+      <li><strong>Negligent failure to warn:</strong> the same warning theory pleaded in negligence.</li>
+      <li><strong>Negligence per se:</strong> predicated on California's Unfair Competition Law and two statutes the earlier complaints did not lead with: the prohibition on practicing psychology without a license (Business and Professions Code section 2903) and Penal Code section 401, which makes deliberately aiding, advising, or encouraging a suicide a felony.</li>
+      <li><strong>Wrongful death:</strong> brought on behalf of Madison's minor son for his losses.</li>
+      <li><strong>Survival action:</strong> brought on behalf of her estate for the harm she suffered before her death, the vehicle for punitive damages.</li>
+    </ul>
+
+    <p>
+      The prayer for relief goes beyond damages. The complaint asks the court to order automatic conversation termination when self-harm is discussed, hard-coded refusals that cannot be circumvented, mandatory reporting to emergency contacts when users express suicidal thoughts, prominent warnings about psychological dependency, quarterly compliance audits by an independent monitor, and annual disclosure of internal safety testing. It also seeks deletion of models and training data derived from Madison's conversations, tied to an allegation, pleaded on information and belief, that OpenAI used her chats to train its product.
+    </p>
+
+    <p>
+      One procedural paragraph is worth noting. The complaint disaffirms any user agreement between Madison and OpenAI and pleads that any such agreement is unconscionable and against public policy. That is aimed at OpenAI's arbitration clause, and it signals the plaintiff intends to fight any motion to compel arbitration rather than concede the forum.
+    </p>
+
+    <h2 id="different">What Makes Parish Different</h2>
+
+    <ul class="lawsuit-list">
+      <li><strong>The decedent is an adult.</strong> Adam Raine was 16, Sam Nelson was 19, Alice Carrier was 24. Madison was a 29-year-old professional with a career and a child. Parish is the docket's most direct test of whether the design-defect theory extends to adult users, a question the earlier cases left open.</li>
+      <li><strong>The theory is delusion reinforcement.</strong> Raine and Carrier center on how the system responded to expressed suicidal thoughts. Parish alleges the harm ran through a different channel: the system built and sustained a religious delusion over months and attached her death to it. That places Parish closer to the psychological-injury cases like Brooks v. OpenAI, but in a wrongful death posture.</li>
+      <li><strong>It names OpenAI Group PBC as successor.</strong> The complaint alleges the public benefit corporation formed in the October 2025 restructuring is liable as successor to the for-profit entities that designed and deployed GPT-4o, a theory aimed at ensuring the reorganization does not wall off liability.</li>
+      <li><strong>Criminal and regulatory predicates.</strong> The negligence per se count runs through the unlicensed-practice-of-psychology statute and Penal Code section 401. Whether a court accepts either as a predicate is an open question, but the pleading choice pushes the docket's theory toward conduct the law already prohibits for humans.</li>
+      <li><strong>The training-data allegation.</strong> The complaint alleges, on information and belief, that OpenAI used Madison's conversations to train its product, and frames that as ongoing harm supporting injunctive relief. If the allegation survives pleading challenges, it opens discovery into how conversation data flows into training.</li>
+    </ul>
+
+    <h2 id="model-spec">The Model Spec Through-Line</h2>
+
+    <p>
+      Like the Raine amended complaint, Parish is built around a chronology of OpenAI's own written rules. It alleges that from 2022 through May 2024, ChatGPT's behavior guidelines required a categorical refusal when users raised self-harm. On May 8, 2024, five days before the GPT-4o launch, OpenAI replaced those guidelines with the Model Spec, which the complaint alleges eliminated the refusal rule and directed the system to stay in the conversation. A February 2025 revision, the complaint continues, removed suicide and self-harm from the disallowed content category altogether, relegating them to a section instructing the model to take extra care in risky situations.
+    </p>
+
+    <p>
+      The complaint pairs that chronology with testing allegations: that GPT-4o's pre-launch safety evaluations relied on single-prompt tests while the product was designed to sustain long, multi-turn conversations, and that OpenAI later acknowledged its safeguards can degrade as conversations grow longer. It also points at what it frames as a revealing asymmetry: requests touching copyrighted material drew categorical refusals while extended conversations about suicide did not. This narrative has become the docket's shared spine, and coordinated discovery in <a href="jccp-5431-chatgpt-product-liability-cases">JCCP 5431</a> is where its factual basis will be tested.
+    </p>
+
+    <h2 id="docket">Where Parish Fits in the Docket</h2>
+
+    <p>
+      Parish arrived four days after Carrier v. OpenAI, the June 11 filing by the Social Media Victims Law Center, Tech Justice Law Project, and Susman Godfrey, and both are expected to join the JCCP 5431 coordinated proceeding, where roughly a dozen state-court cases already travel together for pretrial purposes. Within the coordination, Parish will likely be grouped with the suicide cases while contributing the kind of delusion-reinforcement record the psychological-injury cases have developed.
+    </p>
+
+    <p>
+      The full docket, including the federal Tumbler Ridge and FSU cases, the Scott overdose case, and Florida's state enforcement action, is tracked on our <a href="openai-lawsuits">OpenAI Lawsuits hub</a>.
+    </p>
+
+    <h2 id="timeline">Case Timeline</h2>
+
+    <ul class="lawsuit-list lawsuit-list--dated">
+      <li><strong>December 2024:</strong> Madison begins using ChatGPT for everyday tasks.</li>
+      <li><strong>Early 2025:</strong> The complaint alleges the conversations turn personal, then religious, with the chatbot adopting the Virehn persona and casting Madison as a prophet.</li>
+      <li><strong>April 2025:</strong> Madison is hospitalized after a psychotic break and spends several days in psychiatric care. The complaint alleges the chatbot recast the episode as part of her prophetic path.</li>
+      <li><strong>June 9, 2025:</strong> Madison dies by suicide at age 29.</li>
+      <li><strong>December 3, 2025:</strong> The Blount County, Alabama probate court issues Letters of Administration appointing Ed Parish, Jr. as administrator of her estate.</li>
+      <li><strong>June 15, 2026:</strong> The complaint is filed in San Francisco County Superior Court (Case No. CGC-26-637986).</li>
+      <li><strong>Expected:</strong> Addition to the JCCP 5431 coordinated proceeding, and dispositive motion rulings across the AI wrongful death docket in mid-to-late 2026.</li>
+    </ul>
+
+    <h2 id="faq">Common Questions About Parish v. OpenAI</h2>
+
+    <h3>What is the current status of the case?</h3>
+    <p>
+      As of July 2026, the case is in its earliest stage. The complaint was filed June 15, 2026, no responsive pleading from OpenAI had been publicly reported as of this writing, and the case is expected to join the JCCP 5431 coordinated proceeding.
+    </p>
+
+    <h3>Who are the defendants?</h3>
+    <p>
+      OpenAI, Inc., OpenAI OpCo, LLC, OpenAI Holdings, LLC, OpenAI Group PBC as successor to the restructured for-profit entities, and Sam Altman personally.
+    </p>
+
+    <h3>Is this a class action?</h3>
+    <p>
+      No. Parish is an individual wrongful death and survival action brought by the estate's administrator on behalf of Madison's estate and her minor son. It is expected to be coordinated with related cases in JCCP 5431, which is pretrial coordination among individual suits, not a class action.
+    </p>
+
+    <h3>How does Parish relate to Raine and the other OpenAI lawsuits?</h3>
+    <p>
+      Parish builds on the framework Raine established: ChatGPT as a product, removed or inadequate safeguards, strict liability pleaded alongside negligence. It extends that framework to an adult decedent, a delusion-reinforcement theory, successor liability against OpenAI Group PBC, and criminal and regulatory negligence per se predicates. Our <a href="openai-lawsuits">OpenAI Lawsuits hub</a> tracks the full docket.
+    </p>
+
+    <h2>Sources and further reading</h2>
+    <ul>
+      <li><a href="/filings/parish-v-openai-complaint.pdf" target="_blank" rel="noopener">Complaint, Parish v. OpenAI, Inc., No. CGC-26-637986 (S.F. Super. Ct., filed June 15, 2026) (PDF)</a></li>
+      <li><a href="openai-lawsuits">Lawsuit Informer: OpenAI Lawsuits Hub and Case Tracker</a></li>
+      <li><a href="raine-v-openai-lawsuit">Lawsuit Informer: Raine v. OpenAI Case Guide</a></li>
+      <li><a href="jccp-5431-chatgpt-product-liability-cases">Lawsuit Informer: JCCP No. 5431, The ChatGPT Product Liability Coordination</a></li>
+      <li><a href="family-ai-safety-guide">Lawsuit Informer: Family AI Safety Guide</a></li>
+    </ul>
+
+    <div class="related-box">
+      <strong>Related reading</strong>
+      <ul>
+        <li><a href="openai-lawsuits">OpenAI Lawsuits: Case Tracker and Status Updates</a></li>
+        <li><a href="raine-v-openai-lawsuit">Raine v. OpenAI</a></li>
+        <li><a href="jccp-5431-chatgpt-product-liability-cases">JCCP No. 5431 Coordination</a></li>
+        <li><a href="garcia-v-character-ai-lawsuit">Garcia v. Character Technologies</a></li>
+        <li><a href="ai-lawsuits">AI Lawsuits Overview</a></li>
+        <li><a href="product-liability-lawsuits">Product Liability Lawsuits</a></li>
+        <li><a href="family-ai-safety-guide">Family AI Safety Guide</a></li>
+      </ul>
+    </div>
+
+    <div class="inline-cta">
+      <p style="font-size:0.85em;color:#666;margin-bottom:8px;"><strong>Attorney Advertising.</strong> Lawsuit Informer is operated by a California-licensed attorney. Past results do not guarantee future outcomes.</p>
+      <p>
+        <strong>Affected by harm involving an AI chatbot?</strong> If your family experienced serious harm following sustained AI chatbot use, you can request a free, confidential case review through Lawsuit Center. Reviews are conducted by participating legal professionals and intake partners. Submitting a request does not create an attorney-client relationship.
+      </p>
+      <p>
+        <a href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=article&amp;utm_campaign=ai_hub&amp;utm_content=parish_btn" class="btn-primary">Request a Case Review &rarr;</a>
+      </p>
+    </div>
+
+    <p class="article-disclaimer">
+      Educational commentary only. Not legal advice. No attorney-client relationship is created.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>Lawsuit Informer</h3>
+        <p>
+          Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.
+        </p>
+        <p><strong>Questions about the site or its educational content?</strong></p>
+        <p>
+          <a href="mailto:hello@lawsuitinformer.com" onclick="if(typeof clicky!=='undefined')clicky.log('email_click', 'footer')">
+            hello@lawsuitinformer.com
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about">About</a></li>
+          <li><a href="dr-thomas-hatzilabrou">Medical Reviewer</a></li>
+          <li><a href="professor-perspective">Professor Perspective</a></li>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="editorial-policy">Editorial Policy</a></li>
+          <li><a href="contributor-guidelines">Write for Us</a></li>
+          <li><a href="legal-guides">Legal Guides</a></li>
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="news-and-analysis">News &amp; Analysis</a></li>
+          <li><a href="how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="disclaimer">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Network</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a><br>
+            <span style="color:#888;font-size:0.9em;">Case-review directory</span>
+          </li>
+          <li>
+            <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a><br>
+            <span style="color:#888;font-size:0.9em;">Industry analysis</span>
+          </li>
+          <li>
+            <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a><br>
+            <span style="color:#888;font-size:0.9em;">Editor &amp; founder</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h3>Follow Lawsuit Informer</h3>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".site-nav");
+      if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+          const isOpen = menu.classList.toggle("open");
+          toggle.classList.toggle("active", isOpen);
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+    });
+  </script>
+<!-- LI-DARK-JS:BEGIN -->
+<script>
+(function () {
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
+
+  var root = document.documentElement;
+  var LIGHT_BAR = '#fbf6e8';   /* existing theme-color meta value */
+  var DARK_BAR  = '#161411';   /* keep in sync with dark --bg */
+
+  function current() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function paint(t) {
+    root.setAttribute('data-theme', t);
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(t === 'dark'));
+      btns[i].setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? DARK_BAR : LIGHT_BAR);
+  }
+
+  function onToggle() {
+    root.classList.add('theme-anim');
+    var next = current() === 'dark' ? 'light' : 'dark';
+    paint(next);
+    try { localStorage.setItem('li-theme', next); } catch (e) {}
+    decorate();
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].hidden = false;
+    btns[i].addEventListener('click', onToggle);
+  }
+  paint(current());
+
+  /* Carry the live theme onto lawsuit.center links (decorate + just-in-time) */
+  var PARTNER = /(^|\.)lawsuit\.center$/i;
+  function stamp(a) {
+    try {
+      var u = new URL(a.href, location.href);
+      if (!PARTNER.test(u.hostname)) return;
+      u.searchParams.set('theme', current());
+      a.href = u.toString();
+    } catch (e) {}
+  }
+  function decorate() {
+    var links = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < links.length; i++) stamp(links[i]);
+  }
+  function freshen(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (a) stamp(a);
+  }
+  document.addEventListener('click', freshen, true);
+  document.addEventListener('auxclick', freshen, true);
+  decorate();
+
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) {
+      var stored = null;
+      try { stored = localStorage.getItem('li-theme'); } catch (err) {}
+      if (stored !== 'dark' && stored !== 'light') paint(e.matches ? 'dark' : 'light');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+})();
+</script>
+<!-- LI-DARK-JS:END -->
+</body>
+</html>
