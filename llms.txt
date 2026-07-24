@@ -25,6 +25,7 @@
 
 ## AI and chatbot lawsuits
 - [OpenAI lawsuits: case tracker](https://lawsuitinformer.com/openai-lawsuits): Status of the active lawsuits against OpenAI.
+- [Raine v. OpenAI](https://lawsuitinformer.com/raine-v-openai-lawsuit): Status and timeline of the lead ChatGPT wrongful death case.
 - [AI lawsuits overview](https://lawsuitinformer.com/ai-lawsuits): The categories of litigation involving artificial intelligence.
 - [Is AI output a product or content](https://lawsuitinformer.com/ai-output-product-or-content): The threshold legal question in every AI case.
 - [Garcia v. Character Technologies](https://lawsuitinformer.com/garcia-v-character-ai-lawsuit): The foundational AI product-liability ruling.
