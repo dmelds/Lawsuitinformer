@@ -1,10 +1,13 @@
 name: Generate sitemap
 
 on:
+  # Auto: runs when pages change on main. <lastmod> is derived from each file's
+  # last git commit date, so only .html commits can change the output. Matching
+  # the other generators on paths: ['**.html'] stops this workflow from being
+  # re-triggered by the _redirects and search-data.js commits they push.
   push:
     branches: [main]
-    paths-ignore:
-      - 'sitemap.xml'
+    paths: ['**.html']
   workflow_dispatch:
 
 permissions:
@@ -31,11 +34,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet sitemap.xml; then
-            git add sitemap.xml
-            git commit -m "Auto-update sitemap.xml [skip ci]"
-            git pull --rebase origin "$(git branch --show-current)"
-            git push
-          else
+          if git diff --quiet sitemap.xml; then
             echo "No sitemap changes."
+            exit 0
           fi
+          git add sitemap.xml
+          git commit -m "Auto-update sitemap.xml [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          # The three generators can finish within seconds of each other on the
+          # same push. A single rebase-then-push loses whichever lands second,
+          # so retry with backoff instead of failing the run.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed sitemap.xml on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push sitemap.xml after 5 attempts"
+          exit 1

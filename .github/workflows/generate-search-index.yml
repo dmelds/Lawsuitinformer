@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
     paths: ['**.html']
-  # Manual: same dry-run option as the OG-tags workflow.
+  # Manual: same dry-run option as the other workflows.
   workflow_dispatch:
     inputs:
       dry_run:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Generate search index
         run: |
@@ -42,12 +42,25 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet; then
+          # Scoped to search-data.js: a bare `git diff --quiet` also reports clean
+          # when some other path is dirty, which would skip a real update.
+          if git diff --quiet search-data.js; then
             echo "No changes to commit (search index already up to date)"
             exit 0
           fi
           git add search-data.js
-          git commit -m "Auto-update search index (search-data.js)"
-          git pull --rebase origin "$(git branch --show-current)"
-          git push
-          echo "Pushed search index update to $(git branch --show-current)"
+          git commit -m "Auto-update search index (search-data.js) [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          # The three generators can finish within seconds of each other on the
+          # same push. A single rebase-then-push loses whichever lands second,
+          # so retry with backoff instead of failing the run.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed search-data.js to $BRANCH on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push search-data.js after 5 attempts"
+          exit 1
