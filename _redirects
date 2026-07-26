@@ -37,6 +37,11 @@
 /professor-jane-smith   /professor-perspective   301
 /free-case-review       https://lawsuit.center/?utm_source=lawsuitinformer&utm_medium=redirect&utm_campaign=free_case_review   301
 
+# OG image swapped png -> jpg (July 2026). Keeps already-scraped
+# social cards resolving. Forced (!) so it fires even if og-default.png
+# is still present in the repo.
+/og-default.png  /og-default.jpg  301!
+
 # ============================================================
 # Forced .html -> extensionless 301s (June 11, 2026)
 # GSC (last 3 months) showed 50 pages indexed under BOTH URLs,
