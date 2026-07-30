@@ -8,6 +8,14 @@ the repo. Falls back to file mtime, then today's date, if git history isn't ther
 
 Runs automatically from .github/workflows/sitemap.yml on every push.
 Place this file in your repo ROOT (same folder as your .html pages).
+
+SKIP_TOKEN marks mechanical, site-wide commits (analytics snippets, handler
+cleanups, formatting sweeps). Commits whose message contains it are ignored
+when computing <lastmod>, so a 200-file sweep does not reset every date to the
+same day and flatten the signal. Put the token in the commit message:
+
+    git commit -m "Strip dead handlers [skip lastmod] [skip actions]"
+
 """
 import glob
 import os
@@ -16,6 +24,10 @@ import datetime
 
 BASE_URL = "https://lawsuitinformer.com"   # no trailing slash
 ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# SKIP_TOKEN marks mechanical, site-wide commits (analytics snippets, handler
+# See the module docstring note below for usage.
+SKIP_TOKEN = "[skip lastmod]"
 
 # Pages kept OUT of the sitemap (matches your current exclusions). Add more as needed.
 EXCLUDE = {"thank-you.html", "sms-terms.html"}
@@ -27,15 +39,24 @@ def xml_escape(s: str) -> str:
 
 
 def git_date(path: str):
-    """Last commit date (YYYY-MM-DD) for a file, or None if git can't tell us."""
-    try:
-        r = subprocess.run(
-            ["git", "log", "-1", "--format=%cs", "--", path],
-            cwd=ROOT, capture_output=True, text=True,
-        )
-        return r.stdout.strip() or None
-    except Exception:
-        return None
+    """Last commit date (YYYY-MM-DD) for a file, or None if git can't tell us.
+
+    Commits whose message contains SKIP_TOKEN are ignored, so mechanical
+    site-wide sweeps don't reset every <lastmod> to the same day. Falls back
+    to the unfiltered date for files that have only marked commits.
+    """
+    for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
+        try:
+            r = subprocess.run(
+                ["git", "log", "-1", "--format=%cs", *extra, "--", path],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+        except Exception:
+            return None
+        d = r.stdout.strip()
+        if d:
+            return d
+    return None
 
 
 def lastmod(path: str) -> str:

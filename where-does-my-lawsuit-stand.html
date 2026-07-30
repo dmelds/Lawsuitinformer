@@ -502,7 +502,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         </p>
         <p><strong>Questions about the site or its educational content?</strong></p>
         <p>
-          <a href="mailto:hello@lawsuitinformer.com" onclick="if(typeof clicky!=='undefined')clicky.log('email_click', 'footer')">
+          <a href="mailto:hello@lawsuitinformer.com">
             hello@lawsuitinformer.com
           </a>
         </p>
@@ -586,7 +586,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   /* ===================================================================
      LITIGATION STATUS DATA  -  update this block as dockets change.
      phaseIndex maps to LIFECYCLE (0-based). Plain language only.
-     No quoted source text. Last full review: May 2026.
+     No quoted source text. Last full review: July 30, 2026.
      =================================================================== */
   var LIFECYCLE = [
     {t:"Intake & sign-up",          d:"You speak with a firm, they evaluate your facts, and you sign a representation agreement."},
@@ -661,16 +661,16 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
      timeline:"This litigation is in an active settlement process. Specific terms and amounts have not been made public, and payment timing depends on when the settlement is finalized.",
      meaning:"Long stays make it look like nothing is happening, but they reflect ongoing settlement work behind the scenes. A quiet docket here is consistent with a case in settlement administration, not a sign of a problem.", cta:"explore"},
 
-    {label:"Depo-Provera", tag:"Early-stage MDL", title:"Depo-Provera (meningioma / brain tumor)",
-     venue:"Federal MDL in the Northern District of Florida. One of the newest mass torts here.",
-     phaseIndex:3, recent:[
+    {label:"Depo-Provera", tag:"Settlement in principle", title:"Depo-Provera (meningioma / brain tumor)",
+     venue:"Federal MDL 3140 in the Northern District of Florida, with coordinated state-court cases in New York and Delaware.",
+     phaseIndex:5, recent:[
       {d:"Dec 2025", t:"The FDA approved a new meningioma warning for the product label, which affects failure-to-warn claims going forward."},
-      {d:"Early 2026", t:"The MDL grew quickly to several thousand federal cases; general-causation expert depositions were underway."},
-      {d:"May 2026", t:"An expert-evidence hearing was scheduled, and a preemption ruling that will apply to every case in the MDL was pending."},
-      {d:"Dec 2026", t:"The first bellwether trial was scheduled for early December 2026."}],
-     next:"A pending preemption ruling that could come at any time, the May 2026 expert hearing, and the first bellwether in December 2026.",
-     timeline:"This is an early-stage MDL. Expect it to develop through 2026 and 2027 before the direction of the litigation becomes clear. No global settlement talks have been announced.",
-     meaning:"Early MDLs are largely invisible to claimants for a long time. Months of silence at this stage is expected and is not a reflection of your individual case. The threshold rulings this year will shape what happens next.", cta:"explore"},
+      {d:"Jun 2026", t:"Pfizer and plaintiffs' leadership announced a global settlement in principle; the December 2026 bellwether trial was removed from the calendar."},
+      {d:"Jun 2026", t:"General-causation expert hearings were held June 24 to 26."},
+      {d:"Jul 2026", t:"More than 5,800 cases were pending, and new filings continued while the agreement is finalized. Terms have not been made public."}],
+     next:"Finalization and documentation of the settlement. Eligibility criteria, participation elections, and terms are defined only when the agreement is completed. A Rule 702 expert hearing remains on the calendar for September 18, 2026, and state-court cases proceed outside the federal deal.",
+     timeline:"If the settlement is finalized and a claim is eligible, resolution follows documentation, individual elections, and a claims process that typically takes months. Cases outside the agreement, including state-court cases, proceed on their own tracks.",
+     meaning:"A settlement in principle is a direction, not a payout. No individual amounts exist yet, deadlines under state law keep running, and whether a given claim is covered depends on final terms that have not been written. This is a stage where the firm handling a case has real news to give.", cta:"explore"},
 
     {label:"Tylenol / Acetaminophen", tag:"Revived on appeal July 2026", title:"Tylenol / Acetaminophen (autism & ADHD)",
      venue:"Federal MDL in the Southern District of New York (In re: Acetaminophen ASD/ADHD Products Liability Litigation), plus cases in state courts.",
