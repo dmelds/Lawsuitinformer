@@ -19,6 +19,18 @@
 /case-filings/baggaley-v-roblox-complaint.pdf
   Link: <https://lawsuitinformer.com/baggaley-v-roblox>; rel="canonical"
 
+# Court filings (AI litigation cluster)
+/case-filings/parish-v-openai-complaint.pdf
+  Link: <https://lawsuitinformer.com/parish-v-openai-lawsuit>; rel="canonical"
+/case-filings/lacey-v-openai-complaint.pdf
+  Link: <https://lawsuitinformer.com/lacey-v-openai-lawsuit>; rel="canonical"
+/case-filings/shamblin-v-openai-complaint.pdf
+  Link: <https://lawsuitinformer.com/shamblin-v-openai-lawsuit>; rel="canonical"
+
+# Court filings (PFAS cluster)
+/case-filings/new-york-v-3m-pfas-complaint.pdf
+  Link: <https://lawsuitinformer.com/pfas-water-contamination-lawsuit-update>; rel="canonical"
+
 # perf:cache-policy
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
