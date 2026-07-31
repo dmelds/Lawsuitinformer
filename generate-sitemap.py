@@ -19,6 +19,7 @@ same day and flatten the signal. Put the token in the commit message:
 """
 import glob
 import os
+import re
 import subprocess
 import datetime
 
@@ -29,8 +30,27 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # See the module docstring note below for usage.
 SKIP_TOKEN = "[skip lastmod]"
 
-# Pages kept OUT of the sitemap (matches your current exclusions). Add more as needed.
-EXCLUDE = {"thank-you.html", "sms-terms.html"}
+# Pages kept OUT of the sitemap. Anything carrying a robots noindex is also
+# dropped automatically by is_noindex() below, so this list is only a backstop.
+EXCLUDE = {"404.html", "thank-you.html", "sms-terms.html"}
+
+
+ROBOTS_TAG = re.compile(r"<meta\b[^>]*>", re.IGNORECASE)
+ROBOTS_NAME = re.compile(r"name\s*=\s*[\"']robots[\"']", re.IGNORECASE)
+NOINDEX = re.compile(r"\bnoindex\b", re.IGNORECASE)
+
+
+def is_noindex(path: str) -> bool:
+    """True if the page carries a robots noindex directive."""
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as fh:
+            head = fh.read(8000)
+    except OSError:
+        return False
+    for tag in ROBOTS_TAG.findall(head):
+        if ROBOTS_NAME.search(tag) and NOINDEX.search(tag):
+            return True
+    return False
 
 
 def xml_escape(s: str) -> str:
@@ -79,6 +99,7 @@ def main() -> None:
     patterns = [os.path.join(ROOT, "*.html"), os.path.join(ROOT, "es", "*.html")]
     files = [os.path.relpath(p, ROOT) for pat in patterns for p in glob.glob(pat)]
     files = [f for f in files if os.path.basename(f) not in EXCLUDE]
+    files = [f for f in files if not is_noindex(os.path.join(ROOT, f))]
     files.sort(key=lambda f: (f != "index.html", f))   # homepage first, then A-Z (es/ after root)
 
     out = [
