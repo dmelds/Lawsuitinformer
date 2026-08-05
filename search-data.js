@@ -987,19 +987,19 @@ window.SEARCH_INDEX = [
     title: "Hernia Mesh Lawsuit",
     url: "hernia-mesh-lawsuit",
     category: "Lawsuit Topic",
-    text: "hernia mesh lawsuit hernia repair surgery mesh complications chronic pain infection adhesion mesh migration revision surgery bard covidien ethicon atrium implanted mesh products"
+    text: "hernia mesh lawsuit hernia repair surgery mesh complications chronic pain infection adhesion mesh migration revision surgery bard covidien medtronic ethicon atrium implanted mesh products patterson verdict symbotex 88 million covidien verdict hernia mesh settlement update"
   },
   {
     title: "Hernia Mesh Products",
     url: "hernia-mesh-products",
     category: "Legal Guide",
-    text: "hernia mesh products mesh brands product names bard ventralex kugel covidien parietex ethicon physiomesh atrium c-qur polypropylene composite mesh which hernia mesh is in litigation product identification"
+    text: "hernia mesh products mesh brands product names bard ventralex kugel covidien medtronic parietex progrip symbotex ethicon physiomesh atrium c-qur polypropylene composite mesh which hernia mesh is in litigation product identification symbotex recall"
   },
   {
     title: "Recent Developments in Hernia Mesh Litigation",
     url: "recent-developments-hernia-mesh-litigation",
     category: "News and Analysis",
-    text: "recent developments hernia mesh litigation hernia mesh update bard mdl settlements bellwether verdicts product claims public case activity mesh litigation news"
+    text: "recent developments hernia mesh litigation hernia mesh update bard mdl settlements bellwether verdicts product claims public case activity mesh litigation news patterson v covidien medtronic verdict symbotex 88 million jury verdict august 2026"
   },
   {
     title: "Transvaginal Mesh Lawsuits",
@@ -1312,5 +1312,11 @@ window.SEARCH_INDEX = [
     url: "shamblin-v-openai-lawsuit",
     category: "Court Filing",
     text: "shamblin openai lawsuit claims status july 2026 filed november 2025 over death 23 year old zane gpt 4o allegations where case stands background how fits litigation common questions about sources further reading class action who defendants what happens next news analysis david meldofsky"
+  },
+  {
+    title: "Parish v. OpenAI Lawsuit: Status and Case Guide (July 2026)",
+    url: "parish-v-openai-lawsuit",
+    category: "Court Filing",
+    text: "parish openai lawsuit status case guide july 2026 where stands adult ai psychosis wrongful death complaint seven causes action what happens next alleges makes different model spec through line fits docket timeline common questions about sources further reading current who defendants class how does relate raine other lawsuits news analysis david meldofsky"
   },
 ];
