@@ -987,19 +987,19 @@ window.SEARCH_INDEX = [
     title: "Hernia Mesh Lawsuit",
     url: "hernia-mesh-lawsuit",
     category: "Lawsuit Topic",
-    text: "hernia mesh lawsuit hernia repair surgery mesh complications chronic pain infection adhesion mesh migration revision surgery bard covidien ethicon atrium implanted mesh products"
+    text: "hernia mesh lawsuit hernia repair surgery mesh complications chronic pain infection adhesion mesh migration revision surgery bard covidien medtronic ethicon atrium implanted mesh products patterson verdict symbotex 88 million covidien verdict hernia mesh settlement update"
   },
   {
     title: "Hernia Mesh Products",
     url: "hernia-mesh-products",
     category: "Legal Guide",
-    text: "hernia mesh products mesh brands product names bard ventralex kugel covidien parietex ethicon physiomesh atrium c-qur polypropylene composite mesh which hernia mesh is in litigation product identification"
+    text: "hernia mesh products mesh brands product names bard ventralex kugel covidien medtronic parietex progrip symbotex ethicon physiomesh atrium c-qur polypropylene composite mesh which hernia mesh is in litigation product identification symbotex recall"
   },
   {
     title: "Recent Developments in Hernia Mesh Litigation",
     url: "recent-developments-hernia-mesh-litigation",
     category: "News and Analysis",
-    text: "recent developments hernia mesh litigation hernia mesh update bard mdl settlements bellwether verdicts product claims public case activity mesh litigation news"
+    text: "recent developments hernia mesh litigation hernia mesh update bard mdl settlements bellwether verdicts product claims public case activity mesh litigation news patterson v covidien medtronic verdict symbotex 88 million jury verdict august 2026"
   },
   {
     title: "Transvaginal Mesh Lawsuits",
