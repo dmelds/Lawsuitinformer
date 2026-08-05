@@ -996,7 +996,7 @@ window.SEARCH_INDEX = [
     text: "hernia mesh products mesh brands product names bard ventralex kugel covidien medtronic parietex progrip symbotex ethicon physiomesh atrium c-qur polypropylene composite mesh which hernia mesh is in litigation product identification symbotex recall"
   },
   {
-    title: "Recent Developments in Hernia Mesh Litigation",
+    title: "Hernia Mesh Litigation: Recent Developments",
     url: "recent-developments-hernia-mesh-litigation",
     category: "News and Analysis",
     text: "recent developments hernia mesh litigation hernia mesh update bard mdl settlements bellwether verdicts product claims public case activity mesh litigation news patterson v covidien medtronic verdict symbotex 88 million jury verdict august 2026"
@@ -1041,7 +1041,7 @@ window.SEARCH_INDEX = [
     title: "Hair Relaxer Lawsuit Updates",
     url: "hair-relaxer-lawsuit-updates",
     category: "News and Analysis",
-    text: "hair relaxer lawsuit updates public developments hair relaxer mdl uterine cancer ovarian cancer loreal softsheen motions rulings litigation news chemical straightener"
+    text: "hair relaxer lawsuit updates public developments hair relaxer mdl uterine cancer ovarian cancer loreal softsheen motions rulings litigation news chemical straightener mdl 3060"
   },
   {
     title: "House v. NCAA Settlement Update",
@@ -1059,7 +1059,7 @@ window.SEARCH_INDEX = [
     title: "Raine v. OpenAI Lawsuit: Status, Timeline, and Case Guide",
     url: "raine-v-openai-lawsuit",
     category: "News and Analysis",
-    text: "raine v openai raine lawsuit raine v openai status raine v openai update adam raine matthew maria raine chatgpt wrongful death suicide san francisco superior court amended complaint model spec punitive damages strict products liability sam altman openai answer parental controls foundational ai wrongful death case"
+    text: "raine v openai raine lawsuit raine v openai status raine v openai update adam raine matthew maria raine chatgpt wrongful death suicide san francisco superior court amended complaint model spec punitive damages strict products liability sam altman openai answer parental controls foundational ai wrongful death case docket 628528"
   },
   {
     title: "Is AI Output a Product or Content?",
@@ -1270,12 +1270,6 @@ window.SEARCH_INDEX = [
     url: "what-is-mediation",
     category: "Legal Guide",
     text: "what mediation learn how works lawsuits who attends whether binding why many civil cases go through before trial lawsuit matters usually does mediator do same when happen some settle not fits into larger process common questions people ask frequently asked about explore related topics happens during case mean will legal guides author guide david meldofsky california licensed attorney founder informer"
-  },
-  {
-    title: "Depo-Provera Lawsuit Eligibility Checker",
-    url: "depo-provera-eligibility-checker",
-    category: "Legal Guide",
-    text: "depo provera eligibility checker lawsuit answer few quick questions see whether meningioma situation may worth free case review educational tool not legal advice david meldofsky california licensed attorney founder informer lawsuits allege link between long term use medroxyprogesterone birth control injection type brain spinal tumor below no obligation medical determination"
   },
   {
     title: "JCCP 5431: The ChatGPT Product Liability Cases",
