@@ -16,6 +16,12 @@ Only in-content anchors are touched. Anything inside <head>, <nav>, <footer>,
 <script>, <style> or an HTML comment is left alone, because tagging navigation
 and footer links fires a campaign on every page view and buries real referrals.
 
+A URL whose query string sits after the fragment (path#anchor?utm_source=...)
+is reported and skipped rather than rewritten. Those parameters are inside the
+fragment, so they never reach the server and no analytics tool has ever seen
+them; appending a second, valid set in front of the fragment produces a URL
+carrying two contradictory campaigns. Fix the source link by hand, then rerun.
+
 Usage
 -----
     python3 utm_sweep.py --source lawsuitinformer --partner lawsuit.center
@@ -79,8 +85,12 @@ def build_query(pairs):
 
 
 def retag(url, source, campaign, slug):
-    """Return (new_url, action) where action is None, 'medium' or 'tagged'."""
+    """Return (new_url, action) where action is None, 'malformed', 'medium' or 'tagged'."""
     parts = urlsplit(url)
+    if "?" in parts.fragment:
+        # Query string authored after the fragment. Dead parameters, and not
+        # safe to rewrite automatically — see module docstring.
+        return url, "malformed"
     pairs = parse_query(parts.query)
     keys = {k for k, _ in pairs}
 
@@ -121,15 +131,19 @@ def sweep_file(path, source, partner, campaign, apply_changes):
         if host != partner and host != "www." + partner:
             continue
         new_url, action = retag(url, source, campaign, slug)
+        if action == "malformed":
+            edits.append((None, None, url, url, action))
+            continue
         if action:
             edits.append((m.start(1), m.end(1), url, new_url, action))
 
     if not edits:
         return []
 
-    if apply_changes:
+    writable = [e for e in edits if e[0] is not None]
+    if apply_changes and writable:
         out = html
-        for start, end, _old, new_url, _a in reversed(edits):
+        for start, end, _old, new_url, _a in reversed(writable):
             out = out[:start] + new_url + out[end:]
         path.write_text(out, encoding="utf-8")
 
@@ -157,12 +171,18 @@ def main():
     files = sorted({c[0] for c in changes})
     medium = [c for c in changes if c[3] == "medium"]
     tagged = [c for c in changes if c[3] == "tagged"]
+    malformed = [c for c in changes if c[3] == "malformed"]
     print(f"UTM sweep — {mode}")
     print(f"  partner: {args.partner}   source: {args.source}")
     print(f"  {len(changes)} links across {len(files)} files")
     print(f"    medium normalized to {TARGET_MEDIUM}: {len(medium)}")
     print(f"    newly tagged: {len(tagged)}")
+    print(f"    skipped, query after fragment: {len(malformed)}")
     for path, old, new, action in changes:
+        if action == "malformed":
+            print(f"\n  {path}  [SKIPPED — query sits after the fragment, fix by hand]")
+            print(f"    ! {old}")
+            continue
         print(f"\n  {path}  [{action}]")
         print(f"    - {old}")
         print(f"    + {new}")
