@@ -65,10 +65,14 @@ def git_date(path: str):
     site-wide sweeps don't reset every <lastmod> to the same day. Falls back
     to the unfiltered date for files that have only marked commits.
     """
+    # --no-merges is load-bearing. A merge commit's message never carries
+    # SKIP_TOKEN, so without it the PR merge that lands a mechanical sweep is
+    # reported as the file's last change and the skip token is bypassed for
+    # every file the merge was not TREESAME to a parent on.
     for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
         try:
             r = subprocess.run(
-                ["git", "log", "-1", "--format=%cs", *extra, "--", path],
+                ["git", "log", "-1", "--no-merges", "--format=%cs", *extra, "--", path],
                 cwd=ROOT, capture_output=True, text=True,
             )
         except Exception:
