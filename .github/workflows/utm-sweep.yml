@@ -1,0 +1,85 @@
+name: UTM Sweep
+
+# Repo-wide rewrite of cross-property UTM tags. Dispatch only: run it from the
+# Actions tab, read the dry-run summary in the log, then run again with
+# apply = true. Defaults are derived from the repo name, so there is nothing
+# to type in the run dialog except the apply toggle.
+#
+# The commit message carries [skip lastmod] and [skip actions] so the sitemap
+# generator does not flatten every lastmod date onto the sweep day.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      campaign:
+        description: 'utm_campaign for links that had no tags at all'
+        type: string
+        default: cross_property
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: staging
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Resolve source and partner from repo
+        id: cfg
+        run: |
+          case "${GITHUB_REPOSITORY,,}" in
+            */lawsuitinformer)
+              echo "source=lawsuitinformer" >> "$GITHUB_OUTPUT"
+              echo "partner=lawsuit.center" >> "$GITHUB_OUTPUT"
+              ;;
+            */lawsuits-center)
+              echo "source=lawsuitcenter" >> "$GITHUB_OUTPUT"
+              echo "partner=lawsuitinformer.com" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "::error::No UTM sweep config for $GITHUB_REPOSITORY"
+              exit 1
+              ;;
+          esac
+
+      - name: Dry run
+        run: |
+          python3 utm_sweep.py \
+            --source "${{ steps.cfg.outputs.source }}" \
+            --partner "${{ steps.cfg.outputs.partner }}" \
+            --campaign "${{ inputs.campaign }}"
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: |
+          python3 utm_sweep.py \
+            --source "${{ steps.cfg.outputs.source }}" \
+            --partner "${{ steps.cfg.outputs.partner }}" \
+            --campaign "${{ inputs.campaign }}" \
+            --apply
+
+      - name: Commit
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add -A
+          git commit -m "UTM sweep: normalize cross-property utm_medium to referral [skip lastmod] [skip actions]"
+          git pull --rebase
+          git push
