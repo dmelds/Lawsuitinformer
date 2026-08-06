@@ -7,8 +7,14 @@ name: UTM Sweep
 #
 # The commit message carries [skip lastmod] and [skip actions] so the sitemap
 # generator does not flatten every lastmod date onto the sweep day.
+#
+# It also runs a dry run on the 1st of each month against staging. That run
+# never writes anything; it fails on purpose when it finds links to fix, so
+# GitHub sends a notification. A clean month passes silently.
 
 on:
+  schedule:
+    - cron: '0 10 1 * *'
   workflow_dispatch:
     inputs:
       apply:
@@ -34,7 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch }}
+          # Scheduled runs carry no inputs, so fall back to the same defaults.
+          ref: ${{ inputs.branch || 'staging' }}
 
       - name: Resolve source and partner from repo
         id: cfg
@@ -59,7 +66,19 @@ jobs:
           python3 utm_sweep.py \
             --source "${{ steps.cfg.outputs.source }}" \
             --partner "${{ steps.cfg.outputs.partner }}" \
-            --campaign "${{ inputs.campaign }}"
+            --campaign "${{ inputs.campaign || 'cross_property' }}" \
+            | tee sweep.log
+
+      - name: Fail the monthly check if anything needs fixing
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if grep -q '^  0 links across 0 files$' sweep.log; then
+            echo "Nothing to sweep."
+            exit 0
+          fi
+          echo "::error::Cross-property UTM links need a sweep. Run this workflow with apply = true on staging."
+          sed -n '1,7p' sweep.log
+          exit 1
 
       - name: Apply
         if: ${{ inputs.apply }}
@@ -67,7 +86,7 @@ jobs:
           python3 utm_sweep.py \
             --source "${{ steps.cfg.outputs.source }}" \
             --partner "${{ steps.cfg.outputs.partner }}" \
-            --campaign "${{ inputs.campaign }}" \
+            --campaign "${{ inputs.campaign || 'cross_property' }}" \
             --apply
 
       - name: Commit
