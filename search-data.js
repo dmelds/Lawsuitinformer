@@ -1,5 +1,11 @@
 window.SEARCH_INDEX = [
   {
+    title: "Carrier v. OpenAI Lawsuit",
+    url: "carrier-v-openai-lawsuit",
+    category: "Case Guide",
+    text: "carrier v openai carrier openai lawsuit kristie carrier alice carrier openai wrongful death chatgpt wrongful death gpt-4o design defect susman godfrey social media victims law center tech justice law project san francisco superior court june 11 2026 strict product liability failure to warn negligence ucl 17200 penal code 401 business and professions code 2903 unlicensed practice of psychology civil code 1714.46 survival action successor in interest sam altman openai foundation openai group pbc openai holdings jccp 5431 montreal new brunswick canada memory feature sycophancy anthropomorphic design moderation"
+  },
+  {
     title: "Does Hair Relaxer Cause Cancer?",
     url: "does-hair-relaxer-cause-cancer",
     category: "Illness Topic",
