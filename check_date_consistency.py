@@ -17,6 +17,14 @@ ERROR  The <title> stamp disagrees with the <h1> stamp or the og:title stamp.
 WARN   The <title> or <h1> stamp is OLDER than the dateModified month. The page
        was edited but the stamp did not move. Warn only: the stamp may be
        referring to an event rather than to currency.
+WARN   The <title> stamp is OLDER than the month the check is running in, even
+       though the page is internally consistent. This is the case the
+       dateModified comparison cannot see: a page edited in July and stamped
+       July agrees with itself forever, and silently keeps claiming July in
+       August. Searchers type the month ("bard hernia mesh lawsuit update july
+       2026"), so a title promising a month that has passed reads as abandoned.
+       Warn only, and never on a PR: the stamp goes stale by the calendar
+       turning over, not by anything the commit did.
 
 Historical references are safe by construction. "the May 2025 ruling" in a page
 modified in 2026 is older than dateModified, so it never errors.
@@ -121,7 +129,7 @@ def modified_ym(value):
     return (int(m.group(1)), int(m.group(2))) if m else None
 
 
-def scan(path):
+def scan(path, now_ym=None):
     html = path.read_text(encoding="utf-8", errors="ignore")
     m = TITLE.search(html)
     if not m:
@@ -166,6 +174,14 @@ def scan(path):
                 f"title stamp {label(newest)} is older than dateModified "
                 f"{dm_raw} — page was edited, stamp was not"
             )
+        if now_ym and newest < now_ym:
+            months = (now_ym[0] - newest[0]) * 12 + (now_ym[1] - newest[1])
+            warnings.append(
+                f"title stamp {label(newest)} is {months} month"
+                f"{'s' if months != 1 else ''} behind the current month "
+                f"({label(now_ym)}) — the page still reads as current to the "
+                f"checker but not to a searcher"
+            )
     h_stamps = stamps(h1)
     if h_stamps and dm and max(h_stamps) < dm and not t_stamps:
         warnings.append(
@@ -177,23 +193,33 @@ def scan(path):
 
 def main():
     strict = "--strict" in sys.argv
+    # The calendar rule is time-dependent, not commit-dependent: the same tree
+    # passes in July and warns in August. Keep it off the PR gate so a merge
+    # never fails for a reason the branch did not cause.
+    calendar = "--no-calendar" not in sys.argv and not strict
     root = Path(".")
     if "--path" in sys.argv:
         root = Path(sys.argv[sys.argv.index("--path") + 1])
+
+    today = datetime.now(timezone.utc)
+    now_ym = (today.year, today.month) if calendar else None
 
     bad, warned, scanned = {}, {}, 0
     for path in sorted(root.rglob("*.html")):
         if ".git" in path.parts or "node_modules" in path.parts:
             continue
         scanned += 1
-        errors, warnings = scan(path)
+        errors, warnings = scan(path, now_ym)
         if errors:
             bad[str(path)] = errors
         if warnings:
             warned[str(path)] = warnings
 
-    now = datetime.now(timezone.utc).strftime("%B %Y")
-    print(f"Date consistency check — {scanned} pages scanned (build month: {now})")
+    print(
+        f"Date consistency check — {scanned} pages scanned "
+        f"(build month: {today.strftime('%B %Y')}"
+        f"{'' if calendar else '; calendar rule off'})"
+    )
 
     if bad:
         print(f"\nERRORS ({len(bad)} pages)")
