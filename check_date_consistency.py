@@ -17,6 +17,14 @@ ERROR  The <title> stamp disagrees with the <h1> stamp or the og:title stamp.
 WARN   The <title> or <h1> stamp is OLDER than the dateModified month. The page
        was edited but the stamp did not move. Warn only: the stamp may be
        referring to an event rather than to currency.
+ERROR  The two visible "Last Updated" stamps disagree with each other. A page
+       carries one under the byline and a second in the article-meta footer,
+       and nothing tied them together, so editing one and not the other left
+       the page showing a reader two different dates.
+ERROR  A visible stamp is NEWER than dateModified. Same false-freshness case as
+       above, in the one place a reader actually looks.
+WARN   A visible stamp is OLDER than dateModified. The page was edited and that
+       stamp did not move.
 WARN   The <title> stamp is OLDER than the month the check is running in, even
        though the page is internally consistent. This is the case the
        dateModified comparison cannot see: a page edited in July and stamped
@@ -30,7 +38,8 @@ Historical references are safe by construction. "the May 2025 ruling" in a page
 modified in 2026 is older than dateModified, so it never errors.
 
 Fields scanned: <title>, og:title, twitter:title, meta description,
-og:description, twitter:description, first <h1>, and the headline/description
+og:description, twitter:description, first <h1>, both visible "Last Updated"
+byline stamps, and the headline/description
 of any JSON-LD node that carries its own dateModified. Headlines inside an
 ItemList on a listing page are ignored, since they date other articles.
 
@@ -59,6 +68,15 @@ META = re.compile(r"<meta\b[^>]*>", re.S | re.I)
 ATTR = re.compile(r'(\w[\w:-]*)\s*=\s*"([^"]*)"', re.S)
 LD = re.compile(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', re.S | re.I)
 TAGS = re.compile(r"<[^>]+>")
+
+# Visible "Last Updated" stamps. These use "Month D, YYYY" rather than the bare
+# "Month YYYY" the STAMP pattern looks for, so STAMP cannot see them at all.
+FULLDATE = re.compile(r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b")
+BYLINE = re.compile(
+    r'<p class="article-date">\s*Last updated:\s*([^<]+?)\s*</p>', re.S | re.I)
+FOOTER = re.compile(
+    r'<strong>\s*Last Updated:\s*</strong>\s*([A-Za-z]+\s+\d{1,2},\s*20\d{2})',
+    re.S | re.I)
 
 
 def text(raw):
@@ -122,6 +140,22 @@ def jsonld(html):
     return modified, fields
 
 
+def full_date(value):
+    """Return (year, month, day) from a 'Month D, YYYY' string, or None."""
+    m = FULLDATE.search(value or "")
+    if not m:
+        return None
+    return (int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)))
+
+
+def modified_ymd(value):
+    """Return (year, month, day) from an ISO dateModified, or None."""
+    if not value:
+        return None
+    m = re.match(r"(20\d{2})-(\d{2})-(\d{2})", value)
+    return (int(m.group(1)), int(m.group(2)), int(m.group(3))) if m else None
+
+
 def modified_ym(value):
     if not value:
         return None
@@ -140,6 +174,7 @@ def scan(path, now_ym=None):
     mt = metas(html)
     dm_raw, ld_fields = jsonld(html)
     dm = modified_ym(dm_raw)
+    dm_full = modified_ymd(dm_raw)
 
     fields = [("title", title), ("h1", h1)]
     for key in ("description", "og:title", "og:description",
@@ -182,6 +217,40 @@ def scan(path, now_ym=None):
                 f"({label(now_ym)}) — the page still reads as current to the "
                 f"checker but not to a searcher"
             )
+    # Visible byline stamps. These are the only dates a reader actually sees,
+    # and they sit outside every field above: one under the byline, a second in
+    # the article-meta footer. Nothing tied the two to each other or to
+    # dateModified, so a page could be genuinely updated, have its byline moved,
+    # and keep telling readers a date months behind in the footer.
+    visible = []
+    for name, rx in (("byline", BYLINE), ("footer", FOOTER)):
+        vm = rx.search(html)
+        if not vm:
+            continue
+        raw = text(vm.group(1))
+        ymd = full_date(raw)
+        if ymd:
+            visible.append((name, ymd, raw))
+
+    if len(visible) == 2 and visible[0][1] != visible[1][1]:
+        errors.append(
+            f"byline says {visible[0][2]} but footer says {visible[1][2]} — "
+            f"two different visible Last Updated dates on one page"
+        )
+
+    if dm_full:
+        for name, ymd, raw in visible:
+            if ymd > dm_full:
+                errors.append(
+                    f"{name} stamp {raw} is newer than dateModified {dm_raw} — "
+                    f"the page shows a date it was never edited on"
+                )
+            elif ymd < dm_full:
+                warnings.append(
+                    f"{name} stamp {raw} is older than dateModified {dm_raw} — "
+                    f"page was edited, stamp was not"
+                )
+
     h_stamps = stamps(h1)
     if h_stamps and dm and max(h_stamps) < dm and not t_stamps:
         warnings.append(
