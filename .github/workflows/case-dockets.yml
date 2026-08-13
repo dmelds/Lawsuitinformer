@@ -58,7 +58,7 @@ jobs:
             echo "Nothing to commit — titles already carry their dockets."
             exit 0
           fi
-          git add -A
+          git add '*.html'
           git commit -m "Surface case dockets in titles [skip lastmod] [skip actions]"
           git pull --rebase
           git push

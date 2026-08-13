@@ -36,6 +36,6 @@ jobs:
             echo "Nothing to strip."
             exit 0
           fi
-          git add -A
+          git add '*.html'
           git commit -m "Strip dead Clicky handlers [skip lastmod] [skip actions]"
           git push
