@@ -17,7 +17,11 @@ Add them here only once individual case numbers are known.
 
 What it touches
 ---------------
-<title>, og:title and twitter:title. It does not touch <h1>, the JSON-LD
+<title> only. og:title and twitter:title are deliberately left alone: they
+drive the social share card, where a docket number is noise rather than signal,
+and this repo already lets those diverge from <title> on some pages.
+
+It does not touch <h1>, the JSON-LD
 headline, or any Month YYYY stamp, so check_date_consistency.py is unaffected
 -- that script compares month stamps across fields, not full title text, and
 your titles already diverge from h1 on some pages.
@@ -50,13 +54,10 @@ TITLES = {
         "CGC-26-637986",
     ),
     "chatgpt-fsu-shooting-lawsuit": (
-        "OpenAI Sued Over FSU Shooting | Chabba (4:26-cv-00222-MW-MJF)",
+        "OpenAI Sued Over FSU Shooting | Chabba (4:26-cv-00222)",
         "4:26-cv-00222",
     ),
 }
-
-SUFFIX = " | Lawsuit Informer"   # og:title and twitter:title carry this in this repo
-
 
 def replace_title_tag(text, new_title):
     """Replace the contents of <title>...</title>. Returns (text, old or None)."""
@@ -66,27 +67,6 @@ def replace_title_tag(text, new_title):
     old = m.group(2).strip()
     return text[: m.start(2)] + new_title + text[m.end(2) :], old
 
-
-def replace_meta_content(text, matcher, new_value):
-    """Replace the content="..." of the first meta tag matching `matcher`.
-
-    `matcher` is a compiled regex for the whole tag. Attributes may be split
-    across lines, so the tag regex uses \\s+ rather than literal spaces.
-    """
-    m = matcher.search(text)
-    if not m:
-        return text, None
-    tag = m.group(0)
-    cm = re.search(r'(?is)(content\s*=\s*")([^"]*)(")', tag)
-    if not cm:
-        return text, None
-    old = cm.group(2)
-    new_tag = tag[: cm.start(2)] + new_value + tag[cm.end(2) :]
-    return text[: m.start()] + new_tag + text[m.end() :], old
-
-
-OG_RE = re.compile(r'(?is)<meta\s+[^>]*property\s*=\s*"og:title"[^>]*>')
-TW_RE = re.compile(r'(?is)<meta\s+[^>]*name\s*=\s*"twitter:title"[^>]*>')
 
 
 def process(path, new_title, docket, apply_changes):
@@ -101,14 +81,6 @@ def process(path, new_title, docket, apply_changes):
     if old is None:
         return "no-title", []
     changes.append(("title", old, new_title))
-
-    social = new_title + SUFFIX
-    for label, matcher in (("og:title", OG_RE), ("twitter:title", TW_RE)):
-        text, old = replace_meta_content(text, matcher, social)
-        if old is None:
-            changes.append((label, "(tag not found -- skipped)", ""))
-        else:
-            changes.append((label, old, social))
 
     if apply_changes:
         path.write_text(text, encoding="utf-8")
