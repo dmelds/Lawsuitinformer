@@ -39,8 +39,8 @@ jobs:
           ref: ${{ inputs.branch || 'staging' }}
 
       - name: Dry run
-        run: python3 add_case_dockets.py | tee dockets.log
-
+        run: python3 add_case_dockets.py
+        
       - name: Apply
         if: ${{ inputs.apply }}
         run: python3 add_case_dockets.py --apply
