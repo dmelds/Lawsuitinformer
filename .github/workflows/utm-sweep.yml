@@ -67,17 +67,17 @@ jobs:
             --source "${{ steps.cfg.outputs.source }}" \
             --partner "${{ steps.cfg.outputs.partner }}" \
             --campaign "${{ inputs.campaign || 'cross_property' }}" \
-            | tee sweep.log
+            | tee /tmp/sweep.log
 
       - name: Fail the monthly check if anything needs fixing
         if: ${{ github.event_name == 'schedule' }}
         run: |
-          if grep -q '^  0 links across 0 files$' sweep.log; then
+          if grep -q '^  0 links across 0 files$' /tmp/sweep.log; then
             echo "Nothing to sweep."
             exit 0
           fi
           echo "::error::Cross-property UTM links need a sweep. Run this workflow with apply = true on staging."
-          sed -n '1,7p' sweep.log
+          sed -n '1,7p' /tmp/sweep.log
           exit 1
 
       - name: Apply
@@ -98,7 +98,7 @@ jobs:
             echo "Nothing to commit."
             exit 0
           fi
-          git add -A
+          git add '*.html'
           git commit -m "UTM sweep: normalize cross-property utm_medium to referral [skip lastmod] [skip actions]"
           git pull --rebase
           git push
