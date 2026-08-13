@@ -1325,4 +1325,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "foster wheeler asbestos exposure mesothelioma claims never filed bankruptcy has no trust so litigated directly navy boiler bare metal defense what records help company background boilers fleet refineries paper mills power plants jobs sites often involved litigation who owns liability now other equipment manufacturers named alongside illnesses discussed these cases support claim frequently asked questions related guides there fund can still bring if served 1960s sue was exposed while serving does end my do need remember which worked matter changed hands around several family members after loved one died about author david meldofsky california licensed attorney last updated august 13 2026"
   },
+  {
+    title: "Talcum Powder Lawsuit Update August 2026: MDL 2738 Status",
+    url: "talcum-powder-lawsuit-updates",
+    category: "Legal Guide",
+    text: "talcum powder lawsuit updates update august 2026 mdl 2738 status where johnson talc litigation stands billion ovarian cancer settlement announced july case counts what mesothelioma claimants should know now covers recent developments why claims separate track people often watch next how page fits main related topics find out if may have safe brands asbestos reproductive injuries linked lawsuits mass torts about author david meldofsky california licensed attorney last updated 13"
+  },
 ];
