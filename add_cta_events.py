@@ -32,10 +32,37 @@ import sys
 from pathlib import Path
 
 MARKER = "LI-DARK-JS:BEGIN"
-GUARD = "function ctaClick"
+GUARD = "cta_click listener v2"
+
 ANCHOR = "\n  decorate();\n"
 
 BLOCK = """
+  /* Outbound CTA click -> GA4. cta_click listener v2. The form lives on
+     lawsuit.center, so this is the only conversion signal Informer can record
+     on its own side. */
+  function ctaClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
+       every page untagged, so counting it would bury every real referral under
+       one enormous 'unknown' slot. */
+    if (a.closest && a.closest('footer, nav, header')) return;
+    var slot = 'unknown';
+    try { slot = new URL(a.href, location.href).searchParams.get('utm_content') || 'unknown'; }
+    catch (err) {}
+    window.gtag('event', 'cta_click', {
+      cta_slot: slot,
+      cta_page: location.pathname,
+      cta_label: (a.textContent || '').trim().slice(0, 60)
+    });
+  }
+  document.addEventListener('click', ctaClick, true);
+  document.addEventListener('auxclick', ctaClick, true);
+"""
+
+CENTER_LINK = re.compile(r'https://lawsuit\.center[^"\']*')
+
+V1_BLOCK = """
   /* Outbound CTA click -> GA4. The form lives on lawsuit.center, so this is the
      only conversion signal Informer can record on its own side. */
   function ctaClick(e) {
@@ -54,8 +81,6 @@ BLOCK = """
   document.addEventListener('auxclick', ctaClick, true);
 """
 
-CENTER_LINK = re.compile(r'https://lawsuit\.center[^"\']*')
-
 
 def scan(path):
     """Return (status, center_links, untagged_links) for one file."""
@@ -69,6 +94,13 @@ def scan(path):
         return "present", html, links, untagged
     if html.count(ANCHOR) != 1:
         return "no-anchor", html, links, untagged
+    # A page carrying the v1 listener is upgraded, not skipped. Leaving v1 in
+    # place while inserting v2 would define ctaClick twice in one scope and
+    # register the surviving definition twice, doubling every event.
+    if V1_BLOCK in html:
+        return "upgrade", html, links, untagged
+    if "function ctaClick" in html:
+        return "unknown-version", html, links, untagged
     return "patch", html, links, untagged
 
 
@@ -91,10 +123,11 @@ def main():
 
         if status == "present":
             present.append(str(path))
-        elif status == "patch":
-            patched.append((str(path), len(links), len(untagged)))
+        elif status in ("patch", "upgrade"):
+            patched.append((str(path), len(links), len(untagged), status))
             if args.apply:
-                out = html.replace(ANCHOR, ANCHOR + BLOCK, 1)
+                out = html.replace(V1_BLOCK, "", 1) if status == "upgrade" else html
+                out = out.replace(ANCHOR, ANCHOR + BLOCK, 1)
                 io.open(path, "w", encoding="utf-8").write(out)
         else:
             problems.append((str(path), status))
@@ -103,20 +136,24 @@ def main():
     print(f"cta_click sweep - {mode}")
     print(f"  {len(patched)} files patched, {len(present)} already carried the listener")
     print(f"  {len(problems)} files could not be patched")
-    print(f"  outbound lawsuit.center links now instrumented: {total_links}")
-    print(f"    of those, missing utm_content and reporting slot 'unknown': {total_untagged}")
+    upgrades = sum(1 for p in patched if p[3] == "upgrade")
+    if upgrades:
+        print(f"  of those, {upgrades} were upgraded from the v1 listener")
+    print(f"  outbound lawsuit.center links seen: {total_links}")
+    print(f"    in footer/nav/header, deliberately not counted: {total_untagged}")
 
     for path, status in problems:
         print(f"\n  {path}  [SKIPPED - {status}]")
 
     if not args.apply:
-        for path, links, untagged in patched:
+        for path, links, untagged, status in patched:
+            verb = "^ upgraded from v1" if status == "upgrade" else "+ ctaClick listener"
             print(f"\n  {path}")
-            print(f"    + ctaClick listener   ({links} Center links, {untagged} without utm_content)")
+            print(f"    {verb}   ({links} Center links, {untagged} in chrome and not counted)")
 
     # A file that carries the dark block but not the anchor is a real drift
     # signal, not a routine skip. Fail so the scheduled run notifies.
-    return 1 if any(s == "no-anchor" for _, s in problems) else 0
+    return 1 if any(s in ("no-anchor", "unknown-version") for _, s in problems) else 0
 
 
 if __name__ == "__main__":
