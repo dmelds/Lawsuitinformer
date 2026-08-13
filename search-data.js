@@ -1319,4 +1319,10 @@ window.SEARCH_INDEX = [
     category: "Court Filing",
     text: "parish openai lawsuit status case guide july 2026 where stands adult ai psychosis wrongful death complaint seven causes action what happens next alleges makes different model spec through line fits docket timeline common questions about sources further reading current who defendants class how does relate raine other lawsuits news analysis david meldofsky"
   },
+  {
+    title: "Foster Wheeler Asbestos Exposure and Mesothelioma Claims",
+    url: "foster-wheeler-asbestos",
+    category: "Legal Guide",
+    text: "foster wheeler asbestos exposure mesothelioma claims never filed bankruptcy has no trust so litigated directly navy boiler bare metal defense what records help company background boilers fleet refineries paper mills power plants jobs sites often involved litigation who owns liability now other equipment manufacturers named alongside illnesses discussed these cases support claim frequently asked questions related guides there fund can still bring if served 1960s sue was exposed while serving does end my do need remember which worked matter changed hands around several family members after loved one died about author david meldofsky california licensed attorney last updated august 13 2026"
+  },
 ];
