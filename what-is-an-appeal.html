@@ -925,6 +925,28 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   document.addEventListener('auxclick', freshen, true);
   decorate();
 
+  /* Outbound CTA click -> GA4. cta_click listener v2. The form lives on
+     lawsuit.center, so this is the only conversion signal Informer can record
+     on its own side. */
+  function ctaClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
+       every page untagged, so counting it would bury every real referral under
+       one enormous 'unknown' slot. */
+    if (a.closest && a.closest('footer, nav, header')) return;
+    var slot = 'unknown';
+    try { slot = new URL(a.href, location.href).searchParams.get('utm_content') || 'unknown'; }
+    catch (err) {}
+    window.gtag('event', 'cta_click', {
+      cta_slot: slot,
+      cta_page: location.pathname,
+      cta_label: (a.textContent || '').trim().slice(0, 60)
+    });
+  }
+  document.addEventListener('click', ctaClick, true);
+  document.addEventListener('auxclick', ctaClick, true);
+
   if (window.matchMedia) {
     var mq = matchMedia('(prefers-color-scheme: dark)');
     var onChange = function (e) {
