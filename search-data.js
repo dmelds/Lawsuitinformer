@@ -1337,4 +1337,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "roundup lawsuit updates update august 2026 after monsanto durnell where litigation stands supreme court ruled june 25 what preempted survives status mdl 2741 now did left alone recent developments proposed class settlement people often watch next how page fits main related topics find out if may have case cancer lawsuits non hodgkin lymphoma dangerous paraquat parkinson mass torts about author david meldofsky california licensed attorney last updated 13"
   },
+  {
+    title: "Camp Lejeune Lawsuit Status August 2026 (Filing Closed)",
+    url: "camp-lejeune-water-contamination-lawsuit",
+    category: "Lawsuit Topic",
+    text: "camp lejeune water contamination lawsuit status august 2026 filing closed deadline 10 2024 no new claims possible where 700 cases elective option stand now what happened justice act litigation stands settlement program why case has been tried yet statutory cap attorney fees watch next related topics toxic lawsuits illnesses pfas drinking diseases linked chemical exposure bellwether trials statute limitations basics about author david meldofsky california licensed last updated 14"
+  },
 ];
