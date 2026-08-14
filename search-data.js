@@ -1343,4 +1343,10 @@ window.SEARCH_INDEX = [
     category: "Lawsuit Topic",
     text: "camp lejeune water contamination lawsuit status august 2026 filing closed deadline 10 2024 no new claims possible where 700 cases elective option stand now what happened justice act litigation stands settlement program why case has been tried yet statutory cap attorney fees watch next related topics toxic lawsuits illnesses pfas drinking diseases linked chemical exposure bellwether trials statute limitations basics about author david meldofsky california licensed last updated 14"
   },
+  {
+    title: "AFFF Lawsuit Update August 2026: MDL 2873 Status",
+    url: "afff-lawsuit-updates",
+    category: "Legal Guide",
+    text: "afff lawsuit updates update august 2026 mdl 2873 status where firefighting foam litigation stands 15 246 cases before judge gergel vacated bellwether date why water settlements did not cover personal injury now billions already paid reach claimants recent developments pool trial what people often watch next how page fits main related topics find out if may have case exposure pfas contamination kidney cancer testicular deadlines state trials about author david meldofsky california licensed attorney last updated 14"
+  },
 ];
