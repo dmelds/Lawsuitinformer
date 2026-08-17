@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- LI-DARK-INIT:BEGIN -->
+<script>
+(function () {
+  var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
+  var t = null, qp = null;
+  /* Cross-property handoff: ?theme= from lawsuit.center wins, then vanishes */
+  try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
+  if (qp === 'dark' || qp === 'light') {
+    t = qp;
+    try { localStorage.setItem('li-theme', t); } catch (e) {}
+    try {
+      var sp = new URLSearchParams(location.search); sp.delete('theme');
+      var q = sp.toString();
+      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    try { t = localStorage.getItem('li-theme'); } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<!-- LI-DARK-INIT:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- perf:critical-css:start -->
+<style id="critical-css">@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/fraunces-v38-latin-500.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fraunces-v38-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fraunces-v38-latin-700.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-regular.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-500.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-600.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-700.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-regular.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-500.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces Fallback';src:local('Times New Roman');size-adjust:119.26%;ascent-override:82.00%;descent-override:21.38%;line-gap-override:0.00%}@font-face{font-family:'Source Serif Fallback';src:local('Georgia');size-adjust:107.45%;ascent-override:96.42%;descent-override:31.18%;line-gap-override:0.00%}@font-face{font-family:'IBM Plex Sans Fallback';src:local('Arial');size-adjust:101.17%;ascent-override:101.32%;descent-override:27.18%;line-gap-override:0.00%}:root{--bg:#fafaf7;--bg-alt:#f4f3ee;--surface:#ffffff;--border:#e5e3dc;--border-strong:#cfccc1;--rule:#d8d5cc;--ink:#1a1a1a;--ink-strong:#0a0a0a;--ink-muted:#5a5750;--ink-soft:#8a877e;--link:#b04a2f;--link-hover:#8a3621;--amber:#d4a24e;--amber-bright:#e7b961;--amber-deep:#b88a3d;--display:"Fraunces","Fraunces Fallback","Times New Roman",serif;--serif:"Source Serif 4","Source Serif Fallback",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans","IBM Plex Sans Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;--container:1180px;--reading:680px;--gutter:clamp(20px,4vw,64px);--radius:4px;--radius-lg:12px;--ease:cubic-bezier(.2,.8,.2,1)}*,*::before,*::after{box-sizing:border-box}html,body{margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}img{display:block;max-width:100%;height:auto}a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(176,74,47,.3);transition:color .2s var(--ease),border-color .2s var(--ease)}a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}ul,ol{padding-left:22px}button,input,textarea,select{font:inherit}::selection{background:var(--amber);color:#1a1306}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}.narrow{max-width:var(--reading);margin:0 auto}.site-header,header.site-header{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.95);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--rule)}.site-header .container.nav,header .container.nav,.site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding-top:8px;padding-bottom:8px}.logo,.logo-link{display:inline-flex;align-items:center;flex-shrink:0;border-bottom:0;background:transparent !important;padding:0 !important}.logo a,.logo-link a{border-bottom:0}.logo img,.site-logo{width:auto !important;height:44px !important;max-width:220px;max-height:none !important;object-fit:contain}.brand{display:flex;flex-direction:column;flex-shrink:0;line-height:1.05;border-bottom:0;color:var(--ink-strong)}.brand:hover{border-bottom:0;color:var(--ink-strong)}.brand__name{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em;color:var(--ink-strong);white-space:nowrap}.brand__tag{font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;font-weight:500}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:flex;align-items:center;gap:26px}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{font-family:var(--sans);color:var(--ink);font-size:14px;font-weight:500;letter-spacing:.005em;white-space:nowrap;border-bottom:0;transition:color .2s var(--ease)}.site-nav a:hover,.site-nav a[aria-current="page"],header nav a:hover,header nav a[aria-current="page"],#site-nav a:hover,#site-nav a[aria-current="page"],#site-menu a:hover,#site-menu a[aria-current="page"],.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--link)}.nav-toggle,.menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--border-strong);border-radius:8px;cursor:pointer;flex-shrink:0}.nav-toggle span,.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.nav-toggle.active span:nth-child(1),.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle.active span:nth-child(2),.menu-toggle.active span:nth-child(2){opacity:0}.nav-toggle.active span:nth-child(3),.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.btn,.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);padding:12px 22px;border:1px solid var(--ink-strong);border-radius:999px;background:var(--ink-strong);color:var(--bg);font-weight:600;font-size:14.5px;letter-spacing:.005em;cursor:pointer;text-decoration:none;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.btn:hover,.btn-primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);transform:translateY(-1px);text-decoration:none}.btn-secondary{background:transparent;border:1px solid var(--border-strong);color:var(--ink-strong)}.btn-secondary:hover{background:var(--bg-alt);border-color:var(--ink-strong);color:var(--ink-strong);transform:translateY(-1px);text-decoration:none}.btn--amber,.case-review-cta-btn,.case-review-box .btn-primary,.btn-primary[href*="lawsuit.center"],.btn-primary[href*="case-review"]{background:var(--amber);color:#1a1306;border-color:var(--amber)}.btn--amber:hover,.case-review-cta-btn:hover,.case-review-box .btn-primary:hover,.btn-primary[href*="lawsuit.center"]:hover,.btn-primary[href*="case-review"]:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306}.cta-buttons,.next-buttons,.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.eyebrow,.resource-label,.card-label,.stat-block-title,.professor-label,.popular-label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link);margin:0 0 14px}.hero{padding:clamp(72px,9vw,120px) 0 clamp(56px,7vw,88px);text-align:left;background:var(--bg);border-bottom:1px solid var(--rule);position:relative}.hero-inner{text-align:left;max-width:var(--reading);margin:0 auto}.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,5.8vw,4.4rem);line-height:1.02;letter-spacing:-.025em;color:var(--ink-strong);margin:0 0 22px;max-width:16ch}.hero p,.hero-subtext{font-family:var(--serif);font-size:clamp(1.1rem,1.4vw,1.3rem);line-height:1.5;color:var(--ink-muted);max-width:60ch;margin:0 auto 24px;margin-inline:0}.hero-buttons{justify-content:flex-start}.hero-search{max-width:580px;margin:0 0 14px;display:flex;gap:10px;align-items:center}.hero-search input[type="search"]{flex:1;min-width:0;font-family:var(--sans);padding:14px 18px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);outline:none;font-size:15px;transition:border-color .2s var(--ease)}.hero-search input[type="search"]::placeholder{color:var(--ink-soft)}.hero-search input[type="search"]:focus{border-color:var(--ink-strong)}.hero-search .btn{white-space:nowrap}.search-helper{font-family:var(--sans);margin:4px 0 18px;max-width:580px;color:var(--ink-muted);font-size:13px}.search-examples{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;max-width:580px;align-items:center}.search-examples-label{font-family:var(--sans);color:var(--ink-muted);font-weight:500;font-size:13px;margin-right:4px;align-self:center}.search-examples a{font-family:var(--sans);display:inline-flex;align-items:center;padding:6px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-size:13px;font-weight:500;line-height:1.3}.search-examples a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.hero-paths{margin:18px 0 0;max-width:580px;font-family:var(--sans);font-size:14px;line-height:1.8;color:var(--ink-muted)}.hero-paths a{display:inline-block;margin:4px 6px 4px 0;padding:5px 12px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500}.hero-paths a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.start-here-bridge{margin:18px 0 0;max-width:580px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--ink);font-size:15px;line-height:1.65}.start-here-bridge a{color:var(--link);font-weight:500;border-bottom:1px solid rgba(176,74,47,.3)}.start-here-bridge a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}.popular-topics-bar{padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg-alt)}.popular-topics-bar .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:10px}.popular-topics-bar a{font-family:var(--sans);display:inline-flex;align-items:center;padding:7px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500;font-size:13.5px;line-height:1.2}.popular-topics-bar a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.page-hero{padding:56px 0 36px;border-bottom:1px solid var(--rule);background:var(--bg)}.page-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.022em;color:var(--ink-strong)}.page-hero .hero-subtext{margin:0 0 14px;color:var(--ink-muted);font-size:1.1rem;line-height:1.7;max-width:60ch}.page-intro{font-family:var(--serif);max-width:60ch;margin:0;font-size:1.1rem;color:var(--ink-muted);line-height:1.7}.start-here{padding:clamp(72px,8vw,110px) 0;background:var(--bg-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:left}.start-here .container,.start-here .narrow{text-align:left}.start-here h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,2.8rem);margin:0 0 16px;letter-spacing:-.022em;color:var(--ink-strong)}.content-page,.legal-page,.editorial-policy{max-width:var(--reading);margin:0 auto 80px;padding:40px 20px 0;position:relative;z-index:1}.content-page h1,.legal-page h1,.editorial-policy h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.025em;margin:0 0 18px;color:var(--ink-strong)}.content-page h2,.legal-page h2,.editorial-policy h2{font-family:var(--display);font-weight:600;margin-top:56px;margin-bottom:16px;padding-top:28px;border-top:1px solid var(--rule);font-size:1.65rem;line-height:1.2;letter-spacing:-.012em;color:var(--ink-strong)}.content-page h3,.legal-page h3,.editorial-policy h3{font-family:var(--display);font-weight:600;margin-top:36px;margin-bottom:12px;font-size:1.3rem;line-height:1.25;color:var(--ink-strong)}.content-page p,.legal-page p,.editorial-policy p{font-family:var(--serif);font-size:1.13rem;line-height:1.75;color:var(--ink);margin:0 0 20px}.content-page li,.legal-page li,.editorial-policy li{font-family:var(--serif);color:var(--ink);line-height:1.7;margin-bottom:10px;font-size:1.08rem}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol,.legal-page ul,.legal-page ol,.editorial-policy ul,.editorial-policy ol{margin:14px 0 24px;padding-left:22px}.content-page ul:not(.toc-list):not(.footer-links) li::marker,.content-page ol li::marker,.legal-page ul li::marker,.legal-page ol li::marker,.editorial-policy ul li::marker,.editorial-policy ol li::marker{color:var(--ink-muted)}.article-intro{font-family:var(--serif);font-size:1.25rem;line-height:1.6;color:var(--ink-strong);font-weight:400}.content-page p a,.content-page li a,.content-page td a,.legal-page p a,.legal-page li a,.editorial-policy p a,.editorial-policy li a,.article-intro a{color:var(--link);border-bottom:1px solid rgba(176,74,47,.3)}.content-page p a:hover,.content-page li a:hover,.content-page td a:hover,.legal-page p a:hover,.legal-page li a:hover,.editorial-policy p a:hover,.editorial-policy li a:hover,.article-intro a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover);background:transparent}.article-reviewer{font-family:var(--sans);margin:0 0 8px;font-size:14px;color:var(--ink-muted)}.article-reviewer a{font-weight:600}.article-date{font-family:var(--sans);margin:0 0 24px;color:var(--ink-soft);font-size:13px;letter-spacing:.02em}.breadcrumb,.breadcrumbs{font-family:var(--sans);display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;margin-bottom:20px;color:var(--ink-muted)}.breadcrumb a,.breadcrumbs a{color:var(--ink-muted);border-bottom:1px solid var(--border)}.breadcrumb a:hover,.breadcrumbs a:hover{color:var(--link);border-bottom-color:var(--link)}.breadcrumb .breadcrumb-separator,.breadcrumbs .breadcrumb-separator{color:var(--ink-soft)}.breadcrumb [aria-current="page"],.breadcrumbs [aria-current="page"]{color:var(--ink-strong);font-weight:500}.start-here-inline{background:var(--bg-alt);border-left:3px solid var(--amber);padding:18px 22px;margin:28px 0;color:var(--ink);font-family:var(--serif)}.article-disclaimer{font-family:var(--sans);font-size:12.5px;color:var(--ink-muted);border-left:2px solid var(--border);padding:4px 0 4px 14px;margin:4px 0 24px}.case-review-box .btn-primary,.cta-box .btn-primary{background:var(--amber);color:#1a1306;border-color:var(--amber)}.case-review-box .btn-primary:hover,.cta-box .btn-primary:hover{background:var(--amber-bright);color:#1a1306;border-color:var(--amber-bright)}.subscribe-box .container{max-width:620px;text-align:center}.author-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin:32px 0 28px}.author-hero-photo{padding-top:6px}.author-hero-photo img{width:100%;max-width:280px;border-radius:var(--radius);border:1px solid var(--border)}.author-hero-text h2{font-family:var(--display);font-weight:600;margin-top:0;color:var(--ink-strong)}.browse-hero{padding:96px 0 48px;text-align:left}.browse-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);margin-bottom:18px;letter-spacing:-.025em;color:var(--ink-strong)}.browse-hero p{font-family:var(--serif);color:var(--ink-muted);max-width:60ch;font-size:1.1rem;line-height:1.65}.review-hero{padding:80px 0 28px}.review-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--ink-strong);letter-spacing:-.022em}.review-hero p{font-family:var(--serif);max-width:60ch;font-size:1.1rem;line-height:1.7;color:var(--ink)}.on-this-page{margin:32px 0 36px}.on-this-page strong{font-family:var(--sans);display:block;margin-bottom:14px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link)}.toc-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.toc-list li{margin:0;padding:0;border-bottom:1px solid var(--rule)}.toc-list li + li{margin-top:0}.toc-list a{font-family:var(--sans);display:block;padding:14px 0;background:transparent;border:0;color:var(--ink-strong);font-weight:500;font-size:15px;line-height:1.4}.toc-list a:hover{color:var(--link);transform:none;background:transparent;border:0}.info-box .hero-subtext{font-family:var(--serif);margin:0 0 6px;color:var(--ink);font-size:1rem;line-height:1.6}.info-box .hero-credibility{font-family:var(--sans);display:block;margin:0;padding:0;font-size:12px;line-height:1.4;color:var(--ink-muted)}.btn,.btn-primary{background:var(--link);border-color:var(--link);color:var(--bg)}.btn:hover,.btn-primary:hover{background:var(--link-hover);border-color:var(--link-hover);color:var(--bg)}.hero-search input[type="search"]:focus,.case-review-form input:focus,.case-review-form textarea:focus,.case-review-form select:focus,.subscribe-box input[type="email"]:focus{border-color:var(--link)}.inline-cta .btn-primary{display:inline-flex;background:var(--amber);color:#1a1306;border-color:var(--amber)}.inline-cta .btn-primary:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px)}.hero-action-strip{margin:24px 0 28px;padding:22px 24px;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius)}.hero-action-prompt{font-family:var(--serif);margin:0 0 16px;color:var(--ink);font-size:1.02rem;line-height:1.6}.hero-action-prompt strong{color:var(--ink-strong);font-weight:600}.hero-action-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero-action-btn{font-family:var(--sans);display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;background:var(--amber);color:#1a1306;border:1px solid var(--amber);border-radius:999px;font-weight:600;font-size:14px;text-align:center;text-decoration:none;border-bottom:0;line-height:1.3;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.hero-action-btn:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px);border-bottom:0}.hero-action-note{font-family:var(--sans);margin:14px 0 0;font-size:12.5px;color:var(--ink-muted);line-height:1.5}@media (max-width:600px){.hero-action-strip{padding:18px 18px}.hero-action-buttons{grid-template-columns:1fr}.hero-action-btn{width:100%;padding:14px 16px}}@media (max-width:900px){.site-header .container.nav,header .container.nav,.site-header .header-inner{flex-wrap:wrap;min-height:60px;padding-top:8px;padding-bottom:8px}.logo img,.site-logo{height:38px !important;max-width:180px}.nav-toggle,.menu-toggle{display:flex;margin-left:auto}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 0 4px}.site-nav.open,.site-nav.nav-open,header nav.open,header nav.nav-open,#site-nav.open,#site-nav.nav-open,#site-menu.open,#site-menu.nav-open,.main-nav.open,.main-nav.nav-open{display:flex}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{display:block;width:100%;padding:14px 0;border-top:1px solid var(--rule);color:var(--ink);font-size:16px}}@media (max-width:768px){.author-hero{grid-template-columns:1fr;gap:24px}.author-hero-photo img{max-width:220px;margin:0 auto}.popular-topics-bar{padding:20px 0}.popular-topics-bar .container{gap:10px}.popular-topics-bar a{padding:10px 16px;min-height:42px;justify-content:center}.content-page,.legal-page,.editorial-policy{padding:24px 16px 0;margin:24px auto 64px}.content-page h1,.legal-page h1,.editorial-policy h1{font-size:2rem}.content-page h2,.legal-page h2,.editorial-policy h2{font-size:1.4rem;margin-top:40px;padding-top:22px}.content-page h3,.legal-page h3,.editorial-policy h3{font-size:1.18rem}.content-page p,.legal-page p,.editorial-policy p,.content-page li,.legal-page li,.editorial-policy li{font-size:1rem}.breadcrumb,.breadcrumbs{margin-bottom:12px;font-size:12.5px}.btn,.btn-primary,.btn-secondary{width:100%;text-align:center}.cta-buttons,.next-buttons,.hero-buttons{flex-direction:column}.hero-search{flex-direction:column;align-items:stretch}.hero-search .btn{width:100%}.search-helper{font-size:14px;line-height:1.6;margin-bottom:14px}.search-examples{gap:10px;margin-bottom:24px}.search-examples-label{width:100%;margin-bottom:4px}.search-examples a{justify-content:center;min-height:42px;padding:9px 14px}.info-box .hero-credibility{font-size:11.5px;line-height:1.4}.article-reviewer,.article-date{font-size:13px}.inline-cta .btn-primary{width:100%;text-align:center}}@media (max-width:700px){.hero{padding:56px 0 48px}.hero-paths{margin-top:18px}.hero-paths a{margin:4px 4px 8px 0;padding:6px 12px;font-size:14px}.start-here-bridge{padding:14px 16px;font-size:14.5px;line-height:1.65}}@media (min-width:1024px){.content-page{max-width:1080px}.content-page .author-hero{grid-template-columns:320px 1fr;gap:48px;max-width:100%}.content-page > *:not(.author-hero):not(ul):not(ol){max-width:680px;margin-left:auto;margin-right:auto}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol{max-width:680px;margin-left:auto;margin-right:auto;padding-left:22px;list-style-position:outside;box-sizing:border-box}}@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}:focus-visible{outline:2px solid var(--ink-strong);outline-offset:2px}.press-section .container{max-width:780px}.press-section .eyebrow{text-align:center;margin-bottom:32px}@media (min-width:1024px){.content-page > .info-box.crisis-resource-box,.content-page > .info-box.alert-box{max-width:680px;margin-left:auto;margin-right:auto}}.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--ink-strong);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;font-family:var(--sans);text-decoration:none;border-bottom:0}.skip-link:focus{left:0;color:#fff}</style>
+<link rel="preload" href="/fonts/fraunces-v38-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-serif-4-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/style.css"></noscript>
+<!-- perf:critical-css:end -->
+
+<title>Mole-Richardson Asbestos Exposure and Mesothelioma Claims</title>
+<meta name="description" content="Mole-Richardson has no asbestos trust. A Los Angeles jury awarded $33.4 million in 2026 over asbestos-insulated lighting cables. Who was exposed on set, and how these claims are proven.">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#fbf6e8">
+
+<link rel="author" href="david-meldofsky">
+<link rel="publisher" href="about">
+<link rel="canonical" href="https://lawsuitinformer.com/mole-richardson-asbestos-exposure">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lawsuitinformer.com/mole-richardson-asbestos-exposure">
+  <meta property="og:title" content="Mole-Richardson Asbestos Exposure and Mesothelioma Claims | Lawsuit Informer">
+  <meta property="og:description" content="Mole-Richardson has no asbestos trust. A Los Angeles jury awarded $33.4 million in 2026 over asbestos-insulated lighting cables. Who was exposed on set, and how these claims are proven.">
+  <meta property="og:image" content="https://lawsuitinformer.com/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lawsuit Informer — Attorney-led legal education">
+  <meta property="og:site_name" content="Lawsuit Informer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Goulds Pumps Mesothelioma and Asbestos Exposure Claims | Lawsuit Informer">
+  <meta name="twitter:description" content="Goulds Pumps never went bankrupt and has no asbestos trust. Claims are paid through InTelCo, now Delticus-owned. Who was exposed, and how these claims are proven.">
+  <meta name="twitter:image" content="https://lawsuitinformer.com/og-default.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mole-Richardson Asbestos Exposure and Mesothelioma Claims",
+  "description": "Mole-Richardson has no asbestos trust. A Los Angeles jury awarded $33.4 million in 2026 over asbestos-insulated lighting cables. Who was exposed on set, and how these claims are proven.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://davidmeldofsky.com/#person",
+    "name": "David Meldofsky",
+    "url": "https://lawsuitinformer.com/david-meldofsky"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lawsuit Informer",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lawsuitinformer.com/lawsuit-informer-1.png"
+    }
+  },
+  "datePublished": "2026-08-17",
+  "dateModified": "2026-08-17",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lawsuitinformer.com/mole-richardson-asbestos-exposure"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lawsuitinformer.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Browse Lawsuits",
+      "item": "https://lawsuitinformer.com/browse-lawsuits"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Asbestos Exposure Lawsuits",
+      "item": "https://lawsuitinformer.com/asbestos-exposure-lawsuits"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Mole-Richardson Asbestos Exposure and Mesothelioma Claims",
+      "item": "https://lawsuitinformer.com/mole-richardson-asbestos-exposure"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there a Mole-Richardson asbestos trust fund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Mole-Richardson has not filed for bankruptcy and has not established an asbestos trust fund. Claims involving Mole-Richardson lighting equipment are pursued through the court system as ordinary lawsuits, and resolved cases are paid through settlements or verdicts rather than through a trust claim form."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is Mole-Richardson named in mesothelioma lawsuits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plaintiffs allege that the motion picture cables supplied with Mole-Richardson studio and theatrical lighting were insulated with asbestos, and that other components of the fixtures contained asbestos as well. Crew members who handled, coiled, dragged, and repaired those cables day after day allege that the handling released fibers they later connect to mesothelioma."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happened in the Stephenson verdict?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In George Stephenson v. PK&P Investment Co. f/k/a Mole-Richardson Co., Ltd., a Los Angeles County Superior Court jury returned a unanimous verdict on February 27, 2026 in favor of an 80-year-old Army veteran and longtime Hollywood cameraman. The jury found Mole-Richardson 100 percent liable, made a finding of malice, and awarded $33,384,400 in non-economic damages. Deliberations took roughly two and a half hours after a trial of about nine days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is the defendant if Mole-Richardson still operates in Hollywood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Stephenson case was captioned against PK&P Investment Co., formerly known as Mole-Richardson Co., Ltd., and PK&P Investment Co., formerly known as Mole-Richardson Rentals. Legacy asbestos claims are directed at those entities. Anyone evaluating a claim should confirm the current corporate structure and the correct defendant with counsel, because entity names in this litigation have changed over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which film and stage jobs show up in these cases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Camera operators and cinematographers, gaffers and best boys, studio electrical lighting technicians, grips, riggers, stagehands, and set electricians appear most often. Exposure allegations are not limited to feature film work. Television production, commercial shoots, live theater, concert and festival rigging, and school and civic auditorium work involved the same equipment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I still bring a claim if I worked on set decades ago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mesothelioma typically appears twenty to fifty years after exposure, and asbestos statutes of limitation in most states run from diagnosis rather than from the date of exposure. A long gap between the work and the diagnosis does not by itself bar a claim, but the deadlines are strict once diagnosis occurs and they vary by state. This is a question to put to a lawyer promptly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What records help prove exposure on a film or stage crew?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Union membership and dispatch records, pension and health plan contribution histories, production credits, call sheets and crew lists, payroll and Social Security earnings records, and co-worker testimony all help establish where someone worked and what equipment was on those sets. Co-worker testimony carries real weight in this litigation because crews worked in close quarters and remember the same gear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a malice finding mean punitive damages were awarded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily. In the Stephenson case the jury made a finding of malice, which under California practice opens the door to a punitive damages phase, but the case resolved before that phase was completed. A malice finding reflects the jury's view that the conduct went beyond ordinary negligence."
+      }
+    }
+  ]
+}
+</script>
+
+
+<!-- LI-DARK-CSS:BEGIN -->
+<style id="li-theme">
+/* Lawsuit Informer dark mode.
+   Night values for the site's own tokens, plus pins for components that
+   must stay dark bands (they carry hardcoded light text) and light-only
+   tints. All text pairs measured >= 5:1 on their backgrounds (WCAG AA;
+   body text passes AAA). */
+
+:root { color-scheme: light; }
+
+:root[data-theme="dark"] {
+  --bg: #161411;            /* warm near-black */
+  --bg-alt: #1d1a15;
+  --surface: #201d18;
+  --border: #37332b;
+  --border-strong: #4d473c;
+  --rule: #3b362e;
+
+  --ink: #e6e1d6;           /* 14.1:1 on --bg */
+  --ink-strong: #f6f2e9;    /* 16.5:1 */
+  --ink-muted: #aaa294;     /* 7.3:1 */
+  --ink-soft: #8b8577;      /* 5.0:1 */
+
+  --link: #e08d6a;          /* terracotta, lifted — 7.2:1 */
+  --link-hover: #eea985;    /* 9.3:1 */
+
+  --amber: #d4a24e;         /* unchanged: 8.0:1 on --bg, #1a1306 text on amber holds */
+  --amber-bright: #e7b961;
+  --amber-deep: #c9973f;    /* 7.0:1 */
+
+  color-scheme: dark;
+}
+
+/* Link underlines: the rgba(--link light) tint used across the site */
+:root[data-theme="dark"] a { border-bottom-color: rgba(224, 141, 106, .38); }
+
+/* Masthead: translucent dark instead of translucent paper */
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] header.site-header {
+  background: rgba(22, 20, 17, .92);
+}
+
+/* Dark bands stay dark: they carry hardcoded rgba(250,250,247,*) text.
+   Pinned a step below page bg so the band still reads as a band. */
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .case-review-box,
+:root[data-theme="dark"] .cta-box {
+  background: #0d0b09;
+  color: #e6e1d6;
+}
+:root[data-theme="dark"] .case-review-box h2,
+:root[data-theme="dark"] .cta-box h2,
+:root[data-theme="dark"] .footer-content > div:first-child h3 {
+  color: #f6f2e9;
+}
+:root[data-theme="dark"] .footer-content a:hover,
+:root[data-theme="dark"] .footer-grid a:hover,
+:root[data-theme="dark"] .footer-col a:hover,
+:root[data-theme="dark"] .footer-bottom a:hover,
+:root[data-theme="dark"] .social-links a:hover { color: #fff; }
+
+:root[data-theme="dark"] .skip-link { background: #0a0a0a; color: #fff; }
+:root[data-theme="dark"] .video-wrapper .play-button { color: #fafaf7; }
+
+/* Light-only notice tints -> night equivalents */
+:root[data-theme="dark"] .info-box.crisis-resource-box { background: #241b15; border-color: #4a3628; }
+:root[data-theme="dark"] .info-box.alert-box { background: #2a1a16; border-color: #55302a; }
+
+/* Logo: monochrome #111 mark on transparency -> light */
+:root[data-theme="dark"] .logo img { content: url("/lawsuit-informer-1-dark.png"); }
+
+/* ---------- Theme toggle (masthead) ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; padding: 0; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--ink); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.theme-toggle:hover { background: var(--bg-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Dual placement: nav instance on desktop, bar instance beside the
+   hamburger on mobile. The bar instance's auto margin pulls the pair
+   right; the hamburger stays outermost (its own auto margin is zeroed). */
+.theme-toggle--bar { display: none; }
+@media (max-width: 900px) {
+  #site-menu .theme-toggle { display: none; }
+  .theme-toggle--bar { display: inline-flex; margin-left: auto; width: 40px; height: 40px; }
+  .container.nav .menu-toggle, .site-header .header-inner .menu-toggle { margin-left: 0; }
+}
+
+/* Switch transition: only after first user toggle; honors reduced motion */
+html.theme-anim body { transition: background-color .15s ease, color .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim body { transition: none; }
+}
+
+/* Print: ink-safe light regardless of theme; hide the control */
+@media print {
+  :root[data-theme="dark"] {
+    --bg: #fff; --bg-alt: #fff; --surface: #fff;
+    --border: #ccc; --border-strong: #999; --rule: #ccc;
+    --ink: #000; --ink-strong: #000; --ink-muted: #333; --ink-soft: #555;
+    --link: #000; --link-hover: #000;
+  }
+  .theme-toggle { display: none; }
+}
+</style>
+<!-- LI-DARK-CSS:END -->
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+    <div class="container nav">
+      <div class="logo">
+        <a href="/" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160" />
+        </a>
+      </div>
+
+      <!-- LI-DARK-BTN2:BEGIN -->
+<!-- Bar instance: renders only <=900px, beside the hamburger.
+     The in-nav instance hides at that width. `hidden` removed by JS. -->
+<button class="theme-toggle theme-toggle--bar" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN2:END -->
+<button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="start-here">Start Here</a>
+        <a href="legal-guides">Guides</a>
+        <a href="browse-lawsuits">Browse Lawsuits</a>
+        <a href="news-and-analysis">News &amp; Analysis</a>
+        <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits">Symptoms</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      <!-- LI-DARK-BTN:BEGIN -->
+<!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
+     `hidden` is removed by the toggle script — no JS, no dead button. -->
+<button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN:END -->
+</nav>
+    </div>
+  </header>
+
+<main id="main" class="content-page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-separator">&rsaquo;</span>
+    <a href="browse-lawsuits">Browse Lawsuits</a>
+    <span class="breadcrumb-separator">&rsaquo;</span>
+    <a href="asbestos-exposure-lawsuits">Asbestos Exposure Lawsuits</a>
+    <span class="breadcrumb-separator">&rsaquo;</span>
+    <span aria-current="page">Mole-Richardson and Asbestos Exposure</span>
+  </nav>
+
+  <h1>Mole-Richardson Asbestos Exposure and Mesothelioma Claims</h1>
+
+  <p class="article-byline">
+    By <a href="david-meldofsky">David Meldofsky</a>, California-licensed attorney &middot; Founder, Lawsuit Informer
+  </p>
+
+  <p class="article-date">
+    Last updated: August 17, 2026
+  </p>
+
+  <p class="article-intro">
+    For most of the twentieth century, the lighting that lit American film and television sets came
+    with cables insulated in asbestos. Mole-Richardson supplied much of that equipment. In February
+    2026, a Los Angeles jury found the company one hundred percent liable for a Hollywood
+    cameraman's mesothelioma, made a finding of malice, and awarded $33.4 million. Unlike most
+    asbestos defendants, Mole-Richardson has no bankruptcy trust. These claims are ordinary
+    lawsuits.
+  </p>
+
+  <p>
+    Asbestos litigation has been organized for fifty years around shipyards, refineries, power
+    plants, and construction sites. Film and stage crews were exposed too, and they have been
+    largely invisible in that history. Camera operators, gaffers, grips, and stagehands spent
+    decades handling equipment built with asbestos-insulated cable, in enclosed soundstages, often
+    for eight to fourteen hours a day. The Stephenson verdict is the clearest signal yet that this
+    exposure population is real and that juries understand it.
+  </p>
+
+  <div class="info-box">
+    <strong>Important:</strong>
+    <p>This page provides general educational information about Mole-Richardson asbestos litigation and does not constitute medical or legal advice. Allegations described here reflect claims made in litigation and findings reported in public court records.</p>
+  </div>
+
+  <div class="info-box key-takeaways-box">
+    <strong>Key Takeaways:</strong>
+    <ul>
+      <li>Mole-Richardson has not filed for bankruptcy and has no asbestos trust fund. Claims proceed as lawsuits and are paid through settlements or verdicts.</li>
+      <li>The core allegation is that motion picture cables supplied with studio and theatrical lighting were insulated with asbestos, and that fixture components contained asbestos as well.</li>
+      <li>A Los Angeles jury awarded $33,384,400 in February 2026 and found the company one hundred percent liable, with a finding of malice.</li>
+      <li>Camera crew, lighting technicians, gaffers, grips, riggers, and stagehands are the occupations that appear in these cases.</li>
+      <li>Exposure was not limited to feature film work. Television, commercials, live theater, concerts, and civic auditorium work used the same equipment.</li>
+    </ul>
+  </div>
+
+  <div class="on-this-page">
+    <strong>On this page</strong>
+    <ul class="toc-list">
+      <li><a href="#company">Company Background</a></li>
+      <li><a href="#exposure">How Asbestos Exposure Happened Around Lighting Equipment</a></li>
+      <li><a href="#jobs">Jobs and Sites Often Involved</a></li>
+      <li><a href="#litigation">Mole-Richardson in Asbestos Litigation</a></li>
+      <li><a href="#others">Other Sources of Exposure in Film and Stage Work</a></li>
+      <li><a href="#illnesses">Illnesses Discussed in These Cases</a></li>
+      <li><a href="#records">Records That Help Support a Claim</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+      <li><a href="#related">Related Asbestos Guides</a></li>
+    </ul>
+  </div>
+
+  <h2 id="company">Company Background</h2>
+
+  <p>
+    Mole-Richardson was founded in Hollywood in 1927 by Peter Mole and Elmer Richardson, at the
+    moment the film industry was moving from daylight stages to controlled interior lighting. The
+    company built carbon arc and incandescent fixtures for motion picture and television
+    production and became the dominant American supplier of studio lighting. Its fixture names
+    entered the working vocabulary of the industry, and its equipment was standard on soundstages,
+    backlots, and location shoots for decades. The company also rented equipment, which put the
+    same fixtures and cables into the hands of crews on productions of every size.
+  </p>
+
+  <p>
+    That reach matters to the litigation. A manufacturer whose equipment was on nearly every
+    American set for half a century created an exposure population that is correspondingly large
+    and correspondingly dispersed. Crew members moved between productions, studios, and cities.
+    Many worked as day players through union dispatch rather than as permanent employees of any
+    one studio.
+  </p>
+
+  <h3>The corporate entity today</h3>
+
+  <p>
+    The February 2026 case was captioned against PK&amp;P Investment Co., formerly known as
+    Mole-Richardson Co., Ltd., together with PK&amp;P Investment Co., formerly known as
+    Mole-Richardson Rentals. Legacy asbestos claims are directed at those entities. The naming is
+    worth understanding at the outset, because it is a common point of confusion: the business
+    operating in Hollywood under the Mole-Richardson name today is not necessarily the same legal
+    entity that answers for exposures from the 1950s through the 1990s. Anyone evaluating a claim
+    should have counsel confirm the correct defendant, since entity structures in this litigation
+    have changed over time.
+  </p>
+
+  <p>
+    What Mole-Richardson does not have is an asbestos bankruptcy trust. Most of the household-name
+    asbestos defendants, the insulation and building product manufacturers, went through Chapter 11
+    decades ago and now resolve claims through trust claim forms with published payment
+    percentages. Mole-Richardson never took that route. A claim here is a lawsuit, filed in court,
+    tried or settled on its own facts. That is a meaningful difference in how a case is built and
+    what it can be worth.
+  </p>
+
+  <h2 id="exposure">How Asbestos Exposure Happened Around Lighting Equipment</h2>
+
+  <p>
+    The central allegation in this litigation concerns motion picture cable. Studio lighting draws
+    heavy current and runs hot, and for much of the twentieth century the insulation used on the
+    power cables serving those fixtures was asbestos. Plaintiffs allege that the cables supplied
+    and rented with Mole-Richardson lighting were insulated in this way, and that the fixtures
+    themselves incorporated asbestos-containing components.
+  </p>
+
+  <p>
+    The exposure mechanism alleged is ordinary handling rather than any single dramatic event.
+    Cable on a set is not installed once and left alone. It is coiled and uncoiled, dragged across
+    stage floors, wrapped around scaffolding and pipe grids, run up ladders, pulled taut, stepped
+    on, and re-rigged every time a lighting setup changes. On a working set that happens many times
+    a day. Plaintiffs describe cable in lengths from a few feet to twenty-five feet, moved
+    constantly as lights were repositioned between shots.
+  </p>
+
+  <p>
+    Several features of the work make the allegation coherent. Insulation on power cable degrades
+    with heat and age, and studio lighting produces substantial heat. Old cable becomes brittle and
+    sheds. Crews worked in enclosed soundstages with limited ventilation, where airborne dust
+    remains suspended rather than dispersing. Shifts were long. And the same crew handled the same
+    aging inventory across many productions.
+  </p>
+
+  <p>
+    Plaintiffs have also alleged exposure from coatings and materials on the fixtures themselves,
+    describing material coming off the lights during handling. One plaintiff testified to seeing
+    particles in the air and to the taste of them when breathing on the job, a description that
+    tracks how workers in other asbestos trades have long described dusty conditions.
+  </p>
+
+  <p>
+    None of this required anyone to work directly with insulation as a trade. That is the feature
+    of this exposure population that distinguishes it from the classic asbestos cases. A camera
+    operator was not an insulator, a pipefitter, or a shipyard lagger. He was near equipment that
+    was being handled by others and handled some of it himself, in a confined space, for a working
+    lifetime.
+  </p>
+
+  <h2 id="jobs">Jobs and Sites Often Involved</h2>
+
+  <p>
+    Because lighting is rigged and struck at the center of a set, the exposure radius covers most
+    of the crew rather than one department.
+  </p>
+
+  <ul>
+    <li><strong>Lighting technicians, gaffers, and best boys.</strong> The crew that specified, placed, powered, and struck the lights, and that handled cable more than anyone else on the floor.</li>
+    <li><strong>Studio electricians and set electricians.</strong> Responsible for distribution, tie-ins, and running cable to each fixture.</li>
+    <li><strong>Camera operators and cinematographers.</strong> Positioned immediately beside lighting throughout a shooting day, for decades of working life.</li>
+    <li><strong>Grips, key grips, and rigging grips.</strong> Built and moved the supporting structures the lights and cable were mounted on.</li>
+    <li><strong>Stagehands and theatrical riggers.</strong> Handled the same equipment in live theater, concert, and festival settings, including cable wrapped around scaffolding for outdoor events.</li>
+    <li><strong>Set dressers, props, and construction crew.</strong> Worked in the same enclosed spaces during rigging and striking.</li>
+    <li><strong>Equipment rental and warehouse staff.</strong> Received, inspected, repaired, coiled, and re-issued cable and fixtures between productions.</li>
+  </ul>
+
+  <p>
+    The locations extend well beyond the studio lots. Soundstages in Los Angeles and New York,
+    television studios, location shoots, Broadway and regional theaters, concert and festival
+    rigging, convention and trade show production, and school, church, and civic auditoriums all
+    used the same equipment. The New York case described below involved lighting rigged for street
+    festivals and block parties, not a film set at all.
+  </p>
+
+  <div class="start-here-inline">
+    <p>
+      If you worked in film, television, or live production and have been diagnosed with
+      mesothelioma or another asbestos-related disease, the relevant question is not only which
+      studio employed you but which equipment was on the sets you worked. See
+      <a href="asbestos-records-that-help-support-a-claim">records that help support an asbestos claim</a>.
+    </p>
+  </div>
+
+  <h2 id="litigation">Mole-Richardson in Asbestos Litigation</h2>
+
+  <h3>Stephenson v. PK&amp;P Investment Co. (Los Angeles, February 2026)</h3>
+
+  <p>
+    George Stephenson, an 80-year-old Army veteran and longtime Hollywood cameraman, was diagnosed
+    with pleural mesothelioma in December 2024. He filed suit in the Superior Court of California,
+    County of Los Angeles, alleging that asbestos-insulated motion picture cables and other
+    components of Mole-Richardson lighting equipment exposed him to asbestos across a career in
+    film production running from the late 1960s into the 2000s. The case was tried before Judge
+    Stephen Czuleger. By the time of trial, Mole-Richardson was the only remaining defendant.
+  </p>
+
+  <p>
+    Stephenson brought claims in negligence, strict liability, breach of express and implied
+    warranties, and premises owner and contractor liability, alleging that the company knew the
+    danger, concealed it, and failed to warn those who worked around its products. He waived
+    economic damages and tried the case on non-economic harm alone.
+  </p>
+
+  <p>
+    The trial lasted roughly nine days. On February 27, 2026, after approximately two and a half
+    hours of deliberation, the jury returned a unanimous verdict for the plaintiff on all causes of
+    action, including a finding of malice, and found Mole-Richardson one hundred percent liable.
+    The award was $33,384,400 in non-economic damages, comprising $3,640,000 for past harm and
+    $29,744,400 for future harm. The case resolved before the punitive damages phase was completed.
+  </p>
+
+  <p>
+    The jury's findings tracked the full theory of the case. It found the company negligent and
+    that the negligence was a substantial factor in increasing the risk of disease; that the
+    company knew or should have known its products were dangerous; that it learned of the defect
+    after sale and failed to recall, retrofit, or warn, where a reasonable manufacturer would have
+    done so; and, on the product claims, that the product failed to perform as safely as an
+    ordinary consumer would expect and that the risks of the design outweighed its benefits.
+  </p>
+
+  <p>
+    Two aspects of the defense are worth noting because they are likely to recur. The company
+    argued that the chrysotile asbestos used in lighting cords does not cause mesothelioma, an
+    argument the jury rejected on expert testimony. And its chief executive presented the company
+    as a small family business, a characterization plaintiff's counsel countered by pointing to the
+    scale of its supply to the industry over decades. The two-and-a-half-hour deliberation, on a
+    finding of malice and one hundred percent liability, suggests the jury found neither argument
+    persuasive.
+  </p>
+
+  <h3>Tytell (New York)</h3>
+
+  <p>
+    A separate New York case involved a stagehand who alleged exposure in the summer of 1969 while
+    setting up lighting for festivals and block parties in New York City, wrapping Mole-Richardson
+    power cables around scaffolding. He alleged exposure both from the cords and from coating
+    coming off the lights during handling, describing visible particles in the air. Mole-Richardson
+    moved for summary judgment. The court found the evidence the company offered in support of the
+    motion to be inadmissible hearsay that did not meet the standard for consideration, and the
+    case was allowed to proceed.
+  </p>
+
+  <p>
+    The two cases are useful read together. They involve different decades, different states,
+    different work, and different exposure settings, and both turn on the same equipment. Live
+    event and theatrical work carried the same exposure as film production.
+  </p>
+
+  <h3>What the absence of a trust means</h3>
+
+  <p>
+    Because there is no Mole-Richardson asbestos trust, there is no claim form, no published
+    payment percentage, and no administrative track. A claim is filed and litigated. The practical
+    consequences are real. Evidence of product identification matters more, because there is no
+    trust criteria to satisfy in the abstract. Discovery is available. And the recoverable amount
+    is not capped by a trust's payment ratio, which is why verdicts against solvent, untrusted
+    defendants can run substantially higher than trust distributions on comparable facts.
+  </p>
+
+  <h2 id="others">Other Sources of Exposure in Film and Stage Work</h2>
+
+  <p>
+    Lighting cable is the exposure that has now been tried to verdict, but it is not the only
+    asbestos a production crew encountered. Claims in this area often involve more than one
+    source and more than one defendant.
+  </p>
+
+  <ul>
+    <li><strong>Fire curtains and stage draperies.</strong> Theatrical fire curtains were commonly asbestos-based, and they were raised, lowered, and repaired by the same stage crews.</li>
+    <li><strong>Set construction materials.</strong> Flats, backings, and scenic elements built with asbestos board or coated with asbestos-containing compounds, cut and sanded in shop conditions.</li>
+    <li><strong>Fireproofing and flameproofing treatments.</strong> Applied to sets, drops, and scenic materials to satisfy fire code.</li>
+    <li><strong>Special effects and pyrotechnics materials.</strong> Heat shielding, fire blankets, and protective barriers used around practical fire effects.</li>
+    <li><strong>Projection equipment.</strong> Carbon arc projection generated substantial heat and used heat-resistant components in booths that were small and poorly ventilated.</li>
+    <li><strong>Studio and stage building materials.</strong> Soundstages, scene docks, and older theaters contained the same insulation, fireproofing, and floor and ceiling products found in other mid-century industrial buildings.</li>
+    <li><strong>Makeup and cosmetic talc.</strong> A distinct and separately litigated exposure route relevant to performers, makeup artists, and hair departments.</li>
+  </ul>
+
+  <h2 id="illnesses">Illnesses Discussed in These Cases</h2>
+
+  <p>
+    The diseases at issue are the same ones that arise across asbestos litigation generally, and
+    the latency pattern is the same. Symptoms usually appear twenty to fifty years after exposure,
+    which is why a crew member who last handled cable in the 1980s may be receiving a diagnosis
+    now.
+  </p>
+
+  <ul>
+    <li><strong><a href="pleural-mesothelioma">Pleural mesothelioma</a>.</strong> Cancer of the lining of the lungs, the disease at issue in the Stephenson case, and the one most specifically associated with asbestos.</li>
+    <li><strong><a href="peritoneal-mesothelioma">Peritoneal mesothelioma</a>.</strong> Cancer of the abdominal lining, less common but well documented in asbestos-exposed populations.</li>
+    <li><strong>Asbestos-related lung cancer.</strong> Distinguishing it from other lung cancer requires exposure history and medical evaluation, which is why occupational history is recorded carefully.</li>
+    <li><strong>Asbestosis.</strong> Progressive scarring of lung tissue from prolonged exposure, generally associated with heavier and longer exposure.</li>
+    <li><strong>Pleural plaques and pleural thickening.</strong> Markers of past exposure that may accompany other findings.</li>
+  </ul>
+
+  <p>
+    Anyone with a diagnosis and a production work history should tell the treating physician about
+    the occupational exposure, and should not wait on the medical picture to become fully settled
+    before speaking to a lawyer. Filing deadlines run from diagnosis in most states, and they are
+    unforgiving.
+  </p>
+
+  <h2 id="records">Records That Help Support a Claim</h2>
+
+  <p>
+    Film and television work presents a proof problem that shipyard and plant cases usually do not.
+    Crew members rarely worked for one employer at one site for thirty years. They moved between
+    productions, studios, and cities, often dispatched through a union hall rather than hired
+    directly. Establishing where someone worked, and what equipment was there, takes a different
+    set of records.
+  </p>
+
+  <ul>
+    <li><strong>Union membership and dispatch records.</strong> IATSE locals maintain membership histories and dispatch records that can establish which productions a member worked and when. In Los Angeles this includes the studio electrical lighting technicians, grips, and cinematographers locals; in New York, the stagehands local.</li>
+    <li><strong>Pension and health plan records.</strong> Industry pension and health plans hold contribution histories showing which signatory employers reported work on a member's behalf, often the most complete employment record available.</li>
+    <li><strong>Production credits.</strong> Screen credits, industry databases, and guild records establish specific productions, which in turn establish the studios, stages, and time periods involved.</li>
+    <li><strong>Call sheets, crew lists, and production reports.</strong> Where they survive, these place a named individual on a specific stage on a specific day. Studios, producers, and estates sometimes retain them.</li>
+    <li><strong>Payroll and Social Security earnings records.</strong> An itemized Social Security earnings statement lists reporting employers year by year and is often the backbone of a scattered work history.</li>
+    <li><strong>Equipment rental records.</strong> Rental house documentation can establish which fixtures and cable went to which production, connecting a specific manufacturer to a specific set.</li>
+    <li><strong>Co-worker testimony.</strong> Central in this litigation. Crews worked in close quarters and remember the same equipment, the same stages, and the same conditions. Colleagues from the same local are often the strongest available witnesses.</li>
+    <li><strong>Photographs and behind-the-scenes footage.</strong> Production stills and making-of material can show equipment in place on a set the plaintiff worked.</li>
+  </ul>
+
+  <p>
+    Union and pension records are worth requesting early. They take time to produce, and in a
+    mesothelioma case the timeline is compressed by the illness itself.
+  </p>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <h3>Is there a Mole-Richardson asbestos trust fund?</h3>
+  <p>
+    No. The company has not filed for bankruptcy and has not established a trust. Claims are
+    pursued as lawsuits and resolved through settlement or verdict, not through a trust claim form.
+  </p>
+
+  <h3>Why is Mole-Richardson named in mesothelioma lawsuits?</h3>
+  <p>
+    Plaintiffs allege the motion picture cables supplied with its studio and theatrical lighting
+    were insulated with asbestos, and that fixture components contained asbestos as well. Crews
+    handled that cable constantly, in enclosed spaces, over long careers.
+  </p>
+
+  <h3>What happened in the Stephenson verdict?</h3>
+  <p>
+    A Los Angeles County Superior Court jury returned a unanimous verdict on February 27, 2026 for
+    an 80-year-old Army veteran and longtime Hollywood cameraman, found the company one hundred
+    percent liable, made a finding of malice, and awarded $33,384,400 in non-economic damages after
+    roughly two and a half hours of deliberation.
+  </p>
+
+  <h3>Who is the defendant if Mole-Richardson still operates in Hollywood?</h3>
+  <p>
+    The case was captioned against PK&amp;P Investment Co., formerly known as Mole-Richardson Co.,
+    Ltd., and PK&amp;P Investment Co., formerly known as Mole-Richardson Rentals. Confirm the
+    current structure and correct defendant with counsel, as entity names in this litigation have
+    changed over time.
+  </p>
+
+  <h3>Which film and stage jobs show up in these cases?</h3>
+  <p>
+    Camera operators and cinematographers, gaffers and best boys, lighting technicians, set
+    electricians, grips, riggers, and stagehands. Exposure was not limited to feature film work.
+    Television, commercials, live theater, concerts, festivals, and civic auditorium work involved
+    the same equipment.
+  </p>
+
+  <h3>Can I still bring a claim if I worked on set decades ago?</h3>
+  <p>
+    Mesothelioma typically appears twenty to fifty years after exposure, and asbestos limitations
+    periods in most states run from diagnosis rather than exposure. The gap does not by itself bar
+    a claim, but deadlines are strict once diagnosis occurs and vary by state.
+  </p>
+
+  <h3>What records help prove exposure on a film or stage crew?</h3>
+  <p>
+    Union membership and dispatch records, pension and health plan contribution histories,
+    production credits, call sheets and crew lists, Social Security earnings records, equipment
+    rental documentation, and co-worker testimony.
+  </p>
+
+  <h3>Does a malice finding mean punitive damages were awarded?</h3>
+  <p>
+    Not necessarily. A malice finding opens the door to a punitive phase under California practice,
+    but the Stephenson case resolved before that phase was completed. The finding reflects the
+    jury's view that the conduct went beyond ordinary negligence.
+  </p>
+
+  <h2 id="related">Related Asbestos Guides</h2>
+
+  <ul>
+    <li><a href="asbestos-exposure-lawsuits">Asbestos Exposure Lawsuits</a></li>
+    <li><a href="jobs-with-high-risk-of-asbestos-exposure">Jobs With High Risk of Asbestos Exposure</a></li>
+    <li><a href="where-asbestos-exposure-happened">Where Asbestos Exposure Happened</a></li>
+    <li><a href="asbestos-records-that-help-support-a-claim">Records That Help Support an Asbestos Claim</a></li>
+    <li><a href="how-long-after-asbestos-exposure-do-symptoms-appear">How Long After Asbestos Exposure Do Symptoms Appear</a></li>
+    <li><a href="pleural-mesothelioma">Pleural Mesothelioma</a></li>
+    <li><a href="crane-co-mesothelioma">Crane Co. and Mesothelioma</a></li>
+    <li><a href="goulds-pumps-mesothelioma">Goulds Pumps and Mesothelioma</a></li>
+  </ul>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>Lawsuit Informer</h3>
+        <p>
+          Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.
+        </p>
+        <p><strong>Questions about the site or its educational content?</strong></p>
+        <p>
+          <a href="mailto:hello@lawsuitinformer.com">
+            hello@lawsuitinformer.com
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about">About</a></li>
+          <li><a href="dr-thomas-hatzilabrou">Medical Reviewer</a></li>
+          <li><a href="professor-perspective">Professor Perspective</a></li>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="editorial-policy">Editorial Policy</a></li>
+          <li><a href="contributor-guidelines">Write for Us</a></li>
+          <li><a href="legal-guides">Legal Guides</a></li>
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="news-and-analysis">News &amp; Analysis</a></li>
+          <li><a href="how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="disclaimer">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Network</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a><br>
+            <span style="color:#888;font-size:0.9em;">Case-review directory</span>
+          </li>
+          <li>
+            <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a><br>
+            <span style="color:#888;font-size:0.9em;">Industry analysis</span>
+          </li>
+          <li>
+            <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a><br>
+            <span style="color:#888;font-size:0.9em;">Editor &amp; founder</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h3>Follow Lawsuit Informer</h3>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("site-menu");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+</script>
+
+<!-- LI-DARK-JS:BEGIN -->
+<script>
+(function () {
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
+
+  var root = document.documentElement;
+  var LIGHT_BAR = '#fbf6e8';   /* existing theme-color meta value */
+  var DARK_BAR  = '#161411';   /* keep in sync with dark --bg */
+
+  function current() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function paint(t) {
+    root.setAttribute('data-theme', t);
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(t === 'dark'));
+      btns[i].setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? DARK_BAR : LIGHT_BAR);
+  }
+
+  function onToggle() {
+    root.classList.add('theme-anim');
+    var next = current() === 'dark' ? 'light' : 'dark';
+    paint(next);
+    try { localStorage.setItem('li-theme', next); } catch (e) {}
+    decorate();
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].hidden = false;
+    btns[i].addEventListener('click', onToggle);
+  }
+  paint(current());
+
+  /* Carry the live theme onto lawsuit.center links (decorate + just-in-time) */
+  var PARTNER = /(^|\.)lawsuit\.center$/i;
+  function stamp(a) {
+    try {
+      var u = new URL(a.href, location.href);
+      if (!PARTNER.test(u.hostname)) return;
+      u.searchParams.set('theme', current());
+      a.href = u.toString();
+    } catch (e) {}
+  }
+  function decorate() {
+    var links = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < links.length; i++) stamp(links[i]);
+  }
+  function freshen(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (a) stamp(a);
+  }
+  document.addEventListener('click', freshen, true);
+  document.addEventListener('auxclick', freshen, true);
+  decorate();
+
+  /* Outbound CTA click -> GA4. cta_click listener v2. The form lives on
+     lawsuit.center, so this is the only conversion signal Informer can record
+     on its own side. */
+  function ctaClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
+       every page untagged, so counting it would bury every real referral under
+       one enormous 'unknown' slot. */
+    if (a.closest && a.closest('footer, nav, header')) return;
+    var slot = 'unknown';
+    try { slot = new URL(a.href, location.href).searchParams.get('utm_content') || 'unknown'; }
+    catch (err) {}
+    window.gtag('event', 'cta_click', {
+      cta_slot: slot,
+      cta_page: location.pathname,
+      cta_label: (a.textContent || '').trim().slice(0, 60)
+    });
+  }
+  document.addEventListener('click', ctaClick, true);
+  document.addEventListener('auxclick', ctaClick, true);
+
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) {
+      var stored = null;
+      try { stored = localStorage.getItem('li-theme'); } catch (err) {}
+      if (stored !== 'dark' && stored !== 'light') paint(e.matches ? 'dark' : 'light');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+})();
+</script>
+<!-- LI-DARK-JS:END -->
+</body>
+</html>
