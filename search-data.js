@@ -1355,4 +1355,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "mole richardson asbestos exposure mesothelioma claims has no trust los angeles jury awarded 33 million 2026 over insulated lighting cables who was exposed set how these proven company background happened around equipment jobs sites often involved litigation other sources film stage work illnesses discussed cases records help support claim frequently asked questions related guides corporate entity today stephenson pk investment co february tytell new york what absence means there fund why named lawsuits verdict defendant if still operates hollywood which show up can bring worked decades ago prove crew does malice finding mean punitive damages were david meldofsky california licensed attorney founder lawsuit informer last updated august 17"
   },
+  {
+    title: "Asbestos Exposure in Film, Television, and Live Production",
+    url: "asbestos-exposure-in-film-and-live-production",
+    category: "Legal Guide",
+    text: "asbestos exposure film live production television studio stage lighting cable was insulated who exposed tv theater crews why enclosed stages mattered what records support claim used equipment where may have happened types workers often discussed work people did not realize risk illnesses linked history matters related covers frequently asked questions about guides really electrician does apply events only if worked through union moved between productions can decades ago still matter which help most david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
+  },
 ];
