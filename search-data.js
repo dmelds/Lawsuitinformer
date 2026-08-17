@@ -1361,4 +1361,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "asbestos exposure film live production television studio stage lighting cable was insulated who exposed tv theater crews why enclosed stages mattered what records support claim used equipment where may have happened types workers often discussed work people did not realize risk illnesses linked history matters related covers frequently asked questions about guides really electrician does apply events only if worked through union moved between productions can decades ago still matter which help most david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
   },
+  {
+    title: "Enfamil and Similac NICU Formulas Named in NEC Lawsuits",
+    url: "nec-formula-products-and-brand-names",
+    category: "Legal Guide",
+    text: "nec formula products brand names enfamil similac nicu formulas named lawsuits which how hospital human milk fortifiers differ retail cans mead johnson abbott part families miss number name calories per ounce versus store 2022 recall different issue where product appears medical records why identification matters was premature baby diagnosed related topics what evidence helps lawsuit work statute limitations basics heavy metals food mass torts browse about author educational guide david meldofsky california licensed attorney founder informer"
+  },
 ];
