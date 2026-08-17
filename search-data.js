@@ -1367,4 +1367,22 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "nec formula products brand names enfamil similac nicu formulas named lawsuits which how hospital human milk fortifiers differ retail cans mead johnson abbott part families miss number name calories per ounce versus store 2022 recall different issue where product appears medical records why identification matters was premature baby diagnosed related topics what evidence helps lawsuit work statute limitations basics heavy metals food mass torts browse about author educational guide david meldofsky california licensed attorney founder informer"
   },
+  {
+    title: "A.O. Smith Asbestos Exposure and Mesothelioma Claims",
+    url: "ao-smith-asbestos",
+    category: "Legal Guide",
+    text: "ao smith asbestos exposure mesothelioma claims made boilers water heaters motors auto frames why name heads so many new york captions what actual claim involves decisions company background how happened around equipment third party component question milwaukee works plant worker jobs sites often involved there no trust illnesses discussed these cases records help support frequently asked questions related guides does appear fund which products says was inside sealed parts end case can workers facilities bring still if decades ago worked other brands too family members after loved one has died about author david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
+  },
+  {
+    title: "Buffalo Forge Asbestos Exposure and Mesothelioma Claims",
+    url: "buffalo-forge-asbestos",
+    category: "Legal Guide",
+    text: "buffalo forge asbestos exposure mesothelioma claims not pumps which company answers claim depends 1982 1985 1993 transactions here chain background how happened around equipment today there no trust jobs sites often involved illnesses discussed these cases records help support frequently asked questions related guides same fund who defendant case what products did plant itself expose workers can still bring if decades ago worked other too family members after loved one has died about author david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
+  },
+  {
+    title: "Jenkins Bros. Valves Asbestos Exposure and Mesothelioma Claims",
+    url: "jenkins-bros-valves-asbestos",
+    category: "Legal Guide",
+    text: "jenkins bros valves asbestos exposure mesothelioma claims have no trust so tried court who was exposed valve packing gaskets how these cases proven company background happened around bridgeport plant worker jobs sites often involved litigation why there illnesses discussed records help support claim frequently asked questions related guides fund named lawsuits do remember name myself case work what difference between which workers appear most can still bring if decades ago worked other equipment too family members after loved one has died about author david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
+  },
 ];
