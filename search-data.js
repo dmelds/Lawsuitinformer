@@ -1385,4 +1385,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "jenkins bros valves asbestos exposure mesothelioma claims have no trust so tried court who was exposed valve packing gaskets how these cases proven company background happened around bridgeport plant worker jobs sites often involved litigation why there illnesses discussed records help support claim frequently asked questions related guides fund named lawsuits do remember name myself case work what difference between which workers appear most can still bring if decades ago worked other equipment too family members after loved one has died about author david meldofsky california licensed attorney founder lawsuit informer last updated august 17 2026"
   },
+  {
+    title: "William Powell Valves Asbestos Exposure and Mesothelioma Claims",
+    url: "william-powell-valves-asbestos",
+    category: "Legal Guide",
+    text: "william powell valves asbestos exposure mesothelioma claims carried packing gaskets into 1980s why same claim can succeed new york fail california company background how happened around where case filed changes answer litigation cincinnati plants plant worker jobs sites often involved there no trust illnesses discussed these cases records help support frequently asked questions related guides fund which contained does state matter so much here navy service change analysis former workers bring still if decades ago what worked other equipment too family members after loved one has died about author david meldofsky licensed attorney founder lawsuit informer last updated august 17 2026"
+  },
 ];
