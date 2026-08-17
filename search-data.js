@@ -1391,4 +1391,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "william powell valves asbestos exposure mesothelioma claims carried packing gaskets into 1980s why same claim can succeed new york fail california company background how happened around where case filed changes answer litigation cincinnati plants plant worker jobs sites often involved there no trust illnesses discussed these cases records help support frequently asked questions related guides fund which contained does state matter so much here navy service change analysis former workers bring still if decades ago what worked other equipment too family members after loved one has died about author david meldofsky licensed attorney founder lawsuit informer last updated august 17 2026"
   },
+  {
+    title: "Asbestos Defendant Successor Companies: Who You Actually Sue",
+    url: "asbestos-defendant-successor-companies",
+    category: "Legal Guide",
+    text: "asbestos defendant successor companies who actually sue company named complaint often not one made equipment how successors caption order trusts decide answers claim four ways name changes chains most likely encounter liability trust lawsuit different kind pays guides site what means practically frequently asked questions related worked gone can still bring do need know correct corporate entity why does court decision have never heard always responsible original claims transfer vehicle if wrong case over matter whether went bankrupt family members after loved has died about author david meldofsky california licensed attorney founder informer last updated august 17 2026"
+  },
 ];
