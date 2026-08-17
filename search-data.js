@@ -1349,4 +1349,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "afff lawsuit updates update august 2026 mdl 2873 status where firefighting foam litigation stands 15 246 cases before judge gergel vacated bellwether date why water settlements did not cover personal injury now billions already paid reach claimants recent developments pool trial what people often watch next how page fits main related topics find out if may have case exposure pfas contamination kidney cancer testicular deadlines state trials about author david meldofsky california licensed attorney last updated 14"
   },
+  {
+    title: "Mole-Richardson Asbestos Exposure and Mesothelioma Claims",
+    url: "mole-richardson-asbestos-exposure",
+    category: "Legal Guide",
+    text: "mole richardson asbestos exposure mesothelioma claims has no trust los angeles jury awarded 33 million 2026 over insulated lighting cables who was exposed set how these proven company background happened around equipment jobs sites often involved litigation other sources film stage work illnesses discussed cases records help support claim frequently asked questions related guides corporate entity today stephenson pk investment co february tytell new york what absence means there fund why named lawsuits verdict defendant if still operates hollywood which show up can bring worked decades ago prove crew does malice finding mean punitive damages were david meldofsky california licensed attorney founder lawsuit informer last updated august 17"
+  },
 ];
