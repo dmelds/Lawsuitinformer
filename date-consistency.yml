@@ -1,0 +1,37 @@
+name: Check Date Consistency
+
+# Replaces Check Title Freshness. The old gate only read <title>, so the way to
+# clear it was to bump the title month and ship — which is exactly how the
+# meta descriptions, og/twitter tags, JSON-LD headlines and dateModified values
+# ended up a month behind the titles. This gate checks all of them against each
+# other instead, and fails on a page claiming a month it was never edited in.
+#
+# The monthly run is a review reminder, not a gate: it reports and exits 0, so a
+# stale month never pressures a title-only bump. To claim a new month, update
+# the page and move dateModified with it.
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['**.html']
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-date-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check date consistency (gate)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: python3 check_date_consistency.py --strict
+
+      - name: Check date consistency (report)
+        if: ${{ github.event_name != 'pull_request' }}
+        run: python3 check_date_consistency.py
