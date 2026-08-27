@@ -242,6 +242,122 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 </style>
 <!-- LI-DARK-CSS:END -->
+<!-- li:mobile-lede:start -->
+<style id="li-mobile-lede">
+/* Mobile lede: status block + collapsible page furniture.
+   Sits outside the perf:critical-css and LI-DARK-CSS marker regions so
+   neither generator can overwrite it, and last in cascade so it wins. */
+
+.status-lede {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius);
+}
+.status-lede .status-label {
+  font-family: var(--sans);
+  display: block;
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.status-lede dl { margin: 0; }
+.status-lede dt {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 2px;
+}
+.status-lede dd {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--ink-strong);
+  margin: 0 0 13px;
+}
+.status-lede dd:last-of-type { margin-bottom: 0; }
+.status-lede dd a { color: var(--link); border-bottom: 1px solid rgba(176,74,47,.3); }
+.status-lede .status-foot {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.page-disclosures { margin: 0 0 28px; border-top: 1px solid var(--rule); }
+details.page-disclosure { border-bottom: 1px solid var(--rule); }
+details.page-disclosure > summary {
+  font-family: var(--sans);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 2px;
+  min-height: 46px;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  cursor: pointer;
+  list-style: none;
+}
+details.page-disclosure > summary::-webkit-details-marker { display: none; }
+details.page-disclosure > summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s var(--ease);
+}
+details.page-disclosure[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+details.page-disclosure > summary:hover { color: var(--link); }
+details.page-disclosure > summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+details.page-disclosure .disclosure-body { padding: 0 0 18px; }
+details.page-disclosure .disclosure-body > p {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+details.page-disclosure .on-this-page { margin: 0; }
+details.page-disclosure .toc-list { border-top: 0; }
+details.page-disclosure .toc-list li:last-child { border-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  details.page-disclosure > summary::after { transition: none; }
+}
+
+/* Phone: the 4-level trail wraps to two lines and earns none of it.
+   Collapse to a single "back to parent" affordance. The BreadcrumbList
+   JSON-LD is untouched, so crawlers still see the full trail. */
+@media (max-width: 600px) {
+  .content-page > .breadcrumbs { font-size: 12.5px; margin-bottom: 12px; gap: 6px; }
+  .content-page > .breadcrumbs > a:not(.crumb-parent),
+  .content-page > .breadcrumbs > .breadcrumb-separator,
+  .content-page > .breadcrumbs > [aria-current="page"] { display: none; }
+  .content-page > .breadcrumbs > .crumb-parent::before { content: "\2039\00a0"; color: var(--ink-soft); }
+  .status-lede { padding: 16px 16px; }
+  .status-lede dd { font-size: 1rem; }
+}
+</style>
+<!-- li:mobile-lede:end -->
 </head>
 
 <body>
@@ -326,7 +442,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <span class="breadcrumb-separator">›</span>
     <a href="browse-lawsuits">Browse Lawsuits</a>
     <span class="breadcrumb-separator">›</span>
-    <a href="hair-relaxer-cancer-lawsuit">Hair Relaxer Cancer Lawsuit</a>
+    <a class="crumb-parent" href="hair-relaxer-cancer-lawsuit">Hair Relaxer Cancer Lawsuit</a>
     <span class="breadcrumb-separator">›</span>
     <span aria-current="page">Hair Relaxer Lawsuit Updates</span>
   </nav>
@@ -341,36 +457,53 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     Last updated: August 7, 2026
   </p>
 
+  <div class="status-lede">
+    <span class="status-label">Where the case stands</span>
+    <dl>
+      <dt>Court</dt>
+      <dd>MDL 3060, N.D. Illinois, before Judge Mary M. Rowland</dd>
+
+      <dt>Pending cases</dt>
+      <dd>Near 11,900, per July 2026 public court reporting</dd>
+
+      <dt>Current stage</dt>
+      <dd>General-causation Daubert briefing submitted; ruling awaited</dd>
+
+      <dt>Latest development</dt>
+      <dd>Discovery stay lifted for the Second Wave defendants on July 28, 2026</dd>
+    </dl>
+    <p class="status-foot">
+      No global settlement has been announced and no plaintiff has been paid through the MDL. On the reported schedule, trials are not expected before 2027.
+    </p>
+  </div>
+
   <p class="article-intro">
-    This page tracks recent developments in the federal hair relaxer litigation, known as MDL 3060, including case count, major rulings, bellwether and discovery progress, and other milestones people watch when following the broader case. It is updated periodically as public developments occur.
+    This page tracks procedural developments in the federal hair relaxer litigation, updated periodically as public court reporting changes.
   </p>
 
-  <div class="info-box">
-    <strong>Important:</strong>
-    <p>This page provides general educational information about public developments in the hair relaxer litigation. It does not constitute legal advice or medical advice. Case counts and deadlines come from public court reporting and can change.</p>
-  </div>
+  <div class="page-disclosures">
+    <details class="page-disclosure">
+      <summary>On this page</summary>
+      <div class="disclosure-body">
+        <div class="content-box on-this-page">
+          <ul class="toc-list">
+            <li><a href="#where-stands-now">Where the hair relaxer MDL stands now</a></li>
+            <li><a href="#recent-developments">Recent hair relaxer MDL developments</a></li>
+            <li><a href="#why-updates-matter">Why these updates matter</a></li>
+            <li><a href="#what-people-watch">What people often watch for next</a></li>
+            <li><a href="#bellwether-progress">Why bellwether progress gets attention</a></li>
+            <li><a href="#how-this-page-fits">How this updates page fits with the main hair relaxer page</a></li>
+          </ul>
+        </div>
+      </div>
+    </details>
 
-  <div class="info-box">
-    <strong>Related pages:</strong>
-    <ul>
-      <li><a href="hair-relaxer-cancer-lawsuit">Hair Relaxer Cancer Lawsuit</a> (main overview)</li>
-      <li><a href="does-hair-relaxer-cause-cancer">Does Hair Relaxer Cause Cancer?</a></li>
-      <li><a href="hair-relaxer-cancer-study">The Hair Relaxer Cancer Studies, Explained</a></li>
-      <li><a href="hair-relaxer-and-fibroids">Hair Relaxers and Fibroids</a></li>
-      <li><a href="are-hair-relaxers-safe">Are Hair Relaxers Safe?</a></li>
-    </ul>
-  </div>
-
-  <div class="content-box on-this-page">
-    <strong>On This Page</strong>
-    <ul class="toc-list">
-      <li><a href="#where-stands-now">Where the hair relaxer MDL stands now</a></li>
-      <li><a href="#recent-developments">Recent hair relaxer MDL developments</a></li>
-      <li><a href="#why-updates-matter">Why these updates matter</a></li>
-      <li><a href="#what-people-watch">What people often watch for next</a></li>
-      <li><a href="#bellwether-progress">Why bellwether progress gets attention</a></li>
-      <li><a href="#how-this-page-fits">How this updates page fits with the main hair relaxer page</a></li>
-    </ul>
+    <details class="page-disclosure">
+      <summary>Important notice</summary>
+      <div class="disclosure-body">
+        <p>This page provides general educational information about public developments in the hair relaxer litigation. It does not constitute legal advice or medical advice. Case counts and deadlines come from public court reporting and can change.</p>
+      </div>
+    </details>
   </div>
 
   <h2 id="where-stands-now">Where the Hair Relaxer MDL Stands Now</h2>
