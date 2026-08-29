@@ -486,12 +486,6 @@ window.SEARCH_INDEX = [
     text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
   },
   {
-    title: "AI Lawsuits",
-    url: "browse-lawsuits#ai-lawsuits",
-    category: "Browse Section",
-    text: "ai lawsuits artificial intelligence chatbot lawsuits openai chatgpt anthropic claude generative ai ai product liability ai litigation chatbot harm ai wrongful death ai self harm ai suicide ai mass shooting section 230 negligent entrustment duty to warn product versus content emerging technology"
-  },
-  {
     title: "News and Analysis",
     url: "news-and-analysis",
     category: "News and Analysis",
@@ -1396,5 +1390,11 @@ window.SEARCH_INDEX = [
     url: "asbestos-defendant-successor-companies",
     category: "Legal Guide",
     text: "asbestos defendant successor companies who actually sue company named complaint often not one made equipment how successors caption order trusts decide answers claim four ways name changes chains most likely encounter liability trust lawsuit different kind pays guides site what means practically frequently asked questions related worked gone can still bring do need know correct corporate entity why does court decision have never heard always responsible original claims transfer vehicle if wrong case over matter whether went bankrupt family members after loved has died about author david meldofsky california licensed attorney founder informer last updated august 17 2026"
+  },
+  {
+    title: "Hugging Face Hack: OpenAI's AI Agent Liability Gap",
+    url: "hugging-face-hack-openai-liability",
+    category: "Legal Guide",
+    text: "hugging face hack openai liability ai agent gap when defendant software what happened subpoena legal action not lawsuit why has sued matters consumer cases regulatory road open before tort watch next bottom line sources further reading news analysis david meldofsky"
   },
 ];
