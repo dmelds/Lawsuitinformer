@@ -19,8 +19,17 @@ control of how it is indexed instead of relying on auto-extraction:
     <meta name="search-keywords" content="dunn activision blizzard mdl 3109 ...">
 
 Usage:
-    python generate_search_index.py            # write changes
-    python generate_search_index.py --dry-run  # preview only
+    python generate_search_index.py                 # append new pages
+    python generate_search_index.py --dry-run       # preview only
+    python generate_search_index.py --rebuild-text  # refresh keyword blobs in place
+
+--rebuild-text regenerates the `text` field of every entry that maps to a real
+page, and touches nothing else. Titles and categories are left exactly as they
+are, because they are hand-curated: eleven of the fourteen categories in use
+(Illness Topic, Symptom Topic, News and Analysis, Exposure Site and the rest)
+cannot be reproduced by CATEGORY_RULES, so regenerating them would flatten more
+than a hundred entries to "Legal Guide". Entries with no matching .html file,
+such as browse-section anchors, are copied through untouched.
 """
 import os, re, sys, html
 
@@ -51,6 +60,42 @@ DEFAULT_CATEGORY = "Legal Guide"
 BRAND_SUFFIXES = (" | Lawsuit Informer", " | Informer", " — Lawsuit Informer")
 
 STOPWORDS = set("a an and are as at be by for from in is it its of on or the to with this that you your".split())
+
+# How many leading <p> blocks feed the keyword blob. Two was too narrow: whether a
+# page matched a query depended on whether the word happened to land in the opening
+# lines, so sibling pages on one subject matched inconsistently. Six roughly doubles
+# the corpus while barely moving the largest entry, because repeat tokens are
+# deduped below. Indexing every paragraph pushes single entries past 10k characters
+# and dilutes scoring, where text is only worth +1 per term.
+PARA_WINDOW = 6
+
+# Bridges between how a subject is written and how it is searched. The browser-side
+# matcher gives terms of three characters or fewer a word-boundary test, which stops
+# "ai" matching "chair" and "said" but also stops it matching inside "openai". Rather
+# than loosening that rule, the tokens on the right are appended to the blob at BUILD
+# time when any trigger on the left is present, so the expansion is visible in the
+# committed file instead of computed at runtime. Keep this small and specific.
+SYNONYMS = [
+    (("openai", "chatgpt", "gpt", "xai", "grok", "anthropic", "claude",
+      "gemini", "copilot", "chatbot", "chatbots", "llm"),
+     "ai artificial intelligence"),
+    (("ai",), "artificial intelligence"),
+    (("pfas", "pfoa", "pfos"), "forever chemicals"),
+    (("mesothelioma", "asbestosis"), "asbestos"),
+]
+
+
+def expand(words):
+    """Append synonym tokens for any trigger present, without duplicating."""
+    have = set(words)
+    extra = []
+    for triggers, addition in SYNONYMS:
+        if have.isdisjoint(triggers):
+            continue
+        for tok in addition.split():
+            if tok not in have and tok not in extra:
+                extra.append(tok)
+    return words + extra
 
 
 def clean_title(raw):
@@ -89,7 +134,7 @@ def build_text(slug, title, h):
     parts = [slug.replace("-", " "), title, meta_content(h, "description")]
     for tag in ("h1", "h2", "h3"):
         parts += [strip_tags(x) for x in re.findall(r"<%s[^>]*>(.*?)</%s>" % (tag, tag), body, re.I | re.S)]
-    paras = re.findall(r"<p[^>]*>(.*?)</p>", body, re.I | re.S)[:2]
+    paras = re.findall(r"<p[^>]*>(.*?)</p>", body, re.I | re.S)[:PARA_WINDOW]
     parts += [strip_tags(p) for p in paras]
     words, seen = [], set()
     for tok in re.findall(r"[a-z0-9]+", " ".join(parts).lower()):
@@ -97,7 +142,7 @@ def build_text(slug, title, h):
             continue
         if tok not in seen:
             seen.add(tok); words.append(tok)
-    return " ".join(words)
+    return " ".join(expand(words))
 
 
 def norm_title(t):
@@ -128,7 +173,45 @@ def esc(s):
     return s.replace("\\", "\\\\").replace('"', '\\"')
 
 
+def rebuild_text():
+    """Refresh only the `text` field of entries that map to a real page."""
+    dry = "--dry-run" in sys.argv
+    src = open(INDEX_FILE, encoding="utf-8").read()
+    entry_re = re.compile(
+        r'(\{\s*title:\s*"(?P<title>(?:[^"\\]|\\.)*)",\s*'
+        r'url:\s*"(?P<url>(?:[^"\\]|\\.)*)",\s*'
+        r'category:\s*"(?P<cat>(?:[^"\\]|\\.)*)",\s*'
+        r'text:\s*")(?P<text>(?:[^"\\]|\\.)*)(")',
+        re.S,
+    )
+    changed, skipped = [], []
+
+    def sub(m):
+        slug = m.group("url")
+        path = slug + ".html"
+        if "#" in slug or not os.path.exists(path):
+            skipped.append(slug)
+            return m.group(0)
+        h = open(path, encoding="utf-8").read()
+        title = clean_title(m.group("title"))
+        new = meta_content(h, "search-keywords") or build_text(slug, title, h)
+        if new != m.group("text"):
+            changed.append((slug, len(m.group("text")), len(new)))
+        return m.group(1) + esc(new) + '"'
+
+    out = entry_re.sub(sub, src)
+    print("Rebuilt keyword text for %d entr(y/ies); %d left as-is (anchors or missing pages)."
+          % (len(changed), len(skipped)))
+    if dry:
+        print("(dry run - no changes written)")
+        return
+    open(INDEX_FILE, "w", encoding="utf-8").write(out)
+    print("Wrote %s (%d bytes)." % (INDEX_FILE, len(out)))
+
+
 def main():
+    if "--rebuild-text" in sys.argv:
+        return rebuild_text()
     dry = "--dry-run" in sys.argv
     src = open(INDEX_FILE, encoding="utf-8").read()
     existing = set(re.findall(r'url:\s*"([^"]+)"', src))
