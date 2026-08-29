@@ -863,9 +863,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return s;
   }
 
+  /* Collapse entries that would render as the same card. Two index entries can
+     share a title while having different urls (a curated browse-section anchor
+     vs. the real topic page). The grid shows title + category, so both look
+     identical to a reader. Keep the first survivor after scoring, which the sort
+     below puts in a sensible order; prefer a real page over an anchor link. */
+  function dedupeKey(item) {
+    return (item.title || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  }
+
   const results = (window.SEARCH_INDEX || []).filter(function (item) {
     const haystack = (item.title + " " + item.category + " " + item.text).toLowerCase();
     return terms.every(function (term) { return matchTerm(haystack, term); });
+  }).sort(function (a, b) {
+    const aAnchor = (a.url || "").indexOf("#") !== -1;
+    const bAnchor = (b.url || "").indexOf("#") !== -1;
+    if (aAnchor !== bAnchor) return aAnchor ? 1 : -1;
+    return 0;
+  }).filter(function (item, i, arr) {
+    const k = dedupeKey(item);
+    return arr.findIndex(function (other) { return dedupeKey(other) === k; }) === i;
   }).sort(function (a, b) {
     return scoreItem(b) - scoreItem(a) ||
       (a.title || "").length - (b.title || "").length ||

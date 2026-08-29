@@ -486,12 +486,6 @@ window.SEARCH_INDEX = [
     text: "social media addiction video game addiction processed food addiction emerging topics media platform behavior addictive design"
   },
   {
-    title: "AI Lawsuits",
-    url: "browse-lawsuits#ai-lawsuits",
-    category: "Browse Section",
-    text: "ai lawsuits artificial intelligence chatbot lawsuits openai chatgpt anthropic claude generative ai ai product liability ai litigation chatbot harm ai wrongful death ai self harm ai suicide ai mass shooting section 230 negligent entrustment duty to warn product versus content emerging technology"
-  },
-  {
     title: "News and Analysis",
     url: "news-and-analysis",
     category: "News and Analysis",

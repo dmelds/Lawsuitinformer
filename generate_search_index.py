@@ -7,6 +7,12 @@ everything that isn't explicitly excluded. It is NON-DESTRUCTIVE — your existi
 hand-curated entries are preserved exactly. Only pages that are not already in
 the index get appended.
 
+Duplicate protection runs on BOTH url and normalized title. A curated entry
+pointing at an anchor (browse-lawsuits#ai-lawsuits) and a real page (ai-lawsuits)
+have different urls but the same title, and the results grid renders title plus
+category, so one query returns two identical-looking cards. Pages whose title
+already exists in the index are skipped and reported instead of appended.
+
 Per-page overrides (optional): add either meta tag to any page's <head> to take
 control of how it is indexed instead of relying on auto-extraction:
     <meta name="search-category" content="Court Filing">
@@ -94,6 +100,11 @@ def build_text(slug, title, h):
     return " ".join(words)
 
 
+def norm_title(t):
+    """Comparison key for titles: case, spacing and punctuation insensitive."""
+    return re.sub(r"[^a-z0-9]", "", html.unescape(t or "").lower())
+
+
 def infer_category(slug):
     for pat, cat in CATEGORY_RULES:
         if re.search(pat, slug):
@@ -121,6 +132,12 @@ def main():
     dry = "--dry-run" in sys.argv
     src = open(INDEX_FILE, encoding="utf-8").read()
     existing = set(re.findall(r'url:\s*"([^"]+)"', src))
+    # Curated entries can point at an anchor (browse-lawsuits#ai-lawsuits) while a
+    # real page carries the same title (ai-lawsuits). Deduping on url alone lets
+    # both into the index, and the results grid renders title + category, so the
+    # same name comes back twice for one query. Track normalized titles as well.
+    existing_titles = {norm_title(t) for t in re.findall(r'title:\s*"([^"]+)"', src)}
+    collisions = []
 
     pages = sorted(f[:-5] for f in os.listdir(".") if f.endswith(".html"))
     new_entries = []
@@ -134,7 +151,19 @@ def main():
         title = clean_title(title_m.group(1))
         category = meta_content(h, "search-category") or infer_category(slug)
         text = meta_content(h, "search-keywords") or build_text(slug, title, h)
+        key = norm_title(title)
+        if key in existing_titles:
+            collisions.append((slug, title))
+            continue
+        existing_titles.add(key)
         new_entries.append({"title": title, "url": slug, "category": category, "text": text})
+
+    if collisions:
+        print("Skipped %d page(s) whose title is already in %s:" % (len(collisions), INDEX_FILE))
+        for slug, title in collisions:
+            print("  ! %-44s %r" % (slug, title))
+        print("  Fix by deleting the stale curated entry or retitling the page, then")
+        print("  re-run. No page is indexed twice under the same title.")
 
     if not new_entries:
         print("Search index already up to date — no new pages to add.")
