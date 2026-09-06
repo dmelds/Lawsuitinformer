@@ -567,15 +567,15 @@ a.card { border-bottom: 0; }
 }
 .cta-note { font-family: var(--sans); margin-top: 18px; font-size: 12.5px; color: rgba(250,250,247,.6); }
 
-.case-review-box .btn-secondary, .cta-box .btn-secondary {
+.case-review-box .btn.btn-secondary, .cta-box .btn.btn-secondary {
   background: transparent;
   border-color: rgba(250,250,247,.45);
-  color: var(--bg);
+  color: #fafaf7;
 }
-.case-review-box .btn-secondary:hover, .cta-box .btn-secondary:hover {
+.case-review-box .btn.btn-secondary:hover, .cta-box .btn.btn-secondary:hover {
   background: rgba(250,250,247,.1);
-  border-color: var(--bg);
-  color: var(--bg);
+  border-color: #fafaf7;
+  color: #fafaf7;
 }
 
 /* Inline links inside the dark CTA panels: rust fails contrast on black and navy */
@@ -907,15 +907,25 @@ footer, .site-footer {
 .trust-card a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
 
 /* ===== BUTTON COLOR OVERRIDE — rust accent ===== */
-.btn:not(.btn-secondary), .btn-primary {
+.btn, .btn-primary {
   background: var(--link);
   border-color: var(--link);
   color: var(--bg);
 }
-.btn:not(.btn-secondary):hover, .btn-primary:hover {
+.btn:hover, .btn-primary:hover {
   background: var(--link-hover);
   border-color: var(--link-hover);
   color: var(--bg);
+}
+.btn.btn-secondary {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--ink-strong);
+}
+.btn.btn-secondary:hover {
+  background: var(--bg-alt);
+  border-color: var(--ink-strong);
+  color: var(--ink-strong);
 }
 
 .subscribe-box button { background: var(--link); }
