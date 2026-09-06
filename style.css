@@ -579,15 +579,15 @@ a.card { border-bottom: 0; }
 }
 
 /* Inline links inside the dark CTA panels: rust fails contrast on black and navy */
-.case-review-box a:not(.btn), .cta-box a:not(.btn),
-.content-page .case-review-box a:not(.btn),
-.content-page .cta-box a:not(.btn) {
+.case-review-box p a, .cta-box p a,
+.content-page .case-review-box p a,
+.content-page .cta-box p a {
   color: var(--amber);
   border-bottom: 1px solid rgba(212,162,78,.5);
 }
-.case-review-box a:not(.btn):hover, .cta-box a:not(.btn):hover,
-.content-page .case-review-box a:not(.btn):hover,
-.content-page .cta-box a:not(.btn):hover {
+.case-review-box p a:hover, .cta-box p a:hover,
+.content-page .case-review-box p a:hover,
+.content-page .cta-box p a:hover {
   color: var(--amber-bright);
   border-bottom-color: var(--amber-bright);
 }
