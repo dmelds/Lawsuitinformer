@@ -567,6 +567,17 @@ a.card { border-bottom: 0; }
 }
 .cta-note { font-family: var(--sans); margin-top: 18px; font-size: 12.5px; color: rgba(250,250,247,.6); }
 
+.case-review-box .btn-secondary, .cta-box .btn-secondary {
+  background: transparent;
+  border-color: rgba(250,250,247,.45);
+  color: var(--bg);
+}
+.case-review-box .btn-secondary:hover, .cta-box .btn-secondary:hover {
+  background: rgba(250,250,247,.1);
+  border-color: var(--bg);
+  color: var(--bg);
+}
+
 /* Center the button row inside centered CTA boxes */
 .case-review-box .cta-buttons, .cta-box .cta-buttons,
 .case-review-box .next-buttons, .cta-box .next-buttons,
@@ -882,12 +893,12 @@ footer, .site-footer {
 .trust-card a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
 
 /* ===== BUTTON COLOR OVERRIDE — rust accent ===== */
-.btn, .btn-primary {
+.btn:not(.btn-secondary), .btn-primary {
   background: var(--link);
   border-color: var(--link);
   color: var(--bg);
 }
-.btn:hover, .btn-primary:hover {
+.btn:not(.btn-secondary):hover, .btn-primary:hover {
   background: var(--link-hover);
   border-color: var(--link-hover);
   color: var(--bg);
