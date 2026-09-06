@@ -11,10 +11,21 @@ not because it seemed like a good idea.
 
 Scope
 -----
-PAGES below, which is the AI-litigation cluster plus the listing pages that
-carry its cards. Everything else on the site is out of scope: the asbestos
-and tort-update pages have a different reader and a different voice, and
-running these thresholds against them would produce noise, not signal.
+Two tiers.
+
+SITEWIDE, every page: the reader-adjudicating rule and the FAQ-schema rule.
+Both are universal by nature. Copy that tells a visitor whether they have a
+claim is wrong on any page the site publishes, and FAQ markup that disagrees
+with the page is broken markup wherever it sits. Scoping them to one cluster
+was an accident of how this script grew: on 2026-09-05 a sitewide run found
+169 drifted FAQ questions across 47 pages, 31 of which were declaring
+questions to Google that appeared nowhere on the page.
+
+PAGES below, the AI-litigation cluster: everything else. The jargon
+blocklist, sentence length, ellipses and the title/description conventions
+are calibrated for that cluster's reader and would be noise elsewhere. The
+grade ceiling applies to CASE_PAGES only, since card text on hubs skews the
+score.
 
 Rules
 -----
@@ -182,7 +193,7 @@ def norm(s):
     return " ".join(s.split())
 
 
-def check(path):
+def check(path, in_cluster):
     html = path.read_text(encoding="utf-8")
     name = path.name
     text = visible_text(html)
@@ -200,6 +211,10 @@ def check(path):
                 errors.append(f"FAQ schema question is not visible on the page: {q!r}")
             elif vis[q] != a:
                 errors.append(f"FAQ answer differs between page and schema: {q!r}")
+
+    if not in_cluster:
+        # Sitewide tier stops here: adjudicating language and FAQ drift only.
+        return errors, warnings
 
     if name in CASE_PAGES:
         grade = textstat.flesch_kincaid_grade(text)
@@ -237,17 +252,23 @@ def main():
     if "--page" in sys.argv:
         only = sys.argv[sys.argv.index("--page") + 1]
 
-    targets = [root / p for p in PAGES if (only is None or p == only)]
-    targets = [p for p in targets if p.exists()]
+    if only:
+        targets = [root / only] if (root / only).exists() else []
+    else:
+        targets = sorted(root.glob("*.html"))
     if not targets:
         print("no pages found; run from the repo root")
         return 1
 
+    cluster = set(PAGES)
     n_err = n_warn = 0
-    print(f"Consumer readability check - {len(targets)} pages "
-          f"(grade max {GRADE_MAX}, sentence max {SENTENCE_MAX})\n")
+    n_cluster = sum(1 for p in targets if p.name in cluster)
+    print(f"Consumer readability check - {len(targets)} pages scanned "
+          f"({n_cluster} in the AI cluster, held to grade max {GRADE_MAX} "
+          f"and sentence max {SENTENCE_MAX}; the rest checked for "
+          f"reader-adjudicating language and FAQ drift only)\n")
     for path in targets:
-        errors, warnings = check(path)
+        errors, warnings = check(path, path.name in cluster)
         if not errors and not warnings:
             continue
         print(path.name)
