@@ -578,6 +578,20 @@ a.card { border-bottom: 0; }
   color: var(--bg);
 }
 
+/* Inline links inside the dark CTA panels: rust fails contrast on black and navy */
+.case-review-box a:not(.btn), .cta-box a:not(.btn),
+.content-page .case-review-box a:not(.btn),
+.content-page .cta-box a:not(.btn) {
+  color: var(--amber);
+  border-bottom: 1px solid rgba(212,162,78,.5);
+}
+.case-review-box a:not(.btn):hover, .cta-box a:not(.btn):hover,
+.content-page .case-review-box a:not(.btn):hover,
+.content-page .cta-box a:not(.btn):hover {
+  color: var(--amber-bright);
+  border-bottom-color: var(--amber-bright);
+}
+
 /* Center the button row inside centered CTA boxes */
 .case-review-box .cta-buttons, .cta-box .cta-buttons,
 .case-review-box .next-buttons, .cta-box .next-buttons,
