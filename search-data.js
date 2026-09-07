@@ -1415,4 +1415,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "asbestos lawsuit updates mesothelioma update september 2026 where claims stand why there no mdl two routes compensation recent verdicts talc overlap single case what has moved recently now litigation epa ban does not do timing matters more here people often watch next related topics find out if may have sources exposure lawsuits trust funds settlement amounts who qualifies brands about author david meldofsky california licensed attorney last updated work differently every other site join everyone waiting separate courts hear these cases month roughly 30 billion sitting trusts left behind companies went bankrupt page covers moving how system actually works because second question usually urgent than first general legal education reports keeps medical advice evaluate anyone claim arrive expecting way paraquat tylenol used one 875 ran philadelphia 1991 took around 186 000 became longest running consolidated american history wound down 2019 accepted new since"
   },
+  {
+    title: "AI Chatbot Harm: What to Do in the First Days",
+    url: "what-to-do-after-ai-chatbot-harm",
+    category: "Legal Guide",
+    text: "what do after ai chatbot harm first days if may have played part someone family here save disappears own conversation before anything else leave account device they worth keeping write timeline down while fresh does any mean there case worried about right now common questions sources further reading how long deleted chatgpt gone archiving same deleting can get copy everything should close conversations were different app saving all author david meldofsky california licensed attorney founder lawsuit informer last updated september 2026 something happened love was maybe found afterward teenager told whatever brought record said sits inside emptied few taps parts disappear clock page keep know struggling provides general educational information not constitute legal advice only complete actually screenshots catch pieces memory blurs faster under stress whole thing order dates attached artificial intelligence"
+  },
 ];
