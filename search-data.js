@@ -1421,4 +1421,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "what do after ai chatbot harm first days if may have played part someone family here save disappears own conversation before anything else leave account device they worth keeping write timeline down while fresh does any mean there case worried about right now common questions sources further reading how long deleted chatgpt gone archiving same deleting can get copy everything should close conversations were different app saving all author david meldofsky california licensed attorney founder lawsuit informer last updated september 2026 something happened love was maybe found afterward teenager told whatever brought record said sits inside emptied few taps parts disappear clock page keep know struggling provides general educational information not constitute legal advice only complete actually screenshots catch pieces memory blurs faster under stress whole thing order dates attached artificial intelligence"
   },
+  {
+    title: "AI Injury Lawsuits: What Families Are Suing Over",
+    url: "ai-injury-lawsuits",
+    category: "Legal Guide",
+    text: "ai injury lawsuits what families suing over companies harm linked chatbots cases claim who has filed family should keep people mean lawsuit can sue company have florida attorney general case say went wrong said chat history common questions sources further reading two ways asking responsible which being sued do anyone been paid yet how we find out whether our situation fits about author david meldofsky california licensed founder informer last updated september 2026 teenager talks chatbot every night months husband stops sleeping starts believing things his wife cannot follow young man crisis asks app keeps answering lived through some version now built software page explains those if someone know struggling something just happened start first days usually most important record deleted few taps parts disappear clock provides educational information does not constitute legal advice artificial intelligence"
+  },
 ];
