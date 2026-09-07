@@ -81,6 +81,7 @@ CASE_PAGES = [
     "openai-school-shooting-lawsuits-ai-product-liability.html",
 ]
 OTHER_PAGES = [
+    "ai-injury-lawsuits.html",
     "openai-lawsuits.html",
     # State enforcement action. No claimant pool, so it is not a page a family
     # lands on to find out whether they have a claim, and the case-page grade
