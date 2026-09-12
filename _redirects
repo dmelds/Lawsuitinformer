@@ -326,3 +326,6 @@
 /free-case-review.html  https://lawsuit.center/?utm_source=lawsuitinformer&utm_medium=redirect&utm_campaign=free_case_review  301
 /depo-provera-eligibility-checker        /depo-provera-lawsuits   301
 /depo-provera-eligibility-checker.html   /depo-provera-lawsuits   301
+
+# Malformed inbound link (line-wrap in an off-web source pasted with a space)
+/garcia-v-character-ai-%20lawsuit  /garcia-v-character-ai-lawsuit  301
