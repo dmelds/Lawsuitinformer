@@ -512,8 +512,11 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       If you're trying to understand whether this situation may apply to you, you can share a few details below to get started.
     </p>
 
-    <form name="case-review" method="POST" data-netlify="true" action="/thank-you.html" class="case-review-form">
+    <form name="case-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="case-review-form">
       <input type="hidden" name="form-name" value="case-review">
+      <p hidden>
+        <label>Don’t fill this out: <input name="bot-field"></label>
+      </p>
 
       <label for="name">Your Name</label>
       <input id="name" type="text" name="name" placeholder="Your name">
