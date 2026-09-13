@@ -375,6 +375,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
           action="/thank-you.html"
           class="case-review-form"
         >
@@ -407,6 +408,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6" placeholder="For corrections, please describe what you believe is incorrect and, where possible, point to a source." required></textarea>
+
+          <div data-netlify-recaptcha="true" style="margin-bottom:18px;"></div>
 
           <button type="submit" class="btn btn-primary">Send Message</button>
 
