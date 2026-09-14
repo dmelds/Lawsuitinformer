@@ -36,10 +36,16 @@ TITLES = {
         "Antonetti v. Activision Blizzard Complaint",
     "baggaley-v-roblox-complaint.pdf":
         "Baggaley v. Roblox Complaint",
+    "carrier-v-openai-complaint.pdf":
+        "Carrier v. OpenAI Complaint",
     "dunn-v-activision-blizzard-complaint.pdf":
         "Dunn v. Activision Blizzard Complaint",
+    "florida-ag-v-openai-complaint.pdf":
+        "Florida v. OpenAI Complaint",
     "johnson-v-activision-blizzard-complaint.pdf":
         "Johnson v. Activision Blizzard Complaint",
+    "joshi-v-openai-complaint.pdf":
+        "Joshi v. OpenAI Foundation Complaint",
     "lacey-v-openai-complaint.pdf":
         "Lacey v. OpenAI Complaint",
     "mdl-3109-order-denying-transfer.pdf":
@@ -48,10 +54,16 @@ TITLES = {
         "New York v. 3M PFAS Complaint",
     "parish-v-openai-complaint.pdf":
         "Parish v. OpenAI Complaint",
+    "raine-v-openai-complaint.pdf":
+        "Raine v. OpenAI Complaint",
+    "raine-v-openai-first-amended-complaint.pdf":
+        "Raine v. OpenAI First Amended Complaint",
     "rutledge-v-walgreen-rehearing-petition.pdf":
         "Rutledge v. Walgreen Petition for Rehearing and Rehearing En Banc",
     "shamblin-v-openai-complaint.pdf":
         "Shamblin v. OpenAI Amended Complaint",
+    "turner-scott-v-openai-complaint.pdf":
+        "Turner-Scott v. OpenAI Complaint",
 }
 
 # Wiped on every filing. Third-party drafter names and inherited SEO
