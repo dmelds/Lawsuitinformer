@@ -48,6 +48,8 @@ TITLES = {
         "New York v. 3M PFAS Complaint",
     "parish-v-openai-complaint.pdf":
         "Parish v. OpenAI Complaint",
+    "rutledge-v-walgreen-rehearing-petition.pdf":
+        "Rutledge v. Walgreen Petition for Rehearing and Rehearing En Banc",
     "shamblin-v-openai-complaint.pdf":
         "Shamblin v. OpenAI Amended Complaint",
 }
