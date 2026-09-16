@@ -34,6 +34,8 @@ TITLES = {
         "Angelilli v. Activision Blizzard Complaint",
     "antonetti-v-activision-blizzard-complaint.pdf":
         "Antonetti v. Activision Blizzard Complaint",
+    "arizona-v-loreal-hair-relaxer-complaint.pdf":
+        "Arizona v. L'Oréal Hair Relaxer Complaint",
     "baggaley-v-roblox-complaint.pdf":
         "Baggaley v. Roblox Complaint",
     "carrier-v-openai-complaint.pdf":
