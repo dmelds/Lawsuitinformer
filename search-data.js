@@ -1433,4 +1433,10 @@ window.SEARCH_INDEX = [
     category: "Lawsuit Topic",
     text: "tiktok lawsuit settlements state cases 2026 status where lawsuits stand test settled 400 million children privacy deal what meta means families say did so far settlement against who owns now litigation stands related topics frequently asked questions about find out if may have case legal guides social media addiction snapchat youtube effects teens bellwether trials has can get money does 17 billion affect there class action join qualify how work mass torts actions author david meldofsky california licensed attorney founder informer last updated september 16 child could not stop scrolling their mental health slipped hours went up one many asking whether company should answer defendant same instagram every those before jury heard page covers separate app teenager developed serious problems during heavy use ask free review history supports claim depends diagnosis age when began records show pick situation fits no obligation deadlines set rules someone harmed minor differ submitting request create client relationship know struggling"
   },
+  {
+    title: "Depo-Provera Lawsuit Update September 2026: Settlement Status",
+    url: "depo-provera-lawsuit-updates",
+    category: "Legal Guide",
+    text: "depo provera lawsuit updates update september 2026 settlement status where meningioma cases stand principle administrators now appointed expert hearing set 18 things right court team separate happening people still filing what watch next how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 17 were told june pfizer had agreed settle nothing has reached since same position thousands other women agreement was announced without dollar figure claims form date something did change over summer who will actually run step turns announcement into process received injections later diagnosed can ask free review whether history supports claim depends injection dates diagnosis deadline state pick situation no obligation deadlines usually submitting request does not create client relationship"
+  },
 ];
