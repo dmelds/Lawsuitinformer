@@ -1439,4 +1439,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "depo provera lawsuit updates update september 2026 settlement status where meningioma cases stand principle administrators now appointed expert hearing set 18 things right court team separate happening people still filing what watch next how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 17 were told june pfizer had agreed settle nothing has reached since same position thousands other women agreement was announced without dollar figure claims form date something did change over summer who will actually run step turns announcement into process received injections later diagnosed can ask free review whether history supports claim depends injection dates diagnosis deadline state pick situation no obligation deadlines usually submitting request does not create client relationship"
   },
+  {
+    title: "Ozempic and Wegovy Lawsuits: What to Know",
+    url: "ozempic-lawsuits",
+    category: "Legal Guide",
+    text: "ozempic lawsuits wegovy what know people taking mounjaro reporting where two groups federal cases stand records worth keeping which shots name health problems report test matters stomach claims happens next keep frequently asked questions request free case review there settlement yet named these naion should stop my shot how long do like usually take pharmaceutical litigation david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 some took weight loss diabetes got very sick their food started sitting hours they threw up over few could not down all ended hospital smaller group says lost sight one eye those have gone court say did them drug company knew happen put clear enough warning label page covers claiming means someone today"
+  },
 ];
