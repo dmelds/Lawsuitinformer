@@ -1445,4 +1445,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "ozempic lawsuits wegovy what know people taking mounjaro reporting where two groups federal cases stand records worth keeping which shots name health problems report test matters stomach claims happens next keep frequently asked questions request free case review there settlement yet named these naion should stop my shot how long do like usually take pharmaceutical litigation david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 some took weight loss diabetes got very sick their food started sitting hours they threw up over few could not down all ended hospital smaller group says lost sight one eye those have gone court say did them drug company knew happen put clear enough warning label page covers claiming means someone today"
   },
+  {
+    title: "Does Ozempic Cause Gastroparesis? What Studies Show",
+    url: "does-ozempic-cause-gastroparesis",
+    category: "Legal Guide",
+    text: "does ozempic cause gastroparesis what studies show research actually found about glp shots stomach paralysis vision loss including how strong evidence where falls short slowing point main study why those numbers shakier than they look question regulators have said fight court frequently asked questions sources request free case review has been proven these common problem do use such wide ranges did fda say intestinal blockage go back normal after stopping science david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 if take one felt wrong months probably searched two kinds answers law firm pages drug company not here shows parts cut against claim took were later treated serious sudden can ask whether history supports depends which records deadline state pick fits"
+  },
 ];
