@@ -16,6 +16,10 @@ jobs:
     env:
       HOST: lawsuitinformer.com
       KEY: c1caf8bec4bbf6c2d55f1adcd3ac7307
+      # Readiness poll: how long to wait for Netlify to actually serve each URL
+      # before announcing it. 30 rounds x 20s = 10 minutes maximum.
+      POLL_ROUNDS: 30
+      POLL_INTERVAL: 20
     steps:
       - uses: actions/checkout@v7
         with:
@@ -48,18 +52,72 @@ jobs:
           echo "URLs to submit: $(wc -l < urls.txt)"
           cat urls.txt
 
-      - name: Submit to IndexNow
+      - name: Wait for Netlify to serve each URL
         run: |
           set -e
           if [ ! -s urls.txt ]; then
-            echo "No page URLs changed - nothing to submit."
+            echo "No page URLs changed - nothing to poll."
+            exit 0
+          fi
+
+          # A fixed sleep is not enough. The merge that adds a page is followed
+          # within ~15 seconds by the sitemap, search-index and redirects
+          # auto-commits, and Netlify starts a build for each of those, so the
+          # deploy carrying the new page can land minutes after the push. Ping
+          # a URL before that deploy serves it and the engine fetches 404.html,
+          # which carries `noindex, follow` - the engine then stores "indexing
+          # not allowed" against a page that is fine. Poll for a real 200 on
+          # every URL and submit only what is actually being served.
+
+          cp urls.txt pending.txt
+          > ready.txt
+
+          round=1
+          while [ "$round" -le "$POLL_ROUNDS" ] && [ -s pending.txt ]; do
+            > still-pending.txt
+            while IFS= read -r url; do
+              [ -z "$url" ] && continue
+              code=$(curl -sS -o /dev/null -m 20 \
+                       -w '%{http_code}' \
+                       -H 'Cache-Control: no-cache' \
+                       "$url" 2>/dev/null || echo "000")
+              if [ "$code" = "200" ]; then
+                echo "$url" >> ready.txt
+                echo "  ready   ($code) $url"
+              else
+                echo "$url" >> still-pending.txt
+                echo "  waiting ($code) $url"
+              fi
+            done < pending.txt
+            mv still-pending.txt pending.txt
+
+            if [ -s pending.txt ]; then
+              echo "Round $round: $(wc -l < pending.txt) URL(s) still not served; sleeping ${POLL_INTERVAL}s"
+              sleep "$POLL_INTERVAL"
+            fi
+            round=$((round + 1))
+          done
+
+          sort -u ready.txt -o ready.txt
+          echo "Serving 200: $(wc -l < ready.txt) of $(wc -l < urls.txt)"
+
+          if [ -s pending.txt ]; then
+            echo "::warning::Not submitted to IndexNow - never returned 200 within the poll window:"
+            while IFS= read -r url; do
+              echo "::warning::  $url"
+            done < pending.txt
+          fi
+
+      - name: Submit to IndexNow
+        run: |
+          set -e
+          if [ ! -s ready.txt ]; then
+            echo "No URLs confirmed as served - nothing to submit."
             exit 0
           fi
           jq -Rn --arg host "$HOST" --arg key "$KEY" \
             '{host:$host, key:$key, keyLocation:("https://"+$host+"/"+$key+".txt"), urlList:[inputs]}' \
-            < urls.txt > payload.json
-          # Give Netlify a moment to finish deploying main before engines fetch
-          sleep 60
+            < ready.txt > payload.json
           curl -sS -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json; charset=utf-8" \
             --data-binary @payload.json \
