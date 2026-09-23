@@ -1451,4 +1451,10 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "does ozempic cause gastroparesis what studies show research actually found about glp shots stomach paralysis vision loss including how strong evidence where falls short slowing point main study why those numbers shakier than they look question regulators have said fight court frequently asked questions sources request free case review has been proven these common problem do use such wide ranges did fda say intestinal blockage go back normal after stopping science david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 if take one felt wrong months probably searched two kinds answers law firm pages drug company not here shows parts cut against claim took were later treated serious sudden can ask whether history supports depends which records deadline state pick fits"
   },
+  {
+    title: "Ozempic Lawsuit Update September 2026: Waiting on a Ruling",
+    url: "ozempic-lawsuit-updates",
+    category: "Legal Guide",
+    text: "ozempic lawsuit updates update september 2026 waiting ruling where glp cases stand after expert hearing vision loss news what watch next things right now judge heard experts her could mean people still filing how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 23 saw story week someone who lost sight one eye taking another shot wondering lawsuits nobody has been paid no trial date set any federal biggest open question sits philadelphia she five days testimony deciding whether doctors scientists hired injured can testify answer will shape every stomach took these shots were later treated serious problem sudden ask free review history supports claim depends which drug records show deadline state pick obligation deadlines short submitting request does not create client relationship"
+  },
 ];
