@@ -38,6 +38,8 @@ TITLES = {
         "Arizona v. L'Oréal Hair Relaxer Complaint",
     "baggaley-v-roblox-complaint.pdf":
         "Baggaley v. Roblox Complaint",
+    "british-columbia-v-altman-complaint.pdf":
+        "British Columbia v. Altman Complaint",
     "carrier-v-openai-complaint.pdf":
         "Carrier v. OpenAI Complaint",
     "dunn-v-activision-blizzard-complaint.pdf":
