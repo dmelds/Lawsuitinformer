@@ -13,8 +13,8 @@ Scope
 -----
 Two tiers.
 
-SITEWIDE, every page: the reader-adjudicating rule and the FAQ-schema rule.
-Both are universal by nature. Copy that tells a visitor whether they have a
+SITEWIDE, every page: the reader-adjudicating rule, the FAQ-schema rule and
+the paragraph-length rule. All three are universal by nature. Copy that tells a visitor whether they have a
 claim is wrong on any page the site publishes, and FAQ markup that disagrees
 with the page is broken markup wherever it sits. Scoping them to one cluster
 was an accident of how this script grew: on 2026-09-05 a sitewide run found
@@ -44,6 +44,12 @@ WARN   Jargon term from BLOCKLIST. Each has a plain equivalent. Some survive
        this warns rather than blocks.
 WARN   Sentence at or above SENTENCE_MAX words. Usually an enumeration that
        wants to be a list.
+WARN   Paragraph at or above PARAGRAPH_MAX words, sitewide. Added 2026-09-25
+       after a 171-word, eight-sentence paragraph on meta-lawsuit.html that
+       carried a case's filing, verdict, penalty and the company's response
+       as one block. A reader on a phone sees a wall. Split at the change of
+       subject: what happened, what the jury found, what comes next. When
+       the rule was added, 120 words flagged 34 paragraphs on 19 pages.
 WARN   Ellipses, or a title over 60 / description outside 110-160. House
        conventions, checked here because nothing else checks them.
 
@@ -65,6 +71,7 @@ except ImportError:
 
 GRADE_MAX = 10.5
 SENTENCE_MAX = 45
+PARAGRAPH_MAX = 120
 
 # Case pages held to GRADE_MAX. Hubs and listing pages are scanned for
 # everything else but not graded, since card text skews the score.
@@ -142,6 +149,17 @@ def visible_text(html):
     return " ".join(body.split())
 
 
+def paragraphs(html):
+    """Word count and opening words of every <p> outside header, nav and footer."""
+    body = STRIP.sub(" ", html)
+    out = []
+    for m in re.finditer(r"<p(?:\s[^>]*)?>(.*?)</p>", body, re.S | re.I):
+        t = norm(re.sub(r"<[^>]+>", " ", m.group(1)))
+        if t:
+            out.append((len(t.split()), t))
+    return out
+
+
 def visible_faq(html):
     """Question -> answer for the on-page FAQ, if there is one.
 
@@ -213,8 +231,13 @@ def check(path, in_cluster):
             elif vis[q] != a:
                 errors.append(f"FAQ answer differs between page and schema: {q!r}")
 
+    for n, t in paragraphs(html):
+        if n >= PARAGRAPH_MAX:
+            warnings.append(f"{n}-word paragraph: {t[:90]}...")
+
     if not in_cluster:
-        # Sitewide tier stops here: adjudicating language and FAQ drift only.
+        # Sitewide tier stops here: adjudicating language, FAQ drift and
+        # paragraph length only.
         return errors, warnings
 
     if name in CASE_PAGES:
@@ -266,8 +289,9 @@ def main():
     n_cluster = sum(1 for p in targets if p.name in cluster)
     print(f"Consumer readability check - {len(targets)} pages scanned "
           f"({n_cluster} in the AI cluster, held to grade max {GRADE_MAX} "
-          f"and sentence max {SENTENCE_MAX}; the rest checked for "
-          f"reader-adjudicating language and FAQ drift only)\n")
+          f"and sentence max {SENTENCE_MAX}; every page checked for "
+          f"reader-adjudicating language, FAQ drift and paragraphs of "
+          f"{PARAGRAPH_MAX}+ words)\n")
     for path in targets:
         errors, warnings = check(path, path.name in cluster)
         if not errors and not warnings:
