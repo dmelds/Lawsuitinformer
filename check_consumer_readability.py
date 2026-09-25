@@ -44,12 +44,15 @@ WARN   Jargon term from BLOCKLIST. Each has a plain equivalent. Some survive
        this warns rather than blocks.
 WARN   Sentence at or above SENTENCE_MAX words. Usually an enumeration that
        wants to be a list.
-WARN   Paragraph at or above PARAGRAPH_MAX words, sitewide. Added 2026-09-25
+WARN   Prose block (<p>, <li>, <blockquote>, <dd>, <td>) at or above
+       PARAGRAPH_MAX words, sitewide. Added 2026-09-25
        after a 171-word, eight-sentence paragraph on meta-lawsuit.html that
        carried a case's filing, verdict, penalty and the company's response
        as one block. A reader on a phone sees a wall. Split at the change of
        subject: what happened, what the jury found, what comes next. When
        the rule was added, 120 words flagged 34 paragraphs on 19 pages.
+       Widened the same day to list items and other prose blocks after a
+       199-word <li> on openai-lawsuits.html passed unflagged.
 WARN   Ellipses, or a title over 60 / description outside 110-160. House
        conventions, checked here because nothing else checks them.
 
@@ -149,14 +152,28 @@ def visible_text(html):
     return " ".join(body.split())
 
 
+# Every element a reader sees as one block of prose. A <li> in a dated
+# "Recent Developments" list reads exactly like a paragraph, and one ran to
+# 199 words on openai-lawsuits.html before this counted it (2026-09-25).
+BLOCKS = ("p", "li", "blockquote", "dd", "td")
+
+
 def paragraphs(html):
-    """Word count and opening words of every <p> outside header, nav and footer."""
+    """Word count and opening words of every prose block (<p>, <li>,
+    <blockquote>, <dd>, <td>) outside header, nav and footer. A block that
+    contains another block (a <li> holding a nested list, a <blockquote>
+    holding <p>s) is skipped so the inner blocks are counted once each."""
     body = STRIP.sub(" ", html)
     out = []
-    for m in re.finditer(r"<p(?:\s[^>]*)?>(.*?)</p>", body, re.S | re.I):
-        t = norm(re.sub(r"<[^>]+>", " ", m.group(1)))
-        if t:
-            out.append((len(t.split()), t))
+    for tag in BLOCKS:
+        pat = rf"<{tag}(?:\s[^>]*)?>(.*?)</{tag}>"
+        for m in re.finditer(pat, body, re.S | re.I):
+            inner = m.group(1)
+            if re.search(r"<(?:p|li|ul|ol|blockquote|dd|table)[\s>]", inner, re.I):
+                continue
+            t = norm(re.sub(r"<[^>]+>", " ", inner))
+            if t:
+                out.append((len(t.split()), t))
     return out
 
 
