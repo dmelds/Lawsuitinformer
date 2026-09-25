@@ -1421,4 +1421,40 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "what do after ai chatbot harm first days if may have played part someone family here save disappears own conversation before anything else leave account device they worth keeping write timeline down while fresh does any mean there case worried about right now common questions sources further reading how long deleted chatgpt gone archiving same deleting can get copy everything should close conversations were different app saving all author david meldofsky california licensed attorney founder lawsuit informer last updated september 2026 something happened love was maybe found afterward teenager told whatever brought record said sits inside emptied few taps parts disappear clock page keep know struggling provides general educational information not constitute legal advice only complete actually screenshots catch pieces memory blurs faster under stress whole thing order dates attached artificial intelligence"
   },
+  {
+    title: "AI Injury Lawsuits: What Families Are Suing Over",
+    url: "ai-injury-lawsuits",
+    category: "Legal Guide",
+    text: "ai injury lawsuits what families suing over companies harm linked chatbots cases claim who has filed family should keep people mean lawsuit can sue company have florida attorney general case say went wrong said chat history common questions sources further reading two ways asking responsible which being sued do anyone been paid yet how we find out whether our situation fits about author david meldofsky california licensed founder informer last updated september 2026 teenager talks chatbot every night months husband stops sleeping starts believing things his wife cannot follow young man crisis asks app keeps answering lived through some version now built software page explains those if someone know struggling something just happened start first days usually most important record deleted few taps parts disappear clock provides educational information does not constitute legal advice artificial intelligence"
+  },
+  {
+    title: "TikTok Lawsuit: Settlements, State Cases and 2026 Status",
+    url: "tiktok-lawsuit",
+    category: "Lawsuit Topic",
+    text: "tiktok lawsuit settlements state cases 2026 status where lawsuits stand test settled 400 million children privacy deal what meta means families say did so far settlement against who owns now litigation stands related topics frequently asked questions about find out if may have case legal guides social media addiction snapchat youtube effects teens bellwether trials has can get money does 17 billion affect there class action join qualify how work mass torts actions author david meldofsky california licensed attorney founder informer last updated september 16 child could not stop scrolling their mental health slipped hours went up one many asking whether company should answer defendant same instagram every those before jury heard page covers separate app teenager developed serious problems during heavy use ask free review history supports claim depends diagnosis age when began records show pick situation fits no obligation deadlines set rules someone harmed minor differ submitting request create client relationship know struggling"
+  },
+  {
+    title: "Depo-Provera Lawsuit Update September 2026: Settlement Status",
+    url: "depo-provera-lawsuit-updates",
+    category: "Legal Guide",
+    text: "depo provera lawsuit updates update september 2026 settlement status where meningioma cases stand principle administrators now appointed expert hearing set 18 things right court team separate happening people still filing what watch next how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 17 were told june pfizer had agreed settle nothing has reached since same position thousands other women agreement was announced without dollar figure claims form date something did change over summer who will actually run step turns announcement into process received injections later diagnosed can ask free review whether history supports claim depends injection dates diagnosis deadline state pick situation no obligation deadlines usually submitting request does not create client relationship"
+  },
+  {
+    title: "Ozempic and Wegovy Lawsuits: What to Know",
+    url: "ozempic-lawsuits",
+    category: "Legal Guide",
+    text: "ozempic lawsuits wegovy what know people taking mounjaro reporting where two groups federal cases stand records worth keeping which shots name health problems report test matters stomach claims happens next keep frequently asked questions request free case review there settlement yet named these naion should stop my shot how long do like usually take pharmaceutical litigation david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 some took weight loss diabetes got very sick their food started sitting hours they threw up over few could not down all ended hospital smaller group says lost sight one eye those have gone court say did them drug company knew happen put clear enough warning label page covers claiming means someone today"
+  },
+  {
+    title: "Does Ozempic Cause Gastroparesis? What Studies Show",
+    url: "does-ozempic-cause-gastroparesis",
+    category: "Legal Guide",
+    text: "does ozempic cause gastroparesis what studies show research actually found about glp shots stomach paralysis vision loss including how strong evidence where falls short slowing point main study why those numbers shakier than they look question regulators have said fight court frequently asked questions sources request free case review has been proven these common problem do use such wide ranges did fda say intestinal blockage go back normal after stopping science david meldofsky california licensed attorney founder lawsuit informer medically reviewed dr thomas hatzilabrou last updated september 18 2026 if take one felt wrong months probably searched two kinds answers law firm pages drug company not here shows parts cut against claim took were later treated serious sudden can ask whether history supports depends which records deadline state pick fits"
+  },
+  {
+    title: "Ozempic Lawsuit Update September 2026: Waiting on a Ruling",
+    url: "ozempic-lawsuit-updates",
+    category: "Legal Guide",
+    text: "ozempic lawsuit updates update september 2026 waiting ruling where glp cases stand after expert hearing vision loss news what watch next things right now judge heard experts her could mean people still filing how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 23 saw story week someone who lost sight one eye taking another shot wondering lawsuits nobody has been paid no trial date set any federal biggest open question sits philadelphia she five days testimony deciding whether doctors scientists hired injured can testify answer will shape every stomach took these shots were later treated serious problem sudden ask free review history supports claim depends which drug records show deadline state pick obligation deadlines short submitting request does not create client relationship"
+  },
 ];
