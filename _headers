@@ -1,3 +1,16 @@
+# Security headers for every path. Netlify already sends
+# Strict-Transport-Security at the edge, so it is not repeated here.
+# SAMEORIGIN keeps the case-filing PDF embeds working: those iframes load
+# from this origin. The YouTube embed is unaffected because this header
+# governs who may frame lawsuitinformer.com, not what it frames.
+# No Content-Security-Policy yet; add report-only first once a reporting
+# endpoint exists, because a wrong policy silently blanks the PDF viewers.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
 /family-ai-safety-guide.pdf
   X-Robots-Tag: noindex
   Link: <https://lawsuitinformer.com/family-ai-safety-guide>; rel="canonical"
