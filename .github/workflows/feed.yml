@@ -1,0 +1,65 @@
+name: Generate feed
+
+on:
+  # Auto: runs when pages change on main. The job only commits feed.xml
+  # (not an .html file), so it never re-triggers itself. Item dates come from
+  # each page's JSON-LD, so no git history is needed.
+  push:
+    branches: [main]
+    paths: ['**.html']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print the feed, no commit)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Generate feed
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_feed.py --dry-run
+          else
+            python generate_feed.py
+          fi
+
+      - name: Commit feed if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Scoped to feed.xml, so a dirty unrelated path never skips a real update.
+          if git diff --quiet feed.xml && git ls-files --error-unmatch feed.xml >/dev/null 2>&1; then
+            echo "No feed changes."
+            exit 0
+          fi
+          git add feed.xml
+          git commit -m "Auto-update feed.xml [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          # The generators can finish within seconds of each other on the same
+          # push. A single rebase-then-push loses whichever lands second, so
+          # retry with backoff instead of failing the run.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed feed.xml on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push feed.xml after 5 attempts"
+          exit 1
