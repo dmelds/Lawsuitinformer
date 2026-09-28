@@ -1,2294 +1,1187 @@
 <!DOCTYPE html>
-<!--
-  Mass Tort Wire. Copyright (c) 2026 David Meldofsky. All rights reserved.
-  No license is granted to copy, modify or redistribute this code.
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<title>Mass Tort Wire | Signals Desk</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Wire">
-<meta name="theme-color" content="#16211C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #16211C;
-    --paper: #FCFBF7;
-    --rule: #D8D4C8;
-    --amber: #B07F2E;
-    --dim: #6E6A5E;
-    --panel: #F4F1E8;
-    --news: #2E5E7E;
-    --firms: #3E6B4F;
-    --ai: #6B4A7A;
-    --intel: #7C5B1E;
-    --bad: #A2412A;
+<!-- LI-DARK-INIT:BEGIN -->
+<script>
+(function () {
+  var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
+  var t = null, qp = null;
+  /* Cross-property handoff: ?theme= from lawsuit.center wins, then vanishes */
+  try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
+  if (qp === 'dark' || qp === 'light') {
+    t = qp;
+    try { localStorage.setItem('li-theme', t); } catch (e) {}
+    try {
+      var sp = new URLSearchParams(location.search); sp.delete('theme');
+      var q = sp.toString();
+      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    } catch (e) {}
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
-    -webkit-text-size-adjust: 100%;
+  if (t !== 'dark' && t !== 'light') {
+    try { t = localStorage.getItem('li-theme'); } catch (e) {}
   }
-
-  header { border-bottom: 3px double var(--ink); padding: calc(24px + env(safe-area-inset-top)) 20px 16px; }
-  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--dim); margin-bottom: 4px; }
-  h1 { font-family: 'Spectral', Georgia, serif; font-size: 30px; font-weight: 700; line-height: 1.1; }
-  .tagline { color: var(--dim); font-size: 14px; margin-top: 4px; }
-  .byline { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--dim); margin-top: 10px; }
-  .byline a, footer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-
-  .controls { border-bottom: 1px solid var(--rule); padding: 12px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-  button, select { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.15em; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  #scanBtn { background: var(--ink); color: var(--paper); border: none; padding: 10px 18px; }
-  #scanBtn:disabled { background: var(--dim); }
-  .ghost { background: none; color: var(--dim); border: 1px solid var(--rule); padding: 9px 12px; }
-  .ghost.on { color: var(--paper); background: var(--amber); border-color: var(--amber); }
-  select.ghost { appearance: none; -webkit-appearance: none; border-radius: 0; }
-  .channel-status { margin-left: auto; display: flex; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
-  .channel-status .news { color: var(--news); }
-  .channel-status .ai { color: var(--ai); }
-  .channel-status .intel { color: var(--intel); }
-
-  #config { display: none; border-bottom: 1px solid var(--rule); background: var(--panel); padding: 16px 20px; }
-  #config.open { display: block; }
-  .label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--dim); margin: 16px 0 8px; }
-  .label:first-child { margin-top: 0; }
-  .group { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--ink); margin: 28px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); }
-  .group + .label { margin-top: 12px; }
-  .hint { font-size: 12px; color: var(--dim); margin-top: 6px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { border: 1px solid var(--ink); font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 5px 8px; display: inline-flex; align-items: center; gap: 8px; }
-  .chip button { border: none; background: none; color: var(--dim); font-size: 12px; padding: 0; }
-  .row { display: flex; gap: 8px; margin-top: 8px; }
-  input[type=text], textarea {
-    border: 1px solid var(--rule); background: var(--paper);
-    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-    padding: 9px 12px; width: 100%;
+  if (t !== 'dark' && t !== 'light') {
+    t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
   }
-  textarea { resize: vertical; }
-  .add-btn { background: none; border: 1px solid var(--ink); padding: 9px 14px; flex-shrink: 0; }
-  .config-foot { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 16px; }
-  .config-foot .hint { margin: 0 auto 0 0; }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<!-- LI-DARK-INIT:END -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- perf:critical-css:start -->
+<style id="critical-css">@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/fraunces-v38-latin-500.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fraunces-v38-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fraunces-v38-latin-700.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-regular.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-500.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-600.woff2') format('woff2')}@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/source-serif-4-v14-latin-700.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-regular.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-500.woff2') format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces Fallback';src:local('Times New Roman');size-adjust:119.26%;ascent-override:82.00%;descent-override:21.38%;line-gap-override:0.00%}@font-face{font-family:'Source Serif Fallback';src:local('Georgia');size-adjust:107.45%;ascent-override:96.42%;descent-override:31.18%;line-gap-override:0.00%}@font-face{font-family:'IBM Plex Sans Fallback';src:local('Arial');size-adjust:101.17%;ascent-override:101.32%;descent-override:27.18%;line-gap-override:0.00%}:root{--bg:#fafaf7;--bg-alt:#f4f3ee;--surface:#ffffff;--border:#e5e3dc;--border-strong:#cfccc1;--rule:#d8d5cc;--ink:#1a1a1a;--ink-strong:#0a0a0a;--ink-muted:#5a5750;--ink-soft:#8a877e;--link:#b04a2f;--link-hover:#8a3621;--amber:#d4a24e;--amber-bright:#e7b961;--amber-deep:#b88a3d;--display:"Fraunces","Fraunces Fallback","Times New Roman",serif;--serif:"Source Serif 4","Source Serif Fallback",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans","IBM Plex Sans Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;--container:1180px;--reading:680px;--gutter:clamp(20px,4vw,64px);--radius:4px;--radius-lg:12px;--ease:cubic-bezier(.2,.8,.2,1)}*,*::before,*::after{box-sizing:border-box}html,body{margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}img{display:block;max-width:100%;height:auto}a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(176,74,47,.3);transition:color .2s var(--ease),border-color .2s var(--ease)}a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}ul,ol{padding-left:22px}button,input,textarea,select{font:inherit}::selection{background:var(--amber);color:#1a1306}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}.narrow{max-width:var(--reading);margin:0 auto}.site-header,header.site-header{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.95);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--rule)}.site-header .container.nav,header .container.nav,.site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding-top:8px;padding-bottom:8px}.logo,.logo-link{display:inline-flex;align-items:center;flex-shrink:0;border-bottom:0;background:transparent !important;padding:0 !important}.logo a,.logo-link a{border-bottom:0}.logo img,.site-logo{width:auto !important;height:44px !important;max-width:220px;max-height:none !important;object-fit:contain}.brand{display:flex;flex-direction:column;flex-shrink:0;line-height:1.05;border-bottom:0;color:var(--ink-strong)}.brand:hover{border-bottom:0;color:var(--ink-strong)}.brand__name{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em;color:var(--ink-strong);white-space:nowrap}.brand__tag{font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;font-weight:500}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:flex;align-items:center;gap:26px}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{font-family:var(--sans);color:var(--ink);font-size:14px;font-weight:500;letter-spacing:.005em;white-space:nowrap;border-bottom:0;transition:color .2s var(--ease)}.site-nav a:hover,.site-nav a[aria-current="page"],header nav a:hover,header nav a[aria-current="page"],#site-nav a:hover,#site-nav a[aria-current="page"],#site-menu a:hover,#site-menu a[aria-current="page"],.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--link)}.nav-toggle,.menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--border-strong);border-radius:8px;cursor:pointer;flex-shrink:0}.nav-toggle span,.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.nav-toggle.active span:nth-child(1),.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle.active span:nth-child(2),.menu-toggle.active span:nth-child(2){opacity:0}.nav-toggle.active span:nth-child(3),.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.btn,.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);padding:12px 22px;border:1px solid var(--ink-strong);border-radius:999px;background:var(--ink-strong);color:var(--bg);font-weight:600;font-size:14.5px;letter-spacing:.005em;cursor:pointer;text-decoration:none;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.btn:hover,.btn-primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);transform:translateY(-1px);text-decoration:none}.btn-secondary{background:transparent;border:1px solid var(--border-strong);color:var(--ink-strong)}.btn-secondary:hover{background:var(--bg-alt);border-color:var(--ink-strong);color:var(--ink-strong);transform:translateY(-1px);text-decoration:none}.btn--amber,.case-review-cta-btn,.case-review-box .btn-primary,.btn-primary[href*="lawsuit.center"],.btn-primary[href*="case-review"]{background:var(--amber);color:#1a1306;border-color:var(--amber)}.btn--amber:hover,.case-review-cta-btn:hover,.case-review-box .btn-primary:hover,.btn-primary[href*="lawsuit.center"]:hover,.btn-primary[href*="case-review"]:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306}.cta-buttons,.next-buttons,.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.eyebrow,.resource-label,.card-label,.stat-block-title,.professor-label,.popular-label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link);margin:0 0 14px}.hero{padding:clamp(72px,9vw,120px) 0 clamp(56px,7vw,88px);text-align:left;background:var(--bg);border-bottom:1px solid var(--rule);position:relative}.hero-inner{text-align:left;max-width:var(--reading);margin:0 auto}.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,5.8vw,4.4rem);line-height:1.02;letter-spacing:-.025em;color:var(--ink-strong);margin:0 0 22px;max-width:16ch}.hero p,.hero-subtext{font-family:var(--serif);font-size:clamp(1.1rem,1.4vw,1.3rem);line-height:1.5;color:var(--ink-muted);max-width:60ch;margin:0 auto 24px;margin-inline:0}.hero-buttons{justify-content:flex-start}.hero-search{max-width:580px;margin:0 0 14px;display:flex;gap:10px;align-items:center}.hero-search input[type="search"]{flex:1;min-width:0;font-family:var(--sans);padding:14px 18px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);outline:none;font-size:15px;transition:border-color .2s var(--ease)}.hero-search input[type="search"]::placeholder{color:var(--ink-soft)}.hero-search input[type="search"]:focus{border-color:var(--ink-strong)}.hero-search .btn{white-space:nowrap}.search-helper{font-family:var(--sans);margin:4px 0 18px;max-width:580px;color:var(--ink-muted);font-size:13px}.search-examples{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;max-width:580px;align-items:center}.search-examples-label{font-family:var(--sans);color:var(--ink-muted);font-weight:500;font-size:13px;margin-right:4px;align-self:center}.search-examples a{font-family:var(--sans);display:inline-flex;align-items:center;padding:6px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-size:13px;font-weight:500;line-height:1.3}.search-examples a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.hero-paths{margin:18px 0 0;max-width:580px;font-family:var(--sans);font-size:14px;line-height:1.8;color:var(--ink-muted)}.hero-paths a{display:inline-block;margin:4px 6px 4px 0;padding:5px 12px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500}.hero-paths a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.start-here-bridge{margin:18px 0 0;max-width:580px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--ink);font-size:15px;line-height:1.65}.start-here-bridge a{color:var(--link);font-weight:500;border-bottom:1px solid rgba(176,74,47,.3)}.start-here-bridge a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover)}.popular-topics-bar{padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg-alt)}.popular-topics-bar .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:10px}.popular-topics-bar a{font-family:var(--sans);display:inline-flex;align-items:center;padding:7px 14px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);font-weight:500;font-size:13.5px;line-height:1.2}.popular-topics-bar a:hover{color:var(--bg);background:var(--ink-strong);border-color:var(--ink-strong);transform:none}.page-hero{padding:56px 0 36px;border-bottom:1px solid var(--rule);background:var(--bg)}.page-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.022em;color:var(--ink-strong)}.page-hero .hero-subtext{margin:0 0 14px;color:var(--ink-muted);font-size:1.1rem;line-height:1.7;max-width:60ch}.page-intro{font-family:var(--serif);max-width:60ch;margin:0;font-size:1.1rem;color:var(--ink-muted);line-height:1.7}.start-here{padding:clamp(72px,8vw,110px) 0;background:var(--bg-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:left}.start-here .container,.start-here .narrow{text-align:left}.start-here h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,2.8rem);margin:0 0 16px;letter-spacing:-.022em;color:var(--ink-strong)}.content-page,.legal-page,.editorial-policy{max-width:var(--reading);margin:0 auto 80px;padding:40px 20px 0;position:relative;z-index:1}.content-page h1,.legal-page h1,.editorial-policy h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.025em;margin:0 0 18px;color:var(--ink-strong)}.content-page h2,.legal-page h2,.editorial-policy h2{font-family:var(--display);font-weight:600;margin-top:56px;margin-bottom:16px;padding-top:28px;border-top:1px solid var(--rule);font-size:1.65rem;line-height:1.2;letter-spacing:-.012em;color:var(--ink-strong)}.content-page h3,.legal-page h3,.editorial-policy h3{font-family:var(--display);font-weight:600;margin-top:36px;margin-bottom:12px;font-size:1.3rem;line-height:1.25;color:var(--ink-strong)}.content-page p,.legal-page p,.editorial-policy p{font-family:var(--serif);font-size:1.13rem;line-height:1.75;color:var(--ink);margin:0 0 20px}.content-page li,.legal-page li,.editorial-policy li{font-family:var(--serif);color:var(--ink);line-height:1.7;margin-bottom:10px;font-size:1.08rem}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol,.legal-page ul,.legal-page ol,.editorial-policy ul,.editorial-policy ol{margin:14px 0 24px;padding-left:22px}.content-page ul:not(.toc-list):not(.footer-links) li::marker,.content-page ol li::marker,.legal-page ul li::marker,.legal-page ol li::marker,.editorial-policy ul li::marker,.editorial-policy ol li::marker{color:var(--ink-muted)}.article-intro{font-family:var(--serif);font-size:1.25rem;line-height:1.6;color:var(--ink-strong);font-weight:400}.content-page p a,.content-page li a,.content-page td a,.legal-page p a,.legal-page li a,.editorial-policy p a,.editorial-policy li a,.article-intro a{color:var(--link);border-bottom:1px solid rgba(176,74,47,.3)}.content-page p a:hover,.content-page li a:hover,.content-page td a:hover,.legal-page p a:hover,.legal-page li a:hover,.editorial-policy p a:hover,.editorial-policy li a:hover,.article-intro a:hover{color:var(--link-hover);border-bottom-color:var(--link-hover);background:transparent}.article-reviewer{font-family:var(--sans);margin:0 0 8px;font-size:14px;color:var(--ink-muted)}.article-reviewer a{font-weight:600}.article-date{font-family:var(--sans);margin:0 0 24px;color:var(--ink-soft);font-size:13px;letter-spacing:.02em}.breadcrumb,.breadcrumbs{font-family:var(--sans);display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;margin-bottom:20px;color:var(--ink-muted)}.breadcrumb a,.breadcrumbs a{color:var(--ink-muted);border-bottom:1px solid var(--border)}.breadcrumb a:hover,.breadcrumbs a:hover{color:var(--link);border-bottom-color:var(--link)}.breadcrumb .breadcrumb-separator,.breadcrumbs .breadcrumb-separator{color:var(--ink-soft)}.breadcrumb [aria-current="page"],.breadcrumbs [aria-current="page"]{color:var(--ink-strong);font-weight:500}.start-here-inline{background:var(--bg-alt);border-left:3px solid var(--amber);padding:18px 22px;margin:28px 0;color:var(--ink);font-family:var(--serif)}.article-disclaimer{font-family:var(--sans);font-size:12.5px;color:var(--ink-muted);border-left:2px solid var(--border);padding:4px 0 4px 14px;margin:4px 0 24px}.case-review-box .btn-primary,.cta-box .btn-primary{background:var(--amber);color:#1a1306;border-color:var(--amber)}.case-review-box .btn-primary:hover,.cta-box .btn-primary:hover{background:var(--amber-bright);color:#1a1306;border-color:var(--amber-bright)}.subscribe-box .container{max-width:620px;text-align:center}.author-hero{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start;margin:32px 0 28px}.author-hero-photo{padding-top:6px}.author-hero-photo img{width:100%;max-width:280px;border-radius:var(--radius);border:1px solid var(--border)}.author-hero-text h2{font-family:var(--display);font-weight:600;margin-top:0;color:var(--ink-strong)}.browse-hero{padding:96px 0 48px;text-align:left}.browse-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.6rem);margin-bottom:18px;letter-spacing:-.025em;color:var(--ink-strong)}.browse-hero p{font-family:var(--serif);color:var(--ink-muted);max-width:60ch;font-size:1.1rem;line-height:1.65}.review-hero{padding:80px 0 28px}.review-hero h1{font-family:var(--display);font-weight:600;margin:0 0 16px;font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--ink-strong);letter-spacing:-.022em}.review-hero p{font-family:var(--serif);max-width:60ch;font-size:1.1rem;line-height:1.7;color:var(--ink)}.on-this-page{margin:32px 0 36px}.on-this-page strong{font-family:var(--sans);display:block;margin-bottom:14px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--link)}.toc-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.toc-list li{margin:0;padding:0;border-bottom:1px solid var(--rule)}.toc-list li + li{margin-top:0}.toc-list a{font-family:var(--sans);display:block;padding:14px 0;background:transparent;border:0;color:var(--ink-strong);font-weight:500;font-size:15px;line-height:1.4}.toc-list a:hover{color:var(--link);transform:none;background:transparent;border:0}.info-box .hero-subtext{font-family:var(--serif);margin:0 0 6px;color:var(--ink);font-size:1rem;line-height:1.6}.info-box .hero-credibility{font-family:var(--sans);display:block;margin:0;padding:0;font-size:12px;line-height:1.4;color:var(--ink-muted)}.btn,.btn-primary{background:var(--link);border-color:var(--link);color:var(--bg)}.btn:hover,.btn-primary:hover{background:var(--link-hover);border-color:var(--link-hover);color:var(--bg)}.hero-search input[type="search"]:focus,.case-review-form input:focus,.case-review-form textarea:focus,.case-review-form select:focus,.subscribe-box input[type="email"]:focus{border-color:var(--link)}.inline-cta .btn-primary{display:inline-flex;background:var(--amber);color:#1a1306;border-color:var(--amber)}.inline-cta .btn-primary:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px)}.hero-action-strip{margin:24px 0 28px;padding:22px 24px;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius)}.hero-action-prompt{font-family:var(--serif);margin:0 0 16px;color:var(--ink);font-size:1.02rem;line-height:1.6}.hero-action-prompt strong{color:var(--ink-strong);font-weight:600}.hero-action-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero-action-btn{font-family:var(--sans);display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;background:var(--amber);color:#1a1306;border:1px solid var(--amber);border-radius:999px;font-weight:600;font-size:14px;text-align:center;text-decoration:none;border-bottom:0;line-height:1.3;transition:background .2s var(--ease),border-color .2s var(--ease),transform .15s var(--ease)}.hero-action-btn:hover{background:var(--amber-bright);border-color:var(--amber-bright);color:#1a1306;transform:translateY(-1px);border-bottom:0}.hero-action-note{font-family:var(--sans);margin:14px 0 0;font-size:12.5px;color:var(--ink-muted);line-height:1.5}@media (max-width:600px){.hero-action-strip{padding:18px 18px}.hero-action-buttons{grid-template-columns:1fr}.hero-action-btn{width:100%;padding:14px 16px}}@media (max-width:900px){.site-header .container.nav,header .container.nav,.site-header .header-inner{flex-wrap:wrap;min-height:60px;padding-top:8px;padding-bottom:8px}.logo img,.site-logo{height:38px !important;max-width:180px}.nav-toggle,.menu-toggle{display:flex;margin-left:auto}.site-nav,header nav,#site-nav,#site-menu,.main-nav{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 0 4px}.site-nav.open,.site-nav.nav-open,header nav.open,header nav.nav-open,#site-nav.open,#site-nav.nav-open,#site-menu.open,#site-menu.nav-open,.main-nav.open,.main-nav.nav-open{display:flex}.site-nav a,header nav a,#site-nav a,#site-menu a,.main-nav a{display:block;width:100%;padding:14px 0;border-top:1px solid var(--rule);color:var(--ink);font-size:16px}}@media (max-width:768px){.author-hero{grid-template-columns:1fr;gap:24px}.author-hero-photo img{max-width:220px;margin:0 auto}.popular-topics-bar{padding:20px 0}.popular-topics-bar .container{gap:10px}.popular-topics-bar a{padding:10px 16px;min-height:42px;justify-content:center}.content-page,.legal-page,.editorial-policy{padding:24px 16px 0;margin:24px auto 64px}.content-page h1,.legal-page h1,.editorial-policy h1{font-size:2rem}.content-page h2,.legal-page h2,.editorial-policy h2{font-size:1.4rem;margin-top:40px;padding-top:22px}.content-page h3,.legal-page h3,.editorial-policy h3{font-size:1.18rem}.content-page p,.legal-page p,.editorial-policy p,.content-page li,.legal-page li,.editorial-policy li{font-size:1rem}.breadcrumb,.breadcrumbs{margin-bottom:12px;font-size:12.5px}.btn,.btn-primary,.btn-secondary{width:100%;text-align:center}.cta-buttons,.next-buttons,.hero-buttons{flex-direction:column}.hero-search{flex-direction:column;align-items:stretch}.hero-search .btn{width:100%}.search-helper{font-size:14px;line-height:1.6;margin-bottom:14px}.search-examples{gap:10px;margin-bottom:24px}.search-examples-label{width:100%;margin-bottom:4px}.search-examples a{justify-content:center;min-height:42px;padding:9px 14px}.info-box .hero-credibility{font-size:11.5px;line-height:1.4}.article-reviewer,.article-date{font-size:13px}.inline-cta .btn-primary{width:100%;text-align:center}}@media (max-width:700px){.hero{padding:56px 0 48px}.hero-paths{margin-top:18px}.hero-paths a{margin:4px 4px 8px 0;padding:6px 12px;font-size:14px}.start-here-bridge{padding:14px 16px;font-size:14.5px;line-height:1.65}}@media (min-width:1024px){.content-page{max-width:1080px}.content-page .author-hero{grid-template-columns:320px 1fr;gap:48px;max-width:100%}.content-page > *:not(.author-hero):not(ul):not(ol){max-width:680px;margin-left:auto;margin-right:auto}.content-page ul:not(.toc-list):not(.footer-links),.content-page ol{max-width:680px;margin-left:auto;margin-right:auto;padding-left:22px;list-style-position:outside;box-sizing:border-box}}@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}:focus-visible{outline:2px solid var(--ink-strong);outline-offset:2px}.press-section .container{max-width:780px}.press-section .eyebrow{text-align:center;margin-bottom:32px}@media (min-width:1024px){.content-page > .info-box.crisis-resource-box,.content-page > .info-box.alert-box{max-width:680px;margin-left:auto;margin-right:auto}}.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--ink-strong);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;font-family:var(--sans);text-decoration:none;border-bottom:0}.skip-link:focus{left:0;color:#fff}</style>
+<link rel="preload" href="/fonts/fraunces-v38-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-serif-4-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/style.css"></noscript>
+<!-- perf:critical-css:end -->
+  <title>Lawsuit Informer | Lawsuits and Toxic Exposure Explained</title>
+  <meta
+    name="description"
+    content="Attorney-written analysis of lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety, with visible authorship in plain English."
+  />
 
-  .health { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
-  .health td { padding: 5px 8px 5px 0; border-bottom: 1px solid var(--rule); vertical-align: top; word-break: break-word; }
-  .health .ok { color: var(--firms); }
-  .health .empty { color: var(--dim); }
-  .health .error { color: var(--bad); }
-  .health-sum { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; margin-bottom: 8px; }
-  .health-sum .error { color: var(--bad); }
-  details.hgroup { margin-top: 8px; }
-  details.hgroup summary { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--dim); cursor: pointer; padding: 6px 0; }
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#fbf6e8">
 
-  .bar {
-    position: sticky; top: 0; z-index: 10;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
+  <link rel="author" href="david-meldofsky" />
+  <link rel="publisher" href="about" />
+  <link rel="canonical" href="https://lawsuitinformer.com/" />
+
+<meta property="og:type" content="article">
+  <meta property="og:url" content="https://lawsuitinformer.com/">
+  <meta property="og:title" content="Lawsuit Informer | Attorney-Led Analysis of Lawsuits and Toxic Exposure">
+  <meta property="og:description" content="Attorney-written analysis of lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety. Plain-English coverage with visible authorship, dated reviews, and a clear separation of editorial work from case intake.">
+  <meta property="og:image" content="https://lawsuitinformer.com/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lawsuit Informer — Attorney-led legal education">
+  <meta property="og:site_name" content="Lawsuit Informer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lawsuit Informer | Attorney-Led Analysis of Lawsuits and Toxic Exposure">
+  <meta name="twitter:description" content="Attorney-written analysis of lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety. Plain-English coverage with visible authorship, dated reviews, and a clear separation of editorial work from case intake.">
+  <meta name="twitter:image" content="https://lawsuitinformer.com/og-default.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://lawsuitinformer.com/#organization",
+    "name": "Lawsuit Informer",
+    "url": "https://lawsuitinformer.com/",
+    "logo": "https://lawsuitinformer.com/lawsuit-informer-1.png",
+    "description": "Attorney-led editorial site covering lawsuits, toxic exposure, PFAS regulation, AI product liability, and consumer safety in plain language.",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://davidmeldofsky.com/#person",
+      "name": "David Meldofsky",
+      "jobTitle": "Attorney",
+      "url": "https://davidmeldofsky.com/",
+      "subjectOf": [
+        {
+          "@type": "Article",
+          "name": "Is AI Output a Product or Content?",
+          "url": "https://www.law360.com/articles/2481415",
+          "publisher": { "@type": "Organization", "name": "Law360" }
+        },
+        {
+          "@type": "Article",
+          "name": "What a Verdict Number Actually Means in Mass Torts",
+          "url": "https://attorneyatlawmagazine.com/public-articles/mass-torts/what-a-verdict-number-actually-means-in-mass-torts",
+          "publisher": { "@type": "Organization", "name": "Attorney at Law Magazine" }
+        },
+        {
+          "@type": "Article",
+          "name": "Before You Contact a Lawyer: How to Evaluate Lawsuit Information Online in the AI Era",
+          "url": "https://attorneyatlawmagazine.com/public-articles/before-you-contact-a-lawyer-how-to-evaluate-lawsuit-information-online-in-the-ai-era",
+          "publisher": { "@type": "Organization", "name": "Attorney at Law Magazine" }
+        },
+        {
+          "@type": "Article",
+          "name": "PFAS OUT Cannot Replace Broad Drinking Water Protections",
+          "url": "https://www.law360.com/articles/2470291",
+          "publisher": { "@type": "Organization", "name": "Law360" }
+        },
+        {
+          "@type": "Article",
+          "name": "PFAS Drinking Water Rules Are Changing as Lawsuits Surge",
+          "url": "https://www.dailyjournal.com/article/391237-pfas-drinking-water-rules-are-changing-as-lawsuits-surge",
+          "publisher": { "@type": "Organization", "name": "Daily Journal" }
+        }
+      ]
+    },
+    "email": "hello@lawsuitinformer.com",
+    "sameAs": [
+      "https://linkedin.com/company/lawsuitinformer",
+      "https://lawsuit.center"
+    ]
   }
-  .filters {
-    padding: 10px 12px 8px;
-    display: flex; gap: 6px;
-    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Lawsuit Informer",
+    "url": "https://lawsuitinformer.com/"
   }
-  .filters::-webkit-scrollbar { display: none; }
-  .filters button {
-    background: var(--paper); border: 1px solid var(--rule); color: var(--dim);
-    padding: 12px 8px; min-height: 44px; border-radius: 2px; letter-spacing: 0.08em;
-    white-space: nowrap; flex: 1 1 auto; text-align: center;
+  </script>
+<!-- LI-DARK-CSS:BEGIN -->
+<style id="li-theme">
+/* Lawsuit Informer dark mode.
+   Night values for the site's own tokens, plus pins for components that
+   must stay dark bands (they carry hardcoded light text) and light-only
+   tints. All text pairs measured >= 5:1 on their backgrounds (WCAG AA;
+   body text passes AAA). */
+
+:root { color-scheme: light; }
+
+:root[data-theme="dark"] {
+  --bg: #161411;            /* warm near-black */
+  --bg-alt: #1d1a15;
+  --surface: #201d18;
+  --border: #37332b;
+  --border-strong: #4d473c;
+  --rule: #3b362e;
+
+  --ink: #e6e1d6;           /* 14.1:1 on --bg */
+  --ink-strong: #f6f2e9;    /* 16.5:1 */
+  --ink-muted: #aaa294;     /* 7.3:1 */
+  --ink-soft: #8b8577;      /* 5.0:1 */
+
+  --link: #e08d6a;          /* terracotta, lifted — 7.2:1 */
+  --link-hover: #eea985;    /* 9.3:1 */
+
+  --amber: #d4a24e;         /* unchanged: 8.0:1 on --bg, #1a1306 text on amber holds */
+  --amber-bright: #e7b961;
+  --amber-deep: #c9973f;    /* 7.0:1 */
+
+  color-scheme: dark;
+}
+
+/* Link underlines: the rgba(--link light) tint used across the site */
+:root[data-theme="dark"] a { border-bottom-color: rgba(224, 141, 106, .38); }
+
+/* Masthead: translucent dark instead of translucent paper */
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] header.site-header {
+  background: rgba(22, 20, 17, .92);
+}
+
+/* Dark bands stay dark: they carry hardcoded rgba(250,250,247,*) text.
+   Pinned a step below page bg so the band still reads as a band. */
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .case-review-box,
+:root[data-theme="dark"] .cta-box {
+  background: #0d0b09;
+  color: #e6e1d6;
+}
+:root[data-theme="dark"] .case-review-box h2,
+:root[data-theme="dark"] .cta-box h2,
+:root[data-theme="dark"] .footer-content > div:first-child h3 {
+  color: #f6f2e9;
+}
+:root[data-theme="dark"] .footer-content a:hover,
+:root[data-theme="dark"] .footer-grid a:hover,
+:root[data-theme="dark"] .footer-col a:hover,
+:root[data-theme="dark"] .footer-bottom a:hover,
+:root[data-theme="dark"] .social-links a:hover { color: #fff; }
+
+:root[data-theme="dark"] .skip-link { background: #0a0a0a; color: #fff; }
+:root[data-theme="dark"] .video-wrapper .play-button { color: #fafaf7; }
+
+/* Light-only notice tints -> night equivalents */
+:root[data-theme="dark"] .info-box.crisis-resource-box { background: #241b15; border-color: #4a3628; }
+:root[data-theme="dark"] .info-box.alert-box { background: #2a1a16; border-color: #55302a; }
+
+/* Logo: monochrome #111 mark on transparency -> light */
+:root[data-theme="dark"] .logo img { content: url("/lawsuit-informer-1-dark.png"); }
+
+/* ---------- Theme toggle (masthead) ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; padding: 0; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--ink); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.theme-toggle:hover { background: var(--bg-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Dual placement: nav instance on desktop, bar instance beside the
+   hamburger on mobile. The bar instance's auto margin pulls the pair
+   right; the hamburger stays outermost (its own auto margin is zeroed). */
+.theme-toggle--bar { display: none; }
+@media (max-width: 900px) {
+  #site-menu .theme-toggle { display: none; }
+  .theme-toggle--bar { display: inline-flex; margin-left: auto; width: 40px; height: 40px; }
+  .container.nav .menu-toggle, .site-header .header-inner .menu-toggle { margin-left: 0; }
+}
+
+/* Switch transition: only after first user toggle; honors reduced motion */
+html.theme-anim body { transition: background-color .15s ease, color .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim body { transition: none; }
+}
+
+/* Print: ink-safe light regardless of theme; hide the control */
+@media print {
+  :root[data-theme="dark"] {
+    --bg: #fff; --bg-alt: #fff; --surface: #fff;
+    --border: #ccc; --border-strong: #999; --rule: #ccc;
+    --ink: #000; --ink-strong: #000; --ink-muted: #333; --ink-soft: #555;
+    --link: #000; --link-hover: #000;
   }
-  .filters button.active { color: var(--paper); border-color: transparent; background: var(--ink); }
-  .filters button.active[data-f="news"] { background: var(--news); }
-  .filters button.active[data-f="ai"] { background: var(--ai); }
-  .filters button.active[data-f="intel"] { background: var(--intel); }
-
-  .search { padding: 0 16px 10px; display: flex; gap: 8px; }
-  .search input[type=search] {
-    flex: 1; min-width: 0;
-    border: 1px solid var(--rule); background: var(--paper); border-radius: 0;
-    font-family: 'IBM Plex Sans', -apple-system, sans-serif; font-size: 16px;
-    padding: 9px 12px; -webkit-appearance: none; appearance: none;
-  }
-  .search input[type=search]:focus { outline: none; border-color: var(--ink); }
-  .search input[type=search]::-webkit-search-cancel-button { display: none; }
-  #clearSearch[hidden] { display: none; }
-
-  .toggles { padding: 10px 16px 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .toggles .ghost { min-height: 36px; }
-
-  .topicbar {
-    padding: 10px 16px; border-bottom: 1px solid var(--rule);
-    display: flex; gap: 6px;
-    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-  }
-  .topicbar:empty { display: none; }
-  .topicbar::-webkit-scrollbar { display: none; }
-  .topicbar .tlabel { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--dim); align-self: center; flex-shrink: 0; margin-right: 4px; }
-  .tchip {
-    background: var(--paper); border: 1px solid var(--rule); color: var(--ink);
-    font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.02em;
-    padding: 7px 10px; white-space: nowrap; flex-shrink: 0;
-  }
-  .tchip.none { color: var(--dim); }
-  .tchip .n { color: var(--dim); margin-left: 4px; }
-  .tchip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-  .tchip.on .n { color: var(--rule); }
-
-  .searchnote { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--ink); }
-  .searchnote .q { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; }
-  .searchnote button { background: none; border: 1px solid var(--ink); color: var(--ink); padding: 6px 10px; font-size: 10px; }
-  .searchnote .state { color: var(--dim); }
-  .searchnote .state.bad { color: var(--bad); }
-  mark { background: #F1DDB4; color: inherit; padding: 0 1px; }
-
-  main { padding: 16px 20px 40px; }
-  .empty-state { text-align: center; padding: 64px 20px; }
-  .empty-state .display { font-family: 'Spectral', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 8px; }
-  .empty-state p { color: var(--dim); font-size: 14px; }
-  .notice { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--dim); padding: 12px 0; border-bottom: 1px solid var(--rule); line-height: 1.5; }
-  .notice.bad { color: var(--bad); }
-  .notice button { background: none; border: 1px solid var(--ink); color: var(--ink); padding: 5px 9px; font-size: 10px; margin-left: 8px; }
-  .day { display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 22px 0 6px; border-bottom: 1px solid var(--ink); }
-  .day .n { color: var(--dim); }
-
-  .item { display: block; padding: 12px 0 12px 12px; border-bottom: 1px solid var(--rule); border-left: 3px solid var(--rule); text-decoration: none; color: var(--ink); }
-  .item:active { background: var(--panel); }
-  .item.news { border-left-color: var(--news); }
-  .item.ai { border-left-color: var(--ai); }
-  .item.intel { border-left-color: var(--intel); }
-  .item .src { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; margin-bottom: 4px; }
-  .item.news .src { color: var(--news); }
-  .item.ai .src { color: var(--ai); }
-  .item.intel .src { color: var(--intel); }
-  .item .new { background: var(--amber); color: var(--paper); padding: 1px 5px; margin-left: 6px; letter-spacing: 0.1em; }
-  .item .more { color: var(--dim); }
-  .item .title { font-family: 'Spectral', Georgia, serif; font-size: 16px; font-weight: 600; line-height: 1.3; }
-  .item .sum { color: var(--dim); font-size: 13px; line-height: 1.4; margin-top: 4px; }
-  .item .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .item .tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dim); border: 1px solid var(--rule); padding: 2px 6px; }
-  .item .tag.firm { color: var(--firms); border-color: var(--firms); }
-
-  footer { border-top: 1px solid var(--rule); padding: 16px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dim); line-height: 1.6; }
+  .theme-toggle { display: none; }
+}
 </style>
+<!-- LI-DARK-CSS:END -->
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<header>
-  <div class="eyebrow"><span id="firmMark"></span>SIGNALS DESK &middot; <span id="today"></span></div>
-  <h1>Mass Tort Wire</h1>
-  <p class="tagline" id="tagline">Mass tort news, plaintiff-firm posts, Intelligencer beats and AI in the courts.</p>
-  <p class="byline">BY <a href="https://lawsuitintelligencer.com/?utm_source=masstortwire&amp;utm_medium=referral&amp;utm_campaign=byline" target="_blank" rel="noopener">LAWSUIT INTELLIGENCER</a> &middot; DAVID MELDOFSKY</p>
-</header>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo">
+        <a href="/" aria-label="Lawsuit Informer home">
+          <img src="lawsuit-informer-1.png" alt="Lawsuit Informer" width="703" height="160" />
+        </a>
+      </div>
 
-<div class="controls">
-  <button id="scanBtn">RUN SCAN</button>
-  <button id="configBtn" class="ghost">EDIT SOURCES</button>
-  <button id="keyBtnTop" class="ghost" hidden>WIRE KEY</button>
-  <div class="channel-status">
-    <span class="news">NEWS <span id="st-news"></span></span>
-    <span class="intel">INTEL <span id="st-intel"></span></span>
-    <span class="ai">AI <span id="st-ai"></span></span>
-  </div>
+      <!-- LI-DARK-BTN2:BEGIN -->
+<!-- Bar instance: renders only <=900px, beside the hamburger.
+     The in-nav instance hides at that width. `hidden` removed by JS. -->
+<button class="theme-toggle theme-toggle--bar" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN2:END -->
+<button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" aria-label="Primary navigation">
+        <a href="/" aria-current="page">Home</a>
+        <a href="start-here">Start Here</a>
+        <a href="legal-guides">Guides</a>
+        <a href="browse-lawsuits">Browse Lawsuits</a>
+        <a href="news-and-analysis">News &amp; Analysis</a>
+        <a href="illnesses-linked-to-lawsuits">Illnesses</a>
+        <a href="symptoms-linked-to-lawsuits">Symptoms</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      <!-- LI-DARK-BTN:BEGIN -->
+<!-- Sits inside #site-menu after Contact. On mobile it lives in the expanded menu.
+     `hidden` is removed by the toggle script — no JS, no dead button. -->
+<button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" hidden>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+<!-- LI-DARK-BTN:END -->
+</nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner narrow">
+        <p class="eyebrow">Attorney-led legal commentary</p>
+        <h1>Clear Guides to Lawsuits, Toxic Exposure, and Consumer Safety</h1>
+        <p class="hero-subtext">
+          Attorney-written analysis of lawsuits, toxic exposure, and consumer safety. Visible authorship, dated reviews, education kept separate from intake.
+        </p>
+
+        <form class="hero-search" action="browse-lawsuits" method="get" role="search" id="homepage-search-form">
+          <label class="sr-only" for="homepage-search">Search topics and guides</label>
+          <input
+            type="search"
+            id="homepage-search"
+            name="q"
+            placeholder="Search lawsuits, guides, illnesses, symptoms, AI"
+          />
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="search-examples">
+          <span class="search-examples-label">Try:</span>
+          <a href="browse-lawsuits" data-q="mesothelioma">Mesothelioma</a>
+          <a href="browse-lawsuits" data-q="asbestos">Asbestos</a>
+          <a href="browse-lawsuits" data-q="PFAS">PFAS</a>
+          <a href="browse-lawsuits" data-q="AFFF">AFFF</a>
+          <a href="browse-lawsuits" data-q="roundup">Roundup</a>
+          <a href="browse-lawsuits" data-q="paraquat">Paraquat</a>
+          <a href="browse-lawsuits" data-q="ai">AI Lawsuits</a>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="start-here">Begin with the Basics</a>
+        </div>
+        <p class="search-helper" style="margin-top:14px;">
+          Or <a href="browse-lawsuits">browse all lawsuit topics</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="start-here">
+      <div class="container narrow">
+        <p class="eyebrow">START HERE</p>
+        <h2>New to Lawsuits?</h2>
+        <p class="start-text">
+          Begin with a simple guide to how lawsuits work, what happens after contacting a lawyer, and what people often research first.
+        </p>
+        <a href="start-here" class="btn btn-primary">Go to Start Here</a>
+      </div>
+    </section>
+
+      <!-- ============================================================
+         CREDIBILITY STRIP — below hero, before "Start Here".
+         Understated authority signal: three publications, one
+         named attorney. Not "network" branded; factual framing.
+         ============================================================ -->
+<!-- CREDIBILITY STRIP — one line, centered. Shorter lead, clear function labels. -->
+<style>
+  .cred-line {
+    --cl-navy: #1c2a3a;
+    --cl-amber: #a3680f;
+    background: #fffdf7;
+    border-top: 1px solid rgba(28,42,58,.1);
+    border-bottom: 1px solid rgba(28,42,58,.1);
+    padding: 13px 20px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(28,42,58,.75);
+  }
+  .cred-line a { color: var(--cl-navy); font-weight: 600; text-decoration: none; }
+  .cred-line a:hover { color: var(--cl-amber); }
+  .cred-line__label { color: var(--cl-amber); font-weight: 600; }
+  .cred-line__role { color: rgba(28,42,58,.55); font-weight: 400; }
+  @media (max-width: 600px) { .cred-line { font-size: 13px; padding: 13px 16px; } }
+
+  /* Dark mode for the credibility strip. Night tokens; text pairs >= 5:1. */
+  :root[data-theme="dark"] .cred-line{background:#1d1a15;border-top-color:#37332b;border-bottom-color:#37332b;color:#aaa294;}
+  :root[data-theme="dark"] .cred-line a{color:#e6e1d6;}
+  :root[data-theme="dark"] .cred-line a:hover{color:#d4a24e;}
+  :root[data-theme="dark"] .cred-line__label{color:#c9b37a;}
+  :root[data-theme="dark"] .cred-line__role{color:#aaa294;}
+  </style>
+
+<div class="cred-line">
+  <span class="cred-line__label">Attorney-led by David Meldofsky.</span>
+  Three publications:
+  <a href="https://lawsuitinformer.com">Lawsuit Informer</a> <span class="cred-line__role">(legal education)</span>
+  &middot;
+  <a href="https://lawsuit.center?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=index" target="_blank" rel="noopener">Lawsuit Center</a> <span class="cred-line__role">(case review)</span>
+  &middot;
+  <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a> <span class="cred-line__role">(industry analysis)</span>
 </div>
 
-<div id="config">
-  <div class="label">SOURCE HEALTH (LAST SCAN)</div>
-  <div id="healthBox"><p class="hint">Run a scan to see which sources respond.</p></div>
+    <!-- ===================== END CREDIBILITY STRIP ===================== -->
 
-  <div class="group">WHAT TO TRACK</div>
-  <div id="firmNameBlock" hidden>
-    <div class="label">YOUR FIRM</div>
-    <input type="text" id="firmNameInput" placeholder="Firm name as it should read at the top of the wire" maxlength="80">
-    <p class="hint">Shown above the wire and as the home-screen name on every device that opens this site.</p>
-    <div class="label">START FROM A PRESET</div>
-    <select id="presetSel">
-      <option value="">Choose a desk…</option>
-      <option value="litigation">Litigation desk: the mass torts a plaintiff firm signs</option>
-      <option value="buyer">Deal desk, buyer: the inventories and the platforms doing deals</option>
-      <option value="seller">Deal desk, seller: the buyers, the comparables and the rules</option>
-    </select>
-    <p class="hint">Replaces the tracked topics and the firms to watch with the preset, then scans. Add your own on top.</p>
+                <section class="section alt homepage-news-feature">
+      <div class="container narrow">
+        <p class="eyebrow">FEATURED ANALYSIS · UPDATED MAY 12, 2026</p>
+        <h2>OpenAI Lawsuits: ChatGPT Wrongful Death, Self-Harm, and Mass Shooting Claims</h2>
+        <p>
+          Four major civil actions filed against OpenAI between August 2025 and May 2026 are forcing courts to answer a question that, until recently, was almost entirely theoretical: when a generative AI system produces an output that contributes to serious harm, is that output a product, or is it content? Attorney analysis of the current docket, the doctrinal questions ahead, and what to watch next.
+        </p>
+        <a class="btn btn-primary" href="openai-lawsuits">
+          Read the analysis &rarr;
+        </a>
+        <p style="margin-top:14px;">
+          <strong>For parents:</strong> see our calm, practical <a href="family-ai-safety-guide">family guide to AI chatbots</a> &mdash; how to talk with your teen, what healthy use looks like, and where to turn if you have concerns.
+        </p>
+      </div>
+    </section>
+
+    <section id="research-paths" class="section quick-start">
+      <div class="container">
+        <h2>Choose How You Want to Explore</h2>
+        <p class="section-intro">
+          Start with legal basics, browse lawsuit topics, or explore by illness or symptom pattern.
+        </p>
+
+        <div class="grid">
+          <a class="card" href="legal-guides">
+            <h3>Legal Guides</h3>
+            <p>Learn the basics of how lawsuits work, what evidence can matter, and what people often research first.</p>
+          </a>
+
+          <a class="card" href="browse-lawsuits">
+            <h3>Browse Lawsuits</h3>
+            <p>Explore lawsuit topics involving toxic exposure, dangerous products, environmental contamination, and consumer safety.</p>
+          </a>
+
+          <a class="card" href="news-and-analysis">
+            <h3>News &amp; Analysis</h3>
+            <p>Attorney-written commentary on lawsuits, toxic exposure, product liability, AI litigation, and developing legal stories.</p>
+          </a>
+
+          <a class="card" href="illnesses-linked-to-lawsuits">
+            <h3>Explore by Illness</h3>
+            <p>Start with diagnosis-related topics often linked to toxic exposure, product liability, and environmental claims.</p>
+          </a>
+
+          <a class="card" href="symptoms-linked-to-lawsuits">
+            <h3>Explore by Symptoms</h3>
+            <p>Research symptom patterns people sometimes investigate alongside chemical exposure and product concerns.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-section alt">
+      <div class="container">
+        <div class="founder-card">
+          <div class="founder-content">
+            <p class="eyebrow">MEET THE FOUNDER</p>
+            <h2>Attorney-Led, with a Specific View on Why This Site Exists</h2>
+            <p>
+              Lawsuit Informer was founded by <strong>David Meldofsky</strong>, a California-licensed attorney, because the public-facing legal internet has become difficult to read honestly. Lawsuit pages routinely mix education, advertising, and case intake without signaling which is which, and AI-generated content has made the line harder to find.
+            </p>
+            <p>
+              The site is the response: pages written or reviewed by a licensed attorney, with visible authorship, dated review notes, and editorial work kept separate from case intake.
+            </p>
+            <p>
+              David's writing has been published in <strong>Attorney at Law Magazine</strong>, <strong>Law360</strong>, and the <strong>Daily Journal</strong>, with a focus on PFAS regulation, drinking water standards, and consumer-facing legal content.
+            </p>
+            <p>
+              <a href="david-meldofsky">Read David's full profile &rarr;</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section class="press-section">
+      <div class="container">
+        <p class="eyebrow">As Featured In</p>
+
+        <div class="press-card">
+          <div class="press-logo">
+            <span class="press-mark">Law360</span>
+          </div>
+
+          <p class="press-publication">Published in Law360</p>
+
+          <h2>Is AI Output a Product or Content?</h2>
+
+          <p class="press-summary">
+            A guest commentary by David Meldofsky examining whether AI-generated output should be treated as a product subject to liability or as content &mdash; the central doctrinal question now surfacing in the OpenAI litigation and the broader wave of AI injury claims.
+          </p>
+
+                   <a class="button" href="https://www.law360.com/articles/2481415"
+             target="_blank" rel="noopener">
+            Read on Law360 (subscription) &rarr;
+          </a>
+          <p class="press-publication" style="margin-top:10px;">
+           <a href="https://davidmeldofsky.com/law360-ai-product-or-content" target="_blank" rel="noopener">Read the full article</a>
+          </p>
+
+        </div>
+
+        <div class="press-card">
+          <div class="press-logo">
+            <span class="press-mark">Attorney at Law Magazine</span>
+          </div>
+
+          <p class="press-publication">Published in Attorney at Law Magazine &mdash; Free to read</p>
+
+          <h2>What a Verdict Number Actually Means in Mass Torts</h2>
+
+          <p class="press-summary">
+            A bylined feature on what the numbers in a mass tort mean for the people bringing claims &mdash; how a bellwether verdict changes after trial and on appeal, how a settlement fund is divided into tiers, and what fees, costs, and liens come out of a gross award.
+          </p>
+
+          <a class="button" href="https://attorneyatlawmagazine.com/public-articles/mass-torts/what-a-verdict-number-actually-means-in-mass-torts"
+             target="_blank" rel="noopener">
+            Read on Attorney at Law Magazine &rarr;
+          </a>
+        </div>
+
+        <div class="press-card">
+          <div class="press-logo">
+            <span class="press-mark">Attorney at Law Magazine</span>
+          </div>
+
+          <p class="press-publication">Published in Attorney at Law Magazine &mdash; Free to read</p>
+
+          <h2>Before You Contact a Lawyer: How to Evaluate Lawsuit Information Online in the AI Era</h2>
+
+          <p class="press-summary">
+            A bylined feature outlining the editorial philosophy behind Lawsuit Informer &mdash; how consumers can evaluate online legal information, including AI-generated guidance, and distinguish education from intake before contacting a lawyer.
+          </p>
+
+          <a class="button" href="https://attorneyatlawmagazine.com/public-articles/before-you-contact-a-lawyer-how-to-evaluate-lawsuit-information-online-in-the-ai-era"
+             target="_blank" rel="noopener">
+            Read on Attorney at Law Magazine &rarr;
+          </a>
+        </div>
+
+        <div class="press-card">
+          <div class="press-logo">
+            <span class="press-mark">Law360</span>
+          </div>
+
+          <p class="press-publication">Published in Law360</p>
+
+          <h2>PFAS OUT Cannot Replace Broad Drinking Water Protections</h2>
+
+          <p class="press-summary">
+            A guest commentary by David Meldofsky addressing EPA's PFAS reporting posture, the difference between regulatory shifts and safety determinations, and the implications for regulated entities and affected communities.
+          </p>
+
+          <a class="button" href="https://www.law360.com/articles/2470291"
+             target="_blank" rel="noopener">
+            Read on Law360 (subscription) &rarr;
+          </a>
+        </div>
+
+        <div class="press-card">
+          <div class="press-logo">
+            <span class="press-mark">Daily Journal</span>
+          </div>
+
+          <p class="press-publication">Published in the Daily Journal</p>
+
+          <h2>PFAS Drinking Water Rules Are Changing as Lawsuits Surge</h2>
+
+          <p class="press-summary">
+            A guest commentary by David Meldofsky on EPA's PFAS reconsideration, federal and California drinking water standards, and the broader litigation landscape facing regulated entities and affected communities.
+          </p>
+
+          <a class="button" href="https://www.dailyjournal.com/article/391237-pfas-drinking-water-rules-are-changing-as-lawsuits-surge"
+             target="_blank" rel="noopener">
+            Read on Daily Journal (subscription) &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Featured Lawsuit Topics</h2>
+            <p class="section-intro">
+              Explore major lawsuit topics involving toxic exposure, dangerous products, and environmental contamination.
+            </p>
+          </div>
+          <div class="section-heading-link">
+            <a href="browse-lawsuits">Browse All Topics &rarr;</a>
+          </div>
+        </div>
+
+        <h3 class="subsection-title">Toxic Exposure and Environmental Claims</h3>
+        <div class="grid">
+          <a class="card" href="asbestos-exposure-lawsuits">
+            <h3>Asbestos Exposure Lawsuits</h3>
+            <p>Learn how asbestos exposure lawsuits may arise from work, product, or secondary exposure linked to illnesses such as mesothelioma, lung cancer, and asbestosis.</p>
+          </a>
+
+          <a class="card" href="chemical-exposure-lawsuits">
+            <h3>Chemical Exposure Lawsuits</h3>
+            <p>Explore claims involving contaminated water, pesticides, industrial chemicals, and other toxic exposures.</p>
+          </a>
+
+          <a class="card" href="pfas-water-contamination-lawsuits">
+            <h3>PFAS Water Contamination</h3>
+            <p>Lawsuits involving contamination of drinking water by PFAS chemicals, sometimes called "forever chemicals."</p>
+          </a>
+
+          <a class="card" href="environmental-contamination-lawsuits">
+            <h3>Environmental Contamination Lawsuits</h3>
+            <p>Explore claims involving polluted water, toxic releases, runoff, landfill contamination, and community exposure.</p>
+          </a>
+
+          <a class="card" href="afff-firefighting-foam-lawsuits">
+            <h3>AFFF Firefighting Foam Lawsuits</h3>
+            <p>Explore claims involving PFAS-containing firefighting foam, contaminated water, and related health concerns.</p>
+          </a>
+        </div>
+
+        <h3 class="subsection-title">Consumer Products and Product Liability</h3>
+        <div class="grid">
+          <a class="card" href="roundup-cancer-lawsuits">
+            <h3>Roundup Cancer Lawsuits</h3>
+            <p>Litigation involving allegations that glyphosate-based herbicides may be linked to certain cancers.</p>
+          </a>
+
+          <a class="card" href="talcum-powder-ovarian-cancer-lawsuit">
+            <h3>Talcum Powder Ovarian Cancer</h3>
+            <p>Claims involving allegations that long-term talcum powder use may be linked to ovarian cancer.</p>
+          </a>
+
+          <a class="card" href="hair-relaxer-cancer-lawsuit">
+            <h3>Hair Relaxer Cancer Lawsuits</h3>
+            <p>Claims involving allegations that chemical hair relaxer products increased cancer risk.</p>
+          </a>
+
+          <a class="card" href="heavy-metals-baby-food-lawsuit">
+            <h3>Heavy Metals in Baby Food</h3>
+            <p>Claims involving allegations that certain baby food products may contain harmful levels of toxic metals.</p>
+          </a>
+        </div>
+
+        <h3 class="subsection-title">Additional and Emerging Topics</h3>
+        <div class="grid">
+          <a class="card" href="paraquat-parkinsons-lawsuits">
+            <h3>Paraquat Parkinson's Lawsuits</h3>
+            <p>Cases involving allegations that exposure to the herbicide paraquat may contribute to Parkinson's disease.</p>
+          </a>
+
+          <a class="card" href="processed-food-addiction-lawsuit">
+            <h3>Processed Food Addiction Lawsuits</h3>
+            <p>Claims involving allegations that certain ultra-processed foods may contribute to harmful consumption patterns and health risks.</p>
+          </a>
+
+          <a class="card" href="openai-lawsuits">
+            <h3>OpenAI Lawsuits</h3>
+            <p>Central hub for OpenAI litigation coverage &mdash; ChatGPT wrongful death, self-harm, and mass shooting claims, plus the product-versus-content framing question.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="guides" class="section alt">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Legal Guides</h2>
+            <p class="section-intro">
+              Start with the basics of how lawsuits work, how legal claims are evaluated, and what steps people often research first.
+            </p>
+          </div>
+          <div class="section-heading-link">
+            <a href="legal-guides">View All Legal Guides &rarr;</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <a class="card" href="how-lawsuits-work">
+            <h3>How Lawsuits Work</h3>
+            <p>Learn the basic process of how a lawsuit typically begins and moves forward.</p>
+          </a>
+
+          <a class="card" href="what-happens-after-you-contact-a-lawyer">
+            <h3>What Happens After You Contact a Lawyer?</h3>
+            <p>Learn what usually happens after you first reach out to a lawyer, including intake, case review, and possible next steps.</p>
+          </a>
+
+          <a class="card" href="what-evidence-helps-a-lawsuit">
+            <h3>What Evidence Helps a Lawsuit?</h3>
+            <p>Learn what kinds of records, photos, messages, and documents may help support a lawsuit and clarify what happened.</p>
+          </a>
+
+          <a class="card" href="how-long-do-lawsuits-take">
+            <h3>How Long Do Lawsuits Take?</h3>
+            <p>Understand why some cases move quickly while others take much longer.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Explore by Illness, Injury, or Exposure</h2>
+            <p class="section-intro">
+              Some readers begin with a diagnosis, symptom pattern, or exposure history rather than a lawsuit name.
+            </p>
+          </div>
+          <div class="section-heading-link">
+            <a href="illnesses-linked-to-lawsuits">Explore More &rarr;</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <a class="card" href="illnesses-linked-to-lawsuits">
+            <h3>Illnesses Linked to Lawsuits</h3>
+            <p>Explore diagnosis-related topics often linked to toxic exposure, product liability, and environmental claims.</p>
+          </a>
+
+          <a class="card" href="symptoms-linked-to-lawsuits">
+            <h3>Symptoms Linked to Lawsuits</h3>
+            <p>Explore symptom patterns people sometimes research alongside chemical exposure, defective products, and contamination concerns.</p>
+          </a>
+
+          <a class="card" href="cancers-linked-to-lawsuits">
+            <h3>Cancers Linked to Lawsuits</h3>
+            <p>Explore cancer-related lawsuit topics involving toxic exposure, contaminated products, and environmental claims.</p>
+          </a>
+
+          <a class="card" href="neurological-conditions-linked-to-lawsuits">
+            <h3>Neurological Conditions Linked to Lawsuits</h3>
+            <p>Explore lawsuit topics involving Parkinson's disease, developmental conditions, toxic exposure, and other neurological claims.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-signals alt">
+      <div class="container">
+        <h2>How Lawsuit Informer Works</h2>
+        <p class="section-intro">
+          The site is built around a few specific commitments &mdash; not generic claims about quality.
+        </p>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <h3>Written or Reviewed by an Attorney</h3>
+            <p>Every substantive page is written or reviewed by David Meldofsky, a California-licensed attorney, before publication. The site does not publish anonymous content.</p>
+          </div>
+
+          <div class="trust-card">
+            <h3>Editorial Separated from Intake</h3>
+            <p>Lawsuitinformer.com is the editorial site. Case intake happens on a separate site, lawsuit.center. Calls-to-action are clearly labeled, and editorial decisions aren't driven by intake partners.</p>
+          </div>
+
+          <div class="trust-card">
+            <h3>Dated Review on Every Page</h3>
+            <p>Substantive pages carry a "last updated" date. Pages on developing topics &mdash; PFAS, AFFF, AI litigation &mdash; are reviewed on a rolling basis as regulations and case law change.</p>
+          </div>
+
+          <div class="trust-card">
+            <h3>Disclosed Use of AI in Drafting</h3>
+            <p>AI tools are used in parts of research and drafting. Every published page is reviewed by a licensed attorney for legal accuracy and framing before going live. Disclosed openly on the <a href="editorial-policy">Editorial Policy</a>.</p>
+          </div>
+
+          <div class="trust-card">
+            <h3>Medical Review on Health Content</h3>
+            <p>Medical sections of pages discussing symptoms, illness, or toxic exposure are reviewed for general accuracy by <a href="dr-thomas-hatzilabrou">Dr. Thomas A. Hatzilabrou, M.D.</a></p>
+          </div>
+
+          <div class="trust-card">
+            <h3>Corrections Welcome</h3>
+            <p>If a page contains a factual error or outdated citation, the <a href="contact">corrections form</a> sends it directly to editorial review. Substantive corrections update the page's review date.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe-box">
+      <div class="container narrow">
+        <h2>Subscribe for updates</h2>
+        <p>Get plain-English updates on lawsuits, toxic exposure issues, consumer safety concerns, and major legal developments.</p>
+
+        <form name="subscribe-updates" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="subscribe-updates">
+          <p hidden>
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+          <label for="email" class="sr-only">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container narrow">
+        <p class="eyebrow">COMMUNITY OUTREACH</p>
+        <h2>Public Outreach</h2>
+        <p>
+          Lawsuit Informer also supports selected outreach and educational efforts related to legal literacy, consumer safety, and civil lawsuit basics.
+        </p>
+        <a class="btn btn-primary" href="community-education">Learn About the Program</a>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container narrow">
+        <h2>Browse the Full Lawsuit Directory</h2>
+        <p>
+          Looking for lawsuit topics involving toxic exposure, dangerous products, or environmental contamination?
+        </p>
+        <a class="btn btn-primary" href="browse-lawsuits">Browse Lawsuits</a>
+      </div>
+    </section>
+
+    <section class="site-info">
+      <div class="container narrow">
+        <h2>About Lawsuit Informer</h2>
+        <p>
+          Lawsuit Informer is an attorney-led editorial site covering lawsuits, toxic exposure, product liability, and consumer safety.
+        </p>
+        <p>
+          Founded by David Meldofsky, a California-licensed attorney, the site provides general legal commentary and education rather than individualized legal advice. Reading the site does not create an attorney-client relationship.
+        </p>
+        <p>
+          Selected health-related content is reviewed for medical accuracy by <a href="dr-thomas-hatzilabrou">Dr. Thomas A. Hatzilabrou, M.D.</a>. Editorial standards, including AI-drafting disclosure and the corrections process, are documented in the <a href="editorial-policy">Editorial Policy</a>.
+        </p>
+        <p>
+          <a href="about">Learn more about Lawsuit Informer &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+ <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>Lawsuit Informer</h3>
+        <p>
+          Lawsuit Informer is an independent platform providing clear, accessible information about lawsuits, consumer safety issues, toxic exposure, and legal rights.
+        </p>
+        <p><strong>Questions about the site or its educational content?</strong></p>
+        <p>
+          <a href="mailto:hello@lawsuitinformer.com">
+            hello@lawsuitinformer.com
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about">About</a></li>
+          <li><a href="dr-thomas-hatzilabrou">Medical Reviewer</a></li>
+          <li><a href="professor-perspective">Professor Perspective</a></li>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="editorial-policy">Editorial Policy</a></li>
+          <li><a href="contributor-guidelines">Write for Us</a></li>
+          <li><a href="legal-guides">Legal Guides</a></li>
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="news-and-analysis">News &amp; Analysis</a></li>
+          <li><a href="how-lawsuits-work">How Lawsuits Work</a></li>
+          <li><a href="privacy-policy">Privacy Policy</a></li>
+          <li><a href="disclaimer">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="browse-lawsuits">Browse Lawsuits</a></li>
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Network</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://lawsuit.center" target="_blank" rel="noopener">Lawsuit Center</a><br>
+            <span style="color:#888;font-size:0.9em;">Case-review directory</span>
+          </li>
+          <li>
+            <a href="https://lawsuitintelligencer.com" target="_blank" rel="noopener">Lawsuit Intelligencer</a><br>
+            <span style="color:#888;font-size:0.9em;">Industry analysis</span>
+          </li>
+          <li>
+            <a href="https://davidmeldofsky.com" target="_blank" rel="noopener">David Meldofsky</a><br>
+            <span style="color:#888;font-size:0.9em;">Editor &amp; founder</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h3>Follow Lawsuit Informer</h3>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/lawsuitinformer" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <p>Attorney-led legal education. Information provided for educational purposes only and not legal advice. No attorney-client relationship is formed.</p>
+      <p>&copy; 2026 Lawsuit Informer. All rights reserved.</p>
+    </div>
   </div>
-  <div class="label">TRACKED TOPICS</div>
-  <div class="chips" id="topicChips"></div>
-  <div class="row">
-    <input type="text" id="topicInput" placeholder="Add topic, e.g. paraquat lawsuit = Gramoxone">
-    <button class="add-btn" id="addTopic">ADD</button>
-  </div>
-  <p class="hint">Each topic runs as a Google News search over the window plus one over the last 24 hours, up to 20 topics. A story counts for a topic when its headline or summary names it. Give the other names the press uses after an equals sign, separated by commas: <b>talc lawsuit = talcum powder, baby powder</b>. The stock topics already carry their names, so asbestos catches mesothelioma and PFAS catches forever chemicals. AI topics show in the AI Wire and Intelligencer topics in INTELLIGENCER. NEWS WIRE shows all of them.</p>
-
-  <div class="label">FIRMS TO WATCH (ONE PER LINE)</div>
-  <textarea id="firmWatchInput" rows="6"></textarea>
-  <p class="hint">Each firm runs a Google News search for its exact name: verdicts, filings, appointments, press.</p>
-
-  <div class="group">WHERE TO LOOK</div>
-  <div class="label">OUTLETS SEARCHED FOR YOUR TOPICS (ONE DOMAIN PER LINE)</div>
-  <textarea id="outletsInput" rows="3"></textarea>
-  <p class="hint">Each outlet runs Google News searches limited to that site, and requires a topic term in the headline. Leave blank to turn this off.</p>
-
-  <div class="label">NEWS SITE FEEDS (ONE PER LINE)</div>
-  <textarea id="newsFeedsInput" rows="3"></textarea>
-  <p class="hint">RSS feeds that run unfiltered, so everything they publish in the window arrives.</p>
-
-  <div class="label">FIRM FEEDS (ONE PER LINE)</div>
-  <textarea id="firmFeedsInput" rows="5"></textarea>
-  <p class="hint">A blog page URL works if the page lists its feed.</p>
-
-  <div class="label">AI SEARCHES (ONE PER LINE)</div>
-  <textarea id="aiSearchInput" rows="8"></textarea>
-  <p class="hint">Each line runs as its own Google News search for the AI Wire and tags whatever it returns. Quotes force a word to appear, and intitle: forces it into the headline. Google News ignores allintitle:.</p>
-
-  <div class="label">AI FEEDS (ONE PER LINE)</div>
-  <textarea id="aiFeedsInput" rows="3"></textarea>
-  <p class="hint">Publications that cover AI in law practice. These run unfiltered and show in the AI Wire. A post that covers one of your topics shows in NEWS WIRE too.</p>
-
-  <div class="group">WHAT TO SUPPRESS</div>
-  <div class="label">TRUSTED SOURCES (ONE PER LINE)</div>
-  <textarea id="trustedInput" rows="2"></textarea>
-  <p class="hint">A topic search keeps an item when its headline or summary carries the topic. These publishers are exempt, so a Reuters story headlined "forever chemicals" still counts as PFAS. A publisher name as shown on items, or a domain.</p>
-
-  <div class="label">BLOCKED SOURCES (ONE PER LINE)</div>
-  <textarea id="blockedInput" rows="2"></textarea>
-  <p class="hint">A publisher name as shown on items, or a domain. Applies to every tab.</p>
-
-  <div class="label">BLOCKED WORDS (ONE PER LINE)</div>
-  <textarea id="blockedTermsInput" rows="6"></textarea>
-  <p class="hint">A story whose headline or summary uses one of these words or phrases is hidden from every tab. Plurals and -ed/-ing forms count too, so "copyright" also hides "copyrighted". Join words with + to hide a story only when it uses all of them: "police + AI" hides police AI stories and leaves other police news. A slash lists choices for one slot: "stock/share + jump/fall" hides "Bayer shares fall" and "Bayer stock jumps".</p>
-
-  <div class="config-foot">
-    <span class="hint" id="syncStatus"></span>
-    <button class="ghost" id="keyBtn">WIRE KEY</button>
-    <button class="ghost" id="resetBtn">RESET TO DEFAULTS</button>
-  </div>
-</div>
-
-<div class="bar">
-  <div class="filters">
-    <button data-f="news" class="active">NEWS WIRE (<span id="ct-news">0</span>)</button>
-    <button data-f="intel">INTELLIGENCER (<span id="ct-intel">0</span>)</button>
-    <button data-f="ai">AI WIRE (<span id="ct-ai">0</span>)</button>
-  </div>
-  <div class="search">
-    <input type="search" id="searchInput" placeholder="Search a topic, firm or keyword" aria-label="Search the wire" autocomplete="off" enterkeyhint="search">
-    <button class="ghost" id="clearSearch" hidden>CLEAR</button>
-  </div>
-</div>
-
-<div class="toggles">
-  <select id="windowSel" class="ghost" aria-label="Time window">
-    <option value="7">LAST 7 DAYS</option>
-    <option value="30">LAST 30 DAYS</option>
-  </select>
-  <button id="newOnlyBtn" class="ghost" aria-pressed="false">NEW ONLY</button>
-  <button id="topicsOnlyBtn" class="ghost" aria-pressed="false">MY TOPICS ONLY</button>
-</div>
-
-<div class="topicbar" id="topicBar"></div>
-
-<main id="feed"></main>
-
-<footer>
-  MASS TORT WIRE IS BUILT AND MAINTAINED BY DAVID MELDOFSKY, PUBLISHER OF <a href="https://lawsuitintelligencer.com/?utm_source=masstortwire&amp;utm_medium=referral&amp;utm_campaign=footer" target="_blank" rel="noopener">LAWSUIT INTELLIGENCER</a> AND <a href="https://lawsuitinformer.com/?utm_source=masstortwire&amp;utm_medium=referral&amp;utm_campaign=footer" target="_blank" rel="noopener">LAWSUIT INFORMER</a>. &copy; 2026 DAVID MELDOFSKY. ALL RIGHTS RESERVED.<br>
-  NEWS WIRE: EVERY STORY ON THE WIRE, GROUPED BY DAY &middot; NEW: REACHED THIS DEVICE IN THE LAST 24 HOURS &middot; INTELLIGENCER: STORIES ON LAWSUIT INTELLIGENCER'S BEATS &middot; AI WIRE: AI TOPICS, AI-IN-LAW SEARCHES AND LEGAL TECH FEEDS &middot; NO API KEYS &middot; SETTINGS SAVED TO THE SITE
 </footer>
 
-<script>
-// ── Defaults ──
-// Bump when a default below has to reach devices that already saved their settings.
-var SETTINGS_VERSION = 17;
-// FIRM BUILD. false on main, true on the `firm` branch, and that one line is the only
-// difference between the two. A firm build starts with no topics, no firm watch and no
-// AI searches, never receives this wire's topic additions on a version bump, and keeps
-// the firm's own AI searches across bumps. The blocked lists, the trusted sources and
-// TOPIC_RULES are shared, since they are filter hygiene rather than a topic list.
-var FIRM_BUILD = false;
-// The ways a headline says a price moved. One rule, since a blocked word can list choices
-// with a slash: "stock/share + jump/fall" hides "Bayer shares fall" and "Bayer stock jumps".
-var STOCK_MOVES = "jump/fall/fell/drop/dropped/rise/rose/slide/slid/surge/plunge/tumble/soar/rally/rallied/climb/sink/sank/slump/dip/dipped/gain/tank/rebound/dive/spike/slip/slipped/skid/skidded/mover/trading/ticker/upgrade/downgrade/valuation/investor/analyst";
-// The policy side of data center news. "data center + permit/zoning" hides the permit and
-// zoning fights and leaves "AI data center lawsuit" stories on the wire.
-var DATA_CENTER_POLICY = "permit/permitting/zoning/rezoning/regulation/regulate/regulator/regulatory/ordinance/moratorium/bill/legislation/legislature/lawmaker/tax break/tax incentive/tax credit/incentive/council/commissioner/planning board/planning commission/supervisor/site plan";
-// Securities suits and investor alerts. Shareholder-firm press releases name "class action",
-// a company and often AI, so they pass every topic check and read as litigation news. They are
-// stock news about the defendant, and v17 keeps them off every tab.
-var SECURITIES_TERMS = [
-  "securities class action", "securities fraud", "securities litigation", "securities lawsuit",
-  "investor alert", "lead plaintiff", "shareholder + class action/lawsuit/alert/investigation/rights",
-  "investors + class action/lawsuit/losses/loss/deadline",
-  "Rosen Law Firm", "Pomerantz", "Levi & Korsinsky", "Faruqi", "Bragar Eagel", "Glancy Prongay",
-  "Bronstein, Gewirtz", "Kessler Topaz", "Schall Law", "Howard G. Smith", "Frank R. Cruz"
-];
-var DEFAULTS = {
-  version: SETTINGS_VERSION,
-  topics: [
-    "AFFF lawsuit", "PFAS litigation", "Roundup settlement", "Depo-Provera lawsuit", "hair relaxer lawsuit", "mass tort",
-    // Litigations with a Lawsuit Informer updates page (Ozempic runs under GLP-1 lawsuit)
-    "asbestos lawsuit", "paraquat lawsuit", "talc lawsuit", "Tylenol lawsuit", "transvaginal mesh lawsuit",
-    "social media addiction lawsuit", "House v. NCAA settlement",
-    // Lawsuit Intelligencer's beats
-    "AI chatbot lawsuit", "AI in court", "NEC baby formula lawsuit", "ByHeart lawsuit", "video game addiction lawsuit",
-    "AI data center lawsuit", "qui tam", "law firm MSO", "mass tort advertising", "state attorney general lawsuit",
-    "GLP-1 lawsuit", "wildfire lawsuit",
-    // Litigations with pages on Lawsuit Informer or Lawsuit Center and no wire topic until v16.
-    // The News Wire runs at most MAX_TOPIC_SEARCHES topic searches, and these fill the last five.
-    "hernia mesh lawsuit", "baby food lawsuit", "ultra-processed food lawsuit", "Camp Lejeune lawsuit", "Roblox lawsuit",
-    // Intelligencer beats added in v16
-    "CIPA lawsuit", "third-party litigation funding",
-    // AI Wire beat added in v16
-    "deepfake lawsuit"
-  ],
-  outlets: ["reuters.com", "law360.com", "yahoo.com"],
-  // Link wrappers carry a headline and no article, so a firm name search can surface
-  // a bare tweet as a story. They are blocked by the host the item resolves to.
-  blockedSources: [
-    "Yahoo Sports", "sports.yahoo.com", "BVM Sports", "bvmsports.com",
-    "t.co", "x.com", "twitter.com", "bit.ly", "lnkd.in", "buff.ly",
-    "Event Marketer", "eventmarketer.com", "adland.tv",
-    // Rewrites one story into a new headline every few minutes, so each rewrite is a
-    // fresh link and earns a NEW badge. Eight variants of one Bayer story in one scan.
-    "AD HOC NEWS", "ad-hoc-news.de",
-    "India Gazette", "indiagazette.com",
-    // Stock-picking publishers. Their "Bayer" stories are price moves and analyst ratings,
-    // and the verdict behind a price move reaches the wire from Reuters and Law360 anyway.
-    "The Motley Fool", "Motley Fool", "fool.com", "Seeking Alpha", "seekingalpha.com",
-    "Zacks", "Zacks Investment Research", "zacks.com", "MarketBeat", "marketbeat.com",
-    "Benzinga", "benzinga.com", "TipRanks", "tipranks.com", "InvestorPlace", "investorplace.com",
-    "Simply Wall St", "simplywall.st", "Barchart", "barchart.com", "GuruFocus", "gurufocus.com",
-    "Investing.com", "investing.com", "Nasdaq", "nasdaq.com", "Stocktwits", "stocktwits.com",
-    "StockTitan", "stocktitan.net", "Finviz", "finviz.com", "AInvest", "ainvest.com",
-    "Investor's Business Daily", "investors.com", "The Globe and Mail", "theglobeandmail.com",
-    "MarketScreener", "marketscreener.com", "Sharewise", "sharewise.com"
-  ],
-  // Publishers exempt from the topic check on a topic search. Reuters headlines a PFAS
-  // story "forever chemicals" and never says PFAS, and the story is still the story.
-  trustedSources: ["Reuters", "reuters.com", "Law360", "law360.com"],
-  // Stories to keep off the wire entirely. Copyright and AI training-data fights are off-beat.
-  blockedTerms: ["copyright", "fair use", "training data", "scraping", "user agreement", "AI data case",
-                 "police + AI", "cop + AI",
-                 // The 1982 Chicago cyanide case resurfaces with every documentary and anniversary.
-                 "Tylenol murder", "Tylenol poisoning", "Tylenol killing", "Tylenol + cyanide",
-                 // Stock movement and stock-picking stories about the defendants.
-                 "stock/share + " + STOCK_MOVES, "stock + buy/sell/hold",
-                 "stock price", "share price", "price target", "analyst rating", "analyst upgrade", "analyst downgrade",
-                 "buy rating", "sell rating", "hold rating", "outperform", "underperform",
-                 "earnings call", "earnings estimate", "earnings report", "quarterly earnings", "earnings per share",
-                 "dividend", "market cap", "52-week", "premarket", "pre-market", "after-hours", "intraday",
-                 "should you buy", "buy the dip", "stock to buy", "stock to watch", "stock to sell", "stock to avoid",
-                 "top gainer", "top loser", "stock alert", "options activity", "short interest", "stock rating",
-                 "stock market", "stock exchange", "shareholder value",
-                 // Google News items carry a headline and no summary, so these bare words are
-                 // tested against the headline alone. "Bayer stock" is a price story every time.
-                 "stock", "ETF", "bullish", "bearish", "data center demand", "data center boom + stock/ETF/invest/investor/bet",
-                 // Data center siting: permits, zoning, ordinances, tax breaks. The lawsuits stay.
-                 "data center + " + DATA_CENTER_POLICY].concat(SECURITIES_TERMS),
-  newsFeeds: ["https://www.aboutlawsuits.com/feed/"],
-  firmWatch: [
-    "Motley Rice", "Weitz & Luxenberg", "Keller Postman", "Morgan & Morgan", "Beasley Allen",
-    "Lieff Cabraser", "Seeger Weiss", "Levin Papantonio", "Sokolove Law", "Gori Law"
-  ],
-  firmFeeds: [
-    "https://www.sokolovelaw.com/blog/",
-    "https://gorilaw.com/blog/",
-    "https://www.lawsuit-information-center.com/"
-  ],
-  aiSearches: [
-    "intitle:AI intitle:court",
-    "intitle:AI intitle:lawyer",
-    "intitle:AI intitle:judge",
-    '"AI" "sanctions" "court filings"',
-    '"hallucinated" OR "fabricated" citations court lawyer',
-    '"artificial intelligence" "judiciary"',
-    '"AI-generated" evidence court',
-    '"ChatGPT" "lawsuit" teen'
-  ],
-  aiFeeds: [
-    "https://www.lawnext.com/feed",
-    "https://www.artificiallawyer.com/feed/"
-  ],
-  windowDays: 7,
-  topicsOnly: false,
-  firmName: ""
-};
-// Entries added to the defaults in a given version. Settings saved before that version get them
-// once, and an entry you later remove stays removed.
-var ADDED = {
-  8: { topics: ["AI chatbot lawsuit", "AI in court", "NEC baby formula lawsuit", "ByHeart lawsuit",
-                "video game addiction lawsuit", "AI data center lawsuit", "qui tam", "law firm MSO",
-                "mass tort advertising"] },
-  9: { blockedTerms: ["police + AI", "cop + AI"] },
-  10: { topics: ["state attorney general lawsuit"] },
-  11: { topics: ["GLP-1 lawsuit", "wildfire lawsuit"] },
-  12: { topics: ["asbestos lawsuit", "paraquat lawsuit", "talc lawsuit", "Tylenol lawsuit", "transvaginal mesh lawsuit",
-                 "social media addiction lawsuit", "House v. NCAA settlement"] },
-  13: { blockedTerms: ["Tylenol murder", "Tylenol poisoning", "Tylenol killing", "Tylenol + cyanide"] },
-  14: { blockedTerms: DEFAULTS.blockedTerms.slice(DEFAULTS.blockedTerms.indexOf("stock/share + " + STOCK_MOVES),
-                                                  DEFAULTS.blockedTerms.indexOf("stock")) },
-  15: { blockedTerms: ["stock", "ETF", "bullish", "bearish", "data center demand", "data center boom + stock/ETF/invest/investor/bet",
-                       "data center + " + DATA_CENTER_POLICY] },
-  16: { topics: ["hernia mesh lawsuit", "baby food lawsuit", "ultra-processed food lawsuit", "Camp Lejeune lawsuit",
-                 "Roblox lawsuit", "CIPA lawsuit", "third-party litigation funding", "deepfake lawsuit"] },
-  17: { blockedTerms: SECURITIES_TERMS }
-};
-// A firm build ships none of this wire's topic list. The firm enters its own litigations and
-// the firms it watches under EDIT SOURCES, and those live in that site's own settings store.
-// Lawsuit Informer and Lawsuit Intelligencer are trusted, so their stories pass the topic
-// check and their feeds are on the News Wire list from the first open.
-var FIRM_LISTS = ["topics", "firmWatch", "firmFeeds", "aiSearches"];
-if (FIRM_BUILD) {
-  FIRM_LISTS.forEach(function (k) { DEFAULTS[k] = []; });
-  DEFAULTS.trustedSources = DEFAULTS.trustedSources.concat([
-    "Lawsuit Informer", "lawsuitinformer.com", "Lawsuit Intelligencer", "lawsuitintelligencer.com"
-  ]);
-  DEFAULTS.newsFeeds = DEFAULTS.newsFeeds.concat([
-    "https://lawsuitinformer.com/feed.xml", "https://lawsuitintelligencer.com/feed.xml"
-  ]);
-  Object.keys(ADDED).forEach(function (v) {
-    FIRM_LISTS.forEach(function (k) { delete ADDED[v][k]; });
-  });
-}
-if (FIRM_BUILD) document.getElementById("tagline").textContent = "Mass tort news, the firms you watch, and AI in the courts.";
-
-// ── Usage (firm build only) ──
-// One GA4 property counts use across every firm site; the hostname tells the firms apart.
-// It records opens, scans, story clicks and preset choices. Your own wire loads no tag.
-var GA_ID = "G-C5MWZ4D858";
-function track(name, params) {
-  if (typeof window.gtag !== "function") return;
-  try { window.gtag("event", name, params || {}); } catch (e) { /* never let analytics break the wire */ }
-}
-// Your own devices: open any firm wire once with ?me=1 and that browser is marked internal
-// from then on, whatever its IP, so the GA4 Internal Traffic filter drops it. ?me=0 undoes it.
-var INTERNAL_KEY = "mtw-internal";
-(function () {
-  var m = /[?&]me=([01])\b/.exec(location.search);
-  if (!m) return;
-  try { if (m[1] === "1") localStorage.setItem(INTERNAL_KEY, "1"); else localStorage.removeItem(INTERNAL_KEY); } catch (e) { /* private window */ }
-  try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) { /* keep the URL */ }
-})();
-function isInternal() { try { return localStorage.getItem(INTERNAL_KEY) === "1"; } catch (e) { return false; } }
-if (FIRM_BUILD) {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function () { window.dataLayer.push(arguments); };
-  window.gtag("js", new Date());
-  window.gtag("config", GA_ID, isInternal() ? { traffic_type: "internal" } : {});
-  var gaTag = document.createElement("script");
-  gaTag.async = true;
-  gaTag.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-  document.head.appendChild(gaTag);
-}
-
-// Links to the network's own sites carry the wire's origin, so a firm's click reaches the
-// site's own analytics as a referral from that firm's wire. Every other link stays blank.
-var OWN_SITE = /(^|\.)(lawsuitinformer\.com|lawsuitintelligencer\.com|lawsuit\.center|davidmeldofsky\.com)$/i;
-function hostOfUrl(u) { try { return new URL(u).hostname; } catch (e) { return ""; } }
-function storyHref(u) {
-  if (!OWN_SITE.test(hostOfUrl(u))) return u;
-  try {
-    var url = new URL(u);
-    url.searchParams.set("utm_source", "masstortwire");
-    url.searchParams.set("utm_medium", "referral");
-    url.searchParams.set("utm_campaign", location.hostname);
-    return url.toString();
-  } catch (e) { return u; }
-}
-
-// ── Firm build: DEAL WIRE tab and presets ──
-// On a firm build the middle tab is DEAL WIRE: the topics of a law firm M&A desk (MSOs, private
-// equity, ABS, fee-sharing rules, mergers, valuation, funding, and the docket events that price an
-// inventory). It hides itself when the firm tracks none of them. Keys are coreTerm() of the name.
-var DEAL_TOPIC_CORES = {
-  "law firm mso": 1, "law firm private equity": 1, "alternative business structure": 1, "rule 5.4": 1,
-  "law firm merger": 1, "third-party funding": 1, "global resolution": 1, "bellwether trial": 1,
-  "daubert ruling": 1, "census": 1, "mass tort advertising": 1, "law firm valuation": 1,
-  "arizona abs": 1, "california ab 2305": 1, "colorado fee-sharing ban": 1, "illinois hb 5487": 1,
-  "law firm succession": 1
-};
-// Sponsors and platforms named in 2026 deal coverage, and the firms that took investment.
-var DEAL_FIRMS = [
-  "Uplift Investors", "Orion Legal", "Trive Capital", "Charlesbank", "Morgan & Morgan",
-  "Massumi & Consoli", "Dudley DeBosier", "Hughes & Coleman", "John Foy & Associates",
-  "Wood Smith Henning & Berman", "Cohen & Gresser", "McDermott Will & Schulte"
-];
-var DEAL_TOPICS_SHARED = [
-  "law firm MSO = management services organization, legal MSO",
-  "law firm private equity = private equity law firm, outside investment law firm",
-  "alternative business structure = ABS law firm, nonlawyer ownership, non-lawyer ownership",
-  "Rule 5.4 = fee sharing, fee-sharing",
-  "law firm merger = law firm acquisition, law firm combination",
-  "third-party litigation funding = litigation finance, litigation funder, portfolio financing"
-];
-var PRESETS = {
-  litigation: {
-    topics: [
-      "AFFF lawsuit = firefighting foam", "PFAS litigation = forever chemicals", "Roundup settlement = glyphosate",
-      "talc lawsuit = talcum powder, baby powder", "hair relaxer lawsuit", "Depo-Provera lawsuit = meningioma",
-      "GLP-1 lawsuit = Ozempic, Wegovy, Mounjaro", "paraquat lawsuit = Gramoxone", "hernia mesh lawsuit",
-      "Camp Lejeune lawsuit", "social media addiction lawsuit", "Tylenol lawsuit = acetaminophen autism",
-      "asbestos lawsuit = mesothelioma", "NEC baby formula lawsuit = necrotizing enterocolitis",
-      "Suboxone lawsuit = tooth decay", "Uber sexual assault lawsuit", "Bard PowerPort lawsuit = port catheter",
-      "Oxbryta lawsuit", "video game addiction lawsuit", "mass tort"
-    ],
-    firms: ["Motley Rice", "Weitz & Luxenberg", "Keller Postman", "Morgan & Morgan", "Beasley Allen",
-            "Lieff Cabraser", "Seeger Weiss", "Levin Papantonio", "Sokolove Law", "Gori Law"]
-  },
-  buyer: {
-    topics: DEAL_TOPICS_SHARED.concat([
-      "global resolution = global settlement, settlement grid, settlement program, claims administrator",
-      "bellwether trial = bellwether verdict, bellwether ruling",
-      "Daubert ruling = Rule 702, expert exclusion, general causation",
-      "MDL census = plaintiff fact sheet, docket census",
-      "mass tort advertising = legal advertising spend, claimant acquisition",
-      "law firm valuation = law firm EBITDA, law firm multiple"
-    ]),
-    firms: DEAL_FIRMS
-  },
-  seller: {
-    topics: DEAL_TOPICS_SHARED.concat([
-      "Arizona ABS = Arizona alternative business structure",
-      "California AB 2305 = fee-sharing prohibition, nonlawyer control",
-      "Colorado fee-sharing ban = Legal Practice Integrity and Fee-sharing Prohibition Act",
-      "Illinois HB 5487",
-      "law firm valuation = law firm EBITDA, law firm multiple",
-      "law firm succession = founder exit, partner buyout"
-    ]),
-    firms: DEAL_FIRMS
-  }
-};
-var MAX_TOPIC_SEARCHES = 20;
-var STORE_KEY = "mtw:settings:v2";
-var SEEN_KEY = "mtw:seen:v3";      // url -> when this device first saw it (ms)
-var SEEN_KEY_V2 = "mtw:seen:v2";   // older list of seen urls, read once and retired
-var NEW_HOURS = 24;                // NEW: first arrived on this device within this many hours
-var BATCH = 12;               // feeds function limit per call
-var CHANNELS = { news: "NEWS WIRE", intel: FIRM_BUILD ? "DEAL WIRE" : "INTELLIGENCER", ai: "AI WIRE" };
-if (FIRM_BUILD) {
-  document.querySelector('.filters button[data-f="intel"]').firstChild.textContent = "DEAL WIRE (";
-  document.querySelector('.channel-status .intel').firstChild.textContent = "DEALS ";
-}
-var CHANNEL_KEYS = ["news", "intel", "ai"];
-var OUTLET_NAMES = { "reuters.com": "Reuters", "law360.com": "Law360", "yahoo.com": "Yahoo News" };
-
-// ── Storage (guarded: private browsing can refuse it) ──
-function load(key, fallback) {
-  try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
-  catch (e) { return fallback; }
-}
-function save(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* ignore */ }
-}
-
-// ── Wire key ──
-// Both site functions refuse requests without the key set in Netlify as WIRE_KEY.
-// Entered once per device and kept in this browser; a private window asks again.
-var KEY_STORE = "mtw-key";
-var sessionKey = "";   // holds the key for this page when the browser refuses storage
-function wireKey() {
-  try { return localStorage.getItem(KEY_STORE) || sessionKey; } catch (e) { return sessionKey; }
-}
-function askWireKey(message) {
-  var k = window.prompt(message || "Enter the wire key (WIRE_KEY in Netlify).", "");
-  if (k === null) return "";
-  k = k.trim();
-  sessionKey = k;
-  try { localStorage.setItem(KEY_STORE, k); } catch (e) { /* private window: sessionKey carries it */ }
-  return k;
-}
-
-var settings;
-
-// Copies, so adding a topic never edits DEFAULTS itself.
-function applySettings(stored) {
-  stored = stored || {};
-  settings = JSON.parse(JSON.stringify(Object.assign({}, DEFAULTS, stored)));
-  delete settings.savedAt;
-  // A saved setting outranks its default permanently, so a device that has run one scan keeps
-  // the AI searches and blocked sources it saved that day and never sees corrected ones.
-  // A version bump reapplies the sources this app maintains, and leaves your own lists alone.
-  if ((stored.version || 0) < SETTINGS_VERSION) {
-    // The AI searches are this wire's own beat, so a firm build keeps the firm's lines instead.
-    if (!FIRM_BUILD) settings.aiSearches = DEFAULTS.aiSearches.slice();
-    settings.aiFeeds = DEFAULTS.aiFeeds.slice();
-    DEFAULTS.blockedSources.forEach(function (b) {
-      if (settings.blockedSources.indexOf(b) === -1) settings.blockedSources.push(b);
-    });
-    for (var v = (stored.version || 0) + 1; v <= SETTINGS_VERSION; v++) {
-      Object.keys(ADDED[v] || {}).forEach(function (field) {
-        ADDED[v][field].forEach(function (t) {
-          var has = settings[field].some(function (x) { return x.toLowerCase() === t.toLowerCase(); });
-          if (!has) settings[field].push(t);
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("site-menu");
+      if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+          const isOpen = menu.classList.toggle("open");
+          toggle.classList.toggle("active", isOpen);
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
         });
-      });
-    }
-    settings.version = SETTINGS_VERSION;
-    return true;
-  }
-  return false;
-}
-
-var storedSettings = load(STORE_KEY, null);
-if (applySettings(storedSettings)) save(STORE_KEY, settings);
-// NEW used to mean "absent from the last scan", which went blank on every reopen, since the app
-// scans on open. Now a story is NEW for 24 hours after it first reaches this device.
-var firstSeen = load(SEEN_KEY, null);
-if (!firstSeen || typeof firstSeen !== "object" || Array.isArray(firstSeen)) {
-  firstSeen = {};
-  var seenV2 = load(SEEN_KEY_V2, null);
-  if (Array.isArray(seenV2)) {
-    // Stories the old list had seen were on the wire before this version: give them an old date.
-    var legacy = Date.now() - 31 * 86400000;
-    seenV2.forEach(function (u) { firstSeen[u] = legacy; });
-  }
-  save(SEEN_KEY, firstSeen);
-}
-
-// A story is stamped by URL and date together, so a page restamped with a new date (an update
-// page revised today) counts as a new arrival and earns NEW again, while the same story seen
-// on the same date stays quiet.
-function seenKey(i) { return i.url + (i.date ? "#" + i.date : ""); }
-
-// Record arrivals, then drop entries older than the wire's longest window. A story older than
-// 30 days can't come back through a 30-day search, so nothing needed stays forgotten.
-function noteSeen(list) {
-  var now = Date.now(), changed = false;
-  list.forEach(function (i) {
-    if (!i.url) return;
-    var k = seenKey(i);
-    if (firstSeen[k] !== undefined) return;
-    // Stamps written before the date joined the key are bare URLs. A story dated before this
-    // device first saw it inherits that stamp and stays quiet; a page revised since then is new.
-    var old = firstSeen[i.url], stamp = now;
-    if (old !== undefined) {
-      var d = Date.parse(i.time || i.date);
-      if (isNaN(d) || d <= old) stamp = old;
-    }
-    firstSeen[k] = stamp; changed = true;
-  });
-  if (!changed) return;
-  var keys = Object.keys(firstSeen);
-  if (keys.length > 3000) {
-    var cutoff = now - 45 * 86400000;
-    keys.forEach(function (k) { if (firstSeen[k] < cutoff) delete firstSeen[k]; });
-    keys = Object.keys(firstSeen);
-    if (keys.length > 3000) {
-      keys.sort(function (a, b) { return firstSeen[a] - firstSeen[b]; })
-        .slice(0, keys.length - 3000).forEach(function (k) { delete firstSeen[k]; });
-    }
-  }
-  save(SEEN_KEY, firstSeen);
-}
-var items = [];
-var errors = {};
-var health = { news: [], intel: [], ai: [] };
-var filter = "news";
-var newOnly = false;    // NEW ONLY toggle: show only stories the last visit had not seen
-var scanned = false;
-var scanning = false;
-var query = "";          // search box text, filters as you type
-var activeTopic = "";    // topic chip tapped in the topic bar
-var adhoc = {};          // Google News lookups run from the search box, keyed by lowercased query
-
-// ── Settings sync ──
-// Settings live on the site as well as in this browser. A private window starts with no saved
-// browser data, so without the site copy it would load the stock defaults instead of your setup.
-var SETTINGS_URL = "/.netlify/functions/settings";
-var lastSynced = "";   // settings as the site last had them, to skip saves that change nothing
-var syncTimer = null;
-
-function setSync(text, bad) {
-  var el = document.getElementById("syncStatus");
-  el.textContent = text;
-  el.style.color = bad ? "var(--bad)" : "";
-}
-
-// A viewer key reads the shared setup and cannot change it. The page learns which key it holds
-// from the site, hides the setup form for a viewer, and never tries to save.
-var readOnly = false;
-function applyRole() {
-  document.getElementById("configBtn").hidden = readOnly;
-  document.getElementById("keyBtnTop").hidden = !readOnly;
-  if (readOnly) document.getElementById("config").classList.remove("open");
-}
-
-function pushSettings() {
-  if (readOnly) return;
-  var body = JSON.stringify(settings);
-  if (body === lastSynced) return;
-  fetchT(SETTINGS_URL, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: body
-  }, 8000).then(function (res) {
-    if (res.status === 403) {
-      setSync("This key can read the wire but not change its shared setup. Your change stays in this window until you reload.", true);
-      return;
-    }
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    lastSynced = body;
-    setSync("Saved to the site. Every window, private ones included, loads this setup.");
-  }).catch(function () {
-    setSync("Couldn't reach the site, so this change is saved in this window only.", true);
-  });
-}
-
-// undefined: the site couldn't be reached. null: nothing saved there yet.
-function pullSettings() {
-  return fetchT(SETTINGS_URL, { cache: "no-store" }, 5000)
-    .then(function (res) { return res.ok ? res.json() : undefined; })
-    .then(function (data) {
-      if (data) readOnly = data.canWrite === false;
-      return data ? data.settings : undefined;
-    })
-    .catch(function () { return undefined; });
-}
-
-function persist() {
-  save(STORE_KEY, settings);
-  if (readOnly) return;   // a viewer's view choices (MY TOPICS ONLY, the window) stay on this device
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(pushSettings, 600);
-}
-
-// ── Settings UI ──
-document.getElementById("today").textContent = localDay(new Date());
-
-// The firm's name leads the eyebrow, the tab title and the home-screen name. Empty on
-// this wire and on a firm build that has not entered one yet.
-function applyFirmName() {
-  var name = (settings.firmName || "").trim();
-  document.getElementById("firmMark").textContent = name ? name.toUpperCase() + " \u00B7 " : "";
-  document.title = name ? name + " \u00B7 Mass Tort Wire" : "Mass Tort Wire | Signals Desk";
-  var meta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
-  if (meta) meta.setAttribute("content", name ? name + " Wire" : "Wire");
-}
-document.getElementById("firmNameBlock").hidden = !FIRM_BUILD;
-if (FIRM_BUILD) {
-  var fx = document.querySelector("footer");
-  fx.innerHTML = fx.innerHTML
-    .replace("INTELLIGENCER: STORIES ON LAWSUIT INTELLIGENCER'S BEATS", "DEAL WIRE: LAW FIRM M&amp;A, MSO AND FUNDING TOPICS, SHOWN WHEN YOU TRACK ONE");
-  var hx = document.querySelector("#topicChips + .row + .hint");
-  if (hx) hx.innerHTML = hx.innerHTML.replace("AI topics show in the AI Wire and Intelligencer topics in INTELLIGENCER.", "AI topics show in the AI Wire and deal topics in DEAL WIRE.");
-}
-document.getElementById("firmNameInput").addEventListener("change", function () {
-  settings.firmName = this.value.trim().slice(0, 80); persist(); applyFirmName();
-});
-document.getElementById("presetSel").addEventListener("change", function () {
-  var preset = PRESETS[this.value];
-  this.value = "";
-  if (!preset) return;
-  if (settings.topics.length && !confirm("Replace the tracked topics and the firms to watch with this preset?")) return;
-  track("preset_chosen", { preset: Object.keys(PRESETS).filter(function (k) { return PRESETS[k] === preset; })[0] || "" });
-  settings.topics = preset.topics.slice();
-  settings.firmWatch = preset.firms.slice();
-  persist(); fillInputs(); renderFeed(); runScan();
-});
-
-function linesOf(id) {
-  return document.getElementById(id).value
-    .split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean);
-}
-
-function readOutlets() {
-  return linesOf("outletsInput").map(function (d) {
-    return d.replace(/^https?:\/\//i, "").replace(/^www\./i, "").replace(/\/.*$/, "").toLowerCase();
-  }).filter(Boolean);
-}
-
-function fillInputs() {
-  document.getElementById("outletsInput").value = settings.outlets.join("\n");
-  document.getElementById("blockedInput").value = settings.blockedSources.join("\n");
-  document.getElementById("blockedTermsInput").value = settings.blockedTerms.join("\n");
-  document.getElementById("trustedInput").value = settings.trustedSources.join("\n");
-  document.getElementById("newsFeedsInput").value = settings.newsFeeds.join("\n");
-  document.getElementById("firmWatchInput").value = settings.firmWatch.join("\n");
-  document.getElementById("firmFeedsInput").value = settings.firmFeeds.join("\n");
-  document.getElementById("aiSearchInput").value = settings.aiSearches.join("\n");
-  document.getElementById("aiFeedsInput").value = settings.aiFeeds.join("\n");
-  document.getElementById("firmNameInput").value = settings.firmName || "";
-  applyFirmName();
-  document.getElementById("windowSel").value = String(settings.windowDays);
-  var tb = document.getElementById("topicsOnlyBtn");
-  tb.classList.toggle("on", settings.topicsOnly);
-  tb.setAttribute("aria-pressed", settings.topicsOnly ? "true" : "false");
-  renderChips();
-}
-
-function renderChips() {
-  syncMiddleTab();
-  var el = document.getElementById("topicChips");
-  el.innerHTML = "";
-  settings.topics.forEach(function (t) {
-    var chip = document.createElement("span");
-    chip.className = "chip";
-    chip.textContent = t + " ";
-    var x = document.createElement("button");
-    x.textContent = "\u2715";
-    x.setAttribute("aria-label", "Remove " + t);
-    x.onclick = function () {
-      settings.topics = settings.topics.filter(function (v) { return v !== t; });
-      persist(); renderChips();
-    };
-    chip.appendChild(x);
-    el.appendChild(chip);
-  });
-}
-
-function addTopic() {
-  var inp = document.getElementById("topicInput");
-  var t = inp.value.trim();
-  var exists = settings.topics.some(function (v) { return v.toLowerCase() === t.toLowerCase(); });
-  if (t && !exists) { settings.topics.push(t); persist(); renderChips(); }
-  inp.value = "";
-}
-document.getElementById("addTopic").onclick = addTopic;
-document.getElementById("topicInput").addEventListener("keydown", function (e) { if (e.key === "Enter") addTopic(); });
-// A one-line box joins a pasted list into a single topic. A paste of several lines adds each
-// line as its own topic instead.
-document.getElementById("topicInput").addEventListener("paste", function (e) {
-  var text = (e.clipboardData || window.clipboardData).getData("text") || "";
-  var lines = text.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
-  if (lines.length < 2) return;
-  e.preventDefault();
-  lines.forEach(function (t) {
-    var exists = settings.topics.some(function (v) { return v.toLowerCase() === t.toLowerCase(); });
-    if (!exists) settings.topics.push(t);
-  });
-  this.value = "";
-  persist(); renderChips();
-});
-
-document.getElementById("newsFeedsInput").addEventListener("change", function () {
-  settings.newsFeeds = linesOf("newsFeedsInput"); persist();
-});
-document.getElementById("blockedInput").addEventListener("change", function () {
-  settings.blockedSources = linesOf("blockedInput"); persist();
-});
-document.getElementById("blockedTermsInput").addEventListener("change", function () {
-  settings.blockedTerms = linesOf("blockedTermsInput"); persist(); renderFeed();
-});
-document.getElementById("trustedInput").addEventListener("change", function () {
-  settings.trustedSources = linesOf("trustedInput"); persist();
-});
-document.getElementById("outletsInput").addEventListener("change", function () {
-  settings.outlets = readOutlets(); persist();
-});
-document.getElementById("firmWatchInput").addEventListener("change", function () {
-  settings.firmWatch = linesOf("firmWatchInput"); persist();
-});
-document.getElementById("firmFeedsInput").addEventListener("change", function () {
-  settings.firmFeeds = linesOf("firmFeedsInput"); persist();
-});
-document.getElementById("aiSearchInput").addEventListener("change", function () {
-  settings.aiSearches = linesOf("aiSearchInput"); persist();
-});
-document.getElementById("aiFeedsInput").addEventListener("change", function () {
-  settings.aiFeeds = linesOf("aiFeedsInput"); persist();
-});
-
-document.getElementById("windowSel").onchange = function () {
-  settings.windowDays = Number(this.value) || 7;
-  persist();
-  runScan();   // the window changes what the news searches ask for
-};
-
-document.getElementById("topicsOnlyBtn").onclick = function () {
-  settings.topicsOnly = !settings.topicsOnly;
-  persist(); fillInputs(); renderFeed();
-};
-
-function setNewOnly(v) {
-  newOnly = !!v;
-  var b = document.getElementById("newOnlyBtn");
-  b.classList.toggle("on", newOnly);
-  b.setAttribute("aria-pressed", newOnly ? "true" : "false");
-  renderFeed();
-}
-document.getElementById("newOnlyBtn").onclick = function () { setNewOnly(!newOnly); };
-
-document.getElementById("configBtn").onclick = function () {
-  var c = document.getElementById("config");
-  c.classList.toggle("open");
-  this.textContent = c.classList.contains("open") ? "HIDE SOURCES" : "EDIT SOURCES";
-};
-
-document.getElementById("resetBtn").onclick = function () {
-  if (!confirm("Reset topics and feeds to the defaults?")) return;
-  applySettings({ version: SETTINGS_VERSION });
-  persist(); fillInputs(); renderFeed();
-};
-
-document.getElementById("keyBtnTop").onclick = function () {
-  if (askWireKey("Enter the wire key for this device.")) location.reload();
-};
-
-document.getElementById("keyBtn").onclick = function () {
-  if (!askWireKey("Enter the wire key for this device.")) return;
-  lastSynced = "";
-  setSync("Key saved on this device.");
-  pushSettings();
-};
-
-// ── Filters ──
-document.querySelectorAll(".filters button").forEach(function (b) {
-  b.onclick = function () {
-    filter = b.dataset.f;
-    document.querySelectorAll(".filters button").forEach(function (x) { x.classList.remove("active"); });
-    b.classList.add("active");
-    renderFeed();
-  };
-});
-
-// ── Search ──
-var searchInput = document.getElementById("searchInput");
-var clearBtn = document.getElementById("clearSearch");
-
-function setQuery(q) {
-  query = q;
-  searchInput.value = q;
-  clearBtn.hidden = !(query || activeTopic);
-  renderFeed();
-}
-
-searchInput.addEventListener("input", function () {
-  query = searchInput.value;
-  clearBtn.hidden = !(query || activeTopic);
-  renderFeed();
-});
-searchInput.addEventListener("keydown", function (e) {
-  // Typing already filters what the scan loaded. Enter goes further and asks Google News.
-  if (e.key === "Enter") {
-    e.preventDefault();
-    if (query.trim()) searchGoogleNews(query.trim());
-    searchInput.blur();
-  } else if (e.key === "Escape") {
-    setQuery("");
-  }
-});
-clearBtn.onclick = function () {
-  activeTopic = "";
-  setQuery("");
-};
-
-document.getElementById("topicBar").addEventListener("click", function (e) {
-  var b = e.target.closest("button[data-topic]");
-  if (!b) return;
-  var t = b.getAttribute("data-topic");
-  activeTopic = activeTopic === t ? "" : t;
-  clearBtn.hidden = !(query || activeTopic);
-  renderFeed();
-});
-
-document.getElementById("feed").addEventListener("click", function (e) {
-  var b = e.target.closest("button[data-act]");
-  if (!b) return;
-  if (b.getAttribute("data-act") === "newonly") { setNewOnly(!newOnly); return; }
-  var q = query.trim();
-  if (!q) return;
-  if (b.getAttribute("data-act") === "gnews") searchGoogleNews(q);
-  if (b.getAttribute("data-act") === "track") trackTopic(q);
-});
-
-function isTracked(q) {
-  return settings.topics.some(function (v) { return v.toLowerCase() === q.toLowerCase(); });
-}
-
-function trackTopic(q) {
-  if (!isTracked(q)) { settings.topics.push(q); persist(); renderChips(); }
-  renderFeed();
-}
-
-// One Google News search for whatever is in the box. Results join the News Wire tagged with
-// the search, so the topic bar and the filter both pick them up. A story the scan already
-// has gets the tag instead of a second copy.
-function searchGoogleNews(q) {
-  var key = q.toLowerCase();
-  if (adhoc[key] && adhoc[key].state === "running") return;
-  adhoc[key] = { state: "running" };
-  renderFeed();
-  callFeeds([{ url: gnews(q + whenClause()), topic: q, label: q }], 15).then(function (res) {
-    health.news = health.news.concat(res.feeds);
-    var added = 0;
-    res.items.forEach(function (it) {
-      var tok = titleTokens(it.title);
-      var dup = null;
-      for (var k = 0; k < items.length; k++) {
-        if (items[k].url === it.url || sameStory(tok, titleTokens(items[k].title))) { dup = items[k]; break; }
       }
-      if (dup) {
-        dup.matched = dup.matched || [];
-        if (dup.matched.indexOf(q) === -1) dup.matched.push(q);
-        return;
+
+      const guideIndex = [
+        "new to lawsuits start here a step-by-step guide to understanding lawsuits key legal terms and where to begin",
+        "legal terms glossary plain-english definitions of common lawsuit and legal terms including settlement discovery negligence mdl and statute of limitations",
+        "how lawsuits work basics of how civil lawsuits typically begin move forward and resolve",
+        "do you qualify for a lawsuit common factors people look at when trying to understand whether they may qualify for a lawsuit",
+        "is it worth suing five questions that help decide whether a lawsuit is worth pursuing including viable claims collectibility cost deadlines and alternatives to filing",
+        "what happens if you ignore a lawsuit missed deadlines and non-response can lead to default judgment and other serious consequences",
+        "what happens after you contact a lawyer intake case review follow-up questions and possible next steps",
+        "what questions should you ask before signing with a lawyer common questions people may want to ask before agreeing to legal representation",
+        "attorney retainer agreement guide what a retainer agreement is what terms it usually includes and what to review before signing with a lawyer",
+        "how long do lawsuits take common factors that can affect how long a lawsuit may take",
+        "what evidence helps a lawsuit kinds of records photos messages and documents may help support a lawsuit and clarify what happened",
+        "statute of limitations basics what a statute of limitations is why deadlines matter and why timing can affect whether a claim can move forward",
+        "common lawsuit mistakes avoidable errors involving timing records public statements expectations and communication during a potential claim",
+        "what is a demand letter what a demand letter is what it often includes and how it can fit into a dispute or potential lawsuit",
+        "what is a settlement what settlements are how they work and why cases may resolve before trial",
+        "what is discovery the discovery process and how evidence is exchanged in civil litigation",
+        "what is a deposition what a deposition is why it happens and how it fits into the lawsuit process",
+        "what is mediation how mediation works and why some cases try to resolve before trial",
+        "what happens at trial when a lawsuit goes to trial and how that stage differs from earlier phases",
+        "what is an appeal basics of appeals and how they differ from a trial",
+        "mass tort mass torts how mass tort litigation works and how it differs from other kinds of cases",
+        "class action class actions basics of class action lawsuits and how they differ from mass tort claims",
+        "mdl basics multidistrict litigation and how mdls can affect groups of similar cases",
+        "bellwether trials what bellwether trials are and why they can matter in larger coordinated litigation",
+        "product liability lawsuits basics of product liability claims involving defective or dangerous products",
+        "toxic tort basics toxic tort claims involving chemical exposure contamination and related harm",
+        "pfas lawsuit statute of limitations by state filing deadlines for pfas personal injury claims in all 50 states and dc including discovery rule treatment statutes of repose and toxic tort considerations"
+      ];
+
+      function matchesGuide(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) return false;
+        for (let i = 0; i < guideIndex.length; i++) {
+          if (guideIndex[i].indexOf(q) !== -1) return true;
+        }
+        return false;
       }
-      it.matched = it.matched || [];
-      if (it.matched.indexOf(q) === -1) it.matched.unshift(q);
-      it.watch = it.watch || [];
-      it.channel = "news";
-      items.push(it);
-      added++;
-    });
-    noteSeen(res.items);
-    adhoc[key] = { state: "done", found: res.items.length, added: added };
-  }).catch(function (err) {
-    adhoc[key] = { state: "error", error: err && err.message ? err.message : "SEARCH FAILED" };
-  }).then(function () {
-    renderFeed();
-    renderHealth();
-  });
-}
 
-// Search lines carry operators ("intitle:AI intitle:court"). Show them as plain words.
-function tagLabel(t) {
-  return topicName(t).replace(/intitle:/gi, "").replace(/"/g, "").replace(/\s+/g, " ").trim();
-}
-
-// ── Topic proof ──
-// A topic search tags everything it returns, so "hair relaxer lawsuit" arrived on a story about
-// OpenAI and "Depo-Provera lawsuit" on an Ozempic story. A story belongs to a topic only when its
-// own headline or summary names the topic, or a name the press uses for it.
-//   names: other names that prove the topic on their own
-//   loose: words that also mean other things, so they count only when `context` is in the story too
-//   also:  a pattern that proves the topic on its own, for stories the press writes without the topic's name
-// Shared by the state attorney general rule's two proof paths.
-var AG_FEDERAL = "u\\.s\\. attorney general|us attorney general|justice department|department of justice|doj|federal|" +
-  "trump|administration|governor|white house";
-var AG_COMPANIES = "openai|chatgpt|character\\.ai|meta|facebook|instagram|whatsapp|tiktok|snap|snapchat|roblox|google|youtube|" +
-  "discord|xai";
-var AG_STATES = "alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|" +
-  "illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|" +
-  "montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|" +
-  "pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|" +
-  "wisconsin|wyoming|d\\.c\\.|district of columbia|puerto rico";
-
-var TOPIC_RULES = {
-  // "data breach class action" and "data breach settlement" both reduce to "data breach", which
-  // alone matches every hack in the news. The bare phrase counts only beside a legal word; the
-  // full phrases count on their own.
-  "data breach": {
-    names: ["data breach class action", "data breach settlement", "data breach lawsuit", "data breach litigation"],
-    loose: ["data breach", "data breaches"],
-    context: /\b(lawsuits?|suits?|class\s+actions?|settle(d|s|ment|ments)?|sue[sd]?|suing|litigation|claims?|claimants?|plaintiffs?|attorneys?|law\s*firms?|payouts?|compensation)\b/i
-  },
-  "pfas": { names: ["forever chemical", "pfoa", "pfos"] },
-  "afff": { names: ["firefighting foam", "firefighter foam", "fire-fighting foam", "aqueous film"] },
-  "depo-provera": { names: ["medroxyprogesterone"] },
-  "hair relaxer": { names: ["relaxer", "hair straightener", "hair product"] },
-  "roundup": { names: ["glyphosate", "weedkiller", "weed killer"] },
-  "glp-1": {
-    loose: ["glp-1", "glp1", "ozempic", "wegovy", "mounjaro", "zepbound", "semaglutide", "tirzepatide",
-            "weight loss drug", "weight-loss drug"],
-    context: /\b(lawsuits?|sued|sues|suing|mdl|claims?|plaintiffs?|litigation|vision|blindness|naion|gastroparesis|stomach paralysis|pancreatitis|injur\w*|side effects?)\b/i
-  },
-  "wildfire": {
-    names: ["eaton fire", "palisades fire", "lahaina fire", "maui fire"],
-    loose: ["wildfire"],
-    context: /\b(lawsuits?|sued|sues|suing|trial|settle\w*|liabilit\w*|verdicts?|claims?|inverse condemnation|mdl|utility|utilities|edison|pg&e|pacificorp|hawaiian electric|xcel)\b/i
-  },
-  // Litigations with a Lawsuit Informer updates page
-  "asbestos": { names: ["mesothelioma"] },
-  "paraquat": { names: ["gramoxone", "mdl 3004"] },
-  "talc": { names: ["talcum powder", "baby powder", "red river talc", "mdl 2738"] },
-  // "Tylenol" alone also brings the 1982 Chicago poisonings back every time a documentary airs,
-  // so the name needs litigation or autism context, and a murder story never counts.
-  "tylenol": {
-    names: ["mdl 3043"],
-    loose: ["tylenol", "acetaminophen", "paracetamol"],
-    context: /^(?!.*\b(murders?|poisonings?|cyanide|killings?|cold case|killer)\b)(?=.*\b(autism|adhd|pregnan\w*|prenatal|lawsuits?|sued|sues|suing|mdl|appeals?|appellate|litigation|second circuit|kenvue|plaintiffs?|verdicts?|settle\w*)\b)/i
-  },
-  "transvaginal mesh": { names: ["pelvic mesh", "vaginal mesh", "pelvic organ prolapse mesh"] },
-  "hernia mesh": {
-    names: ["bard mesh", "covidien mesh", "ethicon physiomesh", "physiomesh", "c-qur", "ventralight", "composix",
-            "mdl 2846", "mdl 2782", "mdl 3029"]
-  },
-  // "Baby food" alone is a recall or a nutrition story, so the name needs a metal or a litigation word.
-  "baby food": {
-    names: ["mdl 3101", "toxic baby food", "heavy metals baby food", "heavy metal baby food"],
-    loose: ["baby food", "gerber", "beech-nut", "beech nut", "plum organics", "happy baby", "earth's best"],
-    context: /\b(heavy metals?|lead|arsenic|cadmium|mercury|lawsuits?|sued|sues|suing|litigation|mdl|jccp|autism|adhd|neurodevelopment\w*|toxic|settle\w*|plaintiffs?|verdicts?|trial|jury)\b/i
-  },
-  // Ultra-processed food is a daily nutrition headline, so the name and the food companies need
-  // a litigation or addiction word before a story counts.
-  "ultra-processed food": {
-    names: ["martinez v kraft heinz", "processed food addiction", "food addiction lawsuit"],
-    loose: ["ultra-processed food", "ultraprocessed food", "processed food", "upf", "kraft heinz", "coca-cola", "coca cola",
-            "mondelez", "nestle", "general mills", "kellogg", "post holdings", "conagra", "pepsico"],
-    context: /\b(lawsuits?|sued|sues|suing|litigation|complaint|plaintiffs?|addict\w*|court|judge|dismiss\w*|settle\w*|verdicts?|trial|jury|tobacco playbook)\b/i
-  },
-  "camp lejeune": { names: ["camp lejeune justice act", "clja"] },
-  // Roblox also makes earnings and product news. Under the video game topic the name needs an
-  // addiction word; here it needs a suit, a state enforcer, or a child-safety word.
-  "roblox": {
-    loose: ["roblox"],
-    context: /\b(lawsuits?|sued|sues|suing|litigation|complaint|plaintiffs?|attorneys? general|predators?|grooming|exploitation|child safety|minors?|children|kids|settle\w*|trial|jury|verdicts?|mdl|jpml|subpoena\w*|investigat\w*)\b/i
-  },
-  "social media addiction": {
-    names: ["mdl 3047", "jccp 5255", "social media harm"],
-    loose: ["social media", "instagram", "tiktok", "snapchat", "youtube", "meta"],
-    context: /^(?=.*\b(addict\w*|mental health|teens?|youth|minors|child\w*|kids|adolescents?|school districts?)\b)(?=.*\b(lawsuits?|sued|sues|suing|trials?|jury|jurors|verdicts?|bellwether|mdl|jccp|settle\w*|litigation)\b)/i
-  },
-  "house v. ncaa": {
-    names: ["house v ncaa", "house settlement", "ncaa settlement", "college sports commission"],
-    loose: ["ncaa"],
-    context: /\b(settle\w*|antitrust|back ?pay|damages|payouts?|revenue[- ]sharing|claims?|appeals?|nil)\b/i
-  },
-  // Mass tort news usually says MDL or bellwether, not "mass tort".
-  "mass tort": { names: ["multidistrict litigation", "mdl", "bellwether", "jpml"] },
-
-  // Lawsuit Intelligencer's beats
-  "ai chatbot": {
-    names: ["character.ai", "ai companion"],
-    loose: ["ai chatbot", "chatbot", "chatgpt", "openai", "section 230", "grok", "xai"],
-    context: /\b(deaths?|died|suicide|wrongful|teens?|overdose|minors?|harm|injur\w*|lawsuits?|sued|sues|suing)\b/i
-  },
-  // Litigation practice only: sanctions, hallucinated citations, AI in filings, briefs, depositions
-  // and evidence, plus courts issuing AI rules. "AI" next to a bare "court" or "judge" pulled in
-  // police statements, stock stories and data-rights suits, so those words alone don't count.
-  "ai in court": {
-    names: ["hallucinated citation", "fake citation", "fabricated citation", "ai-generated evidence"],
-    loose: ["ai", "artificial intelligence", "generative ai", "chatgpt", "llm"],
-    context: new RegExp(
-      "\\b(sanction\\w*|hallucinat\\w*|fabricated|fake (citations?|cases?|witness\\w*)|citations?|filings?|briefs?|" +
-      "pleadings?|jurors?|jury|depositions?|expert witness\\w*|deepfake evidence)\\b" +
-      "|^(?=.*\\b(judiciary|judicial)\\b)(?=.*\\b(guidance|rules?|recommendations?|polic(y|ies)|standing orders?)\\b)",
-      "i")
-  },
-  "nec baby formula": {
-    names: ["necrotizing enterocolitis", "preterm infant formula", "premature infant formula", "preterm formula",
-            "enfamil", "similac"],
-    loose: ["nec"],
-    context: /\b(formula|infants?|bab(y|ies)|premature|preterm|preemies?|abbott|mead johnson|similac|enfamil)\b/i
-  },
-  "byheart": { names: ["infant botulism"] },
-  "video game addiction": {
-    names: ["gaming addiction", "game addiction", "gaming disorder", "roblox addiction", "fortnite addiction",
-            "minecraft addiction"],
-    loose: ["video game", "roblox", "fortnite", "minecraft", "call of duty"],
-    context: /\baddict\w*/i
-  },
-  "ai data center": {
-    names: ["colossus"],
-    loose: ["data center", "data centre"],
-    context: /\b(lawsuits?|sued|sues|suing|class action|pollution|permits?|courts?|residents|turbines?|emissions)\b/i
-  },
-  // FCA also means the UK Financial Conduct Authority, so it counts only next to a DOJ or relator word.
-  "qui tam": {
-    names: ["false claims act", "whistleblower lawsuit", "relator"],
-    loose: ["fca"],
-    context: /\b(doj|justice|relators?|whistleblow\w*|qui tam|false claims)\b/i
-  },
-  "law firm mso": {
-    names: ["management services organization", "managed services organization", "alternative business structure",
-            "fee sharing", "nonlawyer ownership", "non-lawyer ownership", "private equity law firm",
-            "law firm private equity", "law firm back office", "rule 5.4"],
-    loose: ["mso", "private equity", "outside investment"],
-    context: /\b(law firms?|lawyers?|attorneys?|legal|litigation)\b/i
-  },
-  // State AG consumer-protection enforcement against companies: suits, investigations, subpoenas,
-  // settlements. A story needs a named state or multistate coalition, an enforcement word, and a
-  // consumer-harm word or a company Intelligencer tracks. Stories naming the federal side, the Trump
-  // administration or a governor are out, which drops suits against the administration and state politics.
-  // AP headlined New Mexico's Facebook trial "Facebook accused of deceiving users in New Mexico as trial
-  // over privacy scandal wraps up" and never said attorney general, so `also` proves a story on its own:
-  // a tech company Intelligencer tracks, a named state, a trial or suit word, and a deception or harm word.
-  "state attorney general": {
-    loose: ["state attorney general", "state attorneys general", "attorney general", "attorneys general", "ag", "ags"],
-    context: new RegExp(
-      "^(?!.*\\b(" + AG_FEDERAL + ")\\b)" +
-      "(?=.*\\b(sues?|sued|suing|lawsuits?|complaint|subpoena\\w*|investigat\\w*|settle\\w*|" +
-      "civil investigative demand|cease[- ]and[- ]desist|enforcement|trials?|jury|jurors|verdicts?|civil penalt\\w*)\\b)" +
-      "(?=.*\\b(consumers?|deceptive|deceiv\\w*|unfair|fraud\\w*|mislead\\w*|misled|safety|harm\\w*|child\\w*|kids|teens?|minors|" +
-      "health|cancer|pfas|chemicals?|pollut\\w*|contaminat\\w*|opioids?|drugs?|products?|addict\\w*|privacy|" +
-      "chatbots?|ai|" + AG_COMPANIES + ")\\b)" +
-      "(?=.*\\b(state|states|multistate|bipartisan|coalition|" + AG_STATES + ")\\b)",
-      "i"),
-    also: new RegExp(
-      "^(?!.*\\b(" + AG_FEDERAL + ")\\b)" +
-      "(?=.*\\b(" + AG_COMPANIES + ")\\b)" +
-      "(?=.*\\b(" + AG_STATES + ")\\b)" +
-      "(?=.*\\b(trials?|jury|jurors|verdicts?|sues?|sued|suing|lawsuits?|settle\\w*|civil penalt\\w*)\\b)" +
-      "(?=.*\\b(deceiv\\w*|deceptive|mislead\\w*|misled|unfair|privacy|child\\w*|kids|teens?|minors|addict\\w*|safety|harm\\w*)\\b)" +
-      // An AG office's own release names the enforcer and the company but often no state or harm word:
-      // "Attorney General Marshall Announces Historic Multi-Million-Dollar Settlement with TikTok".
-      // The federal exclusion above already rules out the U.S. attorney general, so an attorney general
-      // settling with or suing a tracked company is a state action on its own.
-      "|^(?!.*\\b(" + AG_FEDERAL + ")\\b)" +
-      "(?=.*\\battorneys? general\\b)" +
-      "(?=.*\\b(" + AG_COMPANIES + ")\\b)" +
-      "(?=.*\\b(settle\\w*|sues?|sued|suing|lawsuits?|civil penalt\\w*|verdicts?)\\b)",
-      "i")
-  },
-  "mass tort advertising": {
-    names: ["legal advertising", "lawyer advertising", "attorney advertising", "lawsuit advertising",
-            "claimant acquisition", "legal marketing"]
-  },
-  // Web-tracking privacy suits: CIPA, wiretap and session-replay claims against sites and AI tools.
-  "cipa": {
-    names: ["california invasion of privacy act", "wiretap lawsuit", "wiretapping lawsuit", "session replay",
-            "chat pixel", "meta pixel lawsuit", "trap and trace", "pen register"],
-    loose: ["wiretap", "wiretapping", "otter.ai", "otter ai"],
-    context: /\b(lawsuits?|sued|sues|suing|class action|settle\w*|ruling|dismiss\w*|certif\w*|privacy|complaint|plaintiffs?)\b/i
-  },
-  // "litigation funding" loses "litigation" to coreTerm, so the topic is named third-party litigation
-  // funding and its press names carry the rest.
-  "third-party funding": {
-    names: ["litigation funding", "litigation finance", "litigation funder", "litigation financier", "legal funding",
-            "tplf", "burford", "lawsuit funding", "pre-settlement funding"]
-  },
-  // Deepfake news is mostly politics and scams, so the name needs a civil-suit or statute word.
-  "deepfake": {
-    names: ["take it down act", "defiance act"],
-    loose: ["deepfake", "deep fake", "nonconsensual intimate", "non-consensual intimate", "nudify", "undress app"],
-    context: /\b(lawsuits?|sued|sues|suing|litigation|class action|settle\w*|complaint|plaintiffs?|attorneys? general|court|verdicts?|jury|damages|liabilit\w*)\b/i
-  }
-};
-
-// "Roundup" also names a news digest: "UK Litigation Roundup: Here's What You Missed",
-// "Pennsylvania Roundup: Coalition secures settlement". The digest form is a heading followed by
-// a colon, or a word like Litigation or Weekly in front. Those don't count as the herbicide.
-var DIGEST_BEFORE = /\b(litigation|legal|law|news|weekly|daily|week|morning|evening|friday|monday|state|regional)\s+roundups?\b/i;
-var DIGEST_AFTER = /\broundups?\s*:/i;
-
-function namesRx(names) {
-  if (!names.length) return null;
-  return new RegExp("\\b(" + names.map(function (n) {
-    return rx(n).replace(/[\s-]+/g, "[\\s-]+");
-  }).join("|") + ")(?:e?s)?\\b", "i");
-}
-
-var topicRx = {};
-function topicPattern(topic) {
-  if (topicRx[topic]) return topicRx[topic];
-  var core = coreTerm(topic).toLowerCase();
-  var rule = TOPIC_RULES[core] || {};
-  var ambiguous = !!AMBIGUOUS_TERMS[core];
-  topicRx[topic] = {
-    core: core,
-    ambiguous: ambiguous,
-    strict: namesRx((ambiguous || (rule.loose || []).indexOf(core) !== -1 ? [] : [core])
-      .concat(rule.names || [], topicAliases(topic))),
-    loose: namesRx((ambiguous ? [core] : []).concat(rule.loose || [])),
-    context: rule.context || null,
-    also: rule.also || null
-  };
-  return topicRx[topic];
-}
-
-function topicProven(topic, text) {
-  var p = topicPattern(topic);
-  if (p.strict && p.strict.test(text)) return true;
-  if (p.also && p.also.test(text)) return true;
-  if (!p.loose || !p.loose.test(text)) return false;
-  // Bare "Roundup" has to be out of digest form; other loose words need their context.
-  if (p.ambiguous) return !DIGEST_BEFORE.test(text) && !DIGEST_AFTER.test(text);
-  return p.context ? p.context.test(text) : true;
-}
-
-function itemText(item) {
-  return (item.title || "") + " " + (item.summary || "");
-}
-
-// Your tracked topics that this story actually covers. Remembered per story until the topic
-// list changes, since the feed re-renders on every keystroke in the search box.
-function topicsOf(item) {
-  var key = settings.topics.join("\n");
-  if (item._topicsKey === key) return item._topics;
-  var text = itemText(item);
-  item._topics = settings.topics.filter(function (t) { return topicProven(t, text); });
-  item._topicsKey = key;
-  return item._topics;
-}
-
-// ── Tab routing ──
-// AI topics belong to the AI Wire and Lawsuit Intelligencer's other beats to the INTELLIGENCER
-// tab. A topic's searches run in its tab, and a story that proves the topic shows there whichever
-// channel fetched it. A story covering both goes to the AI Wire. ALL shows every tab together.
-var AI_TOPIC_CORES = { "ai chatbot": 1, "ai in court": 1, "ai data center": 1, "deepfake": 1 };
-var AI_WORDS = /\b(ai|a\.i\.|artificial intelligence|generative ai|chatgpt|chatbots?|openai|llms?)\b/i;
-var INTEL_TOPIC_CORES = {
-  "nec baby formula": 1, "byheart": 1, "video game addiction": 1, "qui tam": 1,
-  "law firm mso": 1, "mass tort advertising": 1, "state attorney general": 1,
-  "cipa": 1, "third-party funding": 1
-};
-
-function isAiTopic(t) {
-  return !!AI_TOPIC_CORES[coreTerm(t).toLowerCase()] || AI_WORDS.test(t);
-}
-
-// "ai", "intel", or "" for a topic that belongs under ALL.
-var MIDDLE_TAB_CORES = FIRM_BUILD ? DEAL_TOPIC_CORES : INTEL_TOPIC_CORES;
-function topicTab(t) {
-  if (isAiTopic(t)) return "ai";
-  return MIDDLE_TAB_CORES[coreTerm(t).toLowerCase()] ? "intel" : "";
-}
-
-// The DEAL WIRE tab shows only when a firm tracks a deal topic. Your own wire always shows its tabs.
-function syncMiddleTab() {
-  if (!FIRM_BUILD) return;
-  var btn = document.querySelector('.filters button[data-f="intel"]');
-  var show = settings.topics.some(function (t) { return topicTab(t) === "intel"; });
-  btn.hidden = !show;
-  document.querySelector(".channel-status .intel").hidden = !show;
-  if (!show && filter === "intel") document.querySelector('.filters button[data-f="news"]').click();
-}
-
-// Lawsuit Intelligencer's AI coverage arrives through its News Wire feed. An Intelligencer
-// article that is about AI shows on the AI Wire as well; the rest stay on the News Wire.
-var OWN_AI_SITE = /(^|\.)lawsuitintelligencer\.com$/i;
-function isOwnAiStory(item) {
-  return OWN_AI_SITE.test(hostOfUrl(item.url || "")) && AI_WORDS.test(itemText(item));
-}
-
-function chan(item) {
-  if (item.channel === "ai") return "ai";
-  if (isOwnAiStory(item)) return "ai";
-  var tabs = topicsOf(item).map(topicTab);
-  if (tabs.indexOf("ai") !== -1) return "ai";
-  if (item.channel === "intel" || tabs.indexOf("intel") !== -1) return "intel";
-  return item.channel;
-}
-
-// NEWS WIRE carries all the news: every story from every tab, except AI Wire items that cover none
-// of your tracked topics, which are legal tech posts and AI-in-law commentary rather than news.
-// INTELLIGENCER and AI WIRE each keep only their own stories.
-function inTab(item, tab) {
-  var c = chan(item);
-  if (tab === "news") return c !== "ai" || topicsOf(item).length > 0 || isOwnAiStory(item);
-  return c === tab;
-}
-
-// Tags shown on a story: firms it names, topics it proves, and the AI search or one-off
-// Google News search it came from. A tracked topic the story doesn't mention is left off.
-function tagsOf(item) {
-  var tracked = {};
-  settings.topics.forEach(function (t) { tracked[t] = 1; tracked[topicName(t)] = 1; });
-  var beats = (item.matched || []).filter(function (t) { return !tracked[t]; });
-  return (item.watch || []).concat(topicsOf(item), beats);
-}
-
-function queryWords(q) {
-  return tagLabel(q).toLowerCase().replace(/[^\w\s&.'-]/g, " ").split(/\s+/)
-    .filter(function (w) { return w && w !== "or"; });
-}
-
-// Every word in the box has to appear somewhere in the headline, summary, publisher or tags.
-function matchesQuery(item, words) {
-  if (!words.length) return true;
-  var hay = [item.title, item.summary, item.source].concat(tagsOf(item).map(tagLabel)).join(" ").toLowerCase();
-  return words.every(function (w) { return hay.indexOf(w) !== -1; });
-}
-
-function rx(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
-
-// Mark the searched words in a headline. One pass, and never inside an HTML entity.
-function highlight(text, words) {
-  var safe = esc(text);
-  var ws = words.filter(function (w) { return w.length > 1; })
-    .sort(function (a, b) { return b.length - a.length; });
-  if (!ws.length) return safe;
-  var re = new RegExp("(" + ws.map(function (w) { return rx(esc(w)); }).join("|") + ")", "gi");
-  return safe.split(/(&[a-z0-9#]+;)/i).map(function (part) {
-    return /^&[a-z0-9#]+;$/i.test(part) ? part : part.replace(re, "<mark>$1</mark>");
-  }).join("");
-}
-
-// Your tracked topics, in your order, each with how many stories in this tab cover it.
-// The News Wire lists every topic. The AI Wire and INTELLIGENCER tabs list their own.
-function renderTopicBar(list) {
-  var bar = document.getElementById("topicBar");
-  var scrollLeft = bar.scrollLeft;
-  var want = filter === "news" ? "" : filter;
-  var topics = settings.topics.filter(function (t) { return !want || topicTab(t) === want; });
-  if (activeTopic && topics.indexOf(activeTopic) === -1) activeTopic = "";
-  if (!topics.length) { bar.innerHTML = ""; return; }
-  var counts = {};
-  topics.forEach(function (t) { counts[t] = 0; });
-  list.forEach(function (i) {
-    topicsOf(i).forEach(function (t) { if (t in counts) counts[t]++; });
-  });
-  bar.innerHTML = '<span class="tlabel">TOPICS</span>' + topics.map(function (t) {
-    return '<button class="tchip' + (t === activeTopic ? ' on' : '') + (counts[t] ? '' : ' none') +
-      '" data-topic="' + esc(t) + '" aria-pressed="' + (t === activeTopic) + '">' +
-      esc(coreTerm(t)) + '<span class="n">' + counts[t] + '</span></button>';
-  }).join("");
-  bar.scrollLeft = scrollLeft;
-}
-
-function searchNote(count) {
-  var q = query.trim();
-  var parts = [];
-  if (activeTopic) parts.push('TOPIC <span class="q">' + esc(tagLabel(activeTopic)) + '</span>');
-  if (q) parts.push('<span class="q">“' + esc(q) + '”</span>');
-  var html = '<div class="notice searchnote"><span>' + count + (count === 1 ? ' MATCH' : ' MATCHES') +
-    ' FOR ' + parts.join(' + ') + '</span>';
-  if (q) {
-    var st = adhoc[q.toLowerCase()];
-    if (!st) {
-      html += '<button data-act="gnews">SEARCH GOOGLE NEWS</button>';
-    } else if (st.state === "running") {
-      html += '<span class="state">SEARCHING GOOGLE NEWS…</span>';
-    } else if (st.state === "error") {
-      html += '<span class="state bad">' + esc(st.error) + '</span><button data-act="gnews">RETRY</button>';
-    } else {
-      html += '<span class="state">GOOGLE NEWS: ' + st.found + ' FOUND, ' + st.added + ' NEW TO THIS SCAN</span>';
-    }
-    if (!isTracked(q)) html += '<button data-act="track">TRACK AS TOPIC</button>';
-  }
-  return html + '</div>';
-}
-
-function setStatus(ch, s) {
-  var map = { scanning: "\u2026", done: "\u2713", empty: "0", error: "\u2715" };
-  document.getElementById("st-" + ch).textContent = map[s] || "";
-}
-
-// ── Fetching ──
-function fetchT(url, opts, ms) {
-  var ctrl = new AbortController();
-  var timer = setTimeout(function () { ctrl.abort(); }, ms || 15000);
-  opts = opts || {};
-  opts.signal = ctrl.signal;
-  var isSite = url.indexOf("/.netlify/functions/") === 0;
-  var usedKey = "";
-  if (isSite) {
-    opts.headers = opts.headers || {};
-    usedKey = wireKey();
-    opts.headers["X-Wire-Key"] = usedKey;
-  }
-  var p = fetch(url, opts);
-  if (isSite) {
-    // Wrong or missing key: ask once and retry the same request, then give up on it.
-    // Parallel feed calls that failed together reuse the key the first prompt collected.
-    p = p.then(function (res) {
-      if (res.status !== 401) return res;
-      var k = wireKey();
-      if (!k || k === usedKey) {
-        k = askWireKey(usedKey ? "That key was refused. Enter the wire key again." : "Enter the wire key (WIRE_KEY in Netlify).");
+      // Count how many entries in the site-wide SEARCH_INDEX match the query.
+      // SEARCH_INDEX is loaded from search-data.js in the <head>.
+      function countIndexMatches(query) {
+        if (!Array.isArray(window.SEARCH_INDEX)) return 0;
+        const q = query.toLowerCase();
+        let n = 0;
+        for (let i = 0; i < window.SEARCH_INDEX.length; i++) {
+          const item = window.SEARCH_INDEX[i];
+          const hay = ((item.title || "") + " " + (item.text || "") + " " + (item.category || "")).toLowerCase();
+          if (hay.indexOf(q) !== -1) n++;
+        }
+        return n;
       }
-      if (!k) return res;
-      opts.headers["X-Wire-Key"] = k;
-      return fetch(url, opts);
-    });
-  }
-  return p.finally(function () { clearTimeout(timer); });
-}
 
-function callFeeds(entries, perFeed) {
-  return fetchT("/.netlify/functions/feeds", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      urls: entries,
-      topics: settings.topics.map(topicName),
-      days: settings.windowDays,
-      perFeed: perFeed,
-      blockSources: settings.blockedSources,
-      trustSources: settings.trustedSources
-    })
-  }, 20000).then(function (res) {
-    if (res.status === 404) throw new Error("FEEDS FUNCTION NOT DEPLOYED (404). NETLIFY/FUNCTIONS/FEEDS.JS MUST BE IN THE REPO.");
-    if (!res.ok) throw new Error("FEEDS FUNCTION ERROR " + res.status);
-    return res.json();
-  }).then(function (data) {
-    return { items: data.items || [], feeds: data.feeds || [] };
-  }).catch(function (err) {
-    if (err && err.name === "AbortError") throw new Error("FEEDS FUNCTION TIMED OUT.");
-    throw err;
-  });
-}
+      function routeQuery(query) {
+        if (!query) return null;
+        const q = query.trim();
+        if (!q) return null;
+        const qLower = q.toLowerCase();
 
-// The same story under two headlines-worth of punctuation, or from two searches that each got
-// their own link to it, is one story.
-function storyKey(it) {
-  var norm = function (t) { return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
-  return norm(it.title) + "|" + norm(it.source);
-}
+        if (qLower === "guide" || qLower === "guides" || qLower === "legal guide" || qLower === "legal guides") {
+          return "legal-guides";
+        }
 
-// Split into batches of 12 and merge, dropping duplicates across batches. The feeds function
-// drops a repeat within one batch; a story two searches return from different batches reaches
-// here twice, under two links, so the headline and publisher settle it and the topics merge.
-function runBatches(entries, perFeed) {
-  if (!entries.length) return Promise.resolve({ items: [], feeds: [] });
-  var batches = [];
-  for (var i = 0; i < entries.length; i += BATCH) batches.push(entries.slice(i, i + BATCH));
-  return Promise.allSettled(batches.map(function (b) { return callFeeds(b, perFeed); }))
-    .then(function (results) {
-      var ok = results.filter(function (r) { return r.status === "fulfilled"; });
-      if (!ok.length) throw results[0].reason;
-      var seen = {}, out = { items: [], feeds: [] };
-      ok.forEach(function (r) {
-        out.feeds = out.feeds.concat(r.value.feeds);
-        r.value.items.forEach(function (it) {
-          var dup = seen[it.url] || seen["t:" + storyKey(it)];
-          if (dup) {
-            (it.matched || []).forEach(function (t) { if ((dup.matched || []).indexOf(t) === -1) (dup.matched = dup.matched || []).push(t); });
-            (it.watch || []).forEach(function (w) { if ((dup.watch || []).indexOf(w) === -1) (dup.watch = dup.watch || []).push(w); });
-            if (!dup.summary && it.summary) dup.summary = it.summary;
+        // If SEARCH_INDEX has 2+ matches, this is a topic search.
+        // Route to browse-lawsuits.html so SEARCH_INDEX is the source of truth.
+        const indexHits = countIndexMatches(qLower);
+        if (indexHits >= 2) {
+          return "browse-lawsuits?q=" + encodeURIComponent(q);
+        }
+
+        // Otherwise check if it matches a process/guide term.
+        if (matchesGuide(q)) {
+          return "legal-guides?q=" + encodeURIComponent(q);
+        }
+
+        // Default fallback.
+        return "browse-lawsuits?q=" + encodeURIComponent(q);
+      }
+
+      const homepageSearchForm = document.getElementById("homepage-search-form");
+      const homepageSearchInput = document.getElementById("homepage-search");
+
+      if (homepageSearchForm && homepageSearchInput) {
+        homepageSearchForm.addEventListener("submit", function (e) {
+          const query = homepageSearchInput.value.trim();
+          if (!query) {
+            e.preventDefault();
             return;
           }
-          seen[it.url] = it;
-          seen["t:" + storyKey(it)] = it;
-          out.items.push(it);
+
+          const target = routeQuery(query);
+          if (target) {
+            e.preventDefault();
+            if (typeof clicky !== "undefined") {
+              clicky.log(
+                "/search-home?q=" + encodeURIComponent(query),
+                "homepage_search_submit",
+                "search"
+              );
+            }
+            window.location.href = target;
+          }
         });
-      });
-      return out;
+      }
     });
-}
-
-// Every Google News search carries the window as a date limit. Without one, Google returns its
-// most relevant set, which on 9/23/26 had nothing newer than the day before.
-function whenClause() {
-  return " when:" + (settings.windowDays === 30 ? 30 : 7) + "d";
-}
-
-function gnews(q) {
-  return "https://news.google.com/rss/search?q=" + encodeURIComponent(q) + "&hl=en-US&gl=US&ceid=US:en";
-}
-
-// "Roundup" names a herbicide and an everyday news digest, so searching it plainly returns
-// faith, sports and regional roundups. A term like that is searched paired with a legal word.
-// Every other term keeps the plain search, because pairing them finds nothing: "AFFF lawsuit"
-// and "AFFF settlement" as phrases return no articles at all, while plain AFFF returns 30.
-var AMBIGUOUS_TERMS = { roundup: 1 };
-var TOPIC_PAIRS = ["settlement", "lawsuit", "litigation", "MDL", "verdict", "trial", "deal"];
-
-// Extra Google News searches for a topic whose coverage rarely uses the topic's own words. State
-// consumer-protection trials are written as "attorneys representing New Mexico" and "the state's
-// Unfair Practices Act", so "state attorney general lawsuit" missed AP's Facebook trial story.
-// Google News searches the article body, so the statute names find it.
-var EXTRA_SEARCHES = {
-  "state attorney general": [
-    '("Unfair Practices Act" OR "Deceptive Trade Practices Act" OR "Consumer Protection Act" OR "Consumer Fraud Act" OR ' +
-      '"Unfair Trade Practices") (trial OR jury OR jurors OR verdict OR sues OR lawsuit)',
-    '(Meta OR Facebook OR Instagram OR TikTok OR Snapchat OR Roblox OR OpenAI OR "Character.AI") ' +
-      '(jury OR jurors OR trial OR verdict) ("attorney general" OR "the state")'
-  ]
-};
-
-function googleNewsUrl(topic) {
-  var term = coreTerm(topic).replace(/"/g, "");
-  if (AMBIGUOUS_TERMS[term.toLowerCase()]) {
-    var phrases = TOPIC_PAIRS.map(function (w) { return '"' + term + " " + w + '"'; });
-    return gnews("(" + phrases.join(" OR ") + ")" + whenClause());
-  }
-  return gnews(topicName(topic) + whenClause());
-}
-
-// A topic line is a name, then optionally "=" and the other names the press uses for it:
-//   "talc lawsuit = talcum powder, baby powder"
-// The name runs as the search. The name and every alias prove the topic on a story.
-function topicName(t) {
-  var i = String(t).indexOf("=");
-  return (i === -1 ? String(t) : String(t).slice(0, i)).trim() || String(t);
-}
-function topicAliases(t) {
-  var i = String(t).indexOf("=");
-  if (i === -1) return [];
-  return String(t).slice(i + 1).split(",").map(function (a) { return a.trim(); }).filter(Boolean);
-}
-
-// Same trimming the server uses for tagging: "Roundup settlement" -> "Roundup"
-function coreTerm(t) {
-  t = topicName(t);
-  return t.replace(/\b(lawsuits?|litigation|settlements?|claims?|mdl|class action|verdicts?)\b/gi, " ")
-    .replace(/\s+/g, " ").trim() || t;
-}
-
-// Outlet searches pair your topic terms with a legal word, so a bare term like
-// "Roundup" can't match sports roundups. Yahoo's sports section is excluded outright.
-var LEGAL_CONTEXT = "(lawsuit OR lawsuits OR litigation OR settlement OR verdict OR MDL OR court OR jury)";
-var OUTLET_EXCLUDES = { "yahoo.com": " -site:sports.yahoo.com" };
-
-// A site: search on a generic term like "Roundup" returns most of what the outlet published,
-// and the newest ten win the slot, which is how MLB roundups reach a mass tort wire.
-// intitle: makes the outlet put the term in the headline before the item counts.
-// Google web search ignores words past the 32nd. With 25 topics in one query the tail topics would
-// never be searched, so the terms are split into groups that keep each query under that limit.
-var OUTLET_TERM_WORDS = 18;
-function outletSearches() {
-  var terms = settings.topics.map(coreTerm).filter(Boolean)
-    .map(function (t) {
-      var term = t.replace(/"/g, "");
-      return /\s/.test(term) ? 'intitle:"' + term + '"' : "intitle:" + term;
-    });
-  if (!terms.length) return [];
-  var groups = [[]], used = 0;
-  terms.forEach(function (t) {
-    var w = t.split(/\s+/).length;
-    if (used && used + w > OUTLET_TERM_WORDS) { groups.push([]); used = 0; }
-    groups[groups.length - 1].push(t);
-    used += w;
-  });
-  var out = [];
-  settings.outlets.forEach(function (d) {
-    groups.forEach(function (g, n) {
-      out.push({
-        url: gnews("site:" + d + " (" + g.join(" OR ") + ") " + LEGAL_CONTEXT + (OUTLET_EXCLUDES[d] || "") + whenClause()),
-        label: (OUTLET_NAMES[d] || d) + " (site search" + (groups.length > 1 ? " " + (n + 1) : "") + ")"
+  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".search-examples a[data-q]").forEach(function (chip) {
+      chip.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = chip.getAttribute("href") + "?q=" + encodeURIComponent(chip.getAttribute("data-q"));
       });
     });
   });
-  return out;
-}
-
-function firmSearches() {
-  return settings.firmWatch.map(function (name) {
-    return { url: gnews('"' + name.replace(/"/g, "") + '"' + whenClause()), watch: name };
-  });
-}
-
-// Topic searches for one tab: "ai", "intel", or "" for the News Wire.
-// Google News returns about 100 results per search, ranked by relevance, not date. On a busy topic
-// a 30-day search fills those 100 with older stories and yesterday's news never arrives. Each search
-// therefore also runs limited to the last day, so the newest stories come in whatever the window.
-function withTodayPass(entries) {
-  var out = [];
-  entries.forEach(function (e) {
-    out.push(e);
-    var today = e.url.replace(/%20when%3A\d+d(?=&|$)/, "%20when%3A1d");
-    if (today !== e.url) out.push({ url: today, topic: e.topic, label: (e.label || e.topic) + " (last 24 hours)" });
-  });
-  return out;
-}
-
-function topicSearches(tab) {
-  return withTodayPass(settings.topics.filter(function (t) { return topicTab(t) === tab; })
-    .slice(0, MAX_TOPIC_SEARCHES).reduce(function (out, t) {
-      out.push({ url: googleNewsUrl(t), topic: topicName(t) });
-      (EXTRA_SEARCHES[coreTerm(t).toLowerCase()] || []).forEach(function (q, n) {
-        out.push({ url: gnews(q + whenClause()), topic: topicName(t), label: topicName(t) + " (search " + (n + 2) + ")" });
-      });
-      return out;
-    }, []));
-}
-
-// The News Wire also carries the firm watch: firm name searches and firm blog feeds. Merging them
-// in one channel lets a firm's post and the press story about it collapse into one item.
-function fetchNews() {
-  var searches = topicSearches("");
-  return Promise.allSettled([
-    runBatches(searches, 10),
-    runBatches(settings.newsFeeds, 8),
-    runBatches(outletSearches(), 10),
-    runBatches(settings.firmFeeds, 8),
-    runBatches(firmSearches(), 6)
-  ])
-    .then(function (results) { return mergeChannel(results, "news"); });
-}
-
-// Each AI line is the search, run verbatim. The line also tags every item it returns,
-// so an AI story shows the beat it came from. That tag is not one of your topics.
-function aiSearches() {
-  return withTodayPass(settings.aiSearches.slice(0, 12).map(function (q) {
-    return { url: gnews(q + whenClause()), topic: q };
-  }));
-}
-
-function fetchIntel() {
-  return Promise.allSettled([runBatches(topicSearches("intel"), 10)])
-    .then(function (results) { return mergeChannel(results, "intel"); });
-}
-
-function fetchAI() {
-  return Promise.allSettled([
-    runBatches(topicSearches("ai"), 10),
-    runBatches(aiSearches(), 6),
-    runBatches(settings.aiFeeds, 8)
-  ])
-    .then(function (results) { return mergeChannel(results, "ai"); });
-}
-
-// A wire story reaches the scan once per outlet that ran it, under a headline reworded
-// just enough to survive a URL or exact-title check. Compare the content words instead.
-var STOP = {
-  the: 1, a: 1, an: 1, of: 1, and: 1, or: 1, to: 1, in: 1, on: 1, for: 1, with: 1,
-  says: 1, said: 1, over: 1, after: 1, as: 1, is: 1, are: 1, at: 1, by: 1, from: 1,
-  its: 1, it: 1, this: 1, that: 1, new: 1, how: 1, why: 1, what: 1, amid: 1, into: 1,
-  but: 1, not: 1, has: 1, have: 1, will: 1, can: 1, was: 1, were: 1
-};
-
-function titleTokens(t) {
-  var set = {}, n = 0;
-  String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(" ")
-    .forEach(function (w) {
-      // Plurals count as the word: "privacy protections" and "protection law" share a word.
-      if (w.length > 4 && !/ss$/.test(w)) w = w.replace(/s$/, "");
-      if (w.length > 2 && !STOP[w] && !set[w]) { set[w] = 1; n++; }
-    });
-  return { set: set, n: n };
-}
-
-// Share 65% of the shorter headline's content words and it is the same story.
-// Short headlines share words by coincidence, so only full ones are compared this way.
-var SAME_SHARE = 0.65;
-// Below that, a wide story still arrives under headlines that share few words: AP wrote
-// "New Mexico jury finds Facebook liable for deceiving users about privacy protections" and
-// Reuters "Meta misled consumers in case over Cambridge Analytica scandal, New Mexico jury
-// says". Two stories are versions of one when they share at least RELATED_WORDS content
-// words and RELATED_SHARE of the shorter headline, prove a tracked topic in common, and ran
-// within a day of each other. The word floor keeps two different Bayer stories on one day
-// ("Bayer wins Roundup appeal", "Jury clears Bayer in Roundup trial") from being versions.
-// A story shows at most MAX_VERSIONS copies; the rest fold into the first copy as a count.
-var RELATED_SHARE = 0.3;
-var RELATED_WORDS = 3;
-var MAX_VERSIONS = 2;
-
-function sharedWords(a, b) {
-  var shared = 0;
-  for (var w in a.set) if (b.set[w]) shared++;
-  return shared;
-}
-function sameStory(a, b) {
-  if (a.n < 5 || b.n < 5) return false;
-  return sharedWords(a, b) / Math.min(a.n, b.n) >= SAME_SHARE;
-}
-function relatedStory(a, b) {
-  if (a.n < 5 || b.n < 5) return false;
-  var shared = sharedWords(a, b);
-  return shared >= RELATED_WORDS && shared / Math.min(a.n, b.n) >= RELATED_SHARE;
-}
-
-function withinDay(x, y) {
-  if (!x.date || !y.date) return false;
-  return Math.abs(new Date(x.date) - new Date(y.date)) <= 86400000;
-}
-function shareTopic(x, y) {
-  var a = topicsOf(x), b = topicsOf(y);
-  for (var i = 0; i < a.length; i++) if (b.indexOf(a[i]) !== -1) return true;
-  return false;
-}
-
-// A copy that will not be shown is counted on the copy that stands for it.
-function noteVersion(shown, dropped) {
-  shown.more = (shown.more || 0) + 1;
-  shown.moreSources = shown.moreSources || [];
-  if (dropped.source && shown.moreSources.indexOf(dropped.source) === -1) shown.moreSources.push(dropped.source);
-}
-
-// Each channel's scan groups versions of a story by itself, and NEWS WIRE shows every channel
-// at once. The New Mexico v. Meta verdict reached NEWS WIRE four times that way: the news scan
-// kept the AP and Reuters copies, and the Intelligencer scan kept Engadget and KOAT. So the page
-// groups once more, across channels, with the same rules, on whatever list a tab is about to
-// show. The newest copy stands for the story; copies past MAX_VERSIONS are counted on it.
-// A newsletter headline that strings several stories together with commas ("Trump's voter data
-// push, law firms chase AI talent, ... Uplift closes 6th MSO deal") shares words with each
-// story it lists, so it never groups with anything.
-function isDigestTitle(t) {
-  return (String(t || "").match(/,/g) || []).length >= 2;
-}
-function foldVersions(list) {
-  var kept = [], out = [], extra = {};
-  sortItems(list).forEach(function (it) {
-    var tok = it._tok || (it._tok = titleTokens(it.title));
-    var cluster = null;
-    if (!isDigestTitle(it.title)) {
-      for (var j = 0; j < kept.length; j++) {
-        if (isDigestTitle(kept[j].item.title)) continue;
-        if (!relatedStory(tok, kept[j].tok)) continue;
-        if (!withinDay(it, kept[j].item) || !shareTopic(it, kept[j].item)) continue;
-        cluster = kept[j].cluster;
-        break;
-      }
-    }
-    if (cluster && cluster.shown >= MAX_VERSIONS) {
-      var e = extra[cluster.root.url] || (extra[cluster.root.url] = { n: 0, sources: [] });
-      e.n += 1 + (it.more || 0);
-      [it.source].concat(it.moreSources || []).forEach(function (s) {
-        if (s && e.sources.indexOf(s) === -1) e.sources.push(s);
-      });
-      return;
-    }
-    if (cluster) cluster.shown++;
-    else cluster = { root: it, shown: 1 };
-    kept.push({ tok: tok, item: it, cluster: cluster });
-    out.push(it);
-  });
-  return { list: out, extra: extra };
-}
-
-function mergeChannel(results, ch) {
-  var ok = results.filter(function (r) { return r.status === "fulfilled"; });
-  if (!ok.length) throw results[0].reason;
-  var seen = {}, out = [], feeds = [], kept = [];
-  ok.forEach(function (r) {
-    feeds = feeds.concat(r.value.feeds);
-    r.value.items.forEach(function (it) {
-      if (seen[it.url]) return;
-      seen[it.url] = true;
-
-      var tok = titleTokens(it.title);
-      for (var k = 0; k < kept.length; k++) {
-        if (!sameStory(tok, kept[k].tok)) continue;
-        // Keep the first copy and give it the tags the later copies arrived with.
-        var first = kept[k].item;
-        (it.matched || []).forEach(function (t) {
-          if (first.matched.indexOf(t) === -1) first.matched.push(t);
-        });
-        (it.watch || []).forEach(function (t) {
-          if (first.watch.indexOf(t) === -1) first.watch.push(t);
-        });
-        noteVersion(first, it);
-        return;
-      }
-
-      it.matched = it.matched || [];
-      it.watch = it.watch || [];
-
-      // A looser match is a version of a story already kept. Past MAX_VERSIONS the copy is
-      // dropped and the first copy carries its tags and a count of the versions it stands for.
-      var cluster = null;
-      for (var j = 0; j < kept.length; j++) {
-        if (!relatedStory(tok, kept[j].tok)) continue;
-        if (!withinDay(it, kept[j].item) || !shareTopic(it, kept[j].item)) continue;
-        cluster = kept[j].cluster;
-        break;
-      }
-      if (cluster && cluster.shown >= MAX_VERSIONS) {
-        var root = cluster.root;
-        it.matched.forEach(function (t) { if (root.matched.indexOf(t) === -1) root.matched.push(t); });
-        it.watch.forEach(function (t) { if (root.watch.indexOf(t) === -1) root.watch.push(t); });
-        noteVersion(root, it);
-        return;
-      }
-      if (cluster) cluster.shown++;
-      else cluster = { root: it, shown: 1 };
-
-      it.channel = ch;
-      kept.push({ tok: tok, item: it, cluster: cluster });
-      out.push(it);
-    });
-  });
-  health[ch] = feeds;
-  return out;
-}
-
-// ── Scan ──
-function runScan() {
-  if (scanning) return;
-  scanning = true;
-  settings.outlets = readOutlets();
-  settings.blockedSources = linesOf("blockedInput");
-  settings.blockedTerms = linesOf("blockedTermsInput");
-  settings.trustedSources = linesOf("trustedInput");
-  settings.newsFeeds = linesOf("newsFeedsInput");
-  settings.firmWatch = linesOf("firmWatchInput");
-  settings.firmFeeds = linesOf("firmFeedsInput");
-  settings.aiSearches = linesOf("aiSearchInput");
-  settings.aiFeeds = linesOf("aiFeedsInput");
-  persist();
-
-  var btn = document.getElementById("scanBtn");
-  btn.disabled = true;
-  btn.textContent = "SCANNING\u2026";
-  items = [];
-  errors = {};
-  adhoc = {};
-  health = { news: [], intel: [], ai: [] };
-  scanned = true;
-  renderFeed();
-  renderHealth();
-  CHANNEL_KEYS.forEach(function (ch) { setStatus(ch, "scanning"); });
-
-  function run(ch, fn) {
-    return fn().then(function (res) {
-      items = items.concat(res);
-      noteSeen(res);
-      setStatus(ch, res.length ? "done" : "empty");
-    }).catch(function (err) {
-      errors[ch] = err && err.message ? err.message : "UNKNOWN ERROR";
-      setStatus(ch, "error");
-    }).then(function () {
-      renderFeed();
-      renderHealth();
-    });
-  }
-
-  Promise.allSettled([
-    run("news", fetchNews), run("intel", fetchIntel), run("ai", fetchAI)
-  ]).then(function () {
-    scanning = false;
-    btn.disabled = false;
-    btn.textContent = "RUN SCAN";
-    track("wire_scan", { topics: settings.topics.length, firms: settings.firmWatch.length });
-  });
-}
-
-document.getElementById("scanBtn").onclick = runScan;
-
-document.getElementById("feed").addEventListener("click", function (e) {
-  var a = e.target.closest && e.target.closest("a.item");
-  if (!a) return;
-  var host = hostOfUrl(a.href);
-  track("story_click", { link_host: host, own_site: OWN_SITE.test(host) ? "yes" : "no", tab: a.dataset.tab || "" });
-});
-
-// ── Render ──
-function esc(s) {
-  var d = document.createElement("div");
-  d.textContent = s == null ? "" : String(s);
-  return d.innerHTML;
-}
-
-function isNew(item) {
-  var t = firstSeen[seenKey(item)];
-  return t !== undefined && t >= Date.now() - NEW_HOURS * 3600000;
-}
-
-// Newest first. A story with a publish time sorts by it; one with only a date sorts at the
-// start of that day, so the newest of today stays on top once feeds carry the time.
-function sortKey(i) {
-  if (i.time) return i.time;
-  return i.date ? i.date + "T00:00:00.000Z" : "";
-}
-function sortItems(list) {
-  return list.slice().sort(function (a, b) {
-    var ka = sortKey(a), kb = sortKey(b);
-    if (!ka && !kb) return 0;
-    if (!ka) return 1;
-    if (!kb) return -1;
-    return kb.localeCompare(ka);
-  });
-}
-
-function pad2(n) { return (n < 10 ? "0" : "") + n; }
-function localDay(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
-
-// The day a story belongs under, in this device's time zone when the feed gave a time.
-function dayOf(item) {
-  if (item.time) {
-    var d = new Date(item.time);
-    if (!isNaN(d.getTime())) return localDay(d);
-  }
-  return item.date || "";
-}
-
-function dayLabel(day) {
-  if (!day) return "UNDATED";
-  var now = new Date();
-  var y = new Date(now.getTime() - 86400000);
-  var d = new Date(day + "T12:00:00");
-  var pretty = isNaN(d.getTime()) ? day
-    : d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }).toUpperCase();
-  if (day === localDay(now)) return "TODAY \u00B7 " + pretty;
-  if (day === localDay(y)) return "YESTERDAY \u00B7 " + pretty;
-  return pretty;
-}
-
-function timeLabel(item) {
-  if (!item.time) return "";
-  var d = new Date(item.time);
-  if (isNaN(d.getTime())) return "";
-  return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-}
-
-function healthRow(ch, f) {
-  var note = f.status === "error" ? f.error
-    : f.status === "empty" ? (f.blocked ? "all " + f.blocked + " blocked" : "nothing in window")
-    : f.found + " in window" + (f.count < f.found ? " (" + (f.found - f.count) + " duplicate)" : "")
-      + (f.blocked ? ", " + f.blocked + " blocked" : "");
-  var where = f.resolved && f.resolved !== f.url ? " \u2192 " + f.resolved : "";
-  return '<tr><td>' + CHANNELS[ch] + '</td><td>' + esc(f.source) +
-    (f.search ? "" : '<br><span class="empty">' + esc(f.url + where) + '</span>') +
-    '</td><td class="' + esc(f.status) + '">' + esc(f.status.toUpperCase()) + '<br>' + esc(note) + '</td></tr>';
-}
-
-// Failures first and always open. Empty and healthy sources fold away behind their counts,
-// since a scan now runs well over a hundred sources and the failures are what need reading.
-function renderHealth() {
-  var box = document.getElementById("healthBox");
-  var all = [];
-  CHANNEL_KEYS.forEach(function (ch) {
-    health[ch].forEach(function (f) { all.push({ ch: ch, f: f }); });
-  });
-  if (!all.length) {
-    box.innerHTML = '<p class="hint">' + (scanning ? "Scanning\u2026" : "Run a scan to see which sources respond.") + '</p>';
-    return;
-  }
-  var bad = all.filter(function (x) { return x.f.status === "error"; });
-  var empty = all.filter(function (x) { return x.f.status === "empty"; });
-  var ok = all.filter(function (x) { return x.f.status !== "error" && x.f.status !== "empty"; });
-  var rows = function (list) {
-    return '<table class="health">' + list.map(function (x) { return healthRow(x.ch, x.f); }).join("") + '</table>';
-  };
-  var html = '<div class="health-sum">' + all.length + ' SOURCES \u00B7 ' + ok.length + ' OK \u00B7 ' +
-    empty.length + ' EMPTY \u00B7 <span class="' + (bad.length ? 'error' : '') + '">' + bad.length + ' FAILED</span></div>';
-  if (bad.length) html += rows(bad);
-  if (empty.length) html += '<details class="hgroup"><summary>' + empty.length + ' EMPTY (NOTHING IN WINDOW)</summary>' + rows(empty) + '</details>';
-  if (ok.length) html += '<details class="hgroup"><summary>' + ok.length + ' OK</summary>' + rows(ok) + '</details>';
-  box.innerHTML = html;
-}
-
-// A story that uses a blocked word in its headline or summary is hidden everywhere.
-// "police + AI" blocks a story only when it uses both words, so other police stories still show.
-var blockedCache = { key: null, rules: [] };
-// "jump/fall/fell" is one slot that any of those words fills.
-function wordRx(w) {
-  var alts = w.split("/").map(function (a) { return a.trim(); }).filter(Boolean)
-    .map(function (a) { return rx(a).replace(/[\s-]+/g, "[\\s-]+"); });
-  return new RegExp("\\b(?:" + alts.join("|") + ")(?:s|es|ed|ing)?\\b", "i");
-}
-function blockedRules() {
-  var key = settings.blockedTerms.join("\n");
-  if (blockedCache.key === key) return blockedCache.rules;
-  var rules = settings.blockedTerms.map(function (t) {
-    return t.split("+").map(function (w) { return w.trim(); }).filter(Boolean).map(wordRx);
-  }).filter(function (r) { return r.length; });
-  blockedCache = { key: key, rules: rules };
-  return rules;
-}
-
-function isBlocked(item) {
-  var text = itemText(item);
-  return blockedRules().some(function (all) {
-    return all.every(function (re) { return re.test(text); });
-  });
-}
-
-// A firm name search matches pages that mention the firm anywhere, sidebars included, so a
-// story counts as firm news only when its own headline or summary names the firm: the full name,
-// or a surname from it ("Rice" for Motley Rice). A name that repeats a word (Morgan & Morgan)
-// needs the full name, since the surname alone is too common.
-var FIRM_NAME_SKIP = { law: 1, firm: 1, group: 1, llp: 1, pllc: 1, llc: 1, and: 1, the: 1, attorneys: 1, lawyers: 1 };
-var firmRxCache = {};
-function firmPattern(name) {
-  if (firmRxCache[name]) return firmRxCache[name];
-  var words = name.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean);
-  var count = {};
-  words.forEach(function (w) { count[w] = (count[w] || 0) + 1; });
-  var surnames = words.filter(function (w) { return w.length >= 4 && !FIRM_NAME_SKIP[w] && count[w] === 1; });
-  var full = rx(name).replace(/\s*&\s*/g, "\\s*(&|and)\\s*").replace(/\s+/g, "\\s+");
-  var parts = [full].concat(surnames.map(rx));
-  firmRxCache[name] = new RegExp("\\b(" + parts.join("|") + ")\\b", "i");
-  return firmRxCache[name];
-}
-
-function namesWatchedFirm(item) {
-  var text = itemText(item);
-  return (item.watch || []).some(function (name) { return firmPattern(name).test(text); });
-}
-
-// A story that reached the wire only through a firm-name search has to show it is about the
-// firm. Google drops the "&" in "Morgan & Morgan" and returns hockey players named Morgan, and
-// a one-word name like Epiq also names a car. Such a story stays when:
-//   it names in full a watched firm whose name has two distinctive words ("Beasley Allen"), or
-//   its headline or summary uses a legal or business word (verdict, settlement, sponsorship), or
-//   it comes from a trusted source (Reuters, Law360), which Google matched on the full article.
-// Stories that also prove one of your topics, or that came from a feed, are never checked here.
-var FIRM_CONTEXT = /\b(law\s*firms?|lawyers?|attorneys?|lawsuits?|litigation|litigat\w*|settle(d|s|ment|ments)?|verdicts?|jur(y|ors?)|judges?|courts?|trials?|mdl|class\s+actions?|claims?|claimants?|plaintiffs?|defendants?|counsel|legal|su(ed|es|ing)|filed|complaints?|bankruptcy|administrators?|sponsor(s|ed|ship|ships)?|partner(s|ed|ship)?|acquir(e|es|ed)|acquisition|merger|appoint(s|ed|ment)?|injur(y|ies|ed)|offices?|hir(e|es|ed|ing)|join(s|ed)?|expan(d|ds|ded|sion))\b/i;
-function distinctiveWords(name) {
-  var words = name.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean);
-  var seen = {};
-  return words.filter(function (w) {
-    if (w.length < 3 || FIRM_NAME_SKIP[w] || seen[w]) return false;
-    seen[w] = 1; return true;
-  }).length;
-}
-var firmFullCache = {};
-function firmFullPattern(name) {
-  if (!firmFullCache[name]) {
-    var full = rx(name).replace(/\s*&\s*/g, "\\s*(&|and)\\s*").replace(/\s+/g, "\\s+");
-    firmFullCache[name] = new RegExp("\\b" + full + "\\b", "i");
-  }
-  return firmFullCache[name];
-}
-function fromTrusted(item) {
-  var src = ((item.source || "") + " " + (item.host || "") + " " + (item.sourceUrl || "")).toLowerCase();
-  return (settings.trustedSources || []).some(function (t) { return t && src.indexOf(t.toLowerCase()) !== -1; });
-}
-// The AI Wire holds AI news about law. An AI search line is a Google News search, and a loose one
-// returns AI business and market news. The legal-tech feeds also run general AI commentary and
-// fiction. A story on the AI Wire stays when its headline or summary is about law or legal work,
-// or when it proves one of your topics. A trusted source gets no pass here: Reuters runs plenty
-// of AI business news.
-var AI_LEGAL = /\b(law|laws|legal|lawyers?|attorneys?|law\s*firms?|courts?|judges?|judicial|judiciary|jur(y|ors?)|trials?|lawsuits?|su(ed|es|ing)|litigat\w*|plaintiffs?|defendants?|settle(d|s|ment|ments)?|class\s+actions?|claims?|claimants?|verdicts?|rulings?|ruled|sanction(s|ed)?|hallucinat\w*|citations?|filings?|briefs?|depositions?|evidence|discovery|e-?discovery|mdl|regulators?|attorney\s+general|ftc|bar\s+association|paralegals?|legal\s*tech|legaltech|patents?|intellectual\s+property)\b/i;
-function aiStoryOk(item) {
-  // Firm copies only. Your own wire's AI beat includes AI safety and policy news (kill switches,
-  // training pauses, Senate probes) whose headlines carry no legal word, so it takes every result.
-  if (!FIRM_BUILD) return true;
-  if (item.channel !== "ai") return true;
-  if (topicsOf(item).length) return true;
-  return AI_LEGAL.test(itemText(item));
-}
-
-function firmStoryOk(item) {
-  if (!item.watch || !item.watch.length) return true;
-  if ((item.matched && item.matched.length) || topicsOf(item).length) return true;
-  var text = itemText(item);
-  if (FIRM_CONTEXT.test(text) || fromTrusted(item)) return true;
-  return item.watch.some(function (name) { return distinctiveWords(name) >= 2 && firmFullPattern(name).test(text); });
-}
-
-function renderFeed() {
-  // A story fetched by two channels shows once, in the channel chan() gives it.
-  var seenUrl = {};
-  var unique = items.filter(function (i) {
-    var k = "t:" + storyKey(i);
-    if (seenUrl[i.url] || seenUrl[k]) return false;
-    seenUrl[i.url] = true;
-    seenUrl[k] = true;
-    return true;
-  });
-  var shown = unique.filter(function (i) { return !isBlocked(i) && firmStoryOk(i) && aiStoryOk(i); });
-  var hiddenCount = unique.length - shown.length;
-
-  // MY TOPICS ONLY keeps a story when it names one of your tracked topics, or when a firm name
-  // search found it and the story names that firm: firm news (a founder's obituary, a sponsorship
-  // deal) rarely names a tort. An AI search line or a topic search that merely returned the story
-  // doesn't count.
-  // On a firm copy the AI Wire has its own filter (aiStoryOk keeps legal AI news only), and AI
-  // stories rarely name a firm's litigations, so MY TOPICS ONLY leaves that tab alone.
-  var base = settings.topicsOnly
-    ? shown.filter(function (i) {
-        if (FIRM_BUILD && chan(i) === "ai") return true;
-        return topicsOf(i).length || namesWatchedFirm(i);
-      })
-    : shown;
-  var pool = newOnly ? base.filter(isNew) : base;
-
-  // The topic bar lists every tag in the current channel, so tapping one never empties the bar.
-  renderTopicBar(pool.filter(function (i) { return inTab(i, filter); }));
-
-  var words = queryWords(query);
-  var searching = !!(words.length || activeTopic);
-  var matches = function (i) {
-    return (!activeTopic || topicsOf(i).indexOf(activeTopic) !== -1) && matchesQuery(i, words);
-  };
-  var hits = pool.filter(matches);
-
-  // Tab counts follow the search, so each tab shows how many of its stories match.
-  CHANNEL_KEYS.forEach(function (tab) {
-    document.getElementById("ct-" + tab).textContent =
-      foldVersions(hits.filter(function (i) { return inTab(i, tab); })).list.length;
-  });
-
-  var folded = foldVersions(hits.filter(function (i) { return inTab(i, filter); }));
-  var visible = folded.list;
-  // New stories in this tab and search, counted before the NEW ONLY toggle narrows the list.
-  var newCount = foldVersions(base.filter(matches).filter(function (i) { return inTab(i, filter); }))
-    .list.filter(isNew).length;
-  var html = "";
-
-  Object.keys(errors).forEach(function (ch) {
-    html += '<div class="notice bad">' + CHANNELS[ch] + ' \u2715 ' + esc(errors[ch]) + '</div>';
-  });
-
-  CHANNEL_KEYS.forEach(function (ch) {
-    var failed = health[ch].filter(function (f) { return f.status === "error"; });
-    if (!failed.length) return;
-    html += '<div class="notice">' + CHANNELS[ch] + ': ' + failed.length + ' OF ' + health[ch].length +
-      ' SOURCES FAILED \u00B7 ' + failed.map(function (f) { return esc(f.source) + ' (' + esc(f.error) + ')'; }).join(', ') +
-      ' \u00B7 SEE EDIT SOURCES</div>';
-  });
-
-  if (scanned && hiddenCount) {
-    html += '<div class="notice">' + hiddenCount + (hiddenCount === 1 ? ' STORY' : ' STORIES') +
-      ' HIDDEN BY BLOCKED WORDS \u00B7 SEE EDIT SOURCES</div>';
-  }
-
-  if (scanned && newOnly) {
-    html += '<div class="notice">SHOWING ' + newCount + ' NEW IN THE LAST 24 HOURS<button data-act="newonly">SHOW ALL</button></div>';
-  } else if (scanned && newCount) {
-    html += '<div class="notice">' + newCount + ' NEW IN THE LAST 24 HOURS<button data-act="newonly">NEW ONLY</button></div>';
-  }
-
-  if (scanned && searching) html += searchNote(visible.length);
-
-  if (!scanned && FIRM_BUILD && !settings.topics.length && readOnly) {
-    html += '<div class="empty-state"><p class="display">This wire is not set up yet.</p><p>Its editor has not added topics. Check back shortly.</p></div>';
-  } else if (!scanned && FIRM_BUILD && !settings.topics.length) {
-    html += '<div class="empty-state"><p class="display">Your wire starts empty.</p>' +
-      '<p>Under EDIT SOURCES, enter your firm name, add the litigations you sign as tracked topics, and put your firm and the firms you watch under FIRMS TO WATCH. Then press RUN SCAN.</p></div>';
-  } else if (!scanned) {
-    html += '<div class="empty-state"><p class="display">The wire is quiet.</p><p>Run a scan to pull the latest news and firm posts.</p></div>';
-  } else if (!visible.length && !scanning && !searching) {
-    html += '<div class="notice">' + (newOnly ? "NOTHING NEW IN THE LAST 24 HOURS IN THIS TAB."
-      : settings.topicsOnly ? "NOTHING MATCHES YOUR TOPICS IN THIS WINDOW." : "NO ITEMS IN THIS WINDOW.") + '</div>';
-  }
-
-  // Day dividers: each day's count, with the newest day first.
-  var dayCounts = {};
-  visible.forEach(function (i) { var d = dayOf(i); dayCounts[d] = (dayCounts[d] || 0) + 1; });
-  var lastDay = null;
-
-  visible.forEach(function (item) {
-    var day = dayOf(item);
-    if (day !== lastDay) {
-      html += '<div class="day"><span>' + esc(dayLabel(day)) + '</span><span class="n">' + dayCounts[day] + '</span></div>';
-      lastDay = day;
-    }
-    var watch = item.watch || [];
-    var tags = tagsOf(item).map(function (t) {
-      return '<span class="tag' + (watch.indexOf(t) !== -1 ? ' firm' : '') + '">' + esc(tagLabel(t)) + '</span>';
-    }).join("");
-    var c = chan(item);
-    var when = timeLabel(item);
-    var ex = folded.extra[item.url];
-    var more = (item.more || 0) + (ex ? ex.n : 0);
-    var moreSources = (item.moreSources || []).slice();
-    if (ex) ex.sources.forEach(function (s) { if (moreSources.indexOf(s) === -1) moreSources.push(s); });
-    var own = OWN_SITE.test(hostOfUrl(item.url));
-    html += '<a class="item ' + esc(c) + '" href="' + esc(storyHref(item.url)) + '" target="_blank" rel="' + (own ? "noopener" : "noopener noreferrer") + '" data-tab="' + esc(c) + '">'
-      + '<div class="src">' + CHANNELS[c] + ' \u00B7 ' + esc(item.source || "\u2014")
-      + (when ? ' \u00B7 ' + esc(when) : '')
-      + (more ? ' \u00B7 <span class="more" title="' + esc(moreSources.join(", ")) + '">+'
-          + more + ' more version' + (more === 1 ? '' : 's') + '</span>' : '')
-      + (isNew(item) ? '<span class="new">NEW</span>' : '') + '</div>'
-      + '<div class="title">' + highlight(item.title, words) + '</div>'
-      + (item.summary ? '<p class="sum">' + highlight(item.summary, words) + '</p>' : '')
-      + (tags ? '<div class="tags">' + tags + '</div>' : '')
-      + '</a>';
-  });
-
-  document.getElementById("feed").innerHTML = html;
-}
-
-// ── Start ──
-// Show this window's saved setup at once, then take the site's copy before the first scan.
-fillInputs();
-renderFeed();
-setSync("Checking the site for saved settings\u2026");
-pullSettings().then(function (remote) {
-  applyRole();
-  if (remote) {
-    var migrated = applySettings(remote);
-    // A viewer keeps its own view choices across reloads; everything else comes from the site.
-    if (readOnly && storedSettings) {
-      if (typeof storedSettings.topicsOnly === "boolean") settings.topicsOnly = storedSettings.topicsOnly;
-      if (storedSettings.windowDays) settings.windowDays = storedSettings.windowDays;
-    }
-    lastSynced = migrated ? "" : JSON.stringify(settings);
-    save(STORE_KEY, settings);
-    if (migrated && !readOnly) pushSettings();
-    else setSync(readOnly ? "Read-only copy. The wire's editor maintains its topics and sources."
-                          : "Loaded from the site. Every window, private ones included, loads this setup.");
-  } else if (remote === null) {
-    // Nothing on the site yet. A window that has its own saved setup becomes the shared copy.
-    if (storedSettings) pushSettings();
-    else setSync("Nothing saved on the site yet. The first change you make saves there.");
-  } else {
-    setSync("Couldn't reach the site, so this window is using the settings saved in it.", true);
-  }
-  fillInputs();
-  if (FIRM_BUILD && !settings.topics.length && readOnly) {
-    renderFeed();
-    return;
-  }
-  if (FIRM_BUILD && !settings.topics.length) {
-    // A firm's first open: nothing to scan yet, so open the setup instead.
-    var cfg = document.getElementById("config");
-    cfg.classList.add("open");
-    document.getElementById("configBtn").textContent = "HIDE SOURCES";
-    renderFeed();
-    return;
-  }
-  runScan();
-});
 </script>
+<!-- perf:search-lazy -->
+<script>
+(function () {
+  var done = false;
+  function load() {
+    if (done || window.SEARCH_INDEX) return;
+    done = true;
+    var s = document.createElement("script");
+    s.src = "search-data.js";
+    document.head.appendChild(s);
+  }
+  var input = document.getElementById("homepage-search");
+  if (input) {
+    input.addEventListener("focus", load, { once: true });
+    input.addEventListener("touchstart", load, { once: true, passive: true });
+  }
+  (window.requestIdleCallback || function (f) { setTimeout(f, 3000); })(load);
+})();
+</script>
+<!-- LI-DARK-JS:BEGIN -->
+<script>
+(function () {
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
+
+  var root = document.documentElement;
+  var LIGHT_BAR = '#fbf6e8';   /* existing theme-color meta value */
+  var DARK_BAR  = '#161411';   /* keep in sync with dark --bg */
+
+  function current() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function paint(t) {
+    root.setAttribute('data-theme', t);
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(t === 'dark'));
+      btns[i].setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? DARK_BAR : LIGHT_BAR);
+  }
+
+  function onToggle() {
+    root.classList.add('theme-anim');
+    var next = current() === 'dark' ? 'light' : 'dark';
+    paint(next);
+    try { localStorage.setItem('li-theme', next); } catch (e) {}
+    decorate();
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].hidden = false;
+    btns[i].addEventListener('click', onToggle);
+  }
+  paint(current());
+
+  /* Carry the live theme onto lawsuit.center links (decorate + just-in-time) */
+  var PARTNER = /(^|\.)lawsuit\.center$/i;
+  function stamp(a) {
+    try {
+      var u = new URL(a.href, location.href);
+      if (!PARTNER.test(u.hostname)) return;
+      u.searchParams.set('theme', current());
+      a.href = u.toString();
+    } catch (e) {}
+  }
+  function decorate() {
+    var links = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < links.length; i++) stamp(links[i]);
+  }
+  function freshen(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (a) stamp(a);
+  }
+  document.addEventListener('click', freshen, true);
+  document.addEventListener('auxclick', freshen, true);
+  decorate();
+
+  /* Outbound CTA click -> GA4. cta_click listener v3. The form lives on
+     lawsuit.center, so this is the only conversion signal Informer can record
+     on its own side. cta_href is the destination path with no query string,
+     so BigQuery can tell an intake form from a case guide or a PDF. */
+  function ctaClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
+       every page untagged, so counting it would bury every real referral under
+       one enormous 'unknown' slot. */
+    if (a.closest && a.closest('footer, nav, header')) return;
+    var slot = 'unknown';
+    var href = 'unknown';
+    try {
+      var u = new URL(a.href, location.href);
+      slot = u.searchParams.get('utm_content') || 'unknown';
+      href = (u.pathname || '/').slice(0, 100);
+    } catch (err) {}
+    window.gtag('event', 'cta_click', {
+      cta_slot: slot,
+      cta_page: location.pathname,
+      cta_label: (a.textContent || '').trim().slice(0, 60),
+      cta_href: href
+    });
+  }
+  document.addEventListener('click', ctaClick, true);
+  document.addEventListener('auxclick', ctaClick, true);
+
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) {
+      var stored = null;
+      try { stored = localStorage.getItem('li-theme'); } catch (err) {}
+      if (stored !== 'dark' && stored !== 'light') paint(e.matches ? 'dark' : 'light');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+})();
+</script>
+<!-- LI-DARK-JS:END -->
 </body>
 </html>
