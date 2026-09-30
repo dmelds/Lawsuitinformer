@@ -5,8 +5,22 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 25 Sep 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>LASST v. OpenAI: First Lawsuit Over the Hugging Face Hack</title>
+    <link>https://lawsuitinformer.com/hugging-face-hack-openai-liability</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/hugging-face-hack-openai-liability#2026-09-30</guid>
+    <pubDate>Wed, 30 Sep 2026 12:00:00 +0000</pubDate>
+    <description>A nonprofit sued OpenAI on September 29, 2026 over the Hugging Face hack by its own AI agents. What the complaint claims and what it means for ChatGPT cases.</description>
+  </item>
+  <item>
+    <title>OpenAI Lawsuits: Every Case, Docket, and Current Status</title>
+    <link>https://lawsuitinformer.com/openai-lawsuits</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/openai-lawsuits#2026-09-30</guid>
+    <pubDate>Wed, 30 Sep 2026 12:00:00 +0000</pubDate>
+    <description>Every OpenAI lawsuit in one tracker: Raine, Carrier, Parish, Winters, Tumbler Ridge, FSU, and JCCP 5431, with attorney-written status on each case.</description>
+  </item>
   <item>
     <title>JCCP 5431: ChatGPT Lawsuits Consolidated in California</title>
     <link>https://lawsuitinformer.com/jccp-5431-chatgpt-product-liability-cases</link>
@@ -20,13 +34,6 @@
     <guid isPermaLink="false">https://lawsuitinformer.com/meta-lawsuit#2026-09-25</guid>
     <pubDate>Fri, 25 Sep 2026 12:00:00 +0000</pubDate>
     <description>What Meta's $17.1 billion state settlement covers, where the family and school district lawsuits stand, and the $6 million and $375 million verdicts.</description>
-  </item>
-  <item>
-    <title>OpenAI Lawsuits: Every Case, Docket, and Current Status</title>
-    <link>https://lawsuitinformer.com/openai-lawsuits</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/openai-lawsuits#2026-09-25</guid>
-    <pubDate>Fri, 25 Sep 2026 12:00:00 +0000</pubDate>
-    <description>Every OpenAI lawsuit in one tracker: Raine, Carrier, Parish, Winters, Tumbler Ridge, FSU, and JCCP 5431, with attorney-written status on each case.</description>
   </item>
   <item>
     <title>OpenAI School Shooting Lawsuits | What Families Claim</title>
@@ -279,13 +286,6 @@
     <guid isPermaLink="false">https://lawsuitinformer.com/pfas-thyroid-disease#2026-09-07</guid>
     <pubDate>Mon, 07 Sep 2026 12:00:00 +0000</pubDate>
     <description>What research shows about PFAS and thyroid disease, how PFAS interfere with thyroid hormone transport, and why a common condition is harder to trace.</description>
-  </item>
-  <item>
-    <title>PFAS and Ulcerative Colitis | What Research Shows</title>
-    <link>https://lawsuitinformer.com/pfas-ulcerative-colitis</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/pfas-ulcerative-colitis#2026-09-07</guid>
-    <pubDate>Mon, 07 Sep 2026 12:00:00 +0000</pubDate>
-    <description>What research shows about PFAS and ulcerative colitis, why the immune evidence matters, and how the C8 findings connect to these claims.</description>
   </item>
 </channel>
 </rss>
