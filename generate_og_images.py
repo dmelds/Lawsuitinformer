@@ -19,7 +19,13 @@ already its own card, so a page given a custom image by hand is left alone.
 
 What changes in a page: every reference to og-default.jpg (og:image, twitter:image, and the
 JSON-LD image url where present) becomes the page's own card, and the default og:image:alt
-becomes the headline. Nothing else in the file is touched.
+becomes the headline. The page's Article or NewsArticle JSON-LD node also gets the card as its
+"image": where the node names the site logo (a 703 by 160 wordmark, not an article image) the
+card replaces it, and where the node has no image the field is added as an ImageObject. That
+edit is made in the text of the block, so the hand-written formatting of the rest of the JSON-LD
+stays as it is, and the block is parsed again afterwards; a page whose block would not parse is
+left unchanged and reported. A node that already names a different image is left alone. Nothing
+else in the file is touched.
 
 og/manifest.json records what each card was rendered from. A card is re-rendered only when its
 headline, label or the template version changes, so a page edit that leaves the headline alone
@@ -60,6 +66,8 @@ OUT_DIR = ROOT / "og"
 MANIFEST = OUT_DIR / "manifest.json"
 DEFAULT_IMAGE = f"{BASE_URL}/og-default.jpg"
 DEFAULT_ALT = "Lawsuit Informer — Attorney-led legal education"
+LOGO_URL = f"{BASE_URL}/lawsuit-informer-1.png"
+ARTICLE_TYPES = {"Article", "NewsArticle"}
 LOGO = ROOT / "lawsuit-informer-1.png"
 FONT_DIR = ROOT / "fonts"
 PAGE_DIRS = (ROOT, ROOT / "es")
@@ -79,6 +87,9 @@ TAGS = re.compile(r"<[^>]+>")
 OG_IMAGE = re.compile(r"""<meta\s+property=["']og:image["']\s+content=["']([^"']*)["']""", re.I)
 OG_ALT = re.compile(
     r"""(<meta\s+property=["']og:image:alt["']\s+content=["'])([^"']*)(["'])""", re.I)
+LD_SCRIPT = re.compile(r"(<script\b[^>]*application/ld\+json[^>]*>)(.*?)(</script>)", re.I | re.S)
+LD_IMAGE = re.compile(r'^([ \t]*)"image"\s*:\s*(\[[^\]]*\]|"[^"]*"|\{[^{}]*\})\s*,?[ \t]*\n', re.M | re.S)
+LD_ANCHORS = ("datePublished", "dateModified", "headline", "author")
 
 
 # ---------------------------------------------------------------- fonts
@@ -246,6 +257,82 @@ def patch(html: str, card_url: str, head: str) -> str:
     return out
 
 
+def _image_urls(value) -> list[str]:
+    values = value if isinstance(value, list) else [value]
+    out = []
+    for v in values:
+        if isinstance(v, dict):
+            v = v.get("url")
+        if isinstance(v, str):
+            out.append(v)
+    return out
+
+
+def _image_block(indent: str, card_url: str) -> str:
+    inner = indent + "  "
+    return (f'{indent}"image": {{\n'
+            f'{inner}"@type": "ImageObject",\n'
+            f'{inner}"url": "{card_url}",\n'
+            f'{inner}"width": 1200,\n'
+            f'{inner}"height": 630\n'
+            f'{indent}}},\n')
+
+
+def patch_schema_image(html: str, card_url: str) -> tuple[str, str]:
+    """Set the Article or NewsArticle node's image to the card.
+
+    Returns (new_html, status): status is "set" when the block changed, "" when there was
+    nothing to do, and "skipped: <reason>" when the block was left alone.
+    """
+    status = ""
+
+    def fix(m: re.Match) -> str:
+        nonlocal status
+        open_tag, body, close_tag = m.group(1), m.group(2), m.group(3)
+        try:
+            data = json.loads(body)
+        except (ValueError, TypeError):
+            return m.group(0)
+        if not isinstance(data, dict) or data.get("@type") not in ARTICLE_TYPES:
+            return m.group(0)
+        current = _image_urls(data.get("image")) if "image" in data else []
+        if current and card_url in current:
+            return m.group(0)
+        if current and any(u != LOGO_URL for u in current):
+            status = "skipped: names another image"
+            return m.group(0)
+
+        if current:
+            new_body, n = LD_IMAGE.subn(lambda im: _image_block(im.group(1), card_url), body, count=1)
+            if n != 1:
+                status = "skipped: image field not in an editable shape"
+                return m.group(0)
+        else:
+            new_body = None
+            for key in LD_ANCHORS:
+                am = re.search(r'^([ \t]*)"' + key + r'"\s*:', body, re.M)
+                if am:
+                    new_body = body[:am.start()] + _image_block(am.group(1), card_url) + body[am.start():]
+                    break
+            if new_body is None:
+                status = "skipped: no anchor key to insert before"
+                return m.group(0)
+
+        try:
+            check = json.loads(new_body)
+        except (ValueError, TypeError):
+            status = "skipped: edit would not parse"
+            return m.group(0)
+        if _image_urls(check.get("image")) != [card_url]:
+            status = "skipped: edit did not take"
+            return m.group(0)
+        status = "set"
+        return open_tag + new_body + close_tag
+
+    out = LD_SCRIPT.sub(fix, html, count=0)
+    return out, status
+
+
 def main(argv: list[str]) -> int:
     dry = "--dry-run" in argv
     only = argv[argv.index("--only") + 1] if "--only" in argv else None
@@ -260,7 +347,8 @@ def main(argv: list[str]) -> int:
     paths = load_fonts()
     logo = Image.open(LOGO).convert("RGBA")
 
-    rendered = patched = skipped = 0
+    rendered = patched = skipped = schema_set = 0
+    schema_skips: list[str] = []
     seen = set()
     for path in pages():
         if only and path.stem != only:
@@ -294,6 +382,11 @@ def main(argv: list[str]) -> int:
             print(f"render  {rel}  <- {head[:70]}")
 
         new_html = patch(html, card_url, head)
+        new_html, status = patch_schema_image(new_html, card_url)
+        if status == "set":
+            schema_set += 1
+        elif status:
+            schema_skips.append(f"{path.relative_to(ROOT)}: {status}")
         if new_html != html:
             if not dry:
                 path.write_text(new_html, encoding="utf-8")
@@ -315,9 +408,11 @@ def main(argv: list[str]) -> int:
         OUT_DIR.mkdir(exist_ok=True)
         MANIFEST.write_text(json.dumps(dict(sorted(manifest.items())), indent=0) + "\n", encoding="utf-8")
 
+    for line in schema_skips:
+        print(f"schema  {line}")
     mode = "[dry run] " if dry else ""
-    print(f"{mode}{rendered} cards rendered, {patched} pages patched, {removed} cards removed, "
-          f"{skipped} pages with a custom image left alone.")
+    print(f"{mode}{rendered} cards rendered, {patched} pages patched, {schema_set} schema images set, "
+          f"{removed} cards removed, {skipped} pages with a custom image left alone.")
     return 0
 
 
