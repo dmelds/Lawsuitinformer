@@ -1,0 +1,79 @@
+name: Generate OG images
+
+# Renders a social-preview card for every page into og/ and points each page's og:image,
+# twitter:image and JSON-LD image at its own card. Runs when pages change on main and on
+# demand. A page gets a new card only when its headline or section label changes, so most
+# pushes end with nothing to commit and no extra Netlify deploy.
+#
+# The commit carries [skip lastmod] because it touches every page's <head> without changing
+# the page: without the token the sitemap generator would move every <lastmod> to the run
+# day. It carries [skip actions] so the commit does not re-trigger this or the other
+# generators.
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (report what would change, no commit)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: og-images-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  og-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow and fonttools
+        run: pip install --quiet pillow fonttools brotli
+
+      - name: Generate cards and patch pages
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_og_images.py --dry-run
+          else
+            python generate_og_images.py
+          fi
+
+      - name: Commit if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Scoped to the cards and the pages, so a dirty unrelated path never skips a real
+          # update. Untracked new cards show in --porcelain too.
+          if [ -z "$(git status --porcelain og '*.html' 'es/*.html')" ]; then
+            echo "No OG image changes."
+            exit 0
+          fi
+          git add og '*.html' 'es/*.html'
+          git commit -m "Auto-update OG images [skip lastmod] [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          # Feed, sitemap and this workflow fire on the same push and all push to main.
+          # A single rebase-then-push loses whichever lands second, so retry with backoff.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push after 5 attempts"
+          exit 1
