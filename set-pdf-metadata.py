@@ -52,6 +52,8 @@ TITLES = {
         "Joshi v. OpenAI Foundation Complaint",
     "lacey-v-openai-complaint.pdf":
         "Lacey v. OpenAI Complaint",
+    "lasst-v-openai-complaint.pdf":
+        "LASST v. OpenAI Group PBC Complaint",
     "mdl-3109-order-denying-transfer.pdf":
         "In re Video Game Addiction MDL No. 3109 Order Denying Transfer",
     "new-york-v-3m-pfas-complaint.pdf":
