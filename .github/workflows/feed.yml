@@ -1,16 +1,25 @@
 name: Generate feed
 
+# Regenerates feed.xml and news-sitemap.xml whenever pages change on main, once a day, and on
+# demand. Both files are written by one job and land in one commit, so a page push produces one
+# extra Netlify deploy rather than two. The commit touches only those two files (not an .html
+# file), so the workflow never re-triggers itself. Item dates come from each page's JSON-LD, so
+# no git history is needed.
+#
+# The daily run exists for the news sitemap. It lists pages published in the last fourteen days,
+# so a page ages out on the calendar with no page push. The run commits, and Netlify deploys,
+# only on a day the file actually changes: the day a page enters and the day it leaves.
+
 on:
-  # Auto: runs when pages change on main. The job only commits feed.xml
-  # (not an .html file), so it never re-triggers itself. Item dates come from
-  # each page's JSON-LD, so no git history is needed.
   push:
     branches: [main]
     paths: ['**.html']
+  schedule:
+    - cron: '23 11 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run (print the feed, no commit)'
+        description: 'Dry run (print both files, no commit)'
         type: boolean
         default: false
 
@@ -37,29 +46,38 @@ jobs:
             python generate_feed.py
           fi
 
-      - name: Commit feed if changed
+      - name: Generate news sitemap
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_news_sitemap.py --dry-run
+          else
+            python generate_news_sitemap.py
+          fi
+
+      - name: Commit if changed
         if: ${{ inputs.dry_run != true }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Scoped to feed.xml, so a dirty unrelated path never skips a real update.
-          if git diff --quiet feed.xml && git ls-files --error-unmatch feed.xml >/dev/null 2>&1; then
-            echo "No feed changes."
+          # Scoped to the two generated files, so a dirty unrelated path never skips a real
+          # update. An untracked news-sitemap.xml on the first run shows in --porcelain too.
+          if [ -z "$(git status --porcelain feed.xml news-sitemap.xml)" ]; then
+            echo "No feed or news sitemap changes."
             exit 0
           fi
-          git add feed.xml
-          git commit -m "Auto-update feed.xml [skip actions]"
+          git add feed.xml news-sitemap.xml
+          git commit -m "Auto-update feed.xml and news-sitemap.xml [skip actions]"
           BRANCH="$(git branch --show-current)"
           # The generators can finish within seconds of each other on the same
           # push. A single rebase-then-push loses whichever lands second, so
           # retry with backoff instead of failing the run.
           for attempt in 1 2 3 4 5; do
             if git pull --rebase origin "$BRANCH" && git push; then
-              echo "Pushed feed.xml on attempt $attempt"
+              echo "Pushed on attempt $attempt"
               exit 0
             fi
             echo "Push attempt $attempt failed; retrying"
             sleep $(( attempt * 3 + RANDOM % 4 ))
           done
-          echo "::error::Could not push feed.xml after 5 attempts"
+          echo "::error::Could not push after 5 attempts"
           exit 1
