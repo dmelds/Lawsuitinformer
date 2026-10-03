@@ -13,8 +13,8 @@ Scope
 -----
 Two tiers.
 
-SITEWIDE, every page: the reader-adjudicating rule, the FAQ-schema rule and
-the paragraph-length rule. All three are universal by nature. Copy that tells a visitor whether they have a
+SITEWIDE, every page: the reader-adjudicating rule, the FAQ-schema rule,
+the paragraph-length rule and the CTA rules (CTA_EXEMPT aside). All three are universal by nature. Copy that tells a visitor whether they have a
 claim is wrong on any page the site publishes, and FAQ markup that disagrees
 with the page is broken markup wherever it sits. Scoping them to one cluster
 was an accident of how this script grew: on 2026-09-05 a sitewide run found
@@ -55,6 +55,22 @@ WARN   Prose block (<p>, <li>, <blockquote>, <dd>, <td>) at or above
        199-word <li> on openai-lawsuits.html passed unflagged.
 WARN   Ellipses, or a title over 60 / description outside 110-160. House
        conventions, checked here because nothing else checks them.
+WARN   CTA set, sitewide outside CTA_EXEMPT. Added 2026-10-02 after a
+       rewrite of peritoneal-mesothelioma.html shipped with only the two
+       closing boxes it inherited, both reporting under one utm_content
+       slot, while the strongest asbestos pages carry a top strip and
+       mid-page CTAs. A CTA here is an <a> to lawsuit.center outside header,
+       nav and footer, matching what the cta_click listener counts. The page
+       is flagged when it has fewer than CTA_MIN of them, none before the
+       second <h2> (the reader's first screen or two), two that share a
+       utm_content slot, or one with no utm_content at all. A shared or
+       missing slot means GA4 cannot say which placement earned the click.
+       When the rule was added it flagged 212 of the 245 pages it covers:
+       160 with fewer than CTA_MIN, 85 of those with none at all, 122 with
+       nothing before the second <h2>, 6 sharing a slot and 4 with untagged
+       links. mesothelioma-lawsuit.html and who-qualifies-for-an-asbestos-
+       lawsuit.html were among the 85: their CTA boxes link to other
+       Informer pages, never to Center.
 
 Usage
 -----
@@ -75,6 +91,17 @@ except ImportError:
 GRADE_MAX = 10.5
 SENTENCE_MAX = 45
 PARAGRAPH_MAX = 120
+CTA_MIN = 3
+
+# Pages with no intake job: legal notices, people pages, the form's own
+# confirmation page. Add to this set rather than loosening a CTA rule.
+CTA_EXEMPT = {
+    "404.html", "thank-you.html", "privacy-policy.html", "disclaimer.html",
+    "sms-terms.html", "about.html", "contact.html", "editorial-policy.html",
+    "david-meldofsky.html", "dr-thomas-hatzilabrou.html",
+}
+CTA_LINK = re.compile(
+    r'<a\b[^>]*\bhref="(https?://(?:www\.)?lawsuit\.center[^"]*)"', re.I)
 
 # Case pages held to GRADE_MAX. Hubs and listing pages are scanned for
 # everything else but not graded, since card text skews the score.
@@ -177,6 +204,44 @@ def paragraphs(html):
     return out
 
 
+def cta_problems(html):
+    """CTA-set findings for one page. Counts the same links the cta_click
+    listener counts: lawsuit.center anchors outside header, nav and footer.
+    HTML comments are stripped first, since a commented-out CTA is not one."""
+    body = re.sub(r"<!--.*?-->", " ", html, flags=re.S)
+    body = STRIP.sub(" ", body)
+    links = [(m.start(), m.group(1).replace("&amp;", "&"))
+             for m in CTA_LINK.finditer(body)]
+    out = []
+    if len(links) < CTA_MIN:
+        out.append(f"{len(links)} CTA(s) to lawsuit.center; want at least "
+                   f"{CTA_MIN} (top strip, mid-page inline-cta, closing box)")
+    if not links:
+        return out
+    h2 = [m.start() for m in re.finditer(r"<h2[\s>]", body, re.I)]
+    cut = h2[1] if len(h2) > 1 else len(body)
+    if not any(pos < cut for pos, _ in links):
+        out.append("no CTA before the second <h2>; the first one sits below "
+                   "the reader's first screen or two")
+    slots = []
+    for _, href in links:
+        m = re.search(r"[?&]utm_content=([^&#]+)", href)
+        slots.append(m.group(1) if m else None)
+    untagged = slots.count(None)
+    if untagged:
+        out.append(f"{untagged} CTA(s) with no utm_content; GA4 records "
+                   f"them as slot 'unknown'")
+    seen = {}
+    for sl in slots:
+        if sl:
+            seen[sl] = seen.get(sl, 0) + 1
+    for sl, n in seen.items():
+        if n > 1:
+            out.append(f"utm_content={sl} used by {n} CTAs; each placement "
+                       f"needs its own slot")
+    return out
+
+
 def visible_faq(html):
     """Question -> answer for the on-page FAQ, if there is one.
 
@@ -252,9 +317,12 @@ def check(path, in_cluster):
         if n >= PARAGRAPH_MAX:
             warnings.append(f"{n}-word paragraph: {t[:90]}...")
 
+    if name not in CTA_EXEMPT:
+        warnings.extend(cta_problems(html))
+
     if not in_cluster:
-        # Sitewide tier stops here: adjudicating language, FAQ drift and
-        # paragraph length only.
+        # Sitewide tier stops here: adjudicating language, FAQ drift,
+        # paragraph length and the CTA set only.
         return errors, warnings
 
     if name in CASE_PAGES:
@@ -307,8 +375,8 @@ def main():
     print(f"Consumer readability check - {len(targets)} pages scanned "
           f"({n_cluster} in the AI cluster, held to grade max {GRADE_MAX} "
           f"and sentence max {SENTENCE_MAX}; every page checked for "
-          f"reader-adjudicating language, FAQ drift and paragraphs of "
-          f"{PARAGRAPH_MAX}+ words)\n")
+          f"reader-adjudicating language, FAQ drift, paragraphs of "
+          f"{PARAGRAPH_MAX}+ words and the CTA set)\n")
     for path in targets:
         errors, warnings = check(path, path.name in cluster)
         if not errors and not warnings:
