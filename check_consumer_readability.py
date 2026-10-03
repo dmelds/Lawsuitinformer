@@ -72,6 +72,24 @@ WARN   CTA set, sitewide outside CTA_EXEMPT. Added 2026-10-02 after a
        lawsuit.html were among the 85: their CTA boxes link to other
        Informer pages, never to Center.
 
+Setup
+-----
+textstat scores grade level with NLTK's CMU pronouncing dictionary, which it
+downloads on first use. Where that download is refused (a sandbox whose proxy
+NLTK's SSRF guard rejects, or a host that cannot reach
+raw.githubusercontent.com), fetch the same file with git instead:
+
+    git clone --depth 1 --filter=blob:none --sparse \
+        https://github.com/nltk/nltk_data.git /tmp/nltk_data_src
+    git -C /tmp/nltk_data_src sparse-checkout set packages/corpora
+    mkdir -p ~/nltk_data/corpora
+    cp /tmp/nltk_data_src/packages/corpora/cmudict.zip ~/nltk_data/corpora/
+    cd ~/nltk_data/corpora && unzip -o cmudict.zip
+
+Only the grade rule needs it, and only CASE_PAGES are graded, so a --page
+run on any other page works without it. Do not substitute a homemade
+syllable count: on 2026-10-02 one read 10.3 on a page textstat scored 9.8.
+
 Usage
 -----
     python3 check_consumer_readability.py              # report, exit 0
@@ -204,6 +222,20 @@ def paragraphs(html):
     return out
 
 
+DICT_HELP = (
+    "textstat needs NLTK's cmudict and could not load it. See Setup in this "
+    "file's docstring for the git-based install.")
+
+
+def grade_level(text):
+    """Flesch-Kincaid grade, or a clean exit with the install steps when the
+    dictionary is missing, instead of a two-screen NLTK traceback."""
+    try:
+        return textstat.flesch_kincaid_grade(text)
+    except LookupError:
+        sys.exit(DICT_HELP)
+
+
 def cta_problems(html):
     """CTA-set findings for one page. Counts the same links the cta_click
     listener counts: lawsuit.center anchors outside header, nav and footer.
@@ -326,7 +358,7 @@ def check(path, in_cluster):
         return errors, warnings
 
     if name in CASE_PAGES:
-        grade = textstat.flesch_kincaid_grade(text)
+        grade = grade_level(text)
         if grade > GRADE_MAX:
             errors.append(f"reading grade {grade:.1f} is above {GRADE_MAX} "
                           f"for a case page read by families")
