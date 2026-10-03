@@ -71,11 +71,23 @@ TAGS = re.compile(r"<[^>]+>")
 
 # Visible "Last Updated" stamps. These use "Month D, YYYY" rather than the bare
 # "Month YYYY" the STAMP pattern looks for, so STAMP cannot see them at all.
+#
+# Both patterns tolerate markup between the label and the date. Six pages wrap
+# the stamp in a <time> element (afff, depo-provera, ozempic, roundup, talcum and
+# tylenol updates pages). The old BYLINE capture was [^<]+?, which stops at the
+# "<" of <time>, and the old FOOTER required the date to follow </strong> with
+# nothing in between. On those six pages BOTH visible checks silently matched
+# nothing, so the page reported clean without either stamp ever being read.
+# WRAP allows any run of tags before the date while still anchoring on a real
+# date, so a missing stamp stays a miss rather than a runaway capture.
 FULLDATE = re.compile(r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b")
+WRAP = r'(?:<[^>]+>\s*)*'
+DATETEXT = r'([A-Za-z]+\s+\d{1,2},\s*20\d{2})'
 BYLINE = re.compile(
-    r'<p class="article-date">\s*Last updated:\s*([^<]+?)\s*</p>', re.S | re.I)
+    r'<p class="article-date">\s*Last updated:\s*' + WRAP + DATETEXT,
+    re.S | re.I)
 FOOTER = re.compile(
-    r'<strong>\s*Last Updated:\s*</strong>\s*([A-Za-z]+\s+\d{1,2},\s*20\d{2})',
+    r'<strong>\s*Last Updated:\s*</strong>\s*' + WRAP + DATETEXT,
     re.S | re.I)
 
 
