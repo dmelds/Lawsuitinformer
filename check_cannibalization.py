@@ -20,8 +20,10 @@ link to the pages that own the others. Four things are checked:
                  asbestos trade pages share their closing paragraphs this way.
 
   BODY OVERLAP   Shared 6-word runs between two pages in a cluster, after the
-                 template blocks (CTAs, author box, related grids, breadcrumbs)
-                 and the cluster boilerplate are stripped. Reported as a share
+                 template blocks (CTAs, author box, related grids, breadcrumbs),
+                 the cluster boilerplate, and site-wide template text (a passage
+                 on SITE_TEMPLATE_PAGES or more pages anywhere on the site, such
+                 as Lawsuit Center's legal disclosures) are stripped. Reported as a share
                  of the smaller page. WARN at BODY_WARN, ERROR at BODY_ERROR.
                  The longest shared passages are printed so the duplicate is
                  visible. Before the 10/4 split, hub vs meningioma was 12.7%.
@@ -73,7 +75,9 @@ and every cluster that has pages on both sites is checked across the two:
                  (CROSS_SKIP) are left out.
 
 The second site's own internal clusters are not checked here. To check
-Lawsuit Center by itself, run this script with --path pointed at it.
+Lawsuit Center by itself, point --path at it and add --site center, which
+strips Center's template blocks (intake form, consent copy, firm cards,
+closing CTA band) instead of Informer's.
 
 Clusters come from CLUSTER_RULES first (editable; first regex match wins),
 then from the slug's first token unless it is a generic word. A page that
@@ -85,6 +89,7 @@ Usage:
     python3 check_cannibalization.py --strict     # exit 1 on any ERROR
     python3 check_cannibalization.py --with ../lawsuits-center
     python3 check_cannibalization.py --with ../lawsuits-center --page hair-relaxer-lawsuit.html
+    python3 check_cannibalization.py --path ../lawsuits-center --site center
 """
 import html as htmlmod
 import re
@@ -115,7 +120,8 @@ CLUSTER_RULES = [
      r"gourley-v|jccp-5431|tumbler-ridge|florida-v-openai|hugging-face)", "openai"),
     (r"-v-openai|-v-altman", "openai"),
     (r"^(social-media|instagram|tiktok|snapchat|facebook|meta-)", "social-media"),
-    (r"^(video-game|roblox|fortnite|minecraft|epic-games|angelilli|antonetti)", "video-game"),
+    (r"^(video-game|roblox|fortnite|minecraft|epic-games|angelilli|antonetti|"
+     r"dunn-v-activision|johnson-v-activision|baggaley-v-roblox|is-video-game)", "video-game"),
     (r"^(asbestos|mesothelioma|peritoneal|pleural|lung-cancer-asbestos|"
      r"lung-cancer-from-asbestos)", "asbestos"),
     (r"-asbestos-lawyers$", "asbestos"),
@@ -333,7 +339,7 @@ def load(root, classes=TEMPLATE_CLASSES, drop=DROP_PRIMARY):
     return pages
 
 
-def check_cluster(name, slugs, pages, errors, warnings):
+def check_cluster(name, slugs, pages, errors, warnings, tmpl=frozenset()):
     slugs = sorted(slugs)
     updates = [s for s in slugs if UPDATES_SLUG.search(s)]
 
@@ -359,7 +365,7 @@ def check_cluster(name, slugs, pages, errors, warnings):
     for s, A in sh.items():
         for g in A:
             count[g] += 1
-    boiler = {g for g, c in count.items() if c >= BOILERPLATE_PAGES}
+    boiler = {g for g, c in count.items() if c >= BOILERPLATE_PAGES} - set(tmpl)
     if boiler:
         # stitch the boilerplate shingles back into passages using the page
         # that carries the most of them, so the report shows real sentences
@@ -390,7 +396,7 @@ def check_cluster(name, slugs, pages, errors, warnings):
             pa, pb = pages[a], pages[b]
             if a not in sh or b not in sh:
                 continue
-            A, B = sh[a] - boiler, sh[b] - boiler
+            A, B = sh[a] - boiler - tmpl, sh[b] - boiler - tmpl
             if not A or not B:
                 continue
             pct = 100.0 * len(A & B) / min(len(A), len(B))
@@ -401,7 +407,7 @@ def check_cluster(name, slugs, pages, errors, warnings):
                    f"{b}.html" + ("" if linked else
                                   " — and neither page links to the other"))
             runs = [r for r in shared_runs(pa["body"], pb["body"])
-                    if not shingles(r, SHINGLE) <= boiler][:SHOW_RUNS]
+                    if not shingles(r, SHINGLE) <= (boiler | tmpl)][:SHOW_RUNS]
             for r in runs:
                 msg += show(r)
             (errors if pct >= BODY_ERROR else warnings)[a].append(msg)
@@ -606,7 +612,9 @@ def main():
     if other and not other.is_dir():
         print(f"--with {other}: folder not found"); return 1
 
-    pages = load(root)
+    center = "--site" in sys.argv and sys.argv[sys.argv.index("--site") + 1] == "center"
+    pages = (load(root, SECONDARY_TEMPLATE_CLASSES, DROP) if center else load(root))
+    tmpl = site_template(pages)
     sec = load(other, SECONDARY_TEMPLATE_CLASSES, DROP) if other else {}
     clusters = defaultdict(set)
     for s, p in pages.items():
@@ -627,7 +635,7 @@ def main():
     if not only or only in pages:
         for name, slugs in sorted(targets.items()):
             if len(slugs) > 1:
-                check_cluster(name, slugs, pages, errors, warnings)
+                check_cluster(name, slugs, pages, errors, warnings, tmpl)
         check_global(pages, errors, warnings, only)
 
     if only:
