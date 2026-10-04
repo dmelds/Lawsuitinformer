@@ -1,0 +1,36 @@
+name: Check Cannibalization
+
+# Pages in one cluster competing for one search. Added 10/4/26 after a hub
+# rewrite pulled the updates page's job (case count, settlement appointments,
+# court calendar) onto the hub and its description promised "where it stands";
+# nothing in the repo said so. The checker flags shared body text between
+# cluster pages, status language on pages that are not the cluster's updates
+# page, live counts carried on more than one page, and duplicate titles or
+# descriptions site-wide.
+#
+# REPORT ONLY for now. The first run found five pairs over the error line
+# (angelilli/antonetti, lacey/shamblin, meta-lawsuit/social-media update,
+# pfas-consumer/pfas-cosmetics, social-media hub/update). Switch the
+# pull_request step to --strict once those are cleared, so a new pair cannot
+# land; until then a gate would block every PR for a problem it did not cause.
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['**.html']
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-cannibalization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check cannibalization (report)
+        run: python3 check_cannibalization.py
