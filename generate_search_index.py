@@ -7,6 +7,14 @@ everything that isn't explicitly excluded. It is NON-DESTRUCTIVE — your existi
 hand-curated entries are preserved exactly. Only pages that are not already in
 the index get appended.
 
+Non-destructive has a cost: a curated entry never changes once it is in, so when a
+page is retitled the index keeps serving the old title. On 10/4/26 site search was
+still showing "Camp Lejeune Lawsuit Status August 2026 (Filing Closed)" for a page
+whose <title> had moved on twice. Every run now compares each indexed entry's title
+to the page's current <title> and REPORTS the drift. It does not rewrite anything
+on its own. `--fix-titles` rewrites the drifted titles in place (same pattern as
+`--rebuild-text`), and `--dry-run` previews it.
+
 Duplicate protection runs on BOTH url and normalized title. A curated entry
 pointing at an anchor (browse-lawsuits#ai-lawsuits) and a real page (ai-lawsuits)
 have different urls but the same title, and the results grid renders title plus
@@ -173,6 +181,101 @@ def esc(s):
     return s.replace("\\", "\\\\").replace('"', '\\"')
 
 
+ENTRY_RE = re.compile(
+    r'(\{\s*title:\s*")(?P<title>(?:[^"\\]|\\.)*)(",\s*'
+    r'url:\s*"(?P<url>(?:[^"\\]|\\.)*)")',
+    re.S,
+)
+
+
+MONTH_STAMP = re.compile(
+    r"\b(January|February|March|April|May|June|July|August|September|October|"
+    r"November|December)\s+20\d{2}\b")
+
+
+def drifted(indexed, page_title):
+    """Reason the indexed title no longer describes the page, or None.
+
+    Curated index titles are deliberately shorter than the page <title>, which
+    carries an SEO subtitle after a colon ("Does Hair Relaxer Cause Cancer?" vs
+    "Does Hair Relaxer Cause Cancer? What the Research Shows"). That is not
+    drift; the short form is the better display title. Drift is one of:
+      - a month stamp in the index that the page title has dropped or changed
+        ("August 2026" indexed, page now says "October 2026" or has no month)
+      - neither title is a prefix of the other, so the page was retitled
+    """
+    a, b = norm_title(indexed), norm_title(page_title)
+    if a == b:
+        return None
+    si = MONTH_STAMP.findall(indexed)
+    sp = MONTH_STAMP.findall(page_title)
+    if si and si != sp:
+        return "stale month stamp"
+    if not (b.startswith(a) or a.startswith(b)):
+        return "page retitled"
+    return None
+
+
+def title_drift(src):
+    """[(slug, indexed_title, page_title)] for entries whose page is retitled."""
+    drift = []
+    for m in ENTRY_RE.finditer(src):
+        slug = m.group("url")
+        path = slug + ".html"
+        if "#" in slug or not os.path.exists(path):
+            continue
+        h = open(path, encoding="utf-8").read()
+        t = re.search(r"<title>(.*?)</title>", h, re.S)
+        if not t:
+            continue
+        page_title = clean_title(t.group(1))
+        indexed = m.group("title").replace('\\"', '"')
+        why = drifted(indexed, page_title)
+        if why:
+            drift.append((slug, indexed, page_title, why))
+    # Stale stamps first: those are the ones a searcher reads as out of date.
+    drift.sort(key=lambda d: (d[3] != "stale month stamp", d[0]))
+    return drift
+
+
+def report_drift(drift):
+    if not drift:
+        print("Indexed titles match their pages.")
+        return
+    stale = sum(1 for d in drift if d[3] == "stale month stamp")
+    print("%d indexed title(s) no longer match the page <title> "
+          "(%d with a stale month stamp, %d retitled):" % (len(drift), stale, len(drift) - stale))
+    for slug, old, new, why in drift:
+        print("  ~ %-44s [%s]" % (slug, why))
+        print("      index: %r" % old)
+        print("      page:  %r" % new)
+    print("  Run `python3 generate_search_index.py --fix-titles` to rewrite them.")
+
+
+def fix_titles():
+    """Rewrite drifted titles in place. Only the title string changes."""
+    dry = "--dry-run" in sys.argv
+    src = open(INDEX_FILE, encoding="utf-8").read()
+    drift = title_drift(src)
+    report_drift(drift)
+    if not drift:
+        return
+    new_for = {slug: new for slug, _, new, _ in drift}
+
+    def sub(m):
+        slug = m.group("url")
+        if slug not in new_for:
+            return m.group(0)
+        return m.group(1) + esc(new_for[slug]) + m.group(3)
+
+    out = ENTRY_RE.sub(sub, src)
+    if dry:
+        print("(dry run - no changes written)")
+        return
+    open(INDEX_FILE, "w", encoding="utf-8").write(out)
+    print("Wrote %s (%d title(s) updated)." % (INDEX_FILE, len(drift)))
+
+
 def rebuild_text():
     """Refresh only the `text` field of entries that map to a real page."""
     dry = "--dry-run" in sys.argv
@@ -212,8 +315,14 @@ def rebuild_text():
 def main():
     if "--rebuild-text" in sys.argv:
         return rebuild_text()
+    if "--fix-titles" in sys.argv:
+        return fix_titles()
     dry = "--dry-run" in sys.argv
     src = open(INDEX_FILE, encoding="utf-8").read()
+    # Report title drift on every run so the Actions log shows it. The auto
+    # workflow commits only when search-data.js changes, and a report changes
+    # nothing, so this never triggers a commit by itself.
+    report_drift(title_drift(src))
     existing = set(re.findall(r'url:\s*"([^"]+)"', src))
     # Curated entries can point at an anchor (browse-lawsuits#ai-lawsuits) while a
     # real page carries the same title (ai-lawsuits). Deduping on url alone lets
