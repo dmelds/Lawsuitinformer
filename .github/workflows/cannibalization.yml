@@ -8,11 +8,21 @@ name: Check Cannibalization
 # page, live counts carried on more than one page, and duplicate titles or
 # descriptions site-wide.
 #
+# CROSS-SITE, added 10/4/26: the second step checks out dmelds/lawsuits-center
+# next to this repo and compares Lawsuit Center pages against Informer pages
+# on the same tort (shared body text, status promises on Center pages, counts
+# carried on both sites, matching titles and descriptions). The Center repo is
+# public, so the checkout needs no token. If it is ever made private, add a
+# repo secret with read access to it and pass it as `token:` on that step.
+# A PR to the Center repo does not trigger this workflow; the monthly run and
+# the manual run cover Center-side changes.
+#
 # REPORT ONLY for now. The first run found five pairs over the error line
 # (angelilli/antonetti, lacey/shamblin, meta-lawsuit/social-media update,
-# pfas-consumer/pfas-cosmetics, social-media hub/update). Switch the
-# pull_request step to --strict once those are cleared, so a new pair cannot
-# land; until then a gate would block every PR for a problem it did not cause.
+# pfas-consumer/pfas-cosmetics, social-media hub/update) and one cross-site
+# title match (personal-injury-lawsuits). Switch the run step to --strict once
+# those are cleared, so a new pair cannot land; until then a gate would block
+# every PR for a problem it did not cause.
 
 on:
   pull_request:
@@ -29,8 +39,15 @@ jobs:
   check-cannibalization:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Lawsuit Informer
         uses: actions/checkout@v7
 
+      - name: Checkout Lawsuit Center
+        uses: actions/checkout@v7
+        with:
+          repository: dmelds/lawsuits-center
+          ref: main
+          path: _center
+
       - name: Check cannibalization (report)
-        run: python3 check_cannibalization.py
+        run: python3 check_cannibalization.py --with _center
