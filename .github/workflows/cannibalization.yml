@@ -17,12 +17,14 @@ name: Check Cannibalization
 # A PR to the Center repo does not trigger this workflow; the monthly run and
 # the manual run cover Center-side changes.
 #
-# REPORT ONLY for now. The first run found five pairs over the error line
-# (angelilli/antonetti, lacey/shamblin, meta-lawsuit/social-media update,
-# pfas-consumer/pfas-cosmetics, social-media hub/update) and one cross-site
-# title match (personal-injury-lawsuits). Switch the run step to --strict once
-# those are cleared, so a new pair cannot land; until then a gate would block
-# every PR for a problem it did not cause.
+# GATE, switched on 10/4/26 once the Informer baseline reached zero errors.
+# The Informer-only step runs with --strict, so a pull request that adds a
+# new pair over the error line, or a duplicate title or description, fails.
+# Warnings still print without failing the run. The cross-site step stays
+# report-only, so a change on the Lawsuit Center side cannot fail an Informer
+# pull request; read its output on the monthly run and on manual runs. A third
+# report-only step checks Lawsuit Center's own pages against each other with
+# Center's template list (--site center). It reached zero errors on 10/4/26.
 
 on:
   pull_request:
@@ -49,5 +51,11 @@ jobs:
           ref: main
           path: _center
 
-      - name: Check cannibalization (report)
+      - name: Check cannibalization, Informer (gate)
+        run: python3 check_cannibalization.py --strict
+
+      - name: Check cannibalization, Informer vs Lawsuit Center (report)
         run: python3 check_cannibalization.py --with _center
+
+      - name: Check cannibalization, Lawsuit Center pages against each other (report)
+        run: python3 check_cannibalization.py --path _center --site center
