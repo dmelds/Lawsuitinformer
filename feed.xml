@@ -5,8 +5,15 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 03 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Grok Lawsuit Update: xAI Deepfake Claims, October 2026</title>
+    <link>https://lawsuitinformer.com/grok-lawsuits</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/grok-lawsuits#2026-10-04</guid>
+    <pubDate>Sun, 04 Oct 2026 12:00:00 +0000</pubDate>
+    <description>Where the Grok and xAI deepfake lawsuits stand in October 2026: who has sued, the appeals court pause on Minnesota's nudification ban, and xAI's own suits.</description>
+  </item>
   <item>
     <title>AFFF Lawsuit Update October 2026: MDL 2873 Status</title>
     <link>https://lawsuitinformer.com/afff-lawsuit-updates</link>
@@ -279,13 +286,6 @@
     <guid isPermaLink="false">https://lawsuitinformer.com/ai-injury-lawsuits#2026-09-07</guid>
     <pubDate>Mon, 07 Sep 2026 12:00:00 +0000</pubDate>
     <description>Families are suing AI companies over harm linked to chatbots. What the cases claim, who has filed, and what a family should keep.</description>
-  </item>
-  <item>
-    <title>Asbestos Exposure at the Brooklyn Navy Yard</title>
-    <link>https://lawsuitinformer.com/brooklyn-navy-yard-asbestos-exposure</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/brooklyn-navy-yard-asbestos-exposure#2026-09-07</guid>
-    <pubDate>Mon, 07 Sep 2026 12:00:00 +0000</pubDate>
-    <description>A plain-English history of asbestos exposure at the Brooklyn Navy Yard: the trades affected, the illnesses linked to it, and why it can matter in a claim.</description>
   </item>
 </channel>
 </rss>
