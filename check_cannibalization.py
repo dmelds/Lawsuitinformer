@@ -158,10 +158,12 @@ TEMPLATE_CLASSES = (
     "topic-grid", "pdf-embed", "link-list", "toc-list", "stat-block-wrap",
 )
 # Lawsuit Center template blocks, used for the --with site only: the intake
-# form and its consent copy, firm cards, the closing CTA band, the related
-# topics grid and the legal note.
+# form and its consent copy, the sponsored firm cards (firm-card), the closing
+# CTA band, the related topics grid and the legal note. Do not add "firms":
+# Center pages use that class for their overview text and fact list, and
+# stripping it hid the overview (and the counts in it) from the comparison.
 SECONDARY_TEMPLATE_CLASSES = TEMPLATE_CLASSES + (
-    "related-topics-module", "firms", "final", "legal-note", "form",
+    "related-topics-module", "firm-card", "final", "legal-note", "form",
     "form-card", "form-fineprint", "form-note", "hero-actions", "actions",
     "small-text", "checkbox-row", "field", "site-header", "site-footer",
     "firm-meta",
