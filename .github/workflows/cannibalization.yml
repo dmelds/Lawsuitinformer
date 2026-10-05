@@ -8,23 +8,27 @@ name: Check Cannibalization
 # page, live counts carried on more than one page, and duplicate titles or
 # descriptions site-wide.
 #
-# CROSS-SITE, added 10/4/26: the second step checks out dmelds/lawsuits-center
-# next to this repo and compares Lawsuit Center pages against Informer pages
-# on the same tort (shared body text, status promises on Center pages, counts
-# carried on both sites, matching titles and descriptions). The Center repo is
-# public, so the checkout needs no token. If it is ever made private, add a
-# repo secret with read access to it and pass it as `token:` on that step.
-# A PR to the Center repo does not trigger this workflow; the monthly run and
-# the manual run cover Center-side changes.
+# CROSS-SITE, added 10/4/26 for Lawsuit Center and extended 10/5/26 to Lawsuit
+# Intelligencer: the other two repos are checked out next to this one and
+# every pair of sites is compared on the torts they share (shared body text,
+# status promises, counts carried on more than one site, matching titles and
+# descriptions). Pages that carry counts for many torts at once (the mass tort
+# map on Intelligencer, the tort roundups here) are compared for counts
+# against every page on the other sites, since they sit in no one cluster.
+# Both other repos are public, so the checkouts need no token. If either is
+# ever made private, add a repo secret with read access and pass it as
+# `token:` on that step. A PR to the other repos does not trigger this
+# workflow; the monthly run and the manual run cover changes on their side.
 #
 # GATE, switched on 10/4/26 once the Informer baseline reached zero errors.
 # The Informer-only step runs with --strict, so a pull request that adds a
 # new pair over the error line, or a duplicate title or description, fails.
 # Warnings still print without failing the run. The cross-site step stays
-# report-only, so a change on the Lawsuit Center side cannot fail an Informer
-# pull request; read its output on the monthly run and on manual runs. A third
-# report-only step checks Lawsuit Center's own pages against each other with
-# Center's template list (--site center). It reached zero errors on 10/4/26.
+# report-only, so a change on another site cannot fail an Informer pull
+# request; read its output on the monthly run and on manual runs. Two further
+# report-only steps check Lawsuit Center and Lawsuit Intelligencer each
+# against their own pages. The site profile is detected from each folder's
+# canonical URLs, so --site is only needed if that detection ever fails.
 
 on:
   pull_request:
@@ -51,11 +55,21 @@ jobs:
           ref: main
           path: _center
 
+      - name: Checkout Lawsuit Intelligencer
+        uses: actions/checkout@v7
+        with:
+          repository: dmelds/lawsuitintelligencer
+          ref: main
+          path: _intelligencer
+
       - name: Check cannibalization, Informer (gate)
         run: python3 check_cannibalization.py --strict
 
-      - name: Check cannibalization, Informer vs Lawsuit Center (report)
-        run: python3 check_cannibalization.py --with _center
+      - name: Check cannibalization, all three sites against each other (report)
+        run: python3 check_cannibalization.py --with _center --with _intelligencer
 
       - name: Check cannibalization, Lawsuit Center pages against each other (report)
         run: python3 check_cannibalization.py --path _center --site center
+
+      - name: Check cannibalization, Lawsuit Intelligencer pages against each other (report)
+        run: python3 check_cannibalization.py --path _intelligencer --site intelligencer
