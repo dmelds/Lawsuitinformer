@@ -45,39 +45,46 @@ link to the pages that own the others. Four things are checked:
                  <title> or the same meta description. ERROR. Near-identical
                  descriptions (4-word runs, >= DESC_WARN) WARN.
 
-CROSS-SITE (--with). Added 10/4/26. Lawsuit Informer and Lawsuit Center both
-carry pages on the same torts (Informer's hair-relaxer-cancer-lawsuit and
-Center's hair-relaxer-lawsuit, for example), and a search engine weighs them
-against each other the same way it weighs two pages on one site. With
---with PATH the second site's pages are loaded, placed in the same clusters,
-and every cluster that has pages on both sites is checked across the two:
+CROSS-SITE (--with). Added 10/4/26 for Lawsuit Center, extended 10/5/26 to any
+number of sites. Informer, Center and Intelligencer all carry pages on the same
+torts, and a search engine weighs them against each other the same way it
+weighs two pages on one site. Pass --with once per extra site; every unordered
+pair of loaded sites is then checked:
 
-  X-BODY         Body overlap between an Informer page and a Center page,
+  X-BODY         Body overlap between a page on one site and a page on another,
                  same thresholds as BODY OVERLAP. Text that appears on
-                 SITE_TEMPLATE_PAGES or more pages of one site (the Center
-                 consent and form copy, the Informer disclaimers) is that
-                 site's template and is left out before comparing.
+                 SITE_TEMPLATE_PAGES or more pages of a site is that site's
+                 template and is left out before comparing.
 
-  X-STATUS       A Center page whose title, H1 or meta description promises
-                 status in a cluster where Informer has an updates page.
-                 Informer's updates page owns status. WARN.
+  X-STATUS       A page promising status in a cluster where the OTHER site has
+                 an updates page. Whichever site carries the -updates slug owns
+                 status for that cluster. WARN.
 
-  X-COUNTS       A count on a Center page that also appears on an Informer
-                 page in the cluster. Two sites carrying one live figure means
-                 two deploys to keep it current. WARN.
+  X-COUNTS       A live count carried on pages of two different sites in one
+                 cluster. Two sites carrying one figure means two deploys to
+                 keep it current. WARN. Pages matching MULTI_TORT (the mass
+                 tort map, the Informer tort roundups) sit in no cluster, so
+                 they get a second pass: their non-round counts are compared
+                 against every page on the other site. That pass is what
+                 catches the map's JPML figures on the Informer update pages.
 
-  X-TITLES       An Informer page and a Center page with the same title once
-                 the site name is removed, or the same meta description:
-                 ERROR. Titles that lead with the same term (the part before
-                 the first "|", ":" or dash), or whose lead terms share
-                 TITLE_WARN of their 3-word runs: WARN. Descriptions sharing
-                 DESC_WARN of their 4-word runs: WARN. Legal and site pages
-                 (CROSS_SKIP) are left out.
+  X-TITLES       Two pages with the same title once the site name is removed,
+                 or the same meta description: ERROR. Titles that lead with the
+                 same term, or whose lead terms share TITLE_WARN of their
+                 3-word runs: WARN. Descriptions sharing DESC_WARN of their
+                 4-word runs: WARN. Legal and site pages (CROSS_SKIP) are left
+                 out.
 
-The second site's own internal clusters are not checked here. To check
-Lawsuit Center by itself, point --path at it and add --site center, which
-strips Center's template blocks (intake form, consent copy, firm cards,
-closing CTA band) instead of Informer's.
+Each site has a profile in SITE_PROFILES giving its display name and the
+template blocks to strip before comparing. The profile is detected from the
+canonical URL on the site's own pages, so --site is only needed when detection
+fails. The extra sites' own internal clusters are not checked by a --with run;
+point --path at a site to check it against itself.
+
+Note on Informer vs Intelligencer. The two write for different readers, so
+overlapping coverage of one tort is expected and is not by itself a finding.
+What matters between them is a shared live figure, an identical title, or a
+passage that actually repeats.
 
 Clusters come from CLUSTER_RULES first (editable; first regex match wins),
 then from the slug's first token unless it is a generic word. A page that
@@ -88,8 +95,9 @@ Usage:
     python3 check_cannibalization.py --page depo-provera-lawsuits.html
     python3 check_cannibalization.py --strict     # exit 1 on any ERROR
     python3 check_cannibalization.py --with ../lawsuits-center
+    python3 check_cannibalization.py --with ../lawsuits-center --with ../lawsuitintelligencer
     python3 check_cannibalization.py --with ../lawsuits-center --page hair-relaxer-lawsuit.html
-    python3 check_cannibalization.py --path ../lawsuits-center --site center
+    python3 check_cannibalization.py --path ../lawsuitintelligencer --site intelligencer
 """
 import html as htmlmod
 import re
@@ -108,7 +116,7 @@ SHOW_RUNS = 3        # longest shared passages to print per flagged pair
 MIN_RUN = 10         # words; shorter shared runs are not printed
 SITE_TEMPLATE_PAGES = 5  # cross-site: a passage on this many pages of one site is that site's template
 
-PRIMARY_NAME = "lawsuitinformer.com"
+PRIMARY_NAME = "lawsuitinformer.com"      # kept: default when detection fails
 SECONDARY_NAME = "lawsuit.center"
 
 # ---- Clusters: (regex on slug, cluster name). First match wins. Editable. ----
@@ -118,7 +126,7 @@ CLUSTER_RULES = [
     (r"^(tylenol|acetaminophen)", "tylenol"),
     (r"^(openai|chatgpt|raine-v|lacey-v|parish-v|shamblin-v|carrier-v|"
      r"gourley-v|jccp-5431|tumbler-ridge|florida-v-openai|hugging-face)", "openai"),
-    (r"-v-openai|-v-altman", "openai"),
+    (r"-v-openai|-v-altman|^ai-wrongful-death", "openai"),
     (r"^(social-media|instagram|tiktok|snapchat|facebook|meta-)", "social-media"),
     (r"^(video-game|roblox|fortnite|minecraft|epic-games|angelilli|antonetti|"
      r"dunn-v-activision|johnson-v-activision|baggaley-v-roblox|is-video-game)", "video-game"),
@@ -129,7 +137,7 @@ CLUSTER_RULES = [
     (r"^(house-ncaa|college-athlete)", "house-ncaa"),
     (r"^(grok|xai|deepfake)", "grok"),
     (r"^(camp-lejeune|lejeune)", "camp-lejeune"),
-    (r"^hair-relaxer", "hair-relaxer"),
+    (r"hair-relaxer", "hair-relaxer"),      # anywhere: arizona-v-loreal-hair-relaxer
     (r"^(hernia-mesh|recent-developments-hernia)", "hernia-mesh"),
     (r"^transvaginal-mesh", "transvaginal-mesh"),
     (r"^(ultra-processed|processed-food)", "processed-food"),
@@ -174,6 +182,40 @@ SECONDARY_TEMPLATE_CLASSES = TEMPLATE_CLASSES + (
     "small-text", "checkbox-row", "field", "site-header", "site-footer",
     "firm-meta",
 )
+# Lawsuit Intelligencer template blocks. Its masthead and footer already go out
+# with <header>/<footer>; what is left is the recent-articles grid (other
+# articles' headlines and deks), the eyebrow labels, the jump bar and the
+# end-of-article byline. Figures and data tables are page-specific and stay in.
+# Do not add "entry": the enforcement tracker uses that class for each matter
+# and stripping it removed 60% of the page from the comparison.
+INTELLIGENCER_TEMPLATE_CLASSES = TEMPLATE_CLASSES + (
+    "recent", "section-eyebrow", "li-jump", "article-byline-end",
+    "footer-disclosure", "masthead", "featured", "article-eyebrow",
+    "li-disclosure",
+)
+
+# name: display name, template classes, and the tag-drop pattern for that site.
+SITE_PROFILES = {
+    "informer": (PRIMARY_NAME, TEMPLATE_CLASSES, "primary"),
+    "center": (SECONDARY_NAME, SECONDARY_TEMPLATE_CLASSES, "full"),
+    "intelligencer": ("lawsuitintelligencer.com", INTELLIGENCER_TEMPLATE_CLASSES, "primary"),
+}
+# canonical-URL domain -> profile key, for detecting a folder's site.
+DOMAIN_TO_SITE = {
+    "lawsuitinformer.com": "informer",
+    "lawsuit.center": "center",
+    "lawsuitintelligencer.com": "intelligencer",
+}
+CANONICAL = re.compile(r'<link[^>]+rel="canonical"[^>]+href="https?://(?:www\.)?([^/"]+)', re.I)
+
+# Pages that carry live counts for MANY torts at once (the mass tort map, the
+# Informer tort roundups). They belong to no single cluster, so the per-cluster
+# X-COUNTS pass never sees them. They are compared for counts against every
+# page on the other site instead. Round thousands ("1,000", "10,000") are
+# skipped in that pass only: they are thresholds and estimates, not counts.
+MULTI_TORT = re.compile(r"^(mass-tort-map|mass-torts|current-mass-tort-cases)$")
+ROUND = re.compile(r"^\d{1,3},000$")
+
 BOILERPLATE_PAGES = 3   # a passage on this many pages in a cluster is template, not a pair problem
 TEMPLATE_P_CLASSES = ("article-byline", "article-date", "article-disclaimer",
                       "link-cluster", "cta-note", "form-note", "hero-action-note")
@@ -188,7 +230,8 @@ STATUS = re.compile(
     re.I)
 UPDATES_SLUG = re.compile(r"-(update|updates)$|^recent-developments|-litigation-update")
 BRAND = re.compile(r"\s*[|\-–—:]\s*(lawsuit\s+center|lawsuit\s+informer|"
-                   r"lawsuitinformer\.com|lawsuit\.center)\s*$", re.I)
+                   r"lawsuit\s+intelligencer|lawsuitinformer\.com|lawsuit\.center|"
+                   r"lawsuitintelligencer\.com)\s*$", re.I)
 
 TITLE = re.compile(r"<title[^>]*>(.*?)</title>", re.S | re.I)
 H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S | re.I)
@@ -200,6 +243,8 @@ DROP = re.compile(r"<(script|style|nav|footer|noscript|svg|header|form)\b.*?</\1
 DROP_PRIMARY = re.compile(r"<(script|style|nav|footer|noscript|svg|header)\b.*?</\1>",
                           re.S | re.I)
 TAGS = re.compile(r"<[^>]+>")
+SVG_BLOCK = re.compile(r"<svg\b.*?</svg>", re.S | re.I)
+SVG_TEXT = re.compile(r"<text\b[^>]*>(.*?)</text>", re.S | re.I)
 HREF = re.compile(r'href="([^"#?]+)')
 
 EXCLUDE = {"index", "404", "case-filing-template", "thank-you"}
@@ -209,7 +254,9 @@ EXCLUDE_PREFIX = ("thank-you-",)
 CROSS_SKIP = {"privacy-policy", "editorial-policy", "disclaimer", "about",
               "contact", "terms", "terms-of-use", "advertising-disclosure",
               "search", "resources", "footer", "sitemap", "accessibility",
-              "david-meldofsky"}
+              "david-meldofsky",
+              # Intelligencer site pages
+              "editorial-standards", "contribute", "interviews", "welcome"}
 
 
 def text(raw):
@@ -325,12 +372,19 @@ def load(root, classes=TEMPLATE_CLASSES, drop=DROP_PRIMARY):
         d = META_DESC.search(h)
         h1 = H1.search(h)
         body = body_text(h, classes, drop)
+        # Counts inside inline SVG charts (bar labels, data points). SVG is
+        # dropped from the body text on purpose, but a figure drawn on a chart
+        # is still a live figure the page is carrying.
+        svg_counts = set()
+        for svg in SVG_BLOCK.findall(h):
+            for node in SVG_TEXT.findall(svg):
+                svg_counts.update(COUNT.findall(text(node)))
         pages[slug] = {
             "title": text(t.group(1)),
             "h1": text(h1.group(1)) if h1 else "",
             "desc": htmlmod.unescape(d.group(1)) if d else "",
             "body": norm(body),
-            "counts": set(COUNT.findall(body)),
+            "counts": set(COUNT.findall(body)) | svg_counts,
             "words": len(body.split()),
             "links": set(x.rstrip("/").split("/")[-1].replace(".html", "")
                          for x in HREF.findall(h)),
@@ -470,89 +524,131 @@ def site_template(pages):
     return {g for g, c in count.items() if c >= SITE_TEMPLATE_PAGES}
 
 
-def check_cross(prim, sec, errors, warnings, only=None):
-    """Informer pages against Center pages. Findings are keyed by the Center page."""
-    P = lambda s: f"{PRIMARY_NAME}/{s}"
-    S = lambda s: f"{SECONDARY_NAME}/{s}"
-    tmpl = site_template(prim) | site_template(sec)
+def detect_site(root, fallback="informer"):
+    """Read the canonical domain off the folder's pages to pick a profile."""
+    for path in sorted(root.glob("*.html"))[:40]:
+        m = CANONICAL.search(path.read_text(encoding="utf-8", errors="ignore"))
+        if m and m.group(1).lower() in DOMAIN_TO_SITE:
+            return DOMAIN_TO_SITE[m.group(1).lower()]
+    return fallback
 
-    clusters_p, clusters_s = defaultdict(set), defaultdict(set)
-    for s, p in prim.items():
+
+def load_site(root, key):
+    name, classes, dropkind = SITE_PROFILES[key]
+    drop = DROP if dropkind == "full" else DROP_PRIMARY
+    return name, load(root, classes, drop)
+
+
+def check_cross(a_pages, a_name, b_pages, b_name, errors, warnings, only=None):
+    """One site's pages against another's. Findings are keyed <site>/<slug>."""
+    A_ = lambda s: f"{a_name}/{s}"
+    B_ = lambda s: f"{b_name}/{s}"
+    tmpl = site_template(a_pages) | site_template(b_pages)
+
+    clusters_a, clusters_b = defaultdict(set), defaultdict(set)
+    for s, p in a_pages.items():
         if p["cluster"]:
-            clusters_p[p["cluster"]].add(s)
-    for s, p in sec.items():
+            clusters_a[p["cluster"]].add(s)
+    for s, p in b_pages.items():
         if p["cluster"]:
-            clusters_s[p["cluster"]].add(s)
-    shared = sorted(set(clusters_p) & set(clusters_s))
+            clusters_b[p["cluster"]].add(s)
+    shared = sorted(set(clusters_a) & set(clusters_b))
 
     def wanted(a, b):
         return not only or only in (a, b)
 
     for name in shared:
-        ps, ss = sorted(clusters_p[name]), sorted(clusters_s[name])
-        updates = [s for s in ps if UPDATES_SLUG.search(s)]
+        as_, bs_ = sorted(clusters_a[name]), sorted(clusters_b[name])
+        a_updates = [x for x in as_ if UPDATES_SLUG.search(x)]
+        b_updates = [x for x in bs_ if UPDATES_SLUG.search(x)]
 
-        # X-STATUS
-        if updates:
-            for s in ss:
-                if not wanted(s, None) and only not in updates:
+        # X-STATUS, in both directions: the side holding the -updates slug owns
+        # status for the cluster, and the other side should not promise it.
+        for owner, owner_fmt, others, other_pages, other_fmt in (
+                (a_updates, A_, bs_, b_pages, B_),
+                (b_updates, B_, as_, a_pages, A_)):
+            if not owner:
+                continue
+            for s in others:
+                if only and only not in (s, *owner):
                     continue
-                p = sec[s]
+                p = other_pages[s]
                 for field in ("title", "h1", "desc"):
                     m = STATUS.search(p[field])
                     if m:
-                        warnings[S(s)].append(
+                        warnings[other_fmt(s)].append(
                             f"{field} promises status (\"{m.group(0)}\") but "
-                            f"{', '.join(P(u) for u in updates)} owns status for "
-                            f"'{name}' — the Center page competes for the status search")
+                            f"{', '.join(owner_fmt(u) for u in owner)} owns status for "
+                            f"'{name}' — the two compete for the status search")
                         break
 
         # X-BODY
-        shp = {s: shingles(prim[s]["body"], SHINGLE) - tmpl for s in ps
-               if prim[s]["words"] >= MIN_WORDS}
-        shs = {s: shingles(sec[s]["body"], SHINGLE) - tmpl for s in ss
-               if sec[s]["words"] >= MIN_WORDS}
-        for b, B in shs.items():
-            for a, A in shp.items():
+        sha = {x: shingles(a_pages[x]["body"], SHINGLE) - tmpl for x in as_
+               if a_pages[x]["words"] >= MIN_WORDS}
+        shb = {x: shingles(b_pages[x]["body"], SHINGLE) - tmpl for x in bs_
+               if b_pages[x]["words"] >= MIN_WORDS}
+        for b, B in shb.items():
+            for a, A in sha.items():
                 if not wanted(a, b) or not A or not B:
                     continue
                 pct = 100.0 * len(A & B) / min(len(A), len(B))
                 if pct < BODY_WARN:
                     continue
-                linked = (a in sec[b]["links"]) or (b in prim[a]["links"])
+                linked = (a in b_pages[b]["links"]) or (b in a_pages[a]["links"])
                 msg = (f"{pct:.1f}% of the smaller page's text is shared with "
-                       f"{P(a)}" + ("" if linked else
-                                    " — and neither page links to the other"))
-                runs = [r for r in shared_runs(sec[b]["body"], prim[a]["body"])
+                       f"{A_(a)}" + ("" if linked else
+                                     " — and neither page links to the other"))
+                runs = [r for r in shared_runs(b_pages[b]["body"], a_pages[a]["body"])
                         if not shingles(r, SHINGLE) <= tmpl][:SHOW_RUNS]
                 for r in runs:
                     msg += show(r)
-                (errors if pct >= BODY_ERROR else warnings)[S(b)].append(msg)
+                (errors if pct >= BODY_ERROR else warnings)[B_(b)].append(msg)
 
         # X-COUNTS
-        for b in ss:
+        for b in bs_:
             hits = defaultdict(list)
-            for f in sec[b]["counts"]:
-                for a in ps:
-                    if f in prim[a]["counts"] and wanted(a, b):
+            for f in b_pages[b]["counts"]:
+                for a in as_:
+                    if f in a_pages[a]["counts"] and wanted(a, b):
                         hits[f].append(a)
             if hits:
                 on = sorted(set(x for v in hits.values() for x in v))
                 nums = sorted(hits)
                 shown = ", ".join(nums[:6]) + (f" (+{len(nums)-6} more)" if len(nums) > 6 else "")
-                warnings[S(b)].append(
-                    f"count(s) also on {', '.join(P(o) for o in on)}: {shown} "
+                warnings[B_(b)].append(
+                    f"count(s) also on {', '.join(A_(o) for o in on)}: {shown} "
                     f"— two sites carrying one live figure means two places it goes stale")
 
+    # X-COUNTS, multi-tort pages: a map or roundup on either side against every
+    # page on the other side, whatever cluster that page is in.
+    for src_pages, src_fmt, dst_pages, dst_fmt in ((a_pages, A_, b_pages, B_),
+                                                   (b_pages, B_, a_pages, A_)):
+        for m_slug, mp in src_pages.items():
+            if not MULTI_TORT.search(m_slug):
+                continue
+            figs = {f for f in mp["counts"] if not ROUND.match(f)}
+            hits = defaultdict(list)
+            for d_slug, dp in dst_pages.items():
+                if d_slug in CROSS_SKIP or not wanted(m_slug, d_slug):
+                    continue
+                for f in figs & dp["counts"]:
+                    hits[d_slug].append(f)
+            for d_slug, fs in sorted(hits.items()):
+                fs = sorted(fs)
+                shown = ", ".join(fs[:6]) + (f" (+{len(fs)-6} more)" if len(fs) > 6 else "")
+                warnings[dst_fmt(d_slug)].append(
+                    f"count(s) also on {src_fmt(m_slug)}: {shown} "
+                    f"— when the report rolls, both pages roll or one goes stale")
+
     # X-TITLES: identical titles or descriptions, or the same head term
-    for b, pb in sec.items():
+    for b, pb in b_pages.items():
         if b in CROSS_SKIP:
             continue
         tb = norm(strip_brand(pb["title"]))
         cb = norm(title_core(pb["title"]))
         db = norm(pb["desc"])
         cB, dB = shingles(cb, 3), shingles(db, 4)
-        for a, pa in prim.items():
+        for a, pa in a_pages.items():
             if a in CROSS_SKIP or not wanted(a, b):
                 continue
             ta = norm(strip_brand(pa["title"]))
@@ -560,31 +656,31 @@ def check_cross(prim, sec, errors, warnings, only=None):
             da = norm(pa["desc"])
             pair = f"(\"{strip_brand(pb['title'])}\" / \"{strip_brand(pa['title'])}\")"
             if ta and ta == tb:
-                errors[S(b)].append(
-                    f"title matches {P(a)} once the site name is removed {pair} "
+                errors[B_(b)].append(
+                    f"title matches {A_(a)} once the site name is removed {pair} "
                     f"— the two pages ask for one search")
             elif ca and ca == cb:
-                warnings[S(b)].append(
-                    f"title leads with the same term as {P(a)} {pair} "
+                warnings[B_(b)].append(
+                    f"title leads with the same term as {A_(a)} {pair} "
                     f"— both pages target that search")
             elif cB:
                 cA = shingles(ca, 3)
                 if cA:
                     pct = 100.0 * len(cA & cB) / max(len(cA), len(cB))
                     if pct >= TITLE_WARN:
-                        warnings[S(b)].append(
-                            f"title head shares {pct:.0f}% of its wording with {P(a)} {pair}")
+                        warnings[B_(b)].append(
+                            f"title head shares {pct:.0f}% of its wording with {A_(a)} {pair}")
             if da and da == db:
-                errors[S(b)].append(f"meta description is identical to {P(a)}")
+                errors[B_(b)].append(f"meta description is identical to {A_(a)}")
             elif dB:
                 dA = shingles(da, 4)
                 if dA:
                     pct = 100.0 * len(dA & dB) / min(len(dA), len(dB))
                     if pct >= DESC_WARN:
-                        warnings[S(b)].append(
-                            f"meta description shares {pct:.0f}% of its wording with {P(a)}")
+                        warnings[B_(b)].append(
+                            f"meta description shares {pct:.0f}% of its wording with {A_(a)}")
 
-    return shared, clusters_p, clusters_s
+    return shared, clusters_a, clusters_b
 
 
 def report(label, errors, warnings, suffix=".html"):
@@ -608,21 +704,37 @@ def main():
     if "--page" in sys.argv:
         only = Path(sys.argv[sys.argv.index("--page") + 1]).stem
     root = Path(sys.argv[sys.argv.index("--path") + 1]) if "--path" in sys.argv else Path(".")
-    other = Path(sys.argv[sys.argv.index("--with") + 1]) if "--with" in sys.argv else None
-    if other and not other.is_dir():
-        print(f"--with {other}: folder not found"); return 1
 
-    center = "--site" in sys.argv and sys.argv[sys.argv.index("--site") + 1] == "center"
-    pages = (load(root, SECONDARY_TEMPLATE_CLASSES, DROP) if center else load(root))
+    # --with may be repeated, once per extra site.
+    others = [Path(sys.argv[i + 1]) for i, a in enumerate(sys.argv) if a == "--with"]
+    for o in others:
+        if not o.is_dir():
+            print(f"--with {o}: folder not found")
+            return 1
+
+    if "--site" in sys.argv:
+        key = sys.argv[sys.argv.index("--site") + 1]
+        if key not in SITE_PROFILES:
+            print(f"--site {key}: expected one of {', '.join(sorted(SITE_PROFILES))}")
+            return 1
+    else:
+        key = detect_site(root)
+    prim_name, pages = load_site(root, key)
+
+    loaded = [(prim_name, pages)]
+    for o in others:
+        loaded.append(load_site(o, detect_site(o, "center")))
+
     tmpl = site_template(pages)
-    sec = load(other, SECONDARY_TEMPLATE_CLASSES, DROP) if other else {}
     clusters = defaultdict(set)
     for s, p in pages.items():
         if p["cluster"]:
             clusters[p["cluster"]].add(s)
 
-    if only and only not in pages and only not in sec:
-        print(f"{only}.html not found"); return 1
+    known = set(pages) | set().union(*[set(d) for _, d in loaded[1:]]) if others else set(pages)
+    if only and only not in known:
+        print(f"{only}.html not found")
+        return 1
 
     errors, warnings = defaultdict(list), defaultdict(list)
     if only and only not in pages:
@@ -643,30 +755,39 @@ def main():
         warnings = {k: v for k, v in warnings.items() if k == only}
 
     multi = sum(1 for v in clusters.values() if len(v) > 1)
-    print(f"Cannibalization check — {len(pages)} pages, {multi} clusters of 2+ "
-          f"(body overlap warns at {BODY_WARN:g}%, errors at {BODY_ERROR:g}%)")
+    print(f"Cannibalization check — {prim_name}, {len(pages)} pages, {multi} clusters "
+          f"of 2+ (body overlap warns at {BODY_WARN:g}%, errors at {BODY_ERROR:g}%)")
     if only and only in pages:
         c = pages[only]["cluster"]
         print(f"  scope: {only}.html" + (f" in cluster '{c}' with "
               f"{', '.join(sorted(clusters[c] - {only}))}" if c else " (no cluster)"))
     report("", errors, warnings)
 
-    xerr, xwarn = defaultdict(list), defaultdict(list)
-    if other:
-        shared, cp, cs = check_cross(pages, sec, xerr, xwarn, only)
-        print(f"\n=== CROSS-SITE: {PRIMARY_NAME} vs {SECONDARY_NAME} "
-              f"({len(sec)} pages from {other}) ===")
-        print(f"  {len(shared)} clusters have pages on both sites: "
-              + ", ".join(f"{n} ({len(cp[n])}+{len(cs[n])})" for n in shared))
-        if only:
-            print(f"  scope: pairs that include {only}.html")
-        report("CROSS-SITE ", xerr, xwarn, suffix="")
-        if not xerr and not xwarn:
-            print("\n  No cross-site signals.")
+    any_cross_errors = False
+    if others:
+        print(f"\nLoaded {len(loaded)} sites: "
+              + ", ".join(f"{n} ({len(d)} pages)" for n, d in loaded))
+        for i in range(len(loaded)):
+            for j in range(i + 1, len(loaded)):
+                a_name, a_pages = loaded[i]
+                b_name, b_pages = loaded[j]
+                xerr, xwarn = defaultdict(list), defaultdict(list)
+                shared, ca, cb = check_cross(a_pages, a_name, b_pages, b_name,
+                                             xerr, xwarn, only)
+                print(f"\n=== CROSS-SITE: {a_name} vs {b_name} ===")
+                print(f"  {len(shared)} clusters have pages on both sites"
+                      + (": " + ", ".join(f"{n} ({len(ca[n])}+{len(cb[n])})"
+                                          for n in shared) if shared else ""))
+                if only:
+                    print(f"  scope: pairs that include {only}.html")
+                report("CROSS-SITE ", xerr, xwarn, suffix="")
+                if not xerr and not xwarn:
+                    print("  No cross-site signals.")
+                any_cross_errors = any_cross_errors or bool(xerr)
 
-    if not errors and not warnings and not other:
+    if not errors and not warnings and not others:
         print("\nNo cannibalization signals.")
-    return 1 if ((errors or xerr) and strict) else 0
+    return 1 if ((errors or any_cross_errors) and strict) else 0
 
 
 if __name__ == "__main__":
