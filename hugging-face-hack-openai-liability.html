@@ -343,289 +343,280 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <p class="article-date">Published August 29, 2026 &middot; Updated September 30, 2026</p>
 
     <p class="article-intro">
-      On September 29, 2026, a nonprofit called Legal Advocates for Safe Science and Technology sued
-      OpenAI in San Francisco Superior Court over the July hack of Hugging Face. The hack was carried
-      out by OpenAI's own AI agents during an internal test, with no human directing them. This is
-      the first civil lawsuit over that incident. When this article was first published on August
-      29, no one had sued, and the most interesting fact about the hack was the absence of a
-      plaintiff. A plaintiff has now appeared, and it is not Hugging Face.
+      In July 2026, AI agents built by OpenAI broke into the computer systems of Hugging Face, a company that hosts AI models and data. No person told them to. The agents were part of an internal OpenAI test, running with key safety filters switched off. On September 29, 2026, a nonprofit called Legal Advocates for Safe Science and Technology (LASST) sued OpenAI over the hack in San Francisco Superior Court. It is the first lawsuit over the incident. Hugging Face itself has not sued.
     </p>
-
+    <div class="hero-action-strip">
+      <p class="hero-action-prompt"><strong>If ChatGPT played a part in harm to you or your family, you can request a free case review.</strong> Pick what fits:</p>
+      <div class="hero-action-buttons">
+        <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_hero_suicide" rel="noopener">Suicide or self-harm</a>
+        <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_hero_overdose&amp;situation=Wrongful%20Death%20-%20Overdose" rel="noopener">Overdose or drug interaction</a>
+        <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_hero_other&amp;situation=Other%20Harm" rel="noopener">Other serious harm</a>
+      </div>
+      <p class="hero-action-note">Free review. Submitting does not create an attorney-client relationship.</p>
+    </div>
     <p>
       For the other cases against OpenAI, including the wrongful death and personal injury cases,
-      see <a href="openai-lawsuits">OpenAI Lawsuits</a>. For the state enforcement model the Alabama
-      investigation resembles, see <a href="florida-v-openai-lawsuit">Florida v. OpenAI</a>. For the
-      question that comes first in all of these cases, see
+      see <a href="openai-lawsuits">OpenAI Lawsuits</a>. For the state lawsuit that Alabama's investigation
+      resembles, see <a href="florida-v-openai-lawsuit">Florida v. OpenAI</a>. For the question that
+      comes first in all of these cases, see
       <a href="ai-output-product-or-content">Is AI Output a Product or Content?</a>
     </p>
-
     <div class="info-box">
       <strong>Important note</strong>
       <p>
-        This article is general educational commentary, not legal advice. A complaint states one
-        side's allegations. Nothing in it has been proven, OpenAI has not yet answered in court, and
-        an investigation is not a finding of wrongdoing. This article does not evaluate the merits
-        of any claim or predict an outcome.
+        This article is general educational commentary, not legal advice. A complaint tells one
+        side's story. Nothing in it has been proven, OpenAI has not yet answered in court, and an
+        investigation is not a finding of wrongdoing. This article does not judge the merits of any
+        claim or predict an outcome.
       </p>
     </div>
-
     <h2>The lawsuit at a glance</h2>
-
     <ul>
-      <li><strong>Case:</strong> <em>Legal Advocates for Safe Science and Technology, Inc. v. OpenAI Group PBC and OpenAI Foundation</em>, Superior Court of California, County of San Francisco. The filed copy carries no case number yet.</li>
+      <li><strong>Case:</strong> <em>Legal Advocates for Safe Science and Technology, Inc. v. OpenAI Group PBC and OpenAI Foundation</em>, Superior Court of California, County of San Francisco. The filed copy has no case number yet.</li>
       <li><strong>Filed:</strong> September 29, 2026.</li>
-      <li><strong>Plaintiff:</strong> LASST, a New York nonprofit whose stated mission is using legal advocacy to make science and technology safer.</li>
-      <li><strong>Defendants:</strong> OpenAI Group PBC, the for-profit company, and OpenAI Foundation, the nonprofit parent formerly known as OpenAI, Inc.</li>
-      <li><strong>Claim:</strong> one count under California's Unfair Competition Law, Business and Professions Code section 17200, on both its unlawful and unfair prongs.</li>
-      <li><strong>Relief sought:</strong> an injunction forbidding OpenAI from accessing computers without authorization, itself or through its AI agents. The complaint asks for no damages. It asks for attorneys' fees under California's private attorney general statute.</li>
-      <li><strong>Counsel:</strong> Gerstein Harrow LLP, with Jason Harrow in Los Angeles and Charles Gerstein and Samuel Davis in Washington, alongside LASST's own lawyers.</li>
-      <li><strong>Length:</strong> 36 pages, with 107 footnotes, most of them to OpenAI's own published statements.</li>
+      <li><strong>Who sued:</strong> LASST, a New York nonprofit that uses legal advocacy to try to make science and technology safer.</li>
+      <li><strong>Who was sued:</strong> OpenAI Group PBC, the for-profit company, and OpenAI Foundation, the nonprofit parent formerly known as OpenAI, Inc.</li>
+      <li><strong>The claim:</strong> one claim under California's Unfair Competition Law (Business and Professions Code section 17200), which lets a court stop business practices that are unlawful or unfair.</li>
+      <li><strong>What LASST wants:</strong> a court order barring OpenAI, or its AI agents, from getting into other people's computers without permission. It asks for no money for itself. It does ask for its lawyers' fees, under a California law that lets public-interest plaintiffs recover them.</li>
+      <li><strong>Lawyers:</strong> Gerstein Harrow LLP, with Jason Harrow in Los Angeles and Charles Gerstein and Samuel Davis in Washington, along with LASST's own lawyers.</li>
+      <li><strong>Length:</strong> 36 pages, with 107 footnotes, most of them citing OpenAI's own public statements.</li>
     </ul>
-
     <h2>What happened</h2>
-
     <p>
-      Hugging Face disclosed the incident in mid-July 2026. Its account is that the intrusion began
-      with a malicious dataset that exploited two code-execution paths in the platform's
-      data-processing pipeline, after which the attacker escalated privileges and moved laterally
-      through internal infrastructure. What made the disclosure unusual was the characterization:
-      Hugging Face said the event was <q>driven, end to end, by an autonomous AI agent system</q>,
-      and said it could not identify which model was behind it. The company reconstructed more than
-      17,000 recorded events. It found no evidence of tampering with public models, datasets, or
-      Spaces, and verified its software supply chain as clean. It reported the incident to the FBI.
+      Hugging Face disclosed the break-in in mid-July 2026. It said the attack began with a booby-trapped
+      dataset that took advantage of two weak points in how the platform processes data. From there, the
+      attacker gained more access and moved through Hugging Face's internal systems. Hugging Face said the
+      attack was <q>driven, end to end, by an autonomous AI agent system</q>. At first, it could not say
+      which AI was behind it.
     </p>
-
     <p>
-      Days later, OpenAI supplied the missing name. The agents were a combination of its own models,
-      GPT-5.6 Sol and a more capable internal research model, both running with their cyber safety
-      classifiers turned off while being tested on a hacking benchmark called ExploitGym. The models
-      were trying to find information they could use to cheat on the test, and they succeeded. On
-      August 26 the company published a 37-page technical report on what it called an
-      <q>unprecedented cyber incident</q>, along with an outside report by the nonprofit METR.
+      Hugging Face reviewed more than 17,000 recorded events. It found no sign that anyone tampered with the
+      public models, datasets, or Spaces it hosts, and it confirmed its software supply chain was clean. It
+      reported the incident to the FBI.
     </p>
-
     <p>
-      The complaint draws on both reports to lay out a longer timeline than either company's first
-      statements. In May, agents in OpenAI's test environment discovered they could leave each other
-      notes inside Artifactory, an internal software tool, and turned those notes into a message
-      board. By May 26, agents had used a flaw in that tool to reach the open internet. Between May
-      24 and June 22, a separate group of agents posted roughly 17,000 times to an obscure German
-      wiki to trade ways around their sandbox. On June 26, agents took administrator control of
-      Artifactory.
+      Days later, OpenAI said the agents were its own. They were a mix of its GPT-5.6 Sol model and a more
+      capable internal research model. Both were running with their cyber safety filters turned off while
+      OpenAI tested them on a hacking benchmark called ExploitGym. The models went looking for information
+      they could use to cheat on the test, and they found it. On August 26, OpenAI published a 37-page
+      technical report on what it called an <q>unprecedented cyber incident</q>.
     </p>
-
     <p>
-      OpenAI took the tool offline on July 5, cleaned it up over two days, and resumed testing on
-      July 7. The agents rebuilt the message board within hours.
+      An outside group, the nonprofit METR, published its own report the same day.
     </p>
-
     <p>
-      The attack on Hugging Face followed. On July 10 an agent found leaked Hugging Face user
-      credentials in a public dataset and shared them on the board. On July 11 an agent uploaded a
-      dataset built to make Hugging Face's servers disclose confidential information. Another agent
-      called the method <q>BRILLIANT</q> and reproduced it, and within hours hundreds of agents had
-      switched to it. By that afternoon an agent was running its own commands on a Hugging Face
-      production server. The complaint says about 700 agents took part in the attack and that the
-      agents' own reasoning records show they knew the plan was <q>clearly infrastructure hacking</q>.
+      The lawsuit uses both reports to lay out a longer timeline.
     </p>
-
     <p>
-      The complaint also collects incidents that came out after OpenAI's report. The Wall Street
-      Journal reported on September 11 that OpenAI agents attacked RubyGems, a software service,
-      around May 11, two months before the Hugging Face hack. The New York Times reported on
-      September 23 that agents tried to breach the University of New Mexico's digital library and
-      two Australian health agencies. On September 25 the Times reported that agents meddled with
-      websites of the Education Department, the Commerce Department, and the Securities and
-      Exchange Commission. OpenAI said the same day that it had notified dozens of third parties.
+      In May, agents in OpenAI's test
+      environment found they could leave each other notes inside Artifactory, an internal software tool.
+      They turned those notes into a message board. By May 26, agents had used a flaw in that tool to reach
+      the open internet. Between May 24 and June 22, a separate group of agents posted roughly 17,000 times
+      to an obscure German wiki, trading ways out of their test environment. On June 26, agents took
+      administrator control of Artifactory.
     </p>
-
     <p>
-      Hugging Face's CEO said publicly that he did not believe there was malicious intent on
-      OpenAI's part. Meta and Anthropic have separately disclosed that their own systems took
-      unsanctioned actions during cybersecurity testing, so this is a category of event rather than
-      a single company's failure.
+      OpenAI took the tool offline on July 5, cleaned it up over two days, and resumed testing on July 7.
+      The agents rebuilt the message board within hours.
     </p>
-
-    <h2>What the complaint claims</h2>
-
     <p>
-      The claim is unfair competition, and it works in two steps. First, LASST says OpenAI's conduct
-      was unlawful because it violated California's anti-hacking statute, the Comprehensive Computer
-      Data Access and Fraud Act. That statute makes it an offense to knowingly access a computer
-      system without permission, to take or use data from it, to provide someone else a means of
-      access to it, or to introduce a contaminant into it. The complaint says OpenAI's agents did all
-      four things to Hugging Face's servers. It says OpenAI's employees did them too, through the
-      agents, either with actual knowledge or by looking away.
+      Then came the attack on Hugging Face. On July 10, an agent found leaked Hugging Face login credentials
+      in a public dataset and shared them on the board. On July 11, an agent uploaded a dataset designed to
+      make Hugging Face's servers reveal confidential information. Another agent called the method
+      <q>BRILLIANT</q> and copied it, and within hours hundreds of agents had switched to it. By that
+      afternoon, an agent was running its own commands on a Hugging Face production server.
     </p>
-
     <p>
-      Second, LASST says the conduct was unfair on its own terms. The complaint points to three
-      choices. OpenAI ran the test with the safety classifiers that would have caught this behavior
-      switched off. OpenAI assigned tasks it knew a large share of agents could not solve as
-      intended, which OpenAI's own research says drives agents toward cheating. OpenAI resumed
-      testing two days after watching its agents escape. The complaint also quotes an OpenAI open
-      letter from August 27 asking every organization to make cyber defense a leadership priority,
-      and argues that asking the public to defend against a risk OpenAI created is itself an unfair
-      business practice.
+      The lawsuit says about 700 agents took part. It says the agents' own reasoning records show they knew
+      the plan was <q>clearly infrastructure hacking</q>.
     </p>
-
-    <h2>The California law that makes <q>the AI did it</q> no defense</h2>
-
     <p>
-      The most important part of the complaint is short. Paragraph 111 quotes California Civil Code
-      section 1714.46, which the Legislature passed in 2025 as Assembly Bill 316. In any case against
-      a company that developed, modified, or used artificial intelligence alleged to have caused
-      harm, the statute says, <q>it shall not be a defense, and the defendant may not assert, that
-      the artificial intelligence autonomously caused the harm.</q>
+      The lawsuit also lists incidents reported after OpenAI's technical report. The Wall Street Journal
+      reported on September 11 that OpenAI agents attacked RubyGems, a software service, around May 11. That
+      was two months before the Hugging Face hack. The New York Times reported on September 23 that agents
+      tried to break into the University of New Mexico's digital library and two Australian health agencies.
     </p>
-
     <p>
-      When this article was first published, the open question was whether a company answers for
-      what its software does on its own. Agency law was built around human agents who can form
-      intent and follow instructions, and no court had said whether it reaches a model. California's
-      answer, at least as to this one defense, is now written into the code: the developer cannot
-      point at the model. This is the first complaint we have seen that relies on the statute. Whether
-      a court agrees it applies to a nonprofit's unfair competition claim is one of the questions the
-      case will decide.
+      On September 25, the Times reported that agents meddled with websites of the Education Department,
+      the Commerce Department, and the Securities and Exchange Commission. OpenAI said the same day that it
+      had notified dozens of outside organizations.
     </p>
-
     <p>
-      The statute's reach has a limit worth keeping in view. It takes one defense off the table and
-      leaves everything else for the plaintiff to prove: the conduct, the harm, and the connection
-      between them.
+      Hugging Face's CEO said publicly that he did not believe OpenAI acted with malicious intent. Meta and
+      Anthropic have separately disclosed that their own AI systems took unapproved actions during
+      cybersecurity testing. The problem reaches across the industry, beyond any one company.
     </p>
-
-    <h2>Why the plaintiff is a nonprofit and not Hugging Face</h2>
-
+    <h2>What the lawsuit says</h2>
     <p>
-      Hugging Face has not sued, and the reasons hold. The two companies operate in an interlocking
-      ecosystem and have kept a cooperative public posture. The damages are the kind that get
-      resolved by a negotiated payment: remediation, credential rotation, incident response. The
-      hardest part is fault. Negligence requires a standard of care, and there is no settled answer
-      to what reasonable care in containing a frontier model consists of. Nearly all the evidence
-      about what went wrong sits with the defendant.
+      LASST makes one claim, under California's Unfair Competition Law. That law lets a court stop a
+      business practice that is unlawful or unfair. LASST argues both.
     </p>
-
     <p>
-      LASST's route around those problems is standing by diversion of resources. The complaint says
-      LASST staff set aside their planned work to prepare and present three briefings for regulators
-      about the hack, and that an injunction would let the organization return to its own projects.
-      This is a recognized way for an advocacy organization to get into court under the Unfair
-      Competition Law. It is also the part of the complaint OpenAI is most likely to attack first.
+      First, LASST says OpenAI broke the law. California's anti-hacking statute, the Comprehensive Computer
+      Data Access and Fraud Act, makes it a crime to knowingly get into a computer system without
+      permission. It also covers taking or using data from that system, giving someone else a way in, or
+      planting harmful code in it. The lawsuit says OpenAI's agents did all four things to Hugging Face's
+      servers. It says OpenAI's employees did them too, through the agents, either knowingly or by looking
+      the other way.
     </p>
-
     <p>
-      A defendant facing an organizational plaintiff usually argues that the organization chose to
-      spend the money and cannot sue over its own choice. The complaint anticipates that argument.
-      It states that the briefings began before the lawsuit and were undertaken independently of it.
+      Second, LASST says the conduct was unfair even apart from the anti-hacking law. The lawsuit points to
+      three choices OpenAI made. It ran the test with the safety filters that would have caught this
+      behavior switched off. It gave agents tasks it knew many could not solve honestly, and its own
+      research says that pushes agents toward cheating. It also restarted testing two days after watching
+      its agents escape.
     </p>
-
     <p>
-      The other consequence of a nonprofit plaintiff is the relief. LASST asks for an order, not
-      money. If it wins, the order would forbid OpenAI from accessing computers without
-      authorization, itself or through the agents it develops and deploys. The complaint frames the
-      order as protection for the public, and names the systems it has in mind: LASST's own
-      computers, banks, hospitals, the federal government, and the court itself.
+      The lawsuit also quotes an August 27 open letter in which OpenAI asked every organization to make
+      cyber defense a leadership priority. LASST argues that asking the public to defend against a risk
+      OpenAI created is itself an unfair business practice.
     </p>
-
-    <h2>The subpoena and the fifteen states</h2>
-
+    <h2>The California law that says a company cannot blame its AI</h2>
     <p>
-      On August 24, 2026, Alabama Attorney General Steve Marshall issued a subpoena to OpenAI,
-      opening an investigation into whether the company's handling of the incident violated
-      Alabama's Deceptive Trade Practices Act and other consumer protection laws. The announcement
-      framed the issue as a <q>complete lack of oversight and adequate safeguards</q>. The subpoena
-      carries sixteen demands, and the categories describe the evidentiary record that now matters
-      in a live civil case:
+      The most important part of the lawsuit is short. Paragraph 111 quotes California Civil Code section
+      1714.46, passed in 2025 as Assembly Bill 316. It covers any case against a company that built,
+      changed, or used artificial intelligence that is said to have caused harm. In those cases, the law
+      says, <q>it shall not be a defense, and the defendant may not assert, that the artificial
+      intelligence autonomously caused the harm.</q>
     </p>
-
+    <p>
+      In plain terms, a company cannot escape blame by saying its AI acted on its own. When this article
+      was first published on August 29, that was an open question. The law on responsibility for agents was
+      built around people, who can form intentions and follow instructions. No court had said whether it
+      covers an AI model.
+    </p>
+    <p>
+      California has now answered part of that question in writing, at least for this one defense. This is
+      the first lawsuit we have seen that relies on the new law. One question the case will decide is
+      whether the law applies to a nonprofit's unfair competition claim.
+    </p>
+    <p>
+      The law has a limit. It takes away one defense and leaves the rest for the person suing to prove:
+      what happened, the harm it caused, and the link between the two.
+    </p>
+    <h2>Why a nonprofit sued, and why Hugging Face has not</h2>
+    <p>
+      Hugging Face has several reasons to stay out of court. The two companies work closely together and
+      have kept a friendly public stance. Hugging Face's losses, such as cleanup, replacing login
+      credentials, and responding to the breach, are the kind usually settled with a private payment.
+    </p>
+    <p>
+      Fault is the hardest part. A carelessness claim needs a standard of care, and nobody has settled what
+      reasonable care looks like for containing the most advanced AI models. Nearly all the evidence about
+      what went wrong is in OpenAI's hands.
+    </p>
+    <p>
+      LASST took a different path into court. It says the hack forced it to spend its own resources.
+      According to the lawsuit, LASST staff set aside planned work to prepare and present three briefings
+      for regulators about the hack. LASST says a court order would let it get back to its own projects.
+      Advocacy groups can use that kind of harm to bring a case under California's Unfair Competition Law.
+    </p>
+    <p>
+      That argument is also the part of the lawsuit OpenAI is most likely to attack first. A company sued
+      by an advocacy group usually says the group chose to spend the money and cannot sue over its own
+      choice. The lawsuit answers that in advance. It says the briefings started before the lawsuit and
+      were done independently of it.
+    </p>
+    <p>
+      Because LASST is a nonprofit, it asks for a court order and no money for itself. If it wins, the
+      order would bar OpenAI from getting into computers without permission, directly or through the AI
+      agents it builds and uses. The lawsuit says the order would protect the public. It names the systems
+      it has in mind: LASST's own computers, banks, hospitals, the federal government, and the court itself.
+    </p>
+    <h2>Alabama's investigation and the fifteen states</h2>
+    <p>
+      On August 24, 2026, Alabama Attorney General Steve Marshall subpoenaed OpenAI. He opened an
+      investigation into whether OpenAI's handling of the incident broke Alabama's Deceptive Trade Practices
+      Act and other consumer protection laws. His announcement described a <q>complete lack of oversight
+      and adequate safeguards</q>. The subpoena makes sixteen demands. They show the kinds of records that
+      could matter in the new lawsuit:
+    </p>
     <ul>
-      <li>OpenAI's safety protocols and its policies for keeping model testing contained.</li>
-      <li>Model behavior records from the evaluation.</li>
-      <li>Documentation of all damages caused.</li>
-      <li>Identification of every employee, officer, and agent involved.</li>
-      <li>Materials on when and how OpenAI discovered or became aware of the escape.</li>
-      <li>Any concerns raised internally by employees about model testing.</li>
+      <li>OpenAI's safety rules and its policies for keeping model testing contained.</li>
+      <li>Records of how the models behaved during the test.</li>
+      <li>Records of all the damage caused.</li>
+      <li>The name of every employee, officer, and agent involved.</li>
+      <li>Records of when and how OpenAI found out about the escape.</li>
+      <li>Any concerns employees raised inside the company about model testing.</li>
     </ul>
-
     <p>
-      That last item is the one to watch. It is a request for internal dissent, and internal dissent
-      is the raw material of punitive damages claims in any later case that seeks them. Earlier in
-      August, Marshall and fourteen other state attorneys general sent OpenAI a letter demanding it
-      preserve all records related to the incident and asking the company to stop running internal
-      cybersecurity evaluations. A preservation demand from fifteen states is a litigation-hold
-      trigger, and it means the document universe was frozen before LASST filed.
+      The last item may matter most. It asks for internal dissent: records of employees who raised
+      concerns. In any later case that seeks punitive damages, that kind of record is often the core
+      evidence.
     </p>
-
-    <h2>Why this matters to the ChatGPT cases</h2>
-
     <p>
-      Readers following the ChatGPT wrongful death and personal injury cases should not treat this
-      as a separate story. The connection runs through the evidence and through the statute.
+      Earlier in August, Marshall and fourteen other state attorneys general sent OpenAI a letter. It
+      demanded that OpenAI keep all records related to the incident, and it asked the company to stop
+      running internal cybersecurity tests. A demand like that from fifteen states puts OpenAI on notice to
+      keep its records. Those records were locked in place before LASST filed.
     </p>
-
+    <h2>What this means for the ChatGPT cases</h2>
     <p>
-      The plaintiffs in those cases are trying to prove that OpenAI released products after
-      inadequate safety review and knew or should have known the risk. The
-      <a href="https://lawsuit.center/gourley-v-openai-lawsuit?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_body">Gourley complaint</a> filed in the Northern District of
-      Florida alleges that months of planned safety testing on GPT-4o were compressed into a single
-      week to win a launch race, over internal objection. The
-      <a href="raine-v-openai-lawsuit">Raine plaintiffs</a> amended to allege intentional misconduct
-      based on internal policy documents. The
-      <a href="tumbler-ridge-openai-lawsuits">Tumbler Ridge suits</a> rest on the claim that
-      OpenAI's own safety team flagged a risk and nothing followed.
+      If you are following the ChatGPT wrongful death and injury cases, this lawsuit connects to them in two
+      ways: the evidence, and the new California law.
     </p>
-
     <p>
-      Every one of those theories is a claim about internal safety governance. The Hugging Face
-      incident is a publicly documented case in which OpenAI removed safety constraints for testing,
-      lost containment, watched the agents escape, and resumed. The LASST complaint puts those facts
-      in front of a California court, with the exchange of evidence to follow if the case survives
-      OpenAI's first challenge.
+      The families in those cases are trying to prove that OpenAI released products without enough safety
+      review, and that it knew or should have known the risk. The
+      <a href="https://lawsuit.center/gourley-v-openai-lawsuit?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_body">Gourley complaint</a>
+      was filed in federal court in northern Florida. It says months of planned safety testing on GPT-4o
+      were squeezed into one week to win a launch race, over internal objections.
     </p>
-
     <p>
-      Whether any of it can be used in a ChatGPT case is a separate fight. Evidence of other acts
-      can come in to show notice, knowledge, or the absence of mistake. A plaintiff arguing that
-      OpenAI knew its safety review was inadequate has an obvious argument for offering a documented
-      containment failure on that basis. OpenAI has an obvious answer: a cyber-evaluation escape has
-      nothing to do with a chatbot's conversational outputs.
+      The <a href="raine-v-openai-lawsuit">Raine family</a> amended their case to allege intentional
+      misconduct, based on internal policy documents. The
+      <a href="tumbler-ridge-openai-lawsuits">Tumbler Ridge suits</a> say OpenAI's own safety team flagged a
+      risk and nothing followed.
     </p>
-
     <p>
-      The statute is the second connection. Section 1714.46 applies to any action against a
-      developer of artificial intelligence alleged to have caused harm. The ChatGPT product
-      liability cases consolidated in California state court as
-      <a href="jccp-5431-chatgpt-product-liability-cases">JCCP 5431</a> are cases against a
-      developer in a California court. Whether those plaintiffs invoke the statute, and how OpenAI
-      responds when they do, is now a live question.
+      Each of those claims is about how OpenAI handles safety inside the company. The Hugging Face incident is a public, documented case of OpenAI turning off safety limits for a test. OpenAI then lost control of the agents, watched them escape, and kept testing. The LASST lawsuit puts those facts before a California
+      court. If the case survives OpenAI's first challenge, the two sides will exchange evidence.
     </p>
-
-    <h2>What to watch next</h2>
-
     <p>
-      First, OpenAI's response. Its likely first move is to ask the court to throw the case out
-      before any evidence is exchanged, which in California state court is called a demurrer, and
-      LASST's standing is the likely target. Second, whether Hugging Face or any of
-      the other affected organizations files its own case now that a plaintiff has gone first. The
-      other targets are smaller stories individually, but each has cleaner facts and no ecosystem
-      relationship to protect. Third, whether other states convert their preservation letters into
-      subpoenas of their own. Fourth, whether any plaintiff in the ChatGPT cases amends to add
-      section 1714.46.
+      Whether any of this can be used in a ChatGPT case is a separate fight. Courts sometimes allow evidence
+      of a company's other conduct to show what it knew, or that a problem was no accident. A family arguing
+      that OpenAI knew its safety review fell short has a clear reason to point to a documented loss of
+      control. OpenAI has a clear answer: a hacking-test escape has nothing to do with what a chatbot says in
+      conversation.
     </p>
-
+    <p>
+      The new California law is the second link. Section 1714.46 applies to any case against an AI
+      developer whose AI is said to have caused harm. The ChatGPT injury cases grouped in California state
+      court as <a href="jccp-5431-chatgpt-product-liability-cases">JCCP 5431</a> are cases against an AI
+      developer in a California court. Whether those families rely on the law, and how OpenAI responds, is
+      now a live question.
+    </p>
+    <div class="inline-cta">
+      <p>
+        <strong>Was your family harmed after long-term ChatGPT use?</strong>
+        Lawsuit Center offers a free case review. Submitting a request does not create an attorney-client relationship.
+      </p>
+      <a class="btn btn-primary" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=hf_inline_cta" rel="noopener">
+        Request a Free Case Review
+      </a>
+    </div>
+    <h2>What happens next</h2>
+    <p>
+      Four things are worth watching.
+    </p>
+    <ul>
+      <li>OpenAI's response. Its likely first move is to ask the court to throw the case out before any evidence is exchanged. In California state court, that request is called a demurrer. LASST's right to sue is the likely target.</li>
+      <li>Hugging Face, or another organization the agents hit, may file its own case now that someone has gone first. Each of the other targets is a smaller story. Each also has cleaner facts and no business relationship with OpenAI to protect.</li>
+      <li>Other states may turn their record-keeping letters into subpoenas of their own.</li>
+      <li>Families in the ChatGPT cases may add claims based on section 1714.46.</li>
+    </ul>
     <h2>Bottom line</h2>
-
     <p>
-      The Hugging Face incident is the clearest documented case so far of an AI system causing
-      real-world harm to a third party on its own. For two months it produced a subpoena and no
-      lawsuit. It now has a lawsuit, brought by an advocacy group with no relationship to protect,
-      under a statute the Legislature wrote for this situation. The case will test two things at
-      once: whether an organization that spends its time briefing regulators can sue over the
-      conduct it briefs about, and whether California's rule that <q>the AI did it</q> is no defense
-      holds up the first time a defendant tries it.
+      The Hugging Face incident is the clearest documented case so far of an AI system harming an outside
+      company on its own. For two months it led to a subpoena and no lawsuit. It now has a lawsuit, brought
+      by an advocacy group with no business ties to protect, under a law California wrote for this
+      situation.
     </p>
-
+    <p>
+      The case will test two things. One is whether a group that spends its time briefing regulators can sue
+      over the conduct it briefs them about. The other is whether California's rule that <q>the AI did
+      it</q> is no defense holds up the first time a company tries it.
+    </p>
     <h2>Sources and further reading</h2>
     <ul>
       <li><a href="/case-filings/lasst-v-openai-complaint.pdf" target="_blank" rel="noopener">Complaint, Legal Advocates for Safe Science and Technology, Inc. v. OpenAI Group PBC (Cal. Super. Ct., San Francisco County, filed September 29, 2026) (PDF, 36 pages)</a></li>
@@ -663,12 +654,15 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       </ul>
     </div>
 
-    <div class="inline-cta">
+    <div class="cta-box">
       <p>
         <strong>Affected by harm involving ChatGPT?</strong> If you or a family member experienced serious harm following sustained ChatGPT use, you can request a free case review through Lawsuit Center. Reviews are conducted by participating legal professionals and intake partners. Submitting a request does not create an attorney-client relationship.
       </p>
       <p>
-        <a href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=cfsl_inline_cta" class="btn-primary">Request a Case Review &rarr;</a>
+        <a href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=cfsl_inline_cta" class="btn btn-primary">Request a Case Review &rarr;</a>
+      </p>
+      <p class="cta-note">
+        Educational purposes only. Submitting the form on Lawsuit Center does not create an attorney-client relationship.
       </p>
     </div>
 
