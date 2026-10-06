@@ -1457,4 +1457,28 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "ozempic lawsuit updates update september 2026 waiting ruling where glp cases stand after expert hearing vision loss news what watch next things right now judge heard experts her could mean people still filing how page fits main sources find out if may have case about author david meldofsky california licensed attorney last updated 23 saw story week someone who lost sight one eye taking another shot wondering lawsuits nobody has been paid no trial date set any federal biggest open question sits philadelphia she five days testimony deciding whether doctors scientists hired injured can testify answer will shape every stomach took these shots were later treated serious problem sudden ask free review history supports claim depends which drug records show deadline state pick obligation deadlines short submitting request does not create client relationship"
   },
+  {
+    title: "Suboxone Film vs. Tablet: Key Differences",
+    url: "suboxone-film-vs-tablet",
+    category: "Legal Guide",
+    text: "suboxone film vs tablet key differences tablets hold same medicine how they differ why most patients were moved tooth decay lawsuits focus what difference two forms do both affect teeth find out which one took common questions about ask free case review sources related guides stronger than still sold subutex sublocade can file lawsuit if only should switch author david meldofsky california licensed attorney founder informer last updated october 2026 many people who take switched brand generic little explanation inside stayed changed was form comes packaged long sits against center thousands over page explains compare themselves see claims provides general educational information not medical legal advice buprenorphine suits decision prescriber please stop because later lost needed major dental work whether history supports claim depends own facts pick situation fits"
+  },
+  {
+    title: "Suboxone Lawsuit: Tooth Decay Claims",
+    url: "suboxone-lawsuit",
+    category: "Lawsuit Topic",
+    text: "suboxone lawsuit tooth decay claims film lawsuits say acidic strip caused loss what who suing may want free case review qualify happened dental damage looks like if still take filing these where cases stand deadlines information matters common questions about ask sources related guides there settlement can file should stop taking does matter whether took tablet generic being sued how much worth author david meldofsky california licensed attorney founder informer last updated october 2026 prescription dissolves under tongue people every day often years stay off opioids some them their teeth began crack fall out while they were thousands have now company sells was made too no one warned dentists until 2022 guide explains also covers do large groups move through court see mdl basics page provides general educational not constitute legal advice history supports claim depends facts only lawyer reviews those please change because talk prescriber first fda says benefits medicines clearly outweigh risks"
+  },
+  {
+    title: "Suboxone Lawsuit Update October 2026: No Settlement Yet",
+    url: "suboxone-lawsuit-updates",
+    category: "Legal Guide",
+    text: "suboxone lawsuit updates update october 2026 no settlement yet where tooth decay cases stand 022 federal fifty test being prepared next hearing date things right now court forcing clinics pharmacies hand over records 2024 list claims cleaned up indivior merger people still filing what watch how page fits main sources find out if may have case about author david meldofsky california licensed attorney founder informer last updated growing were pending 195 more than month earlier there trial has been set preparing first depositions running into january 2027 reports litigation going general education not legal advice whether history supports claim depends facts only lawyer who reviews them can say please do stop taking because talk prescriber took film lost teeth needed major dental work ask free review own pick situation obligation deadlines state submitting request does create client relationship"
+  },
+  {
+    title: "Does Suboxone Rot Your Teeth?",
+    url: "suboxone-tooth-decay",
+    category: "Legal Guide",
+    text: "suboxone tooth decay does rot teeth fda warned 2022 film similar medicines can damage signs why blamed how protect what lawsuits say found long takes if thinking about claim common questions ask free case review sources related guides do tablets cause too sublocade should stop taking save my damaged fixed there lawsuit author david meldofsky california licensed attorney founder informer last updated october 2026 started breaking down while were not alone january buprenorphine dissolved mouth cavities infections loss some people reports had no dental problems before they page explains still take also covers have filed full picture those cases see claims provides general educational information medical legal advice please change because talk prescriber first lost needed major work whether history supports depends own facts pick situation fits"
+  },
 ];
