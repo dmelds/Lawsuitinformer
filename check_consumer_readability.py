@@ -133,6 +133,11 @@ CTA_EXEMPT = {
     "news-and-analysis.html", "legal-terms-glossary.html",
     "contributor-guidelines.html", "community-education.html",
     "professor-perspective.html", "browse-lawsuits.html",
+    # Added 2026-10-06. Its readers are people who have been sued, mostly
+    # over debts. Every Lawsuit Center intake is for people bringing an
+    # injury claim, so a case-review CTA would send a defendant to the
+    # wrong desk.
+    "what-happens-if-you-ignore-a-lawsuit.html",
 }
 CTA_LINK = re.compile(
     r'<a\b[^>]*\bhref="(https?://(?:www\.)?lawsuit\.center[^"]*)"', re.I)
