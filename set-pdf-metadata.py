@@ -68,6 +68,8 @@ TITLES = {
         "Rutledge v. Walgreen Petition for Rehearing and Rehearing En Banc",
     "shamblin-v-openai-complaint.pdf":
         "Shamblin v. OpenAI Amended Complaint",
+    "suboxone-mdl-3092-schedule-a-complaint.pdf":
+        "In re Suboxone Film MDL 3092 Schedule A Complaint",
     "turner-scott-v-openai-complaint.pdf":
         "Turner-Scott v. OpenAI Complaint",
 }

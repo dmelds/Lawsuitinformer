@@ -66,6 +66,10 @@
 /case-filings/arizona-v-loreal-hair-relaxer-complaint.pdf
   Link: <https://lawsuitinformer.com/hair-relaxer-lawsuit-updates>; rel="canonical"
 
+# Court filings (Suboxone cluster)
+/case-filings/suboxone-mdl-3092-schedule-a-complaint.pdf
+  Link: <https://lawsuitinformer.com/suboxone-lawsuit>; rel="canonical"
+
 # perf:cache-policy
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
