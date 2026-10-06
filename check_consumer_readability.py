@@ -39,6 +39,13 @@ ERROR  FAQ schema that does not match the visible FAQ. Either a question in
        visible, and drifted answers go stale invisibly.
 ERROR  Grade level above GRADE_MAX on a case page. These pages are read by
        families, often in the worst week of their lives.
+ERROR  Doubled sentence punctuation, sitewide: a period after a period
+       ("company..") or after a question mark ("area?."), in visible copy
+       or in JSON-LD. Added 2026-10-05 after an upload on 2026-09-04 put 66
+       of them on five pages (states-suing-ai-companies, minecraft-lawsuit,
+       take-it-down-act, pfas-water-contamination-lawsuits, start-here),
+       FAQ schema included, and nothing caught them for a month. A real
+       ellipsis is three dots and is left to the ellipsis rule below.
 WARN   Jargon term from BLOCKLIST. Each has a plain equivalent. Some survive
        review (a docket number, a statute a page is genuinely about), so
        this warns rather than blocks.
@@ -186,6 +193,10 @@ ADJUDICATING = [
 STRIP = re.compile(
     r"<script.*?</script>|<style.*?</style>|<header.*?</header>"
     r"|<footer.*?</footer>|<nav.*?</nav>", re.S | re.I)
+DOUBLE_STOP = re.compile(r'(?:[A-Za-z0-9)%]\.|\?)\.(?=[\s<"]|$)', re.M)
+NON_LD_SCRIPT = re.compile(
+    r"<script(?![^>]*application/ld\+json)[^>]*>.*?</script>|<style.*?</style>",
+    re.S | re.I)
 LD = re.compile(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', re.S | re.I)
 
 
@@ -345,6 +356,11 @@ def check(path, in_cluster):
             elif vis[q] != a:
                 errors.append(f"FAQ answer differs between page and schema: {q!r}")
 
+    prose = NON_LD_SCRIPT.sub(" ", html)
+    for m in DOUBLE_STOP.finditer(prose):
+        ctx = " ".join(prose[max(0, m.start()-50):m.end()+2].split())
+        errors.append(f"doubled punctuation: ...{ctx}")
+
     for n, t in paragraphs(html):
         if n >= PARAGRAPH_MAX:
             warnings.append(f"{n}-word paragraph: {t[:90]}...")
@@ -354,7 +370,7 @@ def check(path, in_cluster):
 
     if not in_cluster:
         # Sitewide tier stops here: adjudicating language, FAQ drift,
-        # paragraph length and the CTA set only.
+        # doubled punctuation, paragraph length and the CTA set only.
         return errors, warnings
 
     if name in CASE_PAGES:
@@ -407,7 +423,8 @@ def main():
     print(f"Consumer readability check - {len(targets)} pages scanned "
           f"({n_cluster} in the AI cluster, held to grade max {GRADE_MAX} "
           f"and sentence max {SENTENCE_MAX}; every page checked for "
-          f"reader-adjudicating language, FAQ drift, paragraphs of "
+          f"reader-adjudicating language, FAQ drift, doubled punctuation, "
+          f"paragraphs of "
           f"{PARAGRAPH_MAX}+ words and the CTA set)\n")
     for path in targets:
         errors, warnings = check(path, path.name in cluster)

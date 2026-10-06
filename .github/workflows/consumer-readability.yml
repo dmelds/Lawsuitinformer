@@ -1,0 +1,68 @@
+name: Check Consumer Readability
+
+# check_consumer_readability.py existed since September but ran in no workflow,
+# so it only ever caught what someone remembered to run it on. On 2026-09-04 an
+# upload put 66 doubled periods ("company..", "area?.") on five pages, FAQ
+# schema included, and they sat live for a month until a page was opened by
+# hand on 2026-10-05.
+#
+# GATE: pull requests run with --strict, so any ERROR fails the PR. The errors
+# are reader-adjudicating language, FAQ schema that disagrees with the page,
+# doubled punctuation, and a case page over the grade ceiling. The baseline was
+# zero errors when this was switched on, so the gate blocks only new defects.
+# WARNINGS (CTA set, sentence and paragraph length, jargon, title and
+# description length) print but never fail the run; a CTA backlog of ~190
+# pages is being worked down separately.
+#
+# The monthly and manual runs report and exit 0.
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['**.html', 'check_consumer_readability.py']
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-consumer-readability:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      # textstat scores grade level with NLTK's cmudict, which it downloads
+      # from raw.githubusercontent.com on first use. A failed download makes
+      # the checker exit non-zero on a page that may be fine, so fetch it
+      # here with retries, and keep it between runs, so the gate only ever
+      # fails on content. Version pinned to the one the baseline was checked
+      # with; bump deliberately.
+      - name: Cache NLTK data
+        uses: actions/cache@v4
+        with:
+          path: ~/nltk_data
+          key: nltk-cmudict-v1
+
+      - name: Install textstat and cmudict
+        run: |
+          pip install --quiet textstat==0.7.13
+          for i in 1 2 3 4 5; do
+            python3 -c "import nltk; nltk.download('cmudict', quiet=True); from nltk.corpus import cmudict; cmudict.dict()" && break
+            echo "cmudict download failed (attempt $i), retrying"; sleep 10
+          done
+
+      - name: Check consumer readability (gate)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: python3 check_consumer_readability.py --strict
+
+      - name: Check consumer readability (report)
+        if: ${{ github.event_name != 'pull_request' }}
+        run: python3 check_consumer_readability.py
