@@ -124,6 +124,15 @@ CTA_EXEMPT = {
     "404.html", "thank-you.html", "privacy-policy.html", "disclaimer.html",
     "sms-terms.html", "about.html", "contact.html", "editorial-policy.html",
     "david-meldofsky.html", "dr-thomas-hatzilabrou.html",
+    # Added 2026-10-05. Lawsuit Center has no intake for the House v. NCAA
+    # settlement, and both pages tell athletes the claims process is free and
+    # to start at the official settlement site; a case-review CTA there would
+    # contradict the page. The rest are editorial and index pages whose job is
+    # to send readers to other Informer pages, not to Center.
+    "house-ncaa-settlement-update.html", "house-ncaa-settlement-explained.html",
+    "news-and-analysis.html", "legal-terms-glossary.html",
+    "contributor-guidelines.html", "community-education.html",
+    "professor-perspective.html", "browse-lawsuits.html",
 }
 CTA_LINK = re.compile(
     r'<a\b[^>]*\bhref="(https?://(?:www\.)?lawsuit\.center[^"]*)"', re.I)
