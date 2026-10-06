@@ -82,7 +82,7 @@
       "@id": "https://lawsuitinformer.com/ai-output-product-or-content"
     },
     "datePublished": "2026-06-12",
-    "dateModified": "2026-06-12",
+    "dateModified": "2026-10-06",
     "inLanguage": "en-US",
     "author": {
       "@type": "Person",
@@ -151,7 +151,7 @@
       "name": "Has any court decided whether an AI chatbot is a product?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not as a matter of law. Garcia v. Character Technologies held in May 2025 that a plaintiff had plausibly alleged a chatbot was a product, which allowed the case to proceed to discovery. That is the furthest any court has gone, and it is procedural rather than final."
+        "text": "Not as a matter of law. In May 2025, the court in Garcia v. Character Technologies found the family had made a believable case that a chatbot was a product. That let the case move on to gathering evidence. That is the furthest any court has gone, and it was an early ruling in the case."
       }
     },
     {
@@ -383,11 +383,22 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <p class="article-date">Published June 12, 2026</p>
 
     <p class="article-intro">
-      Every major lawsuit against an AI company runs into the same question before anything else can happen: is what a chatbot says a product, the way a car or a medication is a product, or is it content, the way a book or a website post is content? The answer decides which body of law applies, which defenses are available, and in many cases whether the lawsuit survives its first motion. This guide explains the question in plain English, why it is genuinely hard, and how courts have started to answer it.
+      Every major lawsuit against an AI company runs into the same question first. Is what a chatbot says a product, like a car or a medication? Or is it content, like a book or a website post? The answer decides which laws apply and which defenses the company can use. In many cases, it also decides whether the lawsuit survives the company's first request to throw it out.
+    </p>
+  <div class="hero-action-strip">
+    <p class="hero-action-prompt"><strong>If an AI chatbot played a part in harm to you or your family, you can request a free case review.</strong> Pick what fits:</p>
+    <div class="hero-action-buttons">
+      <a class="hero-action-btn" href="https://lawsuit.center/ai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=apoc_hero_chatbot" rel="noopener">A chatbot conversation</a>
+      <a class="hero-action-btn" href="https://lawsuit.center/ai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=apoc_hero_other" rel="noopener">Something else</a>
+    </div>
+    <p class="hero-action-note">Free review. Submitting does not create an attorney-client relationship.</p>
+  </div>
+    <p class="article-intro">
+      This guide explains the question in plain English, why it is genuinely hard, and how courts have started to answer it.
     </p>
 
     <p>
-      This is the doctrinal companion to our <a href="ai-lawsuits">AI Lawsuits overview</a> and the <a href="openai-lawsuits">OpenAI case tracker</a>. The full legal treatment of this question is David Meldofsky's Law360 Expert Analysis, <a href="https://davidmeldofsky.com/law360-ai-product-or-content" target="_blank" rel="noopener">Product-Or-Content Question Is Pivotal In AI Litigation</a>, written for a professional audience. This page covers the same ground for non-lawyers.
+      This guide goes with our <a href="ai-lawsuits">AI Lawsuits overview</a> and the <a href="openai-lawsuits">OpenAI case tracker</a>. The full legal treatment of this question is David Meldofsky's Law360 Expert Analysis, <a href="https://davidmeldofsky.com/law360-ai-product-or-content" target="_blank" rel="noopener">Product-Or-Content Question Is Pivotal In AI Litigation</a>, written for a professional audience. This page covers the same ground for non-lawyers.
     </p>
 
     <div class="info-box">
@@ -408,17 +419,17 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </p>
 
     <p>
-      If AI output is <strong>content</strong>, two powerful defenses come into play. Section 230 of the Communications Decency Act protects online services from being treated as the publisher of information provided by someone else, and the First Amendment protects speech. Together, those defenses have ended most lawsuits against internet platforms for decades, usually before any evidence is gathered.
+      If AI output is <strong>content</strong>, two powerful defenses come into play. Section 230 of the Communications Decency Act protects online services from being treated as the publisher of what someone else posted. The First Amendment protects speech. Together, those defenses have ended most lawsuits against internet platforms for decades, usually before any evidence is gathered.
     </p>
 
     <p>
-      So when a family sues OpenAI over a death they connect to ChatGPT conversations, the first real fight is not about what happened. It is about which of those two worlds the case lives in.
+      So when a family sues OpenAI over a death they connect to ChatGPT conversations, the first real fight is over which of those two worlds the case belongs in. What happened comes later.
     </p>
 
     <h2 id="where-the-line-came-from">Where the Line Came From</h2>
 
     <p>
-      Product liability law grew up around physical goods, and information has always sat outside it. The classic case is Winter v. G.P. Putnam's Sons, a 1991 federal appeals decision about a mushroom encyclopedia. Readers who relied on the book ate poisonous mushrooms and were seriously injured. The court held that while the physical book might be a product, the ideas and information inside it were not, so strict product liability did not apply. Courts reached similar results for navigation charts and standalone software.
+      Product liability law grew up around physical goods, and information has always sat outside it. The classic case is Winter v. G.P. Putnam's Sons, a 1991 federal appeals decision about a mushroom encyclopedia. Readers who relied on the book ate poisonous mushrooms and were seriously injured. The court said the physical book might be a product, but the ideas and information inside it were not. So the rules for defective products did not apply. Courts reached similar results for navigation charts and standalone software.
     </p>
 
     <p>
@@ -428,7 +439,10 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <h2 id="why-ai-is-harder">Why Generative AI Breaks the Old Categories</h2>
 
     <p>
-      A chatbot's output is text, which sounds like content. But the system that produces the text is shaped end to end by its manufacturer: what data it was trained on, what behaviors were rewarded during training, what safety systems were layered on top, and what the company did when those systems flagged problems. Three features make AI harder to classify than any earlier software, and each one cuts both ways.
+      A chatbot's output is text, which sounds like content. But the company that built the system shapes it from start to finish. It chooses the training data and decides which behaviors get rewarded in training. It adds safety systems on top, and it decides what to do when those systems flag problems.
+    </p>
+    <p>
+      Three features make AI harder to classify than any earlier software, and each one cuts both ways.
     </p>
 
     <ul class="lawsuit-list">
@@ -440,19 +454,29 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <h2 id="plaintiff-framing">How Plaintiffs Frame It</h2>
 
     <p>
-      The strongest version of the plaintiff argument is not that the chatbot said a bad thing. It is that the company designed, trained, and deployed a system whose foreseeable use produced specific categories of serious harm while safer alternatives went unused. That mirrors how plaintiffs plead defects in pharmaceuticals and medical devices: the defect is not the individual pill or sentence, it is the design decisions, the testing, the warnings, and the company's response once problems surfaced. All of that is manufacturer conduct, and manufacturer conduct is what product liability law has always evaluated.
+      The families' strongest argument is about the company's choices. They say the company designed, trained, and released a system that predictably caused specific kinds of serious harm, while safer options went unused. That mirrors how drug and medical device cases work. The defect lies in the design decisions, the testing, the warnings, and how the company responded once problems surfaced. Those are all choices the maker made, and a maker's choices are what product liability law has always judged.
     </p>
 
     <p>
-      The complaints in the current OpenAI docket plead several overlapping theories built on that framing, and some of them are designed to survive even if the product question goes against the plaintiffs:
+      The complaints in the current OpenAI cases make several overlapping claims built on that argument. Some are designed to survive even if the product question goes against the families:
     </p>
 
     <ul class="lawsuit-list">
-      <li><strong>Defective design</strong> claims allege the model was trained to be agreeable in ways that made it affirm and follow vulnerable users, and that safer designs were available and not used.</li>
+      <li><strong>Defective design</strong> claims say the model was trained to be so agreeable that it affirmed and followed vulnerable users. They say safer designs were available and went unused.</li>
       <li><strong>Failure of safety operations</strong> claims allege internal threat-detection systems flagged dangerous conversations and the company's response was inadequate. This theory asks only whether stated safety practices matched actual conduct, not whether the output is a product.</li>
       <li><strong>Failure to warn</strong> claims allege the product was marketed as broadly safe, including for emotionally sensitive use, despite internal knowledge that it performed unreliably in exactly those situations.</li>
       <li><strong>Negligent entrustment</strong> claims, with roots in cases about cars and firearms, allege the company kept providing access to a user it had reason to know was dangerous. The claim targets the access decision, not the content, which is why it may survive even a ruling that the output is protected content.</li>
     </ul>
+
+    <div class="inline-cta">
+      <p>
+        <strong>Was your family harmed after long-term chatbot use?</strong>
+        Lawsuit Center offers a free case review. Submitting a request does not create an attorney-client relationship.
+      </p>
+      <a class="btn btn-primary" href="https://lawsuit.center/ai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=apoc_inline_cta" rel="noopener">
+        Request a Free Case Review
+      </a>
+    </div>
 
     <h2 id="section-230">Section 230, in Plain English</h2>
 
@@ -461,7 +485,10 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </p>
 
     <p>
-      AI companies argue the rule fits chatbots too: the user's prompt is the information provided by another person, and the chatbot's answer is functionally a reply to it. Plaintiffs argue the opposite: with a chatbot there is no third party, because the system itself generates the words, and the statute was never meant to immunize a company from the consequences of its own system's design. Which reading wins is one of the central open questions in AI law, and the answer will shape the next generation of Section 230 cases well beyond chatbots.
+      AI companies argue the rule fits chatbots too. In their view, the user's prompt is information from another person, and the chatbot's answer is a reply to it. The families argue there is no other person, because the system itself writes the words. They also say the law was never meant to shield a company from the results of its own system's design.
+    </p>
+    <p>
+      Which reading wins is one of the central open questions in AI law. The answer will shape future Section 230 cases well beyond chatbots.
     </p>
 
     <h2 id="first-amendment">The First Amendment Argument</h2>
@@ -477,17 +504,23 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </p>
 
     <p>
-      In May 2025, the court declined to dismiss the core product liability and negligence claims. The ruling did not hold that the chatbot is a product as a matter of law. It held the plaintiff had plausibly alleged it was, that the conduct described could be characterized as design rather than publishing, and that the First Amendment question could not be decided at the pleadings stage. That is a procedural ruling, not a final one. But it was the ruling plaintiffs needed, because it sends the question to a developed factual record, where internal documents, training decisions, and safety records come into evidence. The full case guide is at <a href="garcia-v-character-ai-lawsuit">Garcia v. Character Technologies</a>, with the broader docket in our <a href="character-ai-lawsuit">Character.AI lawsuits overview</a>.
+      In May 2025, the court refused to dismiss the core product liability and negligence claims. It left open whether the chatbot is a product. It found the family had made a believable case that it might be, and that the conduct could be treated as design rather than publishing. It also found the First Amendment question could not be decided that early.
+    </p>
+    <p>
+      The ruling is an early step, and the case did not reach a final decision on these questions. It was still the ruling the families needed. It lets the question be decided on the evidence, including internal documents, training decisions, and safety records. The full case guide is at <a href="garcia-v-character-ai-lawsuit">Garcia v. Character Technologies</a>, with the other cases in our <a href="character-ai-lawsuit">Character.AI lawsuits overview</a>.
     </p>
 
     <h2 id="openai-docket">How the OpenAI Cases Test the Question</h2>
 
     <p>
-      The current OpenAI docket approaches the question from several angles at once, which distributes the risk that any single theory fails. <a href="raine-v-openai-lawsuit">Raine v. OpenAI</a> carries the design-defect theory on its strongest alleged facts. The <a href="tumbler-ridge-openai-lawsuits">Tumbler Ridge school shooting suits</a> carry the safety-operations theory, which does not depend on the product question at all. The <a href="chatgpt-fsu-shooting-lawsuit">FSU shooting case</a> carries negligent entrustment in its most traditional form. The <a href="chatgpt-overdose-lawsuit-scott">Turner-Scott overdose case</a> carries failure to warn in a medical information setting. And Florida's June 2026 civil enforcement suit shows state regulators pressing the same threshold question through consumer protection law; that suit is covered at <a href="florida-v-openai-lawsuit">Florida v. OpenAI</a>, with the wider enforcement docket tracked at <a href="states-suing-ai-companies">States Suing AI Companies</a>.
+      The current OpenAI cases come at the question from several angles at once, so the families do not depend on any single theory. <a href="raine-v-openai-lawsuit">Raine v. OpenAI</a> carries the design-defect theory on its strongest alleged facts. The <a href="tumbler-ridge-openai-lawsuits">Tumbler Ridge school shooting suits</a> carry the safety-operations theory, which does not depend on the product question at all. The <a href="chatgpt-fsu-shooting-lawsuit">FSU shooting case</a> carries negligent entrustment in its most traditional form. The <a href="chatgpt-overdose-lawsuit-scott">Turner-Scott overdose case</a> carries failure to warn in a medical information setting.
+    </p>
+    <p>
+      Florida's June 2026 suit shows a state pressing the same first question through consumer protection law. That suit is covered at <a href="florida-v-openai-lawsuit">Florida v. OpenAI</a>, and other state actions are tracked at <a href="states-suing-ai-companies">States Suing AI Companies</a>.
     </p>
 
     <p>
-      Motion-to-dismiss rulings expected through late 2026 will begin to answer the question. No single ruling will settle it. The pattern across the rulings, which theories survive and which courts adopt which framing, is what will define the terrain.
+      Rulings on OpenAI's requests to dismiss these cases, expected through late 2026, will begin to answer the question. No single ruling will settle it. The pattern across the rulings, which theories survive and which courts adopt which framing, is what will define the terrain.
     </p>
 
     <h2 id="faq">Common Questions</h2>
@@ -499,7 +532,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
     <h3>Has any court decided whether an AI chatbot is a product?</h3>
     <p>
-      Not as a matter of law. Garcia v. Character Technologies held in May 2025 that a plaintiff had plausibly alleged a chatbot was a product, which allowed the case to proceed to discovery. That is the furthest any court has gone, and it is procedural rather than final.
+      Not as a matter of law. In May 2025, the court in Garcia v. Character Technologies found the family had made a believable case that a chatbot was a product. That let the case move on to gathering evidence. That is the furthest any court has gone, and it was an early ruling in the case.
     </p>
 
     <h3>Does Section 230 protect AI companies like OpenAI?</h3>
@@ -533,13 +566,16 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       </ul>
     </div>
 
-    <div class="inline-cta">
+    <div class="cta-box">
       <p style="font-size:0.85em;color:#666;margin-bottom:8px;"><strong>Attorney Advertising.</strong> Lawsuit Informer is operated by a California-licensed attorney. Past results do not guarantee future outcomes.</p>
       <p>
         <strong>Affected by harm involving an AI product?</strong> If you or a family member experienced serious harm connected to an AI chatbot or another AI tool, you can request a free, confidential case review through Lawsuit Center. Reviews are conducted by participating legal professionals and intake partners. Submitting a request does not create an attorney-client relationship.
       </p>
       <p>
-        <a href="https://lawsuit.center/ai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=apoc_btn" class="btn-primary">Request a Case Review &rarr;</a>
+        <a href="https://lawsuit.center/ai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=ai_hub&amp;utm_content=apoc_btn" class="btn btn-primary">Request a Case Review &rarr;</a>
+      </p>
+      <p class="cta-note">
+        Educational purposes only. Submitting the form on Lawsuit Center does not create an attorney-client relationship.
       </p>
     </div>
 
