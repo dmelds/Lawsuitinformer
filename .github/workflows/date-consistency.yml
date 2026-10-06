@@ -9,6 +9,14 @@ name: Check Date Consistency
 # The monthly run is a review reminder, not a gate: it reports and exits 0, so a
 # stale month never pressures a title-only bump. To claim a new month, update
 # the page and move dateModified with it.
+#
+# STALE STAMP, added 2026-10-05. On a pull request the checker also diffs each
+# changed page's body text against the base branch, and fails when the text
+# moved and dateModified did not. Every other rule compares a page against
+# itself, which is why 24 pages shipped on 10/5 with their stamps untouched and
+# nothing said so. Template work inside <main> that is not an edit to the page
+# (the same sentence changed on 170 author boxes, say) goes in a PR whose title
+# contains [skip lastmod]; the rule is then left off for that run.
 
 on:
   pull_request:
@@ -28,8 +36,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Fetch the base branch for the stale-stamp diff
+        if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.title, '[skip lastmod]') }}
+        run: git fetch --no-tags --depth=1 origin ${{ github.event.pull_request.base.sha }}
+
       - name: Check date consistency (gate)
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.title, '[skip lastmod]') }}
+        run: python3 check_date_consistency.py --strict --base ${{ github.event.pull_request.base.sha }}
+
+      - name: Check date consistency (gate, stale-stamp rule off by PR title)
+        if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.title, '[skip lastmod]') }}
         run: python3 check_date_consistency.py --strict
 
       - name: Check date consistency (report)

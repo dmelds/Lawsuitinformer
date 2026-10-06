@@ -44,6 +44,18 @@ WARN   The <title> stamp is OLDER than the month the check is running in, even
        Warn only, and never on a PR: the stamp goes stale by the calendar
        turning over, not by anything the commit did.
 
+ERROR  (pull requests only, with --base <ref>) The page's body text changed
+       against the base branch and dateModified did not move. Added 2026-10-05
+       after a day of readability and CTA edits shipped across 24 pages with
+       every stamp left where it was; nothing here caught it, because every
+       other rule compares a page against itself and a page edited without a
+       bump still agrees with itself. Body text is what body_text() returns:
+       prose inside <main>, with scripts, nav, footer and the stamp lines
+       removed, so a sitewide script or footer change does not trip it. A
+       template change inside <main> that must not count as an edit goes in a
+       PR titled with [skip lastmod], which the workflow honours by leaving
+       --base off.
+
 Historical references are safe by construction. "the May 2025 ruling" in a page
 modified in 2026 is older than dateModified, so it never errors.
 
@@ -57,6 +69,9 @@ Usage
 -----
     python3 check_date_consistency.py            # report, exit 0
     python3 check_date_consistency.py --strict   # exit 1 on any ERROR
+    python3 check_date_consistency.py --strict --base origin/main
+                                                 # also fail a changed page whose
+                                                 # dateModified did not move
     python3 check_date_consistency.py --path .   # scan root (default .)
 """
 import json
@@ -399,8 +414,47 @@ def scan(path, now_ym=None, today_ymd=None):
     return errors, warnings
 
 
+def git(*args):
+    import subprocess
+    return subprocess.run(["git", *args], capture_output=True, text=True)
+
+
+def stale_against(base, root):
+    """Pages whose body text differs from `base` while dateModified is unchanged.
+
+    Returns {path: message}. Added files have no base version and are skipped;
+    their stamps are checked by the self-consistency rules like any other page.
+    """
+    out = {}
+    res = git("diff", "--name-only", "--diff-filter=M", base, "--", "*.html")
+    if res.returncode != 0:
+        print(f"note: could not diff against {base}: {res.stderr.strip()}")
+        return out
+    for rel in res.stdout.split():
+        path = root / rel
+        if not path.exists():
+            continue
+        old = git("show", f"{base}:{rel}")
+        if old.returncode != 0:
+            continue
+        new_html = path.read_text(encoding="utf-8", errors="ignore")
+        if body_text(old.stdout) == body_text(new_html):
+            continue
+        old_dm, _ = jsonld(old.stdout)
+        new_dm, _ = jsonld(new_html)
+        if old_dm and new_dm and old_dm == new_dm:
+            out[str(path)] = (
+                f"body text changed against {base} but dateModified is still "
+                f"{new_dm}; move dateModified and the visible Last Updated stamp "
+                f"with the edit, or title the PR [skip lastmod] if this is "
+                f"template work"
+            )
+    return out
+
+
 def main():
     strict = "--strict" in sys.argv
+    base = sys.argv[sys.argv.index("--base") + 1] if "--base" in sys.argv else None
     # The calendar rule is time-dependent, not commit-dependent: the same tree
     # passes in July and warns in August. Keep it off the PR gate so a merge
     # never fails for a reason the branch did not cause.
@@ -426,10 +480,15 @@ def main():
         if warnings:
             warned[str(path)] = warnings
 
+    if base:
+        for path, msg in stale_against(base, root).items():
+            bad.setdefault(path, []).append(msg)
+
     print(
         f"Date consistency check — {scanned} pages scanned "
         f"(build month: {today.strftime('%B %Y')}"
-        f"{'' if calendar else '; calendar rule off'})"
+        f"{'' if calendar else '; calendar rule off'}"
+        f"{f'; stale-stamp rule against {base}' if base else ''})"
     )
 
     if bad:
