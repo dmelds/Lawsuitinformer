@@ -5,8 +5,15 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 06 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 07 Oct 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Does Ozempic Cause Gastroparesis? What Studies Show</title>
+    <link>https://lawsuitinformer.com/does-ozempic-cause-gastroparesis</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/does-ozempic-cause-gastroparesis#2026-10-07</guid>
+    <pubDate>Wed, 07 Oct 2026 12:00:00 +0000</pubDate>
+    <description>What the research actually found about GLP-1 shots, stomach paralysis and vision loss, including how strong the evidence is and where it falls short.</description>
+  </item>
   <item>
     <title>Is AI Output a Product or Content? | Plain-English Guide</title>
     <link>https://lawsuitinformer.com/ai-output-product-or-content</link>
@@ -279,13 +286,6 @@
     <guid isPermaLink="false">https://lawsuitinformer.com/start-here#2026-10-05</guid>
     <pubDate>Mon, 05 Oct 2026 12:00:00 +0000</pubDate>
     <description>A plain-English beginner's guide from a California-licensed attorney: how lawsuits work, evidence, timing, and what to ask before signing.</description>
-  </item>
-  <item>
-    <title>States Suing AI Companies | Government Action Tracker</title>
-    <link>https://lawsuitinformer.com/states-suing-ai-companies</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/states-suing-ai-companies#2026-10-05</guid>
-    <pubDate>Mon, 05 Oct 2026 12:00:00 +0000</pubDate>
-    <description>A running tracker of state and local government action against AI companies, including Florida v. OpenAI and actions against Character.AI and xAI.</description>
   </item>
 </channel>
 </rss>
