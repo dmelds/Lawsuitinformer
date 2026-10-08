@@ -1481,4 +1481,16 @@ window.SEARCH_INDEX = [
     category: "Legal Guide",
     text: "suboxone tooth decay does rot teeth fda warned 2022 film similar medicines can damage signs why blamed how protect what lawsuits say found long takes if thinking about claim common questions ask free case review sources related guides do tablets cause too sublocade should stop taking save my damaged fixed there lawsuit author david meldofsky california licensed attorney founder informer last updated october 2026 started breaking down while were not alone january buprenorphine dissolved mouth cavities infections loss some people reports had no dental problems before they page explains still take also covers have filed full picture those cases see claims provides general educational information medical legal advice please change because talk prescriber first lost needed major work whether history supports depends own facts pick situation fits"
   },
+  {
+    title: "Filing a Lawsuit for a Family Member: Who Can Act",
+    url: "filing-a-lawsuit-for-a-family-member",
+    category: "Legal Guide",
+    text: "filing lawsuit family member who can act how spouse parent adult child ask about relative ill unable decide minor has died power attorney guardianship estates deadlines asking questions when make decisions cannot injured person after death what intake staff usually papers gather frequently asked sources request free case review personal representative file my does let me bring wrongful claim do need open estate before calling lawyer get medical records legal guide david meldofsky california licensed founder informer last updated october 2026 many calls come someone other than was hurt daughter her mother cancer husband because his wife no longer see well enough fill out form teenager any start conversation signing fee agreement takes authority law decides holds answer turns whether living able page walks through each those situations if drug product exposure them fits depends facts deadline their state pick one"
+  },
+  {
+    title: "Ozempic Vision Loss Lawsuits: NAION Explained",
+    url: "ozempic-vision-loss-lawsuit",
+    category: "Lawsuit Topic",
+    text: "ozempic vision loss lawsuit lawsuits naion explained sudden one eye after another glp drug what how doctors confirm which drugs cases name records keep research regulators say where stand if changes now frequently asked questions sources request free case review does come back named there settlement can ask family member pharmaceutical litigation david meldofsky california licensed attorney founder informer medically reviewed dr thomas hatzilabrou last updated october 2026 some people taking similar woke up morning could not see well out was no pain part view often top bottom half looked dim gray blurred many them lost sight did call happened have sued companies make these they knew raise risk warn patients page explains matter"
+  },
 ];
