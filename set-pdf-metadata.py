@@ -46,6 +46,8 @@ TITLES = {
         "Dunn v. Activision Blizzard Complaint",
     "florida-ag-v-openai-complaint.pdf":
         "Florida v. OpenAI Complaint",
+    "hoge-v-monsanto-summary-judgment-order.pdf":
+        "Hoge v. Monsanto Summary Judgment Order (D. Idaho, Oct. 1, 2026)",
     "johnson-v-activision-blizzard-complaint.pdf":
         "Johnson v. Activision Blizzard Complaint",
     "joshi-v-openai-complaint.pdf":

@@ -70,6 +70,10 @@
 /case-filings/suboxone-mdl-3092-schedule-a-complaint.pdf
   Link: <https://lawsuitinformer.com/suboxone-lawsuit>; rel="canonical"
 
+# Court filings (Roundup cluster)
+/case-filings/hoge-v-monsanto-summary-judgment-order.pdf
+  Link: <https://lawsuitinformer.com/roundup-lawsuit-updates>; rel="canonical"
+
 # perf:cache-policy
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
