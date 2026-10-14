@@ -62,6 +62,11 @@ WARN   Prose block (<p>, <li>, <blockquote>, <dd>, <td>) at or above
        199-word <li> on openai-lawsuits.html passed unflagged.
 WARN   Ellipses, or a title over 60 / description outside 110-160. House
        conventions, checked here because nothing else checks them.
+WARN   Byline, sitewide outside BYLINE_EXEMPT. Added 2026-10-14 after two
+       rewrite batches shipped 31 pages with the tail of the byline dropped
+       (11 with "California-licensed attorney" alone, 20 with the bare name).
+       The house byline is BYLINE; the four bio pages carry the Bar number
+       and are exempt.
 WARN   CTA set, sitewide outside CTA_EXEMPT. Added 2026-10-02 after a
        rewrite of peritoneal-mesothelioma.html shipped with only the two
        closing boxes it inherited, both reporting under one utm_content
@@ -117,6 +122,24 @@ GRADE_MAX = 10.5
 SENTENCE_MAX = 45
 PARAGRAPH_MAX = 120
 CTA_MIN = 3
+
+# House byline, as it appears on the page. The &middot; spelling renders the
+# same and is accepted. Pages that carry the Bar number instead are exempt.
+BYLINE = 'By <a href="david-meldofsky">David Meldofsky</a>, California-licensed attorney'
+BYLINE_TAILS = (" · Founder, Lawsuit Informer", " &middot; Founder, Lawsuit Informer")
+BYLINE_EXEMPT = {"about.html", "david-meldofsky.html", "editorial-policy.html", "start-here.html"}
+BYLINE_RE = re.compile(r'By <a href="david-meldofsky">David Meldofsky</a>[^\n<]*')
+
+
+def byline_problems(html):
+    """One finding when the page has a byline and it is not the house byline."""
+    m = BYLINE_RE.search(html)
+    if not m:
+        return []
+    found = m.group(0).rstrip()
+    if any(found == BYLINE + t for t in BYLINE_TAILS):
+        return []
+    return [f"byline is {found[3:60]!r}...; want {BYLINE[3:]!r} + ' · Founder, Lawsuit Informer'"]
 
 # Pages with no intake job: legal notices, people pages, the form's own
 # confirmation page. Add to this set rather than loosening a CTA rule.
@@ -382,6 +405,9 @@ def check(path, in_cluster):
     if name not in CTA_EXEMPT:
         warnings.extend(cta_problems(html))
 
+    if name not in BYLINE_EXEMPT:
+        warnings.extend(byline_problems(html))
+
     if not in_cluster:
         # Sitewide tier stops here: adjudicating language, FAQ drift,
         # doubled punctuation, paragraph length and the CTA set only.
@@ -439,7 +465,7 @@ def main():
           f"and sentence max {SENTENCE_MAX}; every page checked for "
           f"reader-adjudicating language, FAQ drift, doubled punctuation, "
           f"paragraphs of "
-          f"{PARAGRAPH_MAX}+ words and the CTA set)\n")
+          f"{PARAGRAPH_MAX}+ words, the CTA set and the byline)\n")
     for path in targets:
         errors, warnings = check(path, path.name in cluster)
         if not errors and not warnings:
