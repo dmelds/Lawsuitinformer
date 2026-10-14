@@ -1,0 +1,2 @@
+# Commits ignored for sitemap <lastmod>. See generate-sitemap.py.
+2207acc
