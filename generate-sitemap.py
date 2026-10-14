@@ -30,6 +30,24 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # See the module docstring note below for usage.
 SKIP_TOKEN = "[skip lastmod]"
 
+# Commits to ignore for <lastmod> even though their message lacks SKIP_TOKEN.
+# One full or abbreviated SHA per line in lastmod-skip-commits.txt at the repo
+# root; blank lines and lines starting with # are ignored. For a mechanical
+# sweep that went up without the token (a GitHub web upload keeps its default
+# "Add files via upload" message), add the upload commit here and re-run the
+# generator rather than rewriting history. Added 2026-10-14 after the byline
+# sweep (2207acc) rolled 28 pages to the same day.
+SKIP_COMMITS_FILE = os.path.join(ROOT, "lastmod-skip-commits.txt")
+
+
+def skip_commits() -> list:
+    try:
+        with open(SKIP_COMMITS_FILE, encoding="utf-8") as fh:
+            return [ln.strip() for ln in fh
+                    if ln.strip() and not ln.lstrip().startswith("#")]
+    except OSError:
+        return []
+
 # Pages kept OUT of the sitemap. Anything carrying a robots noindex is also
 # dropped automatically by is_noindex() below, so this list is only a backstop.
 EXCLUDE = {"404.html", "thank-you.html", "sms-terms.html"}
@@ -69,17 +87,21 @@ def git_date(path: str):
     # SKIP_TOKEN, so without it the PR merge that lands a mechanical sweep is
     # reported as the file's last change and the skip token is bypassed for
     # every file the merge was not TREESAME to a parent on.
+    skipped = skip_commits()
     for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
         try:
             r = subprocess.run(
-                ["git", "log", "-1", "--no-merges", "--format=%cs", *extra, "--", path],
+                ["git", "log", "--no-merges", "--format=%H %cs", *extra, "--", path],
                 cwd=ROOT, capture_output=True, text=True,
             )
         except Exception:
             return None
-        d = r.stdout.strip()
-        if d:
-            return d
+        for line in r.stdout.splitlines():
+            sha, _, d = line.partition(" ")
+            if extra and any(sha.startswith(x) for x in skipped):
+                continue
+            if d:
+                return d
     return None
 
 
