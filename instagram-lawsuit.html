@@ -888,10 +888,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   document.addEventListener('auxclick', freshen, true);
   decorate();
 
-  /* Outbound CTA click -> GA4. cta_click listener v3. The form lives on
+  /* Outbound CTA click -> GA4. cta_click listener v4. The form lives on
      lawsuit.center, so this is the only conversion signal Informer can record
      on its own side. cta_href is the destination path with no query string,
-     so BigQuery can tell an intake form from a case guide or a PDF. */
+     so BigQuery can tell an intake form from a case guide or a PDF. v4 holds
+     a plain same-tab click until GA4 confirms the send or 300 ms pass, so the
+     event is not lost to the navigation. */
   function ctaClick(e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
     if (!a || typeof window.gtag !== 'function') return;
@@ -906,12 +908,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       slot = u.searchParams.get('utm_content') || 'unknown';
       href = (u.pathname || '/').slice(0, 100);
     } catch (err) {}
-    window.gtag('event', 'cta_click', {
+    var params = {
       cta_slot: slot,
       cta_page: location.pathname,
       cta_label: (a.textContent || '').trim().slice(0, 60),
-      cta_href: href
-    });
+      cta_href: href,
+      transport_type: 'beacon'
+    };
+    /* Only a plain left click that will navigate this tab needs holding. */
+    var hold = e.type === 'click' && e.button === 0 && !e.defaultPrevented &&
+      !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey &&
+      (a.target || '_self') === '_self' && !a.hasAttribute('download');
+    if (!hold) { window.gtag('event', 'cta_click', params); return; }
+    e.preventDefault();
+    var done = false;
+    var go = function () { if (done) return; done = true; location.href = a.href; };
+    params.event_callback = go;
+    params.event_timeout = 300;
+    window.gtag('event', 'cta_click', params);
+    setTimeout(go, 300);
   }
   document.addEventListener('click', ctaClick, true);
   document.addEventListener('auxclick', ctaClick, true);
