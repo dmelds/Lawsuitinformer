@@ -1,0 +1,57 @@
+name: Check Situation Params
+
+# Informer CTA links that promise a prefilled Center form. Added 10/19/26
+# after the day's one real intake click (Depo-Provera hero, "I was diagnosed
+# with a meningioma") landed at the top of the Center page and left in nine
+# seconds: the button carried no ?situation= value, so nothing preselected
+# the form or scrolled to it. The same sweep found 16 hero buttons sending a
+# situation value that matched no option on the Center form they point to,
+# which looks correct in the HTML and does nothing on arrival. Center's
+# lead-events.js matches the param against option VALUES across every select
+# in the intake form, so a copy edit on either side can break the pairing
+# with no error anywhere. This run reads both repos and checks each link.
+#
+# GATE. A value that matches no option, or a situation param sent to a Center
+# page with no intake form, is an ERROR and fails the run with --strict.
+# Hero buttons with no situation value at all are listed and counted as a
+# NOTE and do not fail: whether prefill earns leads was unproven at install.
+#
+# Center is public, so the checkout needs no token, same as cannibalization.yml.
+# Runs on pull requests that touch HTML, daily (Center edits land without a
+# pull request here), and on demand. Output goes to the run summary.
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['**.html']
+  schedule:
+    - cron: '20 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-situation-params:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Lawsuit Informer
+        uses: actions/checkout@v7
+
+      - name: Checkout Lawsuit Center
+        uses: actions/checkout@v7
+        with:
+          repository: dmelds/lawsuits-center
+          ref: main
+          path: _center
+
+      - name: Check situation params against Center forms (gate)
+        shell: bash
+        run: |
+          set +e
+          echo '## Situation params' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python3 check_situation_params.py --center _center --strict 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          status=${PIPESTATUS[0]}
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
