@@ -18,7 +18,10 @@ the fallback.
 Item date: dateModified first, then datePublished. An update page that is
 revised today therefore moves back to the top of the feed, and its <guid>
 changes with the date so a feed reader shows the revision as a new entry.
-Mass Tort Wire keys stories on <link>, so it shows each page once.
+Each item also carries the page's datePublished as <atom:published>, so a
+reader that wants pages once, on the day they went up, has that date too.
+Mass Tort Wire's desk takes <pubDate> and shows a revision as a new arrival;
+a firm copy takes <atom:published> and shows the page once.
 
 The feed carries no <lastBuildDate> clock: <lastBuildDate> is the newest item
 date, so the file changes only when a page does and the workflow commits only
@@ -54,7 +57,7 @@ EXCLUDE = {"404.html", "thank-you.html", "sms-terms.html", "index.html"}
 # Site-name suffixes stripped from <title>: "Headline | Lawsuit Informer" -> "Headline".
 SITE_SUFFIXES = ("Lawsuit Informer", "Informer")
 
-# Written into every item. The wire reads <link>, readers read <guid>.
+# Item date is the first of these the page carries. The wire reads <link>, readers read <guid>.
 DATE_KEYS = ("dateModified", "datePublished")
 
 ROOT = Path(__file__).resolve().parents[ROOT_UP]
@@ -121,9 +124,9 @@ def _types(node) -> set:
     return set(t) if isinstance(t, list) else {t} if isinstance(t, str) else set()
 
 
-def schema_date(html: str) -> _dt.date | None:
-    """dateModified, else datePublished, from the page's JSON-LD. None when it has neither,
-    and None for a page that declares itself a listing, whatever dates it carries."""
+def schema_dates(html: str) -> dict[str, _dt.date]:
+    """The dateModified and datePublished the page's JSON-LD carries, by key. Empty when it
+    has neither, and empty for a page that declares itself a listing, whatever dates it carries."""
     found: dict[str, _dt.date] = {}
     for raw in LD_BLOCK.findall(html):
         try:
@@ -132,12 +135,18 @@ def schema_date(html: str) -> _dt.date | None:
             continue
         for node in _iter_nodes(data):
             if _types(node) & LISTING_TYPES:
-                return None
+                return {}
             for key in DATE_KEYS:
                 if key not in found:
                     date = _as_date(node.get(key))
                     if date:
                         found[key] = date
+    return found
+
+
+def schema_date(html: str) -> _dt.date | None:
+    """dateModified, else datePublished: the item date."""
+    found = schema_dates(html)
     for key in DATE_KEYS:
         if key in found:
             return found[key]
@@ -188,6 +197,11 @@ def rfc822(date: _dt.date) -> str:
     return format_datetime(_dt.datetime(date.year, date.month, date.day, 12, tzinfo=_dt.timezone.utc))
 
 
+def rfc3339(date: _dt.date) -> str:
+    # The same noon-UTC instant in Atom's own date form, for <atom:published>.
+    return f"{date.isoformat()}T12:00:00Z"
+
+
 def collect() -> list[dict]:
     items = []
     for path in sorted(PAGES.glob("*.html")):
@@ -199,13 +213,17 @@ def collect() -> list[dict]:
             continue
         if is_noindex(html):
             continue
-        date = schema_date(html)
+        dates = schema_dates(html)
+        date = next((dates[k] for k in DATE_KEYS if k in dates), None)
         if not date:
             continue
         title = page_title(html)
         if not title:
             continue
-        items.append({"url": page_url(path), "title": title, "description": page_description(html), "date": date})
+        # A page with no datePublished was never stamped as new, so its publish date is its date.
+        published = dates.get("datePublished", date)
+        items.append({"url": page_url(path), "title": title, "description": page_description(html),
+                      "date": date, "published": published})
     # Newest first; same-day pages A-Z so the order is stable between runs.
     items.sort(key=lambda i: (-i["date"].toordinal(), i["url"]))
     return items[:MAX_ITEMS]
@@ -230,6 +248,7 @@ def render(items: list[dict]) -> str:
         out.append(f"    <link>{xml_escape(i['url'])}</link>")
         out.append(f'    <guid isPermaLink="false">{xml_escape(i["url"])}#{i["date"].isoformat()}</guid>')
         out.append(f"    <pubDate>{rfc822(i['date'])}</pubDate>")
+        out.append(f"    <atom:published>{rfc3339(i['published'])}</atom:published>")
         if i["description"]:
             out.append(f"    <description>{xml_escape(i['description'])}</description>")
         out.append("  </item>")
