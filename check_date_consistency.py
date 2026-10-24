@@ -17,6 +17,19 @@ ERROR  The <title> stamp disagrees with the <h1> stamp or the og:title stamp.
 WARN   The <title> or <h1> stamp is OLDER than the dateModified month. The page
        was edited but the stamp did not move. Warn only: the stamp may be
        referring to an event rather than to currency.
+ERROR  The byline stamp is not in the "Last updated: <date>" form. Added
+       2026-10-24 after 22 pages were found carrying "Published June 11, 2026 ·
+       Updated October 4, 2026" in plain text. Two things went wrong at once:
+       Bing and Yahoo print the first date they find, so a status page updated
+       in October showed a June date in the result; and BYLINE below only
+       matched "Last updated:", so on those 22 pages the byline check matched
+       nothing and the page passed with its stamp never read. The 22 were
+       converted the same day, and the rule then found two more ("Published:
+       April 28, 2026" on the Law360 page, "Updated July 13, 2026" on
+       where-does-my-lawsuit-stand), converted with them. This rule stops the
+       form coming back. Accepts "Last updated" with a qualifier and the
+       Spanish "Última actualización:". Not time-dependent, so it runs
+       under --strict.
 ERROR  The two visible "Last Updated" stamps disagree with each other. A page
        carries one under the byline and a second in the article-meta footer,
        and nothing tied them together, so editing one and not the other left
@@ -130,6 +143,18 @@ FOOTER = re.compile(
 MAIN = re.compile(r"<main\b.*?</main>", re.S | re.I)
 DROP = re.compile(r"<(script|style|nav|footer|noscript)\b.*?</\1>", re.S | re.I)
 ARTICLE_DATE = re.compile(r'<p class="article-date">.*?</p>', re.S | re.I)
+# Labels the form rule accepts without reading a date: the English label with a
+# qualifier ("Last updated and medically reviewed:") and the Spanish pages'
+# label, whose "13 de agosto de 2026" DATETEXT cannot parse. Those pages are
+# in the right form; this script just does not read their dates yet.
+ACCEPTED_LABEL = re.compile(
+    r'<p class="article-date">\s*(?:Last updated[^:<]*:|Última actualización:)', re.S | re.I)
+# The old byline form. Read only so the comparisons below still run on a page
+# that carries it; the page is reported as an error for carrying it at all.
+OLD_BYLINE = re.compile(
+    r'<p class="article-date">\s*Published:?\s*' + WRAP + DATETEXT +
+    r'(?:.*?(?:Last\s+)?[Uu]pdated:?\s*' + WRAP + DATETEXT + r')?\s*(?:<[^>]+>\s*)*</p>',
+    re.S)
 SCHED = re.compile(
     r"\b(set for|is set|was set|were set|are set|set to|scheduled|expected|"
     r"runs? to|due|deadline|will|would|tentatively|through|until|by|"
@@ -381,6 +406,24 @@ def scan(path, now_ym=None, today_ymd=None):
         ymd = full_date(raw)
         if ymd:
             visible.append((name, ymd, raw))
+
+    # The byline stamp must be the "Last updated:" form. A page with an
+    # article-date paragraph that BYLINE could not read is carrying some other
+    # form, and the first date in it is what search engines print.
+    if ARTICLE_DATE.search(html) and not BYLINE.search(html) \
+            and not ACCEPTED_LABEL.search(html):
+        om = OLD_BYLINE.search(html)
+        shown = text(ARTICLE_DATE.search(html).group(0))
+        errors.append(
+            f"byline stamp is not in the 'Last updated: <date>' form "
+            f"(page shows \"{shown}\") — search results print the first date "
+            f"they find, and this check cannot read the update date from it"
+        )
+        if om and om.group(2):
+            raw = text(om.group(2))
+            ymd = full_date(raw)
+            if ymd:
+                visible.insert(0, ("byline", ymd, raw))
 
     if len(visible) == 2 and visible[0][1] != visible[1][1]:
         errors.append(
