@@ -1,0 +1,5 @@
+{"report_date": "2026-10-01",
+ "mdls": {"2738": {"pending": 69340, "prior": 69250}, "2741": {"pending": 1104, "prior": 3925}, "2873": {"pending": 15264, "prior": 15264},
+          "3004": {"pending": 6602, "prior": 6666}, "3043": {"pending": 113, "prior": 58}, "3047": {"pending": 3824, "prior": 3208},
+          "3060": {"pending": 12381, "prior": 12129}, "3092": {"pending": 2022, "prior": 1827}, "3094": {"pending": 4025, "prior": 4022},
+          "3140": {"pending": 6412, "prior": 6403}, "3163": {"pending": 247, "prior": 216}, "3166": {"pending": 180, "prior": 182}}}

@@ -1,0 +1,94 @@
+name: Status board
+
+# Rebuilds current-mass-tort-cases.html, the status board, from the update
+# pages: whenever an update page lands on main, once a day (so a court date
+# that has passed drops off COMING UP), and on demand. The generator writes
+# the file only when a row changed, so a quiet day commits nothing and the
+# page's Last updated stamp, sitemap lastmod and feed entry move only when a
+# reader would see something new. The commit touches only the board, which
+# matches none of this workflow's path filters, so it never re-triggers
+# itself; the feed and sitemap workflows pick the commit up as usual.
+#
+# Pending counts come from data/mdl_counts.json. Update that file when the
+# Judicial Panel posts a new monthly report (network-ops jpml_to_bq is the
+# source); a stale file leaves last month's counts on the board, never an error.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*-update.html'
+      - '*-updates.html'
+      - 'data/mdl_counts.json'
+      - 'generate_status_board.py'
+  schedule:
+    - cron: '41 12 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print the rows, write nothing)'
+        type: boolean
+        default: false
+      force:
+        description: 'Rewrite the board even if no row changed'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: status-board
+  cancel-in-progress: false
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Build the board
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_status_board.py --dry-run
+          elif [ "${{ inputs.force }}" = "true" ]; then
+            python generate_status_board.py --force
+          else
+            python generate_status_board.py
+          fi
+
+      # The date checker is stdlib and fails the run before a board with a bad stamp is
+      # committed. The readability checker needs textstat and cmudict; its own workflow
+      # reports on the board with every other page after the commit lands.
+      - name: Check the board
+        if: ${{ inputs.dry_run != true }}
+        run: python check_date_consistency.py --strict
+
+      - name: Commit if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain current-mass-tort-cases.html)" ]; then
+            echo "Board unchanged."
+            exit 0
+          fi
+          git add current-mass-tort-cases.html
+          git commit -m "Rebuild the status board from the update pages [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push after 5 attempts"
+          exit 1
