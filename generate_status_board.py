@@ -37,6 +37,12 @@ the feed and the Last updated stamp move only when a reader would see
 something new. When the rows change, dateModified and both visible stamps move
 to today.
 
+The homepage carries a short strip of the same rows, the five most recently
+changed open cases, between <!-- LI-BOARD:BEGIN --> and <!-- LI-BOARD:END --> in
+index.html. On the first run the block is inserted after the credibility strip;
+after that it is replaced in place. index.html is written only when the strip
+changed, on the same rule as the board.
+
     python3 generate_status_board.py            # writes the page if it changed
     python3 generate_status_board.py --dry-run  # prints what would change
     python3 generate_status_board.py --force    # writes even if unchanged
@@ -55,6 +61,11 @@ import sys
 
 SITE = "https://lawsuitinformer.com"
 OUT = "current-mass-tort-cases.html"
+HOME = "index.html"
+HOME_ROWS = 5
+HOME_BEGIN = "<!-- LI-BOARD:BEGIN -->"
+HOME_END = "<!-- LI-BOARD:END -->"
+HOME_ANCHOR = "<!-- ===================== END CREDIBILITY STRIP ===================== -->"
 COUNTS = os.path.join("data", "mdl_counts.json")
 SHOW = 2            # entries shown before the "show more" fold
 WEEK = 7            # days: the "changed in the last 7 days" band
@@ -85,6 +96,9 @@ URGENT_WORDS = re.compile(r"\b(deadline|closes?|sign-?ups?)\b", re.I)
 LIVE_WORDS = re.compile(r"\b(trial|verdict|hearing)\b", re.I)
 
 CAMPAIGN = "status_board"
+# The hero and closing CTAs point at Center's general /case-review form, whose select has no
+# "Not Sure" value, so no button here sends situation= (check_situation_params fails a value
+# the target form cannot take). Row CTAs name a dedicated intake and send nothing either.
 
 
 def cta(path: str, slot: str, extra: str = "") -> str:
@@ -380,7 +394,7 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
          "If you were hurt by a product on this page, you can ask for a free case review. Whether your history supports a claim depends on your facts. Pick what fits:</p>"
          '<div class="hero-action-buttons">'
          f'<a class="hero-action-btn" href="{cta("case-review", "status_hero_review")}" rel="noopener">Request a free case review</a>'
-         f'<a class="hero-action-btn" href="{cta("case-review", "status_hero_unsure", "&amp;situation=Not%20Sure")}" rel="noopener">I am not sure which case fits</a>'
+         f'<a class="hero-action-btn" href="{cta("case-review", "status_hero_unsure")}" rel="noopener">I am not sure which case fits</a>'
          "</div>"
          '<p class="hero-action-note">Free and no obligation. Deadlines are set by your state and usually run from the date of diagnosis. Submitting a review request does not create an attorney-client relationship.</p></div>']
     if week:
@@ -446,6 +460,75 @@ def set_head(shell: str, stamp: str, desc: str) -> str:
     return shell
 
 
+HOME_CSS = """<style id="li-board-strip">
+.hb{padding:28px 0 8px;}
+.hb .hb-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:10px;}
+.hb .hb-head h2{margin:0;font-size:1.35rem;}
+.hb .hb-when{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);}
+.hb .hb-all{margin-left:auto;font-family:var(--sans);font-size:14px;font-weight:600;}
+.hb ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);}
+.hb li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:11px 0;border-bottom:1px solid var(--rule);align-items:baseline;}
+.hb .hb-name{font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink-strong);border-bottom:0;}
+.hb .hb-name:hover{color:var(--link);}
+.hb .hb-pill{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;padding:1px 6px;border:1px solid currentColor;margin-left:8px;white-space:nowrap;vertical-align:2px;}
+.hb .hb-urgent{color:#a2412a;}.hb .hb-live{color:#3e6b4f;}.hb .hb-watch{color:#9a6d1f;}.hb .hb-quiet{color:#6e6a5e;}
+:root[data-theme="dark"] .hb .hb-urgent{color:#e07a5f;}:root[data-theme="dark"] .hb .hb-live{color:#7db38e;}:root[data-theme="dark"] .hb .hb-watch{color:#d4a04a;}:root[data-theme="dark"] .hb .hb-quiet{color:#9a968a;}
+.hb .hb-lead{grid-column:1 / -1;font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink);margin:0;}
+.hb .hb-meta{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.05em;color:var(--ink-soft);white-space:nowrap;}
+.hb .hb-meta .hb-next{color:#a2412a;}:root[data-theme="dark"] .hb .hb-meta .hb-next{color:#e07a5f;}
+@media (max-width:600px){.hb li{grid-template-columns:1fr;}.hb .hb-meta{white-space:normal;}.hb .hb-all{margin-left:0;}}
+</style>"""
+
+
+def render_home(rows: list, today: _dt.date, stamp: str) -> str:
+    """The homepage strip: the HOME_ROWS most recently changed open cases."""
+    picks = [r for r in rows if not r["closed"]][:HOME_ROWS]
+    items = []
+    for r in picks:
+        lead = r["entries"][0][2] if r["entries"] else r["line"]
+        meta_bits = [f"UPDATED {short(r['mod'])}"]
+        if r["next_date"]:
+            meta_bits.append(f'<span class="hb-next">NEXT {short(r["next_date"])}</span>')
+        items.append(
+            f'<li><span><a class="hb-name" href="{r["slug"]}">{esc(r["name"])}</a>'
+            f'<span class="hb-pill hb-{tone(r)}">{esc(r["status"].upper())}</span></span>'
+            f'<span class="hb-meta">{" &middot; ".join(meta_bits)}</span>'
+            f'<p class="hb-lead">{esc(lead)}</p></li>')
+    return (f"{HOME_BEGIN}\n{HOME_CSS}\n"
+            '<section class="section hb"><div class="container narrow">'
+            f'<div class="hb-head"><h2>Latest in Court</h2><span class="hb-when">AS OF {short(stamp)}, {_dt.date.fromisoformat(stamp).year}</span>'
+            f'<a class="hb-all" href="current-mass-tort-cases">All {len(rows)} cases we track &rarr;</a></div>'
+            "<ul>" + "".join(items) + "</ul></div></section>\n" + HOME_END)
+
+
+def write_home(rows: list, today: _dt.date, stamp: str, dry_run: bool) -> bool:
+    """Put the strip into index.html. Returns True when the file was written."""
+    if not os.path.exists(HOME):
+        print(f"::warning::{HOME} not found, homepage strip skipped")
+        return False
+    with open(HOME, encoding="utf-8") as fh:
+        home = fh.read()
+    block = render_home(rows, today, stamp)
+    if HOME_BEGIN in home and HOME_END in home:
+        start, end = home.index(HOME_BEGIN), home.index(HOME_END) + len(HOME_END)
+        new = home[:start] + block + home[end:]
+    elif HOME_ANCHOR in home:
+        new = home.replace(HOME_ANCHOR, HOME_ANCHOR + "\n\n" + block + "\n", 1)
+    else:
+        print(f"::warning::{HOME} has neither the LI-BOARD markers nor the credibility-strip anchor, strip skipped")
+        return False
+    if new == home:
+        print("homepage strip unchanged")
+        return False
+    if dry_run:
+        print("homepage strip would change")
+        return False
+    with open(HOME, "w", encoding="utf-8") as fh:
+        fh.write(new)
+    print(f"wrote {HOME} (homepage strip)")
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
@@ -482,13 +565,16 @@ def main() -> int:
     if args.dry_run:
         for r in rows:
             print(f"  {r['mod']}  {r['name']:<28} {r['status']:<22} entries {len(r['entries']):>2}  next {r['next_date'] or '-'}")
+        write_home(rows, today, stamp, dry_run=True)
         return 0
     if not changed and not args.force:
         print("rows unchanged; file left alone")
-        return 0
-    with open(OUT, "w", encoding="utf-8") as fh:
-        fh.write(out)
-    print(f"wrote {OUT}, stamp {stamp}")
+    else:
+        with open(OUT, "w", encoding="utf-8") as fh:
+            fh.write(out)
+        print(f"wrote {OUT}, stamp {stamp}")
+    # The strip follows the board's stamp, so the two never disagree about the date.
+    write_home(rows, today, stamp, dry_run=False)
     return 0
 
 
