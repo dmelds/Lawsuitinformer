@@ -44,6 +44,8 @@ TITLES = {
         "Carrier v. OpenAI Complaint",
     "dunn-v-activision-blizzard-complaint.pdf":
         "Dunn v. Activision Blizzard Complaint",
+    "doe-v-openai-foundation-complaint.pdf":
+        "Doe v. OpenAI Foundation Class Action Complaint",
     "florida-ag-v-openai-complaint.pdf":
         "Florida v. OpenAI Complaint",
     "hoge-v-monsanto-summary-judgment-order.pdf":
@@ -74,6 +76,8 @@ TITLES = {
         "In re Suboxone Film MDL 3092 Schedule A Complaint",
     "turner-scott-v-openai-complaint.pdf":
         "Turner-Scott v. OpenAI Complaint",
+    "wan-v-openai-complaint.pdf":
+        "Wan v. OpenAI Complaint",
 }
 
 # Wiped on every filing. Third-party drafter names and inherited SEO
