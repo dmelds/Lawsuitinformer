@@ -43,6 +43,15 @@ index.html. On the first run the block is inserted after the credibility strip;
 after that it is replaced in place. index.html is written only when the strip
 changed, on the same rule as the board.
 
+Each update page in PAGES carries one line under its "Last updated" stamp that
+points readers to the board, between <!-- LI-BOARD-LINK:BEGIN --> and
+<!-- LI-BOARD-LINK:END -->. The first run inserts it after the page's
+<p class="article-date">; later runs replace it in place, so an update page
+added to PAGES picks the line up on its next run and a change to the wording
+reaches every page at once. A page is written only when its line changed. The
+line is navigation, not content, so it never moves the page's dateModified or
+stamp; the workflow commits these pages separately with [skip lastmod].
+
     python3 generate_status_board.py            # writes the page if it changed
     python3 generate_status_board.py --dry-run  # prints what would change
     python3 generate_status_board.py --force    # writes even if unchanged
@@ -66,6 +75,10 @@ HOME_ROWS = 5
 HOME_BEGIN = "<!-- LI-BOARD:BEGIN -->"
 HOME_END = "<!-- LI-BOARD:END -->"
 HOME_ANCHOR = "<!-- ===================== END CREDIBILITY STRIP ===================== -->"
+LINK_BEGIN = "<!-- LI-BOARD-LINK:BEGIN -->"
+LINK_END = "<!-- LI-BOARD-LINK:END -->"
+# The stamp paragraph on every update page; the line goes right after its closing </p>.
+LINK_ANCHOR = re.compile(r'<p class="article-date">.*?</p>', re.S)
 COUNTS = os.path.join("data", "mdl_counts.json")
 SHOW = 2            # entries shown before the "show more" fold
 WEEK = 7            # days: the "changed in the last 7 days" band
@@ -529,6 +542,44 @@ def write_home(rows: list, today: _dt.date, stamp: str, dry_run: bool) -> bool:
     return True
 
 
+def render_page_link(count: int) -> str:
+    # Sits under the stamp and reads as part of it: same class, pulled up toward the stamp.
+    return (f'{LINK_BEGIN}\n'
+            f'  <p class="article-date board-link" style="margin-top:-16px">This case is one of {count} we track. '
+            f'<a href="current-mass-tort-cases">See where each one stands &rarr;</a></p>\n'
+            f'  {LINK_END}')
+
+
+def write_page_links(count: int, dry_run: bool) -> list:
+    """Put the board line on every update page. Returns the files written (or that would be)."""
+    block = render_page_link(count)
+    written = []
+    for slug, *_ in PAGES:
+        path = f"{slug}.html"
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as fh:
+            page = fh.read()
+        if LINK_BEGIN in page and LINK_END in page:
+            start, end = page.index(LINK_BEGIN), page.index(LINK_END) + len(LINK_END)
+            new = page[:start] + block + page[end:]
+        else:
+            m = LINK_ANCHOR.search(page)
+            if not m:
+                print(f"::warning::{path} has no <p class=\"article-date\">, board line skipped")
+                continue
+            new = page[:m.end()] + "\n\n  " + block + page[m.end():]
+        if new == page:
+            continue
+        written.append(path)
+        if not dry_run:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(new)
+    verb = "would get" if dry_run else "got"
+    print(f"board line: {len(written)} update page(s) {verb} it" + (": " + ", ".join(written) if written else ""))
+    return written
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
@@ -566,6 +617,7 @@ def main() -> int:
         for r in rows:
             print(f"  {r['mod']}  {r['name']:<28} {r['status']:<22} entries {len(r['entries']):>2}  next {r['next_date'] or '-'}")
         write_home(rows, today, stamp, dry_run=True)
+        write_page_links(len(rows), dry_run=True)
         return 0
     if not changed and not args.force:
         print("rows unchanged; file left alone")
@@ -575,6 +627,7 @@ def main() -> int:
         print(f"wrote {OUT}, stamp {stamp}")
     # The strip follows the board's stamp, so the two never disagree about the date.
     write_home(rows, today, stamp, dry_run=False)
+    write_page_links(len(rows), dry_run=False)
     return 0
 
 
