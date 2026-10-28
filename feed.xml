@@ -5,8 +5,40 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 27 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 28 Oct 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Bellwether Trials</title>
+    <link>https://lawsuitinformer.com/bellwether-trials</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/bellwether-trials#2026-10-28</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-03-19T12:00:00Z</atom:published>
+    <description>Learn what bellwether trials are, how they work in mass tort and MDL litigation, and why these early test cases can influence settlement and case strategy.</description>
+  </item>
+  <item>
+    <title>MDL Basics</title>
+    <link>https://lawsuitinformer.com/mdl-basics</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/mdl-basics#2026-10-28</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-03-19T12:00:00Z</atom:published>
+    <description>Learn what multidistrict litigation means, how MDL works, how it differs from class actions, and why mass torts are often coordinated this way.</description>
+  </item>
+  <item>
+    <title>Thinking About a Lawsuit? Start Here — A Beginner's Guide</title>
+    <link>https://lawsuitinformer.com/start-here</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/start-here#2026-10-28</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-03-23T12:00:00Z</atom:published>
+    <description>A plain-English beginner's guide from a California-licensed attorney: how lawsuits work, evidence, timing, and what to ask before signing.</description>
+  </item>
+  <item>
+    <title>Where Does My Lawsuit Stand? The Stages of a Mass Tort Case</title>
+    <link>https://lawsuitinformer.com/where-does-my-lawsuit-stand</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/where-does-my-lawsuit-stand#2026-10-28</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-05-18T12:00:00Z</atom:published>
+    <description>Why a mass tort case can go quiet for months, the eight stages every case moves through, and when it is reasonable to ask your law firm for an update.</description>
+  </item>
   <item>
     <title>AFFF Lawsuit Update October 2026: MDL 2873 Status</title>
     <link>https://lawsuitinformer.com/afff-lawsuit-updates</link>
@@ -294,38 +326,6 @@
     <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
     <atom:published>2026-06-10T12:00:00Z</atom:published>
     <description>What families say Meta built into Instagram, the internal research behind the cases, the 2026 verdicts, the $17.1 billion state settlement, and who may qualify.</description>
-  </item>
-  <item>
-    <title>Snapchat Lawsuit: Addiction and Fentanyl Claims Against Snap</title>
-    <link>https://lawsuitinformer.com/snapchat-lawsuit</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/snapchat-lawsuit#2026-10-09</guid>
-    <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-06-10T12:00:00Z</atom:published>
-    <description>What families claim against Snap, the three test cases Snap settled before trial, the fentanyl and sextortion cases, the state suits, and who may qualify.</description>
-  </item>
-  <item>
-    <title>TikTok Lawsuit: What Families Claim and What TikTok Settled</title>
-    <link>https://lawsuitinformer.com/tiktok-lawsuit</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/tiktok-lawsuit#2026-10-09</guid>
-    <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-09-16T12:00:00Z</atom:published>
-    <description>What families say TikTok did to keep teens scrolling, the test cases TikTok settled before trial, the Alabama and privacy settlements, and who may qualify.</description>
-  </item>
-  <item>
-    <title>Does Ozempic Cause Gastroparesis? What Studies Show</title>
-    <link>https://lawsuitinformer.com/does-ozempic-cause-gastroparesis</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/does-ozempic-cause-gastroparesis#2026-10-07</guid>
-    <pubDate>Wed, 07 Oct 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-09-18T12:00:00Z</atom:published>
-    <description>What the research actually found about GLP-1 shots, stomach paralysis and vision loss, including how strong the evidence is and where it falls short.</description>
-  </item>
-  <item>
-    <title>Filing a Lawsuit for a Family Member: Who Can Act</title>
-    <link>https://lawsuitinformer.com/filing-a-lawsuit-for-a-family-member</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/filing-a-lawsuit-for-a-family-member#2026-10-07</guid>
-    <pubDate>Wed, 07 Oct 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-10-07T12:00:00Z</atom:published>
-    <description>How a spouse, parent or adult child can ask about a lawsuit for a relative who is ill, unable to decide, a minor, or has died: power of attorney, guardianship, estates and deadlines.</description>
   </item>
 </channel>
 </rss>
