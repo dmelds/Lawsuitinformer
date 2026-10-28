@@ -3,11 +3,21 @@ name: Status board
 # Rebuilds current-mass-tort-cases.html, the status board, from the update
 # pages: whenever an update page lands on main, once a day (so a court date
 # that has passed drops off COMING UP), and on demand. The generator writes
-# the file only when a row changed, so a quiet day commits nothing and the
+# the board only when a row changed, so a quiet day commits nothing and the
 # page's Last updated stamp, sitemap lastmod and feed entry move only when a
-# reader would see something new. The commit touches only the board, which
-# matches none of this workflow's path filters, so it never re-triggers
-# itself; the feed and sitemap workflows pick the commit up as usual.
+# reader would see something new.
+#
+# The same run keeps two other things in step with the board:
+#   index.html          the "Latest in Court" strip on the homepage
+#   *-update(s).html    the one-line link to the board under each update
+#                       page's stamp (written only when that line changed)
+#
+# Two commits, so the sitemap reads each correctly. The update pages go first
+# with [skip lastmod]: the board line is navigation, and without the token
+# every update page's <lastmod> would jump to the run day. The board and the
+# homepage go second without it, because their content did change. Both carry
+# [skip actions], so neither commit re-triggers this workflow even though the
+# first touches files on its path filter.
 #
 # Pending counts come from data/mdl_counts.json. Update that file when the
 # Judicial Panel posts a new monthly report (network-ops jpml_to_bq is the
@@ -75,12 +85,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -z "$(git status --porcelain current-mass-tort-cases.html)" ]; then
-            echo "Board unchanged."
+          made=0
+
+          # 1. Update pages whose board line changed: navigation only, so [skip lastmod].
+          git add -- '*-update.html' '*-updates.html'
+          if ! git diff --cached --quiet; then
+            git commit -m "Link the update pages to the status board [skip lastmod] [skip actions]"
+            made=1
+          fi
+
+          # 2. The board and the homepage strip: real content changes, lastmod moves.
+          git add -- current-mass-tort-cases.html index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild the status board and homepage strip from the update pages [skip actions]"
+            made=1
+          fi
+
+          if [ "$made" = "0" ]; then
+            echo "Board, homepage strip and update-page links unchanged."
             exit 0
           fi
-          git add current-mass-tort-cases.html
-          git commit -m "Rebuild the status board from the update pages [skip actions]"
           BRANCH="$(git branch --show-current)"
           for attempt in 1 2 3 4 5; do
             if git pull --rebase origin "$BRANCH" && git push; then
