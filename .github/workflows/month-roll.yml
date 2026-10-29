@@ -1,0 +1,73 @@
+name: Month roll
+
+# The de-stamp half of the monthly roll. See month_roll.py.
+#
+# The plan (which pages are behind, what moved on each docket, the call per
+# page) is the "Month roll: <Month YYYY>" issue in network-ops, built there on
+# the 1st because the docket evidence lives in that repo's BigQuery tables.
+# This workflow is what that issue's rows point back to.
+#
+# DESTAMP (dispatch with the page names). For pages whose docket did not move:
+# removes the month from the titles, descriptions, JSON-LD headline and
+# headings, leaves dateModified and the visible stamps alone, runs the date
+# gate, and commits with [skip lastmod] since nothing on the page was edited.
+#
+# There is no ROLL mode here on purpose. A page earns the new month by a
+# content edit, and that edit ships with `month_roll.py stamp <page> --date`
+# run on it, so the stamp and the edit land in one push.
+#
+# PLAN without docket evidence is still available locally:
+#   python3 month_roll.py plan --md roll.md
+
+on:
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: 'Pages to de-stamp, space separated (grok-lawsuits coca-cola-lawsuit)'
+        type: string
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: month-roll
+  cancel-in-progress: false
+
+jobs:
+  destamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: De-stamp
+        env:
+          PAGES: ${{ inputs.pages }}
+        run: |
+          if ! printf '%s' "$PAGES" | grep -Eq '^[a-z0-9-]+(\.html)?( +[a-z0-9-]+(\.html)?)*$'; then
+            echo "::error::pages must be page names separated by spaces, got: $PAGES"
+            exit 1
+          fi
+          python3 month_roll.py destamp $PAGES
+          python3 check_date_consistency.py --strict
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo "Nothing to de-stamp."
+            exit 0
+          fi
+          git commit -m "Month roll: de-stamp ${PAGES} [skip lastmod]"
+          # Same retry as status-board.yml: its daily commit can land between
+          # this checkout and this push.
+          BRANCH="$(git branch --show-current)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          exit 1
