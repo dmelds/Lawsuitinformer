@@ -100,6 +100,9 @@ PAGES = [
     ("house-ncaa-settlement-update", "House v. NCAA Settlement", "N.D. Cal. · 9th Cir. appeal", "", ""),
     ("video-game-addiction-lawsuit-update", "Video Games and Roblox", "JCCP 5363 · MDL 3166", "3166", ""),
     ("transvaginal-mesh-litigation-update", "Transvaginal Mesh", "State courts", "", ""),
+    # The OpenAI hub doubles as the AI litigation's update page: its Recent Developments list is
+    # a dev-list and it carries li:status / li:next like the update pages.
+    ("openai-lawsuits", "ChatGPT and OpenAI", "JCCP 5431 · N.D. Cal. · N.D. Fla.", "", "openai-case-review"),
 ]
 
 # Status labels that put a row in the closed band at the foot of the board.
@@ -171,6 +174,9 @@ def dev_entries(page: str, slug: str) -> list:
         lead = text(s.group(1)) if s else text(body)
         # "October 22, 2026, the judge ..." -> "The judge ..."
         lead = re.sub(r"^(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s*\d{4},?\s*", "", lead)
+        # Headline-style leads ("Texas sues OpenAI and Sam Altman:") drop the colon that
+        # introduces the body on the page.
+        lead = lead.rstrip().rstrip(":").rstrip()
         lead = lead[:1].upper() + lead[1:] if lead else lead
         out.append((iso, kind, lead, anchor))
     out.sort(key=lambda e: e[0], reverse=True)
@@ -542,19 +548,24 @@ def write_home(rows: list, today: _dt.date, stamp: str, dry_run: bool) -> bool:
     return True
 
 
-def render_page_link(count: int) -> str:
+# The board line opens "This case is one of N"; a page that covers many suits gets its own subject.
+LINK_SUBJECT = {"openai-lawsuits": "The OpenAI cases are"}
+
+
+def render_page_link(count: int, slug: str = "") -> str:
     # Sits under the stamp and reads as part of it: same class, pulled up toward the stamp.
+    subject = LINK_SUBJECT.get(slug, "This case is")
     return (f'{LINK_BEGIN}\n'
-            f'  <p class="article-date board-link" style="margin-top:-16px">This case is one of {count} we track. '
+            f'  <p class="article-date board-link" style="margin-top:-16px">{subject} one of {count} we track. '
             f'<a href="current-mass-tort-cases">See where each one stands &rarr;</a></p>\n'
             f'  {LINK_END}')
 
 
 def write_page_links(count: int, dry_run: bool) -> list:
     """Put the board line on every update page. Returns the files written (or that would be)."""
-    block = render_page_link(count)
     written = []
     for slug, *_ in PAGES:
+        block = render_page_link(count, slug)
         path = f"{slug}.html"
         if not os.path.exists(path):
             continue

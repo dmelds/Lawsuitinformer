@@ -11,6 +11,7 @@ name: Status board
 #   index.html          the "Latest in Court" strip on the homepage
 #   *-update(s).html    the one-line link to the board under each update
 #                       page's stamp (written only when that line changed)
+#                       (openai-lawsuits.html, the AI hub, counts as one)
 #
 # Two commits, so the sitemap reads each correctly. The update pages go first
 # with [skip lastmod]: the board line is navigation, and without the token
@@ -29,6 +30,7 @@ on:
     paths:
       - '*-update.html'
       - '*-updates.html'
+      - 'openai-lawsuits.html'
       - 'data/mdl_counts.json'
       - 'generate_status_board.py'
   schedule:
@@ -88,7 +90,7 @@ jobs:
           made=0
 
           # 1. Update pages whose board line changed: navigation only, so [skip lastmod].
-          git add -- '*-update.html' '*-updates.html'
+          git add -- '*-update.html' '*-updates.html' openai-lawsuits.html
           if ! git diff --cached --quiet; then
             git commit -m "Link the update pages to the status board [skip lastmod] [skip actions]"
             made=1
