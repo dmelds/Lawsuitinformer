@@ -107,8 +107,15 @@ PAGES = [
 
 # Status labels that put a row in the closed band at the foot of the board.
 CLOSED_WORDS = re.compile(r"\b(closed|wound down|concluded)\b", re.I)
-# Status labels that get the red pill.
-URGENT_WORDS = re.compile(r"\b(deadline|closes?|sign-?ups?)\b", re.I)
+# A deadline the READER has to act on: settlement sign-ups, claim filing, opt-outs, registration.
+# Red on the board and in the weekly email means this and nothing else, and every red date
+# carries the word DEADLINE so the color never has to explain itself. Court-schedule dates
+# ("expert discovery closes", "deadline for Kenvue to ask the Supreme Court") are deliberately
+# left out: they are the court's dates, not the reader's. To mark a reader deadline, word the
+# page's li:next with one of these terms (e.g. "Settlement sign-ups close").
+URGENT_WORDS = re.compile(
+    r"\b(sign-?ups?|sign up|claims? (?:deadline|due|close|closes|window)|claim forms?|"
+    r"opt-?outs?|opting out|registration|enrollment)\b", re.I)
 LIVE_WORDS = re.compile(r"\b(trial|verdict|hearing)\b", re.I)
 
 CAMPAIGN = "status_board"
@@ -225,6 +232,7 @@ def read_rows(today: _dt.date) -> list:
             "entries": dev_entries(page, slug), "line": description(page),
             "intake": intake,
             "closed": bool(CLOSED_WORDS.search(status)),
+            "deadline": bool(next_date and URGENT_WORDS.search(next_what)),
         })
     rows.sort(key=lambda r: r["mod"], reverse=True)
     return rows
@@ -244,7 +252,7 @@ def long_(iso: str) -> str:
 
 
 def tone(row: dict) -> str:
-    if row["next_date"] and URGENT_WORDS.search(row["next_what"] or "") or URGENT_WORDS.search(row["status"]):
+    if (row["next_date"] and URGENT_WORDS.search(row["next_what"] or "")) or URGENT_WORDS.search(row["status"]):
         return "urgent"
     if LIVE_WORDS.search(row["status"]):
         return "live"
@@ -270,7 +278,10 @@ def render_row(row: dict, today: _dt.date) -> str:
             delta = f" ({'+' if d > 0 else ''}{d:,})"
         sub.append(f"<span>{row['pending']:,} FEDERAL CASES PENDING{delta}</span>")
     if row["next_date"]:
-        sub.append(f'<span class="sb-ev">NEXT {short(row["next_date"])} · {esc(row["next_what"].upper())}</span>')
+        if row["deadline"]:
+            sub.append(f'<span class="sb-ev sb-ev-dl">DEADLINE {short(row["next_date"])} · {esc(row["next_what"].upper())}</span>')
+        else:
+            sub.append(f'<span class="sb-ev">NEXT {short(row["next_date"])} · {esc(row["next_what"].upper())}</span>')
     h.append('<div class="sb-sub">' + "".join(sub) + "</div>")
     entries = row["entries"]
     if entries:
@@ -308,8 +319,10 @@ def render_upcoming(rows: list) -> str:
                 h.append("</ol>")
             h.append(f'<h3 class="sb-month">{m}</h3><ol class="sb-up">')
             month = m
-        urgent = ' class="sb-up-urgent"' if URGENT_WORDS.search(what) else ""
-        h.append(f'<li{urgent}><time datetime="{iso}">{short(iso)}</time><span><a href="/{slug}">{esc(name)}</a>'
+        dl = bool(URGENT_WORDS.search(what))
+        urgent = ' class="sb-up-urgent"' if dl else ""
+        tag = '<span class="sb-dl">DEADLINE</span>' if dl else ""
+        h.append(f'<li{urgent}><time datetime="{iso}">{short(iso)}</time><span>{tag}<a href="/{slug}">{esc(name)}</a>'
                  f'<span class="sb-upwhat">{esc(what)}</span></span></li>')
     h.append("</ol>")
     return "".join(h)
@@ -342,7 +355,8 @@ CSS = r"""
 #main .sb-new{font-family:var(--mono);font-size:10px;letter-spacing:.11em;padding:2px 7px;background:var(--sb-mark);color:var(--ink-strong);line-height:1.5;}
 #main .sb-dock{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-left:auto;white-space:nowrap;}
 #main .sb-sub{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin-top:6px;display:flex;flex-wrap:wrap;gap:3px 16px;font-variant-numeric:tabular-nums;}
-#main .sb-sub .sb-ev{color:var(--sb-urgent);}
+#main .sb-sub .sb-ev{color:var(--ink-strong);}
+#main .sb-sub .sb-ev-dl{color:var(--sb-urgent);font-weight:700;}
 #main .sb-line{font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink);margin:10px 0 0;max-width:68ch;}
 #main .sb-items{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
 #main .sb-items li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;margin:0;}
@@ -372,6 +386,7 @@ CSS = r"""
 #main .sb-up a:hover{color:var(--link);}
 #main .sb-upwhat{color:var(--ink-muted);}
 #main .sb-up li.sb-up-urgent time,#main .sb-up li.sb-up-urgent .sb-upwhat{color:var(--sb-urgent);}
+#main .sb-up .sb-dl{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--sb-urgent);border:1px solid var(--sb-urgent);padding:1px 5px;margin-right:8px;vertical-align:1px;}
 #main .sb-powered{font-family:var(--sans);font-size:14px;color:var(--ink-soft);margin-block:18px 0;}
 @media (max-width:600px){#main .sb-dock{margin-left:0;width:100%;}#main .sb-name{font-size:20px;}#main .sb-items li,#main .sb-up li{grid-template-columns:52px minmax(0,1fr);gap:10px;}}
 @media (prefers-reduced-motion:reduce){#main .sb-caret{transition:none;}}
@@ -494,7 +509,7 @@ HOME_CSS = """<style id="li-board-strip">
 :root[data-theme="dark"] .hb .hb-urgent{color:#e07a5f;}:root[data-theme="dark"] .hb .hb-live{color:#7db38e;}:root[data-theme="dark"] .hb .hb-watch{color:#d4a04a;}:root[data-theme="dark"] .hb .hb-quiet{color:#9a968a;}
 .hb .hb-lead{grid-column:1 / -1;font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink);margin:0;}
 .hb .hb-meta{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.05em;color:var(--ink-soft);white-space:nowrap;}
-.hb .hb-meta .hb-next{color:#a2412a;}:root[data-theme="dark"] .hb .hb-meta .hb-next{color:#e07a5f;}
+.hb .hb-meta .hb-dl{color:#a2412a;font-weight:700;}:root[data-theme="dark"] .hb .hb-meta .hb-dl{color:#e07a5f;}
 @media (max-width:600px){.hb li{grid-template-columns:1fr;}.hb .hb-meta{white-space:normal;}.hb .hb-all{margin-left:0;}}
 </style>"""
 
@@ -507,7 +522,10 @@ def render_home(rows: list, today: _dt.date, stamp: str) -> str:
         lead = r["entries"][0][2] if r["entries"] else r["line"]
         meta_bits = [f"UPDATED {short(r['mod'])}"]
         if r["next_date"]:
-            meta_bits.append(f'<span class="hb-next">NEXT {short(r["next_date"])}</span>')
+            if r["deadline"]:
+                meta_bits.append(f'<span class="hb-next hb-dl">DEADLINE {short(r["next_date"])}</span>')
+            else:
+                meta_bits.append(f'<span class="hb-next">NEXT {short(r["next_date"])}</span>')
         items.append(
             f'<li><span><a class="hb-name" href="{r["slug"]}">{esc(r["name"])}</a>'
             f'<span class="hb-pill hb-{tone(r)}">{esc(r["status"].upper())}</span></span>'
