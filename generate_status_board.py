@@ -523,8 +523,11 @@ HOME_CSS = """<style id="li-board-strip">
 
 
 def render_home(rows: list, today: _dt.date, stamp: str) -> str:
-    """The homepage strip: the HOME_ROWS most recently changed open cases."""
-    picks = [r for r in rows if not r["closed"]][:HOME_ROWS]
+    """The homepage strip: pinned rows (an open reader deadline) first, soonest date first,
+    then the most recently changed open cases, HOME_ROWS in all."""
+    open_rows = [r for r in rows if not r["closed"]]
+    pinned = sorted([r for r in open_rows if r["pinned"]], key=lambda r: r["next_date"])
+    picks = (pinned + [r for r in open_rows if r not in pinned])[:HOME_ROWS]
     items = []
     for r in picks:
         lead = r["entries"][0][2] if r["entries"] else r["line"]
