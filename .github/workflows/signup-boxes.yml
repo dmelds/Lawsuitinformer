@@ -1,0 +1,81 @@
+name: Signup boxes
+
+# Puts the weekly-email signup box on the homepage and on every update page
+# (add_signup_boxes.py). It runs when the script, the status board's page list
+# or the newsletter function changes, and on demand. The script writes a page
+# only when its box changed, so a run with nothing new commits nothing.
+#
+# The box is navigation, so the commit carries [skip lastmod]: no page's
+# <lastmod>, dateModified or Last updated stamp moves for it. [skip actions]
+# keeps the commit from re-triggering this or any other push workflow.
+#
+# The script fails the run when the status board's PAGES and the function's
+# TOPICS disagree, so a reader can never tick a case the function would drop.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'add_signup_boxes.py'
+      - 'generate_status_board.py'
+      - 'netlify/functions/newsletter.mjs'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (list the pages that would change, write nothing)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: signup-boxes
+  cancel-in-progress: false
+
+jobs:
+  boxes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Place the boxes
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python add_signup_boxes.py --dry-run
+          else
+            python add_signup_boxes.py
+          fi
+
+      - name: Check dates
+        if: ${{ inputs.dry_run != true }}
+        run: python check_date_consistency.py --strict
+
+      - name: Commit if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- index.html '*-update.html' '*-updates.html' openai-lawsuits.html transvaginal-mesh-litigation-update.html
+          if git diff --cached --quiet; then
+            echo "Signup boxes unchanged."
+            exit 0
+          fi
+          git commit -m "Add the weekly-email signup box [skip lastmod] [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push after 5 attempts"
+          exit 1
