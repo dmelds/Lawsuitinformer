@@ -33,6 +33,8 @@
 //   SES_SECRET_ACCESS_KEY
 //   SES_REGION              e.g. us-east-1
 //   MAIL_FROM               Lawsuit Informer <updates@lawsuitinformer.com>
+//   NOTIFY_TO               optional; gets a short email each time a reader confirms (or comes back
+//                           from the preferences page): the address, the cases and the signup page
 // With SES unset, signups still save as pending and the response is unchanged; the confirm mail
 // simply does not go, and the function logs why.
 
@@ -255,7 +257,14 @@ async function sendMail(to, subject, html, text) {
     },
   });
   const { url, headers } = signSes({ body, region, keyId, secret });
-  const res = await fetch(url, { method: "POST", headers, body });
+  let res;
+  try {
+    res = await fetch(url, { method: "POST", headers, body });
+  } catch (e) {
+    // A network failure must never cost a reader their signup: the record still saves.
+    console.log(`newsletter: SES unreachable: ${e}`);
+    return false;
+  }
   if (!res.ok) {
     console.log(`newsletter: SES ${res.status} ${(await res.text()).slice(0, 300)}`);
     return false;
@@ -307,6 +316,28 @@ ${link}
 
 ${ADDRESS}`;
   return { subject: "Your Lawsuit Informer topics", html, text };
+}
+
+// The owner's notice when a reader becomes active. Never blocks or fails the reader's request.
+async function notify(rec, how) {
+  const to = (process.env.NOTIFY_TO || "").trim();
+  if (!to) return;
+  const what = topicLabel(rec.topics || []);
+  const from = rec.source ? (rec.source === "home" ? "the homepage" : `${site()}/${rec.source}`) : "unknown";
+  const text = `${rec.email} ${how}.
+
+Cases: ${what}
+Signed up from: ${from}
+Time: ${new Date().toISOString()}`;
+  const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a">
+<p style="margin:0 0 10px"><strong>${esc(rec.email)}</strong> ${esc(how)}.</p>
+<p style="margin:0">Cases: ${esc(what)}<br>Signed up from: ${esc(from)}<br>Time: ${esc(new Date().toISOString())}</p>
+</body></html>`;
+  try {
+    await sendMail(to, `New Informer subscriber: ${rec.email}`, html, text);
+  } catch (e) {
+    console.log(`newsletter: notify failed: ${e}`);
+  }
 }
 
 // ---------------------------------------------------------------- routes
@@ -396,6 +427,7 @@ async function confirm(req, id, token) {
       rec.confirmedAt = new Date().toISOString();
       rec.updatedAt = rec.confirmedAt;
       await s.setJSON(key, rec);
+      await notify(rec, "confirmed");
     }
     return page(
       200,
@@ -466,12 +498,14 @@ async function preferences(req, id, token) {
       );
     }
     rec.topics = topics;
-    if (rec.status !== "active") {
+    const cameBack = rec.status !== "active";
+    if (cameBack) {
       // Reaching this page took a link from our own email, which proves the address.
       rec.status = "active";
       rec.confirmedAt = rec.confirmedAt || rec.updatedAt;
     }
     await s.setJSON(key, rec);
+    if (cameBack) await notify(rec, "came back from the preferences page");
     return page(
       200,
       "Topics saved",
