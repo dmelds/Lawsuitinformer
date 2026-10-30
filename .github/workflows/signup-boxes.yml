@@ -62,7 +62,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.html '*-update.html' '*-updates.html' openai-lawsuits.html transvaginal-mesh-litigation-update.html
+          git add -- index.html current-mass-tort-cases.html '*-update.html' '*-updates.html' openai-lawsuits.html transvaginal-mesh-litigation-update.html
           if git diff --cached --quiet; then
             echo "Signup boxes unchanged."
             exit 0

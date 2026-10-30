@@ -9,6 +9,11 @@ as a plain form POST, and with JavaScript it posts in place and shows the result
                          It replaces the old Netlify-forms <section class="subscribe-box"> on the
                          first run, then lives between <!-- LI-SIGNUP-HOME:BEGIN --> and
                          <!-- LI-SIGNUP-HOME:END -->.
+  current-mass-tort-cases.html
+                         the status board: the full box with "Every case we track" already
+                         checked, right after </main>. generate_status_board.py rewrites only
+                         the board's <main>, so the box sits just outside it and survives every
+                         board run. Between <!-- LI-SIGNUP-BOARD:BEGIN --> and END.
   each update page       a box with that page's case already checked and the other cases behind
                          "Follow other cases too". It goes at the end of the Recent developments
                          section (just before the <h2> that follows the dev-list), or before the
@@ -42,6 +47,8 @@ ACTION = "/api/subscribe"
 PRIVACY = "/privacy-policy"
 BEGIN, END = "<!-- LI-SIGNUP:BEGIN -->", "<!-- LI-SIGNUP:END -->"
 HBEGIN, HEND = "<!-- LI-SIGNUP-HOME:BEGIN -->", "<!-- LI-SIGNUP-HOME:END -->"
+BOARD = "current-mass-tort-cases.html"
+BBEGIN, BEND = "<!-- LI-SIGNUP-BOARD:BEGIN -->", "<!-- LI-SIGNUP-BOARD:END -->"
 
 esc = lambda s: html.escape(s, quote=True)  # noqa: E731
 
@@ -226,6 +233,39 @@ def place_page(text: str, block: str) -> tuple:
     return text, ""
 
 
+def board_box(pages: list) -> str:
+    grid = "\n        ".join(checkbox(s, n) for s, n in sorted(pages, key=lambda p: p[1].lower()))
+    rest = f"""<details>
+        <summary>Pick cases instead</summary>
+        <div class="li-signup-grid">
+        {grid}
+        </div>
+      </details>"""
+    return f"""{BBEGIN}
+{CSS}
+<div class="content-page li-signup-board" style="margin-top:0;padding-top:0">
+<aside class="li-signup" id="weekly-updates" aria-label="Weekly email updates">
+  <p class="li-signup-eyebrow">Weekly email</p>
+  <p class="li-signup-title">Get these updates by email</p>
+  <p class="li-signup-text">Once a week, we email you the new developments we add to the case pages on this board. Follow every case, or pick the ones you care about.</p>
+  {form("current-mass-tort-cases", checkbox("all", "Every case we track", checked=True), rest, "li-signup-email-board")}
+</aside>
+</div>
+{JS}
+{BEND}"""
+
+
+def place_board(text: str, block: str) -> tuple:
+    if BBEGIN in text:
+        new = re.sub(re.escape(BBEGIN) + r".*?" + re.escape(BEND), lambda _: block, text, count=1, flags=re.S)
+        return new, "replaced"
+    at = text.find("</main>")
+    if at != -1:
+        at += len("</main>")
+        return text[:at] + "\n" + block + text[at:], "after main"
+    return text, ""
+
+
 def place_home(text: str, block: str) -> tuple:
     if HBEGIN in text:
         new = re.sub(re.escape(HBEGIN) + r".*?" + re.escape(HEND), lambda _: block, text, count=1, flags=re.S)
@@ -254,7 +294,7 @@ def main() -> int:
         return 1
 
     changed, missing = [], []
-    targets = [(HOME, place_home, home_box(pages))] + [
+    targets = [(HOME, place_home, home_box(pages)), (BOARD, place_board, board_box(pages))] + [
         (slug + ".html", place_page, page_box(slug, name, pages)) for slug, name in pages]
     for path, place, block in targets:
         if not os.path.exists(path):
