@@ -572,8 +572,14 @@ def write_page_links(count: int, dry_run: bool) -> list:
         with open(path, encoding="utf-8") as fh:
             page = fh.read()
         if LINK_BEGIN in page and LINK_END in page:
-            start, end = page.index(LINK_BEGIN), page.index(LINK_END) + len(LINK_END)
-            new = page[:start] + block + page[end:]
+            start = page.index(LINK_BEGIN)
+            # One line per page. A page uploaded from a copy that already carried the line can
+            # arrive with two blocks; every extra block goes, with the blank line before it, and
+            # the first one is rewritten in place.
+            extra = re.compile(r"\n*[ \t]*" + re.escape(LINK_BEGIN) + r".*?" + re.escape(LINK_END), re.S)
+            first_end = page.index(LINK_END, start) + len(LINK_END)
+            rest = extra.sub("", page[first_end:])
+            new = page[:start] + block + rest
         else:
             m = LINK_ANCHOR.search(page)
             if not m:
