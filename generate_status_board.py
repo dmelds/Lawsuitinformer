@@ -233,6 +233,9 @@ def read_rows(today: _dt.date) -> list:
             "intake": intake,
             "closed": bool(CLOSED_WORDS.search(status)),
             "deadline": bool(next_date and URGENT_WORDS.search(next_what)),
+            # Pinned: a row with an open reader deadline sits in its own band at the top of the
+            # board until the date passes (li:next drops the row's next_date the day after).
+            "pinned": bool(next_date and URGENT_WORDS.search(next_what)),
         })
     rows.sort(key=lambda r: r["mod"], reverse=True)
     return rows
@@ -397,8 +400,9 @@ CSS = r"""
 def render_main(rows: list, today: _dt.date, stamp: str) -> str:
     open_rows = [r for r in rows if not r["closed"]]
     closed = [r for r in rows if r["closed"]]
+    pinned = sorted([r for r in open_rows if r["pinned"]], key=lambda r: r["next_date"])
     week = [r for r in open_rows if (today - _dt.date.fromisoformat(r["mod"])).days <= WEEK]
-    earlier = [r for r in open_rows if r not in week]
+    earlier = [r for r in open_rows if r not in week and r not in pinned]
     upcoming = sorted([(r["next_date"], r["name"], r["next_what"]) for r in rows if r["next_date"]])
     nxt = upcoming[0] if upcoming else None
     total = len(rows)
@@ -431,9 +435,13 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
          f'<a class="hero-action-btn" href="{cta("case-review", "status_hero_unsure")}" rel="noopener">I am not sure which case fits</a>'
          "</div>"
          '<p class="hero-action-note">Free and no obligation. Deadlines are set by your state and usually run from the date of diagnosis. Submitting a review request does not create an attorney-client relationship.</p></div>']
-    if week:
+    if pinned:
+        h.append('<h2 class="sb-section" id="open-deadlines">OPEN DEADLINES</h2>')
+        h += [render_row(r, today) for r in pinned]
+    week_rows = [r for r in week if r not in pinned]
+    if week_rows:
         h.append(f'<h2 class="sb-section" id="this-week">CHANGED IN THE LAST {WEEK} DAYS</h2>')
-        h += [render_row(r, today) for r in week]
+        h += [render_row(r, today) for r in week_rows]
     if earlier:
         h.append('<h2 class="sb-section" id="earlier">EARLIER</h2>')
         h += [render_row(r, today) for r in earlier]
