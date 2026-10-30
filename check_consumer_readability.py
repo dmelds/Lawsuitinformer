@@ -227,9 +227,11 @@ ADJUDICATING = [
     r"you are not eligible",
 ]
 
+# Forms are controls, not prose: the weekly-email signup box (add_signup_boxes.py) lists every
+# case as a checkbox label, and read as text those labels ran together into one long "sentence".
 STRIP = re.compile(
     r"<script.*?</script>|<style.*?</style>|<header.*?</header>"
-    r"|<footer.*?</footer>|<nav.*?</nav>", re.S | re.I)
+    r"|<footer.*?</footer>|<nav.*?</nav>|<form\b.*?</form>", re.S | re.I)
 DOUBLE_STOP = re.compile(r'(?:[A-Za-z0-9)%]\.|\?)\.(?=[\s<"]|$)', re.M)
 NON_LD_SCRIPT = re.compile(
     r"<script(?![^>]*application/ld\+json)[^>]*>.*?</script>|<style.*?</style>",
