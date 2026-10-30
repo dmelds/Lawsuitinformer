@@ -1,0 +1,10 @@
+# Lawsuit Informer. Build settings only. Publish directory and functions stay as set in the
+# Netlify UI and the default netlify/functions folder, so this file changes nothing about how
+# the site deploys.
+#
+# Skip the Netlify build when a push changes only repo tooling: checker and generator scripts
+# (.py), notes (.md), SQL, and GitHub workflow files. Any change to a served file (HTML, CSS,
+# JS, images, feed.xml, sitemap.xml, _redirects, _headers, functions) still builds.
+# A manual "Retry deploy" (same commit as last build) and a first build always run.
+[build]
+  ignore = '''[ -n "$CACHED_COMMIT_REF" ] && [ "$CACHED_COMMIT_REF" != "$COMMIT_REF" ] && git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- . ':(exclude)*.py' ':(exclude)*.md' ':(exclude)*.sql' ':(exclude).github/' '''
