@@ -1,6 +1,6 @@
 // Lawsuit Informer weekly email: the subscriber side.
 //
-// One function, five routes. The list lives in this site's own Blobs store ("newsletter"), one
+// One function, six routes. The list lives in this site's own Blobs store ("newsletter"), one
 // record per address under sub/<id>, where <id> is the first 32 hex of the SHA-256 of the
 // lowercased address. The weekly send itself runs in network-ops and reads the list through
 // /api/newsletter/export.
@@ -15,6 +15,9 @@
 // GET  /email/preferences?t=     topic checkboxes; POST saves. Saving with no topic unsubscribes.
 // GET  /email/unsubscribe?t=     page with an Unsubscribe button; POST unsubscribes. The weekly
 //                                email's List-Unsubscribe-Post header posts here too (RFC 8058).
+// GET  /email/add?t=&topics=     page with an "Add to my updates" button; POST adds those cases to
+//                                an existing reader's list. The link only reaches the reader's own
+//                                inbox, sent when their address signs up again on another case page.
 // GET  /api/newsletter/export    X-Export-Key -> every active subscriber with their topics and
 //                                personal links. Read only. With EXPORT_KEY unset it refuses all.
 //
@@ -47,6 +50,7 @@ export const config = {
     "/email/confirm",
     "/email/preferences",
     "/email/unsubscribe",
+    "/email/add",
     "/api/newsletter/export",
   ],
 };
@@ -298,6 +302,33 @@ ${ADDRESS}`;
   return { subject: "Confirm your Lawsuit Informer updates", html, text };
 }
 
+function addMail(link, extra, have) {
+  const add = topicLabel(extra);
+  const now = topicLabel(have);
+  const html = `<!doctype html><html><body style="margin:0;background:#ece9e1;padding:24px 12px;font-family:Georgia,'Times New Roman',serif;color:#1a1a1a">
+<div style="max-width:560px;margin:0 auto;background:#fafaf7;border:1px solid #e5e3dc">
+<div style="padding:22px 28px;border-bottom:3px solid #d4a24e;font-size:22px;font-weight:bold">Lawsuit Informer</div>
+<div style="padding:28px">
+<p style="margin:0 0 14px;font-size:22px">Add ${esc(add)} to your weekly updates?</p>
+<p style="margin:0 0 14px;font-size:16px;line-height:1.6">This address asked to follow ${esc(add)} on Lawsuit Informer. Your weekly updates now cover ${esc(now)}.</p>
+<p style="margin:0 0 22px;font-size:16px;line-height:1.6">Press the button to add it. If you did not ask, ignore this email and nothing changes.</p>
+<a href="${link}" style="display:inline-block;background:#b04a2f;color:#ffffff;text-decoration:none;padding:13px 20px;border-radius:4px;font-family:Arial,sans-serif;font-size:15px;font-weight:bold">Add to my updates</a>
+</div>
+<div style="padding:18px 28px;border-top:1px solid #d8d5cc;font-family:Arial,sans-serif;font-size:12px;line-height:1.6;color:#5a5750">${esc(ADDRESS)}</div>
+</div></body></html>`;
+  const text = `Add ${add} to your weekly updates?
+
+This address asked to follow ${add} on Lawsuit Informer. Your weekly updates now cover ${now}.
+
+Open this link to add it:
+${link}
+
+If you did not ask, ignore this email and nothing changes.
+
+${ADDRESS}`;
+  return { subject: `Add ${add} to your Lawsuit Informer updates?`, html, text };
+}
+
 function manageMail(link) {
   const html = `<!doctype html><html><body style="margin:0;background:#ece9e1;padding:24px 12px;font-family:Georgia,'Times New Roman',serif;color:#1a1a1a">
 <div style="max-width:560px;margin:0 auto;background:#fafaf7;border:1px solid #e5e3dc">
@@ -391,10 +422,16 @@ async function subscribe(req) {
   }
 
   if (rec.status === "active") {
-    // Someone typed an active address. Topics stay as the owner set them; the owner gets a link
-    // to change them, so a stranger can neither read nor change another reader's choices.
+    // Someone typed an active address. Topics stay as the owner set them until the owner acts, so
+    // a stranger can neither read nor change another reader's choices. When the signup named cases
+    // the reader does not follow yet, the email offers to add exactly those; otherwise it offers
+    // the topic page.
+    const have = rec.topics || [];
+    const extra = have.includes(ALL) ? [] : topics.includes(ALL) ? [ALL] : topics.filter((t) => !have.includes(t));
     if (mayResend(rec, now)) {
-      const m = manageMail(`${site()}/email/preferences?t=${token}`);
+      const m = extra.length
+        ? addMail(`${site()}/email/add?t=${token}&topics=${extra.join(",")}`, extra, have)
+        : manageMail(`${site()}/email/preferences?t=${token}`);
       if (await sendMail(rec.email, m.subject, m.html, m.text)) rec.sends = [...(rec.sends || []), now].slice(-8);
       await s.setJSON(key, rec);
     }
@@ -569,6 +606,42 @@ async function unsubscribe(req, id, token) {
   );
 }
 
+async function addTopics(req, id, token, url) {
+  const s = store();
+  const key = `sub/${id}`;
+  const rec = await s.get(key, { type: "json" });
+  if (!rec) return badLink();
+  const adding = cleanTopics((url.searchParams.get("topics") || "").split(","));
+  if (!adding.length) return badLink();
+  const self = `${site()}/email/add?t=${token}&topics=${adding.join(",")}`;
+  const prefs = `${site()}/email/preferences?t=${token}`;
+
+  if (req.method === "POST") {
+    const have = rec.topics || [];
+    rec.topics = adding.includes(ALL) || have.includes(ALL) ? [ALL] : [...have, ...adding.filter((t) => !have.includes(t))];
+    const cameBack = rec.status !== "active";
+    rec.status = "active";
+    rec.updatedAt = new Date().toISOString();
+    rec.confirmedAt = rec.confirmedAt || rec.updatedAt;
+    await s.setJSON(key, rec);
+    if (cameBack) await notify(rec, "came back by adding a case");
+    return page(
+      200,
+      "Added",
+      `<h1>Added to your updates</h1><p>Weekly updates now cover ${esc(topicLabel(rec.topics))}.</p>
+<p><a href="${prefs}">Change topics</a> · <a href="${site()}/">Back to Lawsuit Informer</a></p>`
+    );
+  }
+  return page(
+    200,
+    "Add to your updates",
+    `<h1>Add ${esc(topicLabel(adding))} to your weekly updates?</h1>
+<p>Updates go to <strong>${esc(rec.email)}</strong>.</p>
+<form method="post" action="${self}"><button type="submit">Add to my updates</button></form>
+<p class="small" style="margin-top:20px"><a href="${prefs}">Change all my topics instead</a></p>`
+  );
+}
+
 async function exportList(req) {
   if (!sameKey(req.headers.get("x-export-key") || "", process.env.EXPORT_KEY || "")) {
     return json(401, { error: "unauthorized" });
@@ -614,5 +687,6 @@ export default async function handler(req) {
   if (path === "/email/confirm") return confirm(req, id, token);
   if (path === "/email/preferences") return preferences(req, id, token);
   if (path === "/email/unsubscribe") return unsubscribe(req, id, token);
+  if (path === "/email/add") return addTopics(req, id, token, url);
   return json(404, { error: "not found" });
 }
