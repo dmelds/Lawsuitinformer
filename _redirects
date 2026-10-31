@@ -1,3 +1,32 @@
+# BEGIN BLOCKED REPO TOOLING (managed by generate_redirects.py - do not edit)
+/add_case_dockets.py  /404.html  404!
+/add_cta_events.py  /404.html  404!
+/add_signup_boxes.py  /404.html  404!
+/check_cannibalization.py  /404.html  404!
+/check_consumer_readability.py  /404.html  404!
+/check_date_consistency.py  /404.html  404!
+/check_medical_review.py  /404.html  404!
+/check_situation_params.py  /404.html  404!
+/generate-sitemap.py  /404.html  404!
+/generate_feed.py  /404.html  404!
+/generate_news_sitemap.py  /404.html  404!
+/generate_og_images.py  /404.html  404!
+/generate_redirects.py  /404.html  404!
+/generate_search_index.py  /404.html  404!
+/generate_status_board.py  /404.html  404!
+/lastmod-skip-commits.txt  /404.html  404!
+/month_roll.py  /404.html  404!
+/netlify.toml  /404.html  404!
+/package.json  /404.html  404!
+/perf_head.py  /404.html  404!
+/set-pdf-metadata.py  /404.html  404!
+/set_footer_attorney.py  /404.html  404!
+/strip-clicky.yml  /404.html  404!
+/utm_sweep.py  /404.html  404!
+/netlify/*  /404.html  404!
+/.github/*  /404.html  404!
+# END BLOCKED REPO TOOLING
+
 # Asbestos occupation consolidation (June 2026)
 # Merged occupation pages 301 -> their canonical page.
 
