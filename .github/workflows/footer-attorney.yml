@@ -1,0 +1,80 @@
+name: Footer Attorney Line
+
+# Runs set_footer_attorney.py across the English pages: rewrites the footer
+# about paragraph, relabels Lawsuit Center in the Network column, and puts the
+# responsible-attorney line (Rule 7.2(c): name and address of the lawyer
+# responsible for the advertising) directly above the copyright line.
+# Pages under es/ are skipped.
+#
+# Dispatch only: run it from the Actions tab, read the dry-run summary in the
+# log, then run again with apply = true.
+#
+# The script is idempotent, so a rerun on a swept tree reports zero pages
+# changed. If the name or address changes, edit ATTORNEY and ADDRESS in
+# set_footer_attorney.py and run with apply = true again.
+#
+# The commit carries [skip lastmod] so 260 sitemap lastmod values do not
+# flatten to one day for a footer change, and [skip actions] so the push does
+# not fan out to the other sweeps.
+#
+# It also runs a dry run on the 1st of each month. That run never writes
+# anything; it fails on purpose when a page is missing any of the three edits,
+# which is how a page built from a pre-sweep donor gets caught.
+
+on:
+  schedule:
+    - cron: '23 12 1 * *'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: main
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || 'main' }}
+
+      - name: Dry run
+        run: python3 set_footer_attorney.py | tee /tmp/footer.log
+
+      - name: Fail the monthly check if a page is out of date
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if grep -q '^  0 pages would change' /tmp/footer.log && grep -q '^  0 pages with problems' /tmp/footer.log; then
+            echo "Every English footer carries the attorney line and current wording."
+            exit 0
+          fi
+          echo "::error::Footers are out of date. Run this workflow with apply = true on main."
+          sed -n '1,6p' /tmp/footer.log
+          exit 1
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: python3 set_footer_attorney.py --apply
+
+      - name: Commit
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add '*.html'
+          git commit -m "Footer: attorney line, about text, Center label [skip lastmod] [skip actions]"
+          git pull --rebase
+          git push
