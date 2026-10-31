@@ -1,11 +1,23 @@
 name: Generate Redirects
 
 on:
-  # Auto: runs when pages change on main. The job only commits _redirects
-  # (not an .html file), so it never re-triggers itself.
+  # Auto: runs when pages change on main, and when a root tooling file is
+  # added or changed so the new file is blocked from the live site in the same
+  # deploy. The job only commits _redirects, which is in neither list, so it
+  # never re-triggers itself.
   push:
     branches: [main]
-    paths: ['**.html']
+    paths:
+      - '**.html'
+      - '*.py'
+      - '*.yml'
+      - '*.yaml'
+      - '*.sql'
+      - '*.md'
+      - '*.toml'
+      - '*.sh'
+      - 'package*.json'
+      - 'lastmod-skip-commits.txt'
   # Manual: same dry-run option as the other workflows.
   workflow_dispatch:
     inputs:
@@ -49,7 +61,7 @@ jobs:
             exit 0
           fi
           git add _redirects
-          git commit -m "Auto-regenerate forced .html redirects (_redirects) [skip actions]"
+          git commit -m "Auto-regenerate _redirects (html 301s + blocked tooling) [skip actions]"
           BRANCH="$(git branch --show-current)"
           # The three generators can finish within seconds of each other on the
           # same push. A single rebase-then-push loses whichever lands second,
