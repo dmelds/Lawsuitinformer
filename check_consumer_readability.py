@@ -239,6 +239,36 @@ NON_LD_SCRIPT = re.compile(
 LD = re.compile(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', re.S | re.I)
 
 
+# Block ends a reader sees as a break. A title, heading, table-of-contents
+# item or related-pages link closes its thought without a period, so splitting
+# visible_text() on punctuation alone glued them into the next sentence: on
+# 2026-11-02 every long-sentence warning on ai-lawsuits, character-ai-lawsuit
+# and chatgpt-fsu-shooting-lawsuit was the <title>, skip link, H1, byline and
+# "On This Page" list read as one 45-77 word "sentence".
+HEAD = re.compile(r"<head\b.*?</head>", re.S | re.I)
+BLOCK_END = re.compile(
+    r"</(?:h[1-6]|p|li|td|th|dt|dd|div|section|caption|figcaption|blockquote"
+    r"|button|label)>|<br\s*/?>", re.I)
+
+
+def sentences(html):
+    """Visible sentences, split at sentence punctuation and at every block
+    end, with <head> left out. Used by the sentence-length rule and the grade
+    score, which both depend on where one sentence stops."""
+    body = HEAD.sub(" ", html)
+    body = STRIP.sub(" ", body)
+    body = BLOCK_END.sub(" \x01 ", body)
+    body = re.sub(r"<[^>]+>", " ", body)
+    body = (body.replace("&mdash;", "-").replace("&rsquo;", "'")
+                .replace("&amp;", "&").replace("&nbsp;", " "))
+    out = []
+    for chunk in body.split("\x01"):
+        chunk = " ".join(chunk.split())
+        if chunk:
+            out.extend(s for s in re.split(r"(?<=[.!?])\s+", chunk) if s)
+    return out
+
+
 def visible_text(html):
     body = STRIP.sub(" ", html)
     body = re.sub(r"<[^>]+>", " ", body)
@@ -416,7 +446,8 @@ def check(path, in_cluster):
         return errors, warnings
 
     if name in CASE_PAGES:
-        grade = grade_level(text)
+        grade = grade_level(" ".join(
+            s if s[-1] in ".!?" else s + "." for s in sentences(html)))
         if grade > GRADE_MAX:
             errors.append(f"reading grade {grade:.1f} is above {GRADE_MAX} "
                           f"for a case page read by families")
@@ -426,7 +457,7 @@ def check(path, in_cluster):
         if hits:
             warnings.append(f"{len(hits)}x {pat.strip(chr(92)+'b')}  ->  {hint}")
 
-    for s in re.split(r"(?<=[.!?])\s+", text):
+    for s in sentences(html):
         n = len(s.split())
         if n >= SENTENCE_MAX:
             warnings.append(f"{n}-word sentence: {s[:90]}...")
