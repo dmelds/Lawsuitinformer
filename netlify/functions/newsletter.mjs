@@ -284,7 +284,7 @@ function confirmMail(link, topics) {
 <div style="padding:28px">
 <p style="margin:0 0 14px;font-size:22px">Confirm your weekly case updates</p>
 <p style="margin:0 0 14px;font-size:16px;line-height:1.6">Someone, hopefully you, asked to get Lawsuit Informer's weekly updates at this address for: ${esc(what)}.</p>
-<p style="margin:0 0 22px;font-size:16px;line-height:1.6">Press the button to start them. If you did not ask, ignore this email and nothing will be sent.</p>
+<p style="margin:0 0 22px;font-size:16px;line-height:1.6">Press the button to start them. It opens a page on lawsuitinformer.com with one more button, and tapping that one finishes your signup. If you did not ask, ignore this email and nothing will be sent.</p>
 <a href="${link}" style="display:inline-block;background:#b04a2f;color:#ffffff;text-decoration:none;padding:13px 20px;border-radius:4px;font-family:Arial,sans-serif;font-size:15px;font-weight:bold">Confirm my updates</a>
 </div>
 <div style="padding:18px 28px;border-top:1px solid #d8d5cc;font-family:Arial,sans-serif;font-size:12px;line-height:1.6;color:#5a5750">${esc(ADDRESS)}</div>
@@ -293,7 +293,7 @@ function confirmMail(link, topics) {
 
 Someone, hopefully you, asked to get Lawsuit Informer's weekly updates at this address for: ${what}.
 
-Open this link to start them:
+Open this link to start them. It opens a page on lawsuitinformer.com with one more button, and tapping that one finishes your signup:
 ${link}
 
 If you did not ask, ignore this email and nothing will be sent.
@@ -483,10 +483,11 @@ async function confirm(req, id, token) {
   }
   return page(
     200,
-    "Confirm your updates",
-    `<h1>Confirm your weekly updates</h1>
-<p>You asked for updates on ${esc(topicLabel(rec.topics || []))}.</p>
-<form method="post" action="${self}"><button type="submit">Confirm my updates</button></form>`
+    "One more tap to finish",
+    `<h1>One more tap to finish</h1>
+<p>You asked for weekly updates on ${esc(topicLabel(rec.topics || []))}. Your signup is not finished yet. Tap the button below and the updates start with the next weekly send.</p>
+<form method="post" action="${self}"><button type="submit">Finish signing up</button></form>
+<p class="small" style="margin-top:22px">Email security filters open every link in a message before you do. This last tap comes from you, so a filter can never sign anyone up.</p>`
   );
 }
 
