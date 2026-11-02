@@ -69,6 +69,14 @@ ERROR  (pull requests only, with --base <ref>) The page's body text changed
        PR titled with [skip lastmod], which the workflow honours by leaving
        --base off.
 
+       Same-day exception, added 2026-11-02 after a second PFAS edit on the
+       day it was already stamped failed the gate: when the unchanged
+       dateModified is today's date, the page cannot be dated any later, so the
+       rule prints a NOTE and passes instead of erroring. "Today" is checked in
+       both UTC (the runner's clock) and America/Bogota (the editor's clock),
+       so an evening edit stamped with the local date still counts. A stamp
+       from any earlier day still errors.
+
 Historical references are safe by construction. "the May 2025 ruling" in a page
 modified in 2026 is older than dateModified, so it never errors.
 
@@ -462,13 +470,30 @@ def git(*args):
     return subprocess.run(["git", *args], capture_output=True, text=True)
 
 
-def stale_against(base, root):
+def today_dates():
+    """Today's (year, month, day) in UTC and in the editor's zone."""
+    from datetime import timedelta
+    now = datetime.now(timezone.utc)
+    days = {(now.year, now.month, now.day)}
+    try:
+        from zoneinfo import ZoneInfo
+        local = now.astimezone(ZoneInfo("America/Bogota"))
+    except Exception:
+        local = now - timedelta(hours=5)  # Bogota is UTC-5 year round
+    days.add((local.year, local.month, local.day))
+    return days
+
+
+def stale_against(base, root, notes=None):
     """Pages whose body text differs from `base` while dateModified is unchanged.
 
     Returns {path: message}. Added files have no base version and are skipped;
     their stamps are checked by the self-consistency rules like any other page.
+    A page whose unchanged dateModified is already today's date goes into
+    `notes` instead, since no later stamp is possible.
     """
     out = {}
+    same_day = today_dates()
     res = git("diff", "--name-only", "--diff-filter=M", base, "--", "*.html")
     if res.returncode != 0:
         print(f"note: could not diff against {base}: {res.stderr.strip()}")
@@ -486,6 +511,13 @@ def stale_against(base, root):
         old_dm, _ = jsonld(old.stdout)
         new_dm, _ = jsonld(new_html)
         if old_dm and new_dm and old_dm == new_dm:
+            if modified_ymd(new_dm) in same_day:
+                if notes is not None:
+                    notes[str(path)] = (
+                        f"body text changed again on the day it was already "
+                        f"stamped ({new_dm}); passes, no later date is possible"
+                    )
+                continue
             out[str(path)] = (
                 f"body text changed against {base} but dateModified is still "
                 f"{new_dm}; move dateModified and the visible Last Updated stamp "
@@ -523,8 +555,9 @@ def main():
         if warnings:
             warned[str(path)] = warnings
 
+    same_day_notes = {}
     if base:
-        for path, msg in stale_against(base, root).items():
+        for path, msg in stale_against(base, root, same_day_notes).items():
             bad.setdefault(path, []).append(msg)
 
     print(
@@ -546,6 +579,11 @@ def main():
             print(f"  {path}")
             for line in warned[path]:
                 print(f"      {line}")
+    if same_day_notes:
+        print(f"\nNOTES ({len(same_day_notes)} pages)")
+        for path in sorted(same_day_notes):
+            print(f"  {path}")
+            print(f"      {same_day_notes[path]}")
     if not bad and not warned:
         print("\nAll date signals consistent.")
 
