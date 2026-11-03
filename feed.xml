@@ -5,8 +5,16 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 03 Nov 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Roundup Lawsuit Update: After Monsanto v. Durnell</title>
+    <link>https://lawsuitinformer.com/roundup-lawsuit-updates</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/roundup-lawsuit-updates#2026-11-03</guid>
+    <pubDate>Tue, 03 Nov 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-08-13T12:00:00Z</atom:published>
+    <description>Roundup in November 2026: new claims after Durnell, 65,000 pending, a federal hearing November 16, and the $7.25B settlement Bayer expects by Christmas.</description>
+  </item>
   <item>
     <title>AI Lawsuits | Who Is Being Sued and On What Theory</title>
     <link>https://lawsuitinformer.com/ai-lawsuits</link>
@@ -110,14 +118,6 @@
     <pubDate>Mon, 02 Nov 2026 12:00:00 +0000</pubDate>
     <atom:published>2026-06-11T12:00:00Z</atom:published>
     <description>Where Raine v. OpenAI stands now: docket CGC-25-628528, the amended complaint, OpenAI's answer, the seven claims, and the rulings expected next.</description>
-  </item>
-  <item>
-    <title>Roundup Lawsuit Update: After Monsanto v. Durnell</title>
-    <link>https://lawsuitinformer.com/roundup-lawsuit-updates</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/roundup-lawsuit-updates#2026-11-02</guid>
-    <pubDate>Mon, 02 Nov 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-08-13T12:00:00Z</atom:published>
-    <description>Roundup in November 2026: claims still being filed after Durnell, 65,000 pending, a federal hearing November 16, and the $7.25B settlement awaiting a ruling.</description>
   </item>
   <item>
     <title>Shamblin v. OpenAI Lawsuit: Claims and Case Status</title>
