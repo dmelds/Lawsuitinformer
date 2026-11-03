@@ -48,6 +48,11 @@ WARN   The body cites a scheduled date (set for, due, runs to) that is AFTER
        dateModified and has now passed. The page was right when written and the
        calendar moved past it; nothing on the page says what happened.
        Time-dependent like the calendar rule, so off under --strict.
+       "Passed" means the whole day is over on the editor's clock
+       (America/Bogota). Fixed 2026-11-02: the rule used the runner's UTC date
+       and counted the day itself as passed, so at 10pm Bogota on November 2 it
+       reported a November 3 reply deadline as already past. A date warns from
+       the day after it, local time.
 WARN   The <title> stamp is OLDER than the month the check is running in, even
        though the page is internally consistent. This is the case the
        dateModified comparison cannot see: a page edited in July and stamped
@@ -249,7 +254,7 @@ def body_dates(html, dm_full, today_ymd):
             seen.add(ymd)
             dm_raw = "%04d-%02d-%02d" % dm_full
             if SCHED.search(sent):
-                if today_ymd and ymd <= today_ymd:
+                if today_ymd and ymd < today_ymd:
                     warnings.append(
                         f"body says something was scheduled for {raw}; that date "
                         f"has passed and the page has not been updated since "
@@ -259,7 +264,7 @@ def body_dates(html, dm_full, today_ymd):
                     f"body describes an event or document dated {raw} but "
                     f"dateModified is {dm_raw} — the page was edited after that "
                     f"date and the stamp was not rolled")
-            elif today_ymd and ymd <= today_ymd:
+            elif today_ymd and ymd < today_ymd:
                 warnings.append(
                     f"body cites {raw}, after dateModified {dm_raw} — check "
                     f"whether this is a past event or a schedule")
@@ -470,6 +475,18 @@ def git(*args):
     return subprocess.run(["git", *args], capture_output=True, text=True)
 
 
+def editor_today():
+    """Today's (year, month, day) on the editor's clock (America/Bogota)."""
+    from datetime import timedelta
+    now = datetime.now(timezone.utc)
+    try:
+        from zoneinfo import ZoneInfo
+        local = now.astimezone(ZoneInfo("America/Bogota"))
+    except Exception:
+        local = now - timedelta(hours=5)  # Bogota is UTC-5 year round
+    return (local.year, local.month, local.day)
+
+
 def today_dates():
     """Today's (year, month, day) in UTC and in the editor's zone."""
     from datetime import timedelta
@@ -541,8 +558,10 @@ def main():
     today = datetime.now(timezone.utc)
     now_ym = (today.year, today.month) if calendar else None
     # The passed-schedule rule needs today's date, which makes it time-dependent
-    # in exactly the way the calendar rule is. Same gate.
-    today_ymd = (today.year, today.month, today.day) if calendar else None
+    # in exactly the way the calendar rule is. Same gate. It reads the editor's
+    # clock (Bogota), not the runner's UTC clock, which runs five hours ahead
+    # and turns over to tomorrow at 7pm local.
+    today_ymd = editor_today() if calendar else None
 
     bad, warned, scanned = {}, {}, 0
     for path in sorted(root.rglob("*.html")):
