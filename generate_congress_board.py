@@ -92,6 +92,8 @@ CONGRESS_ENDS = {119: "2027-01-03", 120: "2029-01-03"}
 
 # Same expressions as network-ops scripts/hill_review.py (and Hill Wire's page for
 # PROCEDURAL). Change all of them together.
+# NOT_A_MOVE leaves out motions to recommit: their "Failed" is a vote on sending the bill
+# back to committee, so a reader would take it for the bill itself failing.
 PROCEDURAL = re.compile(
     r"^(debate|postponed proceedings|considered (as unfinished business|under suspension|by unanimous consent)|"
     r"the house (rose|resolved|adopted the amendments en gros)|committee of the whole|the previous question|"
@@ -107,7 +109,7 @@ KEY_MOVE = re.compile(
     r"cloture .*(invoked|not invoked)|conference report|resolving differences", re.I)
 NOT_A_MOVE = re.compile(
     r"^referred to|^introduced in|^read twice and referred|^received in the|supplemental report|"
-    r"motion to reconsider|motion to proceed to consideration of measure|mark-?up session held", re.I)
+    r"motion to reconsider|^(on )?motion to recommit|motion to proceed to consideration of measure|mark-?up session held", re.I)
 
 TYPE_LABEL = {"hr": "H.R.", "s": "S.", "hjres": "H.J.Res.", "sjres": "S.J.Res.",
               "hconres": "H.Con.Res.", "sconres": "S.Con.Res.", "hres": "H.Res.",
@@ -387,7 +389,7 @@ def read_rows(today: _dt.date) -> tuple:
             missing.append(f"{bid} ({b.get('label')})" + ("" if case else f", no [cases] name for topic {topic!r}"))
             continue
         label, step, tone, expired = bill_stage(b, today)
-        moves = b.get("moves") or []
+        moves = [m for m in (b.get("moves") or []) if is_move(m.get("text"))]
         last = moves[0] if moves else None
         rows.append({
             "id": bid, "bill": id_text(b), "type": b.get("type") or "", "label": name or b.get("label") or b.get("title") or bid,
