@@ -33,8 +33,12 @@ jobs:
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             python generate_search_index.py --dry-run
+            python generate_search_index.py --fix-titles --stamps-only --dry-run
           else
             python generate_search_index.py
+            # month_roll.py stamps page titles; this moves the same stamp in the
+            # curated index titles. Retitled pages are only reported.
+            python generate_search_index.py --fix-titles --stamps-only
           fi
 
       - name: Commit and push changes
