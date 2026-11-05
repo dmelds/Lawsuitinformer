@@ -1,0 +1,105 @@
+# Reader words for the Congress board (mass-tort-bills-in-congress.html).
+# generate_congress_board.py reads this file. Hill Wire supplies where each bill stands;
+# this file supplies what the board says about it, in plain words for the reader.
+#
+# [cases]   Hill Wire topic | case name as the board shows it
+#           The topic is spelled as in Hill Wire's bills.txt. A bill whose topic has no
+#           line here stays off the board, with a warning in the run log.
+#
+# [bills]   bill id | name on the board | what the bill would do, in plain words
+#           The bill id is Hill Wire's: congress-typenumber (119-hr7567, 119-samdt6429).
+#           Leave the name empty to use Hill Wire's label. Say what the bill would do for
+#           people in the case. Leave out where it stands; the board shows that from
+#           Congress.gov and keeps it current. A bill with no line here stays off the board.
+#
+# [riders]  phrase | why that phrase matters, in plain words
+#           Phrases come from Hill Wire's [terms] list. When Hill Wire finds one in, or
+#           missing from, the newest text of a farm bill, defense bill or spending bill,
+#           the board shows it with this line.
+#
+# Facts here come from Hill Wire's bills.txt notes, which were checked against
+# Congress.gov and GovInfo on 11/4 and 11/5/26. Keep sentences under 25 words.
+
+[cases]
+Roundup settlement|Roundup
+AI chatbot lawsuit|AI Chatbots and Kids
+social media addiction lawsuit|Social Media Addiction
+PFAS litigation|PFAS Water Contamination
+AFFF lawsuit|AFFF Firefighting Foam
+Camp Lejeune lawsuit|Camp Lejeune
+House v. NCAA settlement|House v. NCAA Settlement
+deepfake lawsuit|Grok and Deepfakes
+baby food lawsuit|Baby Food Heavy Metals
+talc lawsuit|Talcum Powder
+paraquat lawsuit|Paraquat
+hair relaxer lawsuit|Hair Relaxer
+Roblox lawsuit|Roblox
+state attorney general lawsuit|States Suing AI Companies
+
+[bills]
+# ---- Roundup ----
+119-hr7567|The Farm Bill|An earlier House draft had sections that would have made it harder to sue over Roundup's missing cancer warning. The House voted those sections out before it passed the bill. The Senate could add them back.
+119-hr9528|People Over Poison Act|It would let people sue again over Roundup's missing cancer warning. The Supreme Court closed off those claims in June 2026.
+119-hr7601|No Immunity for Glyphosate Act (House)|It would block federal money for a 2026 executive order on glyphosate, the weed killer in Roundup. Critics say the order could shield Bayer, which owns Roundup, from lawsuits.
+119-s4425|No Immunity for Glyphosate Act (Senate)|It would block federal money for the same executive order. It would also let people hurt by glyphosate sue its makers and sellers in federal court.
+
+# ---- AI chatbots ----
+119-s3062|GUARD Act (Senate)|Chatbot companies would have to check users' ages, and kids could not use companion chatbots. A company whose chatbot pushes a child toward self-harm could face criminal fines.
+119-hr8623|GUARD Act (House)|The House version of the Senate's GUARD Act.
+119-s4407|CHATBOT Act (Senate)|Chatbot apps would have to offer family accounts and parental controls for kids.
+119-hr7985|CHATBOT Act (House)|A different bill with a similar name. AI tools could not offer services like therapy without the license a person would need.
+119-s2937|AI LEAD Act|AI systems would be treated like other products under injury law. Injured people could sue AI companies in federal court. Fine print that limits that right would not hold up.
+119-hr6489|SAFE BOTs Act|It would set rules for chatbots, enforced by the Federal Trade Commission and state attorneys general. States could not keep their own laws on the same subject.
+119-hr10719|Protecting Kids from Human-Like Chatbots Act|It would limit human-like chatbots offered to kids, and state attorneys general could sue for damages. Injury lawsuits and stronger state laws would stay in place.
+119-hr9619|People-First Chatbot Act|Chatbot companies would owe users privacy and data security duties. The Federal Trade Commission and state attorneys general would enforce them.
+119-s5154|Children Harmed by AI Technology Act 2.0|It would set safety rules for AI companion chatbots used by kids. Chatbots could not encourage self-harm or have sexual or romantic chats with children.
+
+# ---- Social media ----
+119-hr7757|KIDS Act (House)|The House's package of online safety bills for kids. Its version of the Kids Online Safety Act leaves out the duty for platforms to take reasonable care to prevent harm to kids.
+119-s1748|Kids Online Safety Act (Senate)|Platforms would have a duty to take reasonable care to prevent harm to kids. The House and Senate versions still have to be matched up.
+
+# ---- PFAS and AFFF ----
+119-hr1267|Water Systems PFAS Liability Protection Act|Water utilities would not have to pay to clean up PFAS they did not make. The cleanup cost would shift back to the chemical makers.
+119-samdt6429|Water utility shield in the defense bill|A proposed change to the Senate defense bill. It would shield water utilities from paying to clean up PFAS they did not make.
+119-s4784|Defense Bill for 2027 (Senate)|The yearly defense bill. A proposed change filed against it would shield water utilities from PFAS cleanup costs. Congress has to pass or extend it by December 31, 2026.
+119-s5555|PFAS RAPID Response Act|The Defense Department would have to start early PFAS cleanup at some military bases.
+
+# ---- Camp Lejeune ----
+119-hr4145|Ensuring Justice for Camp Lejeune Victims Act (House)|It would confirm that Camp Lejeune cases get jury trials and set a standard for proving the water caused an illness. Cases could be heard outside the one North Carolina court. Lawyer fees would be capped at 20% of a settlement and 25% after a trial.
+119-s907|Ensuring Justice for Camp Lejeune Victims Act (Senate)|The Senate version, with the same changes and the same caps on lawyer fees.
+
+# ---- NCAA ----
+119-hr4312|SCORE Act|It would protect the NCAA and its conferences from lawsuits over their pay, eligibility and transfer rules. College athletes could not be treated as employees. The House settlement's revenue sharing would become law.
+
+# ---- Deepfakes ----
+119-s4591|NO FAKES Act (Senate)|People could stop others from using a digital copy of their voice or face. Websites would have to take those copies down.
+119-hr8915|NO FAKES Act (House)|The House version of the Senate's NO FAKES Act.
+119-s1837|DEFIANCE Act|People could sue in federal court over sexually explicit deepfakes made of them.
+
+# ---- Baby food ----
+119-hr8429|Baby Food Safety Act|The FDA would set limits on lead, arsenic, cadmium and mercury in baby and toddler food. Makers would have to test their food and keep records.
+
+# ---- Talc ----
+119-s4346|Corporate Accountability in Bankruptcy Act (Senate)|It targets the "Texas Two-Step." A company moves its lawsuits into a new company, then puts that one into bankruptcy. Johnson & Johnson tried it three times with talc claims. Courts could dismiss bankruptcies filed that way.
+119-hr8393|Corporate Accountability in Bankruptcy Act (House)|The House version of the same bankruptcy bill.
+
+# ---- Paraquat ----
+119-hr9357|Paraquat Prevention Act|It would end the sale of paraquat, a weed killer, in the United States.
+
+# ---- Hair relaxer ----
+119-hr7685|Healthy Hair Act|Hair straighteners made with formaldehyde, or with chemicals that release it, could no longer be legally sold under federal law.
+
+# ---- Roblox ----
+119-hr6265|Safer GAMING Act|Online game companies would have to give kids protections against harmful contact from other players.
+
+# ---- States suing AI companies ----
+119-hr5388|American AI Leadership and Uniformity Act|It would pause state laws that limit AI for a set time. That pause could reach the lawsuits states have filed against AI companies.
+
+[riders]
+pesticide labeling|Language like this could make it harder to sue over Roundup's missing cancer warning.
+uniformity in pesticide labeling|Language like this could make it harder to sue over Roundup's missing cancer warning.
+passive receiver|Language like this could shield water utilities from paying to clean up PFAS they did not make.
+camp lejeune justice act|This is the law that lets Camp Lejeune families sue. A change to it could change their cases.
+ai companion|Language like this could set new rules for AI companion chatbots.
+section 230 of the communications act|This law shields websites from many lawsuits over what users post. A change to it could affect the social media cases.
+artificial intelligence model development|Language like this could pause state AI laws, which could reach the lawsuits states have filed against AI companies.
