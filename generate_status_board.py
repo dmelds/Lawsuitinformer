@@ -519,7 +519,7 @@ HOME_CSS = """<style id="li-board-strip">
 .hb .hb-lead{grid-column:1 / -1;font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink);margin:0;}
 .hb .hb-meta{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.05em;color:var(--ink-soft);white-space:nowrap;}
 .hb .hb-meta .hb-dl{color:#a2412a;font-weight:700;}:root[data-theme="dark"] .hb .hb-meta .hb-dl{color:#e07a5f;}
-@media (max-width:600px){.hb li{grid-template-columns:1fr;}.hb .hb-meta{white-space:normal;}.hb .hb-all{margin-left:0;}}
+@media (max-width:600px){.hb li{grid-template-columns:minmax(0,1fr);}.hb li>span:first-child{min-width:0;overflow-wrap:anywhere;}.hb .hb-meta{white-space:normal;}.hb .hb-all{margin-left:0;}}
 </style>"""
 
 

@@ -17,8 +17,14 @@ name: Congress board
 # A bill added to Hill Wire's bills.txt with no line here is named as a warning in
 # the run log and left off the board.
 #
-# The commit carries [skip actions], like the status board's, so it does not
-# re-trigger this workflow from its own path filter.
+# The same run keeps the board's links in step: the "Latest in Congress" strip on
+# index.html and one line under the stamp of every case page a bill names.
+#
+# Two commits, as with the status board, so the sitemap reads each correctly. The
+# case pages go first with [skip lastmod]: the Congress line is navigation, and
+# without the token every one of those pages' <lastmod> would jump to the run day.
+# The board, its data and the homepage go second without it. Both carry
+# [skip actions], so neither re-triggers this workflow from its own path filter.
 
 on:
   push:
@@ -79,12 +85,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- data/congress_bills.json mass-tort-bills-in-congress.html
-          if git diff --cached --quiet; then
-            echo "Board and data unchanged."
+          made=0
+
+          # 1. Case pages whose Congress line changed: navigation only, so [skip lastmod].
+          git add -u -- '*.html' ':!mass-tort-bills-in-congress.html' ':!index.html'
+          if ! git diff --cached --quiet; then
+            git commit -m "Link the case pages to the Congress board [skip lastmod] [skip actions]"
+            made=1
+          fi
+
+          # 2. The board, its data and the homepage strip: real content changes, lastmod moves.
+          git add -- data/congress_bills.json mass-tort-bills-in-congress.html index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild the Congress board from Hill Wire [skip actions]"
+            made=1
+          fi
+
+          if [ "$made" = "0" ]; then
+            echo "Board, data, homepage strip and case-page lines unchanged."
             exit 0
           fi
-          git commit -m "Rebuild the Congress board from Hill Wire [skip actions]"
           BRANCH="$(git branch --show-current)"
           for attempt in 1 2 3 4 5; do
             if git pull --rebase origin "$BRANCH" && git push; then
