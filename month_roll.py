@@ -34,6 +34,21 @@ judgment.
             ("As of October 2026, no settlement...") are left alone: they were
             true when written and still say so.
 
+  restamp   For a de-stamped page whose docket has since moved. stamp only rolls
+            a month that is already in the title, so a page de-stamped on the
+            1st kept a bare title through every later edit that month (11/4/26:
+            afff, pfas, roundup and video-game were edited in November and still
+            read "Lawsuit Update: ..."). restamp puts the month back after the
+            title's "Update" or "Updates" ("AFFF Lawsuit Update November 2026:
+            MDL 2873 Status") in every copy of the title: <title>, og:title,
+            twitter:title and the JSON-LD headline/name strings that carry it.
+            Descriptions, headings and body text are left alone. Same gate as
+            stamp: --date moves dateModified first, and it refuses unless
+            dateModified is in the target month. It also refuses a title that
+            already carries a month (use stamp) or has no "Update" slot (retitle
+            by hand). The Page update drafts task runs it after every edit to a
+            de-stamped update page.
+
 Event references are never touched by either command: "October 2026 Ruling",
 "sued in October 2026", "the October 2026 order". Anything in the head or a
 heading that still names the old month after a run is printed so it can be
@@ -48,7 +63,8 @@ Usage
     python3 month_roll.py stamp hernia-mesh-lawsuit.html --date 2026-11-03
     python3 month_roll.py stamp hernia-mesh-lawsuit.html      # dateModified already November
     python3 month_roll.py destamp grok-lawsuits.html coca-cola-lawsuit.html
-    add --dry-run to stamp/destamp to print the changes and write nothing
+    python3 month_roll.py restamp afff-lawsuit-updates.html        # dateModified already November
+    add --dry-run to stamp/destamp/restamp to print the changes and write nothing
 """
 import argparse
 import json
@@ -567,12 +583,87 @@ def cmd_destamp(args, root, target, today):
     return 1 if bad else 0
 
 
+# A title's "Update" or "Updates" followed by its colon, or ending the title:
+# the slot the month sat in before a de-stamp ("Lawsuit Update October 2026: ...").
+UPDATE_SLOT = re.compile(r"\bUpdates?(?=:|$)")
+TITLE_LD = re.compile(r'("(?:headline|alternativeHeadline|name)"\s*:\s*")((?:[^"\\]|\\.)*)(")')
+
+
+def cmd_restamp(args, root, target, today):
+    bad = 0
+    new_label = label(target)
+    for path in pages(args, root):
+        html = path.read_text(encoding="utf-8")
+        extra = []
+        if args.date:
+            html, old = set_date(html, args.date)
+            extra.append(f"dateModified and visible stamps: {old} -> {args.date}")
+        m = DM.search(html)
+        dm_ym = parse_ym(m.group(1)) if m else None
+        if dm_ym != target:
+            print(f"\n  {path.name}: REFUSED. dateModified is {m.group(1) if m else 'missing'}; "
+                  f"a {new_label} stamp needs a {new_label} edit. Update the content, "
+                  f"then pass --date with the edit day.")
+            bad += 1
+            continue
+        tm = TITLE_SPAN.search(html)
+        if not tm:
+            print(f"\n  {path.name}: REFUSED. No <title>.")
+            bad += 1
+            continue
+        raw = tm.group(2).strip()
+        if currency_months(cdc.text(raw)):
+            print(f"\n  {path.name}: title already carries a month (\"{unesc(cdc.text(raw))}\"); "
+                  f"use stamp to roll it")
+            continue
+        if not UPDATE_SLOT.search(raw):
+            print(f"\n  {path.name}: REFUSED. The title has no \"Update\" slot "
+                  f"(\"{unesc(cdc.text(raw))}\"); retitle by hand.")
+            bad += 1
+            continue
+        stamped = UPDATE_SLOT.sub(lambda u: f"{u.group(0)} {new_label}", raw, count=1)
+        changes = []
+
+        def swap(field, value):
+            # Only copies of the title change: the value is the title, or the
+            # title followed by a site suffix (" | Lawsuit Informer").
+            if value == raw or value.startswith(raw + " "):
+                new = stamped + value[len(raw):]
+                changes.append((field, unesc(value), unesc(new)))
+                return new
+            return value
+
+        html = TITLE_SPAN.sub(lambda t: t.group(1) + t.group(2).replace(raw, swap("title", raw), 1) + t.group(3),
+                              html, count=1)
+
+        def meta(mt):
+            tag = mt.group(0)
+            key = re.search(r'(?:name|property)\s*=\s*"([^"]+)"', tag)
+            if not key or key.group(1) not in ("og:title", "twitter:title"):
+                return tag
+            return re.sub(r'(content\s*=\s*")([^"]*)(")',
+                          lambda c: c.group(1) + swap(key.group(1), c.group(2)) + c.group(3), tag, count=1)
+
+        html = META_TAG.sub(meta, html)
+        html = LD_BLOCK.sub(lambda b: b.group(1) + TITLE_LD.sub(
+            lambda s_: s_.group(1) + swap("json-ld " + s_.group(1).split('"')[1], s_.group(2)) + s_.group(3),
+            b.group(2)) + b.group(3), html)
+        extra += length_notes(html)
+        report(path, changes, extra)
+        if not args.dry_run:
+            path.write_text(html, encoding="utf-8")
+            for e in check(path, today):
+                print(f"      DATE GATE: {e}")
+                bad += 1
+    return 1 if bad else 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("command", choices=["plan", "stamp", "destamp"])
+    ap.add_argument("command", choices=["plan", "stamp", "destamp", "restamp"])
     ap.add_argument("pages", nargs="*")
     ap.add_argument("--month", help="target month YYYY-MM (default: this month, UTC; for stamp: the --date month)")
-    ap.add_argument("--date", help="stamp: the edit day YYYY-MM-DD; moves dateModified and visible stamps")
+    ap.add_argument("--date", help="stamp/restamp: the edit day YYYY-MM-DD; moves dateModified and visible stamps")
     ap.add_argument("--today", help=argparse.SUPPRESS)
     ap.add_argument("--md", help="plan: write the Markdown report here")
     ap.add_argument("--evidence", help="plan: JSON of wire/docket items and MDL counts per page")
@@ -584,13 +675,14 @@ def main():
     today = date.fromisoformat(args.today) if args.today else datetime.now(timezone.utc).date()
     if args.month:
         target = parse_ym(args.month)
-    elif args.command == "stamp" and args.date:
+    elif args.command in ("stamp", "restamp") and args.date:
         target = parse_ym(args.date)
     else:
         target = (today.year, today.month)
     if args.command != "plan" and not args.pages:
         ap.error(f"{args.command} needs at least one page")
-    return {"plan": cmd_plan, "stamp": cmd_stamp, "destamp": cmd_destamp}[args.command](args, root, target, today)
+    return {"plan": cmd_plan, "stamp": cmd_stamp, "destamp": cmd_destamp,
+            "restamp": cmd_restamp}[args.command](args, root, target, today)
 
 
 if __name__ == "__main__":
