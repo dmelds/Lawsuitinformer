@@ -1,0 +1,66 @@
+name: Time-of-day Theme
+
+# Switches every page from following the visitor's device light/dark setting to
+# following their clock (dark 7 pm to 7 am). Dispatch only: run it from the
+# Actions tab, read the dry-run summary in the log, then run again with
+# apply = true.
+#
+# The script is idempotent, so a rerun on an already-swept tree is a no-op and
+# reports zero files patched.
+#
+# The commit message carries [skip lastmod] and [skip actions] so the sitemap
+# generator does not flatten every lastmod date onto the sweep day. This is a
+# script-block change with no content change, so lastmod should not move.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: staging
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || 'staging' }}
+
+      - name: Dry run
+        run: python3 add_time_theme.py
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: python3 add_time_theme.py --apply
+
+      - name: Check the CTA listener anchor survived
+        if: ${{ inputs.apply }}
+        run: python3 add_cta_events.py
+
+      - name: Check date consistency still passes
+        if: ${{ inputs.apply }}
+        run: python3 check_date_consistency.py --strict
+
+      - name: Commit
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add '*.html'
+          git commit -m "Follow the visitor's clock for light and dark mode [skip lastmod] [skip actions]"
+          git pull --rebase
+          git push
