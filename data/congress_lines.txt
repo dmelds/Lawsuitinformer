@@ -35,6 +35,7 @@ paraquat lawsuit|Paraquat
 hair relaxer lawsuit|Hair Relaxer
 Roblox lawsuit|Roblox
 state attorney general lawsuit|States Suing AI Companies
+asbestos lawsuit|Mesothelioma and Asbestos
 
 [bills]
 # ---- Roundup ----
@@ -82,6 +83,11 @@ state attorney general lawsuit|States Suing AI Companies
 # ---- Talc ----
 119-s4346|Corporate Accountability in Bankruptcy Act (Senate)|It targets the "Texas Two-Step." A company moves its lawsuits into a new company, then puts that one into bankruptcy. Johnson & Johnson tried it three times with talc claims. Courts could dismiss bankruptcies filed that way.
 119-hr8393|Corporate Accountability in Bankruptcy Act (House)|The House version of the same bankruptcy bill.
+
+# ---- Mesothelioma and asbestos ----
+119-s5235|Asbestos Ban Act (Senate)|It would ban making, using or selling asbestos in the United States, after a set transition period. Senators from both parties filed it in August 2026.
+119-hr5373|Asbestos Ban Act (House)|The House version of the asbestos ban. It would end the making, use and sale of asbestos in the United States.
+119-hr4247|Asbestos Exposure in Housing Reduction Act|Sellers and landlords of homes built before 2019 would have to tell buyers and renters about asbestos they know of. Buyers and renters would get 10 days to have the home inspected. A seller or landlord who breaks the rule could owe them three times their damages.
 
 # ---- Paraquat ----
 119-hr9357|Paraquat Prevention Act|It would end the sale of paraquat, a weed killer, in the United States.
