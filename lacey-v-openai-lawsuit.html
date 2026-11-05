@@ -4,7 +4,6 @@
 <!-- LI-DARK-INIT:BEGIN -->
 <script>
 (function () {
-  var FOLLOW_OS = true; /* set false to default light unless visitor toggles */
   var t = null, qp = null;
   /* Cross-property handoff: ?theme= from lawsuit.center wins, then vanishes */
   try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
@@ -21,7 +20,10 @@
     try { t = localStorage.getItem('li-theme'); } catch (e) {}
   }
   if (t !== 'dark' && t !== 'light') {
-    t = (FOLLOW_OS && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    /* No saved choice: follow the visitor's own clock. Dark from DARK_FROM to
+       DARK_UNTIL (24-hour, device local time). LI-DARK-JS keeps it in step. */
+    var DARK_FROM = 19, DARK_UNTIL = 7, h = new Date().getHours();
+    t = (h >= DARK_FROM || h < DARK_UNTIL) ? 'dark' : 'light';
   }
   document.documentElement.setAttribute('data-theme', t);
 })();
@@ -806,16 +808,32 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   document.addEventListener('click', ctaClick, true);
   document.addEventListener('auxclick', ctaClick, true);
 
-  if (window.matchMedia) {
-    var mq = matchMedia('(prefers-color-scheme: dark)');
-    var onChange = function (e) {
-      var stored = null;
-      try { stored = localStorage.getItem('li-theme'); } catch (err) {}
-      if (stored !== 'dark' && stored !== 'light') paint(e.matches ? 'dark' : 'light');
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else if (mq.addListener) mq.addListener(onChange);
+  /* Time-of-day theme: with no saved choice, switch at 7 pm and 7 am on the
+     visitor's clock while the page is open, and recheck when the tab comes
+     back. Keep DARK_FROM / DARK_UNTIL in step with LI-DARK-INIT. */
+  var DARK_FROM = 19, DARK_UNTIL = 7, clockTimer = null;
+  function saved() {
+    var s = null;
+    try { s = localStorage.getItem('li-theme'); } catch (err) {}
+    return (s === 'dark' || s === 'light') ? s : null;
   }
+  function byClock() {
+    var h = new Date().getHours();
+    return (h >= DARK_FROM || h < DARK_UNTIL) ? 'dark' : 'light';
+  }
+  function followClock() {
+    clearTimeout(clockTimer);
+    if (saved()) return;
+    if (current() !== byClock()) paint(byClock());
+    var now = new Date(), next = new Date(now);
+    next.setHours(byClock() === 'dark' ? DARK_UNTIL : DARK_FROM, 0, 5, 0);
+    if (next <= now) next.setDate(next.getDate() + 1);
+    clockTimer = setTimeout(followClock, Math.min(next - now, 3600000));
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) followClock();
+  });
+  followClock();
 })();
 </script>
 <!-- LI-DARK-JS:END -->
