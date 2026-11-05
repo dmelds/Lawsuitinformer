@@ -57,7 +57,8 @@ does for the status board:
   index.html     a "Latest in Congress" strip, the five bills that moved most
                  recently, between <!-- LI-CONGRESS:BEGIN --> and END. It goes right
                  after the status board's strip (<!-- LI-BOARD:END -->), or after the
-                 credibility strip when that strip is missing, and reuses its styles.
+                 credibility strip when that strip is missing. It reuses that strip's
+                 styles inside a tinted panel (HOME_CSS) so the two read as separate.
   case pages     every lawsuitinformer.com page a bill on the board names gets one line
                  under its stamp: "Congress is weighing N bills tied to this case",
                  linked to that case on the board. It sits after the status board's
@@ -649,6 +650,15 @@ def first_sentence(text: str) -> str:
     return lead
 
 
+# The Congress strip sits right under the status board's "Latest in Court" strip and reuses its
+# classes. A tinted panel with rules above and below (the site's .section.alt) and a gap before it
+# keeps the two strips from reading as one list.
+HOME_CSS = """<style id="li-congress-strip">
+.hb.hb-congress{margin-top:32px;padding:30px 0 22px;}
+.hb.hb-congress .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
+</style>"""
+
+
 def render_home(rows: list, stamp: str) -> str:
     """The homepage strip, in the status board strip's own classes: the bills that moved most
     recently, then the furthest along, HOME_ROWS in all. Empty when no bill is live."""
@@ -666,8 +676,8 @@ def render_home(rows: list, stamp: str) -> str:
             f'<span class="hb-meta">{when}</span>'
             f'<p class="hb-lead">{esc(r["case"])}: {esc(first_sentence(r["line"]))}</p></li>')
     d = _dt.date.fromisoformat(stamp)
-    return (f"{HOME_BEGIN}\n"
-            '<section class="section hb"><div class="container narrow">'
+    return (f"{HOME_BEGIN}\n{HOME_CSS}\n"
+            '<section class="section alt hb hb-congress"><div class="container narrow">'
             f'<div class="hb-head"><h2>Latest in Congress</h2><span class="hb-when">AS OF {short(stamp)}</span>'
             f'<a class="hb-all" href="{SLUG}">All {len(live)} bills we follow &rarr;</a></div>'
             "<ul>" + "".join(items) + "</ul></div></section>\n" + HOME_END)
