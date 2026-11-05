@@ -9,6 +9,7 @@
 /check_medical_review.py  /404.html  404!
 /check_situation_params.py  /404.html  404!
 /generate-sitemap.py  /404.html  404!
+/generate_congress_board.py  /404.html  404!
 /generate_feed.py  /404.html  404!
 /generate_news_sitemap.py  /404.html  404!
 /generate_og_images.py  /404.html  404!
@@ -219,6 +220,7 @@
 /legal-guides.html  /legal-guides  301!
 /legal-terms-glossary.html  /legal-terms-glossary  301!
 /mare-island-naval-shipyard-asbestos-exposure.html  /mare-island-naval-shipyard-asbestos-exposure  301!
+/mass-tort-bills-in-congress.html  /mass-tort-bills-in-congress  301!
 /mass-torts.html  /mass-torts  301!
 /mdl-basics.html  /mdl-basics  301!
 /mesothelioma.html  /mesothelioma  301!
