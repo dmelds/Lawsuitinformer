@@ -328,10 +328,9 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   <main id="main">
     <section class="hero">
       <div class="container hero-inner narrow">
-        <p class="eyebrow">Attorney-led legal commentary</p>
         <h1>Clear Guides to Lawsuits, Toxic Exposure, and Consumer Safety</h1>
         <p class="hero-subtext">
-          Attorney-written analysis of lawsuits, toxic exposure, and consumer safety. Visible authorship, dated reviews, education kept separate from intake.
+          Where each case stands in court and in Congress, with plain-language guides written for the people affected.
         </p>
 
         <form class="hero-search" action="browse-lawsuits" method="get" role="search" id="homepage-search-form">
@@ -354,30 +353,18 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           <a href="browse-lawsuits" data-q="roundup">Roundup</a>
           <a href="browse-lawsuits" data-q="paraquat">Paraquat</a>
           <a href="browse-lawsuits" data-q="ai">AI Lawsuits</a>
+          <a href="browse-lawsuits">All topics &rarr;</a>
         </div>
 
         <div class="hero-buttons">
           <a class="btn btn-primary" href="start-here">Begin with the Basics</a>
+          <a class="btn btn-secondary" href="#latest">See where each case stands</a>
         </div>
-        <p class="search-helper" style="margin-top:14px;">
-          Or <a href="browse-lawsuits">browse all lawsuit topics</a>.
-        </p>
-      </div>
-    </section>
-
-    <section class="start-here">
-      <div class="container narrow">
-        <p class="eyebrow">START HERE</p>
-        <h2>New to Lawsuits?</h2>
-        <p class="start-text">
-          Begin with a simple guide to how lawsuits work, what happens after contacting a lawyer, and what people often research first.
-        </p>
-        <a href="start-here" class="btn btn-primary">Go to Start Here</a>
       </div>
     </section>
 
       <!-- ============================================================
-         CREDIBILITY STRIP — below hero, before "Start Here".
+         CREDIBILITY STRIP — below the hero, above the court and Congress strips.
          Understated authority signal: three publications, one
          named attorney. Not "network" branded; factual framing.
          ============================================================ -->
@@ -396,7 +383,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     line-height: 1.6;
     color: rgba(28,42,58,.75);
   }
-  .cred-line a { color: var(--cl-navy); font-weight: 600; text-decoration: none; }
+  .cred-line a, .cred-line__self { color: var(--cl-navy); font-weight: 600; text-decoration: none; }
   .cred-line a:hover { color: var(--cl-amber); }
   .cred-line__label { color: var(--cl-amber); font-weight: 600; }
   .cred-line__role { color: rgba(28,42,58,.55); font-weight: 400; }
@@ -404,7 +391,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
   /* Dark mode for the credibility strip. Night tokens; text pairs >= 5:1. */
   :root[data-theme="dark"] .cred-line{background:#1d1a15;border-top-color:#37332b;border-bottom-color:#37332b;color:#aaa294;}
-  :root[data-theme="dark"] .cred-line a{color:#e6e1d6;}
+  :root[data-theme="dark"] .cred-line a,:root[data-theme="dark"] .cred-line__self{color:#e6e1d6;}
   :root[data-theme="dark"] .cred-line a:hover{color:#d4a24e;}
   :root[data-theme="dark"] .cred-line__label{color:#c9b37a;}
   :root[data-theme="dark"] .cred-line__role{color:#aaa294;}
@@ -413,7 +400,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <div class="cred-line">
   <span class="cred-line__label">Attorney-led by David Meldofsky.</span>
   Three publications:
-  <a href="https://lawsuitinformer.com">Lawsuit Informer</a> <span class="cred-line__role">(legal education)</span>
+  <span class="cred-line__self">Lawsuit Informer</span> <span class="cred-line__role">(legal education)</span>
   &middot;
   <a href="https://lawsuit.center?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=index" target="_blank" rel="noopener">Lawsuit Center</a> <span class="cred-line__role">(case review)</span>
   &middot;
@@ -421,6 +408,10 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 </div>
 
     <!-- ===================== END CREDIBILITY STRIP ===================== -->
+
+<!-- Target of the hero's "See where each case stands" button: the court and Congress strips
+     below are written by generate_status_board.py and generate_congress_board.py. -->
+<div id="latest" style="scroll-margin-top:84px"></div>
 
 <!-- LI-BOARD:BEGIN -->
 <style id="li-board-strip">
