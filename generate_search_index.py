@@ -20,7 +20,7 @@ pointing at an anchor (browse-lawsuits#ai-lawsuits) and a real page (ai-lawsuits
 have different urls but the same title, and the results grid renders title plus
 category, so one query returns two identical-looking cards. Pages whose title
 already exists in the index are skipped and reported instead of appended.
-
+/Users/davidmeldofsky/Downloads/informer 5/generate_search_index.py
 Per-page overrides (optional): add either meta tag to any page's <head> to take
 control of how it is indexed instead of relying on auto-extraction:
     <meta name="search-category" content="Court Filing">
@@ -30,6 +30,7 @@ Usage:
     python generate_search_index.py                 # append new pages
     python generate_search_index.py --dry-run       # preview only
     python generate_search_index.py --rebuild-text  # refresh keyword blobs in place
+    python generate_search_index.py --fix-titles --stamps-only  # move stale month stamps only
 
 --rebuild-text regenerates the `text` field of every entry that maps to a real
 page, and touches nothing else. Titles and categories are left exactly as they
@@ -252,12 +253,41 @@ def report_drift(drift):
     print("  Run `python3 generate_search_index.py --fix-titles` to rewrite them.")
 
 
-def fix_titles():
-    """Rewrite drifted titles in place. Only the title string changes."""
+def restamp(indexed, page_title):
+    """The curated title with its month stamp moved to match the page.
+
+    Keeps the curated wording and changes only the stamp: swapped for the page's
+    month, or removed (with the space or parentheses around it) when the page
+    title has none.
+    """
+    sp = MONTH_STAMP.search(page_title)
+    if sp:
+        return MONTH_STAMP.sub(sp.group(0), indexed, count=1)
+    out = re.sub(r"\s*\(\s*" + MONTH_STAMP.pattern + r"\s*\)", "", indexed, count=1)
+    out = re.sub(r"\s*,\s*" + MONTH_STAMP.pattern, "", out, count=1)
+    out = MONTH_STAMP.sub("", out, count=1)
+    out = re.sub(r"\s+([:,)])", r"\1", out)
+    out = re.sub(r"[:,]\s*$", "", out)
+    return re.sub(r"\s{2,}", " ", out).strip()
+
+
+def fix_titles(stamps_only=False):
+    """Rewrite drifted titles in place. Only the title string changes.
+
+    With stamps_only (--stamps-only), only stale month stamps are fixed, and only
+    the stamp itself moves (restamp), so a curated title keeps its wording. This is
+    the mode the auto workflow runs after every page push: month_roll.py stamps and
+    restamps page titles, and without this the index kept last month's stamp until
+    someone ran --fix-titles by hand. Retitled pages are still only reported,
+    because a curated short title can differ from the page on purpose.
+    """
     dry = "--dry-run" in sys.argv
     src = open(INDEX_FILE, encoding="utf-8").read()
     drift = title_drift(src)
     report_drift(drift)
+    if stamps_only:
+        drift = [(slug, old, restamp(old, new), why) for slug, old, new, why in drift
+                 if why == "stale month stamp"]
     if not drift:
         return
     new_for = {slug: new for slug, _, new, _ in drift}
@@ -274,6 +304,8 @@ def fix_titles():
         return
     open(INDEX_FILE, "w", encoding="utf-8").write(out)
     print("Wrote %s (%d title(s) updated)." % (INDEX_FILE, len(drift)))
+    for slug, old, new, _ in drift:
+        print("  %s: %r -> %r" % (slug, old, new))
 
 
 def rebuild_text():
@@ -316,7 +348,7 @@ def main():
     if "--rebuild-text" in sys.argv:
         return rebuild_text()
     if "--fix-titles" in sys.argv:
-        return fix_titles()
+        return fix_titles(stamps_only="--stamps-only" in sys.argv)
     dry = "--dry-run" in sys.argv
     src = open(INDEX_FILE, encoding="utf-8").read()
     # Report title drift on every run so the Actions log shows it. The auto
