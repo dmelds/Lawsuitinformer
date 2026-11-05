@@ -60,6 +60,14 @@
     {
      "date": "2026-06-15",
      "text": "Placed on the Union Calendar, Calendar No. 608."
+    },
+    {
+     "date": "2026-06-15",
+     "text": "Reported (Amended) by the Committee on Judiciary. H. Rept. 119-700."
+    },
+    {
+     "date": "2025-11-20",
+     "text": "Ordered to be Reported (Amended) by the Yeas and Nays: 15 - 11."
     }
    ],
    "number": "2675",
@@ -105,6 +113,26 @@
     {
      "date": "2025-12-01",
      "text": "Rules Committee Resolution H. Res. 916 Reported to House. Rule provides for consideration of H.R. 4312, H.R. 1005, H.R. 1049, H.R. 1069, H.R. 2965 and H.R. 4305. The resolution provides for consideration of H.R. 4312, H.R. 1005, H.R. 1049, H.R. 1069, H.R. 2965, and H.R. 4305 under a closed rule with one hour of general debate and one motion to recommit on each bill."
+    },
+    {
+     "date": "2025-09-11",
+     "text": "Placed on the Union Calendar, Calendar No. 226."
+    },
+    {
+     "date": "2025-09-11",
+     "text": "Reported (Amended) by the Committee on Education and Workforce. H. Rept. 119-270, Part II."
+    },
+    {
+     "date": "2025-09-11",
+     "text": "Reported (Amended) by the Committee on Energy and Commerce. H. Rept. 119-270, Part I."
+    },
+    {
+     "date": "2025-07-23",
+     "text": "Ordered to be Reported (Amended) by the Yeas and Nays: 30 - 23."
+    },
+    {
+     "date": "2025-07-23",
+     "text": "Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 18 - 17."
     }
    ],
    "number": "4312",
@@ -217,6 +245,10 @@
     {
      "date": "2026-04-30",
      "text": "Passed/agreed to in House: On passage Passed by the Yeas and Nays: 224 - 200 (Roll no. 154)."
+    },
+    {
+     "date": "2026-04-30",
+     "text": "On motion to recommit Failed by the Yeas and Nays: 211 - 214 (Roll no. 153)."
     }
    ],
    "number": "7567",
@@ -547,6 +579,10 @@
     {
      "date": "2026-01-13",
      "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S143-147; text: CR S145-146)"
+    },
+    {
+     "date": "2026-01-13",
+     "text": "Passed/agreed to in Senate: Passed Senate without amendment by Unanimous Consent."
     }
    ],
    "number": "1837",
@@ -573,6 +609,22 @@
     {
      "date": "2026-04-28",
      "text": "Passed Senate with an amendment and an amendment to the Title by Unanimous Consent. (consideration: CR S2074-2075; text: CR S2074)"
+    },
+    {
+     "date": "2026-04-28",
+     "text": "Passed/agreed to in Senate: Passed Senate with an amendment and an amendment to the Title by Unanimous Consent."
+    },
+    {
+     "date": "2026-01-28",
+     "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 306."
+    },
+    {
+     "date": "2026-01-28",
+     "text": "Committee on Health, Education, Labor, and Pensions. Reported by Senator Cassidy with an amendment in the nature of a substitute and an amendment to the title. Without written report."
+    },
+    {
+     "date": "2026-01-15",
+     "text": "Committee on Health, Education, Labor, and Pensions. Ordered to be reported with an amendment in the nature of a substitute favorably."
     }
    ],
    "number": "272",
@@ -622,6 +674,14 @@
     {
      "date": "2026-05-11",
      "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 406."
+    },
+    {
+     "date": "2026-05-11",
+     "text": "Committee on the Judiciary. Reported by Senator Grassley with an amendment in the nature of a substitute. Without written report."
+    },
+    {
+     "date": "2026-04-30",
+     "text": "Committee on the Judiciary. Ordered to be reported with an amendment in the nature of a substitute favorably."
     }
    ],
    "number": "3062",
@@ -742,6 +802,14 @@
     {
      "date": "2026-06-24",
      "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 446."
+    },
+    {
+     "date": "2026-06-24",
+     "text": "Committee on the Judiciary. Reported by Senator Grassley with an amendment in the nature of a substitute. Without written report."
+    },
+    {
+     "date": "2026-06-18",
+     "text": "Committee on the Judiciary. Ordered to be reported with an amendment in the nature of a substitute favorably."
     }
    ],
    "number": "4591",
@@ -768,6 +836,14 @@
     {
      "date": "2026-07-14",
      "text": "Cloture motion on the motion to proceed to the measure not invoked in Senate by Yea-Nay Vote. 50 - 46. Record Vote Number: 195. (CR S3918)"
+    },
+    {
+     "date": "2026-06-15",
+     "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 436."
+    },
+    {
+     "date": "2026-06-15",
+     "text": "Committee on Armed Services. Original measure reported to Senate by Senator Wicker. With written report No. 119-127."
     }
    ],
    "number": "4784",
@@ -869,7 +945,11 @@
    "url": "https://www.congress.gov/bill/119th-congress/senate-bill/907"
   },
   "119-samdt6429": {
-   "amended_bill": null,
+   "amended_bill": {
+    "label": "S. 4784",
+    "title": "National Defense Authorization Act for Fiscal Year 2027",
+    "url": "https://www.congress.gov/bill/119th-congress/senate-bill/4784"
+   },
    "congress": 119,
    "id": "119-samdt6429",
    "introduced": "2026-06-24",
