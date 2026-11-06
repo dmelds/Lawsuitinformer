@@ -29,7 +29,8 @@ link to the pages that own the others. Four things are checked:
                  visible. Before the 10/4 split, hub vs meningioma was 12.7%.
 
   STATUS INTENT  A cluster that has an updates page (slug ends -update or
-                 -updates) should keep status language out of every other
+                 -updates, or the page STATUS_OWNERS names for the cluster)
+                 should keep status language out of every other
                  page's <title>, <h1> and meta description: "where it stands",
                  "update", "status", "latest", "as of". Two pages promising
                  status to the same query is the exact failure. WARN.
@@ -229,6 +230,22 @@ STATUS = re.compile(
     r"case count|right now|this month|settlement status|what(?:'s| is) new)\b",
     re.I)
 UPDATES_SLUG = re.compile(r"-(update|updates)$|^recent-developments|-litigation-update")
+# A cluster whose status page does not carry an updates slug names it here, and
+# that page alone owns status for the cluster. 11/6/26: hernia-mesh-lawsuit
+# takes every Bing click and Copilot citation on "hernia mesh lawsuit update"
+# (2,632 citations in three months to 999 for recent-developments), so it owns
+# status and recent-developments carries the dated history and links to it.
+STATUS_OWNERS = {
+    "hernia-mesh": "hernia-mesh-lawsuit",
+}
+
+
+def status_pages(name, slugs):
+    """The slugs in this cluster that own status."""
+    owner = STATUS_OWNERS.get(name)
+    if owner and owner in slugs:
+        return [owner]
+    return [s for s in slugs if UPDATES_SLUG.search(s)]
 BRAND = re.compile(r"\s*[|\-–—:]\s*(lawsuit\s+center|lawsuit\s+informer|"
                    r"lawsuit\s+intelligencer|lawsuitinformer\.com|lawsuit\.center|"
                    r"lawsuitintelligencer\.com)\s*$", re.I)
@@ -395,7 +412,7 @@ def load(root, classes=TEMPLATE_CLASSES, drop=DROP_PRIMARY):
 
 def check_cluster(name, slugs, pages, errors, warnings, tmpl=frozenset()):
     slugs = sorted(slugs)
-    updates = [s for s in slugs if UPDATES_SLUG.search(s)]
+    updates = status_pages(name, slugs)
 
     # --- status intent on non-updates pages ---
     if updates:
@@ -559,8 +576,8 @@ def check_cross(a_pages, a_name, b_pages, b_name, errors, warnings, only=None):
 
     for name in shared:
         as_, bs_ = sorted(clusters_a[name]), sorted(clusters_b[name])
-        a_updates = [x for x in as_ if UPDATES_SLUG.search(x)]
-        b_updates = [x for x in bs_ if UPDATES_SLUG.search(x)]
+        a_updates = status_pages(name, as_)
+        b_updates = status_pages(name, bs_)
 
         # X-STATUS, in both directions: the side holding the -updates slug owns
         # status for the cluster, and the other side should not promise it.
