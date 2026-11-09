@@ -82,6 +82,54 @@ ERROR  (pull requests only, with --base <ref>) The page's body text changed
        so an evening edit stamped with the local date still counts. A stamp
        from any earlier day still errors.
 
+Update pages (added 2026-11-09)
+-------------------------------
+A page is an update page when it carries a dev-list (the dated-entries block the
+status board, the homepage strip and the weekly email read) or an li:status meta.
+These rules keep that block readable by the generators and keep the page in one
+layout as news keeps arriving: "Where it stands now" rewritten in place, the
+dated entries, standing explainer sections, what to watch. News goes in as an
+entry plus a status rewrite, never as a new H2.
+
+ERROR  A dev-list entry has no <time datetime="YYYY-MM-DD">, two entries share
+       an id, the entries are not newest first, or an entry's data-kind is not
+       one of KINDS. The status board and the weekly email sort and label by
+       these fields.
+WARN   An entry's id date and its <time> date disagree. Warn only: the id is a
+       public anchor, so the fix is usually the <time>, not the id.
+ERROR  A dev-list entry is dated after dateModified. The page reports an event
+       it claims to predate.
+ERROR  An in-page link (href="#...") inside <main> points at an id the page
+       does not have. Catches a "More" link left behind when a detail box is
+       cut.
+ERROR  li:next is present but not in the "YYYY-MM-DD|what" form.
+WARN   The <title> carries a month stamp and no dev-list entry is dated in that
+       month. The convention is that a month stamp means the docket moved; an
+       edit with no court news (a CTA rewrite, a Congress section) moves
+       dateModified but is not a reason to claim the month. Either add the
+       entry the edit was about or de-stamp. Warn only until month_roll.py's
+       stamp/restamp key on the same test (MONTH_NEEDS_ENTRY below).
+WARN   li:next is missing on a page whose status is not closed, or its date is
+       before dateModified (the page was edited after that date and "next"
+       was not moved). With the calendar rule on, also when the date has
+       passed on the editor's clock.
+WARN   The page has li:status but no dev-list.
+WARN   The section holding the dev-list (its H2 to the next H2) runs over
+       DEV_SECTION_MAX words.
+WARN   Detail boxes (id="dev-...-detail") for entries more than DETAIL_DAYS
+       days older than dateModified. Keep the one-line entry and its id; cut
+       the box and its "More" link.
+WARN   An H2 is named for a single event ("Latest: ...", "X Sues Y",
+       "What Happened in August 2026"). That news belongs in an entry and in
+       the status section.
+WARN   A second chronology: an H2 named "Timeline" on a page with a dev-list.
+WARN   More than one "Where ... Stand(s)/Sits" status H2. One status section,
+       rewritten in place, with H3s for separate tracks if needed.
+
+LAYOUT_EXEMPT pages get the entry and link rules only, as warnings
+(openai-lawsuits is a hub whose Recent Developments list doubles as the AI
+litigation's dev-list, with month-only entries the board skips on purpose).
+
 Historical references are safe by construction. "the May 2025 ruling" in a page
 modified in 2026 is older than dateModified, so it never errors.
 
@@ -466,6 +514,181 @@ def scan(path, now_ym=None, today_ymd=None):
     b_err, b_warn = body_dates(html, dm_full, today_ymd)
     errors.extend(b_err)
     warnings.extend(b_warn)
+
+    u_err, u_warn = update_page(path, html, title, dm_raw, mt, today_ymd)
+    errors.extend(u_err)
+    warnings.extend(u_warn)
+
+    return errors, warnings
+
+
+# ---------------------------------------------------------------- update pages
+KINDS = {"order", "ruling", "settlement", "filing", "trial", "verdict", "count",
+         "deadline", "hearing", "congress", "other"}
+DEV_SECTION_MAX = 1000
+DETAIL_DAYS = 90
+# "warn" today. Set to "error" once month_roll.py stamp/restamp require an
+# entry in the month, so the gate and the stamper agree.
+MONTH_NEEDS_ENTRY = "warn"
+LAYOUT_EXEMPT = {"openai-lawsuits"}
+
+DEV_UL = re.compile(r'<ul\b[^>]*class="[^"]*\bdev-list\b[^"]*"[^>]*>(.*?)</ul>', re.S | re.I)
+DEV_LI = re.compile(r"<li\b([^>]*)>(.*?)(?=<li\b|$)", re.S | re.I)
+H2_ALL = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.S | re.I)
+EVENT_H2 = re.compile(
+    r"^(latest\b|what happened in\b|"
+    r"[A-Z][\w.&'’ -]{1,40}? (sues|settles|settle|wins|loses|files|drops)\b)",
+    re.I)
+STATUS_H2 = re.compile(r"^where\b.*\b(stands?|sits?)\b", re.I)
+
+
+def _iso(value):
+    m = re.match(r"(20\d{2})-(\d{2})-(\d{2})$", value or "")
+    if not m:
+        return None
+    try:
+        return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+    except ValueError:
+        return None
+
+
+def _words(raw):
+    return len(text(DROP.sub(" ", raw)).split())
+
+
+def update_page(path, html, title, dm_raw, mt, today_ymd=None):
+    """Rules for update pages. Returns (errors, warnings); ([], []) elsewhere."""
+    ul = DEV_UL.search(html)
+    status = mt.get("li:status")
+    if not ul and status is None:
+        return [], []
+    errors, warnings = [], []
+    slug = path.stem
+    layout = slug not in LAYOUT_EXEMPT
+    dm = _iso((dm_raw or "")[:10])
+
+    entries = []
+    if ul:
+        seen = set()
+        for attrs, body in DEV_LI.findall(ul.group(1)):
+            i = re.search(r'\bid="([^"]+)"', attrs)
+            eid = i.group(1) if i else "(no id)"
+            if i and eid in seen:
+                errors.append(f"dev-list entry id {eid} is used twice")
+            seen.add(eid)
+            t = re.search(r'<time\b[^>]*datetime="([^"]+)"', body)
+            when = _iso(t.group(1)[:10]) if t else None
+            if not when:
+                errors.append(f"dev-list entry {eid}: no <time datetime=\"YYYY-MM-DD\">")
+                continue
+            iso = when.strftime("%Y-%m-%d")
+            idd = re.match(r"dev-(\d{4}-\d{2}-\d{2})", eid)
+            if not idd:
+                errors.append(f"dev-list entry {eid}: id is not dev-YYYY-MM-DD-slug")
+            elif idd.group(1) != iso:
+                # Warn, not error: the id is a public anchor (board, homepage strip,
+                # weekly email link to it), so renaming it breaks links. Check which
+                # date is right; fix the <time> if the id is the true one.
+                warnings.append(f"dev-list entry {eid}: id date {idd.group(1)} but <time> says {iso}")
+            k = re.search(r'data-kind="([^"]*)"', attrs)
+            if not k or k.group(1) not in KINDS:
+                errors.append(f"dev-list entry {eid}: data-kind "
+                              f"{k.group(1)!r} is not one of {', '.join(sorted(KINDS))}"
+                              if k else f"dev-list entry {eid}: no data-kind")
+            if dm and when > dm:
+                errors.append(f"dev-list entry {eid} is dated {iso}, after dateModified {dm_raw}")
+            entries.append((iso, eid))
+        dates = [e[0] for e in entries]
+        if dates != sorted(dates, reverse=True):
+            errors.append("dev-list entries are not newest first")
+
+    main = MAIN.search(html)
+    main_html = main.group(0) if main else html
+    ids = set(re.findall(r'\bid="([^"]+)"', html))
+    for target in sorted(set(re.findall(r'href="#([^"]+)"', main_html))):
+        if target not in ids:
+            errors.append(f"link to #{target} has no target on the page")
+
+    nxt = mt.get("li:next")
+    if nxt is not None and nxt.strip():
+        nd = _iso(nxt.split("|", 1)[0].strip())
+        if "|" not in nxt or not nd or not nxt.split("|", 1)[1].strip():
+            errors.append(f"li:next {nxt!r} is not in the YYYY-MM-DD|what form")
+        elif layout:
+            if dm and nd < dm:
+                warnings.append(f"li:next date {nd:%Y-%m-%d} is before dateModified "
+                                f"{dm_raw}: the page was edited and \"next\" was not moved")
+            elif today_ymd and nd.timetuple()[:3] < tuple(today_ymd):
+                warnings.append(f"li:next date {nd:%Y-%m-%d} has passed")
+    elif layout and not re.search(r"\b(closed|wound down|concluded)\b", status or "", re.I):
+        warnings.append("no li:next: the status board shows nothing coming up for this page")
+
+    if not layout:
+        # Exempt pages report the structural rules as warnings: the hub's list is
+        # hand-built and carries month-only entries the board skips on purpose.
+        return [], [f"{e} (exempt page, warning only)" for e in errors] + warnings
+
+    if status is not None and not ul:
+        warnings.append("li:status but no dev-list: news on this page never reaches the board as dated entries")
+
+    t_stamps = stamps(title)
+    if t_stamps and ul:
+        y, mo = max(t_stamps)
+        if not any(e[0].startswith(f"{y:04d}-{mo:02d}") for e in entries):
+            msg = (f"title says {label((y, mo))} and no dev-list entry is dated in "
+                   f"{label((y, mo))} (newest: {entries[0][0] if entries else 'none'}): "
+                   f"add the entry the edit was about, or de-stamp")
+            (errors if MONTH_NEEDS_ENTRY == "error" else warnings).append(msg)
+
+    heads = [(m.start(), text(m.group(1))) for m in H2_ALL.finditer(main_html)]
+    if ul:
+        pos = ul.start() - (main.start() if main else 0)
+        before = [h for h in heads if h[0] < pos]
+        after = [h for h in heads if h[0] > pos]
+        start = before[-1][0] if before else 0
+        end = after[0][0] if after else len(main_html)
+        n = _words(main_html[start:end])
+        if n > DEV_SECTION_MAX:
+            name = before[-1][1] if before else "(dev-list section)"
+            warnings.append(f"\"{name}\" runs {n} words (over {DEV_SECTION_MAX})")
+
+    if dm:
+        old, old_words = 0, 0
+        for m in re.finditer(r'<(div|section|aside)\b[^>]*\bid="dev-(\d{4}-\d{2}-\d{2})[^"]*-detail"[^>]*>',
+                             main_html, re.I):
+            d = _iso(m.group(2))
+            if not d or (dm - d).days <= DETAIL_DAYS:
+                continue
+            # Walk to the matching close tag; detail boxes nest <div>s, so a lazy
+            # match would stop at the first inner </div> and undercount.
+            tag, depth, i = m.group(1).lower(), 1, m.end()
+            tok = re.compile(r"<(/?)" + tag + r"\b[^>]*>", re.I)
+            while depth:
+                t = tok.search(main_html, i)
+                if not t:
+                    break
+                depth += -1 if t.group(1) else 1
+                i = t.end()
+            old += 1
+            old_words += _words(main_html[m.end():i])
+        if old:
+            warnings.append(f"{old} detail box(es), {old_words} words, for entries more than "
+                            f"{DETAIL_DAYS} days before dateModified: keep the one-line entry, "
+                            f"cut the box and its More link")
+
+    statuses = []
+    for _, h in heads:
+        if EVENT_H2.search(h):
+            warnings.append(f"H2 \"{h}\" is named for one event: make it a dated entry "
+                            f"and fold it into the status section")
+        if ul and re.search(r"\btimeline\b", h, re.I):
+            warnings.append(f"H2 \"{h}\" is a second chronology beside the dev-list")
+        if STATUS_H2.search(h):
+            statuses.append(h)
+    if len(statuses) > 1:
+        warnings.append("status told in " + str(len(statuses)) + " H2s ("
+                        + "; ".join(f"\"{h}\"" for h in statuses)
+                        + "): keep one, rewritten in place, with H3s per track")
 
     return errors, warnings
 
