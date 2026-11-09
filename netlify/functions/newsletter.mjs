@@ -67,6 +67,7 @@ export const TOPICS = [
   ["openai-lawsuits", "ChatGPT and OpenAI"],
   ["depo-provera-lawsuit-updates", "Depo-Provera"],
   ["hair-relaxer-lawsuit-updates", "Hair Relaxer"],
+  ["recent-developments-hernia-mesh-litigation", "Hernia Mesh"],
   ["house-ncaa-settlement-update", "House v. NCAA Settlement"],
   ["asbestos-lawsuit-updates", "Mesothelioma and Asbestos"],
   ["ozempic-lawsuit-updates", "Ozempic and GLP-1 Drugs"],

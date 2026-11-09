@@ -100,6 +100,12 @@ PAGES = [
     ("house-ncaa-settlement-update", "House v. NCAA Settlement", "N.D. Cal. · 9th Cir. appeal", "", ""),
     ("video-game-addiction-lawsuit-update", "Video Games and Roblox", "JCCP 5363 · MDL 3166", "3166", ""),
     ("transvaginal-mesh-litigation-update", "Transvaginal Mesh", "State courts", "", ""),
+    # Hernia mesh keeps two pages (set 11/6/26): hernia-mesh-lawsuit owns status and every count,
+    # and the recent-developments page carries the dated history, so it is the board row. Its
+    # dev-list has no data-mdl (a data-mdl would draw Panel count entries onto a page that never
+    # carries a count); the row's pending count comes from MDL 3029, Covidien, the group with
+    # trials on the calendar.
+    ("recent-developments-hernia-mesh-litigation", "Hernia Mesh", "MDL 3029 · D. Mass. · MDL 2846 · S.D. Ohio", "3029", ""),
     # The OpenAI hub doubles as the AI litigation's update page: its Recent Developments list is
     # a dev-list and it carries li:status / li:next like the update pages.
     ("openai-lawsuits", "ChatGPT and OpenAI", "JCCP 5431 · N.D. Cal. · N.D. Fla.", "", "openai-case-review"),
