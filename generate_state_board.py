@@ -486,7 +486,7 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
 # ---------------------------------------------------------------- homepage strip and case-page lines
 
 HOME = "index.html"
-HOME_ROWS = 5
+HOME_ROWS = 3
 HOME_PER_CASE = 2                                    # most rows one case may take on the homepage strip
 HOME_BEGIN, HOME_END = "<!-- LI-STATES:BEGIN -->", "<!-- LI-STATES:END -->"
 HOME_AFTER = [cb.HOME_END, cb.HOME_AFTER]            # after the Congress strip, else after the status board strip
@@ -494,7 +494,6 @@ LINK_BEGIN, LINK_END = "<!-- LI-STATE-LINK:BEGIN -->", "<!-- LI-STATE-LINK:END -
 LINK_AFTER = [cb.LINK_END, cb.BOARD_LINK_END]        # under the Congress line, else under the status board line
 HOME_CSS = """<style id="li-states-strip">
 .hb.hb-states{margin-top:32px;padding:30px 0 22px;}
-.hb.hb-states .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
 </style>"""
 
 
