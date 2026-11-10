@@ -74,7 +74,7 @@ LINES = os.path.join("data", "state_lines.txt")
 HILL_URL = cb.HILL_URL
 UA = "lawsuitinformer state board (+https://lawsuitinformer.com)"
 TITLE = "State Laws on Mass Tort Cases: Where Each One Stands"
-H1 = "State Laws and Bills That Could Change Mass Tort Cases"
+H1 = "State Laws and Bills Tied to Mass Tort Cases"
 RECENT_DAYS = 30
 LATEST_MOVES = 8
 MOVES_KEPT = 10
@@ -108,6 +108,9 @@ PAPER_TEXT = re.compile(r"^(introduced|read (the )?first time|first reading|refe
 KEY_TAGS = {"executive-signature", "executive-veto", "executive-veto-line-item", "became-law", "executive-receipt",
             "passage", "committee-passage", "committee-passage-favorable", "failure", "committee-failure",
             "withdrawal", "veto-override-passage"}
+# A bill sent back out of a committee unchanged on its way to the floor (Pennsylvania's
+# "Re-reported as committed"). The committee's real vote was the earlier report.
+ROUTINE = re.compile(r"^re-?reported as committed\b", re.I)
 AGREED = re.compile(r"\bconcurr|\bagreed (to )?(house|senate|assembly)\b", re.I)
 
 
@@ -117,6 +120,8 @@ def is_move(a: dict) -> bool:
     amendments and messages between the chambers are left out."""
     t = (a.get("text") or "").strip()
     tags = set(a.get("classification") or a.get("tags") or [])
+    if t and ROUTINE.search(t):
+        return False
     if t and PAPER_TEXT.search(t) and not MOVE_TEXT.search(t):
         return False
     return bool(tags & KEY_TAGS) or bool(t and (MOVE_TEXT.search(t) or AGREED.search(t)))
@@ -419,8 +424,8 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
          f"<h1>{esc(H1)}</h1>",
          '<p class="article-byline">By <a href="david-meldofsky">David Meldofsky</a>, California-licensed attorney &middot; Founder, Lawsuit Informer</p>',
          f'<p class="article-date">Last updated: <time datetime="{stamp}">{long_(stamp)}</time></p>',
-         "<p>State lawmakers are writing rules for some of the products in the cases we cover. Some state laws add safety rules or let injured people sue. "
-         "One shields a company from certain lawsuits. This page lists each state law and bill we follow, grouped by case.</p>",
+         "<p>State lawmakers are writing rules for some of the products in the cases we cover. A state law can add safety rules, let injured people sue, or limit what a lawsuit can claim. "
+         "This page lists each state law and bill we follow, grouped by case.</p>",
          "<p>A state bill becomes law only after both chambers pass it and the governor signs it. A new law often starts months after it is signed, so each law shows its start date. "
          'For bills in Washington, see <a href="mass-tort-bills-in-congress">bills in Congress</a>. '
          'For where each case stands in court, see <a href="current-mass-tort-cases">the status board</a>.</p>',
@@ -463,7 +468,7 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
         h += [render_row(r, today) for r in rs]
         if i == mid - 1:
             h.append('<div class="inline-cta"><p><strong>A new state law does not pause the deadline to file.</strong> '
-                     "Each state sets its own deadline, and it usually runs from the date of diagnosis. A free review checks your dates.</p>"
+                     "Each state sets its own deadline to file a lawsuit. A free review checks your dates.</p>"
                      f'<a class="btn btn-primary" href="{cta("state_inline_cta")}" rel="noopener">Check My Filing Deadline</a>'
                      '<p class="cta-note">Free and no obligation. Submitting a request does not create an attorney-client relationship.</p></div>')
     h.append('<p class="cb-note">How this page works: we follow these laws and bills through Open States, which collects each legislature&rsquo;s official record, and check them three times a day. '
