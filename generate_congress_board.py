@@ -566,7 +566,8 @@ def render_main(rows: list, riders: list, today: _dt.date, stamp: str) -> str:
          "<p>Congress is weighing bills that could change some of the cases we cover. Some would make it easier for injured people to sue. Others would shield companies from lawsuits. "
          "This page lists each bill we follow, grouped by case, and shows how far it has gotten.</p>",
          "<p>A bill becomes law only after both the House and the Senate pass it and the President signs it. Most bills stop in committee. "
-         'For where each case stands in court, see <a href="current-mass-tort-cases">the status board</a>.</p>',
+         'For where each case stands in court, see <a href="current-mass-tort-cases">the status board</a>. '
+         'For laws and bills in the states, see <a href="state-laws-on-mass-tort-cases">state laws and bills</a>.</p>',
          f'<div class="cb-band{"" if recent else " quiet"}" role="status"><span class="cb-band-title">IN CONGRESS</span>'
          f'<span class="cb-band-sum">{band}</span>'
          f'<span class="cb-band-when">BUILT {short(stamp)} FROM CONGRESS.GOV</span></div>',

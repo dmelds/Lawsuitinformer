@@ -431,7 +431,7 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
          '<p class="article-byline">By <a href="david-meldofsky">David Meldofsky</a>, California-licensed attorney &middot; Founder, Lawsuit Informer</p>',
          f'<p class="article-date">Last updated: <time datetime="{stamp}">{long_(stamp)}</time></p>',
          "<p>This page lists every case we track, with the newest changes first. Each row shows what happened, when, and the next date the court has set. Each one links to the full update page for that case.</p>",
-         '<p>Congress is also weighing bills that could change some of these cases. <a href="mass-tort-bills-in-congress">See where each bill stands</a>.</p>',
+         '<p>Congress is also weighing bills that could change some of these cases. <a href="mass-tort-bills-in-congress">See where each bill stands</a>. Several states have passed laws on the products in these cases. <a href="state-laws-on-mass-tort-cases">See what each state law does</a>.</p>',
          f'<div class="sb-band{"" if week else " quiet"}" role="status"><span class="sb-band-title">THIS WEEK</span>'
          f'<span class="sb-band-sum">{band_sum}</span>'
          f'<span class="sb-band-when">BUILT {short(stamp)}, {_dt.date.fromisoformat(stamp).year} FROM {total} UPDATE PAGES</span></div>',
