@@ -1,0 +1,50 @@
+# Reader words for the state board (state-laws-on-mass-tort-cases.html).
+# generate_state_board.py reads this file. Hill Wire's STATES tab supplies where each
+# bill stands; this file supplies what the board says about it, in plain words.
+#
+# [cases]   Hill Wire topic | case name as the board shows it
+#           The topic is spelled as in Hill Wire's states.txt. A bill whose topic has no
+#           line here stays off the board, with a warning in the run log.
+#
+# [bills]   state and bill | name on the board | what it does, in plain words | effective date
+#           The first part is the two-letter state and the bill number as in states.txt
+#           (ny S 9051, ga SB 540). Leave the name empty to use Hill Wire's label. Say
+#           what the law or bill does for people in the case. Leave out where it stands;
+#           the board shows that from the state's record. The last part is optional: the
+#           date the law takes effect, as YYYY-MM-DD. With it, a signed law shows "Takes
+#           effect" or "In force since". Leave it off when sources disagree on the date.
+#           A bill with no line here stays off the board.
+#
+# Facts here come from the notes in Hill Wire's states.txt, checked against state
+# records and news reports on 11/9 and 11/10/26. Keep sentences under 25 words.
+# Ohio SB 488 has no line because its text was unread on 11/10/26.
+
+[cases]
+AI chatbot lawsuit|AI Chatbots and Kids
+baby food lawsuit|Baby Food Heavy Metals
+hair relaxer lawsuit|Hair Relaxer
+Roundup settlement|Roundup
+social media addiction lawsuit|Social Media Addiction
+PFAS litigation|PFAS Water Contamination
+deepfake lawsuit|Grok and Deepfakes
+video game addiction lawsuit|Video Game Addiction
+paraquat lawsuit|Paraquat
+talc lawsuit|Talcum Powder
+asbestos lawsuit|Mesothelioma and Asbestos
+
+[bills]
+ny S 9051|New York AI Companion Law for Minors|Companies may not offer anyone under 18 an AI companion with any of 12 unsafe features. The state attorney general enforces it, with fines up to $25,000 per violation.|2027-01-01
+ga SB 540|Georgia Chatbot Safety Law|Chatbot companies must tell users they are talking to AI. They must block sexual content and pretend romance with minors, and keep a plan for users who mention self-harm.|2027-07-01
+nj A 5607|New Jersey Chatbot Liability Bill|This bill would treat a chatbot as a product. The company would be responsible for injuries its chatbot causes, and an injured person could sue.
+ca SB 1119|California Adam's Law|Companion chatbot companies get child-safety duties, including a crisis plan and a ban on encouraging self-harm. A child harmed by a violation can sue the company. Most duties start July 1, 2027.|2027-01-01
+ca SB 867|California AI Toy Pause|Toys with a built-in companion chatbot may not be made or sold in California until January 1, 2031.
+wa HB 2225|Washington AI Companion Chatbot Law|Chatbot companies must tell users the chatbot is a machine, add protections for minors and keep a self-harm plan. A user hurt by a violation can sue under the state consumer protection law.|2027-01-01
+ri HB 7350|Rhode Island AI Companion Law|AI companion tools must say what they are. They must also keep a plan for users who talk about suicide or about hurting someone else.|2027-01-01
+id S 1297|Idaho Conversational AI Safety Act|Chatbot companies must tell users they are talking to AI and add protections for minors. Summaries of the law say the state attorney general enforces it.|2027-07-01
+pa HB 507|Pennsylvania Baby Food Protection Act|The state would test each batch of baby food made in Pennsylvania for arsenic, lead, cadmium and mercury. Limits would apply, and the results would go on the label.
+va HB 1844|Virginia Baby Food Protection Act|Baby food with more toxic heavy metals than the FDA allows may not be sold in Virginia. Makers must test each product monthly and post the results online.|2026-01-01
+ny A 1797|New York Hair Relaxer Warning Label Law|A hair relaxer sold in New York must carry a warning label if it contains a chemical linked to cancer or reproductive harm. The label rule starts about May 2027.
+ca SB 236|California C.U.R.L. Act|Hair relaxers that contain certain listed chemicals, formaldehyde among them, may not be made or sold in California. A state agency registers makers and enforces the ban.
+ga SB 144|Georgia Pesticide Label Shield|This law protects pesticide makers. A Georgia lawsuit cannot claim a maker failed to warn of health risks if the label met federal rules. News reports say it does not reach cases already filed.
+ca AB 56|California Social Media Warning Label Law|Social media platforms must show users under 18 a mental health warning. It appears at first use each day, again after three hours, and every hour after that.|2027-01-01
+pa HB 2883|Pennsylvania PFAS Pesticide Ban|This bill would ban the sale and use of pesticides that contain PFAS when safer choices exist. PFAS from farm fields can reach drinking water.
