@@ -340,6 +340,10 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 </style>
 <!-- LI-DARK-CSS:END -->
+<style id="li-anchor-offset">
+/* The masthead is sticky (about 89px tall). Without this, a jump link lands with the heading hidden under it. */
+main [id] { scroll-margin-top: 104px; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -453,13 +457,13 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=openai_pillar&amp;utm_content=hero_selfharm&amp;situation=Self-Harm%20or%20Mental%20Health%20Crisis" rel="noopener">Self-harm or mental health crisis</a>
           <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=openai_pillar&amp;utm_content=hero_overdose&amp;situation=Wrongful%20Death%20-%20Overdose" rel="noopener">Overdose or drug interaction</a>
           <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=openai_pillar&amp;utm_content=hero_violence&amp;situation=Wrongful%20Death%20-%20Violence" rel="noopener">Mass-casualty harm</a>
-          <a class="hero-action-btn" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=openai_pillar&amp;utm_content=hero_other&amp;situation=Other%20Harm" rel="noopener">Other serious harm</a>
+          <a class="hero-action-btn" style="grid-column:1/-1" href="https://lawsuit.center/openai-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=openai_pillar&amp;utm_content=hero_other&amp;situation=Other%20Harm" rel="noopener">Other serious harm</a>
         </div>
         <p class="hero-action-note">Free review. Submitting does not create an attorney-client relationship.</p>
       </div>
 
       <div class="content-box" id="cases-like-yours">
-        <h2>Find a Filed Case Like Your Family&rsquo;s</h2>
+        <h2 style="margin-top:0;padding-top:0;border-top:0">Find a Filed Case Like Your Family&rsquo;s</h2>
         <p>The lawsuits against OpenAI are grouped here by what the families say happened. OpenAI disputes these claims, and no court has decided them.</p>
         <ul>
           <li><strong>A teenager who died by suicide.</strong> <a href="raine-v-openai-lawsuit">Raine</a> (age 16), <a href="lacey-v-openai-lawsuit">Lacey</a> (17) and <a href="#habib">Habib</a> (15). The parents say ChatGPT kept talking with their son about suicide and never stopped or got him help.</li>
@@ -474,7 +478,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       </div>
 
       <div class="content-box" id="what-to-do">
-        <h2>What to Do If ChatGPT May Have Harmed Someone in Your Family</h2>
+        <h2 style="margin-top:0;padding-top:0;border-top:0">What to Do If ChatGPT May Have Harmed Someone in Your Family</h2>
         <p>These are the first steps for a family considering a lawsuit against OpenAI.</p>
         <ol>
           <li><strong>Save the chat history.</strong> Leave the account open and delete nothing. OpenAI says it removes a deleted chat from its systems within 30 days, and closing the account can erase everything at once. See <a href="what-to-do-after-ai-chatbot-harm">what to do in the first days</a>.</li>
