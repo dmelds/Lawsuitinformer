@@ -1,0 +1,100 @@
+name: State board
+
+# Rebuilds state-laws-on-mass-tort-cases.html, the state board, from Hill Wire's
+# STATES tab (hill.masstortwire.com). Runs half an hour after each Hill Wire state
+# poll (10:52, 16:52 and 22:52 UTC), when the generator or the reader lines change,
+# and on demand.
+#
+# generate_state_board.py --fetch reads Hill Wire's /api/state with the HILL_KEY
+# secret (the one the Congress board already uses), saves the parts the board reads
+# to data/state_bills.json, and rewrites the page only when a row changed. A quiet
+# poll commits nothing, so the page's Last updated stamp and sitemap lastmod move
+# only when a reader would see something new. Without the secret, or when Hill Wire
+# cannot be reached, the run builds from the saved data and warns; it never fails
+# for that.
+#
+# A law or bill shows only once data/state_lines.txt has a plain-language line for
+# it. One added to Hill Wire's states.txt with no line here is named as a warning in
+# the run log and left off the board.
+#
+# The commit carries [skip actions], so it does not re-trigger this workflow from
+# its own path filter. generate_congress_board.py is in the path filter because the
+# state board borrows its page shell and styles.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'generate_state_board.py'
+      - 'generate_congress_board.py'
+      - 'data/state_lines.txt'
+  schedule:
+    - cron: '22 11,17,23 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print the rows, write nothing)'
+        type: boolean
+        default: false
+      force:
+        description: 'Rewrite the page even if no row changed'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: state-board
+  cancel-in-progress: false
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Build the board
+        env:
+          HILL_KEY: ${{ secrets.HILL_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python generate_state_board.py --fetch --dry-run
+          elif [ "${{ inputs.force }}" = "true" ]; then
+            python generate_state_board.py --fetch --force
+          else
+            python generate_state_board.py --fetch
+          fi
+
+      - name: Check the board
+        if: ${{ inputs.dry_run != true }}
+        run: python check_date_consistency.py --strict
+
+      - name: Commit if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/state_bills.json state-laws-on-mass-tort-cases.html
+          if git diff --cached --quiet; then
+            echo "Board and data unchanged."
+            exit 0
+          fi
+          git commit -m "Rebuild the state board from Hill Wire [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push after 5 attempts"
+          exit 1
