@@ -44,7 +44,8 @@ The page is written only when the rows changed, and then dateModified and the vi
 stamp move to today. A day with no change leaves it untouched.
 
 The same run keeps the board's links in step: a "Latest in the States" strip on
-index.html, under the Congress strip, and one line under the stamp of every case page a
+index.html, under the Congress strip (five rows, newest move first, at most two per case so
+a case with many laws cannot fill it), and one line under the stamp of every case page a
 law or bill names (under the Congress line where the page has one).
 
     python3 generate_state_board.py --fetch       # refresh the data, then build
@@ -486,6 +487,7 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
 
 HOME = "index.html"
 HOME_ROWS = 5
+HOME_PER_CASE = 2                                    # most rows one case may take on the homepage strip
 HOME_BEGIN, HOME_END = "<!-- LI-STATES:BEGIN -->", "<!-- LI-STATES:END -->"
 HOME_AFTER = [cb.HOME_END, cb.HOME_AFTER]            # after the Congress strip, else after the status board strip
 LINK_BEGIN, LINK_END = "<!-- LI-STATE-LINK:BEGIN -->", "<!-- LI-STATE-LINK:END -->"
@@ -497,12 +499,26 @@ HOME_CSS = """<style id="li-states-strip">
 
 
 def render_home(rows: list, stamp: str) -> str:
-    """The homepage strip, in the status board strip's own classes: the laws and bills that
-    moved most recently, HOME_ROWS in all."""
+    """The homepage strip, in the status board strip's own classes: HOME_ROWS laws and bills,
+    newest move first, with no case taking more than HOME_PER_CASE of them. One case with
+    many laws (AI chatbots) would otherwise fill every row. When fewer cases have a law or
+    bill than there are rows, the rows left over go to the next most recent, whatever the case."""
     live = [r for r in rows if r["step"]]
     if not live:
         return ""
-    picks = sorted(live, key=lambda r: (r["last_date"] or "", r["step"], r["introduced"] or ""), reverse=True)[:HOME_ROWS]
+    ranked = sorted(live, key=lambda r: (r["last_date"] or "", r["step"], r["introduced"] or ""), reverse=True)
+    picks, taken = [], {}
+    for r in ranked:
+        if taken.get(r["case"], 0) < HOME_PER_CASE:
+            picks.append(r)
+            taken[r["case"]] = taken.get(r["case"], 0) + 1
+    picks = picks[:HOME_ROWS]
+    for r in ranked:                                 # top up when the cap leaves rows empty
+        if len(picks) >= HOME_ROWS:
+            break
+        if r not in picks:
+            picks.append(r)
+    picks.sort(key=ranked.index)
     items = []
     for r in picks:
         when = (f"LAST MOVE {short(r['last_date'])}" if r["last_date"]
