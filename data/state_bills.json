@@ -1,205 +1,88 @@
 {
  "bills": {
-  "ca|20252026|AB56": {
-   "id": "ca|20252026|AB56",
-   "identifier": "AB 56",
-   "introduced": "",
-   "label": "California social media warning label law",
+  "ga|2025_26|SB 540": {
+   "id": "ga|2025_26|SB 540",
+   "identifier": "SB 540",
+   "introduced": "2026-02-19",
+   "label": "Georgia conversational AI safety law",
    "latest": {
-    "date": "2025-10-13",
-    "text": "Approved by the Governor."
+    "date": "2027-07-01",
+    "text": "Effective Date"
    },
    "moves": [
     {
-     "chamber": "",
-     "date": "2025-10-13",
-     "tags": [
-      "executive-signature"
-     ],
-     "text": "Approved by the Governor."
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/social-media-addiction-lawsuit-update",
-    "https://lawsuitinformer.com/social-media-addiction-lawsuit",
-    "https://lawsuit.center/social-media-addiction-lawsuit"
-   ],
-   "session": "20252026",
-   "stage": "Law",
-   "state": "ca",
-   "state_name": "California",
-   "title": "",
-   "topic": "social media addiction lawsuit",
-   "url": ""
-  },
-  "ca|20252026|SB1119": {
-   "id": "ca|20252026|SB1119",
-   "identifier": "SB 1119",
-   "introduced": "",
-   "label": "California Adam's Law (companion chatbots and children)",
-   "latest": {
-    "date": "2026-09-10",
-    "text": "Chaptered by Secretary of State. Chapter 190, Statutes of 2026."
-   },
-   "moves": [
+     "chamber": "Georgia General Assembly",
+     "date": "2027-07-01",
+     "tags": [],
+     "text": "Effective Date"
+    },
     {
-     "chamber": "",
-     "date": "2026-09-10",
-     "tags": [
-      "became-law"
-     ],
-     "text": "Chaptered by Secretary of State. Chapter 190, Statutes of 2026."
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/character-ai-lawsuit",
-    "https://lawsuitinformer.com/ai-injury-lawsuits",
-    "https://lawsuitintelligencer.com/ai-wrongful-death-docket"
-   ],
-   "session": "20252026",
-   "stage": "Law",
-   "state": "ca",
-   "state_name": "California",
-   "title": "",
-   "topic": "AI chatbot lawsuit",
-   "url": ""
-  },
-  "ca|20252026|SB236": {
-   "id": "ca|20252026|SB236",
-   "identifier": "SB 236",
-   "introduced": "",
-   "label": "California C.U.R.L. Act (chemical hair relaxers)",
-   "latest": {
-    "date": "2025-10-11",
-    "text": "Chaptered by Secretary of State. Chapter 598, Statutes of 2025."
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2025-10-11",
-     "tags": [
-      "became-law"
-     ],
-     "text": "Chaptered by Secretary of State. Chapter 598, Statutes of 2025."
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/hair-relaxer-lawsuit-updates",
-    "https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit",
-    "https://lawsuit.center/hair-relaxer-lawsuit"
-   ],
-   "session": "20252026",
-   "stage": "Law",
-   "state": "ca",
-   "state_name": "California",
-   "title": "",
-   "topic": "hair relaxer lawsuit",
-   "url": ""
-  },
-  "ca|20252026|SB867": {
-   "id": "ca|20252026|SB867",
-   "identifier": "SB 867",
-   "introduced": "",
-   "label": "California AI toy moratorium",
-   "latest": {
-    "date": "2026-09-10",
-    "text": "Chaptered by Secretary of State. Chapter 189, Statutes of 2026."
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2026-09-10",
-     "tags": [
-      "became-law"
-     ],
-     "text": "Chaptered by Secretary of State. Chapter 189, Statutes of 2026."
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/character-ai-lawsuit",
-    "https://lawsuitinformer.com/ai-injury-lawsuits",
-    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
-   ],
-   "session": "20252026",
-   "stage": "Law",
-   "state": "ca",
-   "state_name": "California",
-   "title": "",
-   "topic": "AI chatbot lawsuit",
-   "url": ""
-  },
-  "ga|2025_26|SB144": {
-   "id": "ga|2025_26|SB144",
-   "identifier": "SB 144",
-   "introduced": "",
-   "label": "Georgia pesticide failure-to-warn shield",
-   "latest": {
-    "date": "2025-05-09",
-    "text": "Senate Date Signed by Governor"
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2025-05-09",
+     "chamber": "Senate",
+     "date": "2026-05-11",
      "tags": [
       "executive-signature"
      ],
      "text": "Senate Date Signed by Governor"
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/roundup-lawsuit-updates",
-    "https://lawsuitinformer.com/roundup-cancer-lawsuits",
-    "https://lawsuit.center/roundup-lawsuit"
-   ],
-   "session": "2025_26",
-   "stage": "Law",
-   "state": "ga",
-   "state_name": "Georgia",
-   "title": "",
-   "topic": "Roundup settlement",
-   "url": ""
-  },
-  "ga|2025_26|SB540": {
-   "id": "ga|2025_26|SB540",
-   "identifier": "SB 540",
-   "introduced": "",
-   "label": "Georgia conversational AI safety law",
-   "latest": {
-    "date": "",
-    "text": ""
-   },
-   "moves": [],
-   "pages": [
-    "https://lawsuitinformer.com/character-ai-lawsuit",
-    "https://lawsuitinformer.com/ai-injury-lawsuits",
-    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
-   ],
-   "session": "2025_26",
-   "stage": "Law",
-   "state": "ga",
-   "state_name": "Georgia",
-   "title": "",
-   "topic": "AI chatbot lawsuit",
-   "url": ""
-  },
-  "id|2026|S1297": {
-   "id": "id|2026|S1297",
-   "identifier": "S 1297",
-   "introduced": "",
-   "label": "Idaho Conversational AI Safety Act",
-   "latest": {
-    "date": "2026-03-31",
-    "text": "Signed by Governor"
-   },
-   "moves": [
+    },
     {
-     "chamber": "",
-     "date": "2026-03-31",
+     "chamber": "Senate",
+     "date": "2026-05-11",
      "tags": [
       "executive-signature"
      ],
-     "text": "Signed by Governor"
+     "text": "Act 518"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-04-10",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Senate Sent to Governor"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-27",
+     "tags": [],
+     "text": "Senate Agreed House Amend or Sub"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-25",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "House Committee Favorably Reported By Substitute"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-25",
+     "tags": [
+      "reading-3"
+     ],
+     "text": "House Third Readers"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-25",
+     "tags": [
+      "passage"
+     ],
+     "text": "House Passed/Adopted By Substitute"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-10",
+     "tags": [
+      "reading-2"
+     ],
+     "text": "House Second Readers"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-06",
+     "tags": [],
+     "text": "Senate Tabled"
     }
    ],
    "pages": [
@@ -207,16 +90,16 @@
     "https://lawsuitinformer.com/ai-injury-lawsuits",
     "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
    ],
-   "session": "2026",
+   "session": "2025_26",
    "stage": "Law",
-   "state": "id",
-   "state_name": "Idaho",
-   "title": "",
+   "state": "ga",
+   "state_name": "Georgia",
+   "title": "Online Internet Safety; certain disclosures related to conversational AI services; require",
    "topic": "AI chatbot lawsuit",
-   "url": ""
+   "url": "https://openstates.org/ga/bills/2025_26/SB540/"
   },
-  "nj|222|A5607": {
-   "id": "nj|222|A5607",
+  "nj|222|A 5607": {
+   "id": "nj|222|A 5607",
    "identifier": "A 5607",
    "introduced": "2026-10-05",
    "label": "New Jersey chatbot liability and privacy bill",
@@ -229,7 +112,7 @@
      "chamber": "Assembly",
      "date": "2026-10-19",
      "tags": [
-      "committee-passage"
+      "referral-committee"
      ],
      "text": "Reported and Referred to Assembly Appropriations Committee"
     }
@@ -243,59 +126,89 @@
    "stage": "Reported",
    "state": "nj",
    "state_name": "New Jersey",
-   "title": "",
+   "title": "Establishes content and data privacy requirements for chatbot providers.",
    "topic": "AI chatbot lawsuit",
-   "url": ""
+   "url": "https://openstates.org/nj/bills/222/A5607/"
   },
-  "ny|2025-2026|A1797": {
-   "id": "ny|2025-2026|A1797",
-   "identifier": "A 1797",
-   "introduced": "",
-   "label": "New York hair relaxer warning label law",
-   "latest": {
-    "date": "2025-11-21",
-    "text": "Signed Chap.508"
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2025-11-21",
-     "tags": [
-      "executive-signature"
-     ],
-     "text": "Signed Chap.508"
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/hair-relaxer-lawsuit-updates",
-    "https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit",
-    "https://lawsuit.center/hair-relaxer-lawsuit"
-   ],
-   "session": "2025-2026",
-   "stage": "Law",
-   "state": "ny",
-   "state_name": "New York",
-   "title": "",
-   "topic": "hair relaxer lawsuit",
-   "url": ""
-  },
-  "ny|2025-2026|S9051": {
-   "id": "ny|2025-2026|S9051",
+  "ny|2025-2026|S 9051": {
+   "id": "ny|2025-2026|S 9051",
    "identifier": "S 9051",
-   "introduced": "",
+   "introduced": "2026-01-27",
    "label": "New York AI companion law for minors (S9051-B)",
    "latest": {
     "date": "2026-10-28",
-    "text": "Signed Chap.368"
+    "text": "APPROVAL MEMO.6"
    },
    "moves": [
     {
-     "chamber": "",
+     "chamber": "Senate",
+     "date": "2026-10-28",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "DELIVERED TO GOVERNOR"
+    },
+    {
+     "chamber": "Senate",
      "date": "2026-10-28",
      "tags": [
       "executive-signature"
      ],
-     "text": "Signed Chap.368"
+     "text": "SIGNED CHAP.368"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-10-28",
+     "tags": [],
+     "text": "APPROVAL MEMO.6"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-05",
+     "tags": [
+      "passage"
+     ],
+     "text": "PASSED ASSEMBLY"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-05",
+     "tags": [],
+     "text": "RETURNED TO SENATE"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-06-04",
+     "tags": [
+      "passage"
+     ],
+     "text": "PASSED SENATE"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-06-04",
+     "tags": [],
+     "text": "DELIVERED TO ASSEMBLY"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-04",
+     "tags": [],
+     "text": "SUBSTITUTED FOR A10379C"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-04",
+     "tags": [],
+     "text": "ORDERED TO THIRD READING RULES CAL.506"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-06-01",
+     "tags": [
+      "amendment-passage"
+     ],
+     "text": "AMENDED ON THIRD READING (T) 9051B"
     }
    ],
    "pages": [
@@ -307,18 +220,18 @@
    "stage": "Law",
    "state": "ny",
    "state_name": "New York",
-   "title": "",
+   "title": "Prohibits artificial intelligence companions from using features which are considered unsafe for minors",
    "topic": "AI chatbot lawsuit",
-   "url": ""
+   "url": "https://openstates.org/ny/bills/2025-2026/S9051/"
   },
-  "oh|136|SB488": {
-   "id": "oh|136|SB488",
+  "oh|136|SB 488": {
+   "id": "oh|136|SB 488",
    "identifier": "SB 488",
    "introduced": "2026-11-09",
    "label": "Ohio SB 488 (names hair relaxers)",
    "latest": {
-    "date": "",
-    "text": ""
+    "date": "2026-11-09",
+    "text": "Introduced"
    },
    "moves": [],
    "pages": [
@@ -330,18 +243,18 @@
    "stage": "Introduced",
    "state": "oh",
    "state_name": "Ohio",
-   "title": "",
+   "title": "No title provided",
    "topic": "hair relaxer lawsuit",
-   "url": ""
+   "url": "https://openstates.org/oh/bills/136/SB488/"
   },
-  "pa|2025-2026|HB2883": {
-   "id": "pa|2025-2026|HB2883",
+  "pa|2025-2026|HB 2883": {
+   "id": "pa|2025-2026|HB 2883",
    "identifier": "HB 2883",
    "introduced": "2026-10-28",
    "label": "Pennsylvania PFAS pesticide ban",
    "latest": {
-    "date": "",
-    "text": ""
+    "date": "2026-10-28",
+    "text": "Referred to Environmental & Natural Resource Protection"
    },
    "moves": [],
    "pages": [
@@ -353,27 +266,73 @@
    "stage": "In committee",
    "state": "pa",
    "state_name": "Pennsylvania",
-   "title": "",
+   "title": "An Act prohibiting the use of perfluoroalkyl and polyfluoroalkyl substances in pesticides; and imposing duties on the Department of Agriculture.",
    "topic": "PFAS litigation",
-   "url": ""
+   "url": "https://openstates.org/pa/bills/2025-2026/HB2883/"
   },
-  "pa|2025-2026|HB507": {
-   "id": "pa|2025-2026|HB507",
+  "pa|2025-2026|HB 507": {
+   "id": "pa|2025-2026|HB 507",
    "identifier": "HB 507",
-   "introduced": "",
+   "introduced": "2025-02-05",
    "label": "Pennsylvania Baby Food Protection Act",
    "latest": {
-    "date": "2026-10-07",
-    "text": "Third consideration and final passage (200-3)"
+    "date": "2026-10-26",
+    "text": "Referred to Agriculture & Rural Affairs"
    },
    "moves": [
     {
      "chamber": "House",
      "date": "2026-10-07",
      "tags": [
-      "passage"
+      "committee-passage"
      ],
-     "text": "Third consideration and final passage (200-3)"
+     "text": "Re-reported as committed"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-10-07",
+     "tags": [
+      "passage",
+      "reading-3"
+     ],
+     "text": "Third consideration and final passage"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-10-06",
+     "tags": [
+      "reading-2"
+     ],
+     "text": "Second consideration"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-10-05",
+     "tags": [],
+     "text": "Removed from table"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-09-08",
+     "tags": [
+      "committee-passage"
+     ],
+     "text": "Re-reported as committed"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-09-08",
+     "tags": [],
+     "text": "Laid on the table"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-06-23",
+     "tags": [
+      "amendment-passage",
+      "committee-passage"
+     ],
+     "text": "Reported as amended"
     }
    ],
    "pages": [
@@ -385,96 +344,9 @@
    "stage": "Passed House",
    "state": "pa",
    "state_name": "Pennsylvania",
-   "title": "",
+   "title": "An Act providing for the testing and labeling of baby food and for prohibited levels of toxic heavy metals in baby food; and imposing duties on the Department of Agriculture.",
    "topic": "baby food lawsuit",
-   "url": ""
-  },
-  "ri|2026|HB7350": {
-   "id": "ri|2026|HB7350",
-   "identifier": "HB 7350",
-   "introduced": "",
-   "label": "Rhode Island AI companion models law",
-   "latest": {
-    "date": "",
-    "text": ""
-   },
-   "moves": [],
-   "pages": [
-    "https://lawsuitinformer.com/character-ai-lawsuit",
-    "https://lawsuitinformer.com/ai-injury-lawsuits",
-    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
-   ],
-   "session": "2026",
-   "stage": "Law",
-   "state": "ri",
-   "state_name": "Rhode Island",
-   "title": "",
-   "topic": "AI chatbot lawsuit",
-   "url": ""
-  },
-  "va|2025|HB1844": {
-   "id": "va|2025|HB1844",
-   "identifier": "HB 1844",
-   "introduced": "",
-   "label": "Virginia Baby Food Protection Act",
-   "latest": {
-    "date": "2025-05-02",
-    "text": "Approved by Governor"
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2025-05-02",
-     "tags": [
-      "executive-signature"
-     ],
-     "text": "Approved by Governor"
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/baby-food-lawsuit-settlement",
-    "https://lawsuitinformer.com/heavy-metals-baby-food-lawsuit",
-    "https://lawsuitinformer.com/gerber-baby-food-lawsuit"
-   ],
-   "session": "2025",
-   "stage": "Law",
-   "state": "va",
-   "state_name": "Virginia",
-   "title": "",
-   "topic": "baby food lawsuit",
-   "url": ""
-  },
-  "wa|2025-2026|HB2225": {
-   "id": "wa|2025-2026|HB2225",
-   "identifier": "HB 2225",
-   "introduced": "",
-   "label": "Washington AI companion chatbot law",
-   "latest": {
-    "date": "2026-03-24",
-    "text": "Governor signed."
-   },
-   "moves": [
-    {
-     "chamber": "",
-     "date": "2026-03-24",
-     "tags": [
-      "executive-signature"
-     ],
-     "text": "Governor signed."
-    }
-   ],
-   "pages": [
-    "https://lawsuitinformer.com/character-ai-lawsuit",
-    "https://lawsuitinformer.com/ai-injury-lawsuits",
-    "https://lawsuitintelligencer.com/ai-wrongful-death-docket"
-   ],
-   "session": "2025-2026",
-   "stage": "Law",
-   "state": "wa",
-   "state_name": "Washington",
-   "title": "",
-   "topic": "AI chatbot lawsuit",
-   "url": ""
+   "url": "https://openstates.org/pa/bills/2025-2026/HB507/"
   }
  },
  "source": "https://hill.masstortwire.com/api/state"
