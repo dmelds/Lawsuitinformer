@@ -242,26 +242,10 @@
      "chamber": "House",
      "date": "2026-10-07",
      "tags": [
-      "committee-passage"
-     ],
-     "text": "Re-reported as committed"
-    },
-    {
-     "chamber": "House",
-     "date": "2026-10-07",
-     "tags": [
       "passage",
       "reading-3"
      ],
      "text": "Third consideration and final passage"
-    },
-    {
-     "chamber": "House",
-     "date": "2026-09-08",
-     "tags": [
-      "committee-passage"
-     ],
-     "text": "Re-reported as committed"
     },
     {
      "chamber": "House",
