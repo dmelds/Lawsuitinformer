@@ -1,0 +1,72 @@
+name: Fold Update Page Tops
+
+# Runs fold_update_tops.py across the update pages: the "On This Page" list,
+# "Related pages", "Start here" and the "Important" notice above the status
+# section become one-line toggles, in the shape the hair relaxer update page
+# already uses, so the status section starts sooner on a phone. Every word and
+# link inside a box is kept.
+#
+# Dispatch only: run it from the Actions tab, read the dry-run list in the log,
+# then run again with apply = true. Set undo = true (with apply = true) to open
+# the boxes again, in their old order, directly above the status section.
+#
+# The script is idempotent, so a rerun on a folded tree reports 0 pages
+# changed. Run it again after an update page is rewritten from an older copy
+# and comes back with its boxes open.
+#
+# The commit carries [skip lastmod], because the panels are navigation and no
+# page's dateModified or sitemap lastmod should move for them, and
+# [skip actions] so the push does not fan out to the other sweeps.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      undo:
+        description: 'Open the boxes again instead of folding them'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: main
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || 'main' }}
+
+      - name: Dry run
+        run: python3 fold_update_tops.py ${{ inputs.undo && '--undo' || '' }}
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: python3 fold_update_tops.py --apply ${{ inputs.undo && '--undo' || '' }}
+
+      - name: Date check
+        if: ${{ inputs.apply }}
+        run: python3 check_date_consistency.py --strict
+
+      - name: Commit
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add '*.html'
+          git commit -m "Update pages: fold the reference boxes above the status section [skip lastmod] [skip actions]"
+          git pull --rebase
+          git push

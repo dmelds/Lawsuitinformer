@@ -125,6 +125,11 @@ WARN   An H2 is named for a single event ("Latest: ...", "X Sues Y",
 WARN   A second chronology: an H2 named "Timeline" on a page with a dev-list.
 WARN   More than one "Where ... Stand(s)/Sits" status H2. One status section,
        rewritten in place, with H3s for separate tracks if needed.
+WARN   A Key Takeaways box with more than TAKEAWAYS_MAX bullets. The box sits
+       above the status section, so every extra bullet pushes "where it
+       stands" further down a phone screen, and the same facts are already
+       in the sections below. Keep the status, the next date and who it
+       covers.
 
 LAYOUT_EXEMPT pages get the entry and link rules only, as warnings
 (openai-lawsuits is a hub whose Recent Developments list doubles as the AI
@@ -527,6 +532,7 @@ KINDS = {"order", "ruling", "settlement", "filing", "trial", "verdict", "count",
          "deadline", "hearing", "congress", "other"}
 DEV_SECTION_MAX = 1000
 DETAIL_DAYS = 90
+TAKEAWAYS_MAX = 4
 # "warn" today. Set to "error" once month_roll.py stamp/restamp require an
 # entry in the month, so the gate and the stamper agree.
 MONTH_NEEDS_ENTRY = "warn"
@@ -540,6 +546,9 @@ EVENT_H2 = re.compile(
     r"[A-Z][\w.&'’ -]{1,40}? (sues|settles|settle|wins|loses|files|drops)\b)",
     re.I)
 STATUS_H2 = re.compile(r"^where\b.*\b(stands?|sits?)\b", re.I)
+TAKEAWAYS = re.compile(
+    r'<div\b[^>]*class="[^"]*\binfo-box\b[^"]*"[^>]*>\s*<(strong|h[2-4])\b[^>]*>\s*'
+    r"Key Takeaways:?\s*</\1>", re.I)
 
 
 def _iso(value):
@@ -689,6 +698,21 @@ def update_page(path, html, title, dm_raw, mt, today_ymd=None):
         warnings.append("status told in " + str(len(statuses)) + " H2s ("
                         + "; ".join(f"\"{h}\"" for h in statuses)
                         + "): keep one, rewritten in place, with H3s per track")
+
+    for m in TAKEAWAYS.finditer(main_html):
+        # Walk to the box's own closing </div>, so a nested <div> cannot end the count early.
+        depth, i = 1, m.end()
+        tok = re.compile(r"<(/?)div\b[^>]*>", re.I)
+        while depth:
+            t = tok.search(main_html, i)
+            if not t:
+                break
+            depth += -1 if t.group(1) else 1
+            i = t.end()
+        n = len(re.findall(r"<li\b", main_html[m.end():i], re.I))
+        if n > TAKEAWAYS_MAX:
+            warnings.append(f"Key Takeaways box has {n} bullets (over {TAKEAWAYS_MAX}): keep the status, "
+                            f"the next date and who it covers; the rest is already further down the page")
 
     return errors, warnings
 
