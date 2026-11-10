@@ -16,6 +16,7 @@
 /generate_og_images.py  /404.html  404!
 /generate_redirects.py  /404.html  404!
 /generate_search_index.py  /404.html  404!
+/generate_state_board.py  /404.html  404!
 /generate_status_board.py  /404.html  404!
 /lastmod-skip-commits.txt  /404.html  404!
 /month_roll.py  /404.html  404!
@@ -287,6 +288,7 @@
 /social-media-and-mental-health.html  /social-media-and-mental-health  301!
 /social-media-depression-and-anxiety.html  /social-media-depression-and-anxiety  301!
 /start-here.html  /start-here  301!
+/state-laws-on-mass-tort-cases.html  /state-laws-on-mass-tort-cases  301!
 /states-suing-ai-companies.html  /states-suing-ai-companies  301!
 /statute-of-limitations-basics.html  /statute-of-limitations-basics  301!
 /suboxone-film-vs-tablet.html  /suboxone-film-vs-tablet  301!
