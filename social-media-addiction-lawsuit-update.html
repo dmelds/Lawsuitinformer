@@ -301,6 +301,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 </style>
 <!-- LI-DARK-CSS:END -->
+<!-- LI-FOLD-CSS:BEGIN -->
+<style id="li-fold">
+.page-disclosures{margin:0 0 28px;border-top:1px solid var(--rule)}
+details.page-disclosure{border-bottom:1px solid var(--rule)}
+details.page-disclosure>summary{font-family:var(--sans);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 2px;min-height:46px;box-sizing:border-box;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);cursor:pointer;list-style:none}
+details.page-disclosure>summary::-webkit-details-marker{display:none}
+details.page-disclosure>summary::after{content:"";width:8px;height:8px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+details.page-disclosure[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.page-disclosure>summary:hover{color:var(--link)}
+details.page-disclosure>summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+details.page-disclosure .disclosure-body{padding:0 0 18px}
+details.page-disclosure .disclosure-body>p{font-family:var(--serif);font-size:1rem;line-height:1.6;color:var(--ink);margin:0}
+details.page-disclosure .disclosure-body>ul{margin-top:0;margin-bottom:0}
+details.page-disclosure .on-this-page{margin:0;padding:0;border:0;background:none}
+details.page-disclosure .toc-list{border-top:0}
+details.page-disclosure .toc-list li:last-child{border-bottom:0}
+@media (prefers-reduced-motion:reduce){details.page-disclosure>summary::after{transition:none}}
+</style>
+<!-- LI-FOLD-CSS:END -->
 </head>
 
 <body>
@@ -440,10 +459,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </ul>
   </div>
 
-  <div class="info-box">
-    <strong>Important:</strong>
-    <p>This page provides general educational information and does not constitute legal advice.</p>
-  </div>
 
   <div class="info-box key-takeaways-box">
     <strong>Key Takeaways:</strong>
@@ -464,6 +479,17 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     guide. For everything involving Meta in one place, see the
     <a href="meta-lawsuit">Meta Lawsuit</a> page.
   </p>
+
+  <!-- LI-FOLD:BEGIN -->
+  <div class="page-disclosures">
+    <details class="page-disclosure" data-fold="notice" data-box="0|info-box|Important:">
+      <summary>Important notice</summary>
+      <div class="disclosure-body">
+    <p>This page provides general educational information and does not constitute legal advice.</p>
+      </div>
+    </details>
+  </div>
+  <!-- LI-FOLD:END -->
 
   <h2 id="where-it-stands">Where the Social Media Cases Stand Now</h2>
   <p>

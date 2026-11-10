@@ -291,6 +291,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 </style>
 <!-- LI-DARK-CSS:END -->
+<!-- LI-FOLD-CSS:BEGIN -->
+<style id="li-fold">
+.page-disclosures{margin:0 0 28px;border-top:1px solid var(--rule)}
+details.page-disclosure{border-bottom:1px solid var(--rule)}
+details.page-disclosure>summary{font-family:var(--sans);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 2px;min-height:46px;box-sizing:border-box;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);cursor:pointer;list-style:none}
+details.page-disclosure>summary::-webkit-details-marker{display:none}
+details.page-disclosure>summary::after{content:"";width:8px;height:8px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+details.page-disclosure[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.page-disclosure>summary:hover{color:var(--link)}
+details.page-disclosure>summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+details.page-disclosure .disclosure-body{padding:0 0 18px}
+details.page-disclosure .disclosure-body>p{font-family:var(--serif);font-size:1rem;line-height:1.6;color:var(--ink);margin:0}
+details.page-disclosure .disclosure-body>ul{margin-top:0;margin-bottom:0}
+details.page-disclosure .on-this-page{margin:0;padding:0;border:0;background:none}
+details.page-disclosure .toc-list{border-top:0}
+details.page-disclosure .toc-list li:last-child{border-bottom:0}
+@media (prefers-reduced-motion:reduce){details.page-disclosure>summary::after{transition:none}}
+</style>
+<!-- LI-FOLD-CSS:END -->
 </head>
 
 <body>
@@ -414,14 +433,20 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       For a plain-English walkthrough that does not change as the appeal moves, see the companion guide. It covers what the settlement is, the eligibility basics, how a court-supervised claims process works, and how to spot a predatory claims-buyer, <a href="house-ncaa-settlement-explained">The House v. NCAA Settlement, Explained for Athletes</a>. This article is the current-status analysis and links back to that guide for the parts that do not move.
     </p>
 
-    <div class="info-box">
-      <strong>Important note</strong>
+  <!-- LI-FOLD:BEGIN -->
+  <div class="page-disclosures">
+    <details class="page-disclosure" data-fold="notice" data-box="0|info-box|Important note">
+      <summary>Important notice</summary>
+      <div class="disclosure-body">
       <p>
         This article is general educational commentary, not legal advice. It does not evaluate any individual's eligibility, predict appellate outcomes, or create an attorney-client relationship. Settlement terms, class definitions, deadlines, and the claims process are governed by the court-approved settlement documents and the official settlement website, which control over any summary here.
       </p>
-    </div>
+      </div>
+    </details>
+  </div>
+  <!-- LI-FOLD:END -->
 
-    <h2>What the settlement actually did</h2>
+  <h2>What the settlement actually did</h2>
 
     <p>
       House v. NCAA was not one lawsuit. It settled three antitrust cases that had been joined together, all of them about the NCAA's rules limiting what athletes could be paid. U.S. District Judge Claudia Wilken granted final approval on June 6, 2025. The deal has two distinct halves, and most of the public confusion comes from blurring them.
