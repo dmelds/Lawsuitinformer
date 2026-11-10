@@ -84,6 +84,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* The masthead is sticky and about 89px tall. This keeps a jump-link target clear of it,
+   so the heading lands below the masthead and stays visible. */
+[id] { scroll-margin-top: 104px; }
 body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(176,74,47,.3); transition: color .2s var(--ease), border-color .2s var(--ease); }
