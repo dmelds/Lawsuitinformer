@@ -84,6 +84,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* The masthead is sticky and about 89px tall. This keeps a jump-link target clear of it,
+   so the heading lands below the masthead and stays visible. */
+[id] { scroll-margin-top: 104px; }
 body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(176,74,47,.3); transition: color .2s var(--ease), border-color .2s var(--ease); }
@@ -986,14 +989,15 @@ footer, .site-footer {
   border-left: 3px solid var(--amber);
   border-radius: var(--radius);
 }
-.hero-action-prompt {
+/* Two classes, so these outrank ".content-page p" (one class plus one element). */
+.hero-action-strip .hero-action-prompt {
   font-family: var(--serif);
   margin: 0 0 16px;
   color: var(--ink);
   font-size: 1.02rem;
   line-height: 1.6;
 }
-.hero-action-prompt strong {
+.hero-action-strip .hero-action-prompt strong {
   color: var(--ink-strong);
   font-weight: 600;
 }
@@ -1027,7 +1031,7 @@ footer, .site-footer {
   transform: translateY(-1px);
   border-bottom: 0;
 }
-.hero-action-note {
+.hero-action-strip .hero-action-note {
   font-family: var(--sans);
   margin: 14px 0 0;
   font-size: 12.5px;
