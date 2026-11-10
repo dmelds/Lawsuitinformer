@@ -326,40 +326,99 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   </header>
 
   <main id="main">
-    <section class="hero">
+<style id="hp-home">
+/* Homepage only. Site tokens throughout, so dark mode follows the theme; the two pairs that
+   need their own night values are set at the foot of this block. */
+#main{--hp-h2:1.5rem;}
+@media (min-width:701px){#main{--hp-h2:1.75rem;}}
+
+/* Hero: one phone screen, with the first board row in view. */
+.hp-hero{padding:clamp(34px,6vw,84px) 0 clamp(26px,4vw,56px);}
+.hp-hero h1{font-size:clamp(2rem,5.2vw,3.5rem);line-height:1.05;max-width:19ch;margin:0 0 14px;}
+.hp-hero .hero-subtext{font-size:clamp(1.05rem,1.4vw,1.25rem);margin:0 0 18px;max-width:52ch;}
+.hp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;max-width:580px;}
+.hp-chips a{font-family:var(--sans);display:inline-flex;align-items:center;min-height:40px;padding:8px 15px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);
+  font-size:14px;font-weight:500;line-height:1.2;}
+.hp-chips a:hover{background:var(--ink-strong);border-color:var(--ink-strong);color:var(--bg);}
+.hp-hero .hp-search{position:relative;display:block;max-width:580px;margin:0 0 14px;}
+.hp-hero .hp-search input[type="search"]{display:block;width:100%;min-height:50px;padding:13px 104px 13px 18px;font-size:16px;}
+.hp-hero .hp-search .btn{position:absolute;top:5px;right:5px;bottom:5px;width:auto;min-height:0;padding:0 20px;}
+.hp-hero .hp-search .btn:hover{transform:none;}
+.hp-hero .hp-notes{font-family:var(--sans);font-size:13.5px;line-height:1.7;color:var(--ink-muted);margin:0;max-width:580px;}
+.hp-hero .hp-notes span{display:block;}
+
+/* The three boards: one heading size, and type a phone can read. */
+#main .hb .hb-head h2{font-size:var(--hp-h2);}
+#main .hb .hb-pill{font-size:10.5px;}
+#main .hb .hb-meta,#main .hb .hb-when{font-size:11.5px;color:var(--ink-muted);}
+
+/* Sections under the boards: one width, one heading size, one rhythm. */
+#main .li-signup{margin:0;}
+.hp-sec{padding:clamp(40px,6vw,64px) 0;}
+#main .hp-sec h2{font-size:var(--hp-h2);line-height:1.15;margin:0 0 12px;}
+.hp-sec .eyebrow{margin:0 0 10px;}
+.hp-sec p:not([class]){font-family:var(--serif);font-size:1.05rem;line-height:1.6;color:var(--ink);margin:0 0 14px;max-width:60ch;}
+.hp-sec .hp-more{font-family:var(--sans);font-size:14.5px;line-height:1.6;margin:14px 0 0;}
+.hp-sec .hp-more a{font-weight:600;}
+.hp-sec .hp-more span{display:block;margin-top:6px;}
+.hp-sec .btn{margin-top:4px;}
+
+.hp-h3{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-muted);margin:28px 0 8px;}
+.hp-cases{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);}
+.hp-cases li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;
+  border-bottom:1px solid var(--rule);}
+.hp-cases a{border-bottom:0;}
+.hp-cases .hp-case{flex:1 1 auto;padding:11px 0;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.25;
+  color:var(--ink-strong);}
+.hp-cases .hp-case:hover{color:var(--link);}
+.hp-cases .hp-upd{flex:none;padding:11px 0 11px 12px;font-family:var(--sans);font-size:13.5px;font-weight:600;white-space:nowrap;}
+@media (min-width:701px){.hp-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;}}
+.hp-links{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none;}
+.hp-links a{font-family:var(--sans);display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--ink-strong);
+  font-size:14px;font-weight:500;line-height:1.2;}
+.hp-links a:hover{background:var(--ink-strong);border-color:var(--ink-strong);color:var(--bg);}
+
+.hp-commit{margin:18px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule);max-width:60ch;}
+.hp-commit li{padding:11px 0;border-bottom:1px solid var(--rule);font-family:var(--serif);font-size:1rem;line-height:1.5;color:var(--ink);}
+.hp-sec .hp-fine{font-family:var(--sans);font-size:13.5px;line-height:1.7;color:var(--ink-muted);margin:16px 0 0;}
+
+/* Night values. Chips and list links sit on --surface, which the theme already darkens. */
+:root[data-theme="dark"] .hp-chips a:hover,:root[data-theme="dark"] .hp-links a:hover{background:#f6f2e9;border-color:#f6f2e9;color:#161411;}
+:root[data-theme="dark"] .hp-cases .hp-case:hover{color:#eea985;}
+</style>
+    <section class="hero hp-hero">
       <div class="container hero-inner narrow">
-        <h1>Clear Guides to Lawsuits, Toxic Exposure, and Consumer Safety</h1>
+        <h1>Where Each Lawsuit Stands, in Plain Language</h1>
         <p class="hero-subtext">
-          Where each case stands in court, in Congress and in the states, with plain-language guides written for the people affected.
+          Court, Congress and the states, tracked case by case, with guides written for the people affected.
         </p>
 
-        <form class="hero-search" action="browse-lawsuits" method="get" role="search" id="homepage-search-form">
-          <label class="sr-only" for="homepage-search">Search topics and guides</label>
+        <nav class="hp-chips" aria-label="Go to a case">
+          <a href="openai-lawsuits">ChatGPT lawsuits</a>
+          <a href="depo-provera-lawsuit-updates">Depo-Provera</a>
+          <a href="roundup-lawsuit-updates">Roundup</a>
+          <a href="pfas-water-contamination-lawsuit-update">PFAS</a>
+          <a href="asbestos-lawsuit-updates">Mesothelioma</a>
+          <a href="#find-your-case">All topics &rarr;</a>
+        </nav>
+
+        <form class="hero-search hp-search" action="browse-lawsuits" method="get" role="search" id="homepage-search-form">
+          <label class="sr-only" for="homepage-search">Search lawsuits and illnesses</label>
           <input
             type="search"
             id="homepage-search"
             name="q"
-            placeholder="Search lawsuits, guides, illnesses, symptoms, AI"
+            placeholder="Lawsuit or illness"
           />
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
 
-        <div class="search-examples">
-          <span class="search-examples-label">Try:</span>
-          <a href="browse-lawsuits" data-q="mesothelioma">Mesothelioma</a>
-          <a href="browse-lawsuits" data-q="asbestos">Asbestos</a>
-          <a href="browse-lawsuits" data-q="PFAS">PFAS</a>
-          <a href="browse-lawsuits" data-q="AFFF">AFFF</a>
-          <a href="browse-lawsuits" data-q="roundup">Roundup</a>
-          <a href="browse-lawsuits" data-q="paraquat">Paraquat</a>
-          <a href="browse-lawsuits" data-q="ai">AI Lawsuits</a>
-          <a href="browse-lawsuits">All topics &rarr;</a>
-        </div>
-
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="start-here">Begin with the Basics</a>
-          <a class="btn btn-secondary" href="#latest">See where each case stands</a>
-        </div>
+        <p class="hp-notes">
+          <span>New to lawsuits? <a href="start-here">Begin with the basics</a>.</span>
+        </p>
       </div>
     </section>
 
@@ -409,8 +468,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
     <!-- ===================== END CREDIBILITY STRIP ===================== -->
 
-<!-- Target of the hero's "See where each case stands" button: the court, Congress and state strips
-     below are written by generate_status_board.py and generate_congress_board.py. -->
+<!-- The court, Congress and state strips below are written by generate_status_board.py,
+     generate_congress_board.py and generate_state_board.py. Keep the markers. -->
 <div id="latest" style="scroll-margin-top:84px"></div>
 
 <!-- LI-BOARD:BEGIN -->
@@ -437,366 +496,15 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <!-- LI-CONGRESS:BEGIN -->
 <style id="li-congress-strip">
 .hb.hb-congress{margin-top:32px;padding:30px 0 22px;}
-.hb.hb-congress .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
 </style>
-<section class="section alt hb hb-congress"><div class="container narrow"><div class="hb-head"><h2>Latest in Congress</h2><span class="hb-when">AS OF NOV 5, 2026</span><a class="hb-all" href="mass-tort-bills-in-congress">All 35 bills we follow &rarr;</a></div><ul><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s4407">CHATBOT Act (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE AUG 5, 2026</span><p class="hb-lead">AI Chatbots and Kids: Chatbot apps would have to offer family accounts and parental controls for kids.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s1748">Kids Online Safety Act (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE AUG 5, 2026</span><p class="hb-lead">Social Media Addiction: Platforms would have a duty to take reasonable care to prevent harm to kids.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s4784">Defense Bill for 2027 (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE JUL 14, 2026</span><p class="hb-lead">PFAS Water Contamination: The yearly defense bill. A proposed change filed against it would shield water utilities from PFAS cleanup costs.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-hr7757">KIDS Act (House)</a><span class="hb-pill hb-watch">PASSED THE HOUSE</span></span><span class="hb-meta">LAST MOVE JUN 29, 2026</span><p class="hb-lead">Social Media Addiction: The House&#x27;s package of online safety bills for kids.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s4591">NO FAKES Act (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE JUN 24, 2026</span><p class="hb-lead">Grok and Deepfakes: People could stop others from using a digital copy of their voice or face.</p></li></ul></div></section>
+<section class="section alt hb hb-congress"><div class="container narrow"><div class="hb-head"><h2>Latest in Congress</h2><span class="hb-when">AS OF NOV 5, 2026</span><a class="hb-all" href="mass-tort-bills-in-congress">All 35 bills we follow &rarr;</a></div><ul><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s4407">CHATBOT Act (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE AUG 5, 2026</span><p class="hb-lead">AI Chatbots and Kids: Chatbot apps would have to offer family accounts and parental controls for kids.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s1748">Kids Online Safety Act (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE AUG 5, 2026</span><p class="hb-lead">Social Media Addiction: Platforms would have a duty to take reasonable care to prevent harm to kids.</p></li><li><span><a class="hb-name" href="mass-tort-bills-in-congress#119-s4784">Defense Bill for 2027 (Senate)</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE JUL 14, 2026</span><p class="hb-lead">PFAS Water Contamination: The yearly defense bill. A proposed change filed against it would shield water utilities from PFAS cleanup costs.</p></li></ul></div></section>
 <!-- LI-CONGRESS:END -->
 <!-- LI-STATES:BEGIN -->
 <style id="li-states-strip">
 .hb.hb-states{margin-top:32px;padding:30px 0 22px;}
-.hb.hb-states .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
 </style>
-<section class="section alt hb hb-states"><div class="container narrow"><div class="hb-head"><h2>Latest in the States</h2><span class="hb-when">AS OF NOV 10, 2026</span><a class="hb-all" href="state-laws-on-mass-tort-cases">All 15 state laws and bills we follow &rarr;</a></div><ul><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#ny-s-9051">New York AI Companion Law for Minors</a><span class="hb-pill hb-live">LAW</span></span><span class="hb-meta">LAST MOVE OCT 28, 2026</span><p class="hb-lead">AI Chatbots and Kids: Companies may not offer anyone under 18 an AI companion with any of 12 unsafe features.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#nj-a-5607">New Jersey Chatbot Liability Bill</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE OCT 19, 2026</span><p class="hb-lead">AI Chatbots and Kids: This bill would treat a chatbot as a product.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#pa-hb-507">Pennsylvania Baby Food Protection Act</a><span class="hb-pill hb-watch">PASSED ONE CHAMBER</span></span><span class="hb-meta">LAST MOVE OCT 7, 2026</span><p class="hb-lead">Baby Food Heavy Metals: The state would test each batch of baby food made in Pennsylvania for arsenic, lead, cadmium and mercury.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#ny-a-1797">New York Hair Relaxer Warning Label Law</a><span class="hb-pill hb-live">LAW</span></span><span class="hb-meta">LAST MOVE NOV 21, 2025</span><p class="hb-lead">Hair Relaxer: A hair relaxer sold in New York must carry a warning label if it contains a chemical linked to cancer or reproductive harm.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#ca-ab-56">California Social Media Warning Label Law</a><span class="hb-pill hb-live">LAW</span></span><span class="hb-meta">LAST MOVE OCT 13, 2025</span><p class="hb-lead">Social Media Addiction: Social media platforms must show users under 18 a mental health warning.</p></li></ul></div></section>
+<section class="section alt hb hb-states"><div class="container narrow"><div class="hb-head"><h2>Latest in the States</h2><span class="hb-when">AS OF NOV 10, 2026</span><a class="hb-all" href="state-laws-on-mass-tort-cases">All 15 state laws and bills we follow &rarr;</a></div><ul><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#ny-s-9051">New York AI Companion Law for Minors</a><span class="hb-pill hb-live">LAW</span></span><span class="hb-meta">LAST MOVE OCT 28, 2026</span><p class="hb-lead">AI Chatbots and Kids: Companies may not offer anyone under 18 an AI companion with any of 12 unsafe features.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#nj-a-5607">New Jersey Chatbot Liability Bill</a><span class="hb-pill hb-watch">CLEARED COMMITTEE</span></span><span class="hb-meta">LAST MOVE OCT 19, 2026</span><p class="hb-lead">AI Chatbots and Kids: This bill would treat a chatbot as a product.</p></li><li><span><a class="hb-name" href="state-laws-on-mass-tort-cases#pa-hb-507">Pennsylvania Baby Food Protection Act</a><span class="hb-pill hb-watch">PASSED ONE CHAMBER</span></span><span class="hb-meta">LAST MOVE OCT 7, 2026</span><p class="hb-lead">Baby Food Heavy Metals: The state would test each batch of baby food made in Pennsylvania for arsenic, lead, cadmium and mercury.</p></li></ul></div></section>
 <!-- LI-STATES:END -->
-
-
-                <section class="section homepage-news-feature">
-      <div class="container narrow">
-        <p class="eyebrow">FEATURED ANALYSIS · UPDATED MAY 12, 2026</p>
-        <h2>OpenAI Lawsuits: ChatGPT Wrongful Death, Self-Harm, and Mass Shooting Claims</h2>
-        <p>
-          Four major civil actions filed against OpenAI between August 2025 and May 2026 are forcing courts to answer a question that, until recently, was almost entirely theoretical: when a generative AI system produces an output that contributes to serious harm, is that output a product, or is it content? Attorney analysis of the current docket, the doctrinal questions ahead, and what to watch next.
-        </p>
-        <a class="btn btn-primary" href="openai-lawsuits">
-          Read the analysis &rarr;
-        </a>
-        <p style="margin-top:14px;">
-          <strong>For parents:</strong> see our calm, practical <a href="family-ai-safety-guide">family guide to AI chatbots</a> &mdash; how to talk with your teen, what healthy use looks like, and where to turn if you have concerns.
-        </p>
-      </div>
-    </section>
-
-
-    <section class="founder-section alt">
-      <div class="container">
-        <div class="founder-card">
-          <div class="founder-content">
-            <p class="eyebrow">MEET THE FOUNDER</p>
-            <h2>Attorney-Led, with a Specific View on Why This Site Exists</h2>
-            <p>
-              Lawsuit Informer was founded by <strong>David Meldofsky</strong>, a California-licensed attorney, because the public-facing legal internet has become difficult to read honestly. Lawsuit pages routinely mix education, advertising, and case intake without signaling which is which, and AI-generated content has made the line harder to find.
-            </p>
-            <p>
-              The site is the response: pages written or reviewed by a licensed attorney, with visible authorship, dated review notes, and editorial work kept separate from case intake.
-            </p>
-            <p>
-              David's writing has been published in <strong>Attorney at Law Magazine</strong>, <strong>Law360</strong>, and the <strong>Daily Journal</strong>, with a focus on PFAS regulation, drinking water standards, and consumer-facing legal content.
-            </p>
-            <p>
-              <a href="david-meldofsky">Read David's full profile &rarr;</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-   <section class="press-section">
-      <div class="container">
-        <p class="eyebrow">As Featured In</p>
-
-        <div class="press-card">
-          <div class="press-logo">
-            <span class="press-mark">Law360</span>
-          </div>
-
-          <p class="press-publication">Published in Law360</p>
-
-          <h2>Is AI Output a Product or Content?</h2>
-
-          <p class="press-summary">
-            A guest commentary by David Meldofsky examining whether AI-generated output should be treated as a product subject to liability or as content &mdash; the central doctrinal question now surfacing in the OpenAI litigation and the broader wave of AI injury claims.
-          </p>
-
-                   <a class="button" href="https://www.law360.com/articles/2481415"
-             target="_blank" rel="noopener">
-            Read on Law360 (subscription) &rarr;
-          </a>
-          <p class="press-publication" style="margin-top:10px;">
-           <a href="https://davidmeldofsky.com/law360-ai-product-or-content" target="_blank" rel="noopener">Read the full article</a>
-          </p>
-
-        </div>
-
-        <div class="press-card">
-          <div class="press-logo">
-            <span class="press-mark">Attorney at Law Magazine</span>
-          </div>
-
-          <p class="press-publication">Published in Attorney at Law Magazine &mdash; Free to read</p>
-
-          <h2>What a Verdict Number Actually Means in Mass Torts</h2>
-
-          <p class="press-summary">
-            A bylined feature on what the numbers in a mass tort mean for the people bringing claims &mdash; how a bellwether verdict changes after trial and on appeal, how a settlement fund is divided into tiers, and what fees, costs, and liens come out of a gross award.
-          </p>
-
-          <a class="button" href="https://attorneyatlawmagazine.com/public-articles/mass-torts/what-a-verdict-number-actually-means-in-mass-torts"
-             target="_blank" rel="noopener">
-            Read on Attorney at Law Magazine &rarr;
-          </a>
-        </div>
-
-        <div class="press-card">
-          <div class="press-logo">
-            <span class="press-mark">Attorney at Law Magazine</span>
-          </div>
-
-          <p class="press-publication">Published in Attorney at Law Magazine &mdash; Free to read</p>
-
-          <h2>Before You Contact a Lawyer: How to Evaluate Lawsuit Information Online in the AI Era</h2>
-
-          <p class="press-summary">
-            A bylined feature outlining the editorial philosophy behind Lawsuit Informer &mdash; how consumers can evaluate online legal information, including AI-generated guidance, and distinguish education from intake before contacting a lawyer.
-          </p>
-
-          <a class="button" href="https://attorneyatlawmagazine.com/public-articles/before-you-contact-a-lawyer-how-to-evaluate-lawsuit-information-online-in-the-ai-era"
-             target="_blank" rel="noopener">
-            Read on Attorney at Law Magazine &rarr;
-          </a>
-        </div>
-
-        <div class="press-card">
-          <div class="press-logo">
-            <span class="press-mark">Law360</span>
-          </div>
-
-          <p class="press-publication">Published in Law360</p>
-
-          <h2>PFAS OUT Cannot Replace Broad Drinking Water Protections</h2>
-
-          <p class="press-summary">
-            A guest commentary by David Meldofsky addressing EPA's PFAS reporting posture, the difference between regulatory shifts and safety determinations, and the implications for regulated entities and affected communities.
-          </p>
-
-          <a class="button" href="https://www.law360.com/articles/2470291"
-             target="_blank" rel="noopener">
-            Read on Law360 (subscription) &rarr;
-          </a>
-        </div>
-
-        <div class="press-card">
-          <div class="press-logo">
-            <span class="press-mark">Daily Journal</span>
-          </div>
-
-          <p class="press-publication">Published in the Daily Journal</p>
-
-          <h2>PFAS Drinking Water Rules Are Changing as Lawsuits Surge</h2>
-
-          <p class="press-summary">
-            A guest commentary by David Meldofsky on EPA's PFAS reconsideration, federal and California drinking water standards, and the broader litigation landscape facing regulated entities and affected communities.
-          </p>
-
-          <a class="button" href="https://www.dailyjournal.com/article/391237-pfas-drinking-water-rules-are-changing-as-lawsuits-surge"
-             target="_blank" rel="noopener">
-            Read on Daily Journal (subscription) &rarr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Featured Lawsuit Topics</h2>
-            <p class="section-intro">
-              Explore major lawsuit topics involving toxic exposure, dangerous products, and environmental contamination.
-            </p>
-          </div>
-          <div class="section-heading-link">
-            <a href="browse-lawsuits">Browse All Topics &rarr;</a>
-          </div>
-        </div>
-
-        <h3 class="subsection-title">Toxic Exposure and Environmental Claims</h3>
-        <div class="grid">
-          <a class="card" href="asbestos-exposure-lawsuits">
-            <h3>Asbestos Exposure Lawsuits</h3>
-            <p>Learn how asbestos exposure lawsuits may arise from work, product, or secondary exposure linked to illnesses such as mesothelioma, lung cancer, and asbestosis.</p>
-          </a>
-
-          <a class="card" href="chemical-exposure-lawsuits">
-            <h3>Chemical Exposure Lawsuits</h3>
-            <p>Explore claims involving contaminated water, pesticides, industrial chemicals, and other toxic exposures.</p>
-          </a>
-
-          <a class="card" href="pfas-water-contamination-lawsuits">
-            <h3>PFAS Water Contamination</h3>
-            <p>Lawsuits involving contamination of drinking water by PFAS chemicals, sometimes called "forever chemicals."</p>
-          </a>
-
-          <a class="card" href="environmental-contamination-lawsuits">
-            <h3>Environmental Contamination Lawsuits</h3>
-            <p>Explore claims involving polluted water, toxic releases, runoff, landfill contamination, and community exposure.</p>
-          </a>
-
-          <a class="card" href="afff-firefighting-foam-lawsuits">
-            <h3>AFFF Firefighting Foam Lawsuits</h3>
-            <p>Explore claims involving PFAS-containing firefighting foam, contaminated water, and related health concerns.</p>
-          </a>
-        </div>
-
-        <h3 class="subsection-title">Consumer Products and Product Liability</h3>
-        <div class="grid">
-          <a class="card" href="roundup-cancer-lawsuits">
-            <h3>Roundup Cancer Lawsuits</h3>
-            <p>Litigation involving allegations that glyphosate-based herbicides may be linked to certain cancers.</p>
-          </a>
-
-          <a class="card" href="talcum-powder-ovarian-cancer-lawsuit">
-            <h3>Talcum Powder Ovarian Cancer</h3>
-            <p>Claims involving allegations that long-term talcum powder use may be linked to ovarian cancer.</p>
-          </a>
-
-          <a class="card" href="hair-relaxer-cancer-lawsuit">
-            <h3>Hair Relaxer Cancer Lawsuits</h3>
-            <p>Claims involving allegations that chemical hair relaxer products increased cancer risk.</p>
-          </a>
-
-          <a class="card" href="heavy-metals-baby-food-lawsuit">
-            <h3>Heavy Metals in Baby Food</h3>
-            <p>Claims involving allegations that certain baby food products may contain harmful levels of toxic metals.</p>
-          </a>
-        </div>
-
-        <h3 class="subsection-title">Additional and Emerging Topics</h3>
-        <div class="grid">
-          <a class="card" href="paraquat-parkinsons-lawsuits">
-            <h3>Paraquat Parkinson's Lawsuits</h3>
-            <p>Cases involving allegations that exposure to the herbicide paraquat may contribute to Parkinson's disease.</p>
-          </a>
-
-          <a class="card" href="processed-food-addiction-lawsuit">
-            <h3>Processed Food Addiction Lawsuits</h3>
-            <p>Claims involving allegations that certain ultra-processed foods may contribute to harmful consumption patterns and health risks.</p>
-          </a>
-
-          <a class="card" href="openai-lawsuits">
-            <h3>OpenAI Lawsuits</h3>
-            <p>Central hub for OpenAI litigation coverage &mdash; ChatGPT wrongful death, self-harm, and mass shooting claims, plus the product-versus-content framing question.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="guides" class="section alt">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Legal Guides</h2>
-            <p class="section-intro">
-              Start with the basics of how lawsuits work, how legal claims are evaluated, and what steps people often research first.
-            </p>
-          </div>
-          <div class="section-heading-link">
-            <a href="legal-guides">View All Legal Guides &rarr;</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="card" href="how-lawsuits-work">
-            <h3>How Lawsuits Work</h3>
-            <p>Learn the basic process of how a lawsuit typically begins and moves forward.</p>
-          </a>
-
-          <a class="card" href="what-happens-after-you-contact-a-lawyer">
-            <h3>What Happens After You Contact a Lawyer?</h3>
-            <p>Learn what usually happens after you first reach out to a lawyer, including intake, case review, and possible next steps.</p>
-          </a>
-
-          <a class="card" href="what-evidence-helps-a-lawsuit">
-            <h3>What Evidence Helps a Lawsuit?</h3>
-            <p>Learn what kinds of records, photos, messages, and documents may help support a lawsuit and clarify what happened.</p>
-          </a>
-
-          <a class="card" href="how-long-do-lawsuits-take">
-            <h3>How Long Do Lawsuits Take?</h3>
-            <p>Understand why some cases move quickly while others take much longer.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Explore by Illness, Injury, or Exposure</h2>
-            <p class="section-intro">
-              Some readers begin with a diagnosis, symptom pattern, or exposure history rather than a lawsuit name.
-            </p>
-          </div>
-          <div class="section-heading-link">
-            <a href="illnesses-linked-to-lawsuits">Explore More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="card" href="illnesses-linked-to-lawsuits">
-            <h3>Illnesses Linked to Lawsuits</h3>
-            <p>Explore diagnosis-related topics often linked to toxic exposure, product liability, and environmental claims.</p>
-          </a>
-
-          <a class="card" href="symptoms-linked-to-lawsuits">
-            <h3>Symptoms Linked to Lawsuits</h3>
-            <p>Explore symptom patterns people sometimes research alongside chemical exposure, defective products, and contamination concerns.</p>
-          </a>
-
-          <a class="card" href="cancers-linked-to-lawsuits">
-            <h3>Cancers Linked to Lawsuits</h3>
-            <p>Explore cancer-related lawsuit topics involving toxic exposure, contaminated products, and environmental claims.</p>
-          </a>
-
-          <a class="card" href="neurological-conditions-linked-to-lawsuits">
-            <h3>Neurological Conditions Linked to Lawsuits</h3>
-            <p>Explore lawsuit topics involving Parkinson's disease, developmental conditions, toxic exposure, and other neurological claims.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-signals alt">
-      <div class="container">
-        <h2>How Lawsuit Informer Works</h2>
-        <p class="section-intro">
-          Six commitments every page on the site is held to.
-        </p>
-
-        <div class="trust-grid">
-          <div class="trust-card">
-            <h3>Written or Reviewed by an Attorney</h3>
-            <p>Every substantive page is written or reviewed by David Meldofsky, a California-licensed attorney, before publication. The site does not publish anonymous content.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Editorial Separated from Intake</h3>
-            <p>Lawsuitinformer.com is the editorial site. Case intake happens on a separate site, lawsuit.center. Calls-to-action are clearly labeled, and editorial decisions aren't driven by intake partners.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Dated Review on Every Page</h3>
-            <p>Substantive pages carry a "last updated" date. Pages on developing topics &mdash; PFAS, AFFF, AI litigation &mdash; are reviewed on a rolling basis as regulations and case law change.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Disclosed Use of AI in Drafting</h3>
-            <p>AI tools are used in parts of research and drafting. Every published page is reviewed by a licensed attorney for legal accuracy and framing before going live. Disclosed openly on the <a href="editorial-policy">Editorial Policy</a>.</p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Medical Review on Health Content</h3>
-            <p>Medical sections of pages discussing symptoms, illness, or toxic exposure are reviewed for general accuracy by <a href="dr-thomas-hatzilabrou">Dr. Thomas A. Hatzilabrou, M.D.</a></p>
-          </div>
-
-          <div class="trust-card">
-            <h3>Corrections Welcome</h3>
-            <p>If a page contains a factual error or outdated citation, the <a href="contact">corrections form</a> sends it directly to editorial review. Substantive corrections update the page's review date.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
 <!-- LI-SIGNUP-HOME:BEGIN -->
 <style id="li-signup-css">
 .li-signup{margin:40px 0;padding:24px;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius);font-family:var(--sans);text-align:left}
@@ -821,18 +529,20 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 .li-signup form.is-done .li-signup-status{font-size:1rem;font-family:var(--serif);margin:0}
 @media (max-width:600px){.li-signup{padding:20px 18px}.li-signup .li-signup-grid{grid-template-columns:1fr}.li-signup .li-signup-row button{width:100%}}
 </style>
-    <section class="section">
+    <section class="section hp-sec">
       <div class="container narrow">
         <div class="li-signup" id="weekly-updates">
           <p class="li-signup-eyebrow">Weekly email</p>
           <h2 class="li-signup-title">Get weekly case updates</h2>
-          <p class="li-signup-text">Pick the cases you want to follow. Once a week, we email you the new developments we add to those case pages.</p>
+          <p class="li-signup-text">Once a week, we email you the new developments we add to the case pages. Follow every case, or pick the ones you care about.</p>
           <form class="li-signup-form" method="post" action="/api/subscribe" data-source="home">
     <div class="li-signup-fields">
       <input type="hidden" name="source" value="home">
       <p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-      <label class="li-signup-topic"><input type="checkbox" name="topic" value="all"> Every case we track</label>
-      <div class="li-signup-grid">
+      <label class="li-signup-topic"><input type="checkbox" name="topic" value="all" checked> Every case we track</label>
+      <details>
+        <summary>Pick cases instead</summary>
+        <div class="li-signup-grid">
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="afff-lawsuit-updates"> AFFF Firefighting Foam</label>
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="openai-lawsuits"> ChatGPT and OpenAI</label>
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="depo-provera-lawsuit-updates"> Depo-Provera</label>
@@ -850,7 +560,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="transvaginal-mesh-litigation-update"> Transvaginal Mesh</label>
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="tylenol-lawsuit-updates"> Tylenol and Autism</label>
         <label class="li-signup-topic"><input type="checkbox" name="topic" value="video-game-addiction-lawsuit-update"> Video Games and Roblox</label>
-      </div>
+        </div>
+      </details>
       <div class="li-signup-row">
         <label for="li-signup-email-home" class="sr-only">Email address</label>
         <input type="email" id="li-signup-email-home" name="email" placeholder="Your email address" autocomplete="email" required>
@@ -918,20 +629,93 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 })();
 </script>
 <!-- LI-SIGNUP-HOME:END -->
-
-    <section class="section alt">
+    <section class="section alt hp-sec">
       <div class="container narrow">
-        <p class="eyebrow">COMMUNITY OUTREACH</p>
-        <h2>Public Outreach</h2>
-        <p>
-          Lawsuit Informer also supports selected outreach and educational efforts related to legal literacy, consumer safety, and civil lawsuit basics.
+        <p class="eyebrow">ChatGPT and OpenAI</p>
+        <h2>The ChatGPT Lawsuits, Case by Case</h2>
+        <p>Families have sued OpenAI over deaths and injuries they say followed conversations with ChatGPT. OpenAI disputes these claims, and no court has decided them.</p>
+        <p>Our tracker groups the filed cases by what each family says happened. It shows where each case stands today.</p>
+        <a class="btn btn-primary" href="openai-lawsuits">See where each case stands &rarr;</a>
+        <p class="hp-more">
+          <span><a href="openai-lawsuits#what-to-do">What to do if ChatGPT may have harmed someone in your family</a></span>
+          <span><a href="family-ai-safety-guide">A family guide to AI chatbots</a></span>
         </p>
-        <a class="btn btn-primary" href="community-education">Learn About the Program</a>
       </div>
     </section>
 
+    <section class="section hp-sec" id="find-your-case">
+      <div class="container narrow">
+        <h2>Find Your Case</h2>
+        <p>Each case has a plain-language guide and a page of dated updates.</p>
+        <ul class="hp-cases">
+          <li><a class="hp-case" href="afff-firefighting-foam-lawsuits">AFFF Firefighting Foam</a><a class="hp-upd" href="afff-lawsuit-updates" aria-label="AFFF Firefighting Foam updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="openai-lawsuits">ChatGPT and OpenAI</a><a class="hp-upd" href="openai-lawsuits#recent-developments" aria-label="ChatGPT and OpenAI updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="depo-provera-lawsuits">Depo-Provera</a><a class="hp-upd" href="depo-provera-lawsuit-updates" aria-label="Depo-Provera updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="hair-relaxer-cancer-lawsuit">Hair Relaxer</a><a class="hp-upd" href="hair-relaxer-lawsuit-updates" aria-label="Hair Relaxer updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="hernia-mesh-lawsuit">Hernia Mesh</a><a class="hp-upd" href="recent-developments-hernia-mesh-litigation" aria-label="Hernia Mesh updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="house-ncaa-settlement-explained">House v. NCAA Settlement</a><a class="hp-upd" href="house-ncaa-settlement-update" aria-label="House v. NCAA Settlement updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="asbestos-exposure-lawsuits">Mesothelioma and Asbestos</a><a class="hp-upd" href="asbestos-lawsuit-updates" aria-label="Mesothelioma and Asbestos updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="ozempic-lawsuits">Ozempic and GLP-1 Drugs</a><a class="hp-upd" href="ozempic-lawsuit-updates" aria-label="Ozempic and GLP-1 Drugs updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="paraquat-parkinsons-lawsuits">Paraquat</a><a class="hp-upd" href="paraquat-lawsuit-updates" aria-label="Paraquat updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="pfas-water-contamination-lawsuits">PFAS Water Contamination</a><a class="hp-upd" href="pfas-water-contamination-lawsuit-update" aria-label="PFAS Water Contamination updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="roundup-cancer-lawsuits">Roundup</a><a class="hp-upd" href="roundup-lawsuit-updates" aria-label="Roundup updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="social-media-addiction-lawsuit">Social Media Addiction</a><a class="hp-upd" href="social-media-addiction-lawsuit-update" aria-label="Social Media Addiction updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="suboxone-lawsuit">Suboxone Tooth Decay</a><a class="hp-upd" href="suboxone-lawsuit-updates" aria-label="Suboxone Tooth Decay updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="talcum-powder-ovarian-cancer-lawsuit">Talcum Powder</a><a class="hp-upd" href="talcum-powder-lawsuit-updates" aria-label="Talcum Powder updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="transvaginal-mesh-lawsuits">Transvaginal Mesh</a><a class="hp-upd" href="transvaginal-mesh-litigation-update" aria-label="Transvaginal Mesh updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="tylenol-autism-lawsuits">Tylenol and Autism</a><a class="hp-upd" href="tylenol-lawsuit-updates" aria-label="Tylenol and Autism updates">Updates &rarr;</a></li>
+          <li><a class="hp-case" href="video-game-addiction-lawsuit">Video Games and Roblox</a><a class="hp-upd" href="video-game-addiction-lawsuit-update" aria-label="Video Games and Roblox updates">Updates &rarr;</a></li>
+        </ul>
 
+        <h3 class="hp-h3">More topics</h3>
+        <ul class="hp-links">
+          <li><a href="heavy-metals-baby-food-lawsuit">Heavy metals in baby food</a></li>
+          <li><a href="processed-food-addiction-lawsuit">Processed food addiction</a></li>
+          <li><a href="chemical-exposure-lawsuits">Chemical exposure</a></li>
+          <li><a href="environmental-contamination-lawsuits">Environmental contamination</a></li>
+          <li><a href="browse-lawsuits">Browse all topics &rarr;</a></li>
+        </ul>
 
+        <h3 class="hp-h3">Start from a diagnosis or symptom</h3>
+        <ul class="hp-links">
+          <li><a href="illnesses-linked-to-lawsuits">Illnesses</a></li>
+          <li><a href="symptoms-linked-to-lawsuits">Symptoms</a></li>
+          <li><a href="cancers-linked-to-lawsuits">Cancers</a></li>
+          <li><a href="neurological-conditions-linked-to-lawsuits">Neurological conditions</a></li>
+        </ul>
+
+        <h3 class="hp-h3">How lawsuits work</h3>
+        <ul class="hp-links">
+          <li><a href="how-lawsuits-work">How lawsuits work</a></li>
+          <li><a href="what-happens-after-you-contact-a-lawyer">After you contact a lawyer</a></li>
+          <li><a href="what-evidence-helps-a-lawsuit">What evidence helps</a></li>
+          <li><a href="how-long-do-lawsuits-take">How long lawsuits take</a></li>
+          <li><a href="legal-guides">All legal guides &rarr;</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt hp-sec" id="who-writes-this">
+      <div class="container narrow">
+        <p class="eyebrow">Who writes this</p>
+        <h2>Written and Edited by a California Attorney</h2>
+        <p>Lawsuit Informer is written and edited by <strong>David Meldofsky</strong>, a California-licensed attorney. He started the site because lawsuit pages often mix education, advertising and case intake without telling the reader which is which.</p>
+        <p>His work has been published in <strong>Law360</strong>, the <strong>Daily Journal</strong> and <strong>Attorney at Law Magazine</strong>.</p>
+        <p class="hp-more"><a href="david-meldofsky">Read David&rsquo;s profile and published work &rarr;</a></p>
+
+        <h3 class="hp-h3">What every page is held to</h3>
+        <ul class="hp-commit">
+          <li>A licensed attorney writes or reviews every guide and case page before it is published.</li>
+          <li>Guides and case pages show the date they were last updated.</li>
+          <li><a href="dr-thomas-hatzilabrou">Dr. Thomas A. Hatzilabrou, M.D.</a> reviews the medical sections of pages about symptoms, illness or toxic exposure for general accuracy.</li>
+          <li>AI tools help with parts of research and drafting. The <a href="editorial-policy">Editorial Policy</a> explains how.</li>
+          <li>Case intake happens on a separate site, and every link to it is labeled.</li>
+          <li>The <a href="contact">corrections form</a> sends a reported error straight to editorial review.</li>
+        </ul>
+
+        <p class="hp-fine">Lawsuit Informer also gives plain-language talks for schools, libraries and community groups. <a href="community-education">See the community education program</a>.</p>
+      </div>
+    </section>
   </main>
 
  <footer class="site-footer">
@@ -1129,16 +913,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       }
     });
   </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".search-examples a[data-q]").forEach(function (chip) {
-      chip.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = chip.getAttribute("href") + "?q=" + encodeURIComponent(chip.getAttribute("data-q"));
-      });
-    });
-  });
-</script>
 <!-- perf:search-lazy -->
 <script>
 (function () {

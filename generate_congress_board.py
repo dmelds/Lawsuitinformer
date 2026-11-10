@@ -630,7 +630,7 @@ def case_anchor(case: str) -> str:
 # ---------------------------------------------------------------- links to the board
 
 HOME = "index.html"
-HOME_ROWS = 5
+HOME_ROWS = 3
 HOME_BEGIN, HOME_END = "<!-- LI-CONGRESS:BEGIN -->", "<!-- LI-CONGRESS:END -->"
 HOME_AFTER = "<!-- LI-BOARD:END -->"
 HOME_ANCHOR = "<!-- ===================== END CREDIBILITY STRIP ===================== -->"
@@ -656,7 +656,6 @@ def first_sentence(text: str) -> str:
 # keeps the two strips from reading as one list.
 HOME_CSS = """<style id="li-congress-strip">
 .hb.hb-congress{margin-top:32px;padding:30px 0 22px;}
-.hb.hb-congress .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
 </style>"""
 
 

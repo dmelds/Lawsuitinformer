@@ -5,7 +5,8 @@ Put the weekly-email signup box on the homepage and on every update page.
 The box posts to /api/subscribe (netlify/functions/newsletter.mjs). It works without JavaScript
 as a plain form POST, and with JavaScript it posts in place and shows the result in the box.
 
-  index.html             the full box: "Every case we track" plus one checkbox per update page.
+  index.html             the full box: "Every case we track" already checked, with one checkbox
+                         per update page behind "Pick cases instead".
                          It replaces the old Netlify-forms <section class="subscribe-box"> on the
                          first run, then lives between <!-- LI-SIGNUP-HOME:BEGIN --> and
                          <!-- LI-SIGNUP-HOME:END -->.
@@ -198,18 +199,21 @@ def page_box(slug: str, name: str, pages: list) -> str:
 
 def home_box(pages: list) -> str:
     grid = "\n        ".join(checkbox(s, n) for s, n in sorted(pages, key=lambda p: p[1].lower()))
-    rest = f"""<div class="li-signup-grid">
+    rest = f"""<details>
+        <summary>Pick cases instead</summary>
+        <div class="li-signup-grid">
         {grid}
-      </div>"""
+        </div>
+      </details>"""
     return f"""{HBEGIN}
 {CSS}
-    <section class="section">
+    <section class="section hp-sec">
       <div class="container narrow">
         <div class="li-signup" id="weekly-updates">
           <p class="li-signup-eyebrow">Weekly email</p>
           <h2 class="li-signup-title">Get weekly case updates</h2>
-          <p class="li-signup-text">Pick the cases you want to follow. Once a week, we email you the new developments we add to those case pages.</p>
-          {form("home", checkbox("all", "Every case we track"), rest, "li-signup-email-home")}
+          <p class="li-signup-text">Once a week, we email you the new developments we add to the case pages. Follow every case, or pick the ones you care about.</p>
+          {form("home", checkbox("all", "Every case we track", checked=True), rest, "li-signup-email-home")}
         </div>
       </div>
     </section>
