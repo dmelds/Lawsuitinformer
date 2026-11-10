@@ -1,5 +1,549 @@
 {
  "bills": {
+  "ca|20252026|AB 56": {
+   "id": "ca|20252026|AB 56",
+   "identifier": "AB 56",
+   "introduced": "2024-12-02",
+   "label": "California social media warning label law",
+   "latest": {
+    "date": "2025-10-13",
+    "text": "Chaptered by Secretary of State - Chapter 671, Statutes of 2025."
+   },
+   "moves": [
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-10-13",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Approved by the Governor."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-10-13",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Chaptered by Secretary of State - Chapter 671, Statutes of 2025."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-09-24",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Enrolled and presented to the Governor at 3 p.m."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-09-12",
+     "tags": [],
+     "text": "In Assembly. Concurrence in Senate amendments pending."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-09-12",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 59. Noes 7. Page 3368.)."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-09-11",
+     "tags": [
+      "passage",
+      "reading-1",
+      "reading-3"
+     ],
+     "text": "Read third time. Passed. Ordered to the Assembly. (Ayes 30. Noes 5. Page 2925.)."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-08-29",
+     "tags": [
+      "amendment-introduction",
+      "amendment-passage",
+      "committee-passage"
+     ],
+     "text": "From committee: Amend, and do pass as amended. (Ayes 5. Noes 2.) (August 29)."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-07-17",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 10. Noes 0.) (July 16). Re-referred to Com. on APPR."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-07-10",
+     "tags": [
+      "amendment-introduction",
+      "amendment-passage",
+      "committee-passage",
+      "reading-1",
+      "reading-2",
+      "referral-committee"
+     ],
+     "text": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on HEALTH."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-07-02",
+     "tags": [
+      "amendment-introduction",
+      "amendment-passage",
+      "committee-passage",
+      "referral-committee"
+     ],
+     "text": "From committee: Amend, and do pass as amended and re-refer to Com. on HEALTH. (Ayes 12. Noes 0.) (July 1)."
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/social-media-addiction-lawsuit-update",
+    "https://lawsuitinformer.com/social-media-addiction-lawsuit",
+    "https://lawsuit.center/social-media-addiction-lawsuit"
+   ],
+   "session": "20252026",
+   "stage": "Law",
+   "state": "ca",
+   "state_name": "California",
+   "title": "Social media: warning labels.",
+   "topic": "social media addiction lawsuit",
+   "url": "https://openstates.org/ca/bills/20252026/AB56/"
+  },
+  "ca|20252026|SB 1119": {
+   "id": "ca|20252026|SB 1119",
+   "identifier": "SB 1119",
+   "introduced": "2026-02-17",
+   "label": "California Adam's Law (companion chatbots and children)",
+   "latest": {
+    "date": "2026-09-10",
+    "text": "Chaptered by Secretary of State. Chapter 190, Statutes of 2026."
+   },
+   "moves": [
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-10",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Approved by the Governor."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-10",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Chaptered by Secretary of State. Chapter 190, Statutes of 2026."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-09",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Enrolled and presented to the Governor at 2 p.m."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-08-31",
+     "tags": [
+      "passage",
+      "reading-1",
+      "reading-3"
+     ],
+     "text": "Read third time. Passed. (Ayes 69. Noes 4. Page 7037.) Ordered to the Senate."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-08-31",
+     "tags": [],
+     "text": "In Senate. Concurrence in Assembly amendments pending."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-08-31",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "Assembly amendments concurred in. (Ayes 39. Noes 0.) Ordered to engrossing and enrolling."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-08-13",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "From committee: Do pass. (Ayes 11. Noes 1.) (August 13)."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-07-02",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 12. Noes 2.) (July 1). Re-referred to Com. on APPR."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-25",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "reading-1",
+      "reading-2",
+      "referral-committee"
+     ],
+     "text": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on P. & C.P."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-16",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass and re-refer to Com. on P. & C.P. (Ayes 10. Noes 1.) (June 16). Re-referred to Com. on P. & C.P."
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/character-ai-lawsuit",
+    "https://lawsuitinformer.com/ai-injury-lawsuits",
+    "https://lawsuitintelligencer.com/ai-wrongful-death-docket"
+   ],
+   "session": "20252026",
+   "stage": "Law",
+   "state": "ca",
+   "state_name": "California",
+   "title": "Companion chatbots: children's safety.",
+   "topic": "AI chatbot lawsuit",
+   "url": "https://openstates.org/ca/bills/20252026/SB1119/"
+  },
+  "ca|20252026|SB 236": {
+   "id": "ca|20252026|SB 236",
+   "identifier": "SB 236",
+   "introduced": "2025-01-29",
+   "label": "California C.U.R.L. Act (chemical hair relaxers)",
+   "latest": {
+    "date": "2025-10-11",
+    "text": "Chaptered by Secretary of State. Chapter 598, Statutes of 2025."
+   },
+   "moves": [
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-10-11",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Approved by the Governor."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-10-11",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Chaptered by Secretary of State. Chapter 598, Statutes of 2025."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2025-09-22",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Enrolled and presented to the Governor at 11 a.m."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-09-11",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "Assembly amendments concurred in. (Ayes 40. Noes 0. Page 2901.) Ordered to engrossing and enrolling."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-09-08",
+     "tags": [
+      "passage",
+      "reading-1",
+      "reading-3"
+     ],
+     "text": "Read third time. Passed. (Ayes 78. Noes 0. Page 2997.) Ordered to the Senate."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-09-08",
+     "tags": [],
+     "text": "In Senate. Concurrence in Assembly amendments pending."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-08-29",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "From committee: Do pass as amended. (Ayes 11. Noes 0.) (August 29)."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-07-16",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass as amended and re-refer to Com. on APPR. with recommendation: To consent calendar. (Ayes 12. Noes 0.) (July 15)."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-07-02",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass and re-refer to Com. on JUD. with recommendation: To consent calendar. (Ayes 7. Noes 0.) (July 1). Re-referred to Com. on JUD."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-06-25",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "reading-1",
+      "reading-2",
+      "referral-committee"
+     ],
+     "text": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on E.S & T.M."
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/hair-relaxer-lawsuit-updates",
+    "https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit",
+    "https://lawsuit.center/hair-relaxer-lawsuit"
+   ],
+   "session": "20252026",
+   "stage": "Law",
+   "state": "ca",
+   "state_name": "California",
+   "title": "Cosmetics: chemical hair relaxers.",
+   "topic": "hair relaxer lawsuit",
+   "url": "https://openstates.org/ca/bills/20252026/SB236/"
+  },
+  "ca|20252026|SB 867": {
+   "id": "ca|20252026|SB 867",
+   "identifier": "SB 867",
+   "introduced": "2026-01-05",
+   "label": "California AI toy moratorium",
+   "latest": {
+    "date": "2026-09-10",
+    "text": "Chaptered by Secretary of State. Chapter 189, Statutes of 2026."
+   },
+   "moves": [
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-10",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Approved by the Governor."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-10",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Chaptered by Secretary of State. Chapter 189, Statutes of 2026."
+    },
+    {
+     "chamber": "California State Legislature",
+     "date": "2026-09-09",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Enrolled and presented to the Governor at 2 p.m."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-08-31",
+     "tags": [
+      "passage",
+      "reading-1",
+      "reading-3"
+     ],
+     "text": "Read third time. Passed. (Ayes 74. Noes 1. Page 6981.) Ordered to the Senate."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-08-31",
+     "tags": [],
+     "text": "In Senate. Concurrence in Assembly amendments pending."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-08-31",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "Assembly amendments concurred in. (Ayes 39. Noes 0.) Ordered to engrossing and enrolling."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-08-13",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "From committee: Do pass as amended. (Ayes 11. Noes 0.) (August 13)."
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2026-06-17",
+     "tags": [
+      "committee-passage",
+      "committee-passage-favorable",
+      "referral-committee"
+     ],
+     "text": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 14. Noes 1.) (June 16). Re-referred to Com. on APPR."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-05-28",
+     "tags": [
+      "passage",
+      "reading-1",
+      "reading-3"
+     ],
+     "text": "Read third time. Passed. (Ayes 39. Noes 0. Page 4525.) Ordered to the Assembly."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-05-14",
+     "tags": [
+      "amendment-passage",
+      "committee-passage",
+      "committee-passage-favorable"
+     ],
+     "text": "From committee: Do pass as amended. (Ayes 7. Noes 0. Page 4254.) (May 14)."
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/character-ai-lawsuit",
+    "https://lawsuitinformer.com/ai-injury-lawsuits",
+    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
+   ],
+   "session": "20252026",
+   "stage": "Law",
+   "state": "ca",
+   "state_name": "California",
+   "title": "Toys: companion chatbots.",
+   "topic": "AI chatbot lawsuit",
+   "url": "https://openstates.org/ca/bills/20252026/SB867/"
+  },
+  "ga|2025_26|SB 144": {
+   "id": "ga|2025_26|SB 144",
+   "identifier": "SB 144",
+   "introduced": "2025-02-11",
+   "label": "Georgia pesticide failure-to-warn shield",
+   "latest": {
+    "date": "2025-07-01",
+    "text": "Effective Date"
+   },
+   "moves": [
+    {
+     "chamber": "Senate",
+     "date": "2025-05-09",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Senate Date Signed by Governor"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-05-09",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Act 94"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-04-07",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Senate Sent to Governor"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-03-13",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "House Committee Favorably Reported"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-03-13",
+     "tags": [
+      "passage"
+     ],
+     "text": "House Passed/Adopted"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-03-04",
+     "tags": [
+      "passage"
+     ],
+     "text": "Senate Passed/Adopted By Substitute"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-02-18",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "Senate Committee Favorably Reported  By Substitute"
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/roundup-lawsuit-updates",
+    "https://lawsuitinformer.com/roundup-cancer-lawsuits",
+    "https://lawsuit.center/roundup-lawsuit"
+   ],
+   "session": "2025_26",
+   "stage": "Law",
+   "state": "ga",
+   "state_name": "Georgia",
+   "title": "Fertilizers or Pesticides; a manufacturer cannot be held liable for failing to warn consumers of health risks above those required by the United States Environmental Protection Agency; clarify",
+   "topic": "Roundup settlement",
+   "url": "https://openstates.org/ga/bills/2025_26/SB144/"
+  },
   "ga|2025_26|SB 540": {
    "id": "ga|2025_26|SB 540",
    "identifier": "SB 540",
@@ -86,6 +630,111 @@
    "topic": "AI chatbot lawsuit",
    "url": "https://openstates.org/ga/bills/2025_26/SB540/"
   },
+  "id|2026|S 1297": {
+   "id": "id|2026|S 1297",
+   "identifier": "S 1297",
+   "introduced": "2026-02-13",
+   "label": "Idaho Conversational AI Safety Act",
+   "latest": {
+    "date": "2026-04-01",
+    "text": "Signed by Governor on 03/31/26    Session Law Chapter 249    Effective: 07/01/2027"
+   },
+   "moves": [
+    {
+     "chamber": "Senate",
+     "date": "2026-04-01",
+     "tags": [
+      "became-law",
+      "executive-signature"
+     ],
+     "text": "Signed by Governor on 03/31/26    Session Law Chapter 249    Effective: 07/01/2027"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-30",
+     "tags": [
+      "passage"
+     ],
+     "text": "Reported enrolled; signed by President; to House for signature of Speaker"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-30",
+     "tags": [
+      "passage"
+     ],
+     "text": "Received from Senate; Signed by Speaker; Returned to Senate"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-30",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Reported signed by the Speaker & ordered delivered to Governor"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-30",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Reported delivered to Governor at 2 p.m. on 03/30/26"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-27",
+     "tags": [
+      "enrolled"
+     ],
+     "text": "Returned From House Passed; referred to enrolling"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-26",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "Reported out of Committee with Do Pass Recommendation, Filed for Second Reading"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-26",
+     "tags": [
+      "passage",
+      "reading-3"
+     ],
+     "text": "Rules Suspended: Ayes 65 Nays 0 Abs/Excd 5, read in full as required – PASSED - 54-12-4AYES – Alfieri, Barbieri, Beiswenger, Berch, Bingham, Boyle, Bruce, Burgoyne, Cannon, Cheatum, Church, Cornilles, Crane(12), Crane(13), Dygert, Egbert, Ehardt, Ehlers, Erickson, Galaviz, Gannon, Green, Hall(Stone), Handy, Harris, Healey, Hill, Holtzclaw, Manwaring, Mathias, McCann, Mendive, Mickelsen, Miller, Mitchell, Monks, Nelsen, Palmer, Petzke, Pickett, Pohanka, Price, Raybould, Raymond, Redman, Rubel, Sauter, Shepherd, Shirts, Tanner(14), Veile, Weber, Wheeler, Mr. SpeakerNAYS – Cayler, Furniss, Garner, Hawkins, Hostetler, Leavitt, Marmon, Rasor, Scott, Tanner(13), Thompson, WisniewskiAbsent – Fuhriman, Haws, Skaug, Vander WoudeFloor Sponsor - Crane(12)Title apvd - to Senate"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-19",
+     "tags": [
+      "passage",
+      "reading-3"
+     ],
+     "text": "Rules Suspended (2/3 Vote - Read in full as required) – Read third time in full as amended – PASSED - 21-12-2AYES – Anthon, Bernt, Burtenshaw, Carlson, Cook, Den Hartog, Grow, Guthrie, Harris, Lakey, Lent, Rabe, Ricks, Ruchti, Shippy, Taylor, Toews, VanOrden, Ward-Engelking, Wintrow, WoodwardNAYS – Bjerke(Bjerke), Blaylock, Foreman, Hart, Keyser, Kohl, Lenney, Nichols, Okuniewicz, Semmelroth, Zito, ZuiderveldAbsent and excused – Adams, GallowayFloor Sponsor - ToewsTitle apvd - to House"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-18",
+     "tags": [],
+     "text": "Reported engrossed, filed for first reading, as amended"
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/character-ai-lawsuit",
+    "https://lawsuitinformer.com/ai-injury-lawsuits",
+    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
+   ],
+   "session": "2026",
+   "stage": "Law",
+   "state": "id",
+   "state_name": "Idaho",
+   "title": "ARTIFICIAL INTELLIGENCE – Adds to existing law to establish the Conversational AI Safety Act.",
+   "topic": "AI chatbot lawsuit",
+   "url": "https://openstates.org/id/bills/2026/S1297/"
+  },
   "nj|222|A 5607": {
    "id": "nj|222|A 5607",
    "identifier": "A 5607",
@@ -117,6 +766,76 @@
    "title": "Establishes content and data privacy requirements for chatbot providers.",
    "topic": "AI chatbot lawsuit",
    "url": "https://openstates.org/nj/bills/222/A5607/"
+  },
+  "ny|2025-2026|A 1797": {
+   "id": "ny|2025-2026|A 1797",
+   "identifier": "A 1797",
+   "introduced": "2025-01-14",
+   "label": "New York hair relaxer warning label law",
+   "latest": {
+    "date": "2025-11-21",
+    "text": "SIGNED CHAP.508"
+   },
+   "moves": [
+    {
+     "chamber": "Assembly",
+     "date": "2025-11-21",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "SIGNED CHAP.508"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-11-17",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "DELIVERED TO GOVERNOR"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-06-05",
+     "tags": [
+      "passage"
+     ],
+     "text": "PASSED SENATE"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-03-10",
+     "tags": [
+      "passage"
+     ],
+     "text": "PASSED ASSEMBLY"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-03-04",
+     "tags": [],
+     "text": "REPORTED"
+    },
+    {
+     "chamber": "Assembly",
+     "date": "2025-02-24",
+     "tags": [
+      "referral-committee"
+     ],
+     "text": "REPORTED REFERRED TO CODES"
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/hair-relaxer-lawsuit-updates",
+    "https://lawsuitinformer.com/hair-relaxer-cancer-lawsuit",
+    "https://lawsuit.center/hair-relaxer-lawsuit"
+   ],
+   "session": "2025-2026",
+   "stage": "Law",
+   "state": "ny",
+   "state_name": "New York",
+   "title": "Relates to hair relaxer labeling",
+   "topic": "hair relaxer lawsuit",
+   "url": "https://openstates.org/ny/bills/2025-2026/A1797/"
   },
   "ny|2025-2026|S 9051": {
    "id": "ny|2025-2026|S 9051",
@@ -269,6 +988,281 @@
    "title": "An Act providing for the testing and labeling of baby food and for prohibited levels of toxic heavy metals in baby food; and imposing duties on the Department of Agriculture.",
    "topic": "baby food lawsuit",
    "url": "https://openstates.org/pa/bills/2025-2026/HB507/"
+  },
+  "ri|2026|HB 7350": {
+   "id": "ri|2026|HB 7350",
+   "identifier": "HB 7350",
+   "introduced": "2026-01-28",
+   "label": "Rhode Island AI companion models law",
+   "latest": {
+    "date": "2026-06-22",
+    "text": "06/22/2026 Signed by Governor"
+   },
+   "moves": [
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-06-22",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "06/22/2026 Signed by Governor"
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-06-18",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "06/18/2026 Transmitted to Governor"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-06-10",
+     "tags": [
+      "passage"
+     ],
+     "text": "06/10/2026 Senate passed Sub A as amended in concurrence"
+    },
+    {
+     "chamber": "House",
+     "date": "2026-06-08",
+     "tags": [
+      "passage"
+     ],
+     "text": "06/08/2026 House passed Sub A as amended (floor amendment)"
+    },
+    {
+     "chamber": "Rhode Island General Assembly",
+     "date": "2026-06-04",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "06/04/2026 Committee recommends passage of Sub A"
+    },
+    {
+     "chamber": "Rhode Island General Assembly",
+     "date": "2026-04-08",
+     "tags": [
+      "committee-failure"
+     ],
+     "text": "04/08/2026 Committee recommended measure be held for further study"
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/character-ai-lawsuit",
+    "https://lawsuitinformer.com/ai-injury-lawsuits",
+    "https://lawsuitintelligencer.com/state-ai-enforcement-tracker"
+   ],
+   "session": "2026",
+   "stage": "Law",
+   "state": "ri",
+   "state_name": "Rhode Island",
+   "title": "AN ACT RELATING TO COMMERCIAL LAW--GENERAL REGULATORY PROVISIONS -- ARTIFICIAL INTELLIGENCE COMPANION MODELS",
+   "topic": "AI chatbot lawsuit",
+   "url": "https://openstates.org/ri/bills/2026/HB7350/"
+  },
+  "va|2025|HB 1844": {
+   "id": "va|2025|HB 1844",
+   "identifier": "HB 1844",
+   "introduced": "2025-01-06",
+   "label": "Virginia Baby Food Protection Act",
+   "latest": {
+    "date": "2025-05-02",
+    "text": "Acts of Assembly Chapter text (CHAP0693)"
+   },
+   "moves": [
+    {
+     "chamber": "Office of the Governor",
+     "date": "2025-05-02",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Approved by Governor-Chapter 693 (Effective 01/01/26)"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-04-02",
+     "tags": [],
+     "text": "Passed by for the day (47-Y 46-N)"
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2025-04-02",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Governor's Action Deadline 11:59 p.m., May 2, 2025"
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2025-03-24",
+     "tags": [
+      "executive-veto-line-item"
+     ],
+     "text": "Governor's recommendation received by House"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-03-11",
+     "tags": [
+      "enrolled",
+      "executive-receipt"
+     ],
+     "text": "Enrolled Bill communicated to Governor on March 11, 2025"
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2025-03-11",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Governor's Action Deadline 11:59 p.m., March 24, 2025"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-03-10",
+     "tags": [
+      "passage"
+     ],
+     "text": "Signed by President"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-03-07",
+     "tags": [
+      "passage"
+     ],
+     "text": "Bill text as passed House and Senate (HB1844ER)"
+    },
+    {
+     "chamber": "House",
+     "date": "2025-03-07",
+     "tags": [
+      "passage"
+     ],
+     "text": "Signed by Speaker"
+    },
+    {
+     "chamber": "Senate",
+     "date": "2025-02-18",
+     "tags": [
+      "passage"
+     ],
+     "text": "Passed Senate with amendment (40-Y 0-N)"
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/baby-food-lawsuit-settlement",
+    "https://lawsuitinformer.com/heavy-metals-baby-food-lawsuit",
+    "https://lawsuitinformer.com/gerber-baby-food-lawsuit"
+   ],
+   "session": "2025",
+   "stage": "Law",
+   "state": "va",
+   "state_name": "Virginia",
+   "title": "Baby Food Protection Act; testing and labeling requirements for toxic heavy metals.",
+   "topic": "baby food lawsuit",
+   "url": "https://openstates.org/va/bills/2025/HB1844/"
+  },
+  "wa|2025-2026|HB 2225": {
+   "id": "wa|2025-2026|HB 2225",
+   "identifier": "HB 2225",
+   "introduced": "2025-12-31",
+   "label": "Washington AI companion chatbot law",
+   "latest": {
+    "date": "2026-03-24",
+    "text": "Effective date 1/1/2027."
+   },
+   "moves": [
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-03-24",
+     "tags": [
+      "executive-signature"
+     ],
+     "text": "Governor signed."
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-03-24",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Chapter 168, 2026 Laws."
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-03-24",
+     "tags": [
+      "became-law"
+     ],
+     "text": "Effective date 1/1/2027."
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-12",
+     "tags": [
+      "passage"
+     ],
+     "text": "Speaker signed."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-12",
+     "tags": [
+      "passage"
+     ],
+     "text": "President signed."
+    },
+    {
+     "chamber": "Office of the Governor",
+     "date": "2026-03-12",
+     "tags": [
+      "executive-receipt"
+     ],
+     "text": "Delivered to Governor."
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-11",
+     "tags": [],
+     "text": "House concurred in Senate amendments."
+    },
+    {
+     "chamber": "House",
+     "date": "2026-03-11",
+     "tags": [
+      "passage"
+     ],
+     "text": "Passed final passage; yeas, 74; nays, 21; absent, 0; excused, 3."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-03-06",
+     "tags": [
+      "reading-3"
+     ],
+     "text": "Third reading, passed; yeas, 43; nays, 5; absent, 0; excused, 1."
+    },
+    {
+     "chamber": "Senate",
+     "date": "2026-02-23",
+     "tags": [],
+     "text": "Passed to Rules Committee for second reading."
+    }
+   ],
+   "pages": [
+    "https://lawsuitinformer.com/character-ai-lawsuit",
+    "https://lawsuitinformer.com/ai-injury-lawsuits",
+    "https://lawsuitintelligencer.com/ai-wrongful-death-docket"
+   ],
+   "session": "2025-2026",
+   "stage": "Law",
+   "state": "wa",
+   "state_name": "Washington",
+   "title": "Concerning regulation of artificial intelligence companion chatbots.",
+   "topic": "AI chatbot lawsuit",
+   "url": "https://openstates.org/wa/bills/2025-2026/HB2225/"
   }
  },
  "source": "https://hill.masstortwire.com/api/state"
