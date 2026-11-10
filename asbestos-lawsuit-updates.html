@@ -216,6 +216,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 </style>
 <!-- LI-DARK-CSS:END -->
+<!-- LI-FOLD-CSS:BEGIN -->
+<style id="li-fold">
+.page-disclosures{margin:0 0 28px;border-top:1px solid var(--rule)}
+details.page-disclosure{border-bottom:1px solid var(--rule)}
+details.page-disclosure>summary{font-family:var(--sans);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 2px;min-height:46px;box-sizing:border-box;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);cursor:pointer;list-style:none}
+details.page-disclosure>summary::-webkit-details-marker{display:none}
+details.page-disclosure>summary::after{content:"";width:8px;height:8px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+details.page-disclosure[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.page-disclosure>summary:hover{color:var(--link)}
+details.page-disclosure>summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+details.page-disclosure .disclosure-body{padding:0 0 18px}
+details.page-disclosure .disclosure-body>p{font-family:var(--serif);font-size:1rem;line-height:1.6;color:var(--ink);margin:0}
+details.page-disclosure .disclosure-body>ul{margin-top:0;margin-bottom:0}
+details.page-disclosure .on-this-page{margin:0;padding:0;border:0;background:none}
+details.page-disclosure .toc-list{border-top:0}
+details.page-disclosure .toc-list li:last-child{border-bottom:0}
+@media (prefers-reduced-motion:reduce){details.page-disclosure>summary::after{transition:none}}
+</style>
+<!-- LI-FOLD-CSS:END -->
 </head>
 
 <body>
@@ -353,27 +372,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </p>
   </div>
 
-  <div class="info-box">
-    <strong>Important:</strong>
-    <p>
-      This page is general legal education and reports on litigation that keeps moving. It is not legal
-      or medical advice and it does not evaluate anyone&rsquo;s claim.
-    </p>
-  </div>
-
-  <div class="info-box">
-    <strong>Related pages:</strong>
-    <ul>
-      <li><a href="asbestos-exposure-lawsuits">Asbestos Exposure Lawsuits</a> (main overview)</li>
-      <li><a href="asbestos-trust-funds-and-claims">Asbestos Trust Funds and Claims</a></li>
-      <li><a href="asbestos-settlement-amounts">Asbestos Settlement Amounts</a></li>
-      <li><a href="asbestos-claim-deadline-after-symptoms-appear">Is It Too Late to File an Asbestos Claim?</a></li>
-      <li><a href="mesothelioma">Mesothelioma: Types, Symptoms, Causes</a></li>
-    </ul>
-  </div>
-
-  <div class="content-box on-this-page">
-    <strong>On This Page</strong>
+  <!-- LI-FOLD:BEGIN -->
+  <div class="page-disclosures">
+    <details class="page-disclosure" data-fold="toc" data-box="2|content-box on-this-page|On This Page">
+      <summary>On this page</summary>
+      <div class="disclosure-body">
+<div class="content-box on-this-page">
     <ul class="toc-list">
       <li><a href="#where-stands-now">Where asbestos claims stand now</a></li>
       <li><a href="#recent">What has moved recently</a></li>
@@ -385,7 +389,32 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       <li><a href="#timing">Why timing matters more here</a></li>
       <li><a href="#what-people-watch">What to watch next</a></li>
     </ul>
+        </div>
+      </div>
+    </details>
+    <details class="page-disclosure" data-fold="related" data-box="1|info-box|Related pages:">
+      <summary>Related pages</summary>
+      <div class="disclosure-body">
+    <ul>
+      <li><a href="asbestos-exposure-lawsuits">Asbestos Exposure Lawsuits</a> (main overview)</li>
+      <li><a href="asbestos-trust-funds-and-claims">Asbestos Trust Funds and Claims</a></li>
+      <li><a href="asbestos-settlement-amounts">Asbestos Settlement Amounts</a></li>
+      <li><a href="asbestos-claim-deadline-after-symptoms-appear">Is It Too Late to File an Asbestos Claim?</a></li>
+      <li><a href="mesothelioma">Mesothelioma: Types, Symptoms, Causes</a></li>
+    </ul>
+      </div>
+    </details>
+    <details class="page-disclosure" data-fold="notice" data-box="0|info-box|Important:">
+      <summary>Important notice</summary>
+      <div class="disclosure-body">
+    <p>
+      This page is general legal education and reports on litigation that keeps moving. It is not legal
+      or medical advice and it does not evaluate anyone&rsquo;s claim.
+    </p>
+      </div>
+    </details>
   </div>
+  <!-- LI-FOLD:END -->
 
   <h2 id="where-stands-now">Where Asbestos Claims Stand Now</h2>
   <p>
