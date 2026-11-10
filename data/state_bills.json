@@ -11,12 +11,6 @@
    },
    "moves": [
     {
-     "chamber": "Georgia General Assembly",
-     "date": "2027-07-01",
-     "tags": [],
-     "text": "Effective Date"
-    },
-    {
      "chamber": "Senate",
      "date": "2026-05-11",
      "tags": [
@@ -58,31 +52,25 @@
      "chamber": "House",
      "date": "2026-03-25",
      "tags": [
-      "reading-3"
-     ],
-     "text": "House Third Readers"
-    },
-    {
-     "chamber": "House",
-     "date": "2026-03-25",
-     "tags": [
       "passage"
      ],
      "text": "House Passed/Adopted By Substitute"
     },
     {
-     "chamber": "House",
-     "date": "2026-03-10",
+     "chamber": "Senate",
+     "date": "2026-03-06",
      "tags": [
-      "reading-2"
+      "passage"
      ],
-     "text": "House Second Readers"
+     "text": "Senate Passed/Adopted By Substitute"
     },
     {
      "chamber": "Senate",
-     "date": "2026-03-06",
-     "tags": [],
-     "text": "Senate Tabled"
+     "date": "2026-02-25",
+     "tags": [
+      "committee-passage-favorable"
+     ],
+     "text": "Senate Committee Favorably Reported  By Substitute"
     }
    ],
    "pages": [
@@ -157,24 +145,12 @@
      "text": "SIGNED CHAP.368"
     },
     {
-     "chamber": "Senate",
-     "date": "2026-10-28",
-     "tags": [],
-     "text": "APPROVAL MEMO.6"
-    },
-    {
      "chamber": "Assembly",
      "date": "2026-06-05",
      "tags": [
       "passage"
      ],
      "text": "PASSED ASSEMBLY"
-    },
-    {
-     "chamber": "Assembly",
-     "date": "2026-06-05",
-     "tags": [],
-     "text": "RETURNED TO SENATE"
     },
     {
      "chamber": "Senate",
@@ -186,29 +162,11 @@
     },
     {
      "chamber": "Senate",
-     "date": "2026-06-04",
-     "tags": [],
-     "text": "DELIVERED TO ASSEMBLY"
-    },
-    {
-     "chamber": "Assembly",
-     "date": "2026-06-04",
-     "tags": [],
-     "text": "SUBSTITUTED FOR A10379C"
-    },
-    {
-     "chamber": "Assembly",
-     "date": "2026-06-04",
-     "tags": [],
-     "text": "ORDERED TO THIRD READING RULES CAL.506"
-    },
-    {
-     "chamber": "Senate",
-     "date": "2026-06-01",
+     "date": "2026-02-25",
      "tags": [
-      "amendment-passage"
+      "referral-committee"
      ],
-     "text": "AMENDED ON THIRD READING (T) 9051B"
+     "text": "REPORTED AND COMMITTED TO FINANCE"
     }
    ],
    "pages": [
@@ -299,31 +257,11 @@
     },
     {
      "chamber": "House",
-     "date": "2026-10-06",
-     "tags": [
-      "reading-2"
-     ],
-     "text": "Second consideration"
-    },
-    {
-     "chamber": "House",
-     "date": "2026-10-05",
-     "tags": [],
-     "text": "Removed from table"
-    },
-    {
-     "chamber": "House",
      "date": "2026-09-08",
      "tags": [
       "committee-passage"
      ],
      "text": "Re-reported as committed"
-    },
-    {
-     "chamber": "House",
-     "date": "2026-09-08",
-     "tags": [],
-     "text": "Laid on the table"
     },
     {
      "chamber": "House",
