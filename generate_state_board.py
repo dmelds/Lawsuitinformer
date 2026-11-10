@@ -43,6 +43,10 @@ the shell is copied from current-mass-tort-cases.html the same way.
 The page is written only when the rows changed, and then dateModified and the visible
 stamp move to today. A day with no change leaves it untouched.
 
+The same run keeps the board's links in step: a "Latest in the States" strip on
+index.html, under the Congress strip, and one line under the stamp of every case page a
+law or bill names (under the Congress line where the page has one).
+
     python3 generate_state_board.py --fetch       # refresh the data, then build
     python3 generate_state_board.py               # build from the saved data
     python3 generate_state_board.py --dry-run     # print the rows, write nothing
@@ -306,7 +310,7 @@ def read_rows(today: _dt.date) -> list:
             "id": re.sub(r"[^a-z0-9]+", "-", num.lower()).strip("-"), "bill": num,
             "state": b.get("state_name") or (b.get("state") or "").upper(),
             "label": name or b.get("label") or b.get("title") or num, "url": b.get("url") or "",
-            "topic": topic, "case": case, "page": rel(ipages[0]), "introduced": b.get("introduced") or "",
+            "topic": topic, "case": case, "page": rel(ipages[0]), "ipages": [rel(x) for x in ipages], "introduced": b.get("introduced") or "",
             "stage": label, "step": step, "tone": tone, "line": line, "force": force,
             "last_date": last["date"] if last else "", "last": plain_move(last) if last else "",
             "moves": [(m["date"], plain_move(m)) for m in moves],
@@ -443,6 +447,156 @@ def render_main(rows: list, today: _dt.date, stamp: str) -> str:
     return "\n".join(h)
 
 
+# ---------------------------------------------------------------- homepage strip and case-page lines
+
+HOME = "index.html"
+HOME_ROWS = 5
+HOME_BEGIN, HOME_END = "<!-- LI-STATES:BEGIN -->", "<!-- LI-STATES:END -->"
+HOME_AFTER = [cb.HOME_END, cb.HOME_AFTER]            # after the Congress strip, else after the status board strip
+LINK_BEGIN, LINK_END = "<!-- LI-STATE-LINK:BEGIN -->", "<!-- LI-STATE-LINK:END -->"
+LINK_AFTER = [cb.LINK_END, cb.BOARD_LINK_END]        # under the Congress line, else under the status board line
+HOME_CSS = """<style id="li-states-strip">
+.hb.hb-states{margin-top:32px;padding:30px 0 22px;}
+.hb.hb-states .hb-head h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:var(--amber-deep);vertical-align:2px;}
+</style>"""
+
+
+def render_home(rows: list, stamp: str) -> str:
+    """The homepage strip, in the status board strip's own classes: the laws and bills that
+    moved most recently, HOME_ROWS in all."""
+    live = [r for r in rows if r["step"]]
+    if not live:
+        return ""
+    picks = sorted(live, key=lambda r: (r["last_date"] or "", r["step"], r["introduced"] or ""), reverse=True)[:HOME_ROWS]
+    items = []
+    for r in picks:
+        when = (f"LAST MOVE {short(r['last_date'])}" if r["last_date"]
+                else f"FILED {short(r['introduced'])}" if r["introduced"] else "")
+        items.append(
+            f'<li><span><a class="hb-name" href="{SLUG}#{esc(r["id"])}">{esc(r["label"])}</a>'
+            f'<span class="hb-pill hb-{r["tone"]}">{esc(r["stage"].upper())}</span></span>'
+            f'<span class="hb-meta">{when}</span>'
+            f'<p class="hb-lead">{esc(r["case"])}: {esc(cb.first_sentence(r["line"]))}</p></li>')
+    return (f"{HOME_BEGIN}\n{HOME_CSS}\n"
+            '<section class="section alt hb hb-states"><div class="container narrow">'
+            f'<div class="hb-head"><h2>Latest in the States</h2><span class="hb-when">AS OF {short(stamp)}</span>'
+            f'<a class="hb-all" href="{SLUG}">All {len(live)} state laws and bills we follow &rarr;</a></div>'
+            "<ul>" + "".join(items) + "</ul></div></section>\n" + HOME_END)
+
+
+def write_home(rows: list, stamp: str, dry_run: bool) -> bool:
+    if not os.path.exists(HOME):
+        warn(f"{HOME} not found, homepage strip skipped")
+        return False
+    with open(HOME, encoding="utf-8") as fh:
+        home = fh.read()
+    block = render_home(rows, stamp)
+    if HOME_BEGIN in home and HOME_END in home:
+        start, end = home.index(HOME_BEGIN), home.index(HOME_END) + len(HOME_END)
+        new = home[:start] + block + home[end:]
+        if not block:
+            new = re.sub(r"\n{3,}", "\n\n", new)
+    elif not block:
+        return False
+    else:
+        after = next((a for a in HOME_AFTER if a in home), "")
+        if not after:
+            warn(f"{HOME} has neither the Congress strip nor the status board strip, state strip skipped")
+            return False
+        new = home.replace(after, after + "\n" + block, 1)
+    if new == home:
+        print("homepage state strip unchanged")
+        return False
+    if dry_run:
+        print("homepage state strip would change")
+        return False
+    with open(HOME, "w", encoding="utf-8") as fh:
+        fh.write(new)
+    print(f"wrote {HOME} (state strip)")
+    return True
+
+
+def page_links(rows: list) -> dict:
+    """page -> (laws, bills, case anchor with the most rows on that page)."""
+    by_page = {}
+    for r in rows:
+        if not r["step"]:
+            continue
+        for p in r["ipages"]:
+            by_page.setdefault(p, []).append(r)
+    out = {}
+    for p, rs in by_page.items():
+        cases = [r["case"] for r in rs]
+        top = max(sorted(set(cases)), key=cases.count)
+        laws = sum(1 for r in rs if r["step"] == 6)
+        out[p] = (laws, len(rs) - laws, cb.case_anchor(top))
+    return out
+
+
+def render_page_link(laws: int, bills: int, anchor: str) -> str:
+    parts = []
+    if laws:
+        parts.append(f"{laws} state law{'s' if laws != 1 else ''}")
+    if bills:
+        parts.append(f"{bills} state bill{'s' if bills != 1 else ''}")
+    n = laws + bills
+    what = (f"{' and '.join(parts)} {'touches' if n == 1 else 'touch'} this case. "
+            f'<a href="{SLUG}#{anchor}">See what {"it does" if n == 1 else "each one does"} &rarr;</a>')
+    what = what[:1].upper() + what[1:]
+    return (f"{LINK_BEGIN}\n"
+            f'  <p class="article-date board-link" style="margin-top:-16px">{what}</p>\n'
+            f"  {LINK_END}")
+
+
+def write_page_links(rows: list, dry_run: bool) -> list:
+    """Put the state line on every case page a law or bill names, and take it off pages none
+    names any more. Returns the files written (or that would be)."""
+    want = page_links(rows)
+    written = []
+    names = set(want)
+    for f in sorted(os.listdir(".")):
+        if f.endswith(".html") and f != OUT and f[:-5] not in names:
+            with open(f, encoding="utf-8") as fh:
+                if LINK_BEGIN in fh.read():
+                    names.add(f[:-5])
+    for slug in sorted(names):
+        path = f"{slug}.html"
+        if not os.path.exists(path):
+            warn(f"{path} is named by a state bill but is not in the repo; state line skipped")
+            continue
+        with open(path, encoding="utf-8") as fh:
+            page = fh.read()
+        block = render_page_link(*want[slug]) if slug in want else ""
+        if LINK_BEGIN in page and LINK_END in page:
+            extra = re.compile(r"\n*[ \t]*" + re.escape(LINK_BEGIN) + r".*?" + re.escape(LINK_END), re.S)
+            start = page.index(LINK_BEGIN)
+            first_end = page.index(LINK_END, start) + len(LINK_END)
+            rest = extra.sub("", page[first_end:])
+            new = (page[:start] + block + rest) if block else (re.sub(r"\n[ \t]*$", "", page[:start]) + rest)
+        elif not block:
+            continue
+        else:
+            after = next((a for a in LINK_AFTER if a in page), "")
+            if after:
+                i = page.index(after) + len(after)
+                new = page[:i] + "\n  " + block + page[i:]
+            else:
+                m = cb.STAMP.search(page)
+                if not m:
+                    warn(f'{path} has no <p class="article-date">, state line skipped')
+                    continue
+                new = page[:m.end()] + "\n\n  " + block + page[m.end():]
+        if new == page:
+            continue
+        written.append(path)
+        if not dry_run:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(new)
+    verb = "would get" if dry_run else "got"
+    print(f"State line: {len(written)} page(s) {verb} it" + (": " + ", ".join(written) if written else ""))
+    return written
+
+
 def rows_digest(rows: list) -> str:
     return hashlib.sha1(json.dumps(rows, sort_keys=True, default=str).encode("utf-8")).hexdigest()[:16]
 
@@ -493,13 +647,18 @@ def main() -> int:
     if args.dry_run:
         for r in rows:
             print(f"  {r['case']:<26} {r['bill']:<12} {r['stage']:<20} {r['force'] or '-':<34} last {r['last_date'] or '-'}  {r['last'][:50]}")
+        write_home(rows, stamp, dry_run=True)
+        write_page_links(rows, dry_run=True)
         return 0
     if not changed and not args.force:
         print("rows unchanged; file left alone")
-        return 0
-    with open(OUT, "w", encoding="utf-8") as fh:
-        fh.write(out)
-    print(f"wrote {OUT}, stamp {stamp}")
+    else:
+        with open(OUT, "w", encoding="utf-8") as fh:
+            fh.write(out)
+        print(f"wrote {OUT}, stamp {stamp}")
+    # The strip follows the board's stamp, so the two never disagree about the date.
+    write_home(rows, stamp, dry_run=False)
+    write_page_links(rows, dry_run=False)
     return 0
 
 
