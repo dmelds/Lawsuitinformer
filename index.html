@@ -350,7 +350,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
 /* The three boards: one heading size, and type a phone can read. */
 #main .hb .hb-head h2{font-size:var(--hp-h2);}
-#main .hb .hb-pill{font-size:10.5px;}
+#main .hb .hb-pill{font-size:10.5px;display:inline-block;max-width:100%;white-space:normal;line-height:1.35;}
 #main .hb .hb-meta,#main .hb .hb-when{font-size:11.5px;color:var(--ink-muted);}
 
 /* Sections under the boards: one width, one heading size, one rhythm. */
@@ -381,6 +381,17 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   font-size:14px;font-weight:500;line-height:1.2;}
 .hp-links a:hover{background:var(--ink-strong);border-color:var(--ink-strong);color:var(--bg);}
 
+.hp-pubs{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule);max-width:60ch;}
+.hp-pubs li{border-bottom:1px solid var(--rule);}
+.hp-pubs a{border-bottom:0;}
+.hp-pubs .hp-pub-main{display:block;padding:12px 0;}
+.hp-pubs .hp-pub-name{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);margin:0 0 4px;}
+.hp-pubs .hp-pub-access{font-weight:500;letter-spacing:.06em;}
+.hp-pubs .hp-pub-title{display:block;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.3;color:var(--ink-strong);}
+.hp-pubs .hp-pub-main:hover .hp-pub-title{color:var(--link-hover);}
+.hp-pubs .hp-pub-alt{display:inline-flex;align-items:center;min-height:40px;margin:-6px 0 6px;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--link-hover);}
+.hp-pubs .hp-pub-alt:hover{color:var(--ink-strong);}
+.hp-sec .hp-pubs + .hp-more{margin-top:16px;}
 .hp-commit{margin:18px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule);max-width:60ch;}
 .hp-commit li{padding:11px 0;border-bottom:1px solid var(--rule);font-family:var(--serif);font-size:1rem;line-height:1.5;color:var(--ink);}
 .hp-sec .hp-fine{font-family:var(--sans);font-size:13.5px;line-height:1.7;color:var(--ink-muted);margin:16px 0 0;}
@@ -701,6 +712,42 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <h2>Written and Edited by a California Attorney</h2>
         <p>Lawsuit Informer is written and edited by <strong>David Meldofsky</strong>, a California-licensed attorney. He started the site because lawsuit pages often mix education, advertising and case intake without telling the reader which is which.</p>
         <p>His work has been published in <strong>Law360</strong>, the <strong>Daily Journal</strong> and <strong>Attorney at Law Magazine</strong>.</p>
+
+        <h3 class="hp-h3" id="published-work">Published work</h3>
+        <ul class="hp-pubs">
+          <li>
+            <a class="hp-pub-main" href="https://www.law360.com/articles/2481415" target="_blank" rel="noopener">
+              <span class="hp-pub-name">Law360 <span class="hp-pub-access">&middot; Subscription</span></span>
+              <span class="hp-pub-title">Is AI Output a Product or Content?</span>
+            </a>
+            <a class="hp-pub-alt" href="https://davidmeldofsky.com/law360-ai-product-or-content" target="_blank" rel="noopener">Read the full article free &rarr;</a>
+          </li>
+          <li>
+            <a class="hp-pub-main" href="https://attorneyatlawmagazine.com/public-articles/mass-torts/what-a-verdict-number-actually-means-in-mass-torts" target="_blank" rel="noopener">
+              <span class="hp-pub-name">Attorney at Law Magazine <span class="hp-pub-access">&middot; Free to read</span></span>
+              <span class="hp-pub-title">What a Verdict Number Actually Means in Mass Torts</span>
+            </a>
+          </li>
+          <li>
+            <a class="hp-pub-main" href="https://attorneyatlawmagazine.com/public-articles/before-you-contact-a-lawyer-how-to-evaluate-lawsuit-information-online-in-the-ai-era" target="_blank" rel="noopener">
+              <span class="hp-pub-name">Attorney at Law Magazine <span class="hp-pub-access">&middot; Free to read</span></span>
+              <span class="hp-pub-title">Before You Contact a Lawyer: How to Evaluate Lawsuit Information Online in the AI Era</span>
+            </a>
+          </li>
+          <li>
+            <a class="hp-pub-main" href="https://www.law360.com/articles/2470291" target="_blank" rel="noopener">
+              <span class="hp-pub-name">Law360 <span class="hp-pub-access">&middot; Subscription</span></span>
+              <span class="hp-pub-title">PFAS OUT Cannot Replace Broad Drinking Water Protections</span>
+            </a>
+            <a class="hp-pub-alt" href="https://davidmeldofsky.com/law360-pfas-out-drinking-water" target="_blank" rel="noopener">Read the full article free &rarr;</a>
+          </li>
+          <li>
+            <a class="hp-pub-main" href="https://www.dailyjournal.com/article/391237-pfas-drinking-water-rules-are-changing-as-lawsuits-surge" target="_blank" rel="noopener">
+              <span class="hp-pub-name">Daily Journal <span class="hp-pub-access">&middot; Subscription</span></span>
+              <span class="hp-pub-title">PFAS Drinking Water Rules Are Changing as Lawsuits Surge</span>
+            </a>
+          </li>
+        </ul>
         <p class="hp-more"><a href="david-meldofsky">Read David&rsquo;s profile and published work &rarr;</a></p>
 
         <h3 class="hp-h3">What every page is held to</h3>
