@@ -843,15 +843,34 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   document.addEventListener('auxclick', freshen, true);
   decorate();
 
-  /* Outbound CTA click -> GA4. cta_click listener v4. The form lives on
+  /* Outbound CTA click -> GA4. cta_click listener v5. The form lives on
      lawsuit.center, so this is the only conversion signal Informer can record
      on its own side. cta_href is the destination path with no query string,
-     so BigQuery can tell an intake form from a case guide or a PDF. v4 holds
-     a plain same-tab click until GA4 confirms the send or 300 ms pass, so the
-     event is not lost to the navigation. */
+     so BigQuery can tell an intake form from a case guide or a PDF. A plain
+     same-tab click is held until GA4 confirms the send or 300 ms pass, so the
+     event is not lost to the navigation. v5 also copies the slot name into a
+     plain slot= parameter on every tagged Center link, because link-cleaning
+     browser tools remove utm_* before the Center page loads. Center reads
+     slot when utm_content is missing. It runs with or without gtag. */
+  function slotStamp(a) {
+    try {
+      if (a.closest && a.closest('footer, nav, header')) return;
+      var u = new URL(a.href, location.href);
+      var c = u.searchParams.get('utm_content');
+      if (!c || u.searchParams.get('slot') === c) return;
+      u.searchParams.set('slot', c);
+      a.href = u.toString();
+    } catch (err) {}
+  }
+  (function () {
+    var all = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < all.length; i++) slotStamp(all[i]);
+  })();
   function ctaClick(e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
-    if (!a || typeof window.gtag !== 'function') return;
+    if (!a) return;
+    slotStamp(a);
+    if (typeof window.gtag !== 'function') return;
     /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
        every page untagged, so counting it would bury every real referral under
        one enormous 'unknown' slot. */
