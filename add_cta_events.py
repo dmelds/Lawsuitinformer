@@ -27,9 +27,20 @@ middle clicks and target=_blank links are untouched. When gtag has not loaded
 the click proceeds exactly as before. The Center arrival remains the complete
 record; this listener is the per-page detail.
 
-A page that already defines the v4 listener is left untouched, so the script
-is safe to rerun and safe to schedule. A page carrying v1, v2 or v3 is upgraded:
-the old block is removed and v4 inserted at the same anchor, so ctaClick is
+v5 copies the slot name into a plain slot= parameter. On 11/10/26 an Ozempic
+vision loss lead reached the Lead Desk with every utm_* tag and the referrer
+removed by the claimant's browser, while the button's ?situation= value came
+through untouched. Link-cleaning tools remove parameters by name, and utm_* is
+on every list; slot is on none of the three checked that day (ClearURLs, AdGuard
+URL Tracking, Legitimate URL Shortener: no all-site rule names it). At page load
+and again on the click, every in-content Center link that carries utm_content
+gets slot=<the same value>. Center's lead-attribution.js uses slot as the
+form's utm_content when the real tag is missing. The stamp does not depend on
+gtag, because the readers who lose their tags are the ones blocking it.
+
+A page that already defines the v5 listener is left untouched, so the script
+is safe to rerun and safe to schedule. A page carrying v1 through v4 is upgraded:
+the old block is removed and v5 inserted at the same anchor, so ctaClick is
 defined once and registered once.
 
 Usage
@@ -49,11 +60,79 @@ import sys
 from pathlib import Path
 
 MARKER = "LI-DARK-JS:BEGIN"
-GUARD = "cta_click listener v4"
+GUARD = "cta_click listener v5"
 
 ANCHOR = "\n  decorate();\n"
 
 BLOCK = """
+  /* Outbound CTA click -> GA4. cta_click listener v5. The form lives on
+     lawsuit.center, so this is the only conversion signal Informer can record
+     on its own side. cta_href is the destination path with no query string,
+     so BigQuery can tell an intake form from a case guide or a PDF. A plain
+     same-tab click is held until GA4 confirms the send or 300 ms pass, so the
+     event is not lost to the navigation. v5 also copies the slot name into a
+     plain slot= parameter on every tagged Center link, because link-cleaning
+     browser tools remove utm_* before the Center page loads. Center reads
+     slot when utm_content is missing. It runs with or without gtag. */
+  function slotStamp(a) {
+    try {
+      if (a.closest && a.closest('footer, nav, header')) return;
+      var u = new URL(a.href, location.href);
+      var c = u.searchParams.get('utm_content');
+      if (!c || u.searchParams.get('slot') === c) return;
+      u.searchParams.set('slot', c);
+      a.href = u.toString();
+    } catch (err) {}
+  }
+  (function () {
+    var all = document.querySelectorAll('a[href*="lawsuit.center"]');
+    for (var i = 0; i < all.length; i++) slotStamp(all[i]);
+  })();
+  function ctaClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuit.center"]') : null;
+    if (!a) return;
+    slotStamp(a);
+    if (typeof window.gtag !== 'function') return;
+    /* Chrome is not a CTA. The sitewide footer link to lawsuit.center appears on
+       every page untagged, so counting it would bury every real referral under
+       one enormous 'unknown' slot. */
+    if (a.closest && a.closest('footer, nav, header')) return;
+    var slot = 'unknown';
+    var href = 'unknown';
+    try {
+      var u = new URL(a.href, location.href);
+      slot = u.searchParams.get('utm_content') || 'unknown';
+      href = (u.pathname || '/').slice(0, 100);
+    } catch (err) {}
+    var params = {
+      cta_slot: slot,
+      cta_page: location.pathname,
+      cta_label: (a.textContent || '').trim().slice(0, 60),
+      cta_href: href,
+      transport_type: 'beacon'
+    };
+    /* Only a plain left click that will navigate this tab needs holding. */
+    var hold = e.type === 'click' && e.button === 0 && !e.defaultPrevented &&
+      !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey &&
+      (a.target || '_self') === '_self' && !a.hasAttribute('download');
+    if (!hold) { window.gtag('event', 'cta_click', params); return; }
+    e.preventDefault();
+    var done = false;
+    var go = function () { if (done) return; done = true; location.href = a.href; };
+    params.event_callback = go;
+    params.event_timeout = 300;
+    window.gtag('event', 'cta_click', params);
+    setTimeout(go, 300);
+  }
+  document.addEventListener('click', ctaClick, true);
+  document.addEventListener('auxclick', ctaClick, true);
+"""
+
+CENTER_LINK = re.compile(r'https://lawsuit\.center[^"\']*')
+
+# Earlier listener versions, byte-exact as this script wrote them. A page
+# carrying one of these is upgraded in place.
+V4_BLOCK = """
   /* Outbound CTA click -> GA4. cta_click listener v4. The form lives on
      lawsuit.center, so this is the only conversion signal Informer can record
      on its own side. cta_href is the destination path with no query string,
@@ -98,10 +177,6 @@ BLOCK = """
   document.addEventListener('auxclick', ctaClick, true);
 """
 
-CENTER_LINK = re.compile(r'https://lawsuit\.center[^"\']*')
-
-# Earlier listener versions, byte-exact as this script wrote them. A page
-# carrying one of these is upgraded in place.
 V3_BLOCK = """
   /* Outbound CTA click -> GA4. cta_click listener v3. The form lives on
      lawsuit.center, so this is the only conversion signal Informer can record
@@ -175,7 +250,7 @@ V1_BLOCK = """
   document.addEventListener('auxclick', ctaClick, true);
 """
 
-OLD_BLOCKS = (V3_BLOCK, V2_BLOCK, V1_BLOCK)
+OLD_BLOCKS = (V4_BLOCK, V3_BLOCK, V2_BLOCK, V1_BLOCK)
 
 
 def scan(path):
@@ -191,7 +266,7 @@ def scan(path):
     if html.count(ANCHOR) != 1:
         return "no-anchor", html, links, untagged
     # A page carrying an earlier listener is upgraded, not skipped. Leaving the
-    # old block in place while inserting v4 would define ctaClick twice in one
+    # old block in place while inserting v5 would define ctaClick twice in one
     # scope and register the surviving definition twice, doubling every event.
     if any(old in html for old in OLD_BLOCKS):
         return "upgrade", html, links, untagged
@@ -250,7 +325,7 @@ def main():
 
     if not args.apply:
         for path, links, untagged, status in patched:
-            verb = "^ upgraded to v4" if status == "upgrade" else "+ ctaClick listener"
+            verb = "^ upgraded to v5" if status == "upgrade" else "+ ctaClick listener"
             print(f"\n  {path}")
             print(f"    {verb}   ({links} Center links, {untagged} in chrome and not counted)")
 
