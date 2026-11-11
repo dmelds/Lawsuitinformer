@@ -377,3 +377,6 @@
 
 # Malformed inbound link (line-wrap in an off-web source pasted with a space)
 /garcia-v-character-ai-%20lawsuit  /garcia-v-character-ai-lawsuit  301
+
+# Inbound LinkedIn link (11/10/26) to the singular slug; the hub is plural
+/openai-lawsuit  /openai-lawsuits  301
