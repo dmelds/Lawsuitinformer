@@ -1497,3 +1497,45 @@ footer, .site-footer {
 /* Accessibility: skip link */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--ink-strong);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;font-family:var(--sans);text-decoration:none;border-bottom:0;}
 .skip-link:focus{left:0;color:#fff;}
+
+/* ---------- FOOTER: Explore / About / Network layout (Nov 2026) ----------
+   Markup comes from set_footer_layout.py. The two-column mobile grid is
+   scoped to .footer-content--split, so the es/ pages, which keep the old
+   footer markup, render as before. */
+.footer-links .footer-label {
+  display: block; margin-top: 2px;
+  font-family: var(--sans); font-size: 12px; line-height: 1.4;
+  color: rgba(250,250,247,.5);
+}
+.footer-col--network .footer-links li { margin-bottom: 14px; }
+.footer-contact { line-height: 1.6; }
+.footer-contact a { display: inline-block; margin-top: 6px; }
+.footer-bottom .footer-legal a { font-size: 13px; margin-left: 16px; }
+.footer-bottom .footer-legal a:first-of-type { margin-left: 18px; }
+/* one divider above the social block: footer-bottom already draws it */
+.footer-bottom .footer-social { border-top: 0; margin-top: 0; padding-top: 0; }
+
+@media (max-width: 768px) {
+  footer, .site-footer { padding: 44px 0 24px; }
+  .site-footer .footer-content--split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px;
+  }
+  .footer-content--split > .footer-brand,
+  .footer-content--split > .footer-col--network { grid-column: 1 / -1; }
+  .footer-content--split > div:first-child h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  .footer-brand p { font-size: .92rem; line-height: 1.6; margin-bottom: 10px; }
+  .footer-content--split h3 { margin-bottom: 12px; }
+  .footer-content--split .footer-links li { margin-bottom: 10px; }
+  /* network: each label sits on the line of its link */
+  .footer-col--network .footer-links li {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px;
+  }
+  .footer-col--network .footer-label { display: inline; margin-top: 0; }
+  /* follow: heading and LinkedIn on one line */
+  .footer-bottom .footer-social { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+  .footer-bottom .footer-social h3 { margin: 0; }
+  .footer-bottom { margin-top: 24px; padding-top: 20px; }
+  .footer-bottom p { font-size: 12px; line-height: 1.6; margin: 6px 0; }
+  .footer-bottom .footer-legal a,
+  .footer-bottom .footer-legal a:first-of-type { display: inline-block; margin: 6px 16px 0 0; }
+}
