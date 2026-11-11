@@ -1515,6 +1515,25 @@ footer, .site-footer {
 /* one divider above the social block: footer-bottom already draws it */
 .footer-bottom .footer-social { border-top: 0; margin-top: 0; padding-top: 0; }
 
+/* desktop: brand column capped, link columns sized to their links, and the
+   free space split evenly between columns so the gaps match */
+@media (min-width: 1025px) {
+  .footer-content--split {
+    grid-template-columns: minmax(0, 340px) repeat(3, max-content);
+    justify-content: space-between;
+    column-gap: 40px;
+  }
+}
+/* tablet: blurb across the top, the three link columns in a row under it */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-content--split {
+    grid-template-columns: repeat(3, max-content);
+    justify-content: start;
+    column-gap: 72px;
+  }
+  .footer-content--split > .footer-brand { grid-column: 1 / -1; max-width: 560px; }
+}
+
 @media (max-width: 768px) {
   footer, .site-footer { padding: 44px 0 24px; }
   .site-footer .footer-content--split {
