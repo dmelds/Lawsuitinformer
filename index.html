@@ -502,7 +502,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 .hb .hb-meta .hb-dl{color:#a2412a;font-weight:700;}:root[data-theme="dark"] .hb .hb-meta .hb-dl{color:#e07a5f;}
 @media (max-width:600px){.hb li{grid-template-columns:minmax(0,1fr);}.hb li>span:first-child{min-width:0;overflow-wrap:anywhere;}.hb .hb-meta{white-space:normal;}.hb .hb-all{margin-left:0;}}
 </style>
-<section class="section hb"><div class="container narrow"><div class="hb-head"><h2>Latest in Court</h2><span class="hb-when">AS OF NOV 11, 2026</span><a class="hb-all" href="current-mass-tort-cases">All 17 cases we track &rarr;</a></div><ul><li><span><a class="hb-name" href="depo-provera-lawsuit-updates">Depo-Provera</a><span class="hb-pill hb-urgent">SIGN-UP DEADLINE</span></span><span class="hb-meta">UPDATED NOV 9 &middot; <span class="hb-next hb-dl">DEADLINE NOV 30</span></span><p class="hb-lead">The federal count reached 6,413.</p></li><li><span><a class="hb-name" href="pfas-water-contamination-lawsuit-update">PFAS Water Contamination</a><span class="hb-pill hb-watch">3M INJURY DEAL; CASES AGAINST 3M PAUSED</span></span><span class="hb-meta">UPDATED NOV 10 &middot; <span class="hb-next">NEXT NOV 13</span></span><p class="hb-lead">The judge set November 13 as the deadline to list every person eligible for the 3M injury deal.</p></li><li><span><a class="hb-name" href="roundup-lawsuit-updates">Roundup</a><span class="hb-pill hb-live">VERDICT FOR MONSANTO</span></span><span class="hb-meta">UPDATED NOV 10 &middot; <span class="hb-next">NEXT NOV 16</span></span><p class="hb-lead">Bayer’s chief executive said he expects the $7.25 billion settlement before Christmas.</p></li><li><span><a class="hb-name" href="talcum-powder-lawsuit-updates">Talcum Powder</a><span class="hb-pill hb-watch">SETTLEMENT PENDING</span></span><span class="hb-meta">UPDATED NOV 10</span><p class="hb-lead">A California jury awarded more than $34 million in a mesothelioma talc case against J&amp;J.</p></li><li><span><a class="hb-name" href="ozempic-lawsuit-updates">Ozempic and GLP-1 Drugs</a><span class="hb-pill hb-watch">RULING EXPECTED</span></span><span class="hb-meta">UPDATED NOV 10 &middot; <span class="hb-next">NEXT NOV 17</span></span><p class="hb-lead">The FDA ordered the makers of every GLP-1 drug to add a NAION warning to their labels.</p></li></ul></div></section>
+<section class="section hb"><div class="container narrow"><div class="hb-head"><h2>Latest in Court</h2><span class="hb-when">AS OF NOV 11, 2026</span><a class="hb-all" href="current-mass-tort-cases">All 17 cases we track &rarr;</a></div><ul><li><span><a class="hb-name" href="depo-provera-lawsuit-updates">Depo-Provera</a><span class="hb-pill hb-urgent">SIGN-UP DEADLINE</span></span><span class="hb-meta">UPDATED NOV 9 &middot; <span class="hb-next hb-dl">DEADLINE NOV 30</span></span><p class="hb-lead">The federal count reached 6,413.</p></li><li><span><a class="hb-name" href="pfas-water-contamination-lawsuit-update">PFAS Water Contamination</a><span class="hb-pill hb-watch">3M INJURY DEAL; CASES AGAINST 3M PAUSED</span></span><span class="hb-meta">UPDATED NOV 11 &middot; <span class="hb-next">NEXT NOV 13</span></span><p class="hb-lead">The judge set November 13 as the deadline to list every person eligible for the 3M injury deal.</p></li><li><span><a class="hb-name" href="roundup-lawsuit-updates">Roundup</a><span class="hb-pill hb-live">VERDICT FOR MONSANTO</span></span><span class="hb-meta">UPDATED NOV 10 &middot; <span class="hb-next">NEXT NOV 16</span></span><p class="hb-lead">Bayer’s chief executive said he expects the $7.25 billion settlement before Christmas.</p></li><li><span><a class="hb-name" href="talcum-powder-lawsuit-updates">Talcum Powder</a><span class="hb-pill hb-watch">SETTLEMENT PENDING</span></span><span class="hb-meta">UPDATED NOV 10</span><p class="hb-lead">A California jury awarded more than $34 million in a mesothelioma talc case against J&amp;J.</p></li><li><span><a class="hb-name" href="ozempic-lawsuit-updates">Ozempic and GLP-1 Drugs</a><span class="hb-pill hb-watch">RULING EXPECTED</span></span><span class="hb-meta">UPDATED NOV 10 &middot; <span class="hb-next">NEXT NOV 17</span></span><p class="hb-lead">The FDA ordered the makers of every GLP-1 drug to add a NAION warning to their labels.</p></li></ul></div></section>
 <!-- LI-BOARD:END -->
 <!-- LI-CONGRESS:BEGIN -->
 <style id="li-congress-strip">
@@ -594,6 +594,29 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       var all = f.querySelector('input[name="topic"][value="all"]');
       var st = f.querySelector('.li-signup-status');
       var btn = f.querySelector('button[type="submit"]');
+      var g = '', gAt = 0, asked = false, real = 0;
+      function ask(){
+        if (asked || !window.fetch) return;
+        asked = true;
+        fetch(f.getAttribute('action'), {headers: {'accept': 'application/json'}})
+          .then(function(r){ return r.json(); })
+          .then(function(j){ g = (j && j.g) || ''; gAt = Date.now(); })
+          .catch(function(){ gAt = -1; });
+      }
+      ['pointerdown', 'touchstart', 'keydown', 'click'].forEach(function(type){
+        f.addEventListener(type, function(e){ if (e.isTrusted) { real++; ask(); } }, true);
+      });
+      f.addEventListener('focusin', ask);
+      function plain(){ HTMLFormElement.prototype.submit.call(f); }
+      function show(){
+        var box = (f.closest && f.closest('.li-signup')) || f;
+        var r = box.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try { box.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
+        catch (err) { box.scrollIntoView(); }
+      }
       f.addEventListener('change', function(e){
         var t = e.target;
         if (t.name !== 'topic' || !t.checked) return;
@@ -609,30 +632,45 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         if (!topics.length) { st.textContent = 'Pick at least one case to follow.'; return; }
         if (!email) { st.textContent = 'Enter your email address.'; return; }
         btn.disabled = true; st.textContent = 'Sending';
-        fetch(f.getAttribute('action'), {
-          method: 'POST',
-          headers: {'content-type': 'application/json', 'accept': 'application/json'},
-          body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
-                                'bot-field': f.querySelector('input[name="bot-field"]').value})
-        }).then(function(r){
-          return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
-        }).then(function(x){
-          if (x.ok) {
-            f.classList.add('is-done');
-            st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
-            if (typeof window.gtag === 'function') {
-              window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+        ask();
+        var tries = 0;
+        function post(){
+          fetch(f.getAttribute('action'), {
+            method: 'POST',
+            headers: {'content-type': 'application/json', 'accept': 'application/json'},
+            body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
+                                  'bot-field': f.querySelector('input[name="bot-field"]').value,
+                                  g: g, ev: real, wd: navigator.webdriver === true})
+          }).then(function(r){
+            return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
+          }).then(function(x){
+            if (x.ok) {
+              f.classList.add('is-done');
+              st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              show();
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+              }
+            } else if (x.j.error === 'verify') {
+              plain();
+            } else {
+              btn.disabled = false;
+              st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
+                : x.j.error === 'topics' ? 'Pick at least one case to follow.'
+                : 'The signup did not go through. Try again in a minute.';
             }
-          } else {
+          }).catch(function(){
             btn.disabled = false;
-            st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
-              : x.j.error === 'topics' ? 'Pick at least one case to follow.'
-              : 'The signup did not go through. Try again in a minute.';
-          }
-        }).catch(function(){
-          btn.disabled = false;
-          st.textContent = 'The signup did not go through. Try again in a minute.';
-        });
+            st.textContent = 'The signup did not go through. Try again in a minute.';
+          });
+        }
+        (function go(){
+          if (!gAt && tries++ < 25) { setTimeout(go, 200); return; }
+          if (!g) { plain(); return; }
+          var wait = 2600 - (Date.now() - gAt);
+          if (wait > 0) { setTimeout(go, wait); return; }
+          post();
+        })();
       });
     });
   }

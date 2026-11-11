@@ -94,8 +94,20 @@ CSS = """<style id="li-signup-css">
 </style>"""
 
 # Posts in place when fetch exists; otherwise the browser does a normal form POST and the
-# function answers with its own "Check your email" page. "Every case we track" and the single
-# cases are kept exclusive so a reader never sends both.
+# function answers with its own one-button page. "Every case we track" and the single cases are
+# kept exclusive so a reader never sends both.
+#
+# The bot check (11/11/26; the rules are in the header of netlify/functions/newsletter.mjs): the
+# first time a reader touches the box it asks GET /api/subscribe for a token, and the signup
+# carries the token back with a count of real clicks and key presses. The function wants the
+# token at least 2.5 seconds old, so a signup sent sooner waits out the difference. When the
+# token cannot be had, or the function answers "verify", the box falls back to the normal form
+# POST, so a reader always has a way through.
+#
+# After a signup the fields fold away and only the "Check your email" line is left, at the top
+# of the box. With the case list open the box is taller than the screen, so that line used to
+# end up above the reader's view. show() scrolls the box back to the middle of the screen when
+# any part of it is out of view (at once, with no glide, for a reader who asked for less motion).
 JS = """<script>
 (function(){
   if (window.__liSignup) return; window.__liSignup = true;
@@ -105,6 +117,29 @@ JS = """<script>
       var all = f.querySelector('input[name="topic"][value="all"]');
       var st = f.querySelector('.li-signup-status');
       var btn = f.querySelector('button[type="submit"]');
+      var g = '', gAt = 0, asked = false, real = 0;
+      function ask(){
+        if (asked || !window.fetch) return;
+        asked = true;
+        fetch(f.getAttribute('action'), {headers: {'accept': 'application/json'}})
+          .then(function(r){ return r.json(); })
+          .then(function(j){ g = (j && j.g) || ''; gAt = Date.now(); })
+          .catch(function(){ gAt = -1; });
+      }
+      ['pointerdown', 'touchstart', 'keydown', 'click'].forEach(function(type){
+        f.addEventListener(type, function(e){ if (e.isTrusted) { real++; ask(); } }, true);
+      });
+      f.addEventListener('focusin', ask);
+      function plain(){ HTMLFormElement.prototype.submit.call(f); }
+      function show(){
+        var box = (f.closest && f.closest('.li-signup')) || f;
+        var r = box.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try { box.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
+        catch (err) { box.scrollIntoView(); }
+      }
       f.addEventListener('change', function(e){
         var t = e.target;
         if (t.name !== 'topic' || !t.checked) return;
@@ -120,30 +155,45 @@ JS = """<script>
         if (!topics.length) { st.textContent = 'Pick at least one case to follow.'; return; }
         if (!email) { st.textContent = 'Enter your email address.'; return; }
         btn.disabled = true; st.textContent = 'Sending';
-        fetch(f.getAttribute('action'), {
-          method: 'POST',
-          headers: {'content-type': 'application/json', 'accept': 'application/json'},
-          body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
-                                'bot-field': f.querySelector('input[name="bot-field"]').value})
-        }).then(function(r){
-          return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
-        }).then(function(x){
-          if (x.ok) {
-            f.classList.add('is-done');
-            st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
-            if (typeof window.gtag === 'function') {
-              window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+        ask();
+        var tries = 0;
+        function post(){
+          fetch(f.getAttribute('action'), {
+            method: 'POST',
+            headers: {'content-type': 'application/json', 'accept': 'application/json'},
+            body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
+                                  'bot-field': f.querySelector('input[name="bot-field"]').value,
+                                  g: g, ev: real, wd: navigator.webdriver === true})
+          }).then(function(r){
+            return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
+          }).then(function(x){
+            if (x.ok) {
+              f.classList.add('is-done');
+              st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              show();
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+              }
+            } else if (x.j.error === 'verify') {
+              plain();
+            } else {
+              btn.disabled = false;
+              st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
+                : x.j.error === 'topics' ? 'Pick at least one case to follow.'
+                : 'The signup did not go through. Try again in a minute.';
             }
-          } else {
+          }).catch(function(){
             btn.disabled = false;
-            st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
-              : x.j.error === 'topics' ? 'Pick at least one case to follow.'
-              : 'The signup did not go through. Try again in a minute.';
-          }
-        }).catch(function(){
-          btn.disabled = false;
-          st.textContent = 'The signup did not go through. Try again in a minute.';
-        });
+            st.textContent = 'The signup did not go through. Try again in a minute.';
+          });
+        }
+        (function go(){
+          if (!gAt && tries++ < 25) { setTimeout(go, 200); return; }
+          if (!g) { plain(); return; }
+          var wait = 2600 - (Date.now() - gAt);
+          if (wait > 0) { setTimeout(go, wait); return; }
+          post();
+        })();
       });
     });
   }
