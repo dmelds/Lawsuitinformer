@@ -60,6 +60,16 @@ WARN   Prose block (<p>, <li>, <blockquote>, <dd>, <td>) at or above
        the rule was added, 120 words flagged 34 paragraphs on 19 pages.
        Widened the same day to list items and other prose blocks after a
        199-word <li> on openai-lawsuits.html passed unflagged.
+WARN   Prose block at or above UPDATE_PARAGRAPH_MAX words on an update page
+       (a page with a ul.dev-list, plus UPDATE_PAGES_EXTRA). Added 2026-11-10
+       after a news edit added one sentence to a FAQ answer on
+       hernia-mesh-lawsuit.html and took it from 86 words to 98: under the
+       sitewide 120, over the 90 the house rule sets for every draft. Update
+       pages are edited several times a week, one sentence at a time, which
+       is how a block creeps. When the rule was added it flagged one block
+       on main: a 95-word dated entry on hair-relaxer-lawsuit-updates.html.
+       A FAQ answer has to stay one <p> to match
+       its FAQPage JSON-LD, so tighten it instead of splitting it.
 WARN   Ellipses, or a title over 60 / description outside 110-160. House
        conventions, checked here because nothing else checks them.
 WARN   Byline, sitewide outside BYLINE_EXEMPT. Added 2026-10-14 after two
@@ -121,6 +131,11 @@ except ImportError:
 GRADE_MAX = 10.5
 SENTENCE_MAX = 45
 PARAGRAPH_MAX = 120
+UPDATE_PARAGRAPH_MAX = 90
+# Update pages with no ul.dev-list. hernia-mesh-lawsuit owns status for its
+# cluster and keeps the dated entries on recent-developments.
+UPDATE_PAGES_EXTRA = {"hernia-mesh-lawsuit.html"}
+UPDATE_LIST_RE = re.compile(r'<ul[^>]*class="[^"]*\bdev-list\b', re.I)
 CTA_MIN = 3
 
 # House byline, as it appears on the page. The &middot; spelling renders the
@@ -430,9 +445,13 @@ def check(path, in_cluster):
         ctx = " ".join(prose[max(0, m.start()-50):m.end()+2].split())
         errors.append(f"doubled punctuation: ...{ctx}")
 
+    update_page = name in UPDATE_PAGES_EXTRA or bool(UPDATE_LIST_RE.search(html))
     for n, t in paragraphs(html):
         if n >= PARAGRAPH_MAX:
             warnings.append(f"{n}-word paragraph: {t[:90]}...")
+        elif update_page and n >= UPDATE_PARAGRAPH_MAX:
+            warnings.append(f"{n}-word block on an update page "
+                            f"(max {UPDATE_PARAGRAPH_MAX - 1}): {t[:90]}...")
 
     if name not in CTA_EXEMPT:
         warnings.extend(cta_problems(html))
