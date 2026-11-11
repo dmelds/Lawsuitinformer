@@ -625,6 +625,20 @@ details.page-disclosure .toc-list li:last-child{border-bottom:0}
       var all = f.querySelector('input[name="topic"][value="all"]');
       var st = f.querySelector('.li-signup-status');
       var btn = f.querySelector('button[type="submit"]');
+      var g = '', gAt = 0, asked = false, real = 0;
+      function ask(){
+        if (asked || !window.fetch) return;
+        asked = true;
+        fetch(f.getAttribute('action'), {headers: {'accept': 'application/json'}})
+          .then(function(r){ return r.json(); })
+          .then(function(j){ g = (j && j.g) || ''; gAt = Date.now(); })
+          .catch(function(){ gAt = -1; });
+      }
+      ['pointerdown', 'touchstart', 'keydown', 'click'].forEach(function(type){
+        f.addEventListener(type, function(e){ if (e.isTrusted) { real++; ask(); } }, true);
+      });
+      f.addEventListener('focusin', ask);
+      function plain(){ HTMLFormElement.prototype.submit.call(f); }
       f.addEventListener('change', function(e){
         var t = e.target;
         if (t.name !== 'topic' || !t.checked) return;
@@ -640,30 +654,44 @@ details.page-disclosure .toc-list li:last-child{border-bottom:0}
         if (!topics.length) { st.textContent = 'Pick at least one case to follow.'; return; }
         if (!email) { st.textContent = 'Enter your email address.'; return; }
         btn.disabled = true; st.textContent = 'Sending';
-        fetch(f.getAttribute('action'), {
-          method: 'POST',
-          headers: {'content-type': 'application/json', 'accept': 'application/json'},
-          body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
-                                'bot-field': f.querySelector('input[name="bot-field"]').value})
-        }).then(function(r){
-          return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
-        }).then(function(x){
-          if (x.ok) {
-            f.classList.add('is-done');
-            st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
-            if (typeof window.gtag === 'function') {
-              window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+        ask();
+        var tries = 0;
+        function post(){
+          fetch(f.getAttribute('action'), {
+            method: 'POST',
+            headers: {'content-type': 'application/json', 'accept': 'application/json'},
+            body: JSON.stringify({email: email, topic: topics, source: f.getAttribute('data-source') || '',
+                                  'bot-field': f.querySelector('input[name="bot-field"]').value,
+                                  g: g, ev: real, wd: navigator.webdriver === true})
+          }).then(function(r){
+            return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
+          }).then(function(x){
+            if (x.ok) {
+              f.classList.add('is-done');
+              st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
+              }
+            } else if (x.j.error === 'verify') {
+              plain();
+            } else {
+              btn.disabled = false;
+              st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
+                : x.j.error === 'topics' ? 'Pick at least one case to follow.'
+                : 'The signup did not go through. Try again in a minute.';
             }
-          } else {
+          }).catch(function(){
             btn.disabled = false;
-            st.textContent = x.j.error === 'email' ? 'That email address did not look right. Check it and try again.'
-              : x.j.error === 'topics' ? 'Pick at least one case to follow.'
-              : 'The signup did not go through. Try again in a minute.';
-          }
-        }).catch(function(){
-          btn.disabled = false;
-          st.textContent = 'The signup did not go through. Try again in a minute.';
-        });
+            st.textContent = 'The signup did not go through. Try again in a minute.';
+          });
+        }
+        (function go(){
+          if (!gAt && tries++ < 25) { setTimeout(go, 200); return; }
+          if (!g) { plain(); return; }
+          var wait = 2600 - (Date.now() - gAt);
+          if (wait > 0) { setTimeout(go, wait); return; }
+          post();
+        })();
       });
     });
   }
