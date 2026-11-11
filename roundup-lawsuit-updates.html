@@ -639,6 +639,15 @@ details.page-disclosure .toc-list li:last-child{border-bottom:0}
       });
       f.addEventListener('focusin', ask);
       function plain(){ HTMLFormElement.prototype.submit.call(f); }
+      function show(){
+        var box = (f.closest && f.closest('.li-signup')) || f;
+        var r = box.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try { box.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
+        catch (err) { box.scrollIntoView(); }
+      }
       f.addEventListener('change', function(e){
         var t = e.target;
         if (t.name !== 'topic' || !t.checked) return;
@@ -669,6 +678,7 @@ details.page-disclosure .toc-list li:last-child{border-bottom:0}
             if (x.ok) {
               f.classList.add('is-done');
               st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              show();
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
               }
