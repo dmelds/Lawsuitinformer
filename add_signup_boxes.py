@@ -103,6 +103,11 @@ CSS = """<style id="li-signup-css">
 # token at least 2.5 seconds old, so a signup sent sooner waits out the difference. When the
 # token cannot be had, or the function answers "verify", the box falls back to the normal form
 # POST, so a reader always has a way through.
+#
+# After a signup the fields fold away and only the "Check your email" line is left, at the top
+# of the box. With the case list open the box is taller than the screen, so that line used to
+# end up above the reader's view. show() scrolls the box back to the middle of the screen when
+# any part of it is out of view (at once, with no glide, for a reader who asked for less motion).
 JS = """<script>
 (function(){
   if (window.__liSignup) return; window.__liSignup = true;
@@ -126,6 +131,15 @@ JS = """<script>
       });
       f.addEventListener('focusin', ask);
       function plain(){ HTMLFormElement.prototype.submit.call(f); }
+      function show(){
+        var box = (f.closest && f.closest('.li-signup')) || f;
+        var r = box.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try { box.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
+        catch (err) { box.scrollIntoView(); }
+      }
       f.addEventListener('change', function(e){
         var t = e.target;
         if (t.name !== 'topic' || !t.checked) return;
@@ -156,6 +170,7 @@ JS = """<script>
             if (x.ok) {
               f.classList.add('is-done');
               st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              show();
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
               }
