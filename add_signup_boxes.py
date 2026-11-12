@@ -169,7 +169,7 @@ JS = """<script>
           }).then(function(x){
             if (x.ok) {
               f.classList.add('is-done');
-              st.textContent = 'Check your email. We sent you a link to confirm. Updates start after you confirm.';
+              st.textContent = 'Check your email for a message from Lawsuit Informer. Open it and press the button to confirm. Your updates start after you confirm. If you do not see it, look in your spam folder.';
               show();
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'newsletter_signup', {topics: topics.join(','), source: f.getAttribute('data-source') || ''});
@@ -220,7 +220,7 @@ def form(source: str, first: str, rest: str, input_id: str) -> str:
         <input type="email" id="{input_id}" name="email" placeholder="Your email address" autocomplete="email" required>
         <button type="submit">Send me updates</button>
       </div>
-      <p class="li-signup-note">We email you a link to confirm first. Nothing else arrives until you confirm. Each email has a link to change cases or unsubscribe. <a href="{PRIVACY}">Privacy policy</a></p>
+      <p class="li-signup-note">We email you a link to confirm first. Updates start only after you confirm. Each email has a link to change cases or unsubscribe. <a href="{PRIVACY}">Privacy policy</a></p>
     </div>
     <p class="li-signup-status" role="status" aria-live="polite"></p>
   </form>"""
