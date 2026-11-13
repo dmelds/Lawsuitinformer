@@ -1,0 +1,60 @@
+# Law firm and legal nonprofit sites that Informer pages must not link to.
+# Read by check_consumer_readability.py (set 2026-11-12).
+#
+#   <host>        blocked: a link to it, in a page or its JSON-LD, is an ERROR
+#   ok <host>     a host that only reads like a firm's (law, legal, attorney,
+#                 injury in its name); clears the checker's warning
+#
+# A host covers its subdomains. Text after # is a comment. Cite the filing, the
+# court record, the legislature's bill record or a news report instead.
+
+# ---- Found on Informer pages on 2026-11-12 and replaced ----
+kslaw.com               # King & Spalding
+fenwick.com             # Fenwick & West
+bakerlaw.com            # BakerHostetler
+khlaw.com               # Keller and Heckman
+bclplaw.com             # Bryan Cave Leighton Paisner
+goldbergsegalla.com     # Goldberg Segalla
+crowell.com             # Crowell & Moring
+morganlewis.com         # Morgan Lewis
+jonesday.com            # Jones Day
+dicellolevitt.com       # DiCello Levitt
+techjusticelaw.org      # Tech Justice Law Project (brings cases)
+socialmediavictims.org  # Social Media Victims Law Center (brings cases)
+
+# ---- Firm and firm-marketing sites the wire review already sets apart ----
+# (COMPETITOR_HOSTS in network-ops scripts/wire_review.py)
+lawsuit-information-center.com
+drugwatch.com
+schmidtandclark.com
+motleyrice.com
+sokolovelaw.com
+lawyersandsettlements.com
+openclassactions.com
+topclassactions.com
+consumernotice.org
+lawsuittracker.org
+masstortinfo.com
+injuryclaims.com
+
+# ---- Other firms whose pages turn up in searches on these cases ----
+millerandzois.com
+torhoermanlaw.com
+robertkinglawfirm.com
+nighgoldenberg.com
+aboutlawsuits.com
+youhavealawyer.com
+cov.com                 # Covington & Burling
+venable.com
+akingump.com
+jdsupra.com             # republishes law firm client alerts
+
+# ---- Reads like a firm's site, cleared ----
+ok law360.com
+ok law.com
+ok justia.com
+ok attorneyatlawmagazine.com
+ok molawyersmedia.com
+ok myfloridalegal.com   # Florida Attorney General
+
+# riaclu.org (ACLU of Rhode Island) is left off both lists: David's call.
