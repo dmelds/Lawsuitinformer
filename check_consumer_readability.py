@@ -46,6 +46,16 @@ ERROR  Doubled sentence punctuation, sitewide: a period after a period
        take-it-down-act, pfas-water-contamination-lawsuits, start-here),
        FAQ schema included, and nothing caught them for a month. A real
        ellipsis is three dots and is left to the ellipsis rule below.
+ERROR  Link to a law firm's or legal nonprofit's own site, sitewide, in a
+       link or in JSON-LD. The hosts are listed in data/firm_hosts.txt.
+       Added 2026-11-12 after a count found 13 pages citing a firm's client
+       alert, press release or case page as a source (nine defense firms,
+       two legal nonprofits that bring cases), and one update page linking
+       the plaintiffs' co-lead firm. Cite the filing, the court record, the
+       legislature's bill record or a news report instead.
+WARN   Link to a host that reads like a law firm's (law, legal, attorney,
+       lawyer or injury in its name) and is on neither list in
+       data/firm_hosts.txt. Add the host there, blocked or marked ok.
 WARN   Jargon term from BLOCKLIST. Each has a plain equivalent. Some survive
        review (a docket number, a statute a page is genuinely about), so
        this warns rather than blocks.
@@ -421,6 +431,61 @@ def norm(s):
     return " ".join(s.split())
 
 
+FIRM_HOSTS_FILE = Path("data/firm_hosts.txt")
+OWN_HOSTS = ("lawsuitinformer.com", "lawsuit.center", "lawsuitintelligencer.com",
+             "davidmeldofsky.com", "masstortwire.com")
+HOST_RE = re.compile(r'https?://([A-Za-z0-9.-]+)')
+FIRM_LIKE = re.compile(r'law|legal|attorney|injury', re.I)
+
+
+def firm_hosts():
+    """(blocked hosts, hosts marked ok) from data/firm_hosts.txt.
+
+    One host per line. A bare host is blocked; "ok <host>" clears a host that
+    only reads like a firm's (law360.com). Text after # is a comment.
+    """
+    blocked, ok = set(), set()
+    if FIRM_HOSTS_FILE.exists():
+        for line in FIRM_HOSTS_FILE.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip().lower()
+            if not line:
+                continue
+            if line.startswith("ok "):
+                ok.add(line[3:].strip())
+            else:
+                blocked.add(line)
+    return blocked, ok
+
+
+FIRM_BLOCKED, FIRM_OK = firm_hosts()
+
+
+def on_list(host, hosts):
+    return any(host == h or host.endswith("." + h) for h in hosts)
+
+
+def firm_link_problems(html):
+    """(errors, warnings) for links to law firm and legal nonprofit sites."""
+    errors, warnings = [], []
+    seen = set()
+    for host in HOST_RE.findall(html):
+        host = host.lower().rstrip(".")
+        if host.startswith("www."):
+            host = host[4:]
+        if host in seen:
+            continue
+        seen.add(host)
+        if on_list(host, OWN_HOSTS) or host.endswith(".gov"):
+            continue
+        if on_list(host, FIRM_BLOCKED):
+            errors.append(f"links a law firm's or legal nonprofit's site ({host}): "
+                          f"cite the filing, the court record or a news report")
+        elif FIRM_LIKE.search(host) and not on_list(host, FIRM_OK):
+            warnings.append(f"{host} reads like a law firm's site: add it to "
+                            f"data/firm_hosts.txt, blocked or marked ok")
+    return errors, warnings
+
+
 def check(path, in_cluster):
     html = path.read_text(encoding="utf-8")
     name = path.name
@@ -458,6 +523,10 @@ def check(path, in_cluster):
 
     if name not in BYLINE_EXEMPT:
         warnings.extend(byline_problems(html))
+
+    firm_errors, firm_warnings = firm_link_problems(html)
+    errors.extend(firm_errors)
+    warnings.extend(firm_warnings)
 
     if not in_cluster:
         # Sitewide tier stops here: adjudicating language, FAQ drift,
@@ -517,7 +586,8 @@ def main():
           f"and sentence max {SENTENCE_MAX}; every page checked for "
           f"reader-adjudicating language, FAQ drift, doubled punctuation, "
           f"paragraphs of "
-          f"{PARAGRAPH_MAX}+ words, the CTA set and the byline)\n")
+          f"{PARAGRAPH_MAX}+ words, the CTA set, the byline and links to "
+          f"law firm sites)\n")
     for path in targets:
         errors, warnings = check(path, path.name in cluster)
         if not errors and not warnings:
