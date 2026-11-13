@@ -43,6 +43,14 @@ index.html. On the first run the block is inserted after the credibility strip;
 after that it is replaced in place. index.html is written only when the strip
 changed, on the same rule as the board.
 
+The homepage's "Find Your Case" list is written by the same run, between
+<!-- LI-CASES:BEGIN --> and <!-- LI-CASES:END -->: one row per page in PAGES,
+A to Z, with the guide link, the row's li:status under the name and the link
+to the update page. A row with an open reader deadline shows the red DEADLINE
+line (the date and what closes) in place of the status. The first run replaces the hand-written
+<ul class="hp-cases">; later runs replace the block in place. The guide page
+and the name each row carries are in DIRECTORY.
+
 Each update page in PAGES carries one line under its "Last updated" stamp that
 points readers to the board, between <!-- LI-BOARD-LINK:BEGIN --> and
 <!-- LI-BOARD-LINK:END -->. The first run inserts it after the page's
@@ -110,6 +118,34 @@ PAGES = [
     # a dev-list and it carries li:status / li:next like the update pages.
     ("openai-lawsuits", "ChatGPT and OpenAI", "JCCP 5431 · N.D. Cal. · N.D. Fla.", "", "openai-case-review"),
 ]
+
+# The homepage "Find Your Case" list. Update-page slug -> (guide page, name shown in the list,
+# link to the updates if it is not the update page itself). The name says the product and,
+# where the cases turn on one injury, the injury, because a reader arrives knowing what
+# happened to them and not what the litigation is called. Every slug in PAGES needs a line
+# here; a missing one is a warning and the row is left out of the list.
+DIRECTORY = {
+    "afff-lawsuit-updates": ("afff-firefighting-foam-lawsuits", "AFFF Foam and Cancer", ""),
+    "openai-lawsuits": ("openai-lawsuits", "ChatGPT and OpenAI", "openai-lawsuits#recent-developments"),
+    "depo-provera-lawsuit-updates": ("depo-provera-lawsuits", "Depo-Provera and Brain Tumors", ""),
+    "hair-relaxer-lawsuit-updates": ("hair-relaxer-cancer-lawsuit", "Hair Relaxer and Cancer", ""),
+    "recent-developments-hernia-mesh-litigation": ("hernia-mesh-lawsuit", "Hernia Mesh", ""),
+    "house-ncaa-settlement-update": ("house-ncaa-settlement-explained", "House v. NCAA Settlement", ""),
+    "asbestos-lawsuit-updates": ("asbestos-exposure-lawsuits", "Mesothelioma and Asbestos", ""),
+    "ozempic-lawsuit-updates": ("ozempic-lawsuits", "Ozempic and GLP-1 Drugs", ""),
+    "paraquat-lawsuit-updates": ("paraquat-parkinsons-lawsuits", "Paraquat and Parkinson\u2019s", ""),
+    "pfas-water-contamination-lawsuit-update": ("pfas-water-contamination-lawsuits", "PFAS Water Contamination", ""),
+    "roundup-lawsuit-updates": ("roundup-cancer-lawsuits", "Roundup and Lymphoma", ""),
+    "social-media-addiction-lawsuit-update": ("social-media-addiction-lawsuit", "Social Media Addiction", ""),
+    "suboxone-lawsuit-updates": ("suboxone-lawsuit", "Suboxone Tooth Decay", ""),
+    "talcum-powder-lawsuit-updates": ("talcum-powder-ovarian-cancer-lawsuit", "Talcum Powder and Cancer", ""),
+    "transvaginal-mesh-litigation-update": ("transvaginal-mesh-lawsuits", "Transvaginal Mesh", ""),
+    "tylenol-lawsuit-updates": ("tylenol-autism-lawsuits", "Tylenol and Autism", ""),
+    "video-game-addiction-lawsuit-update": ("video-game-addiction-lawsuit", "Video Games and Roblox", ""),
+}
+CASES_BEGIN = "<!-- LI-CASES:BEGIN -->"
+CASES_END = "<!-- LI-CASES:END -->"
+CASES_SEED = re.compile(r'<ul class="hp-cases">.*?</ul>', re.S)
 
 # Status labels that put a row in the closed band at the foot of the board.
 CLOSED_WORDS = re.compile(r"\b(closed|wound down|concluded)\b", re.I)
@@ -556,31 +592,98 @@ def render_home(rows: list, today: _dt.date, stamp: str) -> str:
             "<ul>" + "".join(items) + "</ul></div></section>\n" + HOME_END)
 
 
+# The list's whole ruleset travels with the block, so the markup and its styling cannot drift.
+# Each row is two lines: the name, then the status with "Updates" at the right. Two tap targets
+# cover the row with no dead space: the right-hand strip (the Updates link, stretched to the
+# row's height) opens the update page, and everything else opens the guide. On wide screens the
+# list runs in two columns. Night values: --ink-muted and --link come from the theme; the
+# deadline red is the board's (#e07a5f on #161411).
+CASES_CSS = """<style id="li-cases">
+.hp-cases{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);}
+.hp-cases li{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;align-content:start;gap:3px 12px;padding:10px 0 11px;border-bottom:1px solid var(--rule);}
+.hp-cases a{border-bottom:0;}
+.hp-cases .hp-case{grid-column:1 / -1;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.25;color:var(--ink-strong);}
+.hp-cases .hp-case::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;}
+.hp-cases .hp-case:hover{color:var(--link);}
+.hp-cases .hp-st{font-family:var(--sans);font-size:13px;line-height:1.35;color:var(--ink-muted);}
+.hp-cases .hp-st-dl{color:#a2412a;font-weight:600;}
+.hp-cases .hp-st-what{display:inline-block;}
+.hp-cases .hp-upd{font-family:var(--sans);font-size:13.5px;font-weight:600;line-height:1.3;white-space:nowrap;}
+.hp-cases .hp-upd::after{content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;width:80px;}
+@media (min-width:701px){.hp-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;}}
+:root[data-theme="dark"] .hp-cases .hp-case:hover{color:#eea985;}
+:root[data-theme="dark"] .hp-cases .hp-st-dl{color:#e07a5f;}
+</style>"""
+
+
+def mon_day(iso: str) -> str:
+    d = _dt.date.fromisoformat(iso)
+    return d.strftime("%b") + f" {d.day}"
+
+
+def render_cases(rows: list) -> str:
+    """The homepage "Find Your Case" list: every row in PAGES, A to Z by the name in DIRECTORY."""
+    items = []
+    for r in rows:
+        if r["slug"] not in DIRECTORY:
+            print(f"::warning::{r['slug']} has no DIRECTORY line, left out of the homepage case list")
+            continue
+        guide, name, upd = DIRECTORY[r["slug"]]
+        if r["deadline"]:
+            status = (f'<span class="hp-st hp-st-dl">DEADLINE {mon_day(r["next_date"])}: '
+                      f'<span class="hp-st-what">{esc(r["next_what"])}</span></span>')
+        else:
+            status = f'<span class="hp-st">{esc(r["status"])}</span>'
+        items.append((name.lower(),
+                      f'<li><a class="hp-case" href="{guide}">{esc(name)}</a>{status}'
+                      f'<a class="hp-upd" href="{upd or r["slug"]}" aria-label="{esc(name)} updates">Updates &rarr;</a></li>'))
+    items.sort(key=lambda it: it[0])
+    return (f"{CASES_BEGIN}\n{CASES_CSS}\n"
+            '<ul class="hp-cases">\n' + "\n".join(it[1] for it in items) + "\n</ul>\n" + CASES_END)
+
+
 def write_home(rows: list, today: _dt.date, stamp: str, dry_run: bool) -> bool:
-    """Put the strip into index.html. Returns True when the file was written."""
+    """Put the strip and the case list into index.html. Returns True when the file was written."""
     if not os.path.exists(HOME):
-        print(f"::warning::{HOME} not found, homepage strip skipped")
+        print(f"::warning::{HOME} not found, homepage strip and case list skipped")
         return False
     with open(HOME, encoding="utf-8") as fh:
         home = fh.read()
+    new = home
     block = render_home(rows, today, stamp)
-    if HOME_BEGIN in home and HOME_END in home:
-        start, end = home.index(HOME_BEGIN), home.index(HOME_END) + len(HOME_END)
-        new = home[:start] + block + home[end:]
-    elif HOME_ANCHOR in home:
-        new = home.replace(HOME_ANCHOR, HOME_ANCHOR + "\n\n" + block + "\n", 1)
+    if HOME_BEGIN in new and HOME_END in new:
+        start, end = new.index(HOME_BEGIN), new.index(HOME_END) + len(HOME_END)
+        new = new[:start] + block + new[end:]
+    elif HOME_ANCHOR in new:
+        new = new.replace(HOME_ANCHOR, HOME_ANCHOR + "\n\n" + block + "\n", 1)
     else:
         print(f"::warning::{HOME} has neither the LI-BOARD markers nor the credibility-strip anchor, strip skipped")
-        return False
-    if new == home:
+    strip_changed = new != home
+
+    before = new
+    cases = render_cases(rows)
+    if CASES_BEGIN in new and CASES_END in new:
+        start, end = new.index(CASES_BEGIN), new.index(CASES_END) + len(CASES_END)
+        new = new[:start] + cases + new[end:]
+    elif CASES_SEED.search(new):
+        new = CASES_SEED.sub(lambda _: cases, new, count=1)
+    else:
+        print(f"::warning::{HOME} has neither the LI-CASES markers nor a <ul class=\"hp-cases\">, case list skipped")
+    cases_changed = new != before
+
+    if not strip_changed:
         print("homepage strip unchanged")
+    if not cases_changed:
+        print("homepage case list unchanged")
+    if new == home:
         return False
+    what = " and ".join(w for w, c in (("strip", strip_changed), ("case list", cases_changed)) if c)
     if dry_run:
-        print("homepage strip would change")
+        print(f"homepage {what} would change")
         return False
     with open(HOME, "w", encoding="utf-8") as fh:
         fh.write(new)
-    print(f"wrote {HOME} (homepage strip)")
+    print(f"wrote {HOME} (homepage {what})")
     return True
 
 
