@@ -13,6 +13,11 @@
 //                                A button rather than a bare link, because mail scanners open
 //                                every GET link in a message and would confirm addresses the
 //                                owner never asked for.
+//                                Opening the page stamps the pending record (openedAt, and
+//                                browserOpenAt when the request carries a browser's own headers),
+//                                so the remind counts can tell a reader who never opened the
+//                                email's link from one who reached this page and stopped. Times
+//                                only: no address, IP or browser name is kept for it.
 // GET  /email/preferences?t=     topic checkboxes; POST saves. Saving with no topic unsubscribes.
 // GET  /email/unsubscribe?t=     page with an Unsubscribe button; POST unsubscribes. The weekly
 //                                email's List-Unsubscribe-Post header posts here too (RFC 8058).
@@ -28,6 +33,10 @@
 //                                A reader is reminded only once their last confirm mail is at
 //                                least 24 hours old (?min_age_h= changes the wait).
 //                                ?dry=1 counts who would get it and sends nothing.
+//                                The counts also say, for pending readers mailed since the
+//                                open stamp went live (open_tracked): opened_link, of those
+//                                opened_in_browser, and never_opened. tracked_confirmed is the
+//                                readers mailed since then who went on to confirm.
 //                                network-ops runs it once a day (newsletter-remind.yml).
 //
 // Every personal link carries t = <id>.<mac>, the mac being the first 32 hex of an HMAC-SHA256
@@ -544,7 +553,10 @@ async function subscribe(req) {
   if (tell) rec.signupNoticeAt = iso;
   if (mayResend(rec, now)) {
     const m = confirmMail(`${site()}/email/confirm?t=${token}`, topics);
-    if (await sendMail(email, m.subject, m.html, m.text)) rec.sends = [...(rec.sends || []), now].slice(-8);
+    if (await sendMail(email, m.subject, m.html, m.text)) {
+      rec.sends = [...(rec.sends || []), now].slice(-8);
+      rec.openTracked = true; // a confirm mail went out while GET /email/confirm stamps opens
+    }
   }
   await s.setJSON(key, rec);
   if (tell) await notify(rec, "signed up and has not confirmed yet", `Informer signup, not confirmed yet: ${rec.email}`);
@@ -603,6 +615,22 @@ async function confirm(req, id, token) {
       "Already confirmed",
       `<h1>You are already signed up</h1><p><a href="${site()}/email/preferences?t=${token}">Change topics</a> · <a href="${site()}/">Back to Lawsuit Informer</a></p>`
     );
+  }
+  // The link was opened and the signup is still pending: stamp it. A mail filter that fetches
+  // the link stamps openedAt too; browserOpenAt needs the headers a browser sends when a
+  // person follows a link (a filter that drives a full browser still gets through, so read it
+  // as "at most this many people"). updatedAt is left alone, because the reminder's wait reads it.
+  try {
+    const at = new Date().toISOString();
+    const h = req.headers;
+    const browser = !!h.get("accept-language") && (h.get("sec-fetch-mode") === "navigate" || h.get("sec-fetch-dest") === "document");
+    rec.opens = (rec.opens || 0) + 1;
+    rec.openedAt = rec.openedAt || at;
+    if (browser) rec.browserOpenAt = rec.browserOpenAt || at;
+    rec.openTracked = true;
+    await s.setJSON(key, rec);
+  } catch (e) {
+    console.log(`newsletter: open stamp not saved: ${e}`);
   }
   return page(
     200,
@@ -812,11 +840,21 @@ async function remindPending(req, url) {
   const s = store();
   const { blobs } = await s.list({ prefix: "sub/" });
   const now = Date.now();
-  const counts = { pending: 0, before_bot_check: 0, sent: 0, already_reminded: 0, too_recent: 0, resend_limit: 0, failed: 0, would_send: 0 };
+  const counts = {
+    pending: 0, before_bot_check: 0, sent: 0, already_reminded: 0, too_recent: 0, resend_limit: 0, failed: 0, would_send: 0,
+    open_tracked: 0, opened_link: 0, opened_in_browser: 0, never_opened: 0, tracked_confirmed: 0,
+  };
   for (const b of blobs) {
     const rec = await s.get(b.key, { type: "json" });
+    if (rec && rec.status === "active" && rec.openTracked) counts.tracked_confirmed++;
     if (!rec || rec.status !== "pending") continue;
     counts.pending++;
+    if (rec.openTracked) {
+      counts.open_tracked++;
+      if (rec.openedAt) counts.opened_link++;
+      else counts.never_opened++;
+      if (rec.browserOpenAt) counts.opened_in_browser++;
+    }
     if (!rec.checked && !everyone) { counts.before_bot_check++; continue; }
     if (rec.remindedAt) { counts.already_reminded++; continue; }
     const last = Math.max(0, ...(rec.sends || []), Date.parse(rec.updatedAt || rec.createdAt || "") || 0);
@@ -829,6 +867,7 @@ async function remindPending(req, url) {
     if (await sendMail(rec.email, m.subject, m.html, m.text)) {
       rec.sends = [...(rec.sends || []), now].slice(-8);
       rec.remindedAt = new Date(now).toISOString();
+      rec.openTracked = true;
       rec.updatedAt = rec.remindedAt;
       await s.setJSON(b.key, rec);
       counts.sent++;
