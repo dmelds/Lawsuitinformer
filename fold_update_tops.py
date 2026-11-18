@@ -48,6 +48,10 @@ import sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 EXTRA = ["hernia-mesh-lawsuit"]       # owns hernia mesh status; its board row is the dated history page
 SKIP = {"openai-lawsuits"}            # the hub keeps its own layout (LAYOUT_EXEMPT in check_date_consistency.py)
+# Four case guide pages on the board (added 11/18/26). They rank and convert with their boxes
+# open, so the fold leaves them as they are.
+SKIP |= {"character-ai-lawsuit", "roblox-lawsuit", "camp-lejeune-water-contamination-lawsuit",
+         "baby-food-lawsuit-settlement"}
 
 BEGIN, END = "<!-- LI-FOLD:BEGIN -->", "<!-- LI-FOLD:END -->"
 CBEGIN, CEND = "<!-- LI-FOLD-CSS:BEGIN -->", "<!-- LI-FOLD-CSS:END -->"
