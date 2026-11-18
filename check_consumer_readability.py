@@ -109,7 +109,7 @@ and only the AI cluster gets the jargon and sentence rules. The 20 update
 pages are edited several times a week and got neither: on 2026-11-17 two
 drafts passed this script with 0 warnings while carrying a court order's own
 wording ("show a good-faith basis", "stays on the docket", "lists the
-plaintiffs it covers in an appendix", "do not reach other conditions"), and
+plaintiffs it covers in an appendix"), and
 the same day main's update pages held 50 sentences of 30 words or more that
 no rule reads. Turning the cluster rules on for whole update pages would
 report all of that old text on every run. --base REF reads only what an edit
@@ -272,19 +272,26 @@ BLOCKLIST = {
 }
 
 # A court order's own wording, with the plain words a reader needs. Read only
-# on new text (--base). The first six were found in drafts on 2026-11-17; the
-# rest are the same family and had no use on an update page that day.
+# on new text (--base). The first five were found in drafts on 2026-11-17; the
+# rest are the same family. "Does not reach" was found the same day and is
+# left off: five of its seven uses on main were plain English.
 COURT_WORDING = {
     r"\bgood[- ]faith basis\b": "an honest reason to believe",
     r"\bshow(?:ing)? cause\b": "explain why",
     r"\bwith prejudice\b": "and cannot be filed again",
     r"\bwithout prejudice\b": "and can be filed again",
-    r"\bon the docket\b": "open",
-    r"\bappendix\b": "a list that comes with the order",
-    r"\b(?:do|does|did) not reach\b": "say what the ruling covers",
+    r"\bon the docket\b": "open / in the court file",
+    # Not the bare word: an appendix is also an organ on the medical pages.
+    r"\bappendix [A-Z]\b|\b(?:in|as) an appendix\b|\bappendix to\b": "a list that comes with the order",
     r"\bpursuant to\b": "under",
     r"\bstipulat(?:ion|ions|ed|e|es)\b": "both sides agreed",
-    r"\bstay(?:ed)? pending\b|\bstayed\b": "paused until",
+    # A court staying a case, not the plain verb: on 2026-11-17 main used
+    # "stayed" 15 times and 13 were "stayed on the market", "stayed healthy".
+    r"\bstay(?:ed)? pending\b|\b(?:was|were|is|are|been|be|remains?) stayed\b"
+    r"|\bstayed (?:the |all |those |these |its |their )?(?:cases?|claims?|actions?"
+    r"|proceedings?|litigation|deadlines?|discovery)\b"
+    r"|\b(?:cases?|claims?|proceedings?|deadlines?|discovery) stayed\b"
+    r"|\bstayed [A-Z]\w+ v\.|\b(?:court|judge) stayed\b": "paused until",
     r"\bremand(?:ed|s)?\b": "sent back",
     r"\bvacat(?:ed|es|ur)\b": "canceled / threw out",
     r"\bsua sponte\b": "on her own",
