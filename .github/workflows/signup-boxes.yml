@@ -68,7 +68,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.html current-mass-tort-cases.html '*-update.html' '*-updates.html' openai-lawsuits.html transvaginal-mesh-litigation-update.html recent-developments-hernia-mesh-litigation.html
+          git add -- index.html current-mass-tort-cases.html '*-update.html' '*-updates.html' openai-lawsuits.html transvaginal-mesh-litigation-update.html recent-developments-hernia-mesh-litigation.html character-ai-lawsuit.html roblox-lawsuit.html camp-lejeune-water-contamination-lawsuit.html baby-food-lawsuit-settlement.html
           if [ -n "$(git status --porcelain --untracked-files=no -- '*.html')" ] && ! git diff --quiet; then
             echo "::error::The script wrote pages this step does not add:"
             git diff --name-only
