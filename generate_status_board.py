@@ -108,6 +108,14 @@ PAGES = [
     ("house-ncaa-settlement-update", "House v. NCAA Settlement", "N.D. Cal. · 9th Cir. appeal", "", ""),
     ("video-game-addiction-lawsuit-update", "Video Games and Roblox", "JCCP 5363 · MDL 3166", "3166", ""),
     ("transvaginal-mesh-litigation-update", "Transvaginal Mesh", "State courts", "", ""),
+    # Four case guide pages that carry a dated list of their own (added 11/18/26). Their file
+    # names do not end in update(s), so status-board.yml and signup-boxes.yml name each one.
+    # Roblox has no MDL number here: roblox-lawsuit reports no pending count, and the MDL 3166
+    # count stays on the Video Games and Roblox row. Baby food reads MDL 3101 from its data-mdl.
+    ("character-ai-lawsuit", "AI Chatbots and Kids", "Bankr. D. Del. · State courts", "", "ai-case-review"),
+    ("roblox-lawsuit", "Roblox", "MDL 3166 · N.D. Cal.", "", "roblox-case-review"),
+    ("camp-lejeune-water-contamination-lawsuit", "Camp Lejeune Water", "E.D.N.C.", "", "camp-lejeune-case-review"),
+    ("baby-food-lawsuit-settlement", "Baby Food Heavy Metals", "MDL 3101 · N.D. Cal.", "3101", ""),
     # Hernia mesh keeps two pages (set 11/6/26): hernia-mesh-lawsuit owns status and every count,
     # and the recent-developments page carries the dated history, so it is the board row. Its
     # dev-list has no data-mdl (a data-mdl would draw Panel count entries onto a page that never
@@ -126,6 +134,9 @@ PAGES = [
 # here; a missing one is a warning and the row is left out of the list.
 DIRECTORY = {
     "afff-lawsuit-updates": ("afff-firefighting-foam-lawsuits", "AFFF Foam and Cancer", ""),
+    "character-ai-lawsuit": ("character-ai-lawsuit", "AI Chatbots and Kids", "character-ai-lawsuit#recent-developments"),
+    "baby-food-lawsuit-settlement": ("heavy-metals-baby-food-lawsuit", "Baby Food Heavy Metals", ""),
+    "camp-lejeune-water-contamination-lawsuit": ("camp-lejeune-water-contamination-lawsuit", "Camp Lejeune Water", "camp-lejeune-water-contamination-lawsuit#recent-developments"),
     "openai-lawsuits": ("openai-lawsuits", "ChatGPT and OpenAI", "openai-lawsuits#recent-developments"),
     "depo-provera-lawsuit-updates": ("depo-provera-lawsuits", "Depo-Provera and Brain Tumors", ""),
     "hair-relaxer-lawsuit-updates": ("hair-relaxer-cancer-lawsuit", "Hair Relaxer and Cancer", ""),
@@ -135,6 +146,7 @@ DIRECTORY = {
     "ozempic-lawsuit-updates": ("ozempic-lawsuits", "Ozempic and GLP-1 Drugs", ""),
     "paraquat-lawsuit-updates": ("paraquat-parkinsons-lawsuits", "Paraquat and Parkinson\u2019s", ""),
     "pfas-water-contamination-lawsuit-update": ("pfas-water-contamination-lawsuits", "PFAS Water Contamination", ""),
+    "roblox-lawsuit": ("roblox-lawsuit", "Roblox", "roblox-lawsuit#recent-developments"),
     "roundup-lawsuit-updates": ("roundup-cancer-lawsuits", "Roundup and Lymphoma", ""),
     "social-media-addiction-lawsuit-update": ("social-media-addiction-lawsuit", "Social Media Addiction", ""),
     "suboxone-lawsuit-updates": ("suboxone-lawsuit", "Suboxone Tooth Decay", ""),
