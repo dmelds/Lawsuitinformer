@@ -104,6 +104,29 @@ WARN   CTA set, sitewide outside CTA_EXEMPT. Added 2026-10-02 after a
        lawsuit.html were among the 85: their CTA boxes link to other
        Informer pages, never to Center.
 
+NEW TEXT, with --base. Added 2026-11-17. Every rule above reads a whole page,
+and only the AI cluster gets the jargon and sentence rules. The 20 update
+pages are edited several times a week and got neither: on 2026-11-17 two
+drafts passed this script with 0 warnings while carrying a court order's own
+wording ("show a good-faith basis", "stays on the docket", "lists the
+plaintiffs it covers in an appendix", "do not reach other conditions"), and
+the same day main's update pages held 50 sentences of 30 words or more that
+no rule reads. Turning the cluster rules on for whole update pages would
+report all of that old text on every run. --base REF reads only what an edit
+changed: each prose block on the page that the same page on REF does not
+have, on any page, with the Sources list left out because a citation names
+an order by its title. On that text:
+WARN   Sentence at or above NEW_SENTENCE_MAX words (the house rule for a
+       draft; the cluster's SENTENCE_MAX is for old text).
+WARN   Block at or above UPDATE_PARAGRAPH_MAX words, on a page the
+       update-page rule does not already cover.
+WARN   Court wording from COURT_WORDING, with the plain words to use.
+WARN   Sentence that starts with "And".
+WARN   Reading grade above GRADE_MAX, when the new text runs to
+       NEW_GRADE_MIN_WORDS words or more (the score swings on less).
+The grade of the new text prints with each page that has any. Without --base
+nothing here runs and the report is unchanged.
+
 Setup
 -----
 textstat scores grade level with NLTK's CMU pronouncing dictionary, which it
@@ -127,9 +150,13 @@ Usage
     python3 check_consumer_readability.py              # report, exit 0
     python3 check_consumer_readability.py --strict     # exit 1 on any ERROR
     python3 check_consumer_readability.py --page X.html
+    python3 check_consumer_readability.py --page X.html --base HEAD
+                                         # also read the text the edit
+                                         # changed, against X.html on HEAD
 """
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -142,6 +169,9 @@ GRADE_MAX = 10.5
 SENTENCE_MAX = 45
 PARAGRAPH_MAX = 120
 UPDATE_PARAGRAPH_MAX = 90
+# --base rules, read on the text an edit changed (see NEW TEXT above).
+NEW_SENTENCE_MAX = 30
+NEW_GRADE_MIN_WORDS = 60
 # Update pages with no ul.dev-list. hernia-mesh-lawsuit owns status for its
 # cluster and keeps the dated entries on recent-developments.
 UPDATE_PAGES_EXTRA = {"hernia-mesh-lawsuit.html"}
@@ -240,6 +270,31 @@ BLOCKLIST = {
     r"\bpatterned? (its|their) theories\b": "borrowed from",
     r"\bmoving papers\b|\bmotion practice\b": "arguments before the judge",
 }
+
+# A court order's own wording, with the plain words a reader needs. Read only
+# on new text (--base). The first six were found in drafts on 2026-11-17; the
+# rest are the same family and had no use on an update page that day.
+COURT_WORDING = {
+    r"\bgood[- ]faith basis\b": "an honest reason to believe",
+    r"\bshow(?:ing)? cause\b": "explain why",
+    r"\bwith prejudice\b": "and cannot be filed again",
+    r"\bwithout prejudice\b": "and can be filed again",
+    r"\bon the docket\b": "open",
+    r"\bappendix\b": "a list that comes with the order",
+    r"\b(?:do|does|did) not reach\b": "say what the ruling covers",
+    r"\bpursuant to\b": "under",
+    r"\bstipulat(?:ion|ions|ed|e|es)\b": "both sides agreed",
+    r"\bstay(?:ed)? pending\b|\bstayed\b": "paused until",
+    r"\bremand(?:ed|s)?\b": "sent back",
+    r"\bvacat(?:ed|es|ur)\b": "canceled / threw out",
+    r"\bsua sponte\b": "on her own",
+    r"\binterlocutory\b": "before the case ends",
+}
+# The Sources list: from its heading to the next h2. A citation names an order
+# by its title ("order to show cause"), so the new-text rules skip it.
+SOURCES_SECTION = re.compile(
+    r"<h2\b[^>]*>\s*Sources\s*</h2>.*?(?=<h2\b|</main>|</article>|\Z)",
+    re.S | re.I)
 
 ADJUDICATING = [
     r"would not cover you",
@@ -486,7 +541,59 @@ def firm_link_problems(html):
     return errors, warnings
 
 
-def check(path, in_cluster):
+def base_html(name, ref):
+    """The page as it stands on `ref`, or '' when it is not there (a new page,
+    where every block is new text)."""
+    r = subprocess.run(["git", "show", f"{ref}:{name}"],
+                       capture_output=True, text=True, encoding="utf-8")
+    return r.stdout if r.returncode == 0 else ""
+
+
+def new_text_problems(html, old_html, update_page):
+    """Findings on the prose blocks this page has and `old_html` does not,
+    Sources list left out. Returns (warnings, grade or None, words)."""
+    old = {t for _, t in paragraphs(SOURCES_SECTION.sub(" ", old_html))}
+    blocks = [(n, t) for n, t in paragraphs(SOURCES_SECTION.sub(" ", html))
+              if t not in old]
+    if not blocks:
+        return [], None, 0
+    out = []
+    for n, t in blocks:
+        if UPDATE_PARAGRAPH_MAX <= n < PARAGRAPH_MAX and not update_page:
+            out.append(f"new text: {n}-word block "
+                       f"(max {UPDATE_PARAGRAPH_MAX - 1}): {t[:90]}...")
+        for s in re.split(r"(?<=[.!?])\s+", t):
+            k = len(s.split())
+            if k >= NEW_SENTENCE_MAX:
+                out.append(f"new text: {k}-word sentence "
+                           f"(max {NEW_SENTENCE_MAX - 1}): {s[:90]}...")
+            if re.match(r"And\b", s):
+                out.append(f"new text: sentence starts with \"And\": {s[:70]}...")
+        for pat, hint in COURT_WORDING.items():
+            for m in re.finditer(pat, t, re.I):
+                ctx = t[max(0, m.start() - 40):m.end() + 30]
+                out.append(f"new text: court wording \"{m.group(0)}\"  ->  "
+                           f"{hint}: ...{ctx}...")
+    words = sum(n for n, _ in blocks)
+    grade = None
+    if words >= NEW_GRADE_MIN_WORDS:
+        try:
+            grade = textstat.flesch_kincaid_grade(" ".join(
+                t if t[-1] in ".!?" else t + "." for _, t in blocks))
+        except LookupError:
+            out.append("new text: grade not scored, " + DICT_HELP)
+        else:
+            if grade > GRADE_MAX:
+                out.append(f"new text: reading grade {grade:.1f} is above "
+                           f"{GRADE_MAX}")
+    return out, grade, words
+
+
+# page -> (words of new text, its grade or None), filled by check() under --base.
+NEW_TEXT_NOTES = {}
+
+
+def check(path, in_cluster, base=None):
     html = path.read_text(encoding="utf-8")
     name = path.name
     text = visible_text(html)
@@ -517,6 +624,13 @@ def check(path, in_cluster):
         elif update_page and n >= UPDATE_PARAGRAPH_MAX:
             warnings.append(f"{n}-word block on an update page "
                             f"(max {UPDATE_PARAGRAPH_MAX - 1}): {t[:90]}...")
+
+    if base is not None:
+        found, grade, words = new_text_problems(
+            html, base_html(name, base), update_page)
+        warnings.extend(found)
+        if words:
+            NEW_TEXT_NOTES[name] = (words, grade)
 
     if name not in CTA_EXEMPT:
         warnings.extend(cta_problems(html))
@@ -569,6 +683,15 @@ def main():
     only = None
     if "--page" in sys.argv:
         only = sys.argv[sys.argv.index("--page") + 1]
+    base = None
+    if "--base" in sys.argv:
+        base = sys.argv[sys.argv.index("--base") + 1]
+        ok = subprocess.run(["git", "rev-parse", "--verify", "--quiet",
+                             base + "^{commit}"], capture_output=True)
+        if ok.returncode != 0:
+            print(f"--base {base}: git cannot find that commit here; "
+                  f"nothing checked")
+            return 2
 
     if only:
         targets = [root / only] if (root / only).exists() else []
@@ -588,11 +711,22 @@ def main():
           f"paragraphs of "
           f"{PARAGRAPH_MAX}+ words, the CTA set, the byline and links to "
           f"law firm sites)\n")
+    if base is not None:
+        print(f"New text read against {base}: sentences of {NEW_SENTENCE_MAX}+ "
+              f"words, blocks of {UPDATE_PARAGRAPH_MAX}+ words, court wording, "
+              f"sentences starting with \"And\", and its reading grade. "
+              f"Sources lists left out.\n")
     for path in targets:
-        errors, warnings = check(path, path.name in cluster)
-        if not errors and not warnings:
+        errors, warnings = check(path, path.name in cluster, base)
+        note = NEW_TEXT_NOTES.get(path.name)
+        if not errors and not warnings and not note:
             continue
         print(path.name)
+        if note:
+            words, grade = note
+            print(f"    new text: {words} words"
+                  + (f", grade {grade:.1f}" if grade is not None
+                     else f", too short to grade (under {NEW_GRADE_MIN_WORDS})"))
         for e in errors:
             n_err += 1
             print(f"    ERROR  {e}")
