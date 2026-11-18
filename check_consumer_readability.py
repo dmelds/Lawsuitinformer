@@ -298,9 +298,14 @@ COURT_WORDING = {
     r"\binterlocutory\b": "before the case ends",
 }
 # The Sources list: from its heading to the next h2. A citation names an order
-# by its title ("order to show cause"), so the new-text rules skip it.
+# by its title ("order to show cause"), so the new-text rules skip it. The
+# heading reads "Sources" on 59 Informer pages and "Sources and further
+# reading" or "Sources and background reading" on 20 more; until 2026-11-18
+# only the first was matched, so a citation on raine-v-openai-lawsuit.html
+# was read as a 37-word sentence of body copy.
 SOURCES_SECTION = re.compile(
-    r"<h2\b[^>]*>\s*Sources\s*</h2>.*?(?=<h2\b|</main>|</article>|\Z)",
+    r"<h2\b[^>]*>\s*Sources(?:\s+and\s+(?:further|background)\s+reading)?\s*</h2>"
+    r".*?(?=<h2\b|</main>|</article>|\Z)",
     re.S | re.I)
 
 ADJUDICATING = [

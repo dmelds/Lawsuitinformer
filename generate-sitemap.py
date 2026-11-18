@@ -16,6 +16,11 @@ same day and flatten the signal. Put the token in the commit message:
 
     git commit -m "Strip dead handlers [skip lastmod] [skip actions]"
 
+A pull request whose TITLE contains the token marks every commit it merges,
+so a GitHub web upload ("Add files via upload") needs nothing typed in its own
+message box. A commit merged that way still counts for a page whose
+dateModified it moved. See merged_skip_commits() and moved_page_date().
+
 """
 import glob
 import os
@@ -47,6 +52,63 @@ def skip_commits() -> list:
                     if ln.strip() and not ln.lstrip().startswith("#")]
     except OSError:
         return []
+
+_MERGED_SKIPS = None
+
+
+def merged_skip_commits() -> set:
+    """Commits that reached main through a pull request whose title carries
+    SKIP_TOKEN.
+
+    GitHub writes the pull request title into the merge commit's message, and
+    leaves each upload commit under it with its own message ("Add files via
+    upload"). So a web upload merged under a "[skip lastmod]" title used to
+    count as a change all the same: on 2026-11-18 a wording-only pass on four
+    pages, merged that way, moved all four dates to that day. Added that day.
+    A merge's own commits are the ones its second parent has and its first
+    parent does not.
+    """
+    global _MERGED_SKIPS
+    if _MERGED_SKIPS is not None:
+        return _MERGED_SKIPS
+    found = set()
+    try:
+        merges = subprocess.run(
+            ["git", "log", "--merges", "-F", f"--grep={SKIP_TOKEN}", "--format=%H"],
+            cwd=ROOT, capture_output=True, text=True,
+        ).stdout.split()
+        for m in merges:
+            r = subprocess.run(
+                ["git", "rev-list", "--no-merges", f"{m}^1..{m}^2"],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            if r.returncode == 0:
+                found.update(r.stdout.split())
+    except Exception:
+        pass
+    _MERGED_SKIPS = found
+    return found
+
+
+def moved_page_date(sha, path):
+    """True when this commit changed the page's own dateModified.
+
+    A pull request title covers every file in the pull request, and a title
+    with SKIP_TOKEN is also how a same-day correction gets past the date gate.
+    A real edit can ride in that pull request beside the correction (on
+    2026-11-12 depo-provera.html did on Lawsuit Center). A commit that moved
+    the page's dateModified is a change the page itself reports, so it keeps
+    counting.
+    """
+    try:
+        r = subprocess.run(
+            ["git", "show", "--format=", "--unified=0", sha, "--", path],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+    except Exception:
+        return False
+    return bool(re.search(r'^\+.*"dateModified"', r.stdout, re.M))
+
 
 # Pages kept OUT of the sitemap. Anything carrying a robots noindex is also
 # dropped automatically by is_noindex() below, so this list is only a backstop.
@@ -83,11 +145,14 @@ def git_date(path: str):
     site-wide sweeps don't reset every <lastmod> to the same day. Falls back
     to the unfiltered date for files that have only marked commits.
     """
-    # --no-merges is load-bearing. A merge commit's message never carries
-    # SKIP_TOKEN, so without it the PR merge that lands a mechanical sweep is
-    # reported as the file's last change and the skip token is bypassed for
-    # every file the merge was not TREESAME to a parent on.
+    # --no-merges is load-bearing: without it the PR merge that lands a
+    # mechanical sweep is reported as the file's last change, and the skip
+    # token is bypassed for every file the merge was not TREESAME to a parent
+    # on. A merge whose own message carries SKIP_TOKEN (the pull request title)
+    # marks every commit it brought in; merged_skip_commits() lists those, and
+    # moved_page_date() keeps the ones that moved the page's own date.
     skipped = skip_commits()
+    merged = merged_skip_commits()
     for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
         try:
             r = subprocess.run(
@@ -99,6 +164,8 @@ def git_date(path: str):
         for line in r.stdout.splitlines():
             sha, _, d = line.partition(" ")
             if extra and any(sha.startswith(x) for x in skipped):
+                continue
+            if extra and sha in merged and not moved_page_date(sha, path):
                 continue
             if d:
                 return d
