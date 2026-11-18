@@ -95,6 +95,9 @@ export const config = {
 // A page added there needs a line here before readers can pick it. "all" follows every page.
 export const TOPICS = [
   ["afff-lawsuit-updates", "AFFF Firefighting Foam"],
+  ["character-ai-lawsuit", "AI Chatbots and Kids"],
+  ["baby-food-lawsuit-settlement", "Baby Food Heavy Metals"],
+  ["camp-lejeune-water-contamination-lawsuit", "Camp Lejeune Water"],
   ["openai-lawsuits", "ChatGPT and OpenAI"],
   ["depo-provera-lawsuit-updates", "Depo-Provera"],
   ["hair-relaxer-lawsuit-updates", "Hair Relaxer"],
@@ -104,6 +107,7 @@ export const TOPICS = [
   ["ozempic-lawsuit-updates", "Ozempic and GLP-1 Drugs"],
   ["paraquat-lawsuit-updates", "Paraquat"],
   ["pfas-water-contamination-lawsuit-update", "PFAS Water Contamination"],
+  ["roblox-lawsuit", "Roblox"],
   ["roundup-lawsuit-updates", "Roundup"],
   ["social-media-addiction-lawsuit-update", "Social Media Addiction"],
   ["suboxone-lawsuit-updates", "Suboxone Tooth Decay"],
