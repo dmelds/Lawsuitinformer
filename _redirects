@@ -380,3 +380,14 @@
 
 # Inbound LinkedIn link (11/10/26) to the singular slug; the hub is plural
 /openai-lawsuit  /openai-lawsuits  301
+
+# Near-miss addresses seen in the 404 log, Aug-Nov 2026 (added 11/19/26).
+# Netlify matches with or without a trailing slash, so one rule covers both.
+/contact-us  /contact  301
+/lawsuits  /browse-lawsuits  301
+/lawsuit-news  /news-and-analysis  301
+/ozempic-lawsuit  /ozempic-lawsuit-updates  301
+/raine-v-openai  /raine-v-openai-lawsuit  301
+/raine-v-openai-lawsuit.  /raine-v-openai-lawsuit  301
+/house-ncaa-settlement-update.  /house-ncaa-settlement-update  301
+/roundup-lawsuit  /roundup-lawsuit-updates  301
