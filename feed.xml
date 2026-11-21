@@ -5,8 +5,16 @@
   <link>https://lawsuitinformer.com/</link>
   <description>Plain-language updates on mass tort and product liability lawsuits.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 20 Nov 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 12:00:00 +0000</lastBuildDate>
   <atom:link href="https://lawsuitinformer.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Florida v. OpenAI Lawsuit | First State Suit Explained</title>
+    <link>https://lawsuitinformer.com/florida-v-openai-lawsuit</link>
+    <guid isPermaLink="false">https://lawsuitinformer.com/florida-v-openai-lawsuit#2026-11-21</guid>
+    <pubDate>Sat, 21 Nov 2026 12:00:00 +0000</pubDate>
+    <atom:published>2026-06-12T12:00:00Z</atom:published>
+    <description>Florida's June 2026 civil enforcement suit against OpenAI and Sam Altman explained: the claims, the personal liability theory, and what happens next.</description>
+  </item>
   <item>
     <title>AFFF Lawsuit Update November 2026: MDL 2873 Status</title>
     <link>https://lawsuitinformer.com/afff-lawsuit-updates</link>
@@ -318,14 +326,6 @@
     <pubDate>Thu, 12 Nov 2026 12:00:00 +0000</pubDate>
     <atom:published>2026-05-02T12:00:00Z</atom:published>
     <description>Who is suing OpenAI over the Tumbler Ridge and FSU shootings, what a new report says ChatGPT told the shooter, and where the cases stand now.</description>
-  </item>
-  <item>
-    <title>PFAS Cosmetics Lawsuits</title>
-    <link>https://lawsuitinformer.com/pfas-cosmetics-lawsuits</link>
-    <guid isPermaLink="false">https://lawsuitinformer.com/pfas-cosmetics-lawsuits#2026-11-12</guid>
-    <pubDate>Thu, 12 Nov 2026 12:00:00 +0000</pubDate>
-    <atom:published>2026-04-06T12:00:00Z</atom:published>
-    <description>Why makeup companies face PFAS lawsuits, why courts dismissed many of them, what the FDA found in 2025, and which states ban PFAS in cosmetics.</description>
   </item>
 </channel>
 </rss>
