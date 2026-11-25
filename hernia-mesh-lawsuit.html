@@ -543,6 +543,167 @@ details.page-disclosure .toc-list li:last-child{border-bottom:0}
     In either group, where you stand turns on the facts of your case. That starts with which product was implanted and what complications your records show. It also includes whether you had revision surgery and how much time has passed. The sections below cover what tends to matter, and the <a href="hernia-mesh-products">hernia mesh product list</a> covers brands, manufacturers, and recall history.
   </p>
 
+<!-- LI-ASK:BEGIN -->
+<style id="li-ask-css">
+.li-ask{margin:40px 0;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--radius);font-family:var(--sans);text-align:left}
+.li-ask>details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:18px 24px;cursor:pointer;list-style:none}
+.li-ask>details>summary::-webkit-details-marker{display:none}
+.li-ask>details>summary::after{content:"";width:9px;height:9px;flex-shrink:0;border-right:2px solid var(--link);border-bottom:2px solid var(--link);transform:translateY(-3px) rotate(45deg);transition:transform .2s var(--ease)}
+.li-ask>details[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.li-ask>details>summary:focus-visible{outline:2px solid var(--ink-strong);outline-offset:2px}
+.li-ask .li-ask-title{display:block;font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;letter-spacing:-.01em;color:var(--ink-strong)}
+.li-ask .li-ask-open{display:block;margin-top:4px;font-size:14px;font-weight:600;color:var(--link)}
+.li-ask>details[open] .li-ask-open{display:none}
+.li-ask form{padding:0 24px 22px}
+.li-ask .li-ask-text{font-family:var(--serif);font-size:1.02rem;line-height:1.6;color:var(--ink);margin:0 0 14px}
+.li-ask label{display:block;font-size:14px;font-weight:600;color:var(--ink-strong);margin:12px 0 6px}
+.li-ask label span{font-weight:400;color:var(--ink-muted)}
+.li-ask .li-ask-hint{font-size:13px;line-height:1.5;color:var(--ink-muted);margin:-2px 0 6px}
+.li-ask textarea,.li-ask input[type=email]{display:block;width:100%;min-height:44px;padding:11px 14px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+.li-ask textarea{min-height:96px;resize:vertical}
+.li-ask textarea:focus,.li-ask input[type=email]:focus{outline:none;border-color:var(--link)}
+.li-ask button{margin-top:14px;min-height:44px;padding:11px 22px;border:0;border-radius:999px;background:var(--link);color:var(--bg);font-family:var(--sans);font-size:14.5px;font-weight:600;cursor:pointer}
+.li-ask button:hover{background:var(--link-hover)}
+.li-ask button:disabled{opacity:.6;cursor:default}
+.li-ask .li-ask-status{margin:10px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-strong)}
+.li-ask .li-ask-status:empty{display:none}
+.li-ask .li-ask-note{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:var(--ink-muted)}
+.li-ask form.is-done .li-ask-fields{display:none}
+.li-ask form.is-done .li-ask-status{font-family:var(--serif);font-size:1rem;margin:0 0 12px}
+.li-ask .li-ask-done p{font-family:var(--serif);font-size:1rem;line-height:1.6;color:var(--ink);margin:0 0 12px}
+.li-ask .li-ask-done .li-ask-note{font-family:var(--sans);font-size:12.5px;color:var(--ink-muted)}
+.li-ask .li-ask-done .btn{border-bottom:0}
+@media (max-width:600px){.li-ask>details>summary{padding:16px 18px}.li-ask form{padding:0 18px 20px}.li-ask button{width:100%}}
+@media (prefers-reduced-motion:reduce){.li-ask>details>summary::after{transition:none}}
+</style>
+<aside class="li-ask" id="ask-a-question" aria-label="Ask a question about this page">
+  <details>
+    <summary><span><span class="li-ask-title">Have a question this page does not answer?</span><span class="li-ask-open">Ask it here</span></span></summary>
+    <form class="li-ask-form" method="post" action="/api/question" data-page="hernia-mesh-lawsuit">
+      <div class="li-ask-fields">
+        <p class="li-ask-text">We read every question. When we answer one, the answer goes on this page, where every reader can see it. Please leave out names, medical records and other private details.</p>
+        <input type="hidden" name="page" value="hernia-mesh-lawsuit">
+        <p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label for="li-ask-q">Your question</label>
+        <textarea id="li-ask-q" name="question" rows="3" minlength="10" maxlength="1500" required></textarea>
+        <label for="li-ask-email">Email <span>(optional)</span></label>
+        <p class="li-ask-hint" id="li-ask-email-hint">Leave your email if you want a note when this page answers your question.</p>
+        <input type="email" id="li-ask-email" name="email" autocomplete="email" aria-describedby="li-ask-email-hint">
+        <button type="submit">Send my question</button>
+        <p class="li-ask-note">Answers on this page are general information for every reader. A question about your own situation needs a lawyer to review the facts. <a href="/privacy-policy">Privacy policy</a></p>
+      </div>
+      <p class="li-ask-status" role="status" aria-live="polite"></p>
+      <div class="li-ask-done" hidden>
+        <p>Is your question about your own situation? A lawyer has to look at the facts before anyone can answer it. Filing deadlines keep running while a question waits for an answer.</p>
+        <a class="btn btn-primary" href="https://lawsuit.center/hernia-mesh-case-review?utm_source=lawsuitinformer&amp;utm_medium=referral&amp;utm_campaign=hernia_mesh&amp;utm_content=hml_ask_cta" rel="noopener">Request a free case review</a>
+        <p class="li-ask-note cta-note">Free and no obligation. Submitting a review request does not create an attorney-client relationship.</p>
+      </div>
+    </form>
+  </details>
+</aside>
+<script>
+(function(){
+  if (window.__liAsk) return; window.__liAsk = true;
+  function boot(){
+    var forms = document.querySelectorAll('form.li-ask-form');
+    Array.prototype.forEach.call(forms, function(f){
+      var st = f.querySelector('.li-ask-status');
+      var btn = f.querySelector('button[type="submit"]');
+      var done = f.querySelector('.li-ask-done');
+      var fold = f.closest ? f.closest('details') : null;
+      var page = f.getAttribute('data-page') || '';
+      var g = '', gAt = 0, asked = false, real = 0, started = false, opened = false;
+      function ga(name, extra){
+        if (typeof window.gtag !== 'function') return;
+        var p = {page: page}; for (var k in (extra || {})) p[k] = extra[k];
+        window.gtag('event', name, p);
+      }
+      if (fold) fold.addEventListener('toggle', function(){
+        if (fold.open && !opened) { opened = true; ga('question_open'); }
+      });
+      function ask(){
+        if (asked || !window.fetch) return;
+        asked = true;
+        fetch(f.getAttribute('action'), {headers: {'accept': 'application/json'}})
+          .then(function(r){ return r.json(); })
+          .then(function(j){ g = (j && j.g) || ''; gAt = Date.now(); })
+          .catch(function(){ gAt = -1; });
+      }
+      ['pointerdown', 'touchstart', 'keydown', 'click'].forEach(function(type){
+        f.addEventListener(type, function(e){
+          if (!e.isTrusted) return;
+          real++; ask();
+          if (!started) { started = true; ga('question_start'); }
+        }, true);
+      });
+      f.addEventListener('focusin', ask);
+      function plain(){ HTMLFormElement.prototype.submit.call(f); }
+      function show(){
+        var box = (f.closest && f.closest('.li-ask')) || f;
+        var r = box.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try { box.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
+        catch (err) { box.scrollIntoView(); }
+      }
+      var MSG = {
+        email: 'That email address did not look right. Check it, or leave it empty.',
+        short: 'Add a little more to your question, then send it again.',
+        long: 'That question is too long to send. Cut it to 1,500 characters or fewer, then send it again.',
+        links: 'Take the web links out of your question, then send it again.'
+      };
+      f.addEventListener('submit', function(e){
+        if (!window.fetch || !window.JSON) return;
+        e.preventDefault();
+        var q = f.querySelector('textarea[name="question"]').value.trim();
+        var email = f.querySelector('input[name="email"]').value.trim();
+        if (q.length < 10) { st.textContent = MSG.short; return; }
+        btn.disabled = true; st.textContent = 'Sending';
+        ask();
+        var tries = 0;
+        function post(){
+          fetch(f.getAttribute('action'), {
+            method: 'POST',
+            headers: {'content-type': 'application/json', 'accept': 'application/json'},
+            body: JSON.stringify({question: q, email: email, page: page,
+                                  'bot-field': f.querySelector('input[name="bot-field"]').value,
+                                  g: g, ev: real, wd: navigator.webdriver === true})
+          }).then(function(r){
+            return r.json().then(function(j){ return {ok: r.ok, j: j}; }, function(){ return {ok: false, j: {}}; });
+          }).then(function(x){
+            if (x.ok) {
+              f.classList.add('is-done');
+              st.textContent = 'Your question reached us. When we answer it, the answer goes on this page.';
+              if (done) done.hidden = false;
+              show();
+              ga('question_sent', {with_email: email ? 'yes' : 'no'});
+            } else if (x.j.error === 'verify') {
+              plain();
+            } else {
+              btn.disabled = false;
+              st.textContent = MSG[x.j.error] || 'Your question did not go through. Try again in a minute.';
+            }
+          }).catch(function(){
+            btn.disabled = false;
+            st.textContent = 'Your question did not go through. Try again in a minute.';
+          });
+        }
+        (function go(){
+          if (!gAt && tries++ < 25) { setTimeout(go, 200); return; }
+          if (!g) { plain(); return; }
+          var wait = 2600 - (Date.now() - gAt);
+          if (wait > 0) { setTimeout(go, wait); return; }
+          post();
+        })();
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+<!-- LI-ASK:END -->
+
   <h2 id="what-is-hernia-mesh">What Is Hernia Mesh?</h2>
 
   <p>

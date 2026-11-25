@@ -1,6 +1,7 @@
 # BEGIN BLOCKED REPO TOOLING (managed by generate_redirects.py - do not edit)
 /add_case_dockets.py  /404.html  404!
 /add_cta_events.py  /404.html  404!
+/add_question_box.py  /404.html  404!
 /add_signup_boxes.py  /404.html  404!
 /add_time_theme.py  /404.html  404!
 /check_cannibalization.py  /404.html  404!
