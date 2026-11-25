@@ -26,6 +26,22 @@ JPML report (see network-ops jpml_to_bq). Shape:
 
 Missing file, missing MDL: the row shows no count. Never an error.
 
+Row buttons. A row links to its own Center intake in two cases, and never both at once:
+
+  red, dated     the row has an open reader deadline (see URGENT_WORDS) and an intake in
+                 PAGES: "Ask about a Depo-Provera claim before November 30, 2026".
+                 Slot status_<name>_row.
+  plain          the row is in ASK and has an intake in PAGES: "Ask about a hernia mesh
+                 claim". No date and no red, because red on this page means a reader
+                 deadline and nothing else. Slot status_<name>_ask, so a click on a plain
+                 button never mixes with a click on a deadline button.
+
+A row with no intake of its own (baby food) points at a shared Center form and sends
+situation= so the form opens on the right answer.
+
+A row goes in ASK only while a participating firm is taking that case's leads on the Lead
+Desk. A button on a row no firm takes sends the reader to a form nobody answers.
+
 The page shell (head, header, footer, dark mode, scripts) is the existing
 current-mass-tort-cases.html on disk. Only the <main> block, the <title>, the
 descriptions and the JSON-LD dates are rewritten, so the perf, dark-mode and
@@ -75,6 +91,7 @@ import json
 import os
 import re
 import sys
+from urllib.parse import quote
 
 SITE = "https://lawsuitinformer.com"
 OUT = "current-mass-tort-cases.html"
@@ -91,7 +108,9 @@ COUNTS = os.path.join("data", "mdl_counts.json")
 SHOW = 2            # entries shown before the "show more" fold
 WEEK = 7            # days: the "changed in the last 7 days" band
 
-# slug -> (name, docket label, federal MDL number or "", Center intake for a deadline row or "")
+# slug -> (name, docket label, federal MDL number or "", Center intake for the row's button or "")
+# The intake alone gives the row a red dated button while a reader deadline is open. A line in
+# ASK, below, gives it the plain button the rest of the time.
 PAGES = [
     ("pfas-water-contamination-lawsuit-update", "PFAS Water Contamination", "MDL 2873 · D.S.C.", "2873", ""),
     ("afff-lawsuit-updates", "AFFF Firefighting Foam", "MDL 2873 · D.S.C.", "2873", ""),
@@ -99,12 +118,12 @@ PAGES = [
     ("roundup-lawsuit-updates", "Roundup", "MDL 2741 · N.D. Cal.", "2741", ""),
     ("paraquat-lawsuit-updates", "Paraquat", "MDL 3004 · S.D. Ill.", "3004", ""),
     ("tylenol-lawsuit-updates", "Tylenol and Autism", "MDL 3043 · S.D.N.Y.", "3043", ""),
-    ("asbestos-lawsuit-updates", "Mesothelioma and Asbestos", "State courts and trusts", "", ""),
-    ("talcum-powder-lawsuit-updates", "Talcum Powder", "MDL 2738 · D.N.J.", "2738", ""),
-    ("ozempic-lawsuit-updates", "Ozempic and GLP-1 Drugs", "MDL 3094 · E.D. Pa.", "3094", ""),
-    ("hair-relaxer-lawsuit-updates", "Hair Relaxer", "MDL 3060 · N.D. Ill.", "3060", ""),
-    ("suboxone-lawsuit-updates", "Suboxone Tooth Decay", "MDL 3092 · N.D. Ohio", "3092", ""),
-    ("social-media-addiction-lawsuit-update", "Social Media Addiction", "MDL 3047 · N.D. Cal.", "3047", ""),
+    ("asbestos-lawsuit-updates", "Mesothelioma and Asbestos", "State courts and trusts", "", "asbestos-case-review"),
+    ("talcum-powder-lawsuit-updates", "Talcum Powder", "MDL 2738 · D.N.J.", "2738", "talcum-powder-case-review"),
+    ("ozempic-lawsuit-updates", "Ozempic and GLP-1 Drugs", "MDL 3094 · E.D. Pa.", "3094", "ozempic-case-review"),
+    ("hair-relaxer-lawsuit-updates", "Hair Relaxer", "MDL 3060 · N.D. Ill.", "3060", "hair-relaxer-case-review"),
+    ("suboxone-lawsuit-updates", "Suboxone Tooth Decay", "MDL 3092 · N.D. Ohio", "3092", "suboxone-case-review"),
+    ("social-media-addiction-lawsuit-update", "Social Media Addiction", "MDL 3047 · N.D. Cal.", "3047", "social-media-case-review"),
     ("house-ncaa-settlement-update", "House v. NCAA Settlement", "N.D. Cal. · 9th Cir. appeal", "", ""),
     ("video-game-addiction-lawsuit-update", "Video Games and Roblox", "JCCP 5363 · MDL 3166", "3166", ""),
     ("transvaginal-mesh-litigation-update", "Transvaginal Mesh", "State courts", "", ""),
@@ -115,17 +134,43 @@ PAGES = [
     ("character-ai-lawsuit", "AI Chatbots and Kids", "Bankr. D. Del. · State courts", "", "ai-case-review"),
     ("roblox-lawsuit", "Roblox", "MDL 3166 · N.D. Cal.", "", "roblox-case-review"),
     ("camp-lejeune-water-contamination-lawsuit", "Camp Lejeune Water", "E.D.N.C.", "", "camp-lejeune-case-review"),
-    ("baby-food-lawsuit-settlement", "Baby Food Heavy Metals", "MDL 3101 · N.D. Cal.", "3101", ""),
+    ("baby-food-lawsuit-settlement", "Baby Food Heavy Metals", "MDL 3101 · N.D. Cal.", "3101", "consumer-product-case-review"),
     # Hernia mesh keeps two pages (set 11/6/26): hernia-mesh-lawsuit owns status and every count,
     # and the recent-developments page carries the dated history, so it is the board row. Its
     # dev-list has no data-mdl (a data-mdl would draw Panel count entries onto a page that never
     # carries a count); the row's pending count comes from MDL 3029, Covidien, the group with
     # trials on the calendar.
-    ("recent-developments-hernia-mesh-litigation", "Hernia Mesh", "MDL 3029 · D. Mass. · MDL 2846 · S.D. Ohio", "3029", ""),
+    ("recent-developments-hernia-mesh-litigation", "Hernia Mesh", "MDL 3029 · D. Mass. · MDL 2846 · S.D. Ohio", "3029", "hernia-mesh-case-review"),
     # The OpenAI hub doubles as the AI litigation's update page: its Recent Developments list is
     # a dev-list and it carries li:status / li:next like the update pages.
     ("openai-lawsuits", "ChatGPT and OpenAI", "JCCP 5431 · N.D. Cal. · N.D. Fla.", "", "openai-case-review"),
 ]
+
+# Rows that carry the plain "Ask about ..." button whenever no reader deadline is open.
+# slug -> (short name for the slot, the claim as the button words it, article included,
+#          and for a row with no intake of its own, the answer to preselect on the shared form).
+# The eight rows here are the ones whose leads a participating firm was taking on the Lead Desk
+# on 11/25/26: talc and asbestos (Gori), hair relaxer, social media, hernia mesh, the GLP-1
+# drugs, Suboxone and baby food (Levin). The button is written out for each row because the
+# row names do not read as a claim ("a Ozempic and GLP-1 Drugs claim"), and the slot is written
+# out because the first word of the slug does not always name the case (hernia mesh's is
+# "recent").
+# Baby food has no intake of its own on Center. Its button goes to the shared consumer product
+# form and sends situation=, so the form opens on the baby product answer, the same value the
+# baby food page's own hero button sends. check_situation_params.py reports an error if that
+# value ever stops matching an option on the Center form.
+# To add a row: give it an intake in PAGES, confirm a firm takes that form on the desk, then
+# add its line here. To pull a button, delete the line; the row keeps its deadline button.
+ASK = {
+    "talcum-powder-lawsuit-updates": ("talc", "a talcum powder claim"),
+    "hair-relaxer-lawsuit-updates": ("hair", "a hair relaxer claim"),
+    "social-media-addiction-lawsuit-update": ("social", "a social media addiction claim"),
+    "recent-developments-hernia-mesh-litigation": ("hernia", "a hernia mesh claim"),
+    "ozempic-lawsuit-updates": ("ozempic", "an Ozempic or GLP-1 claim"),
+    "asbestos-lawsuit-updates": ("asbestos", "a mesothelioma or asbestos claim"),
+    "suboxone-lawsuit-updates": ("suboxone", "a Suboxone claim"),
+    "baby-food-lawsuit-settlement": ("babyfood", "a baby food claim", "Baby / Children's Product"),
+}
 
 # The homepage "Find Your Case" list. Update-page slug -> (guide page, name shown in the list,
 # link to the updates if it is not the update page itself). The name says the product and,
@@ -175,7 +220,8 @@ LIVE_WORDS = re.compile(r"\b(trial|verdict|hearing)\b", re.I)
 CAMPAIGN = "status_board"
 # The hero and closing CTAs point at Center's general /case-review form, whose select has no
 # "Not Sure" value, so no button here sends situation= (check_situation_params fails a value
-# the target form cannot take). Row CTAs name a dedicated intake and send nothing either.
+# the target form cannot take). Row buttons, red or plain, name a dedicated intake and send
+# nothing either. The one exception is a row whose ASK line names an answer (baby food).
 
 
 def cta(path: str, slot: str, extra: str = "") -> str:
@@ -285,6 +331,9 @@ def read_rows(today: _dt.date) -> list:
             "pending": c.get("pending"), "prior": c.get("prior"),
             "entries": dev_entries(page, slug), "line": description(page),
             "intake": intake,
+            # (slot name, claim wording) for the plain button, or None. In the row so the
+            # digest moves, and the board is rewritten, when a line is added to or cut from ASK.
+            "ask": ASK.get(slug),
             "closed": bool(CLOSED_WORDS.search(status)),
             "deadline": bool(next_date and URGENT_WORDS.search(next_what)),
             # Pinned: a row with an open reader deadline sits in its own band at the top of the
@@ -357,9 +406,19 @@ def render_row(row: dict, today: _dt.date) -> str:
     else:
         h.append(f'<p class="sb-line">{esc(row["line"])}</p>')
     foot = [f'<a href="/{row["slug"]}">Read the full {esc(row["name"])} update</a>']
+    ask = row.get("ask")
+    stem = ask[0] if ask else row["slug"].split("-")[0]
+    claim = ask[1] if ask else f'a {row["name"]} claim'
+    # The shared-form answer, percent-encoded the way the update pages write it.
+    pick = "&amp;situation=" + quote(ask[2], safe="") if ask and len(ask) > 2 else ""
     if row["intake"] and row["next_date"] and t == "urgent":
-        foot.append(f'<a class="sb-cta" href="{cta(row["intake"], "status_" + row["slug"].split("-")[0] + "_row")}" rel="noopener">'
-                    f'Ask about a {esc(row["name"])} claim before {esc(long_(row["next_date"]))}</a>')
+        # Red and dated: an open reader deadline. The only red button on the board.
+        foot.append(f'<a class="sb-cta" href="{cta(row["intake"], "status_" + stem + "_row", pick)}" rel="noopener">'
+                    f'Ask about {esc(claim)} before {esc(long_(row["next_date"]))}</a>')
+    elif row["intake"] and ask and not row["closed"]:
+        # Plain: no deadline to name, so no date and no red. Its own slot, _ask.
+        foot.append(f'<a class="sb-ask" href="{cta(row["intake"], "status_" + stem + "_ask", pick)}" rel="noopener">'
+                    f'Ask about {esc(claim)}</a>')
     h.append('<div class="sb-foot">' + "".join(foot) + "</div></article>")
     return "\n".join(h)
 
@@ -432,6 +491,9 @@ CSS = r"""
 #main .sb-more[open]>summary .sb-caret{transform:rotate(90deg);}
 #main .sb-foot{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14.5px;}
 #main .sb-cta{background:var(--sb-urgent);color:#fff !important;border:0;padding:7px 14px;font-weight:600;font-size:14px;}
+#main .sb-ask{background:transparent;color:var(--ink-strong) !important;border:1px solid var(--ink-strong);padding:6px 13px;font-weight:600;font-size:14px;}
+#main .sb-ask:hover{background:var(--sb-mark);}
+#main .sb-ask:focus-visible,#main .sb-cta:focus-visible{outline:2px solid var(--link);outline-offset:2px;}
 #main .sb-closed{padding:16px 0 4px;font-family:var(--sans);font-size:15px;color:var(--ink-muted);}
 #main .sb-closed .names{font-family:var(--mono);font-size:11px;letter-spacing:.06em;margin-top:4px;}
 #main .sb-coming{margin-top:12px;}
