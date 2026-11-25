@@ -1,0 +1,87 @@
+name: Question box
+
+# Puts the "Ask a question" box on the pages listed in add_question_box.py PAGES, and takes it
+# off any page that carries it and is no longer listed. It runs when the script, the question
+# function or this workflow changes on main, and on demand. The script writes a page only when
+# its box changed, so a run with nothing new commits nothing.
+#
+# The box is navigation, so the commit carries [skip lastmod]: no page's <lastmod>,
+# dateModified or Last updated stamp moves for it. [skip actions] keeps the commit from
+# re-triggering this or any other push workflow. The merge that brings this file to main must
+# NOT carry [skip actions] in its title, or this run never starts.
+#
+# The script fails the run when a listed page is missing, has no lawsuit.center link to copy
+# the case-review path from, has lost the h2 the box goes in front of, or is not on PAGES in
+# netlify/functions/question.mjs (the function would drop its questions).
+#
+# The edit ledger in network-ops files the box as a test edit on each page it lands on, so add
+# a page to PAGES only when no other test window is open on it.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'add_question_box.py'
+      - 'netlify/functions/question.mjs'
+      - '.github/workflows/question-box.yml'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (list the pages that would change, write nothing)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: question-box
+  cancel-in-progress: false
+
+jobs:
+  boxes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Place the boxes
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python add_question_box.py --dry-run
+          else
+            python add_question_box.py
+          fi
+
+      - name: Check dates
+        if: ${{ inputs.dry_run != true }}
+        run: python check_date_consistency.py --strict
+
+      - name: Commit if changed
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u -- '*.html'
+          if git diff --cached --quiet; then
+            echo "Question boxes unchanged."
+            exit 0
+          fi
+          git commit -m "Add the Ask a question box [skip lastmod] [skip actions]"
+          BRANCH="$(git branch --show-current)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin "$BRANCH" && git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not push after 5 attempts"
+          exit 1
