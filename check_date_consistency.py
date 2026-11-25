@@ -130,6 +130,18 @@ WARN   A Key Takeaways box with more than TAKEAWAYS_MAX bullets. The box sits
        stands" further down a phone screen, and the same facts are already
        in the sections below. Keep the status, the next date and who it
        covers.
+WARN   More than STRIP_MAX words stand between the <h1> and the hero action
+       strip (the case review buttons). Added 2026-11-25. News goes in above
+       the buttons one paragraph at a time and nothing counted it: the hair
+       relaxer page had 188 words above them on October 25 and 361 a month
+       later, when the AFFF, Ozempic and talc update pages had 175, 117 and
+       97. Over the 28 days to November 24, 3.6% of sessions on the hair
+       relaxer page clicked through to a form, against 7.6%, 8.2% and 4.8%
+       on those three. The fix is in the text above the buttons: rewrite
+       the opening in place, merge paragraphs, or move one below the strip.
+       The strip itself (buttons, links, slots, note) is never edited to
+       clear this warning. Pages in STRIP_EXEMPT are the four case guides
+       fold_update_tops.py leaves with their boxes open.
 
 LAYOUT_EXEMPT pages get the entry and link rules only, as warnings
 (openai-lawsuits is a hub whose Recent Developments list doubles as the AI
@@ -537,6 +549,13 @@ TAKEAWAYS_MAX = 4
 # entry in the month, so the gate and the stamper agree.
 MONTH_NEEDS_ENTRY = "warn"
 LAYOUT_EXEMPT = {"openai-lawsuits"}
+# Words allowed between the <h1> and the hero action strip on an update page.
+STRIP_MAX = 200
+# The case guides on the status board keep their reference boxes open above the
+# strip (SKIP in fold_update_tops.py), so their count is not news creep.
+STRIP_EXEMPT = {"character-ai-lawsuit", "roblox-lawsuit",
+                "camp-lejeune-water-contamination-lawsuit", "baby-food-lawsuit-settlement"}
+STRIP_DIV = re.compile(r'<div\b[^>]*class="[^"]*\bhero-action-strip\b', re.I)
 
 DEV_UL = re.compile(r'<ul\b[^>]*class="[^"]*\bdev-list\b[^"]*"[^>]*>(.*?)</ul>', re.S | re.I)
 DEV_LI = re.compile(r"<li\b([^>]*)>(.*?)(?=<li\b|$)", re.S | re.I)
@@ -713,6 +732,15 @@ def update_page(path, html, title, dm_raw, mt, today_ymd=None):
         if n > TAKEAWAYS_MAX:
             warnings.append(f"Key Takeaways box has {n} bullets (over {TAKEAWAYS_MAX}): keep the status, "
                             f"the next date and who it covers; the rest is already further down the page")
+
+    h1_end = re.search(r"</h1>", main_html, re.I)
+    strip = STRIP_DIV.search(main_html)
+    if h1_end and strip and strip.start() > h1_end.end() and slug not in STRIP_EXEMPT:
+        n = _words(main_html[h1_end.end():strip.start()])
+        if n > STRIP_MAX:
+            warnings.append(f"{n} words stand between the h1 and the case review buttons (over {STRIP_MAX}): "
+                            f"rewrite the opening in place, merge paragraphs or move one below the buttons; "
+                            f"leave the buttons themselves as they are")
 
     return errors, warnings
 
