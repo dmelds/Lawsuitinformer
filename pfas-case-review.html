@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- LC-LIGHT-INIT:BEGIN -->
+<script>
+(function () {
+  var t = null, qp = null;
+  /* Cross-property handoff: ?theme= from lawsuitinformer.com wins, then vanishes */
+  try { qp = new URLSearchParams(location.search).get('theme'); } catch (e) {}
+  if (qp === 'dark' || qp === 'light') {
+    t = qp;
+    try { localStorage.setItem('lc-theme', t); } catch (e) {}
+    try {
+      var sp = new URLSearchParams(location.search); sp.delete('theme');
+      var q = sp.toString();
+      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    try { t = localStorage.getItem('lc-theme'); } catch (e) {}
+  }
+  if (t !== 'dark' && t !== 'light') {
+    /* No saved choice: follow the visitor's own clock. Dark from DARK_FROM to
+       DARK_UNTIL (24-hour, device local time). LC-LIGHT-JS keeps it in step. */
+    var DARK_FROM = 19, DARK_UNTIL = 7, h = new Date().getHours();
+    t = (h >= DARK_FROM || h < DARK_UNTIL) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<!-- LC-LIGHT-INIT:END -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PFAS Claims: Free Case Review | Lawsuit Center</title>
+  <meta name="description" content="PFAS claims involve contaminated drinking water, AFFF firefighting foam exposure, and industrial releases. Submit your exposure history for a free case review." />
+
+  <link rel="canonical" href="https://lawsuit.center/pfas-case-review" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b1118">
+
+  <link rel="preload" href="/fonts/fraunces-v38-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "PFAS Case Review",
+    "description": "Request a PFAS case review through Lawsuit Center.",
+    "url": "https://lawsuit.center/pfas-case-review",
+    "datePublished": "2026-04-11",
+    "dateModified": "2026-11-26",
+    "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lawsuit Center",
+      "url": "https://lawsuit.center/",
+      "logo": { "@type": "ImageObject", "url": "https://lawsuit.center/logo-center.jpeg" }
+    }
+  }
+  </script>
+
+<style>
+  /* self-hosted fonts */
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2');}
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/fraunces-v38-latin-500.woff2') format('woff2');}
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fraunces-v38-latin-600.woff2') format('woff2');}
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fraunces-v38-latin-700.woff2') format('woff2');}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-regular.woff2') format('woff2');}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-500.woff2') format('woff2');}
+  @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2');}
+  @font-face{font-family:'Fraunces Fallback';src:local('Times New Roman');size-adjust:119.26%;ascent-override:82.00%;descent-override:21.38%;line-gap-override:0.00%;}
+  @font-face{font-family:'IBM Plex Sans Fallback';src:local('Arial');size-adjust:101.17%;ascent-override:101.32%;descent-override:27.18%;line-gap-override:0.00%;}
+
+  :root{--bg:#111;--surface:#181818;--surface-2:#1f1f1f;--border:#262626;--border-strong:#333;--ink:#f5f5f4;--ink-muted:#a8a29e;--ink-soft:#8f8a84;--amber:#d4a24e;--amber-bright:#e7b961;--display:"Fraunces","Fraunces Fallback","Times New Roman",serif;--body:"IBM Plex Sans","IBM Plex Sans Fallback",system-ui,sans-serif;--container:1280px;--gutter:clamp(20px,4vw,72px);--radius:14px;--radius-lg:22px;--ease:cubic-bezier(.2,.8,.2,1);}
+  *,*::before,*::after{box-sizing:border-box;}html,body{margin:0;padding:0;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;}
+  h1,h2,h3,h4,p{margin:0;}::selection{background:var(--amber);color:#111;}
+  .container{width:100%;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter);}
+  .container--narrow{max-width:820px;}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);}
+  .site-header{position:sticky;top:0;z-index:50;background:rgba(17,17,17,.85);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--border);}
+  .site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:88px;}
+  .brand{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+  .brand img{height:44px;width:auto;max-width:220px;object-fit:contain;}
+  .brand__tag{font-size:12.5px;color:var(--ink-muted);letter-spacing:.04em;white-space:nowrap;}
+  .nav{display:flex;align-items:center;gap:28px;}
+  .nav__links{display:flex;gap:26px;}
+  .nav__links a{font-size:14.5px;color:var(--ink-muted);transition:color .2s var(--ease);white-space:nowrap;}
+  .nav__links a:hover,.nav__links a[aria-current="page"]{color:var(--ink);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14.5px;transition:transform .15s var(--ease),background .2s var(--ease);white-space:nowrap;}
+  .btn--amber{background:var(--amber);color:#1a1306;}.btn--amber:hover{background:var(--amber-bright);transform:translateY(-1px);}
+  .btn--ghost{border:1px solid var(--border-strong);color:var(--ink);}.btn--ghost:hover{background:var(--surface);}
+  .btn--lg{padding:16px 30px;font-size:15.5px;}
+  .nav__toggle{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--border-strong);align-items:center;justify-content:center;}
+
+  .page-hero{padding:clamp(56px,8vw,96px) 0 clamp(40px,5vw,64px);border-bottom:1px solid var(--border);}
+  .page-hero h1{font-family:var(--display);font-weight:500;font-size:clamp(36px,5.2vw,60px);line-height:1.05;letter-spacing:-.022em;color:var(--ink);margin-bottom:18px;}
+  .page-hero h1 em{font-style:italic;font-weight:400;color:var(--amber);}
+  .page-hero p.lede{font-size:clamp(16.5px,1.3vw,18.5px);line-height:1.55;color:var(--ink-muted);max-width:60ch;margin-bottom:24px;}
+  .page-hero .meta{font-size:13px;color:var(--ink-soft);margin-top:14px;}
+
+  .legal-note{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 0;}
+  .legal-note p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;max-width:70ch;}
+
+  .section{padding:clamp(56px,7vw,88px) 0;}
+  .section--surface{background:var(--surface);border-block:1px solid var(--border);}
+  .section h2{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-.018em;color:var(--ink);margin-bottom:16px;}
+  .section h2+p{color:var(--ink-muted);line-height:1.65;margin-bottom:14px;}
+  .section p{color:var(--ink-muted);line-height:1.65;margin-bottom:14px;}
+  .section ul{color:var(--ink-muted);line-height:1.7;padding-left:20px;margin:12px 0 0;}
+  .section ul li{margin-bottom:8px;}
+  .section .small-text{font-size:13px;color:var(--ink-soft);margin-top:14px;}
+  .section__eyebrow{display:inline-block;margin-bottom:14px;}
+
+  .form-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(28px,4vw,48px);margin-top:28px;}
+  .form{display:flex;flex-direction:column;gap:18px;}
+  .form label.field-label{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink);margin-bottom:4px;display:block;}
+  .form .field{display:flex;flex-direction:column;gap:6px;}
+.field[hidden]{display:none;}
+  .form input[type="text"],.form input[type="email"],.form input[type="tel"],.form select,.form textarea{
+    width:100%;padding:14px 16px;background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:10px;
+    color:var(--ink);font:inherit;font-size:16px;transition:border-color .2s var(--ease),background .2s var(--ease);
+  }
+  .form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%23a8a29e' stroke-width='1.7'><path d='M3 5l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;}
+  .form textarea{min-height:160px;resize:vertical;line-height:1.55;}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--amber);background:rgba(0,0,0,.5);}
+  .form .form-note{font-size:13px;color:var(--ink-soft);line-height:1.5;margin:0;}
+
+  .checkbox-row{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color .2s var(--ease),background .2s var(--ease);}
+  .checkbox-row:hover{border-color:var(--border-strong);}
+  .checkbox-row input[type="checkbox"]{width:20px;height:20px;min-width:20px;margin:2px 0 0;accent-color:var(--amber);cursor:pointer;}
+  .checkbox-row span{font-size:14.5px;line-height:1.55;color:var(--ink);}
+  .checkbox-row:has(input:checked){background:rgba(212,162,78,.08);border-color:var(--amber);}
+
+  .form button[type="submit"]{background:var(--amber);color:#1a1306;padding:16px 30px;border-radius:999px;font-weight:600;font-size:15.5px;cursor:pointer;transition:background .2s var(--ease),transform .15s var(--ease);align-self:flex-start;}
+  .form button[type="submit"]:hover{background:var(--amber-bright);transform:translateY(-1px);}
+  .form-fineprint{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-top:8px;}
+
+  .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;}
+
+  .site-footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 0 36px;}
+  .site-footer__brand{font-family:var(--display);font-weight:600;font-size:20px;margin-bottom:8px;}
+  .site-footer__tag{color:var(--ink-muted);font-size:14px;line-height:1.5;max-width:50ch;margin-bottom:28px;}
+  .site-footer__legal{font-size:12.5px;color:var(--ink-soft);line-height:1.6;padding-top:24px;border-top:1px solid var(--border);}
+  .site-footer__links{margin-top:14px;font-size:13px;color:var(--ink-soft);line-height:1.9;}
+  .site-footer__links a{color:var(--ink-muted);transition:color .2s var(--ease);}
+  .site-footer__links a:hover{color:var(--ink);}
+  .site-footer__copy{margin-top:18px;font-size:12.5px;color:var(--ink-soft);}
+
+  @media(max-width:760px){
+    .site-header__inner{height:76px;}
+    .brand img{height:38px;max-width:180px;}
+    .brand{gap:12px;}
+    .nav__links,.nav .btn--amber{display:none;}
+    .nav__toggle{display:inline-flex;}
+    .nav__links.is-open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:rgba(17,17,17,.97);padding:24px var(--gutter);border-bottom:1px solid var(--border);gap:18px;}
+    .actions{flex-direction:column;align-items:stretch;}.actions .btn{width:100%;}
+  }
+  @media(max-width:480px){
+    .brand img{height:34px;max-width:160px;}
+    .brand__tag{display:none;}
+  }
+
+  /* Related Topics module */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    margin-top:26px;
+  }
+  .card{
+    display:block;
+    background:var(--surface-2, #1f1f1f);
+    border:1px solid var(--border, #262626);
+    border-radius:var(--radius, 14px);
+    padding:24px;
+    transition:transform .15s var(--ease, ease), border-color .2s var(--ease, ease), background .2s var(--ease, ease);
+  }
+  .card:hover{
+    transform:translateY(-1px);
+    border-color:var(--border-strong, #333);
+    background:rgba(255,255,255,.03);
+  }
+  .card h3{
+    font-family:var(--display, serif);
+    font-weight:500;
+    font-size:22px;
+    line-height:1.15;
+    margin-bottom:10px;
+    color:var(--ink, #f5f5f4);
+  }
+  .card p{
+    color:var(--ink-muted, #a8a29e);
+    line-height:1.6;
+    margin:0;
+  }
+  @media(max-width:860px){
+    .card-grid{grid-template-columns:1fr;}
+  }
+
+/* Visible breadcrumbs */
+.breadcrumb{
+  background:var(--bg, #111);
+  border-bottom:1px solid var(--border, #262626);
+  padding:14px 0;
+}
+.breadcrumb__list{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--ink-soft, #8f8a84);
+}
+.breadcrumb__list li{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.breadcrumb__list li:not(:last-child)::after{
+  content:"/";
+  color:var(--ink-soft, #8f8a84);
+  opacity:.65;
+}
+.breadcrumb__list a{
+  color:var(--ink-muted, #a8a29e);
+  text-decoration:none;
+  transition:color .2s var(--ease, ease);
+}
+.breadcrumb__list a:hover{
+  color:var(--amber, #d4a24e);
+}
+.breadcrumb__list [aria-current="page"]{
+  color:var(--ink, #f5f5f4);
+}
+
+  /* Accessibility */
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--amber);color:#1a1306;padding:10px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px;text-decoration:none;}
+  .skip-link:focus{left:0;}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition:none !important;animation:none !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lawsuit.center/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Browse Lawsuits",
+      "item": "https://lawsuit.center/lawsuits"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PFAS Water Contamination",
+      "item": "https://lawsuit.center/pfas-water-contamination-lawsuits"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "PFAS Case Review",
+      "item": "https://lawsuit.center/pfas-case-review"
+    }
+  ]
+}
+</script>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lawsuit Center">
+  <meta property="og:url" content="https://lawsuit.center/pfas-case-review">
+  <meta property="og:title" content="PFAS Claims: Free Case Review | Lawsuit Center">
+  <meta property="og:description" content="PFAS claims involve contaminated drinking water, AFFF firefighting foam exposure, industrial releases, and farm and agricultural land contamination. Submit your diagnosis and exposure history for a free case review.">
+  <meta property="og:image" content="https://lawsuit.center/og-pfas.png">
+  <meta property="og:image:alt" content="Lawsuit Center attorney-built case review">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PFAS Case Review | Lawsuit Center">
+  <meta name="twitter:description" content="Request a PFAS case review through Lawsuit Center. Submit details about contaminated drinking water, AFFF firefighting foam exposure, industrial PFAS releases, farm and agricultural land contamination, or related diagnoses.">
+  <meta name="twitter:image" content="https://lawsuit.center/og-pfas.png">
+<!-- LC-LIGHT-CSS:BEGIN -->
+<style id="lc-form-phone">form[name][method]{scroll-margin-top:100px}.form-phone{color:var(--amber-bright);font-weight:600;white-space:nowrap;text-decoration:none}.form-phone:hover{text-decoration:underline}</style>
+<style id="lc-theme">
+/* Lawsuit Center light mode.
+   Day values for the site's own tokens, plus pins for conversion surfaces:
+   amber CTA family keeps its bright fill (the token darkens for text uses),
+   form fields go white instead of translucent black, header goes paper.
+   All text pairs measured >= 4.8:1 (WCAG AA; body text AAA). */
+
+:root { color-scheme: dark; }
+
+:root[data-theme="light"] {
+  --bg: #faf9f7;            /* warm paper */
+  --surface: #ffffff;
+  --surface-2: #f2f0ea;
+  --border: #e5e2da;
+  --border-strong: #c9c5bb;
+
+  --ink: #1c1a17;           /* 16.5:1 on --bg */
+  --ink-muted: #565049;     /* 7.6:1 */
+  --ink-soft: #6b655d;      /* 5.5:1 */
+
+  /* Amber darkens for text/border roles; button fills are pinned below */
+  --amber: #8a6512;         /* 5.1:1 on --bg, 5.3:1 on white */
+  --amber-bright: #8f6c10;  /* 4.9:1 on white */
+  --amber-deep: #6f5210;    /* 7.3:1 */
+
+  --slate: #54657a;         /* 6.0:1 on white */
+  --slate-soft: rgba(84, 101, 122, .10);
+  --slate-border: rgba(84, 101, 122, .35);
+
+  color-scheme: light;
+}
+
+/* Masthead: translucent paper instead of translucent black */
+:root[data-theme="light"] .site-header,
+:root[data-theme="light"] header.site-header,
+:root[data-theme="light"] .landing-header {
+  background: rgba(250, 249, 247, .88);
+}
+
+/* Amber CTA family keeps the bright brand fill (dark text holds 8:1 on it) */
+:root[data-theme="light"] .nav__search-btn,
+:root[data-theme="light"] .btn--amber,
+:root[data-theme="light"] .btn-primary,
+:root[data-theme="light"] button.button,
+:root[data-theme="light"] .button,
+:root[data-theme="light"] .btn--dark,
+:root[data-theme="light"] .form button[type="submit"],
+:root[data-theme="light"] .form-card button[type="submit"],
+:root[data-theme="light"] .hero-search__btn,
+:root[data-theme="light"] .skip-link {
+  background: #d4a24e;
+  border-color: #d4a24e;
+  color: #1a1306;
+}
+:root[data-theme="light"] .nav__search-btn:hover,
+:root[data-theme="light"] .btn--amber:hover,
+:root[data-theme="light"] .btn-primary:hover,
+:root[data-theme="light"] button.button:hover,
+:root[data-theme="light"] .button:hover,
+:root[data-theme="light"] .btn--dark:hover,
+:root[data-theme="light"] .form button[type="submit"]:hover,
+:root[data-theme="light"] .form-card button[type="submit"]:hover,
+:root[data-theme="light"] .hero-search__btn:hover {
+  background: #e7b961;
+  border-color: #e7b961;
+  color: #1a1306;
+}
+:root[data-theme="light"] ::selection { background: #d4a24e; color: #111; }
+
+/* Intake fields: white instead of translucent black */
+:root[data-theme="light"] input,
+:root[data-theme="light"] select,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] .form-card input,
+:root[data-theme="light"] .form-card select,
+:root[data-theme="light"] .form-card textarea,
+:root[data-theme="light"] .contact-form input,
+:root[data-theme="light"] .contact-form select,
+:root[data-theme="light"] .contact-form textarea {
+  background: #ffffff;
+}
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] select:focus,
+:root[data-theme="light"] textarea:focus {
+  background: #fffdf6;
+  border-color: #b8863a;
+}
+:root[data-theme="light"] .nav__search input[type="search"],
+:root[data-theme="light"] .hero-search__bar input[type="search"],
+:root[data-theme="light"] .search-page__form input[type="search"],
+:root[data-theme="light"] .nav__search input:focus,
+:root[data-theme="light"] .hero-search__bar input:focus,
+:root[data-theme="light"] .search-page__form input:focus {
+  background: transparent;
+  border: 0;
+}
+
+/* Logo: light marks on transparency -> ink variant, amber accents intact */
+:root[data-theme="light"] .brand img { content: url("/logo-center-light.png"); }
+
+/* ---------- Theme toggle (masthead, matches .nav__toggle chrome) ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 10px;
+  color: var(--ink); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.theme-toggle:hover { background: var(--surface-2); }
+.theme-toggle:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+
+/* Dark (default) shows the sun; light shows the moon */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* Switch transition: only after first user toggle; honors reduced motion */
+html.theme-anim body { transition: background-color .15s ease, color .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim body { transition: none; }
+}
+
+/* Print: ink-safe light regardless of theme; hide the control */
+@media print {
+  :root, :root[data-theme="light"] {
+    --bg: #fff; --surface: #fff; --surface-2: #fff;
+    --border: #ccc; --border-strong: #999;
+    --ink: #000; --ink-muted: #333; --ink-soft: #555;
+    --amber: #6f5210; --amber-bright: #6f5210; --amber-deep: #6f5210;
+    --slate: #333;
+  }
+  .theme-toggle { display: none; }
+}
+
+/* ---------- Generated: dark-glass surfaces -> light-glass ----------
+   Source: scan of style.css + all inline critical CSS (28 unique
+   sources). Translucent-black panels tuned for #111 become warm
+   ink tints on paper; sticky bars become translucent paper. ---- */
+:root[data-theme="light"] .final-cta .btn--outline { background: rgba(28,26,23,.03); }
+:root[data-theme="light"] .hero-search { background: rgba(28,26,23,.045); }
+:root[data-theme="light"] .cat--info,
+:root[data-theme="light"] .firms__details,
+:root[data-theme="light"] .search-idle { background: rgba(28,26,23,.05); }
+:root[data-theme="light"] .case-card,
+:root[data-theme="light"] .checkbox-row,
+:root[data-theme="light"] .info-strip__pill,
+:root[data-theme="light"] .option,
+:root[data-theme="light"] .qualifier-action,
+:root[data-theme="light"] .qualifier-item,
+:root[data-theme="light"] .qualifier__action,
+:root[data-theme="light"] .qualifier__item,
+:root[data-theme="light"] .result__disclaimer,
+:root[data-theme="light"] .trust-strip p { background: rgba(28,26,23,.055); }
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .check-card,
+:root[data-theme="light"] .checklist-box,
+:root[data-theme="light"] .example-card,
+:root[data-theme="light"] .gather-card,
+:root[data-theme="light"] .hero-search__chips a,
+:root[data-theme="light"] .info-card,
+:root[data-theme="light"] .inline-link-list a,
+:root[data-theme="light"] .mini-trust,
+:root[data-theme="light"] .nav__search,
+:root[data-theme="light"] .path-card,
+:root[data-theme="light"] .pill-list a,
+:root[data-theme="light"] .placement-card,
+:root[data-theme="light"] .resource-card,
+:root[data-theme="light"] .search-page__chips a,
+:root[data-theme="light"] .section--surface .card,
+:root[data-theme="light"] .section--surface .cat--info,
+:root[data-theme="light"] .section--surface .dir-card,
+:root[data-theme="light"] .section--surface .info-card,
+:root[data-theme="light"] .section.alt .card,
+:root[data-theme="light"] .step-card,
+:root[data-theme="light"] .what-next-box { background: rgba(28,26,23,.065); }
+:root[data-theme="light"] .nav__search:focus-within { background: rgba(28,26,23,.07); }
+:root[data-theme="light"] .jump-nav { background: rgba(250,249,247,.92); }
+:root[data-theme="light"] .nav__links.is-open,
+:root[data-theme="light"] .site-nav.open { background: rgba(250,249,247,.98); }
+:root[data-theme="light"] .nav__links.is-open a,
+:root[data-theme="light"] .site-nav.open a { color: var(--ink); }
+</style>
+<!-- LC-LIGHT-CSS:END -->
+<!-- LC-HEADER-FIT:BEGIN -->
+<style id="lc-header-fit">@media (max-width:1200px){.nav__links{display:none !important}.nav__links.is-open{display:flex !important;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg) !important;padding:24px var(--gutter);border-bottom:1px solid var(--border);gap:16px}.nav__links.is-open a{width:100%;color:var(--ink);white-space:normal}.nav .btn--amber{display:none !important}.nav__toggle{display:inline-flex !important}.site-header__inner{height:76px}.brand__tag{display:none !important}}@media (max-width:480px){.site-header__inner>.btn{padding:10px 12px;font-size:13px}}@media (max-width:380px){.brand img{max-width:132px !important;height:auto !important}}@media (min-width:1201px) and (max-width:1760px){.brand__tag{display:none !important}.nav__links .nav__search{display:none !important}}@media (min-width:1201px) and (max-width:1440px){.nav{gap:20px}.nav__links{gap:20px}.nav__links a[href$="case-review"]{display:none !important}}@media (min-width:1201px) and (max-width:1320px){.nav{gap:14px}.nav__links{gap:16px}.nav__links a[href="/"]{display:none !important}.site-header__inner{gap:16px}}</style>
+<!-- LC-HEADER-FIT:END -->
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="brand" aria-label="Lawsuit Center home">
+      <img src="logo-center-new.png" alt="Lawsuit Center"  width="264" height="120" />
+      <span class="brand__tag">attorney-built</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__links" id="site-menu">
+        <a href="/">Home</a>
+        <a href="case-review">Start Case Review</a>
+        <a href="lawsuits">Browse Lawsuits</a>
+        <a href="how-case-review-works">How It Works</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+      </div>
+      <a href="#case-review-form" class="btn btn--amber">Skip to Form</a>
+      <!-- LC-LIGHT-BTN:BEGIN -->
+<!-- Bar-mounted, before the hamburger: visible on all viewports.
+     `hidden` is removed by the toggle script - no JS, no dead button. -->
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode" hidden>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+<!-- LC-LIGHT-BTN:END -->
+<button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+   <ol class="breadcrumb__list">
+     <li><a href="/">Home</a></li>
+     <li><a href="lawsuits">Browse Lawsuits</a></li>
+     <li><a href="pfas-case-review">PFAS Water Contamination</a></li>
+     <li aria-current="page">PFAS Case Review</li>
+   </ol>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container container--narrow">
+    <span class="eyebrow" style="display:inline-block; margin-bottom: 18px;">PFAS Case Review</span>
+    <h1>Request a <em>PFAS case review.</em></h1>
+    <p class="lede">
+      Tell us about your diagnosis and where you were exposed. David Meldofsky refers your request to participating law firms where a firm handles your category and state.
+    </p>
+    <div class="actions">
+      <a href="#case-review-form" class="btn btn--amber btn--lg">Skip to Form ↓</a>
+    </div>
+    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-26">November 26, 2026</time>.</p>
+    <p class="meta">
+      Free initial review · No obligation · No attorney-client relationship is formed by submitting this form.
+    </p>
+  </div>
+</section>
+
+<section class="legal-note">
+  <div class="container container--narrow">
+    <p>
+      Lawsuit Center is the intake and referral practice of David Meldofsky, a California attorney, and provides no legal advice through this site. Submitting information does not guarantee eligibility, compensation, contact, or representation.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Who This Page May Help</span>
+    <h2>What PFAS claims usually involve.</h2>
+    <p>
+      Most PFAS claims start with one of three sources: contaminated drinking water, firefighting
+      foam, or releases from an industrial plant. They can involve workers, families near military
+      bases or airports, and whole communities on one water system. You don't need the legal terms.
+      A health claim needs a diagnosis from a doctor. Your diagnosis and basic facts about where
+      you lived or worked are enough to start. A farm or land damage claim does not need a diagnosis.
+    </p>
+    <ul>
+      <li>Residents served by a public water system or private well with reported PFAS contamination</li>
+      <li>People living near military bases, airports, or industrial sites where AFFF or PFAS were used</li>
+      <li>Firefighters and others occupationally exposed to AFFF firefighting foam</li>
+      <li>Workers at chemical manufacturing, plating, or PFAS-handling facilities</li>
+      <li>Communities downstream of landfills or industrial sites with reported PFAS releases</li>
+      <li>Farms or agricultural land impacted by biosolid spreading, irrigation contamination, or livestock and crop losses</li>
+      <li>Diagnosis of kidney or testicular cancer, thyroid disease, ulcerative colitis, or other condition with possible PFAS exposure history</li>
+    </ul>
+  </div>
+</section>
+
+<section id="case-review-form" class="section section--surface">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Submit Your Information</span>
+    <h2>PFAS case review form.</h2>
+    <p>
+      Start with the situation that best fits, then briefly describe what happened.
+      Contact information is requested so the firm David refers your request to can follow up.
+    </p>
+
+<div class="form-card">
+  <form
+    name="pfas-case-review"
+    method="POST"
+    data-netlify="true"
+    data-netlify-recaptcha="true"
+    netlify-honeypot="bot-field"
+    action="/thank-you.html"
+    class="form"
+  >
+    <input type="hidden" name="form-name" value="pfas-case-review" />
+    <!-- LC-ATTR:BEGIN -->
+<input type="hidden" name="utm_source" value="" />
+<input type="hidden" name="utm_medium" value="" />
+<input type="hidden" name="utm_campaign" value="" />
+<input type="hidden" name="utm_content" value="" />
+<input type="hidden" name="utm_term" value="" />
+<input type="hidden" name="page_referrer" value="" />
+<input type="hidden" name="landing_page" value="" />
+<input type="hidden" name="consent_version" value="cv1-8fd7eab617" />
+<!-- LC-ATTR:END -->
+    <p style="display:none;">
+      <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+    </p>
+
+    <div class="field">
+      <label for="exposure-type" class="field-label">Exposure type or situation</label>
+      <select id="exposure-type" name="exposure-type" required>
+        <option value="">Select what best fits</option>
+        <option value="Contaminated Drinking Water">Contaminated drinking water (public system or private well)</option>
+        <option value="Military Base Exposure">Lived or worked on or near a military base</option>
+        <option value="Airport Exposure">Lived or worked on or near an airport</option>
+        <option value="AFFF Firefighting Foam">AFFF firefighting foam exposure (firefighter or trainee)</option>
+        <option value="Chemical Manufacturing / Industrial">Chemical manufacturing or PFAS-handling facility</option>
+        <option value="Landfill / Waste Site">Landfill or waste site near home or work</option>
+        <option value="Farm or Agricultural Land Contamination">Farm or agricultural land contamination (biosolids, irrigation, livestock or crop losses)</option>
+        <option value="Kidney Cancer Diagnosis">Diagnosed with kidney cancer (possible PFAS link)</option>
+        <option value="Testicular Cancer Diagnosis">Diagnosed with testicular cancer (possible PFAS link)</option>
+        <option value="Thyroid Disease Diagnosis">Diagnosed with thyroid disease (possible PFAS link)</option>
+        <option value="Ulcerative Colitis Diagnosis">Diagnosed with ulcerative colitis (possible PFAS link)</option>
+        <option value="Other PFAS Health Concern">Other PFAS-related health concern</option>
+        <option value="Not Sure">Not sure / still investigating</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="diagnosis" class="field-label">Diagnosis</label>
+      <select id="diagnosis" name="diagnosis" aria-describedby="diagnosis-note" required>
+        <option value="">Select a diagnosis</option>
+        <option value="Kidney cancer">Kidney cancer</option>
+        <option value="Testicular cancer">Testicular cancer</option>
+        <option value="Ulcerative colitis">Ulcerative colitis</option>
+        <option value="Thyroid disease">Thyroid disease</option>
+        <option value="Liver cancer">Liver cancer</option>
+        <option value="Liver disease">Liver disease (not cancer)</option>
+        <option value="Preeclampsia">Preeclampsia or pregnancy-induced high blood pressure</option>
+        <option value="Other cancer">Other cancer</option>
+        <option value="Not diagnosed / other" disabled>No diagnosis (farm or land damage claims only)</option>
+      </select>
+      <p id="diagnosis-note" class="form-note">
+        Choose the diagnosis a doctor gave you. A health claim needs one of these diagnoses. For farm or land damage, choose the farm option under exposure type first. The no-diagnosis option then opens.
+      </p>
+    </div>
+
+    <div class="field" id="diagnosis-year-field" hidden>
+      <label for="diagnosis-year" class="field-label">Year diagnosed</label>
+      <input type="text" id="diagnosis-year" name="diagnosis-year" inputmode="numeric" maxlength="4" placeholder="e.g. 2019" aria-describedby="diagnosis-year-note" />
+      <p id="diagnosis-year-note" class="form-note">Enter the year only. A close guess is fine.</p>
+    </div>
+
+    <div class="field">
+      <label for="summary" class="field-label">Briefly describe what happened</label>
+      <p id="summary-note" class="form-note">
+        What water source, base, airport, facility, or farm was involved? Where did exposure or contamination occur — at home, work, on your land, or all of these?
+        Any diagnosis, livestock or crop losses, or land impacts? Approximate years of residence, operation, or exposure help.
+      </p>
+      <textarea id="summary" name="summary" rows="7" aria-describedby="summary-note summary-warning" required></textarea>
+      <p id="summary-warning" class="form-note">
+        Please do not include Social Security numbers, financial account numbers, full medical
+        records, or highly sensitive personal information.
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="exposure-period" class="field-label">Approximate years of exposure or residence</label>
+      <input type="text" id="exposure-period" name="exposure-period" placeholder="e.g. 2005–2020" aria-describedby="exposure-note" />
+      <p id="exposure-note" class="form-note">
+        Approximate is fine. PFAS exposure dates can be important because related illnesses may appear years later.
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="state" class="field-label">State</label>
+      <input type="text" id="state" name="state" autocomplete="address-level1" aria-describedby="state-note" required />
+      <p id="state-note" class="form-note">
+        Your state helps identify whether location-specific deadlines, claim rules, or review options may apply.
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="name" class="field-label">Name</label>
+      <input type="text" id="name" name="name" autocomplete="name" required />
+    </div>
+
+    <div class="field">
+      <label for="email" class="field-label">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" required />
+    </div>
+
+    <div class="field">
+      <label for="phone" class="field-label">Phone</label>
+      <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-note" required />
+      <p id="phone-note" class="form-note">For follow-up about your case review request.</p>
+    </div>
+
+    <label class="checkbox-row">
+      <input type="checkbox" name="legal-understanding" value="yes" required />
+      <span>
+        I understand that submitting this form does not make me a client of David Meldofsky or of any law firm.
+      </span>
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" name="contact-consent" value="yes" required />
+      <span>
+        I consent to being contacted by Lawsuit Center and participating law firms by phone, including autodialed calls and prerecorded voice messages, email, or text message about my case review request. Consent is not
+        a condition of any service. Message and data rates may apply. Reply STOP to opt out.
+      </span>
+    </label>
+
+    <div data-netlify-recaptcha="true"></div>
+        <p class="form-note">Having trouble with the verification step above? Call <a href="tel:+18009569876" class="form-phone">(800) 956-9876</a> (calls are recorded) or reach us through our <a href="contact" style="color:var(--amber-bright);">contact page</a> and we will follow up about your case review request.</p>
+
+    <button type="submit">Submit Case Review Request</button>
+
+    <p class="form-fineprint">
+      Created by David Meldofsky, a California-licensed attorney, who refers your request to participating law firms. A submission does not guarantee eligibility, compensation, contact, or representation.
+    </p>
+  </form>
+</div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">After Submission</span>
+    <h2>What happens next.</h2>
+    <p>
+            A reviewer looks at whether your information fits a PFAS claim that a participating firm handles.
+    </p>
+    <p>
+      If it might, the participating law firm David refers your request to may contact you for more detail.
+    </p>
+    <p>
+      You are not a client of any firm until you sign an agreement with one.
+    </p>
+    <div class="actions">
+      <a href="how-case-review-works" class="btn btn--ghost">How Case Review Works</a>
+      <a href="privacy-policy" class="btn btn--ghost">Privacy Policy</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="firms">
+      <div class="firms__body">
+        <span class="eyebrow">Quick Review</span>
+        <h2>Factors people often consider.</h2>
+        <p>
+                    People often seek review when several of these apply. They drank the water for years in an area
+          with reported PFAS contamination. They lived near a military base, airport, industrial site or
+          other possible source. They used city or well water in an affected community. Or they have a
+          diagnosis that may connect to that exposure history.
+        </p>
+        <p>
+          If this sounds familiar, the next step is usually to request review and organize your basic
+          exposure history.
+        </p>
+      </div>
+      <dl class="firms__details">
+        <dt>Common sources</dt>
+        <dd>Military bases, airports, industrial sites, firefighting foam</dd>
+        <dt>Common pathways</dt>
+        <dd>Municipal water, well water, groundwater</dd>
+        <dt>Related areas</dt>
+        <dd>Chemical exposure, water contamination, environmental claims</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Who May Qualify</span>
+    <h2>Who may qualify for review.</h2>
+    <ul>
+      <li>People who lived or worked in areas with known PFAS contamination concerns</li>
+      <li>Individuals exposed through drinking water over an extended period</li>
+      <li>People who used municipal water or well water in an affected area</li>
+      <li>Those diagnosed with conditions they believe may be associated with PFAS exposure</li>
+      <li>Individuals trying to determine whether their experience fits a broader contamination pattern</li>
+    </ul>
+    <p>
+      Whether a person may qualify for review depends on the facts, including exposure history,
+      location, duration, and the nature of any related health concerns.
+    </p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section__head section__head--left">
+      <span class="eyebrow section__eyebrow">Common Exposure Situations</span>
+      <h2>Where these claims most often arise.</h2>
+      <p class="section__lede">
+        These exposure patterns are often part of broader chemical exposure, water contamination,
+        and environmental contamination claims.
+      </p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Contaminated municipal water</h3>
+        <p>Long-term reliance on municipal water supplies in areas where PFAS contamination has been reported.</p>
+      </div>
+      <div class="card">
+        <h3>Well water in affected areas</h3>
+        <p>Years of private well water use in communities affected by PFAS contamination from nearby sources.</p>
+      </div>
+      <a href="afff-case-review" class="card">
+        <h3>AFFF firefighting foam</h3>
+        <p>Firefighters, military personnel, and airport crews exposed to AFFF foam. See the dedicated AFFF case review →</p>
+      </a>
+      <div class="card">
+        <h3>Near military bases</h3>
+        <p>Residence near military bases historically associated with firefighting foam and related contamination.</p>
+      </div>
+      <div class="card">
+        <h3>Near airports</h3>
+        <p>Communities near civilian airports where firefighting foam or related PFAS use has been reported.</p>
+      </div>
+      <div class="card">
+        <h3>Near industrial facilities</h3>
+        <p>Residence or work near manufacturing, chemical, or processing facilities tied to PFAS contamination.</p>
+      </div>
+      <div class="card">
+        <h3>Reported community contamination</h3>
+        <p>Living in communities where PFAS contamination has been confirmed in public reports or testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Free Tool</span>
+    <h2>Check your PFAS exposure history.</h2>
+    <p>
+      The PFAS Exposure Checker walks you through where you lived, your water source, and how long
+      exposure may have lasted. It takes a few minutes and helps clarify whether your situation
+      matches a publicly reported contamination pattern before you request a case review.
+    </p>
+    <div class="hero-actions">
+      <a href="pfas-exposure-checker" class="btn btn--amber btn--lg">Open the PFAS Exposure Checker</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">When People Start Looking</span>
+    <h2>When people begin exploring a PFAS lawsuit.</h2>
+    <ul>
+      <li>They learn that PFAS contamination was reported in their area</li>
+      <li>They discover they lived near a possible contamination source for years</li>
+      <li>They begin connecting a long exposure history with later health concerns</li>
+      <li>They want to know whether their situation may match a broader claim pattern</li>
+    </ul>
+    <p>
+      A PFAS lawsuit review often starts with basic questions: where you lived or worked, how long the exposure may have lasted, and which water source you used. It also asks whether contamination was publicly reported there.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Conditions Often Discussed</span>
+    <h2>Conditions sometimes raised in review.</h2>
+    <ul>
+      <li>Certain cancers</li>
+      <li>Thyroid-related conditions</li>
+      <li>Immune system concerns</li>
+      <li>Other long-term health issues reported in connection with PFAS exposure</li>
+    </ul>
+    <p>
+      This information is general and educational. It is not a statement that any specific condition
+      was caused by PFAS exposure in any individual case.
+    </p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Information to Gather</span>
+    <h2>What people often gather.</h2>
+    <ul>
+      <li>Residential history in areas with reported PFAS contamination</li>
+      <li>Work history near possible contamination sources</li>
+      <li>Water district notices, testing results, or public reports</li>
+      <li>Medical records and diagnosis information</li>
+      <li>A timeline showing how long exposure may have continued</li>
+    </ul>
+    <p>
+      Many people begin by organizing their exposure history and any records that may help explain
+      where contamination occurred.
+    </p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Frequently Asked</span>
+    <h2>Common questions.</h2>
+
+    <h3 style="margin-top: 24px;">What is a PFAS lawsuit?</h3>
+    <p>
+      A PFAS lawsuit usually refers to claims involving alleged exposure to forever chemicals, often
+      through contaminated drinking water, and whether that exposure may be connected to broader legal claims.
+    </p>
+
+    <h3 style="margin-top: 24px;">Who may qualify for a PFAS water contamination claim review?</h3>
+    <p>
+      People may seek review if they lived or worked where PFAS contamination was reported, or used affected water for years. Others believe a later diagnosis may connect to that exposure history.
+    </p>
+
+    <h3 style="margin-top: 24px;">What types of exposure situations are often reviewed?</h3>
+    <p>
+      Common situations include contaminated municipal water, well water use in affected areas, and
+      long-term residence near military, airport, or industrial locations associated with contamination concerns.
+    </p>
+
+    <h3 style="margin-top: 24px;">What should people gather before requesting review?</h3>
+    <p>
+      People often gather where they lived or worked, which water they used, and whether contamination was reported there. Any related medical records help too.
+    </p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container container--narrow">
+    <span class="eyebrow section__eyebrow">Important Disclosures</span>
+    <h2>Read this before submitting.</h2>
+    <p>
+      Lawsuit Center is the intake and referral practice of David Meldofsky, a California attorney, and provides no legal advice through this site. Submitting information creates no attorney-client relationship. It does not guarantee that you qualify for a claim, that compensation will be available, or that any law firm will offer representation.
+    </p>
+    <p>
+      This page is attorney advertising. It is not a recommendation or endorsement of any attorney or law firm.
+    </p>
+    <p class="small-text">
+      Legal deadlines for PFAS and water contamination claims can vary by state and can be short. If you believe you
+      may have a claim, consider speaking with a licensed attorney as soon as possible.
+    </p>
+    <div class="actions">
+      <a href="advertising-disclosure" class="btn btn--ghost">Advertising Disclosure</a>
+      <a href="disclaimer" class="btn btn--ghost">Disclaimer</a>
+    </div>
+  </div>
+</section>
+
+<section class="section related-topics-module">
+  <div class="container">
+    <div class="section__head section__head--left">
+      <span class="eyebrow section__eyebrow">Related Topics</span>
+      <h2>Continue exploring this category.</h2>
+    </div>
+    <div class="card-grid">
+      <a href="pfas-lawsuit" class="card">
+        <h3>PFAS Lawsuit Overview</h3>
+        <p>What PFAS lawsuits involve, who may qualify, and how claims are reviewed.</p>
+      </a>
+      <a href="pfas-case-review" class="card">
+        <h3>PFAS Water Contamination Lawsuits</h3>
+        <p>Learn about PFAS lawsuits, water contamination claims, exposure history, and review factors.</p>
+      </a>
+      <a href="water-contamination-lawsuits" class="card">
+        <h3>Water Contamination Lawsuits</h3>
+        <p>Explore related claims involving contaminated drinking water, private wells, and affected communities.</p>
+      </a>
+      <a href="pfas-exposure-checker" class="card">
+        <h3>PFAS Exposure Checker</h3>
+        <p>Use the free checker to walk through your location, water source, and possible exposure timeline.</p>
+      </a>
+      <a href="https://lawsuitinformer.com/pfas-water-contamination-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=pfas-case-review" class="card">
+        <h3>PFAS Editorial Deep-Dive</h3>
+        <p>Read Lawsuit Informer’s background article on PFAS litigation, evidence, and claim evaluation.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="container">
+  <div class="site-footer__brand">Lawsuit Center</div>
+  <p class="site-footer__tag">Attorney-Built lawsuit research and case review platform.</p>
+  <div class="site-footer__legal">
+    Educational information only, not legal advice. Lawsuit Center is the intake and referral
+    practice of David Meldofsky, a California attorney. Information you submit is referred by him to
+    participating law firms, which decide whether to follow up. Using this site or submitting
+    information creates no attorney-client relationship with David Meldofsky or with any firm. You
+    become a firm's client only when you sign an agreement with that firm. Some pages include
+    attorney advertising, labeled where it appears.
+  </div>
+  <div class="site-footer__links">
+    <a href="privacy-policy">Privacy Policy</a>&nbsp;·
+    <a href="disclaimer">Disclaimer</a>&nbsp;·
+    <a href="advertising-disclosure">Advertising Disclosure</a>&nbsp;·
+    <a href="editorial-policy">Editorial Policy</a>&nbsp;·
+    <a href="how-case-review-works">How Case Review Works</a>&nbsp;·
+    <a href="resources">Resources</a>&nbsp;·
+    <a href="https://lawsuitinformer.com/?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=footer">Lawsuit Informer</a>&nbsp;·
+    <a href="https://lawsuitintelligencer.com/">Lawsuit Intelligencer</a>&nbsp;·
+    <a href="https://davidmeldofsky.com/">David Meldofsky</a>&nbsp;·
+    <a href="about">About</a>&nbsp;·
+    <a href="contact">Contact</a>
+  </div>
+  <div class="site-footer__copy site-footer__phone">Case review line: <a href="tel:+18009569876" style="color:var(--amber-bright);">(800) 956-9876</a>. Calls are recorded.</div>
+  <div class="site-footer__copy site-footer__attorney">Attorney advertising. Responsible attorney: David Meldofsky, 6210 Wilshire Blvd. Ste 200, Los Angeles, CA 90048.</div>
+  <div class="site-footer__copy">© 2026 Lawsuit Center. All rights reserved.</div>
+</div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toggle = document.querySelector(".nav__toggle");
+    var menu = document.getElementById("site-menu");
+    if (toggle && menu) {
+      toggle.addEventListener("click", function () {
+        var isOpen = menu.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+
+    // PREFILL FROM URL PARAMS (e.g., from exposure checker)
+    var params = new URLSearchParams(window.location.search);
+
+    var exposureParam = params.get('exposure');
+    if (exposureParam) {
+      var exposureSelect = document.getElementById('exposure-type');
+      if (exposureSelect) {
+        Array.from(exposureSelect.options).forEach(function(opt) {
+          if (opt.value === exposureParam) opt.selected = true;
+        });
+      }
+    }
+
+    var stateParam = params.get('state');
+    if (stateParam) {
+      var stateInput = document.getElementById('state');
+      if (stateInput && !stateInput.value) {
+        stateInput.value = stateParam;
+      }
+    }
+
+    var displayLabelMap = {
+      "Contaminated Drinking Water": "PFAS contaminated drinking water exposure",
+      "Military Base Exposure": "PFAS military base exposure",
+      "Airport Exposure": "PFAS airport exposure",
+      "AFFF Firefighting Foam": "AFFF firefighting foam exposure",
+      "Chemical Manufacturing / Industrial": "PFAS industrial / occupational exposure",
+      "Landfill / Waste Site": "PFAS landfill or waste site exposure",
+      "Farm or Agricultural Land Contamination": "PFAS farm or agricultural land contamination",
+      "Kidney Cancer Diagnosis": "PFAS-related kidney cancer",
+      "Testicular Cancer Diagnosis": "PFAS-related testicular cancer",
+      "Thyroid Disease Diagnosis": "PFAS-related thyroid disease",
+      "Ulcerative Colitis Diagnosis": "PFAS-related ulcerative colitis",
+      "Other PFAS Health Concern": "PFAS-related health concern",
+      "Not Sure": "PFAS exposure"
+    };
+
+    var form = document.querySelector('form[name="pfas-case-review"]');
+    var exposureType = document.getElementById("exposure-type");
+    if (form && exposureType) {
+      form.addEventListener("submit", function () {
+        var raw = exposureType.value;
+        var display = displayLabelMap[raw] || "PFAS";
+        sessionStorage.setItem("lc_category", display);
+      });
+    }
+  });
+</script>
+
+<script>
+  // Diagnosis gate: "No diagnosis" is open only for farm or land damage claims.
+  // It ships disabled, so without JavaScript every visitor must pick a diagnosis.
+  (function () {
+    var exposure = document.getElementById("exposure-type");
+    var diagnosis = document.getElementById("diagnosis");
+    if (!exposure || !diagnosis) return;
+    var NONE = "Not diagnosed / other";
+    var FARM = "Farm or Agricultural Land Contamination";
+    var noneOpt = null;
+    Array.prototype.forEach.call(diagnosis.options, function (o) { if (o.value === NONE) noneOpt = o; });
+    if (!noneOpt) return;
+
+    function sync() {
+      var farm = exposure.value === FARM;
+      noneOpt.disabled = !farm;
+      if (!farm && diagnosis.value === NONE) {
+        diagnosis.value = "";
+        diagnosis.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    }
+
+    // Last check before Netlify takes the submit, ahead of form-validation.js and lead-events.js.
+    var form = diagnosis.form;
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        sync();
+        if (!diagnosis.checkValidity()) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          diagnosis.reportValidity();
+        }
+      });
+    }
+
+    exposure.addEventListener("change", sync);
+    // Prefill scripts can set the exposure answer without a change event, so check again when the visitor reaches the diagnosis field.
+    diagnosis.addEventListener("focus", sync);
+    diagnosis.addEventListener("mousedown", sync);
+    document.addEventListener("DOMContentLoaded", sync);
+    window.addEventListener("load", sync);
+    sync();
+  })();
+</script>
+
+<script>
+  // Year diagnosed: shown and required only when a diagnosis is chosen.
+  // Without JavaScript the field stays hidden and optional, so it never blocks a submit.
+  (function () {
+    var diagnosis = document.getElementById("diagnosis");
+    var wrap = document.getElementById("diagnosis-year-field");
+    var year = document.getElementById("diagnosis-year");
+    if (!diagnosis || !wrap || !year) return;
+    var maxYear = new Date().getFullYear();
+
+    function checkYear() {
+      var v = year.value.trim();
+      var n = parseInt(v, 10);
+      if (year.required && !/^[0-9]{4}$/.test(v)) {
+        year.setCustomValidity("Enter the 4-digit year you were diagnosed.");
+      } else if (year.required && (n < 1970 || n > maxYear)) {
+        year.setCustomValidity("Enter a year from 1970 to " + maxYear + ".");
+      } else {
+        year.setCustomValidity("");
+      }
+    }
+
+    function sync() {
+      var show = diagnosis.value !== "" && diagnosis.value !== "Not diagnosed / other";
+      wrap.hidden = !show;
+      year.required = show;
+      year.disabled = !show;
+      if (!show) year.value = "";
+      checkYear();
+    }
+
+    diagnosis.addEventListener("change", sync);
+    year.addEventListener("input", checkYear);
+    sync();
+  })();
+</script>
+<script src="form-validation.js"></script>
+
+<script src="/lead-events.js" defer></script>
+<script src="/lead-attribution.js" defer></script>
+<!-- LC-LIGHT-JS:BEGIN -->
+<script>
+(function () {
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
+
+  var root = document.documentElement;
+  var LIGHT_BAR = '#faf9f7';   /* keep in sync with light --bg */
+  var DARK_BAR  = '#0b1118';   /* existing theme-color meta value */
+
+  function current() {
+    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+
+  function paint(t) {
+    root.setAttribute('data-theme', t);
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(t === 'light'));
+      btns[i].setAttribute('aria-label', t === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    }
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'light' ? LIGHT_BAR : DARK_BAR);
+  }
+
+  function onToggle() {
+    root.classList.add('theme-anim');
+    var next = current() === 'light' ? 'dark' : 'light';
+    paint(next);
+    try { localStorage.setItem('lc-theme', next); } catch (e) {}
+    decorate();
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].hidden = false;
+    btns[i].addEventListener('click', onToggle);
+  }
+  paint(current());
+
+  /* Carry the live theme onto lawsuitinformer.com links (decorate + just-in-time) */
+  var PARTNER = /(^|\.)lawsuitinformer\.com$/i;
+  function stamp(a) {
+    try {
+      var u = new URL(a.href, location.href);
+      if (!PARTNER.test(u.hostname)) return;
+      u.searchParams.set('theme', current());
+      a.href = u.toString();
+    } catch (e) {}
+  }
+  function decorate() {
+    var links = document.querySelectorAll('a[href*="lawsuitinformer.com"]');
+    for (var i = 0; i < links.length; i++) stamp(links[i]);
+  }
+  function freshen(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="lawsuitinformer.com"]') : null;
+    if (a) stamp(a);
+  }
+  document.addEventListener('click', freshen, true);
+  document.addEventListener('auxclick', freshen, true);
+  decorate();
+
+  /* Time-of-day theme: with no saved choice, switch at 7 pm and 7 am on the
+     visitor's clock while the page is open, and recheck when the tab comes
+     back. Keep DARK_FROM / DARK_UNTIL in step with LC-LIGHT-INIT. */
+  var DARK_FROM = 19, DARK_UNTIL = 7, clockTimer = null;
+  function saved() {
+    var s = null;
+    try { s = localStorage.getItem('lc-theme'); } catch (err) {}
+    return (s === 'dark' || s === 'light') ? s : null;
+  }
+  function byClock() {
+    var h = new Date().getHours();
+    return (h >= DARK_FROM || h < DARK_UNTIL) ? 'dark' : 'light';
+  }
+  function followClock() {
+    clearTimeout(clockTimer);
+    if (saved()) return;
+    if (current() !== byClock()) paint(byClock());
+    var now = new Date(), next = new Date(now);
+    next.setHours(byClock() === 'dark' ? DARK_UNTIL : DARK_FROM, 0, 5, 0);
+    if (next <= now) next.setDate(next.getDate() + 1);
+    clockTimer = setTimeout(followClock, Math.min(next - now, 3600000));
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) followClock();
+  });
+  followClock();
+})();
+</script>
+<!-- LC-LIGHT-JS:END -->
+</body>
+</html>
