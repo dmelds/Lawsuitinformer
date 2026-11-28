@@ -1,0 +1,140 @@
+name: Sync staging
+
+# Keeps the staging branch level with main, so staging never has to be caught
+# up by hand with a main -> staging pull request.
+#
+# Why staging drifts: every merge into main is followed by commits the
+# generators push straight to main (sitemap, redirects, search index, feed,
+# boards), and the scheduled jobs push more through the day. None of those
+# commits reach staging on their own.
+#
+# What this does:
+#   - staging only behind main  -> moves staging forward to main (no new commit)
+#   - staging also has its own work that is not on main yet -> merges main into
+#     staging with one "Sync main into staging" merge commit
+#   - a staging -> main pull request is open -> does nothing, so the checks on
+#     that pull request stay attached to it; the next run catches up
+#   - main and staging changed the same lines -> stops, changes nothing, and
+#     the run fails with the file names
+#
+# The merge commit message carries no [skip lastmod] token on purpose. The
+# sitemap generator treats a tokened merge as marking every commit it brought
+# in, which here would be the generator and board commits from main.
+#
+# When it runs:
+#   - after each push to main, once the other workflows on main have finished,
+#     so one sync picks up the merge and the generator commits together
+#   - hourly, to pick up commits from the scheduled and hand-run workflows
+#     (commits pushed by a workflow do not fire the push trigger)
+#   - by hand from the Actions tab
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: sync-staging
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout staging
+        uses: actions/checkout@v7
+        with:
+          ref: staging
+          fetch-depth: 0
+
+      - name: Wait for the other workflows on main to finish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Up to 10 minutes. If the list cannot be read, carry on: the hourly
+          # run picks up anything this one misses.
+          for i in $(seq 1 40); do
+            busy="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?branch=main&per_page=50" \
+              --jq "[.workflow_runs[] | select(.status != \"completed\" and .name != \"$GITHUB_WORKFLOW\")] | length" \
+              2>/dev/null || echo 0)"
+            case "$busy" in
+              ''|*[!0-9]*)
+                echo "Could not read the list of workflow runs; carrying on."
+                exit 0
+                ;;
+            esac
+            if [ "$busy" = "0" ]; then
+              echo "No other workflow is running on main."
+              exit 0
+            fi
+            echo "$busy other workflow run(s) still going on main; waiting"
+            sleep 15
+          done
+          echo "Still busy after 10 minutes; syncing what is there now."
+
+      - name: Bring main into staging
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          open_prs="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&base=main&head=$GITHUB_REPOSITORY_OWNER:staging&per_page=5" --jq 'length' 2>/dev/null)" || open_prs=""
+          case "$open_prs" in
+            ''|*[!0-9]*)
+              echo "::error::Could not read the open pull requests. staging was left as it was."
+              exit 1
+              ;;
+          esac
+          if [ "$open_prs" != "0" ]; then
+            echo "A staging -> main pull request is open. Leaving staging alone until it is merged or closed."
+            exit 0
+          fi
+
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main staging || { sleep $(( attempt * 3 )); continue; }
+            git checkout --quiet -B staging origin/staging
+
+            if git merge-base --is-ancestor origin/main origin/staging; then
+              echo "staging already has everything on main. Nothing to do."
+              exit 0
+            fi
+
+            behind="$(git rev-list --count origin/staging..origin/main)"
+            if git merge-base --is-ancestor origin/staging origin/main; then
+              git merge --quiet --ff-only origin/main
+              how="moved staging forward $behind commit(s) to main"
+            else
+              if ! git merge --quiet --no-ff -m "Sync main into staging" origin/main; then
+                echo "::error::main and staging changed the same lines. staging was left as it was."
+                echo "Files to settle by hand:"
+                git diff --name-only --diff-filter=U | sed 's/^/  /'
+                git merge --abort
+                exit 1
+              fi
+              how="merged $behind commit(s) from main into staging"
+            fi
+
+            if out="$(git push origin staging 2>&1)"; then
+              echo "Done: $how."
+              exit 0
+            fi
+            echo "$out"
+            if echo "$out" | grep -qi "workflow"; then
+              echo "::error::main has a workflow file change that staging does not. GitHub does not let this job push workflow files, so merge main into staging by hand once."
+              exit 1
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $(( attempt * 3 + RANDOM % 4 ))
+          done
+          echo "::error::Could not update staging after 5 attempts"
+          exit 1
